@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'spine/spine' ); ?>
-
 <main id="page" role="main" class="skeleton">
 
 <header id="siteID">
@@ -35,5 +33,7 @@
 </section>
 
 </main><!--/#page-->
+
+<?php get_template_part( 'spine/spine' ); ?>
 
 <?php get_footer(); ?>

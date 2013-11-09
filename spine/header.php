@@ -37,13 +37,13 @@
          </menu>
 	</section>
 	<section id="wsu-contact" class="tools closed">
-		<button id="shut-contact">Close</button>
+		<button id="shut-contact" class="shut"><span>Close</span></button>
 		<!-- This following  address uses microformat classes to enable automated contact recognition -->
 		<address class="hcard">
-			<div class="organization-unit fn org"><a href="http://example.wsu.edu/" class="url">University College</a></div>
+			<div class="organization-unit fn org"><a href="http://example.wsu.edu/" class="url">College of Engineering & Architecture</a></div>
 			<div class="organization-name">Washington State University</div>
 			<div class="adr">
-				<div class="street-address">French Administration</div>
+				<div class="street-address">PO Box 642714</div>
 				<div class="area">
 					<span class="locality">Pullman</span>, 
 					<abbr class="region">WA</abbr>

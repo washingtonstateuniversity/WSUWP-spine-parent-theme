@@ -7,7 +7,7 @@
 			<nav id="site">
 			<?php
 			$site = array(
-				'theme_location'  => '',
+				'theme_location'  => 'site',
 				'menu'            => 'site',
 				'container'       => false,
 				'container_class' => false,
@@ -26,6 +26,7 @@
 			<nav id="offsite">
 			<?php 
 			$offsite = array(
+				'theme_location'  => 'offsite',
 				'menu'            => 'offsite',
 				'container'       => false,
 				'container_class' => false,
