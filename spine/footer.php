@@ -11,6 +11,7 @@
 		<li id="zzusis"><a href="https://portal.wsu.edu/">Zzu<strong>sis</strong></a></li>
 		<li id="access"><a href="http://access.wsu.edu/">Access</a></li>
 		<li id="policies"><a href="http://policies.wsu.edu/">Policies</a></li>
+		<li id="copyright"><a href="http://copyright.wsu.edu">&nbsp;&copy;</a></li>
 	</ul>
 </nav>	
-<small id="copyright"><a href="http://publishing.wsu.edu/copyright/WSU.html">&copy; Washington State University</a></small>
+<!-- <small id="copyright"><a href="http://copyright.wsu.edu">&copy; Washington State University</a></small> -->

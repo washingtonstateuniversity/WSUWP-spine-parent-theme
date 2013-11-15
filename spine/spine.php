@@ -34,6 +34,7 @@
 				'menu_class'      => null,
 				'menu_id'         => null,
 				'echo'            => true,
+				'fallback_cb'     => false,
 				'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
 				'depth'           => 3,
 				'walker'          => ''
