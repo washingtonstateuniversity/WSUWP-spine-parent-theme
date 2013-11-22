@@ -18,8 +18,8 @@
 	<!-- Your custom stylesheets here -->
 	
 	<!-- RESPOND -->
-	<meta name="viewport" content="width=device-width, user-scalable=yes">
-	
+	<meta name="viewport" content="width=device-width, user-scalable=yes" />
+
 	<!-- SCRIPTS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
 	<!-- TARGET <script src="http://images.wsu.edu/spine/1/scripts.js" type="text/javascript"></script>-->
