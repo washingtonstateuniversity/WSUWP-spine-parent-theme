@@ -20,8 +20,9 @@
 	<!-- RESPOND -->
 	<meta name="viewport" content="width=device-width, user-scalable=yes" />
 
-	<!-- SCRIPTS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+	<?php wp_head(); ?>
+	<script>$ = jQuery;</script>
+
 	<!-- TARGET <script src="http://images.wsu.edu/spine/1/scripts.js" type="text/javascript"></script>-->
 	<!-- TEMP --><script src="http://nbj.me/spine/1/scripts-dev.js" type="text/javascript"></script><!-- -->
 	<!-- PCKG <script src="scripts/scripts.js" type="text/javascript"></script>-->
@@ -34,8 +35,6 @@
 	
 	<!-- ANALYTICS -->
 	<!-- Your analytics code here -->
-
-	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class($class); ?>>
