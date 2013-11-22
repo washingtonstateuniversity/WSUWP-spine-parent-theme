@@ -39,7 +39,7 @@
 	
 </head>
 
-<body <?php body_class($class); ?>>
+<body <?php body_class(); ?>>
 
 <div id="jacket" class="palette">
 <div id="binder" class="hybrid">
