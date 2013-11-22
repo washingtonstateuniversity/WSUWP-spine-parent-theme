@@ -34,7 +34,8 @@
 	
 	<!-- ANALYTICS -->
 	<!-- Your analytics code here -->
-	
+
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class($class); ?>>
