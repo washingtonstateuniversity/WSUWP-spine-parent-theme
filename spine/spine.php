@@ -1,6 +1,4 @@
-<? $color = $_GET["color"] ?>
-
-<div id="spine" class="<? echo $color; ?> shelved">
+<div id="spine" class="<?php $spine_color = get_option( 'spine_theme_options' ); echo $spine_color['spine_color']; ?> shelved">
 	<div id="glue" class="clearfix">
 		<?php get_template_part('spine/header'); ?>
 		<nav id="navigation">
