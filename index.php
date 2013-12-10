@@ -7,20 +7,23 @@
     <h1><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
 </header><!--siteID-->
 
-<?php if ( ( get_post_status('1') == 'publish' ) && ( get_the_title('1') == 'Hello world!') ) { get_template_part( 'includes/welcome' ); }  ?>
+
+
+
 
 
 <section class="row sidebar">
 
 	<div class="column one">
 	
-	
+		<?php // Introductory Article
+		if ( ( get_post_status('1') == 'publish' ) && ( get_the_title('1') == 'Hello world!') ) { get_template_part( 'includes/welcome' ); }  ?>
 	
 		<?php while ( have_posts() ) : the_post(); ?>
 				
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header class="entry-header">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<h2 class="entry-title"><?php the_title(); ?></h2>
 			</header>
 			<?php the_content(); ?>
 		</article>
@@ -40,6 +43,6 @@
 
 </main><!--/#page-->
 
-<?php get_template_part( 'spine/spine' ); ?>
+<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>

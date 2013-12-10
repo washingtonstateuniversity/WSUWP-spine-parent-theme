@@ -6,7 +6,8 @@
 
 .row .column {
 	min-height: 198px;
-	box-shadow: inset -2px -2px 1px rgba(137,137,137,0.1);
+	xbox-shadow: inset -2px -2px 1px rgba(137,137,137,0.1);
+	box-shadow: inset 0px 0px 1px rgba(137,137,137,0.6);
 	}
 	
 /* GRID */
@@ -126,7 +127,6 @@ section.row::before {
 .sidebar .column.two li {
 	list-style: none;
 	padding: 10px 0px;
-	border-bottom: 1px gray dotted;
 	margin: 0px;
 	}
 .sidebar .column.two li:last-of-type {
@@ -142,7 +142,7 @@ section.row::before {
 	// 
 	$('li#grid-behavior a').on('click', function() {
 		var grid = $(this).attr('data-grid');
-		$('#binder').removeClass().addClass(grid);
+		$('#binder').removeClass('fluid fixed hybrid').addClass(grid);
 		return false;
 	});
 	
@@ -151,6 +151,14 @@ section.row::before {
 		var color = $(this).attr('data-color');
 		$('#spine').removeClass('white lightest lighter light gray dark darker darkest crimson transparent');
 		$('#spine').addClass(color);
+		return false;
+	});
+	
+	// Folio Sizes
+	$('li#folio-samples a').on('click', function() {
+		var max = $(this).attr('data-max');
+		$('#binder').removeClass('max-default max-1188 max-1386 max-1584 max-1782 max-1980');
+		$('#binder').addClass('folio').addClass(max);
 		return false;
 	});
 	
@@ -170,9 +178,9 @@ section.row::before {
 
 <span id="grid" onclick="$('#jacket').removeClass('grid').removeClass('grid12');"></span>
 
-<section class="row single gray-darker">
+<!--<section class="row single gray-darker">
 	<div class="column one"></div>
-</section>
+</section>-->
 
 <section class="row sidebar">
 
@@ -191,7 +199,8 @@ section.row::before {
 
 	<div class="column two">
 		
-		<aside style="padding: 30px;">
+		<aside>
+		<header>Features</header>
 		<ul>
 			<li id="grid-behavior"><strong>Flexible Grid:</strong> <a href="#" data-grid="fluid">Fluid</a>, <a href="#" data-grid="fixed">Fixed</a>, <a href="#" data-grid="hybrid">Hybrid</a>; <a href="#" onclick="$('#jacket').addClass('grid').addClass('grid12');">Twelfths</a>, <a href="#" onclick="$('#jacket').addClass('grid');">Fifteenths</a>; Nested Columns; Gutterless</li>
 			<li><strong>Minimal Resizing:</strong> Four layouts, three breaks, only two content sizes</li>
@@ -199,9 +208,9 @@ section.row::before {
 			<li><strong>Mobile Friendly Nav:</strong> Couplets, after testing "<a href="http://test.nbj.me/navigation/?option=plus-minus">Plus Minus</a>", "<a href="http://test.nbj.me/navigation/?option=leftie">Leftie</a>", "<a href="http://test.nbj.me/navigation/?option=onetwo">One Two</a>", "<a href="http://test.nbj.me/navigation/?option=right-o">Right-o</a>", and "<a href="http://test.nbj.me/navigation/?option=couplets">Couplets</a>"</li>
 			<li><strong>Resolution Independence:</strong> Custom Symbolset; SVG Marks; <code>EM</code> based menu and enlarged for touch</li>
 			<li id="color-samples"><strong>Colors:</strong> Preset <a href="#" data-color="white">Default</a>, <a href="#" data-color="lightest">Lightest</a>, <a href="#" data-color="lighter">Lighter</a>, <a href="#" data-color="light">Light</a>, <a href="#" data-color="gray">Gray</a>, <a href="#" data-color="dark">Dark</a>, <a href="#" data-color="darker">Darker</a>, <a href="#" data-color="darkest">Darkest</a>, <a href="#" data-color="crimson">Crimson</a>, <a href="#" data-color="transparent">Transparent</a></li>
-			<li>990 Container by default <a href="?grid=fluid folio">Large Format</a>, and <a href="?grid=fixed folio">fixed</a></li>
+			<li id="folio-samples"><strong>Large Formats: </strong>990 Container by <a href="#" data-max="max-default">default</a> with maximum widths of <a href="#" data-max="max-1188">1188</a>, <a href="#" data-max="max-1386">1386</a>, <a href="#" data-max="max-1584">1584</a>, <a href="#" data-max="max-1782">1782</a>, <a href="#" data-max="max-1980">1980</a></li>
 			<li><strong>Homepage:</strong> A <a href="http://nbj.me/wp-content/themes/dev/depot/images/demo/croppedspine.png">cropped</a> <a href="http://nbj.me/wp-content/themes/dev/depot/images/demo/croppedspine2.png">Spine</a> for an open <a href="http://spine.nbj.me">canvas</a></li>
-			<li><strong></strong>A Cracking Spine</li>
+			<li><strong></strong>A "cracking" Spine, a "<a href="#" onclick="$('#spine').toggleClass('bloodless bleed');">bleeding</a>" spine </li>
 			<li id="campus-sigs"><strong>Campuses:</strong> <a href="#" data-campus="extension">Extension</a>, <a href="#" data-campus="globalcampus">Global Campus</a>, <a href="#" data-campus="spokane">Spokane</a>, <a href="#" data-campus="tricities">Tri-Cities</a>, <a href="#" data-campus="vancouver">Vancouver</a></li>
 			<!--<li><a href="">Emphasize Search</a></li>-->
 		</ul>
@@ -237,6 +246,8 @@ section.row::before {
 	<div class="column two"></div>
 	<div class="column three"></div>
 	<div class="column four"></div>
+	<div class="column five folio-only"></div>
+	<div class="column six folio-only"></div>
 </section>
 
 <section class="row margin">
@@ -299,12 +310,23 @@ section.row::before {
 	</div>
 </section>
 
+<section class="row halves">
+	<div class="column one">
+		<div class="column four-twelfths"></div>
+		<div class="column two-twelfths"></div>
+	</div>
+	<div class="column two">
+		<div class="column four-twelfths"></div>
+		<div class="column two-twelfths"></div>
+	</div>
+</section>
+
 <footer class="local">
 	<br>	
 </footer>
 
 </main><!--/#page-->
 
-<?php get_template_part( 'spine/spine' ); ?>
+<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>

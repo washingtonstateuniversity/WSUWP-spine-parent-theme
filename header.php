@@ -6,13 +6,11 @@
 
 
 <?php // CUSTOMIZATION
-
-$spine_options = get_option( 'spine_theme_options' );
-
-	if ( isset($spine_options['grid_style']) ) { $grid_style = $spine_options['grid_style']; } else { $grid_style = "hybrid"; }
-	if ( isset($spine_options['spine_color']) ) { $spine_color = $spine_options['spine_color']; } else { $spine_color = "white"; }
-
-?>
+	$spine_options = get_option( 'spine_options' );
+	$grid_style = $spine_options['grid_style'];
+	$spine_color = $spine_options['spine_color'];
+	$large_format = $spine_options['large_format'];
+	?>
 
 <head>
 
@@ -40,6 +38,9 @@ $spine_options = get_option( 'spine_theme_options' );
 	<!-- PCKG <script src="scripts/scripts.js" type="text/javascript"></script>-->
 	<!-- Your supplementary scripts here -->
 	
+	<!-- COMPATIBILITY -->
+	<!--[if lt IE 8]><script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js">IE7_PNG_SUFFIX=".png";</script><![endif]--> 
+	
 	<!-- DOCS -->
 	<link type="text/plain" rel="author" href="http://images.wsu.edu/spine/humans.txt" />
 	<link type="text/html" rel="docs" href="http://identity.wsu.edu" />
@@ -55,4 +56,4 @@ $spine_options = get_option( 'spine_theme_options' );
 <body <?php body_class(); ?>>
 
 <div id="jacket" class="palette">
-<div id="binder" class="<?php echo $grid_style; ?>">
+<div id="binder" class="<?php echo $grid_style; echo $large_format; ?>">

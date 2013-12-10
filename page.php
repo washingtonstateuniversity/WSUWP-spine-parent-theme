@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main id="page" role="main" class="skeleton">
+<main role="main">
 
 <header id="siteID">
     <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
@@ -34,6 +34,6 @@
 
 </main><!--/#page-->
 
-<?php get_template_part( 'spine/spine' ); ?>
+<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>

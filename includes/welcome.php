@@ -1,6 +1,4 @@
-<section class="row sidebar">
 
-	<div class="column one">
 		<article>
 			
 			<h2>Welcome to the WSU Web</h2>
@@ -19,10 +17,3 @@
 			
 
 		</article>
-	</div><!--/.column.one-->
-	
-	<div class="column two">
-	
-	</div><!--/.column.two-->
-
-</section>

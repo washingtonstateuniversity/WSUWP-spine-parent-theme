@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'spine/spine' ); ?>
-
 <main id="page" role="main" class="skeleton">
 
 <header id="siteID">
@@ -12,14 +10,17 @@
 <section class="row sidebar">
 
 	<div class="column one">
-	
+
 		<?php while ( have_posts() ) : the_post(); ?>
 				
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header class="entry-header">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+			<header class="article-header">
+				<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			</header>
-			<?php the_content(); ?>
+			<?php the_content(''); ?>
+			<footer>
+				<a href="<?php the_permalink(); ?>" rel="bookmark">Read More...</a>
+			</footer>
 		</article>
 
 		<?php endwhile; // end of the loop. ?>
@@ -35,5 +36,7 @@
 </section>
 
 </main><!--/#page-->
+
+<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>
