@@ -2,16 +2,16 @@
 	$spine_options = get_option( 'spine_options' );
 	
 	if ( isset($spine_options['social_spot_one_type']) ) { $social_spot_one_type = $spine_options['social_spot_one_type']; } else { $social_spot_one_type = 'facebook'; }
-	if ( isset($spine_options['social_spot_one']) ) { $social_spot_one = $spine_options['social_spot_one']; } else { $social_spot_one = 'http://facebook.com/wsupullman'; }
+	if ( isset($spine_options['social_spot_one']) && $spine_options['social_spot_one'] != "" ) { $social_spot_one = $spine_options['social_spot_one']; } else { $social_spot_one = 'http://facebook.com/wsupullman'; }
 	
 	if ( isset($spine_options['social_spot_two_type']) ) { $social_spot_two_type = $spine_options['social_spot_two_type']; } else { $social_spot_two_type = 'twitter'; }
-	if ( isset($spine_options['social_spot_two']) ) { $social_spot_two = $spine_options['social_spot_two']; } else { $social_spot_two = 'http://twitter.com/wsupullman'; }
+	if ( isset($spine_options['social_spot_two']) && $spine_options['social_spot_two'] != "" ) { $social_spot_two = $spine_options['social_spot_two']; } else { $social_spot_two = 'http://twitter.com/wsupullman'; }
 	
 	if ( isset($spine_options['social_spot_three_type']) ) { $social_spot_three_type = $spine_options['social_spot_three_type']; } else { $social_spot_three_type = 'youtube'; }
-	if ( isset($spine_options['social_spot_three']) ) { $social_spot_three = $spine_options['social_spot_three']; } else { $social_spot_three = 'http://youtube.com/washingtonstateuniv'; }
+	if ( isset($spine_options['social_spot_three']) && $spine_options['social_spot_three'] != "") { $social_spot_three = $spine_options['social_spot_three']; } else { $social_spot_three = 'http://youtube.com/washingtonstateuniv'; }
 	
 	if ( isset($spine_options['social_spot_four_type']) ) { $social_spot_four_type = $spine_options['social_spot_four_type']; } else { $social_spot_four_type = 'directory'; }
-	if ( isset($spine_options['social_spot_four']) ) { $social_spot_four = $spine_options['social_spot_four']; } else { $social_spot_four = 'http://social.wsu.edu'; }
+	if ( isset($spine_options['social_spot_four']) && $spine_options['social_spot_four'] != "") { $social_spot_four = $spine_options['social_spot_four']; } else { $social_spot_four = 'http://social.wsu.edu'; }
 ?>
 
 <footer>

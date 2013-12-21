@@ -19,8 +19,6 @@
 			
 			</script>
 			
-			
-			
 			</article><!-- #post-0 -->
 
 		</main><!-- /main -->

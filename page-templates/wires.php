@@ -16,6 +16,13 @@
 #siteID {
 	display: none;
 	}
+#binder {
+	position: relative;
+	}
+x#cropping {
+	background-color: #424a4f;
+	height: 400px;
+	}
 #grid {
 	display: none;
 	}
@@ -26,7 +33,7 @@
 	top: 0;
 	display: block;
 	height: 3000px;
-	z-index: 9999;
+	z-index: 99999;
 	background: transparent url('http://nbj.me/wp-content/themes/dev/depot/images/elements/grid.png') repeat-y left top;
 	}
 .grid12 #grid {
@@ -174,9 +181,11 @@ section.row::before {
 
 </script>
 
+<span id="grid" onclick="$('#jacket').removeClass('grid').removeClass('grid12');"></span>
+
 <main id="page" role="main" class="skeleton wireframe">
 
-<span id="grid" onclick="$('#jacket').removeClass('grid').removeClass('grid12');"></span>
+
 
 <!--<section class="row single gray-darker">
 	<div class="column one"></div>
@@ -202,6 +211,8 @@ section.row::before {
 		<aside>
 		<header>Features</header>
 		<ul>
+			<li>1) Minimal and 2) Flexible</li>
+			<li>Large, Medium, Small</li>
 			<li id="grid-behavior"><strong>Flexible Grid:</strong> <a href="#" data-grid="fluid">Fluid</a>, <a href="#" data-grid="fixed">Fixed</a>, <a href="#" data-grid="hybrid">Hybrid</a>; <a href="#" onclick="$('#jacket').addClass('grid').addClass('grid12');">Twelfths</a>, <a href="#" onclick="$('#jacket').addClass('grid');">Fifteenths</a>; Nested Columns; Gutterless</li>
 			<li><strong>Minimal Resizing:</strong> Four layouts, three breaks, only two content sizes</li>
 			<li><strong>Tools:</strong> Combined Search and Index (including navigation); Info; Share (addthis); Print using reponsive</li>
@@ -209,7 +220,7 @@ section.row::before {
 			<li><strong>Resolution Independence:</strong> Custom Symbolset; SVG Marks; <code>EM</code> based menu and enlarged for touch</li>
 			<li id="color-samples"><strong>Colors:</strong> Preset <a href="#" data-color="white">Default</a>, <a href="#" data-color="lightest">Lightest</a>, <a href="#" data-color="lighter">Lighter</a>, <a href="#" data-color="light">Light</a>, <a href="#" data-color="gray">Gray</a>, <a href="#" data-color="dark">Dark</a>, <a href="#" data-color="darker">Darker</a>, <a href="#" data-color="darkest">Darkest</a>, <a href="#" data-color="crimson">Crimson</a>, <a href="#" data-color="transparent">Transparent</a></li>
 			<li id="folio-samples"><strong>Large Formats: </strong>990 Container by <a href="#" data-max="max-default">default</a> with maximum widths of <a href="#" data-max="max-1188">1188</a>, <a href="#" data-max="max-1386">1386</a>, <a href="#" data-max="max-1584">1584</a>, <a href="#" data-max="max-1782">1782</a>, <a href="#" data-max="max-1980">1980</a></li>
-			<li><strong>Homepage:</strong> A <a href="http://nbj.me/wp-content/themes/dev/depot/images/demo/croppedspine.png">cropped</a> <a href="http://nbj.me/wp-content/themes/dev/depot/images/demo/croppedspine2.png">Spine</a> for an open <a href="http://spine.nbj.me">canvas</a></li>
+			<li><strong>Homepage:</strong> A <a href="http://nbj.me/wp-content/themes/dev/depot/images/demo/croppedspine.png">cropped</a> <a href="http://nbj.me/wp-content/themes/dev/depot/images/demo/croppedspine2.png">Spine</a> <a href="#" onclick="$('#spine').removeClass('bleed').toggleClass('cropped');$('#jacket').prepend('<div id=cropping></div>');">*</a> for an open <a href="http://spine.nbj.me">canvas</a></li>
 			<li><strong></strong>A "cracking" Spine, a "<a href="#" onclick="$('#spine').toggleClass('bloodless bleed');">bleeding</a>" spine </li>
 			<li id="campus-sigs"><strong>Campuses:</strong> <a href="#" data-campus="extension">Extension</a>, <a href="#" data-campus="globalcampus">Global Campus</a>, <a href="#" data-campus="spokane">Spokane</a>, <a href="#" data-campus="tricities">Tri-Cities</a>, <a href="#" data-campus="vancouver">Vancouver</a></li>
 			<!--<li><a href="">Emphasize Search</a></li>-->
@@ -242,10 +253,10 @@ section.row::before {
 </section>
 
 <section class="row quarters">
-	<div class="column one"></div>
-	<div class="column two"></div>
-	<div class="column three"></div>
-	<div class="column four"></div>
+	<div class="column one"><img src="/wp-content/themes/spine/images/eg/1.png" class="fill-width"></div>
+	<div class="column two"><img src="/wp-content/themes/spine/images/eg/2.png" class="fill-width"></div>
+	<div class="column three"><img src="/wp-content/themes/spine/images/eg/3.png" class="fill-width"></div>
+	<div class="column four"><img src="/wp-content/themes/spine/images/eg/4.png" class="fill-width"></div>
 	<div class="column five folio-only"></div>
 	<div class="column six folio-only"></div>
 </section>
