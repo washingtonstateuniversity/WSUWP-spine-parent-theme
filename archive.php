@@ -2,17 +2,15 @@
 
 <main id="page" role="main" class="skeleton">
 
-<header id="siteID">
+<header class="topmost-header listings-header archive-header">
     <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
     <h1><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
-    
-    
-    
-</header><!--siteID-->
+
+</header>
 
 <?php if ( have_posts() ) : ?>
-<header class="archive-header">
-	<h1 class="archive-title"><?php
+<header class="articles-header">
+	<h1 class="articles-title"><?php
 		if ( is_day() ) :
 			printf( __( 'Daily Archives: %s', 'twentytwelve' ), '<span>' . get_the_date() . '</span>' );
 		elseif ( is_month() ) :

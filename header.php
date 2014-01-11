@@ -22,9 +22,8 @@
 	<link rel="shortcut icon" href="http://images.wsu.edu/favicon.ico" />
 	
 	<!-- STYLESHEETS -->
-	<!-- TARGET <link href="http://repo.wsu.edu/spine/1/styles.css" rel="stylesheet" type="text/css" /> -->
+	<!-- TARGET <link href="http://repo.wsu.edu/spine/1/spine.min.css" rel="stylesheet" type="text/css" /> -->
 	<!-- TEMP --><link href="http://nbj.me/spine/1/1.0/styles/styles.css" rel="stylesheet" type="text/css" /><!--  -->
-	<!-- PCKG <link href="styles/styles.css" rel="stylesheet" type="text/css" /> -->
 	<!-- Your custom stylesheets here -->
 	<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css" />
 	
@@ -34,10 +33,8 @@
 	<!-- SCRIPTS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
-	<!-- TARGET <script src="http://repo.wsu.edu/spine/1/spine.js"></script>-->
+	<!-- TARGET <script src="http://repo.wsu.edu/spine/1/spine.min.js"></script>-->
 	<!-- TEMP --><script src="http://nbj.me/spine/1/1.0/scripts/scripts.js"></script><!-- -->
-	<!-- PCKG <script src="spine.js"></script> -->
 	<!-- Your supplementary scripts here -->
 	
 	<!-- COMPATIBILITY -->

@@ -32,6 +32,5 @@
 		<li id="copyright"><a href="http://copyright.wsu.edu">&nbsp;&copy;</a></li>
 	</ul>
 </nav>	
-<!-- <small id="copyright"><a href="http://copyright.wsu.edu">&copy; Washington State University</a></small> -->
 
 </footer>

@@ -2,9 +2,9 @@
 
 <main role="main">
 
-<header id="siteID">
-    <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
-    <h1><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
+<header class="page-header">
+    <h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
+    <h1 class="site-tagline"><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
 </header><!--siteID-->
 
 <section class="row sidebar">
@@ -33,6 +33,8 @@
 </section>
 
 </main><!--/#page-->
+
+<span class="wp-edit-link"><?php get_edit_post_link(); ?>Edit</span>
 
 <?php get_template_part( 'spine/body' ); ?>
 

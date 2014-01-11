@@ -9,14 +9,122 @@ License: Copyright Washington State University
 License URI: http://copyright.wsu.edu
 Tags: light
 */
-
-main > header {
-	color: white;
-	background-color: #5e6a71;
-	padding: 30px;
+#jacket {
+	overflow: hidden;
 	}
-main > header h1 a,
-main > header h2 a {
+#binder {
+	xxoverflow: hidden;
+	}
+main {
+	xbackground: #edeeef;
+	xposition: relative;
+	xleft: 5px;
+	background: url('/wp-content/themes/spine/images/bgs/1.jpg') left top no-repeat;
+	}
+main > header {
+	background: #981e32;
+	position: relative;
+	top: 0px;
+	left: 366px;
+	width: 1396px;
+	border: 0px;
+	height: 132px;
+	display: table-cell;
+	vertical-align: bottom;
+	}
+.small main > header {
+	left: 10px;
+	}
+main > header * {
+	clear: none !important;
+	}
+main > header h1,
+main > header h2 {
+	xdisplay: none;
+	padding: 0px 0px 0px 15px;
+	line-height: .9em;
+	max-width: 396px;
+	margin: 0px;
+	}
+main > header h1 a {
 	color: white;
+	padding-bottom: 15px;
+	display: block;
+	}
+main > header h2 a {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #e6e8e9;
+	}
+main > header h1 a:hover,
+main > header h2 a:hover {
+	color: white;
+	}
+xxaside.rightward {
+	float: right;
+	}
+.margin article div.alignright {
+	margin-right: -198px;
+	margin-left: 10px;
+	padding: 10px 0px 0px 10px;
+	border-left: 1px rgba(93,105,112,0.2) solid;
+	color: #a6adb0;
+	}
+xx.small aside.rightward,
+.small .margin article div.alignright {
+	display: block;
+	float: none;
+	clear: both;
+	margin: 10px 0px 10px 0px;
+	padding: 10px 0px 5px 0px;
+	border-left: none;
+	border-width: 1px 0px;
+	border-style: solid;
+	border-color: #e6e8e9;
+	}
+div[id*='attachment'] p {
+	padding: 0px; margin: 0px;
+	}
+.margin article img.alignright {
+	margin: 10px -198px 10px 10px;
+	border: 10px white solid;
+	box-shadow: 0px 0px 1px gray;
+	}
+
+section.pager {
+	xxborder-top: 1px solid gray;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	xxbackground: gray;
+	}
+section.pager .column.one {
+	padding-left: 30px;
+	box-sizing: border-box;
+	}
+section.pager .column.two {
+	text-align: right;
+	padding-right: 30px;
+	box-sizing: border-box;
 	}
 	
+/* Wordpress */
+.alignright {
+	float: right;
+	}
+.alignleft {
+	float: left;
+	}
+.wp-edit-link {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	color: white;
+	background: #5e6a71;
+	display: block;
+	padding: 2px 12px;
+	font-size: .8em;
+	}
+.wp-edit-link:hover {
+	color: white;
+	background: #981e32;
+	}	
