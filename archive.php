@@ -1,26 +1,23 @@
 <?php get_header(); ?>
 
-<main id="page" role="main" class="skeleton">
+<main class="archive">
 
-<header class="topmost-header listings-header archive-header">
-    <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
-    <h1><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
-
+<header class="main-header category-header">
+    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+    <div class="child-header">
+	    <?php
+		if ( is_day() ) : echo get_the_date();
+		elseif ( is_month() ) : echo get_the_date( 'F Y' );
+		elseif ( is_year() )  : echo get_the_date( 'Y' );
+		else : echo 'Archives';
+		endif;
+		?>
+    </div>
 </header>
 
 <?php if ( have_posts() ) : ?>
 <header class="articles-header">
-	<h1 class="articles-title"><?php
-		if ( is_day() ) :
-			printf( __( 'Daily Archives: %s', 'twentytwelve' ), '<span>' . get_the_date() . '</span>' );
-		elseif ( is_month() ) :
-			printf( __( 'Monthly Archives: %s', 'twentytwelve' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'twentytwelve' ) ) . '</span>' );
-		elseif ( is_year() ) :
-			printf( __( 'Yearly Archives: %s', 'twentytwelve' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'twentytwelve' ) ) . '</span>' );
-		else :
-			_e( 'Archives', 'twentytwelve' );
-		endif;
-	?></h1>
+	
 </header><!-- .archive-header -->
 
 <section class="row sidebar">
@@ -48,8 +45,8 @@
 
 </section>
 
-</main><!--/#page-->
+<?php endif; ?>
 
-<?php get_template_part( 'spine/body' ); ?>
+</main><!--/#page-->
 
 <?php get_footer(); ?>

@@ -2,9 +2,9 @@
 
 <main id="page" role="main" class="skeleton">
 
-<header class="page-header">
-    <h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
-    <h1 class="site-tagline"><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
+<header class="main-header category-header">
+    <div class="parent-header site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+    <div class="child-header site-tagline"><?php bloginfo( 'description' ); ?></div>
 </header>
 
 

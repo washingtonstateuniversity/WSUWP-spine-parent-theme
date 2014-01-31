@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'spine/spine' ); ?>
+<?php get_template_part( 'spine/body' ); ?>
 
-<main id="page" role="main" class="skeleton">
+<main id="tag">
 
-<header id="siteID">
-    <h2><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
-    <h1><a href="index.html"><?php bloginfo( 'description' ); ?></a></h1>
-</header><!--siteID-->
+<header class="main-header category-header">
+    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+    <div class="child-header"><?php echo single_tag_title(); ?></div>
+</header>
 
 <section class="row sidebar">
 

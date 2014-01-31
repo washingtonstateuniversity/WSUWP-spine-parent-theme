@@ -41,7 +41,7 @@
 	<!--[if lt IE 9]><script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script><![endif]--> 
 	
 	<!-- DOCS -->
-	<link type="text/plain" rel="author" href="http://images.wsu.edu/spine/authors.txt" />
+	<link type="text/plain" rel="author" href="http://images.wsu.edu/spine/humans.txt" />
 	<link type="text/html" rel="docs" href="http://identity.wsu.edu" />
 	
 	<!-- ANALYTICS -->
@@ -53,6 +53,3 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-<div id="jacket" class="palette">
-<div id="binder" class="<?php echo $grid_style; echo $large_format; ?>">

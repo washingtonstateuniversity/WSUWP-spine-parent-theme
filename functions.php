@@ -21,7 +21,10 @@ register_sidebar(array(
   'after_widget' => '</aside>'
 ));
 
-// Condense wordy menu classes
+
+// DEFAULTS
+
+// Condense verbose menu classes
 add_filter( 'nav_menu_css_class', 'abbridged_menu_classes', 10, 3 );
 function abbridged_menu_classes( $classes, $item, $args ) {
 	if ( in_array( 'current-menu-item', $classes ) )
@@ -29,28 +32,121 @@ function abbridged_menu_classes( $classes, $item, $args ) {
 	return array();	
 }
 
-// ADMIN MODS
-
-// Add CSS files
-function spine_theme_admin_styles() {
-    wp_enqueue_style('admin-interface-styles', get_template_directory_uri() . '/admin/admin.css');
-    add_editor_style('admin-editor-styles', get_template_directory_uri() . '/admin/editor.css');
-}
-add_action('admin_enqueue_scripts', 'spine_theme_admin_styles');
-
-
-// DEFAULTS
-
 // Default Image Sizes
-add_theme_support('post-thumbnails');
 update_option('thumbnail_size_w', 198);
 update_option('thumbnail_size_h', 198);
 update_option('medium_size_w', 396);
-update_option('medium_size_h', 9999);
+update_option('medium_size_h', 99163);
 update_option('large_size_w', 792);
-update_option('large_size_h', 9999);
+update_option('large_size_h', 99163);
 // update_option('full_size_w', 1980);
-// update_option('full_size_h', 9999);
+// update_option('full_size_h', 99163);
+
+add_theme_support('post-thumbnails');
+set_post_thumbnail_size( 198, 198, true );
+
+add_image_size( 'teaser-image', 198, 198, true );
+add_image_size( 'header-image', 792, 99163 );
+add_image_size( 'billboard-image', 1584, 99163 );
+
+/* Default Image Markup */
+
+add_filter( 'img_caption_shortcode', 'caption_markup', 10, 3 );
+
+function caption_markup( $output, $attr, $content ) {
+
+	/* We're not worried abut captions in feeds, so just return the output here. */
+	if ( is_feed() )
+		return $output;
+
+	/* Set up the default arguments. */
+	$defaults = array(
+		'id' => '',
+		'align' => 'alignnone',
+		'width' => '',
+		'caption' => ''
+	);
+
+	/* Merge the defaults with user input. */
+	$attr = shortcode_atts( $defaults, $attr );
+
+	/* If the width is less than 1 or there is no caption, return the content wrapped between the [caption]< tags. */
+	if ( 1 > $attr['width'] || empty( $attr['caption'] ) )
+		return $content;
+
+	/* Set up the attributes for the <figcaption>. */
+	$attributes = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
+	$attributes .= ' class="' . esc_attr( $attr['align'] ) . '"';
+	// $attributes .= ' style="width: ' . esc_attr( $attr['width'] ) . 'px"';
+
+	/* Open the caption <div>. */
+	$output = '<figure' . $attributes .'><div class="liner cf">';
+
+	/* Allow shortcodes for the content the caption was created for. */
+	$output .= do_shortcode( $content );
+
+	/* Append the caption text. */
+	$output .= '<figcaption>' . $attr['caption'] . '</figcaption>';
+
+	/* Close the caption </div>. */
+	$output .= '</div></figure>';
+
+	/* Return the formatted, clean caption. */
+	return $output;
+}
+
+/* add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+
+function remove_width_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
+} */
+
+/* function image_tag_class($class, $id, $align, $size) {
+	return $align;
+}
+add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
+
+*/
+
+// Sectioning
+function is_subpage() {
+    global $post;
+    if ( is_page() && $post->post_parent ) {
+        return $post->post_parent;
+    } else { return false; }
+}
+
+function section_title(){
+	global $post;
+	if ( is_page() && $post->post_parent ) {
+		$parents = array_reverse(get_post_ancestors($post->id));
+		$topmost_parent = get_page($parents[0]);
+		echo $topmost_parent->post_title;
+		}
+	else {
+		echo $post->post_title;
+		}
+	}
+function section_slug(){
+	global $post;
+	if ( is_page() && $post->post_parent ) {
+		$parents = array_reverse(get_post_ancestors($post->id));
+		$topmost_parent = get_page($parents[0]);
+		echo $topmost_parent->post_name;
+		}
+	else {
+		echo $post->post_name;
+		}
+	}
+
+
+
+// on backend area
+// add_action( 'admin_head', 'fb_move_admin_bar' );
+// on frontend area
+add_action( 'wp_head', 'fb_move_admin_bar' );
 
 // Default Widget Markup
 if (function_exists('register_sidebar')) {
@@ -75,11 +171,10 @@ add_filter( 'excerpt_more', 'spine_excerpt_more' );
 
 add_filter('body_class','extend_body_classes');
 function extend_body_classes($classes) {
-	$stippled = 'stippled-'.mt_rand(0, 19); // Add Randomizer
+	$stippled = 'stippled-'.mt_rand(0,19); // Add Randomizer
 	$classes[] = $stippled;
 	return $classes;
 }
-
 
 
 // CUSTOMIZATION
@@ -88,6 +183,34 @@ include_once('includes/customizer.php');
 // TEMPLATES
 
 
+// ADMIN MODS
+
+// Add CSS files
+function spine_theme_admin_styles() {
+    wp_enqueue_style('admin-interface-styles', get_template_directory_uri() . '/admin/admin.css');
+    add_editor_style('admin-editor-styles', get_template_directory_uri() . '/admin/editor.css');
+}
+add_action('admin_enqueue_scripts', 'spine_theme_admin_styles');
+
+function fb_move_admin_bar() {
+    echo '<style type="text/css">
+   body.admin-bar {
+        margin-top: -32px !important;
+        padding-bottom: 32px !important;
+    }
+    #wpadminbar {
+        top: auto !important;
+        bottom: 0;
+    }
+    #wpadminbar .quicklinks>ul>li {
+        position:relative;
+    }
+    #wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper {
+        bottom:32px;
+        box-shadow: none;
+    }
+    </style>';
+}
 
 /**
  * Repeatable Custom Fields in a Metabox
@@ -256,4 +379,6 @@ function hhs_repeatable_meta_box_save($post_id) {
 	elseif ( empty($new) && $old )
 		delete_post_meta( $post_id, 'repeatable_fields', $old );
 }
+
+
 ?>

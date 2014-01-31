@@ -1,13 +1,26 @@
 <?php get_header(); ?>
 
-<main id="page" role="main" class="skeleton">
+<?php if (has_post_thumbnail( $post->ID ) ): ?>
+<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+<style>
+	main { background-image: url(<?php echo $image[0]; ?>); }
+</style>
+<?php endif; ?>
 
+<?php $position = get_post_meta($post->ID, 'position', TRUE);
+if($position != '') { $position = $position - 132; ?>
 
-<header class="page-header">
-    <h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
-    <h1 class="section-title"><?php the_category(' '); ?></h1>
+<style>
+	main section:nth-of-type(1) { margin-top: <?php echo $position; ?>px; }
+</style>
+<?php } ?>
+
+<main class="single">
+
+<header class="main-header">
+    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+    <div class="child-header"><?php the_category(' '); ?></div>
 </header>
-
 
 <section class="row margin">
 
@@ -15,17 +28,11 @@
 	
 		<?php while ( have_posts() ) : the_post(); ?>
 				
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header class="article-header">
-				<h1 class="article-title"><?php the_title(); ?></h1>
-			</header>
-			<div class="article-body">
-				<?php the_content(); ?>
-			</div>
-	
-		</article>
+			<?php get_template_part( 'articles/article', get_post_format() ); ?>
+			
+			<?php // get_comments( ); ?>
 
-		<?php endwhile; // end of the loop. ?>
+		<?php endwhile; ?>
 		
 	</div><!--/column-->
 
@@ -49,7 +56,5 @@
 </main><!--/#page-->
 
 <a href="<?php echo get_edit_post_link(); ?>" class="wp-edit-link">Edit</a>
-
-<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>

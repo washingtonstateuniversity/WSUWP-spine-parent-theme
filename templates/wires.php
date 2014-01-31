@@ -139,7 +139,59 @@ section.row::before {
 .sidebar .column.two li:last-of-type {
 	border-bottom: none;
 	}
-
+	
+.test1 .column {
+   background-color: white; 
+   background-image: url(images/fallback-gradient.png); 
+   background-image: -webkit-gradient(linear, left top, right top, from(#f2f4f5), to(white));
+   background-image: -webkit-linear-gradient(left, #f2f4f5, white); 
+   background-image:    -moz-linear-gradient(left, white, #e6e8e9);
+   background-image:     -ms-linear-gradient(left, white, #e6e8e9);
+   background-image:      -o-linear-gradient(left, white, #e6e8e9);
+   border: none;
+   box-shadow: none;
+   }
+.test2 .column {
+   background-color: white; 
+   border: none;
+   
+   }
+.test2 .column article {
+	padding: 0px;
+	xborder: 1px #f2f4f5 solid;
+	background: #f2f4f5;
+	}
+.test2 .column.one article {
+	margin: 30px 0px 30px 30px;
+	} 
+.test2 .column.two article {
+	margin: 30px 20px;
+	} 
+.test2 .column.three article {
+	margin: 30px 30px 15px 0px;
+	} 
+.test3 .column {
+   background-color: white; 
+   border: none;
+   
+   
+   }
+.test3 .column article {
+	padding: 0px;
+	background: #f2f4f5;
+	z-index: 99631;
+   position: relative;
+	width: 230px;
+	}
+.test3 .column.one article {
+	left: 54px;
+	} 
+.test3 .column.two article {
+	left: 44px;
+	} 
+.test3 .column.three article {
+	left: 34px
+	} 
 </style>
 
 <script>
@@ -181,11 +233,16 @@ section.row::before {
 
 </script>
 
+<?php if (has_post_thumbnail( $post->ID ) ): ?>
+<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+<style>
+	main { background-image: url(<?php echo $image[0]; ?>); }
+</style>
+<?php endif; ?>
+
 <span id="grid" onclick="$('#jacket').removeClass('grid').removeClass('grid12');"></span>
 
 <main id="page" role="main" class="skeleton wireframe">
-
-
 
 <!--<section class="row single gray-darker">
 	<div class="column one"></div>
@@ -238,12 +295,44 @@ section.row::before {
 
 </section>
 
-<section class="row thirds">
-	<div class="column one"></div>
-	<div class="column two"></div>
-	<div class="column three"></div>
+<!--<section class="row thirds test1">
+	<div class="column one">
+		<article>Vestibulum cursus ultricies tellus, sed fermentum mauris mattis vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam condimentum ligula ut dictum scelerisque. Aenean mattis erat ac tortor accumsan, vitae tincidunt dui feugiat. Vestibulum hendrerit metus id justo tristique, a pharetra nibh lobortis. Sed eu dolor nec metus blandit egestas ac at elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus ac mollis mauris. Sed aliquet ipsum in dapibus euismod.</article>
+	</div>
+	<div class="column two">
+		<article>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dolor neque, scelerisque quis mauris quis, fringilla eleifend est. Phasellus purus leo, commodo sit amet ipsum ac, lacinia auctor nulla. Nam sed nunc fermentum, condimentum ligula sit amet, facilisis urna. Vestibulum pharetra dui turpis, vitae elementum dui gravida in. Quisque ut lectus aliquet, lobortis risus vitae, placerat metus. Duis nisl eros, mattis non fermentum eget, luctus sed tortor. Nunc tempus nulla eget erat ornare, quis mattis turpis tincidunt. Vivamus semper elit at metus consequat, vitae dapibus urna posuere. Nunc iaculis arcu sed ante mollis, vitae varius orci rhoncus. Nullam luctus tristique pretium. Ut tincidunt, velit ullamcorper aliquet molestie, nisl lectus interdum felis, quis blandit nisi tortor non elit. Ut sit amet ipsum consectetur, tempor tellus at, ultrices elit. Sed a mauris enim. Sed vitae odio vestibulum massa vulputate lacinia.</article>
+	</div>
+	<div class="column three">
+		<article>Nam a dolor diam. Sed bibendum sit amet arcu id vehicula. Duis dictum rhoncus velit vel porttitor. Nullam scelerisque fermentum massa. Proin suscipit facilisis tincidunt. Aenean et tempor augue. Nullam gravida feugiat diam, vel blandit turpis ornare et. Sed sed arcu quis augue ultricies porta id vitae ante. Donec at ante sed mauris mollis rutrum eu sit amet lectus.</article>
+	</div>
+	<div class="column four six-fifteenths folio-only"></div>
+</section>-->
+
+<section class="row thirds test2">
+	<div class="column one">
+		<article><b>A page with an edge</b> Vestibulum cursus ultricies tellus, sed fermentum mauris mattis vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam condimentum ligula ut dictum scelerisque. Aenean mattis erat ac tortor accumsan, vitae tincidunt dui feugiat. Vestibulum hendrerit metus id justo tristique, a pharetra nibh lobortis. Sed eu dolor nec metus blandit egestas ac at elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus ac mollis mauris. Sed aliquet ipsum in dapibus euismod.</article>
+	</div>
+	<div class="column two">
+		<article>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dolor neque, scelerisque quis mauris quis, fringilla eleifend est. Phasellus purus leo, commodo sit amet ipsum ac, lacinia auctor nulla. Nam sed nunc fermentum, condimentum ligula sit amet, facilisis urna. Vestibulum pharetra dui turpis, vitae elementum dui gravida in. Quisque ut lectus aliquet, lobortis risus vitae, placerat metus. Duis nisl eros, mattis non fermentum eget, luctus sed tortor. Nunc tempus nulla eget erat ornare, quis mattis turpis tincidunt. Vivamus semper elit at metus consequat, vitae dapibus urna posuere. Nunc iaculis arcu sed ante mollis, vitae varius orci rhoncus. Nullam luctus tristique pretium. Ut tincidunt, velit ullamcorper aliquet molestie, nisl lectus interdum felis, quis blandit nisi tortor non elit. Ut sit amet ipsum consectetur, tempor tellus at, ultrices elit. Sed a mauris enim. Sed vitae odio vestibulum massa vulputate lacinia.</article>
+	</div>
+	<div class="column three">
+		<article>Nam a dolor diam. Sed bibendum sit amet arcu id vehicula. Duis dictum rhoncus velit vel porttitor. Nullam scelerisque fermentum massa. Proin suscipit facilisis tincidunt. Aenean et tempor augue. Nullam gravida feugiat diam, vel blandit turpis ornare et. Sed sed arcu quis augue ultricies porta id vitae ante. Donec at ante sed mauris mollis rutrum eu sit amet lectus.</article>
+	</div>
 	<div class="column four six-fifteenths folio-only"></div>
 </section>
+
+<!--<section class="row thirds test3">
+	<div class="column one">
+		<article><b>All the way to the right</b> Vestibulum cursus ultricies tellus, sed fermentum mauris mattis vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam condimentum ligula ut dictum scelerisque. Aenean mattis erat ac tortor accumsan, vitae tincidunt dui feugiat. Vestibulum hendrerit metus id justo tristique, a pharetra nibh lobortis. Sed eu dolor nec metus blandit egestas ac at elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus ac mollis mauris. Sed aliquet ipsum in dapibus euismod.</article>
+	</div>
+	<div class="column two">
+		<article>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dolor neque, scelerisque quis mauris quis, fringilla eleifend est. Phasellus purus leo, commodo sit amet ipsum ac, lacinia auctor nulla. Nam sed nunc fermentum, condimentum ligula sit amet, facilisis urna. Vestibulum pharetra dui turpis, vitae elementum dui gravida in. Quisque ut lectus aliquet, lobortis risus vitae, placerat metus. Duis nisl eros, mattis non fermentum eget, luctus sed tortor. Nunc tempus nulla eget erat ornare, quis mattis turpis tincidunt. Vivamus semper elit at metus consequat, vitae dapibus urna posuere. Nunc iaculis arcu sed ante mollis, vitae varius orci rhoncus. Nullam luctus tristique pretium. Ut tincidunt, velit ullamcorper aliquet molestie, nisl lectus interdum felis, quis blandit nisi tortor non elit. Ut sit amet ipsum consectetur, tempor tellus at, ultrices elit. Sed a mauris enim. Sed vitae odio vestibulum massa vulputate lacinia.</article>
+	</div>
+	<div class="column three">
+		<article>Nam a dolor diam. Sed bibendum sit amet arcu id vehicula. Duis dictum rhoncus velit vel porttitor. Nullam scelerisque fermentum massa. Proin suscipit facilisis tincidunt. Aenean et tempor augue. Nullam gravida feugiat diam, vel blandit turpis ornare et. Sed sed arcu quis augue ultricies porta id vitae ante. Donec at ante sed mauris mollis rutrum eu sit amet lectus.</article>
+	</div>
+	<div class="column four six-fifteenths folio-only"></div>
+</section>-->
 
 <section class="row halves">
 	<div class="column one"></div>
@@ -337,7 +426,5 @@ section.row::before {
 </footer>
 
 </main><!--/#page-->
-
-<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>

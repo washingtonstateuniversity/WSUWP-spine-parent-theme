@@ -9,6 +9,9 @@ License: Copyright Washington State University
 License URI: http://copyright.wsu.edu
 Tags: light
 */
+body {
+	background: #f9f9f9;
+	}
 #jacket {
 	overflow: hidden;
 	}
@@ -16,10 +19,9 @@ Tags: light
 	xxoverflow: hidden;
 	}
 main {
-	xbackground: #edeeef;
-	xposition: relative;
-	xleft: 5px;
-	background: url('/wp-content/themes/spine/images/bgs/1.jpg') left top no-repeat;
+	background-repeat: no-repeat;
+	background-position: left top;
+	xbackground: url('/wp-content/themes/spine/images/bgs/2.jpg') left top no-repeat;
 	}
 main > header {
 	background: #981e32;
@@ -31,39 +33,44 @@ main > header {
 	height: 132px;
 	display: table-cell;
 	vertical-align: bottom;
+	padding-bottom: 15px;
+	box-sizing: border-box;
 	}
 .small main > header {
-	left: 10px;
+	left: 0px;
 	}
 main > header * {
 	clear: none !important;
 	}
-main > header h1,
-main > header h2 {
+header .parent-header,
+header .child-header {
 	xdisplay: none;
 	padding: 0px 0px 0px 15px;
-	line-height: .9em;
+	line-height: 1.1em;
 	max-width: 396px;
 	margin: 0px;
 	}
-main > header h1 a {
+header .child-header {
+	font-size: 2em;
 	color: white;
-	padding-bottom: 15px;
 	display: block;
 	}
-main > header h2 a {
-	text-transform: uppercase;
-	font-size: 12px;
-	color: #e6e8e9;
-	}
-main > header h1 a:hover,
-main > header h2 a:hover {
+header .child-header a {
 	color: white;
 	}
-xxaside.rightward {
-	float: right;
+header .parent-header {
+	text-transform: uppercase;
+	font-size: .9em;
+	color: #e6e8e9;
 	}
-.margin article div.alignright {
+header .parent-header a {
+	color: #e6e8e9;
+	}
+header .child-header a:hover,
+header .parent-header a:hover {
+	color: white;
+	}
+xx.margin article div.alignright {
 	margin-right: -198px;
 	margin-left: 10px;
 	padding: 10px 0px 0px 10px;
@@ -71,7 +78,7 @@ xxaside.rightward {
 	color: #a6adb0;
 	}
 xx.small aside.rightward,
-.small .margin article div.alignright {
+xx.small .margin article div.alignright {
 	display: block;
 	float: none;
 	clear: both;
@@ -82,13 +89,34 @@ xx.small aside.rightward,
 	border-style: solid;
 	border-color: #e6e8e9;
 	}
-div[id*='attachment'] p {
-	padding: 0px; margin: 0px;
+.margin article figure.alignright {
+	margin: 10px -198px 10px 15px;
+	padding: 2px 0px 2px 10px;
+	color: rgba(166,173,176,0.85);
+	xxborder: 10px white solid;
+	xxbox-shadow: 0px 0px 1px gray;
+	border-left: 1px rgba(166,173,176,0.5) solid;
+	xxbackground: white;
+	xwidth: 1000px;
 	}
-.margin article img.alignright {
-	margin: 10px -198px 10px 10px;
-	border: 10px white solid;
-	box-shadow: 0px 0px 1px gray;
+.sidebar article figure.alignright {
+	margin: 10px -264px 10px 10px;
+	padding: 10px;
+	xborder: 10px white solid;
+	xbox-shadow: 0px 0px 1px gray;
+	xxborder-left: 1px gray solid;
+	}
+figure {
+	position: relative;
+	}
+xxfigure .liner {
+	position: absolute;
+	width: 1000px;
+	xxheight: 100%;
+	background: white;
+	}
+figcaption {
+	padding: 5px 0px;
 	}
 
 section.pager {
@@ -106,6 +134,72 @@ section.pager .column.two {
 	padding-right: 30px;
 	box-sizing: border-box;
 	}
+
+/* Articles
+------------------------------------------------------- */
+main article header h2 {
+	margin-bottom: 0px;
+	}
+header hgroup.source {
+	text-transform: uppercase;
+	padding: 0px 0px 5px 0px;
+	font-size: .9em;
+	color: rgba(0,0,0,0.5);
+	}
+figure.article-thumbnail {
+	float: right;
+	margin: 0px 0px 5px 10px;
+	xbackground: white;
+	}
+dl dt {
+	font-weight: bold;
+	}
+dl dt,
+dl dd {
+	display: inline-block;
+	padding-right: .3em;
+	}
+time .day, time .month, time .year {
+	font-weight: bold;
+	}
+article header time::before {
+	content: "Published on ";
+	}
+article header time .day::before {
+	content: " ";
+	}
+article header time .day::after {
+	content: ", ";
+	}
+article header cite a {
+	color: rgba(0,0,0,0.5);
+	font-weight: bold;
+	}
+article header cite::before {
+	content: " by ";
+	}
+article footer dl dt::after {
+	content: ": ";
+	}
+article footer dl dd::after {
+	content: ", ";
+	}
+article footer dl dd:nth-last-of-type(1)::after {
+	content: "";
+	}
+article footer {
+	color: rgba(128,128,128,0.6);
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px rgba(127,127,127,0.2) solid;
+	}
+article footer a {
+	color: rgba(128,128,128,0.5);
+	}
+article footer a:hover {
+	color: rgba(128,128,128,1);
+	}
+
 	
 /* Wordpress */
 .alignright {
@@ -127,4 +221,7 @@ section.pager .column.two {
 .wp-edit-link:hover {
 	color: white;
 	background: #981e32;
-	}	
+	}
+	
+/* Move frontend toolbar to page bottom */
+
