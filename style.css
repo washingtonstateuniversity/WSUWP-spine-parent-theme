@@ -23,6 +23,7 @@ main {
 	background-position: left top;
 	xbackground: url('/wp-content/themes/spine/images/bgs/2.jpg') left top no-repeat;
 	}
+/* Main Header Defaults (previously siteID) */
 main > header {
 	background: #981e32;
 	position: relative;
@@ -31,10 +32,12 @@ main > header {
 	width: 1396px;
 	border: 0px;
 	height: 132px;
-	display: table-cell;
 	vertical-align: bottom;
-	padding-bottom: 15px;
 	box-sizing: border-box;
+	}
+.main-headers {
+	position: absolute;
+	bottom: 10px;
 	}
 .small main > header {
 	left: 0px;
@@ -70,6 +73,12 @@ header .child-header a:hover,
 header .parent-header a:hover {
 	color: white;
 	}
+.child-header.page {
+	display: none;
+	}
+	
+
+
 xx.margin article div.alignright {
 	margin-right: -198px;
 	margin-left: 10px;

@@ -18,8 +18,10 @@ if($position != '') { $position = $position - 132; ?>
 <main class="single">
 
 <header class="main-header">
-    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-    <div class="child-header"><?php the_category(' '); ?></div>
+	<div class="main-headers">
+	    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+	    <div class="child-header"><?php the_category(' '); ?></div>
+	</div>
 </header>
 
 <section class="row margin">

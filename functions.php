@@ -220,29 +220,47 @@ function fb_move_admin_bar() {
  * Note that this particular metadata is saved as one multidimensional array (serialized)
  */
  
-function hhs_get_sample_options() {
-	$options = array (
-		'Option 1' => 'option1',
-		'Option 2' => 'option2',
-		'Option 3' => 'option3',
-		'Option 4' => 'option4',
+function get_column_options() {
+	$column_options = array (
+		'One' => '1',
+		'Two' => '2',
+		'Three' => '3',
+		'Four' => '4',
+		'Five' => '5',
+		'Six' => '6',
+		'Seven' => '7',
+		'Eight' => '8',
 	);
-	
-	return $options;
+	return $column_options;
+	}
+function get_section_options() {
+	$section_options = array (
+		'One' => '1',
+		'Two' => '2',
+		'Three' => '3',
+		'Four' => '4',
+		'Five' => '5',
+		'Six' => '6',
+		'Seven' => '7',
+		'Eight' => '8',
+	);
+	return $section_options;
+	}
+ 
+add_action('admin_init', 'wsu_add_meta_boxes', 1);
+function wsu_add_meta_boxes() {
+	add_meta_box( 'page-sections', 'Sections', 'wsu_repeatable_meta_box_display', 'page', 'normal', 'default');
 }
  
-add_action('admin_init', 'hhs_add_meta_boxes', 1);
-function hhs_add_meta_boxes() {
-	add_meta_box( 'repeatable-fields', 'Repeatable Fields', 'hhs_repeatable_meta_box_display', 'post', 'normal', 'default');
-}
- 
-function hhs_repeatable_meta_box_display() {
+function wsu_repeatable_meta_box_display() {
 	global $post;
  
-	$repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
-	$options = hhs_get_sample_options();
+	$sections = get_post_meta($post->ID, 'sections', true);
+	
+	$section_options = get_section_options();
+	$column_options = get_column_options();
  
-	wp_nonce_field( 'hhs_repeatable_meta_box_nonce', 'hhs_repeatable_meta_box_nonce' );
+	wp_nonce_field( 'wsu_repeatable_meta_box_nonce', 'wsu_repeatable_meta_box_nonce' );
 	?>
 	<script type="text/javascript">
 	jQuery(document).ready(function( $ ){
@@ -257,39 +275,55 @@ function hhs_repeatable_meta_box_display() {
 			$(this).parents('tr').remove();
 			return false;
 		});
+		
+		$("select#column-count").change( function() { var section_cols = $("#column-count").value(); $(this).parents("tr").siblings('tr.columns-editors'); } )
 	});
 	</script>
   
 	<table id="repeatable-fieldset-one" width="100%">
-	<thead>
-		<tr>
-			<th width="40%">Name</th>
-			<th width="12%">Select</th>
-			<th width="40%">URL</th>
-			<th width="8%"></th>
-		</tr>
-	</thead>
 	<tbody>
 	<?php
 	
-	if ( $repeatable_fields ) :
+	if ( $sections ) :
 	
-	foreach ( $repeatable_fields as $field ) {
+	foreach ( $sections as $section ) {
 	?>
 	<tr>
-		<td><input type="text" class="widefat" name="name[]" value="<?php if($field['name'] != '') echo esc_attr( $field['name'] ); ?>" /></td>
-	
 		<td>
-			<select name="select[]">
-			<?php foreach ( $options as $label => $value ) : ?>
-			<option value="<?php echo $value; ?>"<?php selected( $field['select'], $value ); ?>><?php echo $label; ?></option>
+			<label for="section-number">Section Number</label>
+			<select name="name[]">
+			<?php foreach ( $section_options as $label => $value ) : ?>
+			<option value="<?php echo $value; ?>"<?php selected( $section['name'], $value ); ?>><?php echo $label; ?></option>
 			<?php endforeach; ?>
 			</select>
 		</td>
 	
-		<td><input type="text" class="widefat" name="url[]" value="<?php if ($field['url'] != '') echo esc_attr( $field['url'] ); else echo 'http://'; ?>" /></td>
+		<td>
+			<label for="column-count">Column Count</label>
+			<select id="column-count" name="select[]">
+			<?php foreach ( $column_options as $label => $value ) : ?>
+			<option value="<?php echo $value; ?>"<?php selected( $section['select'], $value ); ?>><?php echo $label; ?></option>
+			<?php endforeach; ?>
+			</select>
+		</td>
+	
+		<td></td>
 	
 		<td><a class="button remove-row" href="#">Remove</a></td>
+	</tr>
+	<tr class="columns-editors">
+		<td colspan="4">
+
+		<?php
+			if ($section['url'] != '' ) {
+				$content = $section['url']; } else {
+				$content = ''; };
+				$editor_id = 'column_editor';
+			
+			wp_editor( $content, $editor_id, $settings = array('textarea_name' => 'url[]') );
+			
+			?>
+		</td>
 	</tr>
 	<?php
 	}
@@ -297,19 +331,39 @@ function hhs_repeatable_meta_box_display() {
 	// show a blank one
 	?>
 	<tr>
-		<td><input type="text" class="widefat" name="name[]" /></td>
+		<td>
+			<label for="section-number">Section Number</label>
+			<select name="name[]">
+			<?php foreach ( $section_options as $label => $value ) : ?>
+			<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+			<?php endforeach; ?>
+			</select>
+			
+		</td>
 	
 		<td>
+			<label for="column-count">Column Count</label>
 			<select name="select[]">
-			<?php foreach ( $options as $label => $value ) : ?>
+			<?php foreach ( $column_options as $label => $value ) : ?>
 			<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
 			<?php endforeach; ?>
 			</select>
 		</td>
 	
-		<td><input type="text" class="widefat" name="url[]" value="http://" /></td>
+		<td></td>
 	
 		<td><a class="button remove-row" href="#">Remove</a></td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		<?php
+
+			$content = '';
+			$editor_id = 'column_editor';
+			wp_editor( $content, $editor_id );
+			
+			?>
+		</td>
 	</tr>
 	<?php endif; ?>
 	
@@ -319,7 +373,7 @@ function hhs_repeatable_meta_box_display() {
 	
 		<td>
 			<select name="select[]">
-			<?php foreach ( $options as $label => $value ) : ?>
+			<?php foreach ( $column_options as $label => $value ) : ?>
 			<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
 			<?php endforeach; ?>
 			</select>
@@ -329,6 +383,11 @@ function hhs_repeatable_meta_box_display() {
 		  
 		<td><a class="button remove-row" href="#">Remove</a></td>
 	</tr>
+	<tr class="empty-row screen-reader-text">
+		<td colspan="4">
+		<textarea class="wp-editor-area" cols="40" name="url[]" value=""></textarea>
+		</td>
+	</tr>
 	</tbody>
 	</table>
 	
@@ -336,10 +395,10 @@ function hhs_repeatable_meta_box_display() {
 	<?php
 }
  
-add_action('save_post', 'hhs_repeatable_meta_box_save');
-function hhs_repeatable_meta_box_save($post_id) {
-	if ( ! isset( $_POST['hhs_repeatable_meta_box_nonce'] ) ||
-	! wp_verify_nonce( $_POST['hhs_repeatable_meta_box_nonce'], 'hhs_repeatable_meta_box_nonce' ) )
+add_action('save_post', 'wsu_repeatable_meta_box_save');
+function wsu_repeatable_meta_box_save($post_id) {
+	if ( ! isset( $_POST['wsu_repeatable_meta_box_nonce'] ) ||
+	! wp_verify_nonce( $_POST['wsu_repeatable_meta_box_nonce'], 'wsu_repeatable_meta_box_nonce' ) )
 		return;
 	
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
@@ -348,9 +407,11 @@ function hhs_repeatable_meta_box_save($post_id) {
 	if (!current_user_can('edit_post', $post_id))
 		return;
 	
-	$old = get_post_meta($post_id, 'repeatable_fields', true);
+	$old = get_post_meta($post_id, 'sections', true);
 	$new = array();
-	$options = hhs_get_sample_options();
+	
+	$column_options = get_column_options();
+	$section_options = get_section_options();
 	
 	$names = $_POST['name'];
 	$selects = $_POST['select'];
@@ -362,7 +423,7 @@ function hhs_repeatable_meta_box_save($post_id) {
 		if ( $names[$i] != '' ) :
 			$new[$i]['name'] = stripslashes( strip_tags( $names[$i] ) );
 			
-			if ( in_array( $selects[$i], $options ) )
+			if ( in_array( $selects[$i], $column_options ) )
 				$new[$i]['select'] = $selects[$i];
 			else
 				$new[$i]['select'] = '';
@@ -375,9 +436,9 @@ function hhs_repeatable_meta_box_save($post_id) {
 	}
  
 	if ( !empty( $new ) && $new != $old )
-		update_post_meta( $post_id, 'repeatable_fields', $new );
+		update_post_meta( $post_id, 'sections', $new );
 	elseif ( empty($new) && $old )
-		delete_post_meta( $post_id, 'repeatable_fields', $old );
+		delete_post_meta( $post_id, 'sections', $old );
 }
 
 

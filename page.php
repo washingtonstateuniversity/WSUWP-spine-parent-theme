@@ -3,9 +3,11 @@
 <main>
 
 <header class="main-header category-header">
-    <div class="parent-header site"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-    <div class="child-header section"><?php section_title('parent'); ?></div>
-    <div class="child-header page"><?php the_title(); ?></div>
+	<div class="main-headers">
+	    <div class="parent-header site"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+	    <div class="child-header section"><?php section_title('parent'); ?></div>
+	    <div class="child-header page"><?php the_title(); ?></div>
+	</div>
 </header>
 
 
