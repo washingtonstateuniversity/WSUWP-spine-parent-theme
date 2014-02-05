@@ -2,9 +2,12 @@
 
 <main class="category">
 
-<header class="main-header category-header">
-    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-    <div class="child-header"><?php echo single_cat_title(); ?></div>
+<header class="bookmark">
+	<hgroup>
+	    <div class="site"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+	    <div class="section"><?php section_title('parent'); ?></div>
+	    <div class="category"><?php echo single_cat_title(); ?></div>
+	</hgroup>
 </header>
 
 <section class="row sidebar">

@@ -15,14 +15,9 @@ if($position != '') { $position = $position - 132; ?>
 </style>
 <?php } ?>
 
-<main class="single">
+<main>
 
-<header class="main-header">
-	<div class="main-headers">
-	    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-	    <div class="child-header"><?php the_category(' '); ?></div>
-	</div>
-</header>
+<?php main_header(); ?>
 
 <section class="row margin">
 

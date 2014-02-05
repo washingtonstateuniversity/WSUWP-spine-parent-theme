@@ -256,6 +256,33 @@ function spine_customize_register($wp_customize){
             'wordpress' => 'Wordpress'
         ),
     ));
+    
+    // Theme Options
+    /*
+    $wp_customize->add_section('section_spine_style_options', array(
+        'title'    => __('Style Options', 'spine_style'),
+        'priority' => 1000,
+    ));
+    
+    // 
+    $wp_customize->add_setting('spine_style[header_style]', array(
+        'default'        => 'bookmark',
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+    
+    $wp_customize->add_control('spine_header_style', array(
+        'label'      => __('Large Format', 'spine'),
+        'section'    => 'section_spine_sytyle_options',
+        'settings'   => 'spine_options[header_style]',
+        'type'       => 'select',
+        'choices'    => array(
+            ''  => 'Default Block',
+            ' Bookmark' => 'bookmark',
+            ' Flourish' => 'flourish',
+            
+        ),
+    ));*/
  
 }
  

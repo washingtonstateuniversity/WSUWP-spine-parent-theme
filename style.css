@@ -15,13 +15,9 @@ body {
 #jacket {
 	overflow: hidden;
 	}
-#binder {
-	xxoverflow: hidden;
-	}
 main {
 	background-repeat: no-repeat;
 	background-position: left top;
-	xbackground: url('/wp-content/themes/spine/images/bgs/2.jpg') left top no-repeat;
 	}
 /* Main Header Defaults (previously siteID) */
 main > header {
@@ -29,54 +25,62 @@ main > header {
 	position: relative;
 	top: 0px;
 	left: 366px;
-	width: 1396px;
+	width: 2000px;
 	border: 0px;
 	height: 132px;
-	vertical-align: bottom;
 	box-sizing: border-box;
 	}
-.main-headers {
+main > header hgroup {
 	position: absolute;
 	bottom: 10px;
+	left: 10px;
+	width: 396px;
 	}
-.small main > header {
-	left: 0px;
-	}
-main > header * {
-	clear: none !important;
-	}
-header .parent-header,
-header .child-header {
-	xdisplay: none;
-	padding: 0px 0px 0px 15px;
+main > header div {
+	padding: 0px;
 	line-height: 1.1em;
-	max-width: 396px;
 	margin: 0px;
+	
 	}
-header .child-header {
+main > header div:last-of-type,
+body.single main > header div.category {
 	font-size: 2em;
 	color: white;
 	display: block;
 	}
-header .child-header a {
+main > header div,
+main > header div a,
+main > header div a:hover {
 	color: white;
 	}
-header .parent-header {
+main > header div:first-of-type {
 	text-transform: uppercase;
 	font-size: .9em;
 	color: #e6e8e9;
 	}
-header .parent-header a {
+main > header div:first-of-type a {
 	color: #e6e8e9;
 	}
-header .child-header a:hover,
-header .parent-header a:hover {
-	color: white;
-	}
-.child-header.page {
+main > header div {
 	display: none;
 	}
-	
+main > header div:first-of-type,
+main > header div:last-of-type {
+	display: block;
+	}
+.size-lt-medium main > header {
+	left: 0px;
+	}
+.size-lt-medium main > header hgroup {
+	left: 30px;
+	}
+
+body.single main > header div.post {
+	display: none;
+	}
+body.single main > header div.category {
+	display: block;
+	}
 
 
 xx.margin article div.alignright {
