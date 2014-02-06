@@ -236,7 +236,3 @@ add_action( 'wp_head', 'fb_move_admin_bar' );
 
 // Ad Hoc Sections
 include_once('admin/repeater.php');
- 
-
-
-?>
