@@ -11,16 +11,34 @@ function spine_menus() {
 	);
 }
 
-// A Single Sidebar
-register_sidebar(array(
-  'name' => 'Sidebar',
-  'description' => __( 'Widgets in this area will be shown on the right-hand side.' ),
-  'before_title' => '<header>',
-  'after_title' => '</header>',
-  'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-  'after_widget' => '</aside>'
-));
+add_action( 'widgets_init', 'spine_theme_widgets_init' );
+/**
+ * Register sidebars used by the theme.
+ */
+function spine_theme_widgets_init() {
+	// A Single Sidebar
+	register_sidebar(array(
+		'name' => 'Sidebar',
+		'description' => __( 'Widgets in this area will be shown on the right-hand side.' ),
+		'before_title' => '<header>',
+		'after_title' => '</header>',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>'
+	));
+}
 
+add_action( 'after_setup_theme', 'spine_theme_setup_theme' );
+/**
+ * Setup some defaults provided by the theme.
+ */
+function spine_theme_setup_theme() {
+	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 198, 198, true );
+
+	add_image_size( 'teaser-image', 198, 198, true );
+	add_image_size( 'header-image', 792, 99163 );
+	add_image_size( 'billboard-image', 1584, 99163 );
+}
 
 // DEFAULTS
 
@@ -41,13 +59,6 @@ update_option('large_size_w', 792);
 update_option('large_size_h', 99163);
 // update_option('full_size_w', 1980);
 // update_option('full_size_h', 99163);
-
-add_theme_support('post-thumbnails');
-set_post_thumbnail_size( 198, 198, true );
-
-add_image_size( 'teaser-image', 198, 198, true );
-add_image_size( 'header-image', 792, 99163 );
-add_image_size( 'billboard-image', 1584, 99163 );
 
 /* Default Image Markup */
 
@@ -225,7 +236,3 @@ add_action( 'wp_head', 'fb_move_admin_bar' );
 
 // Ad Hoc Sections
 include_once('admin/repeater.php');
- 
-
-
-?>
