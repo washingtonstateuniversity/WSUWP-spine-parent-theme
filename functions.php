@@ -11,11 +11,11 @@ function spine_menus() {
 	);
 }
 
-add_action( 'widgets_init', 'wsuwp_spine_widgets_init' );
+add_action( 'widgets_init', 'spine_theme_widgets_init' );
 /**
  * Register sidebars used by the theme.
  */
-function wsuwp_spine_widgets_init() {
+function spine_theme_widgets_init() {
 	// A Single Sidebar
 	register_sidebar(array(
 		'name' => 'Sidebar',
@@ -27,11 +27,11 @@ function wsuwp_spine_widgets_init() {
 	));
 }
 
-add_action( 'after_setup_theme', 'wsuwp_spine_setup_theme' );
+add_action( 'after_setup_theme', 'spine_theme_setup_theme' );
 /**
  * Setup some defaults provided by the theme.
  */
-function wsuwp_spine_setup_theme() {
+function spine_theme_setup_theme() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 198, 198, true );
 
