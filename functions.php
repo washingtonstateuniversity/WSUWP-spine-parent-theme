@@ -11,16 +11,21 @@ function spine_menus() {
 	);
 }
 
-// A Single Sidebar
-register_sidebar(array(
-  'name' => 'Sidebar',
-  'description' => __( 'Widgets in this area will be shown on the right-hand side.' ),
-  'before_title' => '<header>',
-  'after_title' => '</header>',
-  'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-  'after_widget' => '</aside>'
-));
-
+add_action( 'widgets_init', 'wsuwp_spine_widgets_init' );
+/**
+ * Register sidebars used by the theme.
+ */
+function wsuwp_spine_widgets_init() {
+	// A Single Sidebar
+	register_sidebar(array(
+		'name' => 'Sidebar',
+		'description' => __( 'Widgets in this area will be shown on the right-hand side.' ),
+		'before_title' => '<header>',
+		'after_title' => '</header>',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>'
+	));
+}
 
 // DEFAULTS
 
