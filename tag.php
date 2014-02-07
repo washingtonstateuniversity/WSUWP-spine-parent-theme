@@ -1,13 +1,8 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'spine/body' ); ?>
+<main>
 
-<main id="tag">
-
-<header class="main-header category-header">
-    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-    <div class="child-header"><?php echo single_tag_title(); ?></div>
-</header>
+<?php get_template_part('parts/headers'); ?> 
 
 <section class="row sidebar">
 

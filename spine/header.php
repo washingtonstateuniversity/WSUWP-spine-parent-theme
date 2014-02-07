@@ -1,4 +1,4 @@
-<header><a href="http://www.wsu.edu/" id="logo">Washington State University</a></header>
+<header><a href="http://www.wsu.edu/" id="wsu-signature">Washington State University</a></header>
 
 <section id="wsu-actions" class="clearfix">
 	

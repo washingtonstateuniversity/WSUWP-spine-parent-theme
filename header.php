@@ -19,7 +19,7 @@
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
 	
 	<!-- FAVICON -->
-	<link rel="shortcut icon" href="http://images.wsu.edu/favicon.ico" />
+	<link rel="shortcut icon" href="http://repo.wsu.edu/spine/1/favicon.ico" />
 	
 	<!-- STYLESHEETS -->
 	<!-- TARGET <link href="http://repo.wsu.edu/spine/1/spine.min.css" rel="stylesheet" type="text/css" /> -->

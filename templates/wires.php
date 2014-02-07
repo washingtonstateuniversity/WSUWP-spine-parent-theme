@@ -244,10 +244,6 @@ section.row::before {
 
 <main id="page" role="main" class="skeleton wireframe">
 
-<!--<section class="row single gray-darker">
-	<div class="column one"></div>
-</section>-->
-
 <section class="row sidebar">
 
 	<div class="column one">
@@ -293,6 +289,10 @@ section.row::before {
 	<div class="column seven six-fifteenths folio-only unequaled"></div>
 	<div class="column eight six-fifteenths folio-only unequaled"></div>
 
+</section>
+
+<section class="row single">
+	<div class="column one"><img class="fill-width" src="http://farm4.staticflickr.com/3736/9556743030_dfb3960037_b.jpg"></div>
 </section>
 
 <!--<section class="row thirds test1">

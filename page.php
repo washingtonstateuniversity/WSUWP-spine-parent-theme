@@ -2,7 +2,7 @@
 
 <main>
 
-<?php main_header(); ?>
+<?php get_template_part('parts/headers'); ?> 
 
 <section class="row sidebar">
 
@@ -15,7 +15,6 @@
 				<h1 class="article-title"><?php the_title(); ?></h1>
 			</header>
 			<?php the_content(); ?>
-			<footer></footer>
 		</article>
 
 		<?php endwhile; // end of the loop. ?>

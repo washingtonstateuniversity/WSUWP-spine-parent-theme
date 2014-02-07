@@ -1,14 +1,8 @@
 <?php get_header(); ?>
 
-<main class="category">
+<main>
 
-<header class="bookmark">
-	<hgroup>
-	    <div class="site"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-	    <div class="section"><?php section_title('parent'); ?></div>
-	    <div class="category"><?php echo single_cat_title(); ?></div>
-	</hgroup>
-</header>
+<?php get_template_part('parts/headers'); ?> 
 
 <section class="row sidebar">
 

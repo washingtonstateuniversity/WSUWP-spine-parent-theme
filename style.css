@@ -40,7 +40,6 @@ main > header div {
 	padding: 0px;
 	line-height: 1.1em;
 	margin: 0px;
-	
 	}
 main > header div:last-of-type,
 body.single main > header div.category {
@@ -102,30 +101,13 @@ xx.small .margin article div.alignright {
 	border-style: solid;
 	border-color: #e6e8e9;
 	}
-.margin article figure.alignright {
-	margin: 10px -198px 10px 15px;
-	padding: 2px 0px 2px 10px;
-	color: rgba(166,173,176,0.85);
-	xxborder: 10px white solid;
-	xxbox-shadow: 0px 0px 1px gray;
-	border-left: 1px rgba(166,173,176,0.5) solid;
-	xxbackground: white;
-	xwidth: 1000px;
-	}
-.sidebar article figure.alignright {
-	margin: 10px -264px 10px 10px;
-	padding: 10px;
-	xborder: 10px white solid;
-	xbox-shadow: 0px 0px 1px gray;
-	xxborder-left: 1px gray solid;
-	}
+
 figure {
 	position: relative;
 	}
 xxfigure .liner {
 	position: absolute;
 	width: 1000px;
-	xxheight: 100%;
 	background: white;
 	}
 figcaption {
@@ -218,6 +200,30 @@ article footer a:hover {
 .alignright {
 	float: right;
 	}
+.margin article figure.alignright {
+	margin: 10px -198px 10px 15px;
+	padding: 2px 0px 2px 10px;
+	color: rgba(166,173,176,0.85);
+	xxborder: 10px white solid;
+	xxbox-shadow: 0px 0px 1px gray;
+	border-left: 1px rgba(166,173,176,0.5) solid;
+	xxbackground: white;
+	xwidth: 1000px;
+	}
+.size-lt-medium .margin article figure.alignright {
+	padding: 0px;
+	border-left: none;
+	margin-left: 0px;
+	}
+.sidebar article figure.alignright {
+	margin: 10px -264px 10px 10px;
+	padding: 10px;
+	}
+.size-lt-medium .margin article .alignright,
+.size-lt-medium .sidebar article .alignright {
+	clear: both;
+	float: none;
+	}
 .alignleft {
 	float: left;
 	}
@@ -238,3 +244,48 @@ article footer a:hover {
 	
 /* Move frontend toolbar to page bottom */
 
+body.admin-bar {
+    margin-top: -32px !important;
+    padding-bottom: 32px !important;
+}
+#wpadminbar {
+    top: auto !important;
+    bottom: 0 !important;
+    position: fixed;
+}
+#wpadminbar .quicklinks>ul>li {
+    position:relative;
+}
+#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper {
+    bottom:32px;
+    box-shadow: none;
+}   
+@media (max-width: 989px) {
+body.admin-bar {
+    margin-top: -32px !important;
+    padding-bottom: 32px !important;
+}
+#wpadminbar {
+    top: auto !important;
+    bottom: 0 !important;
+    position: fixed;
+}
+#wpadminbar .quicklinks>ul>li {
+    position:relative;
+}
+#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper {
+    bottom:32px;
+    box-shadow: none;
+}
+}
+@media (max-width: 780px) {
+
+body.admin-bar {
+    margin-top: -46px !important;
+    padding-bottom: 46px !important;
+}
+#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper {
+    bottom:46px;
+}
+
+}

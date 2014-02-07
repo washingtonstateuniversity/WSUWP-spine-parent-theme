@@ -17,7 +17,7 @@ if($position != '') { $position = $position - 132; ?>
 
 <main>
 
-<?php main_header(); ?>
+<?php get_template_part('parts/headers'); ?>
 
 <section class="row margin">
 
