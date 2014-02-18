@@ -167,6 +167,9 @@ function spine_customize_register($wp_customize){
     $wp_customize->add_setting('spine_options[contact_addressLocality]', array( 'default' => 'Pullman, WA', 'capability' => 'edit_theme_options', 'type' => 'option' ));
     $wp_customize->add_control('contact_addressLocality', array( 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_addressLocality]', 'type' => 'text', 'priority' => 411 ));
     
+    $wp_customize->add_setting('spine_options[contact_postalCode]', array( 'default' => '99164', 'capability' => 'edit_theme_options', 'type' => 'option' ));
+    $wp_customize->add_control('contact_postalCode', array( 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_postalCode]', 'type' => 'text', 'priority' => 411 ));
+    
     $wp_customize->add_setting('spine_options[contact_telephone]', array( 'default' => '509-335-3564', 'capability' => 'edit_theme_options', 'type' => 'option' ));
     $wp_customize->add_control('contact_telephone', array( 'label' => 'Best Phone Number', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_telephone]', 'type' => 'text', 'priority' => 415 ));
     
@@ -177,9 +180,6 @@ function spine_customize_register($wp_customize){
     $wp_customize->add_control('contact_ContactPoint', array( 'label' => 'Contact Page/Directory (Optional)', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_ContactPoint]', 'type' => 'text', 'priority' => 425 ));
     $wp_customize->add_setting('spine_options[contact_ContactPointTitle]', array( 'default' => 'Contact Page...', 'capability' => 'edit_theme_options', 'type' => 'option' ));
     $wp_customize->add_control('contact_ContactPointTitle', array( 'label' => 'Contact Link Title', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_ContactPointTitle]', 'type' => 'text', 'priority' => 426 ));
-
-
-
 
 
     // Advanced

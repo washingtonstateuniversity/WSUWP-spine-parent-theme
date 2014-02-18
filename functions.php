@@ -69,44 +69,23 @@ update_option('large_size_h', 99163);
 add_filter( 'img_caption_shortcode', 'caption_markup', 10, 3 );
 
 function caption_markup( $output, $attr, $content ) {
-
-	/* We're not worried abut captions in feeds, so just return the output here. */
 	if ( is_feed() )
 		return $output;
-
-	/* Set up the default arguments. */
 	$defaults = array(
 		'id' => '',
 		'align' => 'alignnone',
 		'width' => '',
 		'caption' => ''
 	);
-
-	/* Merge the defaults with user input. */
 	$attr = shortcode_atts( $defaults, $attr );
-
-	/* If the width is less than 1 or there is no caption, return the content wrapped between the [caption]< tags. */
 	if ( 1 > $attr['width'] || empty( $attr['caption'] ) )
 		return $content;
-
-	/* Set up the attributes for the <figcaption>. */
 	$attributes = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
 	$attributes .= ' class="' . esc_attr( $attr['align'] ) . '"';
-	// $attributes .= ' style="width: ' . esc_attr( $attr['width'] ) . 'px"';
-
-	/* Open the caption <div>. */
 	$output = '<figure' . $attributes .'><div class="liner cf">';
-
-	/* Allow shortcodes for the content the caption was created for. */
 	$output .= do_shortcode( $content );
-
-	/* Append the caption text. */
 	$output .= '<figcaption>' . $attr['caption'] . '</figcaption>';
-
-	/* Close the caption </div>. */
 	$output .= '</div></figure>';
-
-	/* Return the formatted, clean caption. */
 	return $output;
 }
 
@@ -156,8 +135,6 @@ function section_slug(){
 		}
 	}
 
-
-
 // Default Widget Markup
 if (function_exists('register_sidebar')) {
         $widget_options = array(
@@ -186,12 +163,10 @@ function extend_body_classes($classes) {
 	return $classes;
 }
 
-
 // CUSTOMIZATION
 include_once('admin/customizer.php');
 
 // TEMPLATES
-
 
 // ADMIN MODS
 
@@ -204,4 +179,4 @@ add_action('admin_enqueue_scripts', 'spine_theme_admin_styles');
 
 
 // Ad Hoc Sections
-include_once('admin/repeater.php');
+// include_once('admin/sections.php');

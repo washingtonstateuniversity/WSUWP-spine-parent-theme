@@ -9,8 +9,8 @@
 
 <?php get_template_part('spine/header'); ?>
 
-<nav id="navigation">
-	<nav id="site">
+<nav id="spine-navigation">
+	<nav id="spine-sitenav">
 	<?php
 	$site = array(
 		'theme_location'  => 'site',
@@ -29,7 +29,7 @@
 	wp_nav_menu( $site );
 	?>
 	</nav>
-	<nav id="offsite">
+	<nav id="spine-offsitenav">
 	<?php 
 	$offsite = array(
 		'theme_location'  => 'offsite',

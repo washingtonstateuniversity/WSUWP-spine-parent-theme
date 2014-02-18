@@ -1,10 +1,12 @@
+<?php /* Template Name: Single */ ?>
+
 <?php get_header(); ?>
 
 <main>
 
 <?php get_template_part('parts/headers'); ?> 
 
-<section class="row sidebar">
+<section class="row single">
 
 	<div class="column one">
 	
@@ -20,12 +22,6 @@
 		<?php endwhile; ?>
 		
 	</div><!--/column-->
-
-	<div class="column two">
-		
-		<?php get_sidebar(); ?>
-		
-	</div><!--/column two-->
 
 </section>
 

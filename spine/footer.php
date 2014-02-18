@@ -26,23 +26,23 @@
 
 <footer>
 
-<nav id="social">
+<nav id="wsu-social-channels">
 	
 	<ul>
 	<?php 
 		// var_dump($social);
 		foreach($social as $socialite=>$url) {
-		echo '<li id="'.$socialite.'" class="'.$socialite.'"><a href="'.$url.'">'.$socialite.'</a></li>';
+		echo '<li class="'.$socialite.'-channel"><a href="'.$url.'">'.$socialite.'</a></li>';
 	} ?>
 
 	</ul>
 </nav>
-<nav id="global">
+<nav id="wsu-global-links">
 	<ul>
-		<li id="zzusis"><a href="https://zzusis.wsu.edu/">Zzu<strong>sis</strong></a></li>
-		<li id="access"><a href="http://access.wsu.edu/">Access</a></li>
-		<li id="policies"><a href="http://policies.wsu.edu/">Policies</a></li>
-		<li id="copyright"><a href="http://copyright.wsu.edu">&copy;</a></li>
+		<li class="zzusis-link"><a href="http://zzusis.wsu.edu/">Zzusis</a></li>
+		<li class="access-link"><a href="http://access.wsu.edu/">Access</a></li>
+		<li class="policies-link"><a href="http://policies.wsu.edu/">Policies</a></li>
+		<li class="copyright-link"><a href="http://copyright.wsu.edu">&copy;</a></li>
 	</ul>
 </nav>	
 

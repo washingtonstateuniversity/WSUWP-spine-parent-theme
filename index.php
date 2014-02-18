@@ -1,12 +1,8 @@
 <?php get_header(); ?>
 
-<main id="page" role="main" class="skeleton">
+<main>
 
-<header class="main-header category-header">
-    <div class="parent-header site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-    <div class="child-header site-tagline"><?php bloginfo( 'description' ); ?></div>
-</header>
-
+<?php get_template_part('parts/headers'); ?> 
 
 <section class="row sidebar">
 
@@ -26,7 +22,6 @@
 
 		<?php endwhile; // end of the loop. ?>
 
-		
 	</div><!--/column-->
 
 	<div class="column two">
@@ -38,7 +33,5 @@
 </section>
 
 </main><!--/#page-->
-
-<?php get_template_part( 'spine/body' ); ?>
 
 <?php get_footer(); ?>
