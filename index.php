@@ -9,7 +9,7 @@
 	<div class="column one">
 	
 		<?php // Introductory Article
-		if ( ( get_post_status('1') == 'publish' ) && ( get_the_title('1') == 'Hello world!') ) { get_template_part( 'includes/welcome' ); }  ?>
+		if ( ( get_post_status('1') == 'publish' ) && ( get_the_title('1') == 'Hello world!') ) { get_template_part( 'parts/welcome' ); }  ?>
 	
 		<?php while ( have_posts() ) : the_post(); ?>
 				
