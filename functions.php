@@ -1,8 +1,8 @@
 <?php
 
 // Two Navigation Menus
-add_action( 'init', 'spine_menus' );
-function spine_menus() {
+add_action( 'init', 'spine_theme_menus' );
+function spine_theme_menus() {
 	register_nav_menus(
 		array(
 		'site' => 'Site',
@@ -19,13 +19,23 @@ add_action( 'widgets_init', 'spine_theme_widgets_init' );
 function spine_theme_widgets_init() {
 	// A Single Sidebar
 	register_sidebar(array(
-		'name' => 'Sidebar',
-		'description' => __( 'Widgets in this area will be shown on the right-hand side.' ),
-		'before_title' => '<header>',
-		'after_title' => '</header>',
+		'name'          => 'Sidebar',
+		'description'   => __( 'Widgets in this area will be shown on the right-hand side.' ),
+		'before_title'  => '<header>',
+		'after_title'   => '</header>',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>'
+		'after_widget'  => '</aside>'
 	));
+
+	$widget_options = array(
+		'name'          => __( 'Sidebar', 'sidebar' ),
+		'id'            => 'sidebar',
+		'before_widget' => '<aside id="%1$s2" class="%2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<header>',
+		'after_title'   => '</header>'
+	);
+	register_sidebar( $widget_options );
 }
 
 add_action( 'after_setup_theme', 'spine_theme_setup_theme' );
@@ -46,29 +56,31 @@ function spine_theme_setup_theme() {
 // DEFAULTS
 
 // Condense verbose menu classes
-add_filter( 'nav_menu_css_class', 'abbridged_menu_classes', 10, 3 );
-function abbridged_menu_classes( $classes, $item, $args ) {
+add_filter( 'nav_menu_css_class', 'spine_theme_abbridged_menu_classes', 10, 3 );
+function spine_theme_abbridged_menu_classes( $classes, $item, $args ) {
 	if ( in_array( 'current-menu-item', $classes ) )
 		return array( 'current' );
 	return array();	
 }
 
-// Default Image Sizes
-update_option('thumbnail_size_w', 198);
-update_option('thumbnail_size_h', 198);
-update_option('medium_size_w', 396);
-update_option('medium_size_h', 99163);
-update_option('large_size_w', 792);
-update_option('large_size_h', 99163);
-// update_option('full_size_w', 1980);
-// update_option('full_size_h', 99163);
-
+add_action( 'admin_init', 'spine_theme_image_options' );
+function spine_theme_image_options() {
+	// Default Image Sizes
+	update_option( 'thumbnail_size_w', 198   );
+	update_option( 'thumbnail_size_h', 198   );
+	update_option( 'medium_size_w',    396   );
+	update_option( 'medium_size_h',    99163 );
+	update_option( 'large_size_w',     792   );
+	update_option( 'large_size_h',     99163 );
+	// update_option('full_size_w', 1980);
+	// update_option('full_size_h', 99163);
+}
 
 /* Default Image Markup */
 
-add_filter( 'img_caption_shortcode', 'caption_markup', 10, 3 );
+add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
 
-function caption_markup( $output, $attr, $content ) {
+function spine_theme_caption_markup( $output, $attr, $content ) {
 	if ( is_feed() )
 		return $output;
 	$defaults = array(
@@ -109,7 +121,9 @@ function is_subpage() {
     global $post;
     if ( is_page() && $post->post_parent ) {
         return $post->post_parent;
-    } else { return false; }
+    } else {
+		return false;
+	}
 }
 
 function section_title(){
@@ -118,46 +132,32 @@ function section_title(){
 		$parents = array_reverse(get_post_ancestors($post->id));
 		$topmost_parent = get_page($parents[0]);
 		return $topmost_parent->post_title;
-		}
-	else {
+	} else {
 		return $post->post_title;
-		}
 	}
+}
+
 function section_slug(){
 	global $post;
 	if ( is_page() && $post->post_parent ) {
 		$parents = array_reverse(get_post_ancestors($post->id));
 		$topmost_parent = get_page($parents[0]);
 		return $topmost_parent->post_name;
-		}
-	else {
+	} else {
 		return $post->post_name;
-		}
 	}
-
-// Default Widget Markup
-if (function_exists('register_sidebar')) {
-        $widget_options = array(
-        'name' => __( 'Sidebar', 'sidebar' ),
-        'id' => 'sidebar',
-        'before_widget' =>  '<aside id="%1$s2" class="%2$s">',
-        'after_widget'  =>  '</aside>',
-        'before_title'  =>  '<header>',
-        'after_title'   =>  '</header>'
-    );
-    register_sidebar($widget_options);
 }
 
 // Default Read More
-function spine_excerpt_more( $more ) {
+function spine_theme_excerpt_more( $more ) {
 	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">Read More</a>';
 }
-add_filter( 'excerpt_more', 'spine_excerpt_more' );
+add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
 // Extend Body Class 
 
-add_filter('body_class','extend_body_classes');
-function extend_body_classes($classes) {
+add_filter('body_class','spine_theme_extend_body_classes');
+function spine_theme_extend_body_classes($classes) {
 	$stippled = 'stippled-'.mt_rand(0,19); // Add Randomizer
 	$classes[] = $stippled;
 	return $classes;
