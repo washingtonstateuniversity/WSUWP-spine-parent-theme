@@ -5,8 +5,8 @@ add_action( 'init', 'spine_theme_menus' );
 function spine_theme_menus() {
 	register_nav_menus(
 		array(
-		'site' => 'Site',
-		'offsite' => 'Offsite'
+		'site'    => 'Site',
+		'offsite' => 'Offsite',
 		)
 	);
 }
@@ -17,16 +17,6 @@ add_action( 'widgets_init', 'spine_theme_widgets_init' );
  * Register sidebars used by the theme.
  */
 function spine_theme_widgets_init() {
-	// A Single Sidebar
-	register_sidebar(array(
-		'name'          => 'Sidebar',
-		'description'   => __( 'Widgets in this area will be shown on the right-hand side.' ),
-		'before_title'  => '<header>',
-		'after_title'   => '</header>',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>'
-	));
-
 	$widget_options = array(
 		'name'          => __( 'Sidebar', 'sidebar' ),
 		'id'            => 'sidebar',
@@ -58,9 +48,11 @@ function spine_theme_setup_theme() {
 // Condense verbose menu classes
 add_filter( 'nav_menu_css_class', 'spine_theme_abbridged_menu_classes', 10, 3 );
 function spine_theme_abbridged_menu_classes( $classes, $item, $args ) {
-	if ( in_array( 'current-menu-item', $classes ) )
+	if ( in_array( 'current-menu-item', $classes ) ) {
 		return array( 'current' );
-	return array();	
+	}
+
+	return array();
 }
 
 add_action( 'admin_init', 'spine_theme_image_options' );
@@ -81,23 +73,29 @@ function spine_theme_image_options() {
 add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
 
 function spine_theme_caption_markup( $output, $attr, $content ) {
-	if ( is_feed() )
+	if ( is_feed() ) {
 		return $output;
+	}
+
 	$defaults = array(
-		'id' => '',
-		'align' => 'alignnone',
-		'width' => '',
+		'id'      => '',
+		'align'   => 'alignnone',
+		'width'   => '',
 		'caption' => ''
 	);
+
 	$attr = shortcode_atts( $defaults, $attr );
-	if ( 1 > $attr['width'] || empty( $attr['caption'] ) )
+	if ( 1 > $attr['width'] || empty( $attr['caption'] ) ) {
 		return $content;
+	}
+
 	$attributes = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
 	$attributes .= ' class="' . esc_attr( $attr['align'] ) . '"';
 	$output = '<figure' . $attributes .'><div class="liner cf">';
 	$output .= do_shortcode( $content );
 	$output .= '<figcaption>' . $attr['caption'] . '</figcaption>';
 	$output .= '</div></figure>';
+
 	return $output;
 }
 
@@ -128,24 +126,28 @@ function is_subpage() {
 
 function section_title(){
 	global $post;
+
 	if ( is_page() && $post->post_parent ) {
-		$parents = array_reverse(get_post_ancestors($post->id));
-		$topmost_parent = get_page($parents[0]);
+		$parents = array_reverse( get_post_ancestors( $post->id ) );
+		$topmost_parent = get_page( $parents[0] );
+
 		return $topmost_parent->post_title;
-	} else {
-		return $post->post_title;
 	}
+
+	return $post->post_title;
 }
 
 function section_slug(){
 	global $post;
+
 	if ( is_page() && $post->post_parent ) {
-		$parents = array_reverse(get_post_ancestors($post->id));
-		$topmost_parent = get_page($parents[0]);
+		$parents = array_reverse( get_post_ancestors( $post->id ) );
+		$topmost_parent = get_page( $parents[0] );
+
 		return $topmost_parent->post_name;
-	} else {
-		return $post->post_name;
 	}
+
+	return $post->post_name;
 }
 
 // Default Read More
@@ -156,15 +158,16 @@ add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
 // Extend Body Class 
 
-add_filter('body_class','spine_theme_extend_body_classes');
-function spine_theme_extend_body_classes($classes) {
+add_filter( 'body_class','spine_theme_extend_body_classes' );
+function spine_theme_extend_body_classes( $classes ) {
 	$stippled = 'stippled-'.mt_rand(0,19); // Add Randomizer
 	$classes[] = $stippled;
+
 	return $classes;
 }
 
 // CUSTOMIZATION
-include_once('admin/customizer.php');
+include_once( 'admin/customizer.php' );
 
 // TEMPLATES
 
@@ -172,10 +175,10 @@ include_once('admin/customizer.php');
 
 // Add CSS files
 function spine_theme_admin_styles() {
-    wp_enqueue_style('admin-interface-styles', get_template_directory_uri() . '/admin/admin.css');
-    add_editor_style('admin-editor-styles', get_template_directory_uri() . '/admin/editor.css');
+    wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/admin/admin.css' );
+    add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/admin/editor.css' );
 }
-add_action('admin_enqueue_scripts', 'spine_theme_admin_styles');
+add_action( 'admin_enqueue_scripts', 'spine_theme_admin_styles' );
 
 
 // Ad Hoc Sections
