@@ -19,13 +19,23 @@ add_action( 'widgets_init', 'spine_theme_widgets_init' );
 function spine_theme_widgets_init() {
 	// A Single Sidebar
 	register_sidebar(array(
-		'name' => 'Sidebar',
-		'description' => __( 'Widgets in this area will be shown on the right-hand side.' ),
-		'before_title' => '<header>',
-		'after_title' => '</header>',
+		'name'          => 'Sidebar',
+		'description'   => __( 'Widgets in this area will be shown on the right-hand side.' ),
+		'before_title'  => '<header>',
+		'after_title'   => '</header>',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>'
+		'after_widget'  => '</aside>'
 	));
+
+	$widget_options = array(
+		'name'          => __( 'Sidebar', 'sidebar' ),
+		'id'            => 'sidebar',
+		'before_widget' => '<aside id="%1$s2" class="%2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<header>',
+		'after_title'   => '</header>'
+	);
+	register_sidebar( $widget_options );
 }
 
 add_action( 'after_setup_theme', 'spine_theme_setup_theme' );
@@ -136,19 +146,6 @@ function section_slug(){
 	} else {
 		return $post->post_name;
 	}
-}
-
-// Default Widget Markup
-if (function_exists('register_sidebar')) {
-        $widget_options = array(
-        'name' => __( 'Sidebar', 'sidebar' ),
-        'id' => 'sidebar',
-        'before_widget' =>  '<aside id="%1$s2" class="%2$s">',
-        'after_widget'  =>  '</aside>',
-        'before_title'  =>  '<header>',
-        'after_title'   =>  '</header>'
-    );
-    register_sidebar($widget_options);
 }
 
 // Default Read More
