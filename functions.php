@@ -17,16 +17,6 @@ add_action( 'widgets_init', 'spine_theme_widgets_init' );
  * Register sidebars used by the theme.
  */
 function spine_theme_widgets_init() {
-	// A Single Sidebar
-	register_sidebar(array(
-		'name'          => 'Sidebar',
-		'description'   => __( 'Widgets in this area will be shown on the right-hand side.' ),
-		'before_title'  => '<header>',
-		'after_title'   => '</header>',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>'
-	));
-
 	$widget_options = array(
 		'name'          => __( 'Sidebar', 'sidebar' ),
 		'id'            => 'sidebar',
