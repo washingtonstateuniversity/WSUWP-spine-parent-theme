@@ -64,7 +64,7 @@ function spine_theme_abbridged_menu_classes( $classes, $item, $args ) {
 }
 
 add_action( 'admin_init', 'spine_theme_image_options' );
-function wsuwp_spine_image_options() {
+function spine_theme_image_options() {
 	// Default Image Sizes
 	update_option( 'thumbnail_size_w', 198   );
 	update_option( 'thumbnail_size_h', 198   );
