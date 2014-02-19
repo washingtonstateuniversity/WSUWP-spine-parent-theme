@@ -53,16 +53,18 @@ function abbridged_menu_classes( $classes, $item, $args ) {
 	return array();	
 }
 
-// Default Image Sizes
-update_option('thumbnail_size_w', 198);
-update_option('thumbnail_size_h', 198);
-update_option('medium_size_w', 396);
-update_option('medium_size_h', 99163);
-update_option('large_size_w', 792);
-update_option('large_size_h', 99163);
-// update_option('full_size_w', 1980);
-// update_option('full_size_h', 99163);
-
+add_action( 'admin_init', 'wsuwp_spine_image_options' );
+function wsuwp_spine_image_options() {
+	// Default Image Sizes
+	update_option( 'thumbnail_size_w', 198   );
+	update_option( 'thumbnail_size_h', 198   );
+	update_option( 'medium_size_w',    396   );
+	update_option( 'medium_size_h',    99163 );
+	update_option( 'large_size_w',     792   );
+	update_option( 'large_size_h',     99163 );
+	// update_option('full_size_w', 1980);
+	// update_option('full_size_h', 99163);
+}
 
 /* Default Image Markup */
 
