@@ -53,7 +53,7 @@ function abbridged_menu_classes( $classes, $item, $args ) {
 	return array();	
 }
 
-add_action( 'admin_init', 'wsuwp_spine_image_options' );
+add_action( 'admin_init', 'spine_theme_image_options' );
 function wsuwp_spine_image_options() {
 	// Default Image Sizes
 	update_option( 'thumbnail_size_w', 198   );
