@@ -1,8 +1,8 @@
 <?php
 
 // Two Navigation Menus
-add_action( 'init', 'spine_menus' );
-function spine_menus() {
+add_action( 'init', 'spine_theme_menus' );
+function spine_theme_menus() {
 	register_nav_menus(
 		array(
 		'site' => 'Site',
@@ -46,8 +46,8 @@ function spine_theme_setup_theme() {
 // DEFAULTS
 
 // Condense verbose menu classes
-add_filter( 'nav_menu_css_class', 'abbridged_menu_classes', 10, 3 );
-function abbridged_menu_classes( $classes, $item, $args ) {
+add_filter( 'nav_menu_css_class', 'spine_theme_abbridged_menu_classes', 10, 3 );
+function spine_theme_abbridged_menu_classes( $classes, $item, $args ) {
 	if ( in_array( 'current-menu-item', $classes ) )
 		return array( 'current' );
 	return array();	
@@ -68,9 +68,9 @@ function wsuwp_spine_image_options() {
 
 /* Default Image Markup */
 
-add_filter( 'img_caption_shortcode', 'caption_markup', 10, 3 );
+add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
 
-function caption_markup( $output, $attr, $content ) {
+function spine_theme_caption_markup( $output, $attr, $content ) {
 	if ( is_feed() )
 		return $output;
 	$defaults = array(
@@ -151,15 +151,15 @@ if (function_exists('register_sidebar')) {
 }
 
 // Default Read More
-function spine_excerpt_more( $more ) {
+function spine_theme_excerpt_more( $more ) {
 	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">Read More</a>';
 }
-add_filter( 'excerpt_more', 'spine_excerpt_more' );
+add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
 // Extend Body Class 
 
-add_filter('body_class','extend_body_classes');
-function extend_body_classes($classes) {
+add_filter('body_class','spine_theme_extend_body_classes');
+function spine_theme_extend_body_classes($classes) {
 	$stippled = 'stippled-'.mt_rand(0,19); // Add Randomizer
 	$classes[] = $stippled;
 	return $classes;
