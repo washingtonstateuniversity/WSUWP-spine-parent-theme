@@ -111,7 +111,9 @@ function is_subpage() {
     global $post;
     if ( is_page() && $post->post_parent ) {
         return $post->post_parent;
-    } else { return false; }
+    } else {
+		return false;
+	}
 }
 
 function section_title(){
@@ -120,22 +122,21 @@ function section_title(){
 		$parents = array_reverse(get_post_ancestors($post->id));
 		$topmost_parent = get_page($parents[0]);
 		return $topmost_parent->post_title;
-		}
-	else {
+	} else {
 		return $post->post_title;
-		}
 	}
+}
+
 function section_slug(){
 	global $post;
 	if ( is_page() && $post->post_parent ) {
 		$parents = array_reverse(get_post_ancestors($post->id));
 		$topmost_parent = get_page($parents[0]);
 		return $topmost_parent->post_name;
-		}
-	else {
+	} else {
 		return $post->post_name;
-		}
 	}
+}
 
 // Default Widget Markup
 if (function_exists('register_sidebar')) {
