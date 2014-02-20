@@ -1,19 +1,21 @@
-<?php get_header(); ?>
+<?php
 
-<?php if (has_post_thumbnail( $post->ID ) ): ?>
-<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-<style>
-	main { background-image: url(<?php echo $image[0]; ?>); }
-</style>
-<?php endif; ?>
+get_header();
 
-<?php $position = get_post_meta($post->ID, 'position', TRUE);
-if($position != '') { $position = $position - 132; ?>
+// If a featured image is assigned to the post, display as a background image.
+if ( has_post_thumbnail( get_the_ID() ) ) {
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
+	?><style> main { background-image: url(<?php echo esc_url( $image[0] ); ?>); }</style><?php
+}
 
-<style>
-	main section:nth-of-type(1) { margin-top: <?php echo $position; ?>px; }
-</style>
-<?php } ?>
+// If a position has been assigned to the featured image as a background, apply that style.
+$position = get_post_meta( get_the_id(), 'position', true );
+if ( ! empty( $position ) ) {
+	$position = absint( $position ) - 132;
+	?><style>main section:nth-of-type(1) { margin-top: <?php echo $position; ?>px; }</style><?php
+}
+
+?>
 
 <main>
 
@@ -26,7 +28,7 @@ if($position != '') { $position = $position - 132; ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 				
 			<?php get_template_part( 'articles/article', get_post_format() ); ?>
-			
+
 			<?php // get_comments( ); ?>
 
 		<?php endwhile; ?>
