@@ -21,13 +21,13 @@ if ( ! empty( $position ) ) {
 
 <?php get_template_part('parts/headers'); ?>
 
-<section class="row margin">
+<section class="row sidebar">
 
 	<div class="column one">
 	
 		<?php while ( have_posts() ) : the_post(); ?>
 				
-			<?php get_template_part( 'articles/article', get_post_format() ); ?>
+			<?php get_template_part( 'articles/post' ) ?>
 
 			<?php // get_comments( ); ?>
 
@@ -36,6 +36,8 @@ if ( ! empty( $position ) ) {
 	</div><!--/column-->
 
 	<div class="column two">
+		
+		<?php get_sidebar(); ?>
 		
 	</div><!--/column two-->
 
