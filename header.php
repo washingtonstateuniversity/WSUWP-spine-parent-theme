@@ -56,6 +56,5 @@
 </head>
 
 <body <?php body_class(); ?>>
-
 <div id="jacket" class="palette">
 <div id="binder" class="<?php echo $grid_style; echo $large_format; ?>">
