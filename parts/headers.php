@@ -17,7 +17,7 @@
 		echo '	<div class="section">' . section_title() . '</div>';
 	}
 
-	if ( is_single() && ! empty( $first_category ) && isset( $first_category[0]->cat_name ) ) {
+	if ( ( is_archive() || is_category() || is_single() ) && ! empty( $first_category ) && isset( $first_category[0]->cat_name ) ) {
 		echo '	<div class="category">'.$first_category[0]->cat_name.'</div>';
 	}
 
