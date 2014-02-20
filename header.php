@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7]><html class="lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]><html class="lt-ie9" <?php language_attributes(); ?>> <![endif]-->
-<!--[if gt IE 8]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
+<html <?php language_attributes(); ?>>
 
 
 <?php // CUSTOMIZATION
@@ -10,6 +7,8 @@
 	$grid_style = $spine_options['grid_style'];
 	$spine_color = $spine_options['spine_color'];
 	$large_format = $spine_options['large_format'];
+	$binder_broken = $spine_options['broken_binding'];
+	if ($binder_broken == true) { $binder_broken = " broken"; } else { $binder_broken = ""; }
 	?>
 
 <head>
@@ -25,8 +24,8 @@
 	<link rel="shortcut icon" href="http://repo.wsu.edu/spine/1/favicon.ico" />
 	
 	<!-- STYLESHEETS -->
-	<!-- TARGET --><link href="http://repo.wsu.edu/spine/1/spine.min.css" rel="stylesheet" type="text/css" /><!-- -->
-	<!-- TEMP <link href="http://nbj.me/spine/1/0.5/styles/styles.css" rel="stylesheet" type="text/css" />  -->
+	<!-- TARGET <link href="http://repo.wsu.edu/spine/1/spine.min.css" rel="stylesheet" type="text/css" /> -->
+	<!-- TEMP --><link href="http://nbj.me/spine/1/styles/styles.css" rel="stylesheet" type="text/css" /><!--  -->
 	<!-- Your custom stylesheets here -->
 	<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css" />
 	
@@ -36,8 +35,8 @@
 	<!-- SCRIPTS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<!-- TARGET --><script src="http://repo.wsu.edu/spine/1/spine.min.js"></script><!-- -->
-	<!-- TEMP <script src="http://nbj.me/spine/1/0.5/scripts/spine.js"></script> -->
+	<!-- TARGET <script src="http://repo.wsu.edu/spine/1/spine.min.js"></script> -->
+	<!-- TEMP --><script src="http://nbj.me/spine/1/spine.js"></script><!-- -->
 	<!-- Your supplementary scripts here -->
 	
 	<!-- COMPATIBILITY -->
@@ -56,5 +55,6 @@
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="jacket" class="palette">
-<div id="binder" class="<?php echo $grid_style; echo $large_format; ?>">
+<div id="binder" class="<?php echo $grid_style; echo $large_format; echo $binder_broken; ?>">
