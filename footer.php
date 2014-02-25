@@ -3,6 +3,8 @@
 </div><!--/cover-->
 </div><!--/jacket-->
 
+<?php get_template_part('parts/head','contact'); ?> 
+
 <?php wp_footer(); ?>
 
 <?php // Temporary experiments with toolbar position
