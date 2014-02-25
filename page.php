@@ -8,7 +8,11 @@
 
 	<div class="column one">
 	
-		<?php get_template_part('articles/article'); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+	
+			<?php get_template_part('articles/article'); ?>
+		
+		<?php endwhile; ?>
 		
 	</div><!--/column-->
 
