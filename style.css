@@ -9,6 +9,7 @@ License: Copyright Washington State University
 License URI: http://copyright.wsu.edu
 Tags: light
 */
+
 body {
 	background: #f9f9f9;
 	}
@@ -20,22 +21,15 @@ main {
 	background-position: left top;
 	}
 /* Main Header Defaults (previously siteID) */
+
 main > header {
-	background: #981e32;
-	position: relative;
-	top: 0px;
-	left: 366px;
-	width: 2000px;
-	border: 0px;
-	height: 132px;
-	box-sizing: border-box;
+	padding-top: 100px;
+	background-color: #5E6A71;
+	width: 200%;
+	padding-left: 2em;
+	padding-bottom: 1em;
 	}
-main > header hgroup {
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
-	width: 396px;
-	}
+
 main > header div {
 	padding: 0px;
 	line-height: 1.1em;
@@ -67,11 +61,28 @@ main > header div:first-of-type,
 main > header div:last-of-type {
 	display: block;
 	}
-.size-lt-medium main > header {
+main > header.spine-bookmark {
+	background: #981e32;
+	position: relative;
+	top: 0px;
+	left: 366px;
+	width: 2000px;
+	border: 0px;
+	height: 132px;
+	box-sizing: border-box;
+	padding: 0px;
+	}
+main > header.spine-bookmark hgroup {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 396px;
+	}
+.size-lt-medium main > header.spine-bookmark {
 	left: 0px;
 	}
-.size-lt-medium main > header hgroup {
-	left: 30px;
+.size-lt-medium main > header.spine-bookmark hgroup {
+	left: 2em;
 	}
 
 body.single main > header div.post {

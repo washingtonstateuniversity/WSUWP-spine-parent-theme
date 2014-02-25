@@ -7,13 +7,13 @@
 	$first_category = get_the_category();
 	$section_title  = get_the_category();
 ?>
-<header>
+<header class="spine-bookmark">
 <hgroup>
 	<div class="site"><a href="<?php home_url(); ?>" title="<?php echo esc_attr( $site_name ); ?>" rel="home"><?php echo esc_html( $site_name ); ?></a></div>
 	<div class="tagline"><a href="<?php home_url(); ?>" title="<?php echo esc_attr( $site_tagline ); ?>" rel="home"><?php echo esc_html( $site_tagline ); ?></a></div>
 	<?php
 
-	if ( is_subpage() ) {
+	if ( spine_is_subpage() ) {
 		echo '	<div class="section">' . section_title() . '</div>';
 	}
 
