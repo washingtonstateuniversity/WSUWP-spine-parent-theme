@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="spine-category-template">
 
 <?php get_template_part('parts/headers'); ?> 
 
@@ -10,7 +10,7 @@
 
 		<?php while ( have_posts() ) : the_post(); ?>
 				
-			<?php get_template_part( 'articles/article', get_post_format() ); ?>
+			<?php get_template_part( 'articles/post', get_post_format() ); ?>
 
 		<?php endwhile; ?>
 		
@@ -27,7 +27,7 @@
 <?php
 global $wp_query;
 
-$big = 99631; // need an unlikely integer
+$big = 99164; // need an unlikely integer
 $args = array(
 	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 	'format'       => 'page/%#%',
@@ -46,6 +46,6 @@ $args = array(
 
 <?php echo paginate_links( $args ); ?>
 
-</main><!--/#page-->
+</main>
 
 <?php get_footer(); ?>
