@@ -115,7 +115,7 @@ add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
 */
 
 // Sectioning
-function is_subpage() {
+function spine_is_subpage() {
     global $post;
     if ( is_page() && $post->post_parent ) {
         return $post->post_parent;
@@ -124,7 +124,7 @@ function is_subpage() {
 	}
 }
 
-function section_title(){
+function spine_section_title(){
 	global $post;
 
 	if ( is_page() && $post->post_parent ) {
@@ -137,7 +137,7 @@ function section_title(){
 	return $post->post_title;
 }
 
-function section_slug(){
+function spine_section_slug(){
 	global $post;
 
 	if ( is_page() && $post->post_parent ) {
