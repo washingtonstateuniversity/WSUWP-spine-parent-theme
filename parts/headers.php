@@ -6,7 +6,9 @@
 	$site_tagline   = get_bloginfo('description');
 	$first_category = get_the_category();
 	$section_title  = get_the_category();
+
 ?>
+
 <header class="spine-bookmark">
 <hgroup>
 	<div class="site"><a href="<?php home_url(); ?>" title="<?php echo esc_attr( $site_name ); ?>" rel="home"><?php echo esc_html( $site_name ); ?></a></div>
@@ -32,3 +34,16 @@
 	?>
 </hgroup>
 </header>
+
+<!--<header class="main-header category-header spine-bookmark">
+    <div class="parent-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+    <div class="child-header">
+	    <?php
+		if ( is_day() ) : echo get_the_date();
+		elseif ( is_month() ) : echo get_the_date( 'F Y' );
+		elseif ( is_year() )  : echo get_the_date( 'Y' );
+		else : echo 'Archives';
+		endif;
+		?>
+    </div>
+</header>-->
