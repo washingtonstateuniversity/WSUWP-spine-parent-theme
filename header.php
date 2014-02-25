@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
-
 <?php // CUSTOMIZATION
 	$spine_options = get_option( 'spine_options' );
 	$grid_style = $spine_options['grid_style'];
@@ -14,7 +13,7 @@
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
 	
 	<!-- CONTACT -->
@@ -43,8 +42,8 @@
 	<!--[if lt IE 9]><script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script><![endif]--> 
 	
 	<!-- DOCS -->
-	<link type="text/plain" rel="author" href="http://images.wsu.edu/spine/authors.txt" />
-	<link type="text/html" rel="docs" href="http://identity.wsu.edu" />
+	<link type="text/plain" rel="author" href="http://repo.wsu.edu/spine/1/authors.txt" />
+	<link type="text/html" rel="docs" href="http://brand.wsu.edu/media/web" />
 	
 	<!-- ANALYTICS -->
 	<!-- Your analytics code here -->
@@ -56,5 +55,5 @@
 
 <body <?php body_class(); ?>>
 
-<div id="jacket" class="palette">
+<div id="jacket">
 <div id="binder" class="<?php echo $grid_style; echo $large_format; echo $binder_broken; ?>">
