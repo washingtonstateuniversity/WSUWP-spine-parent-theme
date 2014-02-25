@@ -217,7 +217,7 @@ function spine_customize_register($wp_customize){
         'type'           => 'option',
     ));
  
-    $wp_customize->add_control('spine_binding_broken', array(
+    $wp_customize->add_control('spine_broken_binding', array(
         'label'      => __('Bleed Main Right', 'spine'),
         'section'    => 'section_spine_advanced_options',
         'settings'   => 'spine_options[broken_binding]',
