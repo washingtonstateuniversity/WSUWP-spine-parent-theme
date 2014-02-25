@@ -14,7 +14,14 @@
 		
 	</div><!--/column-->
 	
-	<div class="column two"></div>
+	<div class="column two">
+		
+		<?php 
+		$column = get_post_meta( get_the_ID(), 'column-two', true );
+		if( ! empty( $column ) ) { echo $column; }
+		?>
+		
+	</div>
 
 </section>
 
