@@ -22,28 +22,15 @@ main {
 	}
 /* Main Header Defaults (previously siteID) */
 
-main > header {
-	padding-top: 100px;
-	background-color: #5E6A71;
-	width: 200%;
-	padding-left: 2em;
-	padding-bottom: 1em;
-	}
-
-main > header div {
-	padding: 0px;
-	line-height: 1.1em;
-	margin: 0px;
-	}
-main > header div:last-of-type,
-body.single main > header div.category {
+main > header.spine-bookmark div:last-of-type,
+body.single main > header.spine-bookmark div.category {
 	font-size: 2em;
 	color: white;
 	display: block;
 	}
-main > header div,
-main > header div a,
-main > header div a:hover {
+main > header.spine-bookmark div,
+main > header.spine-bookmark div a,
+main > header.spine-bookmark div a:hover {
 	color: white;
 	}
 main > header div:first-of-type {
@@ -51,7 +38,7 @@ main > header div:first-of-type {
 	font-size: .9em;
 	color: #e6e8e9;
 	}
-main > header div:first-of-type a {
+main > header.spine-bookmark div:first-of-type a {
 	color: #e6e8e9;
 	}
 main > header div {
@@ -65,18 +52,22 @@ main > header.spine-bookmark {
 	background: #981e32;
 	position: relative;
 	top: 0px;
-	left: 366px;
+	left: 330px;
 	width: 2000px;
 	border: 0px;
 	height: 132px;
-	box-sizing: border-box;
-	padding: 0px;
+	width: 200%;
 	}
 main > header.spine-bookmark hgroup {
 	position: absolute;
-	bottom: 10px;
-	left: 10px;
+	bottom: 1em;
+	left: 1.5em;
 	width: 396px;
+	}
+main > header.spine-bookmark div {
+	padding: 0px;
+	line-height: 1.1em;
+	margin: 0px;
 	}
 .size-lt-medium main > header.spine-bookmark {
 	left: 0px;
