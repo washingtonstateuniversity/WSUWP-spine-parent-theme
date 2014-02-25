@@ -7,7 +7,7 @@
 
 <?php get_header(); ?>
 
-<main>
+<main class="spine-blank-template">
 
 <?php while ( have_posts() ) : the_post(); ?>
 

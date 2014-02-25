@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 
-<main>
+<main class="spine-sideright-template">
 
 <?php get_template_part('parts/headers'); ?> 
 

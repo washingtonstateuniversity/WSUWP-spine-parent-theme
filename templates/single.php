@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 
-<main>
+<main class="spine-single-template">
 
 <?php get_template_part('parts/headers'); ?> 
 
