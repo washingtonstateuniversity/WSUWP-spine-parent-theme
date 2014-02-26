@@ -5,7 +5,7 @@
 	
 	<p>As a visual element, the WSU Spine is a 198px wide column that binds together the many websites of wsu.edu. As a framework, the WSU Spine is a minimal template that provides global tools and a responsive and flexible grid for every WSU website. With a uniform and global spine on the left and a blank, unwritten page to the right, the Spine balances the unity and diversity of our university.</p>
 	
-	<img src="/wp-content/themes/spine/admin/customizer.png" class="alignright">
+	<img src="<?php echo esc_url( get_template_directory_uri() . '/admin/customizer.png' ); ?>" class="alignright">
 	<h2>Getting Started</h2>
 	
 	<ol>
