@@ -9,7 +9,7 @@
 	<h2>Getting Started</h2>
 	
 	<ol>
-		<li>After <a href="/wp-login.php">logging in</a>, head to the <a href="<?php echo esc_url( admin_url( 'customize.php?theme=spine' ) ); ?>">Customizer</a>.</li>
+		<li>After <a href="<?php echo esc_url( wp_login_url() ); ?>">logging in</a>, head to the <a href="<?php echo esc_url( admin_url( 'customize.php?theme=spine' ) ); ?>">Customizer</a>.</li>
 		<li>Enter your Site Title and Tagline.</li>
 		<li>Expand "Contact Details" and enter the information of the unit responsible for this site.</li>
 		<li>Optionally, you can replace or remove one or more of the university's social channels.</li>
