@@ -10,7 +10,7 @@
 	$spine_color = $spine_options['spine_color'];
 	$large_format = $spine_options['large_format'];
 	$binder_broken = $spine_options['broken_binding'];
-	if ($binder_broken == true) { $binder_broken = " broken"; } else { $binder_broken = ""; }
+	if ( isset($binder_broken) && ($binder_broken == true)) { $binder_broken = " broken"; } else { $binder_broken = ""; }
 	?>
 
 <head>
