@@ -9,13 +9,13 @@
 
 <main class="spine-blank-template">
 
-<?php while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 	<div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php the_content(); ?>
 	</div><!-- #post -->
 
-<?php endwhile; ?>
+<?php endwhile; endif; ?>
 
 </main>
 
