@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<!--[if lt IE 7]> <html class="no-svg lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-svg lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-svg lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
 
 <?php // CUSTOMIZATION
 	$spine_options = get_option( 'spine_options' );
@@ -20,7 +23,7 @@
 	<link rel="shortcut icon" href="http://repo.wsu.edu/spine/1/favicon.ico" />
 	
 	<!-- STYLESHEETS -->
-	<link href="http://repo.wsu.edu/spine/1/spine.min.css" rel="stylesheet" type="text/css" />
+	<link href="http://www.nbj.me/spine/1/styles/styles.css" rel="stylesheet" type="text/css" />
 	<!-- Your custom stylesheets here -->
 	<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css" />
 	
@@ -34,7 +37,7 @@
 	<!-- Your supplementary scripts here -->
 	
 	<!-- COMPATIBILITY -->
-	<!--[if lt IE 9]><script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script><![endif]--> 
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
 	
 	<!-- DOCS -->
 	<link type="text/plain" rel="author" href="http://repo.wsu.edu/spine/1/authors.txt" />
