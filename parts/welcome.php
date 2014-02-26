@@ -9,13 +9,13 @@
 	<h2>Getting Started</h2>
 	
 	<ol>
-		<li>After <a href="/wp-login.php">logging in</a>, head to the <a href="/wp-admin/customize.php?theme=spine">Customizer</a>.</li>
+		<li>After <a href="/wp-login.php">logging in</a>, head to the <a href="<?php echo esc_url( admin_url( 'customize.php?theme=spine' ) ); ?>">Customizer</a>.</li>
 		<li>Enter your Site Title and Tagline.</li>
 		<li>Expand "Contact Details" and enter the information of the unit responsible for this site.</li>
 		<li>Optionally, you can replace or remove one or more of the university's social channels.</li>
 		<li>Optionally, you can alter the Spine's default behavior in "Spine Options".</li>
-		<li>Head to <a href="/wp-admin/edit.php?post_type=page">Pages</a> and <a href="/wp-admin/nav-menus.php">Appearance -> Menus</a> to begin building out your site.</li>
-		<li>And finally, delete or modify your <a href="/wp-admin/post.php?post=1&action=edit">Hello World post</a> to remove this primer.</li>
+		<li>Head to <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=page' ) ); ?>">Pages</a> and <a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ) ; ?>">Appearance -> Menus</a> to begin building out your site.</li>
+		<li>And finally, delete or modify your <a href="<?php echo esc_url( admin_url( 'post.php?post=1&action=edit' ) ); ?>">Hello World post</a> to remove this primer.</li>
 	</ol>
 	
 </article>
