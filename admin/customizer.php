@@ -266,7 +266,7 @@ function spine_customize_register($wp_customize){
         'type'       => 'radio',
         'choices'    => array(
             'google' => 'Google',
-            'wordpress' => 'Wordpress'
+            'wordpress' => 'WordPress'
         ),
     ));
     
