@@ -198,7 +198,7 @@ article footer a:hover {
 	}
 
 	
-/* WordPress */
+/* Wordpress */
 .alignright {
 	float: right;
 	}
@@ -228,6 +228,7 @@ article footer a:hover {
 	}
 .alignleft {
 	float: left;
+	margin: 1em 1em 0 0;
 	}
 .wp-edit-link {
 	position: fixed;
@@ -263,7 +264,7 @@ body.admin-bar {
 #wpadminbar {
     top: auto !important;
     bottom: 0 !important;
-    position: fixed;
+    position: fixed !important;
 }
 #wpadminbar .quicklinks>ul>li {
     position:relative;
