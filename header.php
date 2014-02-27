@@ -16,14 +16,13 @@
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>	
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="http://repo.wsu.edu/spine/1/favicon.ico" />
 	
 	<!-- STYLESHEETS -->
-	<link href="http://www.nbj.me/spine/1/styles/styles.css" rel="stylesheet" type="text/css" />
+	<link href="http://repo.wsu.edu/spine/1/spine.min.css" rel="stylesheet" type="text/css" />
 	<!-- Your custom stylesheets here -->
 	<link href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css" />
 	
