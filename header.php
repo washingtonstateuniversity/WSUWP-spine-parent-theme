@@ -6,6 +6,16 @@
 
 <?php // CUSTOMIZATION
 	$spine_options = get_option( 'spine_options' );
+
+	// Defaults for the spine options will be compared to what is stored in spine_options.
+	$defaults = array(
+		'grid_style'     => 'hybrid',
+		'spine_color'    => 'white',
+		'large_format'   => '',
+		'broken_binding' => false,
+	);
+	$spine_options = wp_parse_args( $spine_options, $defaults );
+
 	$grid_style = $spine_options['grid_style'];
 	$spine_color = $spine_options['spine_color'];
 	$large_format = $spine_options['large_format'];
