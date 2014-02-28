@@ -9,7 +9,7 @@ function spine_theme_customize_styles() {
 add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_styles' );
 
 function spine_theme_customize_scripts() {
-    wp_enqueue_script('customize-interface-scripts', get_template_directory_uri().'/admin/customize.js', array( 'jquery','customize-preview' ),'',true );
+    wp_enqueue_script('customize-interface-scripts', get_template_directory_uri().'/admin/customize.js', array( 'jquery' ),'',true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_scripts' );
 
