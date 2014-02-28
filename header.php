@@ -63,4 +63,4 @@
 <body <?php body_class(); ?>>
 
 <div id="jacket">
-<div id="binder" class="<?php echo $grid_style; echo $large_format; echo $binder_broken; ?>">
+<div id="binder" class="<?php echo esc_attr( $grid_style ); echo esc_attr( $large_format ); echo esc_attr( $binder_broken ); ?>">
