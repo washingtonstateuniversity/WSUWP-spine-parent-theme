@@ -254,6 +254,10 @@ body.admin-bar {
 .admin-bar #spine #glue {
 	margin-top: 32px;
 	}
+.admin-bar #spine.cropped {
+	height: 230px;
+	min-height: 230px;
+}
 }
 
 @media (max-width: 989px) {
