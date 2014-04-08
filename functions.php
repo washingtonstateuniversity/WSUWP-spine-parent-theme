@@ -124,25 +124,36 @@ function spine_is_sub() {
 	}
 }
 
-function spine_section_meta($attribute='slug',$sectional='subsection') {
+function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 	global $post;
-	if ( !isset($sectional) ) { $sectional = 'subsection'; }
-	if ( !isset($attribute) || $attribute == 'slug' ) { $attribute = 'post_name'; }
-	if ( $attribute == 'title' || $attribute == 'title' ) { $attribute = 'post_title'; }
-	if ( is_page() && $post->post_parent ) {
-		$subsections = get_post_ancestors($post->id);
-		$subsection = get_page($subsections[0]);
-		$sections = @array_reverse( get_post_ancestors($post->id) );
-		$section = get_page($sections[0]);
-		
-		if ( isset($sectional) && ($sectional == 'section' || $sectional == 'top') ) {
+
+	if ( empty( $sectional ) ) {
+		$sectional = 'subsection';
+	}
+
+	if ( empty( $attribute ) || 'slug' == $attribute ) {
+		$attribute = 'post_name';
+	}
+
+	if ( 'title' == $attribute ) {
+		$attribute = 'post_title';
+	}
+
+	if ( spine_is_sub() ) {
+		$subsections = get_post_ancestors( $post->id );
+		$subsection = get_page( $subsections[0] );
+		$sections = @array_reverse( get_post_ancestors( $post->id ) );
+		$section = get_page( $sections[0] );
+
+		if ( isset( $sectional ) && in_array( $sectional, array( 'section', 'top' ) ) ) {
 			return $section->$attribute;
 		} else {
 			return $subsection->$attribute;
 		}
-	} else { return null; }
-
 	}
+
+	return null;
+}
 
 add_filter( 'body_class','spine_speckled_body_classes' );
 /**
