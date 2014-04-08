@@ -167,37 +167,43 @@ if ( $post && $post->ID && has_category() && is_singular() ) {
 	return array_unique($classes);
 	}
 
-// Splicing/Sectioning Body Classes
-function spine_sectioned_body_classes($classes) {
-	// $classes = array of additional classes to add
+/**
+ * Add custom body classes based on the requested URL.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function spine_sectioned_body_classes( $classes ) {
 	global $post;
-		
-	if ($post && $post->ID) {
+
+	if ( $post && $post->ID ) {
 		$url = $_SERVER['REQUEST_URI'];
-		$url = parse_url($url);
+		$url = parse_url( $url );
 		$path = $url['path'];
 		$skips = trim( $path, '/' );
-		$hops = explode('/',$skips);
-		$depth = count($hops) - 1;
-		
-		$classes[] = 'depth-'.$depth;
-		
+		$hops = explode( '/', $skips );
+		$depth = count( $hops ) - 1;
+
+		$classes[] = 'depth-' . $depth;
+
 		$sub = '';
-		$last = end($hops);
-		$lastkey = key($hops);
-		foreach($hops as $hop => $hopped ) {
-			$classes[] = $sub.'section-'.trim($hopped);
-			//array_pop($hops);
-			$sub = 'sub-'.$sub;
+		$last = end( $hops );
+		$lastkey = key( $hops );
+
+		foreach( $hops as $hop => $hopped ) {
+			$classes[] = $sub . 'section-' . trim( $hopped );
+
+			$sub = 'sub-' . $sub;
 			if ( $lastkey == $hop ) {
-				$classes[] = 'page-'.trim($hopped);
-				}
+				$classes[] = 'page-' . trim( $hopped );
+			}
 		}
-		
 	}
-	return array_unique($classes);
-	}
-	add_filter('body_class', 'spine_sectioned_body_classes');
+
+	return array_unique( $classes );
+}
+add_filter( 'body_class', 'spine_sectioned_body_classes' );
 
 // ...
 
