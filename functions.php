@@ -168,36 +168,34 @@ if ( $post && $post->ID && has_category() && is_singular() ) {
 	}
 
 /**
- * Add custom body classes based on the requested URL.
+ * Add custom body classes based on the requested URL for individual
+ * page and post views.
  *
  * @param array $classes Current list of body classes.
  *
  * @return array Modified list of body classes.
  */
 function spine_sectioned_body_classes( $classes ) {
-	$post = get_post();
 
-	if ( $post && $post->ID ) {
-		$url = $_SERVER['REQUEST_URI'];
-		$url = parse_url( $url );
-		$path = $url['path'];
-		$skips = trim( $path, '/' );
-		$hops = explode( '/', $skips );
-		$depth = count( $hops ) - 1;
+	// Paths may be polluted with additional site information, so we
+	// compare the post/page permalink with the home URL.
+	$path = str_replace( get_home_url(), '', get_permalink() );
+	$path = trim( $path, '/' );
+	$path = explode( '/', $path );
 
+	if ( is_singular() && ! empty( $path ) ) {
+		$depth = count( $path ) - 1;
 		$classes[] = 'depth-' . $depth;
 
-		$sub = '';
-		$last = end( $hops );
-		$lastkey = key( $hops );
-
-		foreach( $hops as $hop => $hopped ) {
-			$classes[] = $sub . 'section-' . trim( $hopped );
-
-			$sub = 'sub-' . $sub;
-			if ( $lastkey == $hop ) {
-				$classes[] = 'page-' . trim( $hopped );
+		if ( 1 === count( $path ) ) {
+			$classes[] = 'section-' . $path[0];
+			$classes[] = 'page-' . $path[0];
+		} else {
+			$classes[] = 'section-' . array_shift( $path );
+			foreach( $path as $part ) {
+				$classes[] = 'sub-section-' . $part;
 			}
+			$classes[] = 'page-' . array_pop( $path );
 		}
 	}
 
