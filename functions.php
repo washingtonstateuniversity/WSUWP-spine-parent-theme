@@ -144,14 +144,21 @@ function spine_section_meta($attribute='slug',$sectional='subsection') {
 
 	}
 
-// Add Randomized Body Classes
 add_filter( 'body_class','spine_speckled_body_classes' );
+/**
+ * Add randomized body classes.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
 function spine_speckled_body_classes( $classes ) {
-	$classes[] = 'five'.mt_rand(1,5);
-	$classes[] = 'ten'.mt_rand(1,10);
-	$classes[] = 'twenty'.mt_rand(1,20);
+	$classes[] = 'five' . mt_rand( 1, 5 );
+	$classes[] = 'ten' . mt_rand( 1, 10 );
+	$classes[] = 'twenty' . mt_rand( 1, 20 );
+
 	return $classes;
-	}
+}
 
 add_filter('body_class', 'spine_categorized_body_classes');
 /**
