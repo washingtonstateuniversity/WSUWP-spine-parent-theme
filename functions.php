@@ -171,6 +171,7 @@ function spine_categorized_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
+add_filter( 'body_class', 'spine_sectioned_body_classes' );
 /**
  * Add custom body classes based on the requested URL for individual
  * page and post views.
@@ -205,7 +206,6 @@ function spine_sectioned_body_classes( $classes ) {
 
 	return array_unique( $classes );
 }
-add_filter( 'body_class', 'spine_sectioned_body_classes' );
 
 // Default Read More
 function spine_theme_excerpt_more() {
