@@ -153,19 +153,23 @@ function spine_speckled_body_classes( $classes ) {
 	return $classes;
 	}
 
-// Add Categorized Body Classes
 add_filter('body_class', 'spine_categorized_body_classes');
+/**
+ * Add custom body classes for category views.
+ *
+ * @param array $classes Current list of body classes
+ *
+ * @return array Modified list of body classes
+ */
 function spine_categorized_body_classes( $classes ) {
-global $post;
-if ( $post && $post->ID && has_category() && is_singular() ) {
-	foreach((get_the_category($post->ID)) as $category) {
-		$classes[] = 'categorized-'.trim($category->slug);
+	if ( has_category() && is_singular() ) {
+		foreach( get_the_category( get_the_ID() ) as $category ) {
+			$classes[] = 'categorized-' . $category->slug;
+		}
 	}
-	/*foreach((wp_get_object_terms($post->ID,'tags')) as $term) {
-		$classes[] = 'term-'.trim($term->slug); */
-	}
-	return array_unique($classes);
-	}
+
+	return array_unique( $classes );
+}
 
 /**
  * Add custom body classes based on the requested URL for individual
