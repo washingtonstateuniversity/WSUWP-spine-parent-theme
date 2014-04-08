@@ -185,7 +185,6 @@ function spine_sectioned_body_classes($classes) {
 		$sub = '';
 		$last = end($hops);
 		$lastkey = key($hops);
-		echo $lastkey;
 		foreach($hops as $hop => $hopped ) {
 			$classes[] = $sub.'section-'.trim($hopped);
 			//array_pop($hops);
