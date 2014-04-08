@@ -46,12 +46,11 @@ function spine_theme_setup_theme() {
 // DEFAULTS
 
 // Condense verbose menu classes
-add_filter( 'nav_menu_css_class', 'spine_theme_abbridged_menu_classes', 10, 3 );
-function spine_theme_abbridged_menu_classes( $classes, $item, $args ) {
-	if ( in_array( 'current-menu-item', $classes ) ) {
+add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10, 3 );
+function spine_abbridged_menu_classes( $classes, $item, $args ) {
+	if ( in_array( ('current-menu-item'), $classes ) || in_array( ('current_page_parent'), $classes ) ) {
 		return array( 'current' );
 	}
-
 	return array();
 }
 
@@ -114,8 +113,9 @@ add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
 
 */
 
-// Sectioning
-function spine_is_subpage() {
+// SECTIONING
+
+function spine_is_sub() {
     global $post;
     if ( is_page() && $post->post_parent ) {
         return $post->post_parent;
@@ -124,47 +124,93 @@ function spine_is_subpage() {
 	}
 }
 
-function spine_section_title(){
+function spine_section_meta($attribute='slug',$sectional='subsection') {
 	global $post;
-
+	if ( !isset($sectional) ) { $sectional = 'subsection'; }
+	if ( !isset($attribute) || $attribute == 'slug' ) { $attribute = 'post_name'; }
+	if ( $attribute == 'title' || $attribute == 'title' ) { $attribute = 'post_title'; }
 	if ( is_page() && $post->post_parent ) {
-		$parents = array_reverse( get_post_ancestors( $post->id ) );
-		$topmost_parent = get_page( $parents[0] );
+		$subsections = get_post_ancestors($post->id);
+		$subsection = get_page($subsections[0]);
+		$sections = @array_reverse( get_post_ancestors($post->id) );
+		$section = get_page($sections[0]);
+		
+		if ( isset($sectional) && ($sectional == 'section' || $sectional == 'top') ) {
+			return $section->$attribute;
+		} else {
+			return $subsection->$attribute;
+		}
+	} else { return null; }
 
-		return $topmost_parent->post_title;
 	}
 
-	return $post->post_title;
-}
-
-function spine_section_slug(){
-	global $post;
-
-	if ( is_page() && $post->post_parent ) {
-		$parents = array_reverse( get_post_ancestors( $post->id ) );
-		$topmost_parent = get_page( $parents[0] );
-
-		return $topmost_parent->post_name;
+// Add Randomized Body Classes
+add_filter( 'body_class','spine_speckled_body_classes' );
+function spine_speckled_body_classes( $classes ) {
+	$classes[] = 'five'.mt_rand(1,5);
+	$classes[] = 'ten'.mt_rand(1,10);
+	$classes[] = 'twenty'.mt_rand(1,20);
+	return $classes;
 	}
 
-	return $post->post_name;
-}
+// Add Categorized Body Classes
+add_filter('body_class', 'spine_categorized_body_classes');
+function spine_categorized_body_classes( $classes ) {
+global $post;
+if ( $post && $post->ID && has_category() && is_singular() ) {
+	foreach((get_the_category($post->ID)) as $category) {
+		$classes[] = 'categorized-'.trim($category->slug);
+	}
+	/*foreach((wp_get_object_terms($post->ID,'tags')) as $term) {
+		$classes[] = 'term-'.trim($term->slug); */
+	}
+	return array_unique($classes);
+	}
+
+// Splicing/Sectioning Body Classes
+function spine_sectioned_body_classes($classes) {
+	// $classes = array of additional classes to add
+	global $post;
+		
+	if ($post && $post->ID) {
+		$url = $_SERVER['REQUEST_URI'];
+		$url = parse_url($url);
+		$path = $url['path'];
+		$skips = trim( $path, '/' );
+		$hops = explode('/',$skips);
+		$depth = count($hops) - 1;
+		
+		$classes[] = 'depth-'.$depth;
+		
+		$sub = '';
+		$last = end($hops);
+		$lastkey = key($hops);
+		echo $lastkey;
+		foreach($hops as $hop => $hopped ) {
+			$classes[] = $sub.'section-'.trim($hopped);
+			//array_pop($hops);
+			$sub = 'sub-'.$sub;
+			if ( $lastkey == $hop ) {
+				$classes[] = 'page-'.trim($hopped);
+				}
+		}
+		
+	}
+	return array_unique($classes);
+	}
+	add_filter('body_class', 'spine_sectioned_body_classes');
+
+// ...
 
 // Default Read More
 function spine_theme_excerpt_more( $more ) {
-	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">Read More</a>';
-}
+	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '" >More</a>';
+	}
 add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
-// Extend Body Class 
 
-add_filter( 'body_class','spine_theme_extend_body_classes' );
-function spine_theme_extend_body_classes( $classes ) {
-	$stippled = 'stippled-'.mt_rand(0,19); // Add Randomizer
-	$classes[] = $stippled;
-
-	return $classes;
-}
+// MAIN HEADER
+include_once( 'admin/main-header.php' );
 
 // CUSTOMIZATION
 include_once( 'admin/customizer.php' );
