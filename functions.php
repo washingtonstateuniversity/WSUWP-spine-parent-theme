@@ -141,9 +141,9 @@ function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 
 	if ( spine_is_sub() ) {
 		$subsections = get_post_ancestors( $post->id );
-		$subsection = get_page( $subsections[0] );
+		$subsection = get_post( $subsections[0] );
 		$sections = @array_reverse( get_post_ancestors( $post->id ) );
-		$section = get_page( $sections[0] );
+		$section = get_post( $sections[0] );
 
 		if ( isset( $sectional ) && in_array( $sectional, array( 'section', 'top' ) ) ) {
 			return $section->$attribute;
