@@ -125,8 +125,6 @@ function spine_is_sub() {
 }
 
 function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
-	global $post;
-
 	if ( empty( $sectional ) ) {
 		$sectional = 'subsection';
 	}
@@ -139,10 +137,10 @@ function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 		$attribute = 'post_title';
 	}
 
-	if ( spine_is_sub() ) {
-		$subsections = get_post_ancestors( $post->id );
+	$subsections = get_post_ancestors( get_the_ID() );
+	if ( ! empty( $subsections ) ) {
 		$subsection = get_post( $subsections[0] );
-		$sections = @array_reverse( get_post_ancestors( $post->id ) );
+		$sections = array_reverse( $subsections );
 		$section = get_post( $sections[0] );
 
 		if ( isset( $sectional ) && in_array( $sectional, array( 'section', 'top' ) ) ) {
