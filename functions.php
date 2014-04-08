@@ -203,14 +203,11 @@ function spine_sectioned_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'spine_sectioned_body_classes' );
 
-// ...
-
 // Default Read More
-function spine_theme_excerpt_more( $more ) {
+function spine_theme_excerpt_more() {
 	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '" >More</a>';
-	}
+}
 add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
-
 
 // MAIN HEADER
 include_once( 'admin/main-header.php' );
@@ -224,11 +221,10 @@ include_once( 'admin/customizer.php' );
 
 // Add CSS files
 function spine_theme_admin_styles() {
-    wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/admin/admin.css' );
-    add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/admin/editor.css' );
+	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/admin/admin.css' );
+	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/admin/editor.css' );
 }
 add_action( 'admin_enqueue_scripts', 'spine_theme_admin_styles' );
-
 
 // Ad Hoc Sections
 // include_once('admin/sections.php');
