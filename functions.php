@@ -175,7 +175,7 @@ if ( $post && $post->ID && has_category() && is_singular() ) {
  * @return array Modified list of body classes.
  */
 function spine_sectioned_body_classes( $classes ) {
-	global $post;
+	$post = get_post();
 
 	if ( $post && $post->ID ) {
 		$url = $_SERVER['REQUEST_URI'];
