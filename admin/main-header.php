@@ -75,6 +75,8 @@ function spine_get_main_header() {
 			$sub_header_default = get_the_date( 'F Y' );
 		} else if ( is_year() ) {
 			$sub_header_default = get_the_date( 'Y' );
+		} else if ( is_author() ) {
+			$sub_header_default = get_the_author();
 		} else {
 			$sub_header_default = 'Archives';
 		}
