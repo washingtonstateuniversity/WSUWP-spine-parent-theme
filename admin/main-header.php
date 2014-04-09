@@ -120,7 +120,8 @@ function spine_get_main_header() {
 		}
 	}
 
-	return array(
+
+	$main_header_elements = array(
 		'site_name'				=>	$site_name,
 		'site_tagline'			=>	$site_tagline,
 		'page_title'			=>	$page_title,
@@ -132,5 +133,7 @@ function spine_get_main_header() {
 		'sub_header_default'	=>	$sub_header_default,
 		'sup_header_alternate'	=>	$sup_header_alternate,
 		'sub_header_alternate'	=>	$sub_header_alternate
-		);
+	);
+
+	return apply_filters( 'spine_main_header_elements', $main_header_elements );
 }
