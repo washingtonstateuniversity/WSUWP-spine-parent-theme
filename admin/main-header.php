@@ -90,10 +90,14 @@ function spine_get_main_header() {
 		}
 	}
 
-	// @todo If page_for_posts is not set, sup and sub are the same (?)
+	// For any posts or post types, if page_for_posts is not set or this view is
+	// of a custom post type, use the post type's label as the sub header. Otherwise
+	// use the title of the page_for_posts page.
 	if ( is_single() ) {
-		if ( 0 === $page_for_posts ) {
-			$sub_header_default = $site_name;
+		if ( 0 === $page_for_posts || ! is_singular( 'posts' ) ) {
+			$post = get_post();
+			$post_type = get_post_type_object( get_post_type( $post ) );
+			$sub_header_default = $post_type->labels->name;
 		} else {
 			$sub_header_default = $posts_page_title;
 		}
