@@ -1,5 +1,8 @@
 <?php
 
+include_once( 'admin/main-header.php' ); // Include main header functionality.
+include_once( 'admin/customizer.php' ); // Include customizer functionality.
+
 // Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
 function spine_theme_menus() {
@@ -40,8 +43,6 @@ function spine_theme_setup_theme() {
 	add_image_size( 'header-image', 792, 99163 );
 	add_image_size( 'billboard-image', 1584, 99163 );
 }
-
-
 
 // DEFAULTS
 
@@ -229,12 +230,6 @@ function spine_theme_excerpt_more() {
 }
 add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
-// MAIN HEADER
-include_once( 'admin/main-header.php' );
-
-// CUSTOMIZATION
-include_once( 'admin/customizer.php' );
-
 // TEMPLATES
 
 // ADMIN MODS
@@ -245,6 +240,3 @@ function spine_theme_admin_styles() {
 	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/admin/editor.css' );
 }
 add_action( 'admin_enqueue_scripts', 'spine_theme_admin_styles' );
-
-// Ad Hoc Sections
-// include_once('admin/sections.php');
