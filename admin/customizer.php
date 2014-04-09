@@ -68,34 +68,7 @@ function spine_customize_register($wp_customize){
         ),
     ));
     
-<<<<<<< HEAD
      
-=======
-     // Theme Options
-
-    $wp_customize->add_section('section_spine_style', array(
-        'title'    => __('Spine: Style', 'spine'),
-        'priority' => 200,
-    ));
-    
-    $wp_customize->add_setting('spine_options[canvas_style]', array(
-        'default'        => 'bookmark',
-        'capability'     => 'edit_theme_options',
-        'type'           => 'option',
-    ));
-    
-    $wp_customize->add_control('spine_canvas_style', array(
-        'settings'   => 'spine_options[canvas_style]',
-        'label'      => __('Canvas Style', 'spine'),
-        'section'    => 'section_spine_style',
-        'type'       => 'select',
-        'choices'    => array(
-            'Default'  => 'Default Block',
-            'Skeletal' => 'skeletal',
-            'Bookmark' => 'bookmark'
-        ),
-    ));
->>>>>>> FETCH_HEAD
     
     
     // Bleed Spine Leftward
