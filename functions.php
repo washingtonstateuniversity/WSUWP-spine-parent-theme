@@ -125,7 +125,8 @@ add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
 // SECTIONING
 
 function spine_is_sub() {
-    global $post;
+    $post = get_post();
+
     if ( is_page() && $post->post_parent ) {
         return $post->post_parent;
     } else {
