@@ -134,35 +134,6 @@ function spine_is_sub() {
 	}
 }
 
-function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
-	if ( empty( $sectional ) ) {
-		$sectional = 'subsection';
-	}
-
-	if ( empty( $attribute ) || 'slug' == $attribute ) {
-		$attribute = 'post_name';
-	}
-
-	if ( 'title' == $attribute ) {
-		$attribute = 'post_title';
-	}
-
-	$subsections = get_post_ancestors( get_the_ID() );
-	if ( ! empty( $subsections ) ) {
-		$subsection = get_post( $subsections[0] );
-		$sections = array_reverse( $subsections );
-		$section = get_post( $sections[0] );
-
-		if ( isset( $sectional ) && in_array( $sectional, array( 'section', 'top' ) ) ) {
-			return $section->$attribute;
-		} else {
-			return $subsection->$attribute;
-		}
-	}
-
-	return null;
-}
-
 add_filter( 'body_class','spine_speckled_body_classes' );
 /**
  * Add randomized body classes.
