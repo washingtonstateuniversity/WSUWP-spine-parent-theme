@@ -40,7 +40,7 @@ function spine_get_main_header() {
 
 	$site_name          = get_bloginfo( 'name', 'display' );
 	$site_tagline       = get_bloginfo( 'description', 'display' );
-	$page_title	        = get_the_title();
+	$page_title         = get_the_title();
 	$post_title         = get_the_title();
 	$section_title      = spine_section_meta( 'title', 'section' );
 	$subsection_title   = spine_section_meta( 'title', 'subsection' );
