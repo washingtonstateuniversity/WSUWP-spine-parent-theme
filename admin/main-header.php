@@ -94,7 +94,7 @@ function spine_get_main_header() {
 	// of a custom post type, use the post type's label as the sub header. Otherwise
 	// use the title of the page_for_posts page.
 	if ( is_single() ) {
-		if ( 0 === $page_for_posts || ! is_singular( 'posts' ) ) {
+		if ( 0 === $page_for_posts || ! is_singular( 'post' ) ) {
 			$post = get_post();
 			$post_type = get_post_type_object( get_post_type( $post ) );
 			$sub_header_default = $post_type->labels->name;
