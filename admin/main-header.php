@@ -16,7 +16,7 @@ function spine_get_main_header() {
 	$section_title      = spine_section_meta( 'title', 'section' );
 	$subsection_title   = spine_section_meta( 'title', 'subsection' );
 
-	$sup_header_default	  = '<a href="' . home_url( '/' ) . '" rel="home">' . $site_name . '</a>';
+	$sup_header_default	  = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
 	$sub_header_default   = spine_section_meta( 'title', 'subsection' );
 	$sup_header_alternate = '';
 	$sub_header_alternate = '';
