@@ -1,21 +1,23 @@
-<?php $spine_main_header_values = spine_get_main_header(); ?>
+<?php
 
-<?php /* Available Values
+/**
+ * Retrieve an array of values to be used in the header.
+ *
+ * site_name
+ * site_tagline
+ * page_title
+ * post_title
+ * section_title
+ * subsection_title
+ * posts_page_title
+ * sup_header_default
+ * sub_header_default
+ * sup_header_alternate
+ * sub_header_alternate
+ */
+$spine_main_header_values = spine_get_main_header();
 
-	'site_name'				=>	$site_name,
-	'site_tagline'			=>	$site_tagline,
-	'page_title'			=>	$page_title,
-	'post_title'			=>	$post_title,
-	'section_title'			=>	$section_title,
-	'subsection_title'		=>	$subsection_title,
-	'posts_page_title'		=>	$posts_page_title,
-	'sup_header_default'	=>	$sup_header_default,
-	'sub_header_default'	=>	$sub_header_default,
-	'sup_header_alternate'	=>	$sup_header_alternate,
-	'sub_header_alternate'	=>	$sub_header_alternate
-
-*/ ?>
-
+?>
 <header class="spine-bookmark main-header">
 	<div class="header-group hgroup">
 		
