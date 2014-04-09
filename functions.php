@@ -44,14 +44,22 @@ function spine_theme_setup_theme() {
 	add_image_size( 'billboard-image', 1584, 99163 );
 }
 
-// DEFAULTS
-
-// Condense verbose menu classes
-add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10, 3 );
-function spine_abbridged_menu_classes( $classes, $item, $args ) {
-	if ( in_array( ('current-menu-item'), $classes ) || in_array( ('current_page_parent'), $classes ) ) {
+add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10 );
+/**
+ * Condense verbose menu classes provided by WordPress.
+ *
+ * Removes the default current-menu-item and current_page_parent classes
+ * if they are found on this page view and replaces them with 'current'.
+ *
+ * @param array $classes Current list of nav menu classes.
+ *
+ * @return array Modified list of nav menu classes.
+ */
+function spine_abbridged_menu_classes( $classes ) {
+	if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
 		return array( 'current' );
 	}
+
 	return array();
 }
 
