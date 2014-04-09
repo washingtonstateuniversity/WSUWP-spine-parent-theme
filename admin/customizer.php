@@ -75,7 +75,7 @@ function spine_customize_register($wp_customize){
         'priority' => 200,
     ));
     
-    $wp_customize->add_setting('spine_style[canvas_style]', array(
+    $wp_customize->add_setting('spine_options[canvas_style]', array(
         'default'        => 'bookmark',
         'capability'     => 'edit_theme_options',
         'type'           => 'option',
