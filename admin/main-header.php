@@ -119,7 +119,6 @@ function spine_get_main_header() {
 		$sub_header_default = $site_tagline;
 	}
 
-	// @todo If page_for_posts is not set, sup and sub are the same (?)
 	if ( is_home() && ! is_front_page() ) {
 		$sup_header_default = $site_name;
 
