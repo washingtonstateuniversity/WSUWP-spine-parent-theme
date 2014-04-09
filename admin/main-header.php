@@ -120,6 +120,8 @@ function spine_get_main_header() {
 		}
 	}
 
+	$sup_header_default = apply_filters( 'spine_sup_header_default', $sup_header_default );
+	$sub_header_default = apply_filters( 'spine_sub_header_default', $sub_header_default );
 
 	$main_header_elements = array(
 		'site_name'				=>	$site_name,
