@@ -1,7 +1,7 @@
 <?php
 
-include_once( 'admin/main-header.php' ); // Include main header functionality.
-include_once( 'admin/customizer.php' ); // Include customizer functionality.
+include_once( 'includes/main-header.php' ); // Include main header functionality.
+include_once( 'includes/customizer.php' ); // Include customizer functionality.
 
 // Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
@@ -216,7 +216,7 @@ add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
 // Add CSS files
 function spine_theme_admin_styles() {
-	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/admin/admin.css' );
-	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/admin/editor.css' );
+	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
+	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
 }
 add_action( 'admin_enqueue_scripts', 'spine_theme_admin_styles' );
