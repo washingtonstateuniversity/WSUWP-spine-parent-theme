@@ -277,7 +277,7 @@ function spine_customize_register($wp_customize){
    // Style Options
 
     $wp_customize->add_section('section_spine_style', array(
-        'title'    => __('Spine: Style', 'spine'),
+        'title'    => __('Spine: Theme', 'spine'),
         'priority' => 400,
     ));
     
@@ -295,6 +295,26 @@ function spine_customize_register($wp_customize){
         'choices'    => array(
             'skeletal' => 'Skeletal (none)',
             'bookmark' => 'Bookmark'
+        ),
+    ));
+    
+    $wp_customize->add_setting('spine_style[secondary_colors]', array(
+        'default'        => 'gray',
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+    
+    $wp_customize->add_control('spine_secondary_colors', array(
+        'settings'   => 'spine_style[secondary_colors]',
+        'label'      => __('Secondary Colors', 'spine'),
+        'section'    => 'section_spine_style',
+        'type'       => 'select',
+        'choices'    => array(
+            'gray' => 'Gray (none)',
+            'green' => 'Green',
+            'orange' => 'Orange',
+            'blue' => 'Blue',
+            'yellow' => 'Yellow'
         ),
     ));
  
