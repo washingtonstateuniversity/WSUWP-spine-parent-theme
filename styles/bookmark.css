@@ -1,0 +1,32 @@
+/* Bookmark Style */
+.style-bookmark .main-header {
+	background: #981e32;
+	position: relative;
+	top: 0px;
+	left: 330px;
+	width: 2000px;
+	border: 0px;
+	width: 200%;
+	}
+.main-header .header-group {
+	position: absolute;
+	bottom: 1em;
+	left: 1.5em;
+	width: 396px;
+	}
+.size-lt-medium .main-header {
+	left: 0px;
+	}
+.size-lt-medium .header-group {
+	left: 2em;
+	}
+.sup-header-default,
+.sub-header-default {
+	display: block;
+	line-height: 1em;
+	}
+.main-header sup a {
+	font-size: .9em;
+	color: #e6e8e9;
+	text-transform: uppercase;
+	}
