@@ -29,13 +29,13 @@
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>	
 	
 	<!-- FAVICON -->
-	<link rel="shortcut icon" href="http://repo.wsu.edu/spine/1/favicon.ico" />
+	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
 	
 	<!-- RESPOND -->
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	
 	<!-- DOCS -->
-	<link type="text/plain" rel="author" href="http://repo.wsu.edu/spine/1/authors.txt" />
+	<link type="text/plain" rel="author" href="//repo.wsu.edu/spine/1/authors.txt" />
 	<link type="text/html" rel="docs" href="http://brand.wsu.edu/media/web" />
 	
 	<!-- ANALYTICS -->
