@@ -12,11 +12,13 @@
 		'grid_style'     => 'hybrid',
 		'spine_color'    => 'white',
 		'large_format'   => '',
+		'theme_style'   => 'bookmark',
 		'broken_binding' => false,
 	);
 	$spine_options = wp_parse_args( $spine_options, $defaults );
 
 	$grid_style = $spine_options['grid_style'];
+	$theme_style = $spine_options['theme_style'];
 	$spine_color = $spine_options['spine_color'];
 	$large_format = $spine_options['large_format'];
 	$binder_broken = $spine_options['broken_binding'];
@@ -26,7 +28,10 @@
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>	
+	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
+	
+	<!-- Stylesheet to incorporate into queue -->
+	<link href="<?php echo get_stylesheet_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
@@ -50,5 +55,5 @@
 
 <body <?php body_class(); ?>>
 
-<div id="jacket">
+<div id="jacket" class="style-<?php echo esc_attr( $theme_style ); ?>">
 <div id="binder" class="<?php echo esc_attr( $grid_style ); echo esc_attr( $large_format ); echo esc_attr( $binder_broken ); ?>">
