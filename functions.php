@@ -5,13 +5,24 @@ include_once( 'includes/customizer.php' ); // Include customizer functionality.
 
 add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
 /**
- * Enqueue scripts required for front end pageviews.
- *
- * The spine requires more of jQuery UI than WordPress core has available
- * in default packages, so we pull that in from the Google CDN.
+ * Enqueue scripts and styles required for front end pageviews.
  */
 function spine_wp_enqueue_scripts() {
+	// Much relies on the main stylesheet provided by the WSU Spine.
+	wp_enqueue_style( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.css', array(), false );
+
+	// By default, the current theme (parent or child) has its stylesheet enqueued. If a child
+	// theme would like to also enqueue the parent theme's (this) stylesheet, it should either
+	// use @import inside the child stylesheet or, better yet, use wp_dequeue_style( 'spine-theme' )
+	// to remove this default and add both the child and parent stylesheets with new instances
+	// of wp_enqueue_style().
+	wp_enqueue_style( 'spine-theme', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ) );
+
+	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
+	// For this reason, we'll pull the entire package from the Google CDN.
 	wp_enqueue_script( 'wsu-jquery-ui-full', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
+
+	// Much relies on the main Javascript provided by the WSU Spine.
 	wp_enqueue_script( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), false, false );
 }
 
