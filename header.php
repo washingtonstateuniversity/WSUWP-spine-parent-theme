@@ -39,10 +39,6 @@
 	<!-- RESPOND -->
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	
-	<!-- COMPATIBILITY -->
-	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<noscript><style>#spine #spine-sitenav ul ul li { display: block !important; }</style></noscript>
-	
 	<!-- DOCS -->
 	<link type="text/plain" rel="author" href="http://repo.wsu.edu/spine/1/authors.txt" />
 	<link type="text/html" rel="docs" href="http://brand.wsu.edu/media/web" />
@@ -51,6 +47,10 @@
 	<!-- Your analytics code here -->
 	
 	<?php wp_head(); ?>
+
+	<!-- COMPATIBILITY -->
+	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<noscript><style>#spine #spine-sitenav ul ul li { display: block !important; }</style></noscript>
 </head>
 
 <body <?php body_class(); ?>>
