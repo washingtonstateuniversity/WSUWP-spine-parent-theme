@@ -3,6 +3,18 @@
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer.php' ); // Include customizer functionality.
 
+add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
+/**
+ * Enqueue scripts required for front end pageviews.
+ *
+ * The spine requires more of jQuery UI than WordPress core has available
+ * in default packages, so we pull that in from the Google CDN.
+ */
+function spine_wp_enqueue_scripts() {
+	wp_enqueue_script( 'wsu-jquery-ui-full', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), false, false );
+}
+
 // Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
 function spine_theme_menus() {

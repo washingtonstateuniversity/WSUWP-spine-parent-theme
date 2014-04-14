@@ -39,12 +39,6 @@
 	<!-- RESPOND -->
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	
-	<!-- SCRIPTS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="http://repo.wsu.edu/spine/1/spine.min.js"></script>
-	<!-- Your supplementary scripts here -->
-	
 	<!-- COMPATIBILITY -->
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<noscript><style>#spine #spine-sitenav ul ul li { display: block !important; }</style></noscript>
