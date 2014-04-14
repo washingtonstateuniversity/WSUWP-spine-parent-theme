@@ -26,6 +26,15 @@ function spine_wp_enqueue_scripts() {
 	wp_enqueue_script( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), false, false );
 }
 
+add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
+/**
+ * Enqueue styles required for admin pageviews.
+ */
+function spine_admin_enqueue_scripts() {
+	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
+	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
+}
+
 // Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
 function spine_theme_menus() {
@@ -233,13 +242,3 @@ function spine_theme_excerpt_more() {
 }
 add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 
-// TEMPLATES
-
-// ADMIN MODS
-
-// Add CSS files
-function spine_theme_admin_styles() {
-	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
-	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
-}
-add_action( 'admin_enqueue_scripts', 'spine_theme_admin_styles' );
