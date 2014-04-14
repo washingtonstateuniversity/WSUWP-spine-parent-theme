@@ -44,7 +44,7 @@
 	<?php wp_head(); ?>
 
 	<!-- COMPATIBILITY -->
-	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<noscript><style>#spine #spine-sitenav ul ul li { display: block !important; }</style></noscript>
 </head>
 
