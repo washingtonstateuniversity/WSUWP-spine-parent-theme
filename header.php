@@ -51,8 +51,6 @@
 	<!-- Your analytics code here -->
 	
 	<?php wp_head(); ?>
-	<script>$ = jQuery;</script>
-
 </head>
 
 <body <?php body_class(); ?>>
