@@ -31,7 +31,7 @@
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
 	
 	<!-- Stylesheet to incorporate into queue -->
-	<link href="<?php echo get_stylesheet_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo get_template_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
@@ -41,7 +41,7 @@
 	
 	<!-- DOCS -->
 	<link type="text/plain" rel="author" href="//repo.wsu.edu/spine/1/authors.txt" />
-	<link type="text/html" rel="docs" href="http://brand.wsu.edu/media/web" />
+	<link type="text/html" rel="help" href="http://brand.wsu.edu/media/web" />
 	
 	<!-- ANALYTICS -->
 	<!-- Your analytics code here -->
