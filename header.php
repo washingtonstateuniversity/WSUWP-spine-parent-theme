@@ -31,7 +31,7 @@
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
 	
 	<!-- Stylesheet to incorporate into queue -->
-	<link href="<?php echo get_stylesheet_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo get_template_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
