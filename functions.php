@@ -78,6 +78,8 @@ function spine_wp_enqueue_scripts() {
 	// of wp_enqueue_style().
 	wp_enqueue_style( 'spine-theme', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 
+	wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
 	wp_enqueue_script( 'wsu-jquery-ui-full', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );

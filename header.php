@@ -8,9 +8,6 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
 	
-	<!-- Stylesheet to incorporate into queue -->
-	<link href="<?php echo esc_url( get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css' );?>" rel="stylesheet" type="text/css" />
-	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
 	
