@@ -29,6 +29,33 @@ function spine_get_script_version() {
 	return $script_version;
 }
 
+/**
+ * Retrieve the requested spine option from the database.
+ *
+ * @param string $option_name The option name or key to retrieve.
+ *
+ * @return mixed The value of the option if found. False if not found.
+ */
+function spine_get_option( $option_name ) {
+	$spine_options = get_option( 'spine_options' );
+
+	// Defaults for the spine options will be compared to what is stored in spine_options.
+	$defaults = array(
+		'grid_style'     => 'hybrid',
+		'spine_color'    => 'white',
+		'large_format'   => '',
+		'theme_style'    => 'bookmark',
+		'broken_binding' => false,
+	);
+	$spine_options = wp_parse_args( $spine_options, $defaults );
+
+	if ( isset( $spine_options[ $option_name ] ) ) {
+		return $spine_options[ $option_name ];
+	} else {
+		return false;
+	}
+}
+
 add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
 /**
  * Enqueue scripts and styles required for front end pageviews.
