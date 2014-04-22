@@ -41,11 +41,21 @@ function spine_get_option( $option_name ) {
 
 	// Defaults for the spine options will be compared to what is stored in spine_options.
 	$defaults = array(
-		'grid_style'     => 'hybrid',
-		'spine_color'    => 'white',
-		'large_format'   => '',
-		'theme_style'    => 'bookmark',
-		'broken_binding' => false,
+		'grid_style'                => 'hybrid',
+		'spine_color'               => 'white',
+		'large_format'              => '',
+		'theme_style'               => 'bookmark',
+		'broken_binding'            => false,
+		'contact_name'              => 'Washington State University',
+		'contact_department'        => '',
+		'contact_url'               => 'http://wsu.edu',
+		'contact_streetAddress'     => 'PO Box 641227',
+		'contact_addressLocality'   => 'Pullman, WA',
+		'contact_postalCode'        => '99164',
+		'contact_telephone'         => '(509) 335-3564',
+		'contact_email'             => 'info@wsu.edu',
+		'contact_ContactPoint'      => '',
+		'contact_ContactPointTitle' => 'Contact Page...',
 	);
 	$spine_options = wp_parse_args( $spine_options, $defaults );
 
