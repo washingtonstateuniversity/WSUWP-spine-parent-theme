@@ -1,7 +1,6 @@
 <footer>
 
 <nav id="wsu-social-channels">
-	
 	<ul>
 	<?php
 		foreach( spine_social_options() as $socialite => $social_url ) {
