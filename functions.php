@@ -58,6 +58,10 @@ function spine_get_option( $option_name ) {
 		'contact_ContactPoint'      => '',
 		'contact_ContactPointTitle' => 'Contact Page...',
 	);
+
+	// A child theme can override all spine option defaults with the spine_option_defaults filter.
+	$defaults = apply_filters( 'spine_option_defaults', $defaults );
+
 	$spine_options = wp_parse_args( $spine_options, $defaults );
 
 	// Special handling for the broken_binding option, which should only be one of two options.
@@ -72,6 +76,9 @@ function spine_get_option( $option_name ) {
 	} elseif ( 'bleed' === $option_name ) {
 		$spine_options[ $option_name ] = '';
 	}
+
+	// A child theme can override a specific spine option with the spine_option filter.
+	$spine_options[ $option_name ] = apply_filters( 'spine_option', $spine_options[ $option_name ], $option_name );
 
 	if ( isset( $spine_options[ $option_name ] ) ) {
 		return $spine_options[ $option_name ];
