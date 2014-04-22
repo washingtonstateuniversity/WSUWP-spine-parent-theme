@@ -46,6 +46,7 @@ function spine_get_option( $option_name ) {
 		'large_format'              => '',
 		'theme_style'               => 'bookmark',
 		'broken_binding'            => false,
+		'bleed'                     => false,
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',
 		'contact_url'               => 'http://wsu.edu',
