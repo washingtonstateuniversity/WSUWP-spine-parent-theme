@@ -5,10 +5,6 @@
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
 
 <?php
-	$grid_style = spine_get_option( 'grid_style' );
-	$theme_style = spine_get_option( 'theme_style' );
-	$spine_color = spine_get_option( 'spine_color' );
-	$large_format = spine_get_option( 'large_format' );
 	$binder_broken = spine_get_option( 'binder_broken' );
 ?>
 
@@ -23,7 +19,7 @@
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
 	
 	<!-- Stylesheet to incorporate into queue -->
-	<link href="<?php echo get_template_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo esc_url( get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css' );?>" rel="stylesheet" type="text/css" />
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
@@ -47,5 +43,5 @@
 
 <body <?php body_class(); ?>>
 
-<div id="jacket" class="style-<?php echo esc_attr( $theme_style ); ?>">
-<div id="binder" class="<?php echo esc_attr( $grid_style ); echo esc_attr( $large_format ); echo esc_attr( $binder_broken ); ?>">
+<div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); ?>">
+<div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( $binder_broken ); ?>">
