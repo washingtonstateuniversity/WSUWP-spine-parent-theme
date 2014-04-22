@@ -52,7 +52,7 @@ function spine_get_option( $option_name ) {
 	// Special handling for the broken_binding option, which should only be one of two options.
 	if ( 'broken_binding' === $option_name && true == $spine_options[ $option_name ] ) {
 		$spine_options[ $option_name ] = ' broken';
-	} else {
+	} elseif ( 'broken_binding' === $option_name ) {
 		$spine_options[ $option_name ] = '';
 	}
 
