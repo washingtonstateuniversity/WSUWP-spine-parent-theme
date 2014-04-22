@@ -1,8 +1,3 @@
-<?php // Settings
-	if ( !isset($cropping) ) { $cropping = ''; } else { $cropping = ' '.$cropping; }
-
-?>
-	
 <div id="spine" class="<?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo esc_attr( spine_get_option( 'bleed' ) ); ?> shelved">
 <div id="glue" class="clearfix">
 
