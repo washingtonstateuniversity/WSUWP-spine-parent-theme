@@ -1,7 +1,7 @@
 <?php
 
 // Global version tracker.
-$wsuwp_spine_theme_version = '0.1.1';
+$wsuwp_spine_theme_version = '0.1.2';
 
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer.php' ); // Include customizer functionality.
@@ -71,14 +71,27 @@ function spine_wp_enqueue_scripts() {
 	// Much relies on the main stylesheet provided by the WSU Spine.
 	wp_enqueue_style( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.css', array(), spine_get_script_version() );
 
-	// By default, the current theme (parent or child) has its stylesheet enqueued. If a child
-	// theme would like to also enqueue the parent theme's (this) stylesheet, it should either
-	// use @import inside the child stylesheet or, better yet, use wp_dequeue_style( 'spine-theme' )
-	// to remove this default and add both the child and parent stylesheets with new instances
-	// of wp_enqueue_style().
-	wp_enqueue_style( 'spine-theme', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
-
-	wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+	/**
+	 * By default, a child theme has 3 styles enqueued—the main stylesheet, an extra stylesheet per the theme_style
+	 * option, and the child stylesheet. The parent theme has 2 styles enqueued—the main stylesheet and the extra
+	 * stylesheet defined by the theme_style option.
+	 *
+	 * If a child theme would like to provide all styles and **not** rely on the parent theme, it should dequeue
+	 * the parent style with something like the following:
+	 *
+	 *     wp_dequeue_style( 'spine-theme' );
+	 *     wp_dequeue_style( 'spine-theme-extra' );
+	 *
+	 * In all cases, the main spine CSS is enqueued separately from this logic. See above.
+	 */
+	if ( is_child_theme() ) {
+		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme-child', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+	} else {
+		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
