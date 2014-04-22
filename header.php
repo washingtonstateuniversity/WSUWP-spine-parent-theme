@@ -4,24 +4,16 @@
 <!--[if IE 8]><html class="no-js no-svg lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
 
+<?php
+	$grid_style = spine_get_option( 'grid_style' );
+	$theme_style = spine_get_option( 'theme_style' );
+	$spine_color = spine_get_option( 'spine_color' );
+	$large_format = spine_get_option( 'large_format' );
+	$binder_broken = spine_get_option( 'binder_broken' );
+?>
+
 <?php // CUSTOMIZATION
-	$spine_options = get_option( 'spine_options' );
 
-	// Defaults for the spine options will be compared to what is stored in spine_options.
-	$defaults = array(
-		'grid_style'     => 'hybrid',
-		'spine_color'    => 'white',
-		'large_format'   => '',
-		'theme_style'   => 'bookmark',
-		'broken_binding' => false,
-	);
-	$spine_options = wp_parse_args( $spine_options, $defaults );
-
-	$grid_style = $spine_options['grid_style'];
-	$theme_style = $spine_options['theme_style'];
-	$spine_color = $spine_options['spine_color'];
-	$large_format = $spine_options['large_format'];
-	$binder_broken = $spine_options['broken_binding'];
 	if ( isset($binder_broken) && ($binder_broken == true)) { $binder_broken = " broken"; } else { $binder_broken = ""; }
 	?>
 
