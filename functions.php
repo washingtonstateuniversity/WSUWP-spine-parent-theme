@@ -49,6 +49,13 @@ function spine_get_option( $option_name ) {
 	);
 	$spine_options = wp_parse_args( $spine_options, $defaults );
 
+	// Special handling for the broken_binding option, which should only be one of two options.
+	if ( 'broken_binding' === $option_name && true == $spine_options[ $option_name ] ) {
+		$spine_options[ $option_name ] = ' broken';
+	} else {
+		$spine_options[ $option_name ] = '';
+	}
+
 	if ( isset( $spine_options[ $option_name ] ) ) {
 		return $spine_options[ $option_name ];
 	} else {

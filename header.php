@@ -3,16 +3,6 @@
 <!--[if IE 7]><html class="no-js no-svg lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]><html class="no-js no-svg lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
-
-<?php
-	$binder_broken = spine_get_option( 'broken_binding' );
-?>
-
-<?php // CUSTOMIZATION
-
-	if ( isset($binder_broken) && ($binder_broken == true)) { $binder_broken = " broken"; } else { $binder_broken = ""; }
-	?>
-
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -44,4 +34,4 @@
 <body <?php body_class(); ?>>
 
 <div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); ?>">
-<div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( $binder_broken ); ?>">
+<div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( spine_get_option( 'broken_binding' ) ); ?>">
