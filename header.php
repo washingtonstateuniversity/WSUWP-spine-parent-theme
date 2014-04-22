@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
 
 <?php
-	$binder_broken = spine_get_option( 'binder_broken' );
+	$binder_broken = spine_get_option( 'broken_binding' );
 ?>
 
 <?php // CUSTOMIZATION
