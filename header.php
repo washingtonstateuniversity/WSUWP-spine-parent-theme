@@ -20,7 +20,9 @@
 	
 	<!-- ANALYTICS -->
 	<!-- Your analytics code here -->
-	
+
+	<!-- SCRIPTS and STYLES -->
+	<!-- Custom scripts and styles should be added with wp_enqueue_script() and wp_enqueue_style() -->
 	<?php wp_head(); ?>
 
 	<!-- COMPATIBILITY -->
