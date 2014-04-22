@@ -56,6 +56,12 @@ function spine_get_option( $option_name ) {
 		$spine_options[ $option_name ] = '';
 	}
 
+	if ( 'bleed' === $option_name && true == $spine_options[ $option_name ] ) {
+		$spine_options[ $option_name ] = ' bleed';
+	} elseif ( 'bleed' === $option_name ) {
+		$spine_options[ $option_name ] = '';
+	}
+
 	if ( isset( $spine_options[ $option_name ] ) ) {
 		return $spine_options[ $option_name ];
 	} else {

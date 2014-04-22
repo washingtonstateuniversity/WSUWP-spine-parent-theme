@@ -1,10 +1,9 @@
 <?php // Settings
 	if ( !isset($cropping) ) { $cropping = ''; } else { $cropping = ' '.$cropping; }
-	$spine_options = get_option( 'spine_options' );
-	if ( isset($spine_options['bleed']) && ($spine_options['bleed'] == true)) { $spine_bleed = ' bleed'; } else { $spine_bleed = ''; }
+
 ?>
 	
-<div id="spine" class="<?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo $spine_bleed; ?> shelved">
+<div id="spine" class="<?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo esc_attr( spine_get_option( 'bleed' ) ); ?> shelved">
 <div id="glue" class="clearfix">
 
 <?php get_template_part('spine/header'); ?>
