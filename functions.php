@@ -69,6 +69,40 @@ function spine_get_option( $option_name ) {
 	}
 }
 
+/**
+ * Provide an array of social options when requested. These are originally
+ * added through the theme customizer.
+ *
+ * @return array Class attributes and URLs for each configured social network.
+ */
+function spine_social_options() {
+	$spine_options = get_option( 'spine_options' );
+
+	$social = array();
+
+	if ( isset( $spine_options['social_spot_one_type'] ) && $spine_options['social_spot_one_type'] != "none" ) {
+		$key = $spine_options['social_spot_one_type'];
+		$social[ $key ] = $spine_options['social_spot_one'];
+	}
+
+	if ( isset( $spine_options['social_spot_two_type'] ) && $spine_options['social_spot_two_type'] != "none" ) {
+		$key = $spine_options['social_spot_two_type'];
+		$social[ $key ] = $spine_options['social_spot_two'];
+	}
+
+	if ( isset( $spine_options['social_spot_three_type'] ) && $spine_options['social_spot_three_type'] != "none" ) {
+		$key = $spine_options['social_spot_three_type'];
+		$social[ $key ] = $spine_options['social_spot_three'];
+	}
+
+	if ( isset( $spine_options['social_spot_four_type'] ) && $spine_options['social_spot_four_type'] != "none" ) {
+		$key = $spine_options['social_spot_four_type'];
+		$social[ $key ] = $spine_options['social_spot_four'];
+	}
+
+	return $social;
+}
+
 add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
 /**
  * Enqueue scripts and styles required for front end pageviews.
