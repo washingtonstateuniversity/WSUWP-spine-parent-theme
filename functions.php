@@ -1,7 +1,7 @@
 <?php
 
 // Global version tracker.
-$wsuwp_spine_theme_version = '0.1.1';
+$wsuwp_spine_theme_version = '0.1.2';
 
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer.php' ); // Include customizer functionality.
@@ -29,6 +29,98 @@ function spine_get_script_version() {
 	return $script_version;
 }
 
+/**
+ * Retrieve the requested spine option from the database.
+ *
+ * @param string $option_name The option name or key to retrieve.
+ *
+ * @return mixed The value of the option if found. False if not found.
+ */
+function spine_get_option( $option_name ) {
+	$spine_options = get_option( 'spine_options' );
+
+	// Defaults for the spine options will be compared to what is stored in spine_options.
+	$defaults = array(
+		'grid_style'                => 'hybrid',
+		'spine_color'               => 'white',
+		'large_format'              => '',
+		'theme_style'               => 'bookmark',
+		'broken_binding'            => false,
+		'bleed'                     => false,
+		'contact_name'              => 'Washington State University',
+		'contact_department'        => '',
+		'contact_url'               => 'http://wsu.edu',
+		'contact_streetAddress'     => 'PO Box 641227',
+		'contact_addressLocality'   => 'Pullman, WA',
+		'contact_postalCode'        => '99164',
+		'contact_telephone'         => '(509) 335-3564',
+		'contact_email'             => 'info@wsu.edu',
+		'contact_ContactPoint'      => '',
+		'contact_ContactPointTitle' => 'Contact Page...',
+	);
+
+	// A child theme can override all spine option defaults with the spine_option_defaults filter.
+	$defaults = apply_filters( 'spine_option_defaults', $defaults );
+
+	$spine_options = wp_parse_args( $spine_options, $defaults );
+
+	// Special handling for the broken_binding option, which should only be one of two options.
+	if ( 'broken_binding' === $option_name && true == $spine_options[ $option_name ] ) {
+		$spine_options[ $option_name ] = ' broken';
+	} elseif ( 'broken_binding' === $option_name ) {
+		$spine_options[ $option_name ] = '';
+	}
+
+	if ( 'bleed' === $option_name && true == $spine_options[ $option_name ] ) {
+		$spine_options[ $option_name ] = ' bleed';
+	} elseif ( 'bleed' === $option_name ) {
+		$spine_options[ $option_name ] = '';
+	}
+
+	// A child theme can override a specific spine option with the spine_option filter.
+	$spine_options[ $option_name ] = apply_filters( 'spine_option', $spine_options[ $option_name ], $option_name );
+
+	if ( isset( $spine_options[ $option_name ] ) ) {
+		return $spine_options[ $option_name ];
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Provide an array of social options when requested. These are originally
+ * added through the theme customizer.
+ *
+ * @return array Class attributes and URLs for each configured social network.
+ */
+function spine_social_options() {
+	$spine_options = get_option( 'spine_options' );
+
+	$social = array();
+
+	if ( isset( $spine_options['social_spot_one_type'] ) && $spine_options['social_spot_one_type'] != "none" ) {
+		$key = $spine_options['social_spot_one_type'];
+		$social[ $key ] = $spine_options['social_spot_one'];
+	}
+
+	if ( isset( $spine_options['social_spot_two_type'] ) && $spine_options['social_spot_two_type'] != "none" ) {
+		$key = $spine_options['social_spot_two_type'];
+		$social[ $key ] = $spine_options['social_spot_two'];
+	}
+
+	if ( isset( $spine_options['social_spot_three_type'] ) && $spine_options['social_spot_three_type'] != "none" ) {
+		$key = $spine_options['social_spot_three_type'];
+		$social[ $key ] = $spine_options['social_spot_three'];
+	}
+
+	if ( isset( $spine_options['social_spot_four_type'] ) && $spine_options['social_spot_four_type'] != "none" ) {
+		$key = $spine_options['social_spot_four_type'];
+		$social[ $key ] = $spine_options['social_spot_four'];
+	}
+
+	return $social;
+}
+
 add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
 /**
  * Enqueue scripts and styles required for front end pageviews.
@@ -37,12 +129,27 @@ function spine_wp_enqueue_scripts() {
 	// Much relies on the main stylesheet provided by the WSU Spine.
 	wp_enqueue_style( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.css', array(), spine_get_script_version() );
 
-	// By default, the current theme (parent or child) has its stylesheet enqueued. If a child
-	// theme would like to also enqueue the parent theme's (this) stylesheet, it should either
-	// use @import inside the child stylesheet or, better yet, use wp_dequeue_style( 'spine-theme' )
-	// to remove this default and add both the child and parent stylesheets with new instances
-	// of wp_enqueue_style().
-	wp_enqueue_style( 'spine-theme', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+	/**
+	 * By default, a child theme has 3 styles enqueued—the main stylesheet, an extra stylesheet per the theme_style
+	 * option, and the child stylesheet. The parent theme has 2 styles enqueued—the main stylesheet and the extra
+	 * stylesheet defined by the theme_style option.
+	 *
+	 * If a child theme would like to provide all styles and **not** rely on the parent theme, it should dequeue
+	 * the parent style with something like the following:
+	 *
+	 *     wp_dequeue_style( 'spine-theme' );
+	 *     wp_dequeue_style( 'spine-theme-extra' );
+	 *
+	 * In all cases, the main spine CSS is enqueued separately from this logic. See above.
+	 */
+	if ( is_child_theme() ) {
+		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme-child', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+	} else {
+		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.

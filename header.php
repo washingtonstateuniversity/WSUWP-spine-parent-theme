@@ -3,35 +3,10 @@
 <!--[if IE 7]><html class="no-js no-svg lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]><html class="no-js no-svg lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
-
-<?php // CUSTOMIZATION
-	$spine_options = get_option( 'spine_options' );
-
-	// Defaults for the spine options will be compared to what is stored in spine_options.
-	$defaults = array(
-		'grid_style'     => 'hybrid',
-		'spine_color'    => 'white',
-		'large_format'   => '',
-		'theme_style'   => 'bookmark',
-		'broken_binding' => false,
-	);
-	$spine_options = wp_parse_args( $spine_options, $defaults );
-
-	$grid_style = $spine_options['grid_style'];
-	$theme_style = $spine_options['theme_style'];
-	$spine_color = $spine_options['spine_color'];
-	$large_format = $spine_options['large_format'];
-	$binder_broken = $spine_options['broken_binding'];
-	if ( isset($binder_broken) && ($binder_broken == true)) { $binder_broken = " broken"; } else { $binder_broken = ""; }
-	?>
-
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
-	
-	<!-- Stylesheet to incorporate into queue -->
-	<link href="<?php echo get_template_directory_uri().'/styles/'.$theme_style.'.css';?>" rel="stylesheet" type="text/css" />
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
@@ -45,7 +20,9 @@
 	
 	<!-- ANALYTICS -->
 	<!-- Your analytics code here -->
-	
+
+	<!-- SCRIPTS and STYLES -->
+	<!-- Custom scripts and styles should be added with wp_enqueue_script() and wp_enqueue_style() -->
 	<?php wp_head(); ?>
 
 	<!-- COMPATIBILITY -->
@@ -55,5 +32,5 @@
 
 <body <?php body_class(); ?>>
 
-<div id="jacket" class="style-<?php echo esc_attr( $theme_style ); ?>">
-<div id="binder" class="<?php echo esc_attr( $grid_style ); echo esc_attr( $large_format ); echo esc_attr( $binder_broken ); ?>">
+<div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); ?>">
+<div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( spine_get_option( 'broken_binding' ) ); ?>">
