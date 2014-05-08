@@ -1,10 +1,11 @@
-<div id="spine" class="<?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo esc_attr( spine_get_option( 'bleed' ) ); ?> shelved">
-<div id="glue" class="clearfix">
+<div id="spine" class="spine-column <?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo esc_attr( spine_get_option( 'bleed' ) ); ?> shelved">
+<div id="glue" class="spine-glue clearfix">
 
 <?php get_template_part('spine/header'); ?>
 
-<nav id="spine-navigation">
-	<nav id="spine-sitenav">
+<section id="spine-navigation" class="spine-navigation">
+
+	<nav id="spine-sitenav" class="spine-sitenav">
 	<?php
 	$site = array(
 		'theme_location'  => 'site',
@@ -23,7 +24,8 @@
 	wp_nav_menu( $site );
 	?>
 	</nav>
-	<nav id="spine-offsitenav">
+	
+	<nav id="spine-offsitenav" class="spine-offsitenav">
 	<?php 
 	$offsite = array(
 		'theme_location'  => 'offsite',
@@ -42,7 +44,8 @@
 	wp_nav_menu( $offsite );
 	?>
 	</nav>
-</nav>
+	
+</section>
 		
 <?php get_template_part('spine/footer'); ?>
 
