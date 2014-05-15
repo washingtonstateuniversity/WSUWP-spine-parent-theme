@@ -151,7 +151,7 @@ function spine_wp_enqueue_scripts() {
 		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 	}
 	
-	if ( $open_sans = 'true' ) {
+	if ( true == spine_get_option( 'open_sans' ) ) {
 		wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
 	} else { ; }
 
