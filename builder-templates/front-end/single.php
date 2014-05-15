@@ -1,8 +1,4 @@
 <?php
-/**
- * @package ttfmake
- */
-
 global $ttfmake_section_data;
 ?>
 

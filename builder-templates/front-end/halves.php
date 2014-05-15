@@ -1,8 +1,4 @@
 <?php
-/**
- * @package ttfmake
- */
-
 global $ttfmake_section_data;
 $sideleft_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
 ?>
