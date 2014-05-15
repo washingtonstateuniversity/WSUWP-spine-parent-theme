@@ -1,4 +1,4 @@
-WSUWP-spine-parent-theme
+WSUWP Spine Parent Theme
 ========================
 
-Provides the spine and skeleton framework for the WSU Web in WordPress
+Provides the [spine and skeleton framework](https://github.com/washingtonstateuniversity/wsu-spine) for the WSU Web in WordPress

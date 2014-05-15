@@ -6,6 +6,35 @@ $wsuwp_spine_theme_version = '0.1.2';
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
 
+add_action( 'init', 'spine_load_builder_module', 10 );
+/**
+ * If enabled at the platform or installation level, include the
+ * necessary files for the Make builder tool.
+ *
+ * Note: admin_init is too late for this to be brought in.
+ */
+function spine_load_builder_module() {
+	if ( true === apply_filters( 'spine_enable_builder_module', false ) ) {
+		include_once( 'inc/builder.php' );
+	}
+}
+
+add_filter( 'theme_page_templates', 'spine_show_builder_page_template', 10, 1);
+/**
+ * If builder functionality is not available, do not show the builder template
+ * on the list of available page templates.
+ *
+ * @param array $page_templates List of available page templates.
+ *
+ * @return array Modified list of page templates.
+ */
+function spine_show_builder_page_template( $page_templates ) {
+	if ( false === apply_filters( 'spine_enable_builder_module', false ) ) {
+		unset( $page_templates['template-builder.php'] );
+	}
+	return $page_templates;
+}
+
 /**
  * Creates a script version based on this theme, the WSUWP Platform, and
  * the platform's current version of WordPress if available.
