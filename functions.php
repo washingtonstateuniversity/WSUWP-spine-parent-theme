@@ -77,10 +77,12 @@ function spine_get_option( $option_name ) {
 		$spine_options[ $option_name ] = '';
 	}
 	
-	$spine_options = get_option( 'spine_options' );
+	/*
+$spine_options = get_option( 'spine_options' );
 	if ( 'open_sans' === $option_name && true == $spine_options[ $option_name ] ) {
 		$open_sans = 'true';
 	}
+*/
 
 	// A child theme can override a specific spine option with the spine_option filter.
 	$spine_options[ $option_name ] = apply_filters( 'spine_option', $spine_options[ $option_name ], $option_name );
@@ -156,9 +158,11 @@ function spine_wp_enqueue_scripts() {
 		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 	}
 	
+	/*
 	if ( $open_sans = 'true' ) {
-		wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
-	} else { ; }
+			wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
+		} else { ; }
+	*/
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
