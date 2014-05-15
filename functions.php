@@ -76,11 +76,6 @@ function spine_get_option( $option_name ) {
 	} elseif ( 'bleed' === $option_name ) {
 		$spine_options[ $option_name ] = '';
 	}
-	
-	$spine_options = get_option( 'spine_options' );
-	if ( 'open_sans' === $option_name && true == $spine_options[ $option_name ] ) {
-		$open_sans = 'true';
-	}
 
 	// A child theme can override a specific spine option with the spine_option filter.
 	$spine_options[ $option_name ] = apply_filters( 'spine_option', $spine_options[ $option_name ], $option_name );
