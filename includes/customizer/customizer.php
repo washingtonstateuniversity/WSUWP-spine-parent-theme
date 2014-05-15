@@ -214,6 +214,20 @@ function spine_customize_register($wp_customize){
         ),
     ));
     
+      // Include Open Sans
+    $wp_customize->add_setting('spine_options[opens_sans]', array(
+        'default'        => false,
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+ 
+    $wp_customize->add_control('spine_opens_sans', array(
+        'label'      => __('Enable Open Sans', 'spine'),
+        'section'    => 'section_spine_advanced_options',
+        'settings'   => 'spine_options[opens_sans]',
+        'type'       => 'checkbox'
+    ));
+    
     // Bleed Main Rightward
     $wp_customize->add_setting('spine_options[broken_binding]', array(
         'default'        => false,
@@ -227,6 +241,8 @@ function spine_customize_register($wp_customize){
         'settings'   => 'spine_options[broken_binding]',
         'type'       => 'checkbox'
     ));
+    
+    
     
     // Offer Dynamic Shortcuts
     /*$wp_customize->add_setting('spine_options[index_shortcuts]', array(
