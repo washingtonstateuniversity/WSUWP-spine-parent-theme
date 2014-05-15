@@ -4,7 +4,7 @@
 $wsuwp_spine_theme_version = '0.1.2';
 
 include_once( 'includes/main-header.php' ); // Include main header functionality.
-include_once( 'includes/customizer.php' ); // Include customizer functionality.
+include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
 
 /**
  * Creates a script version based on this theme, the WSUWP Platform, and
