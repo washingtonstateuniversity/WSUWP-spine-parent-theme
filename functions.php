@@ -43,29 +43,6 @@ function spine_load_builder_module() {
 }
 
 /**
- * Creates a script version based on this theme, the WSUWP Platform, and
- * the platform's current version of WordPress if available.
- *
- * In individual installations, only this theme's version will be used. In
- * the platform installation, this will help break cache on any major change.
- */
-function spine_get_script_version() {
-	global $wsuwp_spine_theme_version, $wsuwp_global_version, $wsuwp_wp_changeset;
-
-	$script_version = $wsuwp_spine_theme_version;
-
-	if ( null !== $wsuwp_global_version ) {
-		$script_version .= '-' . $wsuwp_global_version;
-	}
-
-	if ( null !== $wsuwp_wp_changeset ) {
-		$script_version .= '-' . $wsuwp_wp_changeset;
-	}
-
-	return $script_version;
-}
-
-/**
  * Retrieve the requested spine option from the database.
  *
  * @param string $option_name The option name or key to retrieve.
