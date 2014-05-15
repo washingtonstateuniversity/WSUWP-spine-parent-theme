@@ -29,6 +29,42 @@ function spine_get_script_version() {
 	return $script_version;
 }
 
+add_action( 'init', 'spine_load_builder_module', 10 );
+/**
+ * If enabled at the platform or installation level, include the
+ * necessary files for the Make builder tool.
+ *
+ * Note: admin_init is too late for this to be brought in.
+ */
+function spine_load_builder_module() {
+	if ( true === apply_filters( 'spine_enable_builder_module', false ) ) {
+		include_once( 'inc/builder.php' );
+	}
+}
+
+/**
+ * Creates a script version based on this theme, the WSUWP Platform, and
+ * the platform's current version of WordPress if available.
+ *
+ * In individual installations, only this theme's version will be used. In
+ * the platform installation, this will help break cache on any major change.
+ */
+function spine_get_script_version() {
+	global $wsuwp_spine_theme_version, $wsuwp_global_version, $wsuwp_wp_changeset;
+
+	$script_version = $wsuwp_spine_theme_version;
+
+	if ( null !== $wsuwp_global_version ) {
+		$script_version .= '-' . $wsuwp_global_version;
+	}
+
+	if ( null !== $wsuwp_wp_changeset ) {
+		$script_version .= '-' . $wsuwp_wp_changeset;
+	}
+
+	return $script_version;
+}
+
 /**
  * Retrieve the requested spine option from the database.
  *
@@ -75,11 +111,6 @@ function spine_get_option( $option_name ) {
 		$spine_options[ $option_name ] = ' bleed';
 	} elseif ( 'bleed' === $option_name ) {
 		$spine_options[ $option_name ] = '';
-	}
-	
-	$spine_options = get_option( 'spine_options' );
-	if ( 'open_sans' === $option_name && true == $spine_options[ $option_name ] ) {
-		$open_sans = 'true';
 	}
 
 	// A child theme can override a specific spine option with the spine_option filter.
@@ -156,9 +187,9 @@ function spine_wp_enqueue_scripts() {
 		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 	}
 	
-	if ( $open_sans = 'true' ) {
+	if ( true == spine_get_option( 'open_sans' ) ) {
 		wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
-	} else { ; }
+	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
