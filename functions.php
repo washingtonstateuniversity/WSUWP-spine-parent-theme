@@ -42,6 +42,22 @@ function spine_load_builder_module() {
 	}
 }
 
+add_filter( 'theme_page_templates', 'spine_show_builder_page_template', 10, 1);
+/**
+ * If builder functionality is not available, do not show the builder template
+ * on the list of available page templates.
+ *
+ * @param array $page_templates List of available page templates.
+ *
+ * @return array Modified list of page templates.
+ */
+function spine_show_builder_page_template( $page_templates ) {
+	if ( false === apply_filters( 'spine_enable_builder_module', false ) ) {
+		unset( $page_templates['template-builder.php'] );
+	}
+	return $page_templates;
+}
+
 /**
  * Retrieve the requested spine option from the database.
  *
