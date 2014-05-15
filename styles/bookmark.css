@@ -7,8 +7,8 @@
 	background-size: 100% auto;
 	}
 */
-.home main {
-	background: url('bookmark/backgrounds/letters/lightest-one-large.jpg') -15px -100px no-repeat;
+main {
+	background: url('bookmark/backgrounds/letters/lightest-one.jpg') 0px 0px no-repeat;
 	background-size: 615px auto;
 	}
 
@@ -32,7 +32,7 @@
 .main-header .header-group {
 	position: absolute;
 	bottom: 1em;
-	left: 1.5em;
+	left: 1em;
 	width: 396px;
 	}
 .size-lt-medium .main-header {
