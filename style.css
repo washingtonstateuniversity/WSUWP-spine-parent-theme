@@ -214,28 +214,15 @@ article footer a:hover {
 	}
 
 /* Wordpress */
+.alignleft {
+	float: right;
+	margin: 0 0 1em 1em;
+	}
 .alignright {
 	float: right;
+	margin: 0 1em 1em 0;
 	}
-.margin article figure.alignright {
-	margin: 10px -198px 10px 15px;
-	padding: 2px 0px 2px 10px;
-	color: rgba(166,173,176,0.85);
-	xxborder: 10px white solid;
-	xxbox-shadow: 0px 0px 1px gray;
-	border-left: 1px rgba(166,173,176,0.5) solid;
-	xxbackground: white;
-	xwidth: 1000px;
-	}
-.size-lt-medium .margin article figure.alignright {
-	padding: 0px;
-	border-left: none;
-	margin-left: 0px;
-	}
-.sidebar article figure.alignright {
-	margin: 10px -264px 10px 10px;
-	padding: 10px;
-	}
+
 .size-lt-medium .margin article .alignright,
 .size-lt-medium .sidebar article .alignright {
 	clear: both;

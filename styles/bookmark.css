@@ -60,3 +60,12 @@
 	font-weight: normal;
 	font-size: 2.5em;
 	}
+.row.margin figure.alignright {
+	width: 396px;
+	}	
+.size-gt-medium .row.margin figure.alignright {
+	margin: 5px -160px 10px 20px;
+	}
+.row.margin figure figcaption {
+	
+	}

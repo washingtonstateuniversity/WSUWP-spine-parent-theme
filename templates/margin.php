@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 
-<main class="spine-sideright-template">
+<main class="spine-margin-template spine-margin-right-template">
 
 <?php if ( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
