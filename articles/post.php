@@ -36,7 +36,12 @@
 			<?php if ( has_post_thumbnail()) : ?>
 				<figure class="article-thumbnail"><?php the_post_thumbnail(array(132,132,true)); ?></figure>
 			<?php endif; ?>
-			<?php the_excerpt( __( 'More', 'spine' ) ); ?>
+			<?php
+				if ( $post->post_excerpt ) {
+					the_excerpt();
+				} else {
+					the_content('<span class="default-more">More...</span>');
+				} ?>
 		</div><!-- .entry-summary -->
 	<?php else : ?>
 		<div class="article-body">
@@ -58,7 +63,7 @@
 				// Categorized In...
 				if ( has_category()) {
 					echo '<dl class="categorized">';
-					echo '<dt>Categorized</dt>';
+					echo '<dt><span class="categorized-default">Categorized</span></dt>';
 					foreach((get_the_category()) as $category) {
 					    echo '<dd><a href="'.get_category_link($category->cat_ID).'">' . $category->cat_name . '</a></dd>';
 					    }    
@@ -67,7 +72,7 @@
 				// Tagged As...
 				if ( has_tag()) {
 					echo '<dl class="tagged">';
-					echo '<dt>Tagged</dt>';
+					echo '<dt><span class="tagged-default">Tagged</span></dt>';
 					foreach((get_the_tags()) as $tag) {
 					    echo '<dd><a href="'.get_tag_link($tag->term_id).'">' . $tag->name . '</a></dd>';
 					    }    
