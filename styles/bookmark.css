@@ -34,15 +34,15 @@
 	}
 .main-header .header-group {
 	position: absolute;
-	bottom: 1em;
-	left: 1em;
+	xbottom: 1em;
+	xleft: 1em;
 	width: 396px;
 	}
 .size-lt-medium .main-header {
 	left: 0px;
 	}
 .size-lt-medium .header-group {
-	left: 2em;
+	xleft: 2em;
 	}
 .sup-header-default,
 .sub-header-default {
