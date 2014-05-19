@@ -35,6 +35,8 @@ main {
 	bottom: 0;
 	left: 0;
 	max-width: 792px;
+	padding-left: 2em;
+	padding-bottom: 1.5em;
 	}
 .main-header sup,
 .main-header sub {
@@ -43,7 +45,7 @@ main {
 	line-height: 1em;
 	vertical-align: baseline;
 	margin: 0px;
-	padding-left: 28px;
+	xxpadding-left: 28px;
 	width: 100%;
 	}
 .main-header a,
@@ -59,7 +61,7 @@ main {
 	}
 .main-header sub {
 	font-size: 2em;
-	padding-bottom: .5em;
+	xxpadding-bottom: .5em;
 	}
 .main-header sup span {
 	display: block;
@@ -80,25 +82,7 @@ main {
 */
 
 /* Figures and Images */
-xx.margin article div.alignright {
-	margin-right: -198px;
-	margin-left: 10px;
-	padding: 10px 0px 0px 10px;
-	border-left: 1px rgba(93,105,112,0.2) solid;
-	color: #a6adb0;
-	}
-xx.small aside.rightward,
-xx.small .margin article div.alignright {
-	display: block;
-	float: none;
-	clear: both;
-	margin: 10px 0px 10px 0px;
-	padding: 10px 0px 5px 0px;
-	border-left: none;
-	border-width: 1px 0px;
-	border-style: solid;
-	border-color: #e6e8e9;
-	}
+
 
 figure {
 	position: relative;
@@ -110,6 +94,21 @@ xxfigure .liner {
 	}
 figcaption {
 	padding: 5px 0px;
+	}
+	
+.alignleft {
+	float: left;
+	margin: 0 1em 1em 0;
+	}
+.alignright {
+	float: right;
+	margin: 0 0 1em 1em;
+	}
+.size-lt-large .alignleft,
+.size-lt-large .alignright {
+	clear: both;
+	float: none;
+	margin: 1em 0 1em 0;
 	}
 
 /* Pagers */
@@ -150,6 +149,7 @@ figure.article-thumbnail {
 	margin: 0px 0px 5px 10px;
 	xbackground: white;
 	}
+
 	
 /*  Block Level */
 dl dt {
@@ -213,46 +213,16 @@ article footer a:hover {
 	content: attr(data-default);
 	}
 
-/* Wordpress */
-.alignleft {
-	float: right;
-	margin: 0 0 1em 1em;
-	}
-.alignright {
-	float: right;
-	margin: 0 1em 1em 0;
-	}
 
-.size-lt-medium .margin article .alignright,
-.size-lt-medium .sidebar article .alignright {
-	clear: both;
-	float: none;
-	}
-.alignleft {
-	float: left;
-	margin: 1em 1em 0 0;
-	}
-.wp-edit-link {
-	position: fixed;
-	right: 0px;
-	bottom: 0px;
-	color: white;
-	background: #5e6a71;
-	display: block;
-	padding: 2px 12px;
-	font-size: .8em;
-	}
-.wp-edit-link:hover {
-	color: white;
-	background: #981e32;
-	}
 
 /* Admin Bar */
 @media (min-width: 989px) {
+/*
 body.admin-bar {
-    xpadding-top: 32px !important;
-    xpadding-bottom: 32px !important;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
 }
+*/
 .admin-bar #spine #glue {
 	margin-top: 32px;
 	}
