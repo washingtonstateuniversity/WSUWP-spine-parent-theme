@@ -1,27 +1,27 @@
-<?php /* Template Name: Margin */ ?>
+<?php /* Template Name: Side - Left */ ?>
 
 <?php get_header(); ?>
 
-<main class="spine-margin-template spine-margin-right-template">
+<main class="spine-sideleft-template">
 
 <?php if ( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
 <?php get_template_part('parts/headers'); ?> 
 
-<section class="row margin">
+<section class="row side-left">
 
 	<div class="column one">
 	
-		<?php get_template_part('articles/article'); ?>
+		<?php 
+		$column = get_post_meta( get_the_ID(), 'column-one', true );
+		if( ! empty( $column ) ) { echo $column; }
+		?>
 		
 	</div><!--/column-->
 	
 	<div class="column two">
 		
-		<?php 
-		$column = get_post_meta( get_the_ID(), 'column-two', true );
-		if( ! empty( $column ) ) { echo $column; }
-		?>
+		<?php get_template_part('articles/article'); ?>
 		
 	</div>
 
