@@ -263,17 +263,69 @@ function spine_abbridged_menu_classes( $classes ) {
 	return array();
 }
 
+
+/* Custom Excerpt */
+// Default Read More
+
+function spine_theme_excerpt_more() {
+	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '" >More</a>';
+}
+// add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
+
+function spine_trim_excerpt($text) {
+$raw_excerpt = $text;
+if ( '' == $text ) {
+    //Retrieve the post content. 
+    $text = get_the_content('');
+ 
+    //Delete all shortcode tags from the content. 
+    $text = strip_shortcodes( $text );
+ 
+    $text = apply_filters('the_content', $text);
+    $text = str_replace(']]>', ']]&gt;', $text);
+     
+    $allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
+    $text = strip_tags($text, $allowed_tags);
+     
+    $excerpt_word_count = 105;
+    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+     
+    $excerpt_end = '... <a href="'. get_permalink() . '"><span class="truncated-more-default">&raquo; More ...</span></a>';
+    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+     
+    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+    if ( count($words) > $excerpt_length ) {
+        array_pop($words);
+        $text = implode(' ', $words);
+        $text = $text . $excerpt_more;
+    } else {
+        $text = implode(' ', $words);
+    }
+}
+return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
+}
+//remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
+
+
+/* Add Image Sizes for Spine columns */
+// @jeremyfelt, I need help making these defaults instead of updated options
 add_action( 'admin_init', 'spine_theme_image_options' );
 function spine_theme_image_options() {
 	// Default Image Sizes
-	update_option( 'thumbnail_size_w', 198   );
-	update_option( 'thumbnail_size_h', 198   );
-	update_option( 'medium_size_w',    396   );
-	update_option( 'medium_size_h',    99163 );
-	update_option( 'large_size_w',     792   );
-	update_option( 'large_size_h',     99163 );
+	update_option( 'thumbnail_size_w', 	198   );
+	update_option( 'thumbnail_size_h', 	198   );
+	update_option( 'medium_size_w',    	396   );
+	update_option( 'medium_size_h',    	99164 );
+	update_option( 'large_size_w',     	792   );
+	update_option( 'large_size_h',     	99164 );
 	// update_option('full_size_w', 1980);
 	// update_option('full_size_h', 99163);
+	add_image_size( 'spine-thumb', 		198, 198, true );
+	add_image_size( 'spine-medium', 	396, 99164 );
+	add_image_size( 'spine-large', 		792, 99164 );
+	add_image_size( 'spine-xlarge', 	990, 99164 );
+	add_image_size( 'spine-1980', 		1980, 99164 );
 }
 
 /* Default Image Markup */
@@ -405,9 +457,5 @@ function spine_sectioned_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
-// Default Read More
-function spine_theme_excerpt_more() {
-	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '" >More</a>';
-}
-add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
+
 
