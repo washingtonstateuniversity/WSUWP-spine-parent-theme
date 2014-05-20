@@ -138,12 +138,14 @@ figcaption {
 main article header h2 {
 	margin-bottom: 0px;
 	}
-.article-header hgroup.source,
-.article-header .hgroup.source {
+.article-header .source {
 	text-transform: uppercase;
 	padding: 0px 0px 5px 0px;
-	font-size: .9em;
-	color: rgba(0,0,0,0.5);
+	color: #8d959a;
+	}
+.article-header .source {
+	font-size: 12px;
+	line-height: 1em;
 	}
 figure.article-thumbnail {
 	float: right;
