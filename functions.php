@@ -282,7 +282,7 @@ if ( '' == $text ) {
     $excerpt_word_count = 105;
     $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
      
-    $excerpt_end = '<a href="'. get_permalink($post->ID) . '">' . '&raquo; More ...' . '</a>';
+    $excerpt_end = '<a href="'.get_permalink(). '">' . '&raquo; More ...' . '</a>';
     $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
      
     $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
@@ -296,8 +296,8 @@ if ( '' == $text ) {
 }
 return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 }
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'spine_trim_excerpt');
+//remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
 
 
 /* @jeremyfelt, I'll leave it to you to convert these from 'update_option' to merely defaults. */
@@ -445,10 +445,4 @@ function spine_sectioned_body_classes( $classes ) {
 
 	return array_unique( $classes );
 }
-
-// Default Read More
-function spine_theme_excerpt_more() {
-	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '" >More</a>';
-}
-add_filter( 'excerpt_more', 'spine_theme_excerpt_more' );
 

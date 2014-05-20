@@ -32,17 +32,35 @@
 	</header>
 	
 	<?php if ( !is_singular() ) : ?>
+	
 		<div class="article-summary">
+		
 			<?php if ( has_post_thumbnail()) : ?>
+			
 				<figure class="article-thumbnail"><?php the_post_thumbnail(array(132,132,true)); ?></figure>
+				
 			<?php endif; ?>
+			
 			<?php
+			
 				if ( $post->post_excerpt ) {
-					the_excerpt();
+				
+					echo get_the_excerpt();
+					echo '<a href="'.get_permalink().'"><span class="excerpt-more-default">&raquo; More ...</span></a>';
+					
+					
+				} elseif (strstr($post->post_content,'<!--more-->')) {
+				
+					the_content('<span class="content-more-default">&raquo; More ...</span>');
+					
 				} else {
-					the_content('<span class="default-more">More...</span>');
+				
+					the_excerpt();
+					
 				} ?>
-		</div><!-- .entry-summary -->
+							
+		</div><!-- .article-summary -->
+	
 	<?php else : ?>
 		<div class="article-body">
 			<?php the_content(); ?>
