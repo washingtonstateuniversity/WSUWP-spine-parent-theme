@@ -239,7 +239,11 @@ function spine_theme_setup_theme() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 198, 198, true );
 
+	// @todo evaluate these
 	add_image_size( 'teaser-image', 198, 198, true );
+	add_image_size( 'spine-thumbnail_size', 198, 198, true );
+
+	add_image_size( 'spine-medium_size', 396, 99164 );
 	add_image_size( 'header-image', 792, 99163 );
 	add_image_size( 'billboard-image', 1584, 99163 );
 }
@@ -310,10 +314,6 @@ function spine_theme_image_options() {
 	update_option( 'medium_size_h',    99164 );
 	update_option( 'large_size_w',     792   );
 	update_option( 'large_size_h',     99164 );
-	// update_option('full_size_w', 1980);
-	// update_option('full_size_h', 99163);
-	add_image_size( 'spine-thumbnail_size', 198, 198, true );
-	add_image_size( 'spine-medium_size', 396, 99164 );
 }
 
 
