@@ -1,8 +1,8 @@
 <?php
-global $ttfmake_section_data;
+global $ttfmake_section_data, $ttfmake_sections;
 ?>
 
-<section class="single row builder-section <?php echo esc_attr( ttfmake_get_builder_save()->section_classes( $ttfmake_section_data ) ); ?>">
+<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="single row builder-section <?php echo esc_attr( ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
 	<div class="column one">
 		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>
 			<header class="builder-section-header">
