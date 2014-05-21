@@ -239,7 +239,11 @@ function spine_theme_setup_theme() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 198, 198, true );
 
+	// @todo evaluate these
 	add_image_size( 'teaser-image', 198, 198, true );
+	add_image_size( 'spine-thumbnail_size', 198, 198, true );
+
+	add_image_size( 'spine-medium_size', 396, 99164 );
 	add_image_size( 'header-image', 792, 99163 );
 	add_image_size( 'billboard-image', 1584, 99163 );
 }
@@ -298,24 +302,6 @@ return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 }
 //remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
-
-
-/* @jeremyfelt, I'll leave it to you to convert these from 'update_option' to merely defaults. */
-add_action( 'admin_init', 'spine_theme_image_options' );
-function spine_theme_image_options() {
-	// Default Image Sizes
-	update_option( 'thumbnail_size_w', 198   );
-	update_option( 'thumbnail_size_h', 198   );
-	update_option( 'medium_size_w',    396   );
-	update_option( 'medium_size_h',    99164 );
-	update_option( 'large_size_w',     792   );
-	update_option( 'large_size_h',     99164 );
-	// update_option('full_size_w', 1980);
-	// update_option('full_size_h', 99163);
-	add_image_size( 'spine-thumbnail_size', 198, 198, true );
-	add_image_size( 'spine-medium_size', 396, 99164 );
-}
-
 
 /* Default Image Markup */
 
@@ -446,3 +432,25 @@ function spine_sectioned_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
+add_filter( 'wsuwp_install_default_image_sizes', 'spine_install_default_image_sizes' );
+/**
+ * Use the filter provided by the WSUWP Platform to modify the default image
+ * sizes whenever a new site is installed. Rather than using the passed parameters,
+ * we're currently overwriting the defaults with our own.
+ *
+ * @param array $image_sizes List of default image sizes.
+ *
+ * @return array Modified list of default image sizes.
+ */
+function spine_install_default_image_sizes( $image_sizes ) {
+	$image_sizes = array(
+		'thumbnail_size_w' => 198,
+		'thumbnail_size_h' => 198,
+		'medium_size_w'    => 396,
+		'medium_size_h'    => 99164,
+		'large_size_w'     => 792,
+		'large_size_h'     => 99164,
+	);
+
+	return $image_sizes;
+}
