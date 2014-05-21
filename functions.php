@@ -432,3 +432,25 @@ function spine_sectioned_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
+add_filter( 'wsuwp_install_default_image_sizes', 'spine_install_default_image_sizes' );
+/**
+ * Use the filter provided by the WSUWP Platform to modify the default image
+ * sizes whenever a new site is installed. Rather than using the passed parameters,
+ * we're currently overwriting the defaults with our own.
+ *
+ * @param array $image_sizes List of default image sizes.
+ *
+ * @return array Modified list of default image sizes.
+ */
+function spine_install_default_image_sizes( $image_sizes ) {
+	$image_sizes = array(
+		'thumbnail_size_w' => 198,
+		'thumbnail_size_h' => 198,
+		'medium_size_w'    => 396,
+		'medium_size_h'    => 99164,
+		'large_size_w'     => 792,
+		'large_size_h'     => 99164,
+	);
+
+	return $image_sizes;
+}
