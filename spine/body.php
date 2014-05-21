@@ -18,7 +18,7 @@
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
 		'items_wrap'      => '<ul>%3$s</ul>',
-		'depth'           => 3,
+		'depth'           => 5,
 		'walker'          => ''
 		);
 	wp_nav_menu( $site );
@@ -37,7 +37,7 @@
 		'menu_id'         => null,
 		'echo'            => true,
 		'fallback_cb'     => false,
-		'items_wrap'      => '<ul id="%1$s">%3$s</ul>',
+		'items_wrap'      => '<ul>%3$s</ul>',
 		'depth'           => 3,
 		'walker'          => ''
 	);
