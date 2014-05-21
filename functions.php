@@ -303,20 +303,6 @@ return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 //remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
 
-
-/* @jeremyfelt, I'll leave it to you to convert these from 'update_option' to merely defaults. */
-add_action( 'admin_init', 'spine_theme_image_options' );
-function spine_theme_image_options() {
-	// Default Image Sizes
-	update_option( 'thumbnail_size_w', 198   );
-	update_option( 'thumbnail_size_h', 198   );
-	update_option( 'medium_size_w',    396   );
-	update_option( 'medium_size_h',    99164 );
-	update_option( 'large_size_w',     792   );
-	update_option( 'large_size_h',     99164 );
-}
-
-
 /* Default Image Markup */
 
 add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
