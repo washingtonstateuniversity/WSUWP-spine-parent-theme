@@ -1,9 +1,9 @@
 <?php
-global $ttfmake_section_data;
+global $ttfmake_section_data, $ttfmake_sections;
 $text_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
 ?>
 
-<section class="row sidebar builder-section<?php echo esc_attr( ttfmake_builder_get_text_class( $ttfmake_section_data ) ); ?>">
+<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row sidebar builder-section<?php echo esc_attr( ttfmake_builder_get_text_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
 	<?php $count = 'one'; ?>
 	<?php if ( ! empty( $text_columns ) ) : foreach ( $text_columns as $column ) :
 		$link_front = '';
