@@ -43,15 +43,15 @@ if ( ! empty( $position ) ) {
 
 </section>
 
-<footer>
-<section class="row halves pager">
-	<div class="column one">
-		<?php previous_post_link(); ?> 
-	</div>
-	<div class="column two">
-		<?php next_post_link(); ?>
-	</div>
-</section><!--pager-->
+<footer class="main-footer">
+	<section class="row halves pager prevnext">
+		<div class="column one">
+			<?php previous_post_link(); ?> 
+		</div>
+		<div class="column two">
+			<?php next_post_link(); ?>
+		</div>
+	</section><!--pager-->
 </footer>
 
 </main><!--/#page-->
