@@ -15,20 +15,25 @@ $count = 'one';
 				$link_back = '</a>';
 			}
 			?>
-			<div class="column <?php echo $count; $count = 'two'; ?> builder-text-column">
+			<div class="column <?php echo $count; $count = 'two'; ?>">
+				<article>
+
 			<?php if ( 0 !== absint( $column['image-id'] ) ) : ?>
 				<figure class="builder-halves-image">
 					<?php echo $link_front . wp_get_attachment_image( $column['image-id'], 'larger' ) . $link_back; ?>
 				</figure>
 			<?php endif; ?>
+
 			<?php if ( '' !== $column['title'] ) : ?>
-				<h3 class="builder-halves-title"><?php echo apply_filters( 'the_title', $column['title'] ); ?></h3>
+				<header>
+					<h2><?php echo apply_filters( 'the_title', $column['title'] ); ?></h2>
+				</header>
 			<?php endif; ?>
+
 			<?php if ( '' !== $column['content'] ) : ?>
-				<div class="builder-sideleft-content">
-					<?php ttfmake_get_builder_save()->the_builder_content( $column['content'] ); ?>
-				</div>
+				<?php ttfmake_get_builder_save()->the_builder_content( $column['content'] ); ?>
 			<?php endif; ?>
+				</article>
 			</div>
 			<?php
 		}
