@@ -159,7 +159,7 @@ class Spine_Builder_Custom {
 }
 new Spine_Builder_Custom();
 
-function spine_get_halves_data( $ttfmake_section_data ) {
+function spine_get_two_column_data( $ttfmake_section_data ) {
 	$columns_number = 2;
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {

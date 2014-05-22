@@ -1,7 +1,7 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
 
-$data_columns = spine_get_halves_data( $ttfmake_section_data );
+$data_columns = spine_get_two_column_data( $ttfmake_section_data );
 $count = 'one';
 ?>
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row halves builder-section<?php echo esc_attr( ttfmake_builder_get_text_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">

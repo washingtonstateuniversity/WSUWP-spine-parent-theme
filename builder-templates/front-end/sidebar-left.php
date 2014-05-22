@@ -1,6 +1,6 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
-$sideleft_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
+$sideleft_columns = spine_get_two_column_data( $ttfmake_section_data );
 ?>
 
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row sideleft builder-section<?php echo esc_attr( ttfmake_builder_get_text_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
