@@ -1,0 +1,33 @@
+/*---------------------------------------------------------
+ Text and Gallery section (html-builder.css)
+-------------------------------------------------------- */
+.wsuwp-spine-halves-column{
+	margin-bottom: 40px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@media screen and ( min-width: 1160px ) {
+	.wsuwp-spine-halves-column {
+		margin-bottom: 0; /*reset*/
+	}
+}
+
+/*---------------------------------------------------------
+ Text and Gallery: Two column (html-builder.css)
+-------------------------------------------------------- */
+.wsuwp-spine-halves-column .wsuwp-spine-halves-column-position-2,
+.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
+	display: none;
+}
+@media screen and ( min-width: 1160px ) {
+	.wsuwp-spine-halves-column {
+		width: 50%;
+		float: left;
+		padding: 0 10px;
+	}
+}
+
+.wsuwp-spine-halves-column {
+	width: 50%;
+}

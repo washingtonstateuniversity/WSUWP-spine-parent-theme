@@ -9,6 +9,3 @@
 
 # Ignore PHPStorm project files.
 .idea
-
-# The Make builder core files
-/inc
