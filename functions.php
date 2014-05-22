@@ -239,13 +239,11 @@ function spine_theme_setup_theme() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 198, 198, true );
 
-	// @todo evaluate these
-	add_image_size( 'teaser-image', 198, 198, true );
 	add_image_size( 'spine-thumbnail_size', 198, 198, true );
-
-	add_image_size( 'spine-medium_size', 396, 99164 );
-	add_image_size( 'header-image', 792, 99163 );
-	add_image_size( 'billboard-image', 1584, 99163 );
+	add_image_size( 'spine-small_size', 396, 99164 );
+	add_image_size( 'spine-medium_size', 792, 99164 );
+	add_image_size( 'spine-large_size', 990, 99164 );
+	add_image_size( 'spine-xlarge_size', 1188, 99164 );
 }
 
 add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10 );
@@ -286,7 +284,7 @@ if ( '' == $text ) {
     $excerpt_word_count = 105;
     $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
      
-    $excerpt_end = '<a href="'.get_permalink(). '">' . '&raquo; More ...' . '</a>';
+    $excerpt_end = '... <a href="'.get_permalink(). '">' . '&raquo; More ...' . '</a>';
     $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
      
     $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
