@@ -50,7 +50,7 @@ class Spine_Builder_Custom {
 			'builder-templates/'
 		);
 
-		ttfmake_add_section(
+		/*ttfmake_add_section(
 			'wsuwpcolumns',
 			'Columns',
 			get_template_directory_uri() . '/inc/builder-custom/images/columns.png',
@@ -60,7 +60,7 @@ class Spine_Builder_Custom {
 			'front-end/columns',
 			100,
 			'builder-templates/'
-		);
+		);*/
 
 		ttfmake_add_section(
 			'wsuwphalves',

@@ -1,7 +1,6 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
 ?>
-
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single">
 	<div class="column one">
 		<article>
