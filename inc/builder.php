@@ -26,7 +26,7 @@ class Spine_Builder_Custom {
 		wp_enqueue_script( 'wsuwp-modify-make-list', get_template_directory_uri() . '/inc/builder-custom/js/edit-sections.js', array('jquery'), spine_get_script_version(), true );
 
 		wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
-		wp_enqueue_script( 'wsuwp-builder-halves', get_template_directory_uri() . '/builder-templates/js/halves.js', array(), spine_get_script_version(), true );
+		wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
 		wp_localize_script(
 			'ttfmake-admin-edit-page',
@@ -68,7 +68,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/halves.png',
 			'Two column layout with equal size columns.',
 			array( $this, 'save_columns' ),
-			'admin/halves',
+			'admin/two-columns',
 			'front-end/halves',
 			100,
 			'builder-templates/'
@@ -80,7 +80,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/sideleft.png',
 			'Two column layout with the right side larger than the left.',
 			array( $this, 'save_columns' ),
-			'admin/sidebar-left',
+			'admin/two-columns',
 			'front-end/sidebar-left',
 			100,
 			'builder-templates/'
@@ -92,7 +92,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/sidebar.png',
 			'Two column layout with the left side larger than the right.',
 			array( $this, 'save_columns' ),
-			'admin/sidebar-right',
+			'admin/two-columns',
 			'front-end/sidebar-right',
 			100,
 			'builder-templates/'
