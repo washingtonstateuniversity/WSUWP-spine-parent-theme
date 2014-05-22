@@ -65,8 +65,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
-		console.log(view.model.get('sectionType'));
-		if ('wsuwphalves' === view.model.get('sectionType')) {
+		var two_column_views = [ 'wsuwphalves', 'wsuwpsidebarleft', 'wsuwpsidebarright' ];
+		if ( -1 !== $.inArray( view.model.get('sectionType'), two_column_views ) ) {
 			oneApp.initializeHalvesColumnSortables(view);
 		}
 	});
