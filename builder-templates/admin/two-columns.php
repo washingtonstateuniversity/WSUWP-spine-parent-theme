@@ -12,7 +12,6 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 		<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
 			<?php
 			$column_name = $section_name . '[columns][' . $i . ']';
-			$image_id = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
 			$title    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
 			$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
 			?>
