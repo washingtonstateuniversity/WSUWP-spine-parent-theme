@@ -1,0 +1,467 @@
+/*---------------------------------------------------------
+ Defaults (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-titlediv {
+	position: relative;
+	margin-bottom: 15px;
+}
+.ttfmake-titlediv .ttfmake-title {
+	width: 100%;
+	height: 1.7em;
+	font-size: 1.5em;
+	line-height: 100%;
+	margin: 0;
+}
+.ttfmake-titlediv ::-webkit-input-placeholder {
+	line-height: 1.4em;
+}
+.clear {
+	clear: both;
+}
+.wp-core-ui .button.ttfmake-button-large {
+	font-size: 14px;
+	height: 38px;
+	line-height: 36px;
+}
+@media screen and ( max-width: 782px ) {
+	.wp-core-ui .button.ttfmake-button-large {
+		height: 33px;
+		line-height: 1;
+	}
+}
+.gform_media_link {
+	width: 28px;
+	overflow: hidden;
+}
+.gform_media_icon {
+	position: relative;
+	top: 1px;
+}
+@media screen and ( max-width: 782px ) {
+.gform_media_icon {
+	top: 2px;
+}
+}
+/*---------------------------------------------------------
+ Builder (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-stage {
+	clear: both;
+	padding-top: 10px;
+}
+.ttfmake-stage-closed {
+	padding-top: 0; /*reset*/
+}
+.ttfmake-select {
+	text-align: right;
+	padding: 0 0 12px;
+}
+/*---------------------------------------------------------
+ Sections (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-section,
+.ttfmake-banner-slide {
+	overflow: hidden;
+	width: 100%;
+	margin-bottom: 9px;
+	background-color: #ffffff;
+	border: 1px solid #dfdfdf;
+	border-bottom: 0; /*reset*/
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+.ttfmake-section:hover,
+.ttfmake-banner-slide:hover {
+	border: 1px solid #999999;
+	border-bottom: 0; /*reset*/
+}
+.ttfmake-section-open:hover,
+.ttfmake-banner-slide-open:hover {
+	border: 1px solid #999999;
+}
+.ttfmake-section:hover .ttfmake-section-header h3,
+.ttfmake-banner-slide:hover .ttfmake-banner-slide-header h3 {
+	border-bottom: 1px solid #999999;
+}
+.ttfmake-section-open:hover,
+.ttfmake-section-open:hover .ttfmake-section-header h3,
+.ttfmake-banner-slide-open:hover,
+.ttfmake-banner-slide-open:hover .ttfmake-banner-slide-header h3 {
+	border-color: #dfdfdf;
+}
+.ttfmake-section-body {
+	display: none;
+	float: left;
+	width: 100%;
+	padding: 12px 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ttfmake-section-open .ttfmake-section-body {
+	display: block;
+}
+.ttfmake-section-header-title {
+	max-width: 90%;
+	display: inline-block;
+}
+.ttfmake-section h4 {
+	font-size: 13px;
+}
+.ttfmake-section-header h3,
+.ttfmake-banner-slide-header h3 {
+	float: left;
+	width: 100%;
+	color: #222222;
+	font-size: 13px !important;
+	font-weight: 700 !important;
+	font-family: 'Open Sans', sans-serif !important;
+	line-height: 1.7 !important;
+	background-color: #fafafa;
+	border-bottom: 1px solid #dfdfdf;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ttfmake-section-header span {
+	font-weight: bold;
+}
+.ttfmake-section-header em {
+	font-weight: normal !important;
+	font-style: normal !important;
+	color: #777777;
+	margin-left: 6px;
+}
+.ttfmake-section .handlediv {
+	position: relative;
+}
+.ttfmake-section-toggle:focus {
+	border: none !important;
+}
+.ttfmake-section-toggle .handlediv,
+.ttfmake-banner-slide-toggle .handlediv {
+	top: -38px;
+	right: 0; /*reset*/
+	margin-bottom: -38px;
+}
+@media screen and ( max-width: 782px ) {
+	.ttfmake-section-toggle .handlediv,
+	.ttfmake-banner-slide-toggle .handlediv {
+		top: -44px;
+		margin-bottom: -44px;
+	}
+}
+.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
+.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
+	content: '\f140';
+}
+.ttfmake-stage .ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
+.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
+	content: '\f142';
+}
+.ttfmake-media-link-wrap {
+	margin-bottom: 8px;
+}
+.ttfmake-media-uploader-add {
+	display: inline-block;
+	cursor: pointer;
+}
+.ttfmake-section-remove,
+.ttfmake-gallery-item-remove,
+.ttfmake-banner-slide-remove {
+	display: inline-block;
+	clear: both;
+	margin-bottom: 0; /*reset*/
+	padding: 0 0 8px 0;  /*reset*/
+	color: #a00;
+	border-bottom: 0;  /*reset*/
+	text-decoration: none;  /*reset*/
+	outline: none !important;
+}
+.ttfmake-section-remove {
+	margin-top: 40px;
+}
+.ttfmake-gallery-item-remove,
+.ttfmake-banner-slide-remove {
+	margin-top: 20px;
+}
+.ttfmake-section-remove:hover,
+.ttfmake-gallery-item-remove:hover,
+.ttfmake-banner-slide-remove:hover {
+	color: #ff0000;
+}
+.ttfmake-uploader {
+	margin: 20px 0;
+}
+.ttfmake-media-uploader-placeholder {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 228px;
+	margin-bottom: 4px;
+	background-color: #fafafa;
+	border: 1px solid #dfdfdf;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ttfmake-media-uploader-placeholder:before {
+	content: "\f128";
+	display: block;
+	opacity: .15;
+	font: 60px/228px dashicons;
+	text-align: center;
+}
+.ttfmake-media-uploader-placeholder:hover:before {
+	opacity: .2;
+}
+.ttfmake-media-uploader-placeholder img {
+	position: absolute;
+	max-width: 100%;
+	max-height: 228px;
+	width: auto;
+	height: auto;
+	top: 0; /*reset*/
+	right: 0; /*reset*/
+	bottom: 0; /*reset*/
+	left: 0; /*reset*/
+	margin: auto;
+	padding: 8px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ttfmake-section-body iframe {
+	background: #ffffff !important;
+}
+.section-type-description {
+	height: 73px;
+	margin-top: 5px;
+	line-height: 1.35;
+}
+/*---------------------------------------------------------
+ Editor (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-section .wp_themeSkin table.mceToolbar {
+	padding: 1px;
+}
+.ttfmake-section #insert-jetpack-contact-form,
+.ttfmake-section #add_poll {
+	display: none;
+}
+/*---------------------------------------------------------
+ Open state (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-section-open,
+.ttfmake-banner-slide-open {
+	border-bottom: 1px solid #dfdfdf;
+}
+.ttfmake-banner-slide-open {
+	margin-bottom: 40px;
+}
+.ttfmake-section-header a {
+	float: right;
+	outline: 0; /*reset*/
+}
+/*---------------------------------------------------------
+ Common (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-show {
+	display: block;
+}
+.ttfmake-hide {
+	display: none;
+}
+/*---------------------------------------------------------
+ Menu (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-menu {
+	margin-top: -6px;
+}
+.ttfmake-menu-pane {
+	padding: 0 20px;
+	border: 1px solid #eeeeee;
+	border-top: none;
+	line-height: 0; /*reset*/
+}
+.ttfmake-menu-closed .ttfmake-menu-pane {
+	display: none;
+}
+.ttfmake-menu-list {
+	display: inline-block;
+	width: 100%;
+	margin: 20px 0 2px 0;
+}
+@media screen and (min-width: 1160px) {
+	.ttfmake-menu-list-item {
+		width: 100%;
+	}
+}
+@media screen and (min-width: 1260px) {
+	.ttfmake-menu-list-item {
+		width: 50%;
+	}
+}
+.ttfmake-menu-list h4,
+.ttfmake-menu-list p {
+	margin: 0; /*reset*/
+}
+.ttfmake-menu-list h4 {
+	margin-bottom: 4px;
+}
+.ttfmake-menu-list a {
+	text-decoration: none; /*reset*/
+	color: #777777 !important;
+}
+.ttfmake-menu-list a:hover {
+	color: #333333 !important;
+}
+.ttfmake-menu-list-item {
+	float: left;
+	width: 100%;
+	margin-bottom: 18px;
+	padding-right: 5%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@media screen and (min-width: 1160px) {
+	.ttfmake-menu-list-item {
+		width: 50%;
+	}
+}
+.ttfmake-menu-list-item a {
+	color: #21759b;
+}
+.ttfmake-menu-list-item a:hover {
+	color: #d54e21;
+}
+.ttfmake-menu-list-item:last-of-type {
+	margin-right: 0; /*reset*/
+}
+.ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
+	display: block;
+	opacity: 0;
+	width: 88px;
+	height: 78px;
+	background: url(images/section-icons-hover.png) center center no-repeat;
+	background-size: 36px 36px;
+	-webkit-transition: opacity .15s ease-in-out;
+	transition: opacity .15s ease-in-out;
+	-webkit-transition-delay: .05s;
+	transition-delay: .05s;
+}
+.ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
+	opacity: 1;
+}
+.ttfmake-menu-list-item-link-icon-wrapper {
+	float: left;
+	width: 88px;
+	height: 78px;
+	margin-right: 18px;
+	background-color: #fafafa;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 70px 60px;
+	border: 1px solid #dfdfdf;
+}
+.ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
+	border-color: #bbbbbb;
+}
+/*---------------------------------------------------------
+ Menu tab (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-menu-tab {
+	clear: both;
+	margin-top: -1px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.ttfmake-menu-tab-link span:after {
+	position: relative;
+	bottom: 1px;
+	font-size: 8px;
+	color: #dfdfdf;
+	padding-left: 4px;
+}
+.ttfmake-menu-opened .ttfmake-menu-tab-link span:after {
+	content: "\25B2";
+}
+.ttfmake-menu-closed .ttfmake-menu-tab-link span:after {
+	content: "\25BC";
+}
+.ttfmake-menu-tab-link:hover span:after {
+	color: #cccccc;
+}
+.ttfmake-menu-tab-link {
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid #eeeeee;
+	border-top: none;  /*reset*/
+	background: #ffffff;
+	color: #333;
+	text-decoration: none;  /*reset*/
+	outline: none !important; /*reset*/
+}
+@media screen and ( max-width: 782px ) {
+	.ttfmake-menu-tab-link {
+		padding: 10px 20px;
+	}
+}
+/*---------------------------------------------------------
+ Sortable handle (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-stage .sortable-placeholder {
+	margin-bottom: 8px;
+}
+.ttfmake-section .sortable-placeholder {
+	float: left;
+	margin: 0; /*reset*/
+	padding: 0; /*reset*/
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ttfmake-sortable-handle {
+	cursor: move;
+	width: 100%;
+	height: 14px;
+	margin-bottom: 8px;
+	padding-top: 8px;
+}
+.sortable-background {
+	height: 14px;
+	margin: 0 auto;
+	opacity: .5;
+	background: url(images/sortable-background.png) center center repeat-x;
+}
+.ttfmake-text-column:hover .sortable-background,
+.ttfmake-gallery-item:hover .sortable-background {
+	opacity: 1; /*reset*/
+}
+/*---------------------------------------------------------
+ Media button (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-media-button-text {
+	display: none;  /*reset*/
+}
+@media screen and (min-width: 1160px) {
+	.ttfmake-media-button-text {
+		display: inline;
+	}
+}
+.ttfmake-section #insert-media-button {
+	padding-right: 7px;
+}
+@media screen and (min-width: 1160px) {
+	.ttfmake-section #insert-media-button {
+		padding-right: 7px;
+	}
+}
+@media screen and ( max-width: 782px ) {
+	.ttfmake-section .wp-media-buttons span.wp-media-buttons-icon {
+		position: relative;
+		top: 2px;
+		padding-left: 10px !important;
+	}
+}

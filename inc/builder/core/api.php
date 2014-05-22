@@ -1,0 +1,176 @@
+<?php
+/**
+ * @package Make
+ */
+
+if ( ! class_exists( 'TTFMAKE_Sections' ) ) :
+/**
+ * Collector for builder sections.
+ *
+ * @since 1.0.0.
+ *
+ * Class TTFMAKE_Sections
+ */
+class TTFMAKE_Sections {
+	/**
+	 * The sections for the builder.
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @var   array    The sections for the builder.
+	 */
+	private $_sections = array();
+
+	/**
+	 * The one instance of TTFMAKE_Sections.
+	 *
+	 * @since 1.0.0.
+	 *
+	 * @var   TTFMAKE_Sections
+	 */
+	private static $instance;
+
+	/**
+	 * Instantiate or return the one TTFMAKE_Sections instance.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return TTFMAKE_Sections
+	 */
+	public static function instance() {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
+	 * Create a new section.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return TTFMAKE_Sections
+	 */
+	public function __constructor() {}
+
+	/**
+	 * Return the sections.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @return array    The array of sections.
+	 */
+	public function get_sections() {
+		return $this->_sections;
+	}
+
+	/**
+	 * Return the sections.
+	 *
+	 * @since  1.0.0.
+	 *
+	 * @param  string    $id                  Unique ID for the section. Alphanumeric characters only.
+	 * @param  string    $label               Name to display for the section.
+	 * @param  string    $description         Section description.
+	 * @param  string    $icon                URL to the icon for the display.
+	 * @param  string    $save_callback       Function to save the content.
+	 * @param  string    $builder_template    Path to the template used in the builder.
+	 * @param  string    $display_template    Path to the template used for the frontend.
+	 * @param  int       $order               The order in which to display the item.
+	 * @param  string    $path                The path to the template files.
+	 * @return void
+	 */
+	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
+		$this->_sections[ $id ] = array(
+			'id'               => $id,
+			'label'            => $label,
+			'icon'             => $icon,
+			'description'      => $description,
+			'save_callback'    => $save_callback,
+			'builder_template' => $builder_template,
+			'display_template' => $display_template,
+			'order'            => $order,
+			'path'             => $path,
+		);
+	}
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_sections_class' ) ) :
+/**
+ * Instantiate or return the one TTFMAKE_Sections instance.
+ *
+ * @since  1.0.0.
+ *
+ * @return TTFMAKE_Sections
+ */
+function ttfmake_get_sections_class() {
+	return TTFMAKE_Sections::instance();
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_sections' ) ) :
+/**
+ * Get the registered sections.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    The list of registered sections.
+ */
+function ttfmake_get_sections() {
+	return ttfmake_get_sections_class()->get_sections();
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_get_sections_by_order' ) ) :
+/**
+ * Get the registered sections by the order parameter.
+ *
+ * @since  1.0.0.
+ *
+ * @return array    The list of registered sections in the parameter order.
+ */
+function ttfmake_get_sections_by_order() {
+	$sections = ttfmake_get_sections_class()->get_sections();
+	usort( $sections, 'ttfmake_sorter' );
+	return $sections;
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_sorter' ) ) :
+/**
+ * Callback for `usort()` that sorts sections by order.
+ *
+ * @since  1.0.0.
+ *
+ * @param  mixed    $a    The first element.
+ * @param  mixed    $b    The second element.
+ * @return mixed          The result.
+ */
+function ttfmake_sorter( $a, $b ) {
+	return $a['order'] - $b['order'];
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_add_section' ) ) :
+/**
+ * Return the sections.
+ *
+ * @since  1.0.0.
+ *
+ * @param  string    $id                  Unique ID for the section. Alphanumeric characters only.
+ * @param  string    $label               Name to display for the section.
+ * @param  string    $description         Section description.
+ * @param  string    $icon                URL to the icon for the display.
+ * @param  string    $save_callback       Function to save the content.
+ * @param  string    $builder_template    Path to the template used in the builder.
+ * @param  string    $display_template    Path to the template used for the frontend.
+ * @param  int       $order               The order in which to display the item.
+ * @param  string    $path                The path to the template files.
+ * @return void
+ */
+function ttfmake_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
+	ttfmake_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path );
+}
+endif;
