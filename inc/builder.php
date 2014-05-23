@@ -15,6 +15,8 @@ class Spine_Builder_Custom {
 	}
 
 	public function enqueue_scripts() {
+		global $pagenow;
+
 		wp_enqueue_script(
 			'ttfmake-admin-edit-page',
 			get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js',
@@ -30,9 +32,10 @@ class Spine_Builder_Custom {
 
 		wp_localize_script(
 			'ttfmake-admin-edit-page',
-			'TTFMakeEditPage',
+			'ttfmakeEditPageData',
 			array(
-				'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'ttfmake' )
+				'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
+				'pageNow'       => esc_js( $pagenow ),
 			)
 		);
 	}
