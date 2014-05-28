@@ -71,12 +71,14 @@ function spine_get_option( $option_name ) {
 
 	// Defaults for the spine options will be compared to what is stored in spine_options.
 	$defaults = array(
+		'spine-version'             => '1',
 		'grid_style'                => 'hybrid',
 		'spine_color'               => 'white',
 		'large_format'              => '',
 		'theme_style'               => 'bookmark',
 		'broken_binding'            => false,
 		'bleed'                     => true,
+		'crop'			            => false,
 		'open_sans'                 => false,
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',

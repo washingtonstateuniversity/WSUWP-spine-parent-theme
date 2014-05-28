@@ -9,7 +9,7 @@ function spine_theme_customize_styles() {
 add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_styles' );
 
 function spine_theme_customize_scripts() {
-    wp_enqueue_script('customize-interface-scripts', get_template_directory_uri().'/includes/customize.js', array( 'jquery' ),'',true );
+    wp_enqueue_script('customize-interface-scripts', get_template_directory_uri().'/includes/customizer/customize.js', array( 'jquery' ),'',true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_scripts' );
 
@@ -67,10 +67,7 @@ function spine_customize_register($wp_customize){
             'velum' => 'Transparent'
         ),
     ));
-    
-     
-    
-    
+
     // Bleed Spine Leftward
     $wp_customize->add_setting('spine_options[bleed]', array(
         'default'        => false,
@@ -197,6 +194,24 @@ function spine_customize_register($wp_customize){
         'capability'     => 'edit_theme_options',
         'type'           => 'option',
     ));
+    
+    // Spine Version
+    $wp_customize->add_setting('spine_options[version]', array(
+        'default'        => '',
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+ 
+    $wp_customize->add_control('spine_version', array(
+        'label'      => __('Spine Version', 'spine'),
+        'section'    => 'section_spine_advanced_options',
+        'settings'   => 'spine_options[version]',
+        'type'       => 'select',
+        'choices'    => array(
+            ''  => '1.0'/*,
+            '1.1' => '1.1'   */  
+        ),
+    ));
  
     $wp_customize->add_control('spine_large_format', array(
         'label'      => __('Large Format', 'spine'),
@@ -214,17 +229,17 @@ function spine_customize_register($wp_customize){
         ),
     ));
     
-      // Include Open Sans
-    $wp_customize->add_setting('spine_options[opens_sans]', array(
+     // Cropped Spine
+    $wp_customize->add_setting('spine_options[crop]', array(
         'default'        => false,
         'capability'     => 'edit_theme_options',
         'type'           => 'option',
     ));
  
-    $wp_customize->add_control('spine_opens_sans', array(
-        'label'      => __('Enable Open Sans', 'spine'),
+    $wp_customize->add_control('spine_crop', array(
+        'label'      => __('Cropped Spine (homepage)', 'spine'),
         'section'    => 'section_spine_advanced_options',
-        'settings'   => 'spine_options[opens_sans]',
+        'settings'   => 'spine_options[crop]',
         'type'       => 'checkbox'
     ));
     
@@ -239,6 +254,21 @@ function spine_customize_register($wp_customize){
         'label'      => __('Bleed Main Right', 'spine'),
         'section'    => 'section_spine_advanced_options',
         'settings'   => 'spine_options[broken_binding]',
+        'type'       => 'checkbox'
+    ));
+    
+    
+    // Include Open Sans
+    $wp_customize->add_setting('spine_options[opens_sans]', array(
+        'default'        => false,
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+ 
+    $wp_customize->add_control('spine_opens_sans', array(
+        'label'      => __('Enable Open Sans', 'spine'),
+        'section'    => 'section_spine_advanced_options',
+        'settings'   => 'spine_options[opens_sans]',
         'type'       => 'checkbox'
     ));
     
