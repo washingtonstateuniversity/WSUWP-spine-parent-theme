@@ -4,7 +4,7 @@
 // http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/
 
 function spine_theme_customize_styles() {
-    wp_enqueue_style('customize-interface-styles', get_template_directory_uri() . '/includes/customize.css');
+    wp_enqueue_style('customize-interface-styles', get_template_directory_uri() . '/includes/customizer/customize.css');
 }
 add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_styles' );
 
@@ -259,16 +259,16 @@ function spine_customize_register($wp_customize){
     
     
     // Include Open Sans
-    $wp_customize->add_setting('spine_options[opens_sans]', array(
+    $wp_customize->add_setting('spine_options[open_sans]', array(
         'default'        => false,
         'capability'     => 'edit_theme_options',
         'type'           => 'option',
     ));
  
-    $wp_customize->add_control('spine_opens_sans', array(
+    $wp_customize->add_control('spine_open_sans', array(
         'label'      => __('Enable Open Sans', 'spine'),
         'section'    => 'section_spine_advanced_options',
-        'settings'   => 'spine_options[opens_sans]',
+        'settings'   => 'spine_options[open_sans]',
         'type'       => 'checkbox'
     ));
     
