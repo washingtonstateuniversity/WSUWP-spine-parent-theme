@@ -32,5 +32,12 @@
 
 <body <?php body_class(); ?>>
 
-<div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); ?>">
+<?php if ( spine_get_option( 'open_sans' ) == 'true' ) {
+		$opensans_included = " opensansy";
+	} else {
+		$opensans_included = "";
+	}
+?>
+
+<div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); echo $opensans_included; ?>">
 <div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( spine_get_option( 'broken_binding' ) ); ?>">

@@ -12,6 +12,9 @@
 .home main {
 	background: url('bookmark/backgrounds/letters/lightest-one.jpg') 0px 0px no-repeat;
 	background-size: 615px auto;
+	
+	}
+.home .opensansy main {
 	font-family: "OpenSans";
 	}
 
@@ -34,8 +37,6 @@
 	}
 .main-header .header-group {
 	position: absolute;
-	xbottom: 1em;
-	xleft: 1em;
 	width: 396px;
 	}
 .size-lt-medium .main-header {
@@ -53,6 +54,21 @@
 	font-size: .9em;
 	color: #e6e8e9;
 	text-transform: uppercase;
+	}
+	
+.opensansy .main-header sup {
+	font-family: "OpenSans-CondBold";
+	xxfont-family: "OpenSans-Semibold";
+	font-size: 16px;
+	font-weight: normal;
+	
+	}
+.opensansy .main-header sub {
+	font-family: "OpenSans-CondLight";
+	font-family: "OpenSans-Light";
+	font-size: 30px;
+	font-weight: normal;
+	
 	}
 	
 /* Articles */
