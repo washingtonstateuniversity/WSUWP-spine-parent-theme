@@ -26,8 +26,6 @@ class Spine_Builder_Custom {
 			true
 		);
 
-		wp_enqueue_script( 'wsuwp-modify-make-list', get_template_directory_uri() . '/inc/builder-custom/js/edit-sections.js', array('jquery'), spine_get_script_version(), true );
-
 		wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
 		wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
