@@ -11,7 +11,8 @@ class Spine_Builder_Custom {
 		}
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ),11 );
-		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 11 );
+		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
+		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 	}
 
 	public function enqueue_scripts() {
@@ -25,8 +26,6 @@ class Spine_Builder_Custom {
 			true
 		);
 
-		wp_enqueue_script( 'wsuwp-modify-make-list', get_template_directory_uri() . '/inc/builder-custom/js/edit-sections.js', array('jquery'), spine_get_script_version(), true );
-
 		wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
 		wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
@@ -38,6 +37,16 @@ class Spine_Builder_Custom {
 				'pageNow'       => esc_js( $pagenow ),
 			)
 		);
+	}
+
+	/**
+	 * Remove sections that were previously defined in the upstream Make project.
+	 */
+	public function remove_builder_sections() {
+		ttfmake_remove_section( 'text' );
+		ttfmake_remove_section( 'gallery' );
+		ttfmake_remove_section( 'banner' );
+		ttfmake_remove_section( 'blank' );
 	}
 
 	public function add_builder_sections() {
