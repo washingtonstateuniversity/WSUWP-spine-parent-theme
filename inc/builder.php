@@ -11,7 +11,8 @@ class Spine_Builder_Custom {
 		}
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ),11 );
-		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 11 );
+		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
+		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 	}
 
 	public function enqueue_scripts() {
@@ -38,6 +39,16 @@ class Spine_Builder_Custom {
 				'pageNow'       => esc_js( $pagenow ),
 			)
 		);
+	}
+
+	/**
+	 * Remove sections that were previously defined in the upstream Make project.
+	 */
+	public function remove_builder_sections() {
+		ttfmake_remove_section( 'text' );
+		ttfmake_remove_section( 'gallery' );
+		ttfmake_remove_section( 'banner' );
+		ttfmake_remove_section( 'blank' );
 	}
 
 	public function add_builder_sections() {
