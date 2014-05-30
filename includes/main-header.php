@@ -1,6 +1,11 @@
 <?php
 
 function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
+
+	if ( ! is_singular() && ! in_the_loop() ) {
+		return '';
+	}
+
 	if ( empty( $sectional ) ) {
 		$sectional = 'subsection';
 	}
