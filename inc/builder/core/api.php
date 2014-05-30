@@ -66,7 +66,7 @@ class TTFMAKE_Sections {
 	}
 
 	/**
-	 * Return the sections.
+	 * Add a section.
 	 *
 	 * @since  1.0.0.
 	 *
@@ -93,6 +93,20 @@ class TTFMAKE_Sections {
 			'order'            => $order,
 			'path'             => $path,
 		);
+	}
+
+	/**
+	 * Remove a section.
+	 *
+	 * @since  1.0.7.
+	 *
+	 * @param  string    $id    Unique ID for an existing section. Alphanumeric characters only.
+	 * @return void
+	 */
+	public function remove_section( $id ) {
+		if ( isset( $this->_sections[ $id ] ) ) {
+			unset( $this->_sections[ $id ] );
+		}
 	}
 }
 endif;
@@ -155,7 +169,7 @@ endif;
 
 if ( ! function_exists( 'ttfmake_add_section' ) ) :
 /**
- * Return the sections.
+ * Add a section.
  *
  * @since  1.0.0.
  *
@@ -172,5 +186,19 @@ if ( ! function_exists( 'ttfmake_add_section' ) ) :
  */
 function ttfmake_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
 	ttfmake_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path );
+}
+endif;
+
+if ( ! function_exists( 'ttfmake_remove_section' ) ) :
+/**
+ * Remove a defined section.
+ *
+ * @since  1.0.7.
+ *
+ * @param  string    $id    Unique ID for an existing section. Alphanumeric characters only.
+ * @return void
+ */
+function ttfmake_remove_section( $id ) {
+	ttfmake_get_sections_class()->remove_section( $id );
 }
 endif;
