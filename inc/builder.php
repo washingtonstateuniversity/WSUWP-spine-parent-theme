@@ -18,25 +18,27 @@ class Spine_Builder_Custom {
 	public function enqueue_scripts() {
 		global $pagenow;
 
-		wp_enqueue_script(
-			'ttfmake-admin-edit-page',
-			get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js',
-			array( 'jquery' ),
-			TTFMAKE_VERSION,
-			true
-		);
+		if ( 'page' === get_current_screen()->id ) {
+			wp_enqueue_script(
+				'ttfmake-admin-edit-page',
+				get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js',
+				array( 'jquery' ),
+				TTFMAKE_VERSION,
+				true
+			);
 
-		wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
-		wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
+			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
+			wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
-		wp_localize_script(
-			'ttfmake-admin-edit-page',
-			'ttfmakeEditPageData',
-			array(
-				'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
-				'pageNow'       => esc_js( $pagenow ),
-			)
-		);
+			wp_localize_script(
+				'ttfmake-admin-edit-page',
+				'ttfmakeEditPageData',
+				array(
+					'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
+					'pageNow'       => esc_js( $pagenow ),
+				)
+			);
+		}
 	}
 
 	/**
