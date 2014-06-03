@@ -39,7 +39,8 @@
 	}
 ?>
 
-<?php do_action( 'spine_pre_jacket_html' ); ?>
-
+<?php get_template_part('parts/body-before.php'); ?> 
 <div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); echo $opensans_included; ?>">
+<?php get_template_part('parts/jacket-before.php'); ?> 
 <div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( spine_get_option( 'broken_binding' ) ); ?>">
+<?php get_template_part('parts/binder-before.php'); ?>
