@@ -354,3 +354,14 @@ function ttfmake_sidebar_list_enabled( $location ) {
 	return $enabled_views;
 }
 endif;
+
+if( ! function_exists( 'ttfmake_is_plus' ) ) :
+	/**
+	 * Parts of the page builder templates look for the plus version of Make.
+	 * 
+	 * @return bool
+	 */
+	function ttfmake_is_plus() {
+		return false;
+	}
+endif;
