@@ -35,7 +35,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 
 		/**
-		 * This is a bit of a back. In the quicktags.js script, the buttons are only added when this variable is
+		 * This is a bit of a hack. In the quicktags.js script, the buttons are only added when this variable is
 		 * set to false. It is unclear exactly why this is the case. By setting this variable, the editors are
 		 * properly initialized. Not taking this set will cause the quicktags to be missing.
 		 */

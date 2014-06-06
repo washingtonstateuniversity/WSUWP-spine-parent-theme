@@ -11,6 +11,7 @@ class Spine_Builder_Custom {
 		}
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ),11 );
+		add_action( 'admin_init', array( $this, 'remove_extra_make' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 	}
@@ -39,6 +40,16 @@ class Spine_Builder_Custom {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Remove some of the add-on functionality for Make that we are not able to
+	 * support in the Spine parent theme.
+	 */
+	public function remove_extra_make() {
+		// Remove actions added by Make
+		remove_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );
+		remove_action( 'post_submitbox_misc_actions', array( ttfmake_get_builder_base(), 'post_submitbox_misc_actions' ) );
 	}
 
 	/**

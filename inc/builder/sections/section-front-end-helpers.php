@@ -125,7 +125,7 @@ function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
 	if ( isset( $ttfmake_section_data['background-image'] ) && 0 !== absint( $ttfmake_section_data['background-image'] ) ) {
 		$image_src = ttfmake_get_image_src( $ttfmake_section_data['background-image'], 'full' );
 		if ( isset( $image_src[0] ) ) {
-			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
+			$gallery_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
 	}
 
@@ -191,11 +191,11 @@ function ttfmake_builder_get_gallery_item_image( $item, $aspect ) {
 	$image_style = '';
 
 	$image_src = ttfmake_get_image_src( $item[ 'image-id' ], 'large' );
-	if ( ! empty( $image_src ) ) {
-		$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
+	if ( isset( $image_src[0]  ) ) {
+		$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 	}
 
-	if ( 'none' === $aspect ) {
+	if ( 'none' === $aspect && isset( $image_src[1] ) && isset( $image_src[2] ) ) {
 		$image_ratio = ( $image_src[2] / $image_src[1] ) * 100;
 		$image_style .= 'padding-bottom: ' . $image_ratio . '%;';
 	}
@@ -423,8 +423,8 @@ function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 	// Background image
 	if ( isset( $slide['image-id'] ) && 0 !== ttfmake_sanitize_image_id( $slide['image-id'] ) ) {
 		$image_src = ttfmake_get_image_src( $slide['image-id'], 'full' );
-		if ( '' !== $image_src ) {
-			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src ), '"' ) . '\');';
+		if ( isset( $image_src[0] ) ) {
+			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
 	}
 
