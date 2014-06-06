@@ -3,7 +3,6 @@ global $ttfmake_section_data, $ttfmake_sections;
 ?>
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single">
 	<div class="column one">
-		<article>
 
 		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>
 			<header>
@@ -15,6 +14,5 @@ global $ttfmake_section_data, $ttfmake_sections;
 			<?php ttfmake_get_builder_save()->the_builder_content( $ttfmake_section_data['content'] ); ?>
 		<?php endif; ?>
 
-		</article>
 	</div>
 </section>
