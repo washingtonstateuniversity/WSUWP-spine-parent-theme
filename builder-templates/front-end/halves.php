@@ -10,7 +10,6 @@ $count = 'one';
 		foreach( $data_columns as $column ) {
 			?>
 			<div class="column <?php echo $count; $count = 'two'; ?>">
-				<article>
 
 			<?php if ( '' !== $column['title'] ) : ?>
 				<header>
@@ -21,7 +20,7 @@ $count = 'one';
 			<?php if ( '' !== $column['content'] ) : ?>
 				<?php ttfmake_get_builder_save()->the_builder_content( $column['content'] ); ?>
 			<?php endif; ?>
-				</article>
+
 			</div>
 			<?php
 		}

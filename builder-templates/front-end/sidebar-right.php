@@ -7,7 +7,6 @@ $text_columns = spine_get_two_column_data( $ttfmake_section_data );
 	<?php if ( ! empty( $text_columns ) ) : foreach ( $text_columns as $column ) :
 		?>
 		<div class="column <?php echo $count; $count = 'two'; ?>">
-			<article>
 
 			<?php if ( '' !== $column['title'] ) : ?>
 				<header>
@@ -19,7 +18,6 @@ $text_columns = spine_get_two_column_data( $ttfmake_section_data );
 				<?php ttfmake_get_builder_save()->the_builder_content( $column['content'] ); ?>
 			<?php endif; ?>
 
-			</article>
 		</div>
 	<?php endforeach; endif; ?>
 </section>
