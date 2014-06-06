@@ -63,6 +63,10 @@ class TTFMAKE_Builder_Base {
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
 		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
+
+		if ( false === ttfmake_is_plus() ) {
+			add_action( 'post_submitbox_misc_actions', array( $this, 'post_submitbox_misc_actions' ) );
+		}
 	}
 
 	/**
@@ -251,6 +255,9 @@ class TTFMAKE_Builder_Base {
 			}
 			<?php else : ?>
 			#ttfmake-builder {
+				display: none;
+			}
+			.ttfmake-duplicator {
 				display: none;
 			}
 			<?php endif; ?>
@@ -611,6 +618,33 @@ class TTFMAKE_Builder_Base {
 		// Return the result array
 		return $result;
 	}
+
+	/**
+	 * Display information about duplicating posts.
+	 *
+	 * @since  1.1.0.
+	 *
+	 * @return void
+	 */
+	public function post_submitbox_misc_actions() {
+	?>
+		<div class="misc-pub-section ttfmake-duplicator">
+			<p style="font-style:italic;margin:0 0 7px 3px;">
+				<?php
+				printf(
+					__( 'Duplicate this page with %s.', 'make' ),
+					sprintf(
+						'<a href="%1$s" target="_blank">%2$s</a>',
+						esc_url( ttfmake_get_plus_link( 'duplicator' ) ),
+						'Make Plus'
+					)
+				);
+				?>
+			</p>
+			<div class="clear"></div>
+		</div>
+	<?php
+	}
 }
 endif;
 
@@ -799,13 +833,18 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		$image = wp_get_attachment_image_src( $image_id, $size );
 
 		if ( false !== $image && isset( $image[0] ) ) {
-			$src = $image[0];
+			$src = $image;
 		}
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );
 
 		if ( isset( $image['src'] ) ) {
-			$src = $image['src'];
+			$wp_src = array(
+				0 => $image['src'],
+				1 => $image['width'],
+				2 => $image['height'],
+			);
+			$src = array_merge( $image, $wp_src );
 		}
 	}
 
@@ -850,3 +889,41 @@ function ttfmake_register_placeholder_image( $id, $data ) {
 	$ttfmake_placeholder_images[ $id ] = $data;
 }
 endif;
+
+/**
+ * Add information about Quick Start.
+ *
+ * @since  1.0.6.
+ *
+ * @return void
+ */
+function ttfmake_plus_quick_start() {
+	if ( false !== ttfmake_is_plus() || 'page' !== get_post_type() ) {
+		return;
+	}
+
+	$section_ids        = get_post_meta( get_the_ID(), '_ttfmake-section-ids', true );
+	$additional_classes = ( ! empty( $section_ids ) ) ? ' ttfmp-import-message-hide' : '';
+	?>
+	<div id="message" class="error below-h2 ttfmp-import-message<?php echo esc_attr( $additional_classes ); ?>">
+		<p>
+			<strong><?php _e( 'Want some ideas?', 'make' ); ?></strong><br />
+			<?php
+			printf(
+				__( '%s and get a quick start with pre-made designer builder templates.', 'make' ),
+				sprintf(
+					'<a href="%1$s" target="_blank">%2$s</a>',
+					esc_url( ttfmake_get_plus_link( 'quick-start' ) ),
+					sprintf(
+						__( 'Upgrade to %s', 'make' ),
+						'Make Plus'
+					)
+				)
+			);
+			?>
+		</p>
+	</div>
+<?php
+}
+
+add_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );

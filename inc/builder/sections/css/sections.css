@@ -17,6 +17,9 @@
 .ttfmake-section .ttfmake-gallery-items-stage .sortable-placeholder {
 	margin-bottom: 38px;
 }
+.ttfmake-plus-info {
+	float: left;
+}
 /*---------------------------------------------------------
  Text and Gallery: One column (html-builder.css)
 -------------------------------------------------------- */
@@ -210,4 +213,13 @@
 .ttfmake-gallery-background-options-container {
 	float: left;
 	width: 100%;
+}
+/*---------------------------------------------------------
+ Quick Start info (sections.css)
+-------------------------------------------------------- */
+.ttfmp-import-message-hide {
+	display: none;
+}
+.ttfmake-default-active .ttfmp-import-message {
+	display: none;
 }
