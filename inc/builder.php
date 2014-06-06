@@ -13,6 +13,11 @@ class Spine_Builder_Custom {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ),11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
+
+		// Remove actions added by Make
+		remove_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );
+		remove_action( 'post_submitbox_misc_actions', array( ttfmake_get_builder_base(), 'post_submitbox_misc_actions' ) );
+
 	}
 
 	public function enqueue_scripts() {
