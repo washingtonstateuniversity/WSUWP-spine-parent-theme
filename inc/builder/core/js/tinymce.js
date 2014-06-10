@@ -14,8 +14,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		 * Get the default values for this section type from the pre init object. Store them in a new object with
 		 * the id of the section as the key.
 		 */
-		mceInit[editorID] = tinyMCEPreInit.mceInit[tempEditorID];
-		qtInit[editorID] = tinyMCEPreInit.qtInit[tempEditorID];
+		mceInit[editorID] = $.extend({}, tinyMCEPreInit.mceInit[tempEditorID]);
+		qtInit[editorID] = $.extend({}, tinyMCEPreInit.qtInit[tempEditorID]);
 
 		/**
 		 * Append the new object to the pre init object. Doing so will provide the TinyMCE and quicktags code with

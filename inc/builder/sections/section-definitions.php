@@ -116,7 +116,7 @@ class TTFMAKE_Section_Definitions {
 				}
 
 				if ( isset( $item['content'] ) ) {
-					$clean_data['columns'][ $id ]['content'] = sanitize_post_field( 'post_content', $item['content'], get_the_ID(), 'db' );
+					$clean_data['columns'][ $id ]['content'] = sanitize_post_field( 'post_content', $item['content'], ( get_post() ) ? get_the_ID() : 0, 'db' );
 				}
 			}
 		}
@@ -161,7 +161,7 @@ class TTFMAKE_Section_Definitions {
 		}
 
 		if ( isset( $data['content'] ) ) {
-			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], get_the_ID(), 'db' );
+			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], ( get_post() ) ? get_the_ID() : 0, 'db' );
 		}
 
 		return $clean_data;
@@ -224,7 +224,7 @@ class TTFMAKE_Section_Definitions {
 			foreach ( $data['banner-slides'] as $id => $slide ) {
 
 				if ( isset( $slide['content'] ) ) {
-					$clean_data['banner-slides'][ $id ]['content'] = sanitize_post_field( 'post_content', $slide['content'], get_the_ID(), 'db' );
+					$clean_data['banner-slides'][ $id ]['content'] = sanitize_post_field( 'post_content', $slide['content'], ( get_post() ) ? get_the_ID() : 0, 'db' );
 				}
 
 				if ( isset( $slide['background-color'] ) ) {
@@ -343,7 +343,7 @@ class TTFMAKE_Section_Definitions {
 				}
 
 				if ( isset( $item['description'] ) ) {
-					$clean_data['gallery-items'][ $id ]['description'] = sanitize_post_field( 'post_content', $item['description'], get_the_ID(), 'db' );
+					$clean_data['gallery-items'][ $id ]['description'] = sanitize_post_field( 'post_content', $item['description'], ( get_post() ) ? get_the_ID() : 0, 'db' );
 				}
 
 				if ( isset( $item['image-id'] ) ) {
