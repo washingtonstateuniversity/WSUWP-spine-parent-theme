@@ -125,8 +125,8 @@ class Spine_Builder_Custom {
 
 		ttfmake_add_section(
 			'wsuwpheader',
-			'H1 Section',
-			get_template_directory_uri() . '/inc/builder-custom/images/h1section.png',
+			'Top Level Header',
+			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
 			'An H1 element to provide a page title or other top level header.',
 			array( $this, 'save_header' ),
 			'admin/h1-header',
