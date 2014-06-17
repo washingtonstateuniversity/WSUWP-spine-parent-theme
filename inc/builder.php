@@ -3,7 +3,7 @@
 class Spine_Builder_Custom {
 	public function __construct() {
 
-		define( 'TTFMAKE_VERSION', '1.0.5' );
+		define( 'TTFMAKE_VERSION', '1.0.10' );
 		include_once( 'builder-custom/extras.php' );
 
 		if ( is_admin() ) {
