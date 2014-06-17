@@ -2,7 +2,7 @@
 global $ttfmake_section_data, $ttfmake_sections;
 $sideleft_columns = spine_get_two_column_data( $ttfmake_section_data );
 ?>
-<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row sideleft">
+<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row side-left">
 		<?php $count = 'one'; ?>
 		<?php if ( ! empty( $sideleft_columns ) ) : foreach ( $sideleft_columns as $column ) :
 			?>
