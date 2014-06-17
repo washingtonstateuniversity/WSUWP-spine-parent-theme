@@ -3,7 +3,7 @@
 class Spine_Builder_Custom {
 	public function __construct() {
 
-		define( 'TTFMAKE_VERSION', '1.0.5' );
+		define( 'TTFMAKE_VERSION', '1.0.10' );
 		include_once( 'builder-custom/extras.php' );
 
 		if ( is_admin() ) {
@@ -62,30 +62,21 @@ class Spine_Builder_Custom {
 		ttfmake_remove_section( 'blank' );
 	}
 
+	/**
+	 * Add the custom sections used in our implementation of the page builder.
+	 */
 	public function add_builder_sections() {
 		ttfmake_add_section(
 			'wsuwpsingle',
 			'Single',
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
-			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
+			'A single column layout.',
 			array( $this, 'save_blank' ),
 			'admin/single',
 			'front-end/single',
 			200,
 			'builder-templates/'
 		);
-
-		/*ttfmake_add_section(
-			'wsuwpcolumns',
-			'Columns',
-			get_template_directory_uri() . '/inc/builder-custom/images/columns.png',
-			'Two or more columns of varying sizes.',
-			array( $this, 'save_columns' ),
-			'admin/columns',
-			'front-end/columns',
-			100,
-			'builder-templates/'
-		);*/
 
 		ttfmake_add_section(
 			'wsuwphalves',
@@ -102,7 +93,7 @@ class Spine_Builder_Custom {
 		ttfmake_add_section(
 			'wsuwpsidebarleft',
 			'Sidebar Left',
-			get_template_directory_uri() . '/inc/builder-custom/images/sideleft.png',
+			get_template_directory_uri() . '/inc/builder-custom/images/side-left.png',
 			'Two column layout with the right side larger than the left.',
 			array( $this, 'save_columns' ),
 			'admin/two-columns',
@@ -114,7 +105,7 @@ class Spine_Builder_Custom {
 		ttfmake_add_section(
 			'wsuwpsidebarright',
 			'Sidebar Right',
-			get_template_directory_uri() . '/inc/builder-custom/images/sidebar.png',
+			get_template_directory_uri() . '/inc/builder-custom/images/side-right.png',
 			'Two column layout with the left side larger than the right.',
 			array( $this, 'save_columns' ),
 			'admin/two-columns',
