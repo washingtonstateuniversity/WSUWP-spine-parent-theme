@@ -67,7 +67,7 @@ class Spine_Builder_Custom {
 			'wsuwpsingle',
 			'Single',
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
-			__( 'A blank canvas for standard content or HTML code.', 'ttf-one' ),
+			'A single column layout.',
 			array( $this, 'save_blank' ),
 			'admin/single',
 			'front-end/single',
