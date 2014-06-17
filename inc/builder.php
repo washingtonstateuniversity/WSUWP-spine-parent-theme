@@ -62,6 +62,9 @@ class Spine_Builder_Custom {
 		ttfmake_remove_section( 'blank' );
 	}
 
+	/**
+	 * Add the custom sections used in our implementation of the page builder.
+	 */
 	public function add_builder_sections() {
 		ttfmake_add_section(
 			'wsuwpsingle',
