@@ -122,6 +122,28 @@ class Spine_Builder_Custom {
 			100,
 			'builder-templates/'
 		);
+
+		ttfmake_add_section(
+			'wsuwpheader',
+			'H1 Section',
+			get_template_directory_uri() . '/inc/builder-custom/images/h1section.png',
+			'An H1 element to provide a page title or other top level header.',
+			array( $this, 'save_header' ),
+			'admin/h1-header',
+			'front-end/h1-header',
+			100,
+			'builder-templates'
+		);
+	}
+
+	public function save_header( $data ) {
+		$clean_data = array();
+
+		if ( isset( $data['title'] ) ) {
+			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
+		}
+
+		return $clean_data;
 	}
 
 	public function save_blank( $data ) {
