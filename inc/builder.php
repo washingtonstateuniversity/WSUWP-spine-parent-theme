@@ -147,6 +147,7 @@ class Spine_Builder_Custom {
 	public function save_header( $data ) {
 		$clean_data = array();
 
+		// The title_save_pre filter applies wp_filter_kses() to the title.
 		if ( isset( $data['title'] ) ) {
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
