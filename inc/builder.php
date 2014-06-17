@@ -102,7 +102,7 @@ class Spine_Builder_Custom {
 		ttfmake_add_section(
 			'wsuwpsidebarleft',
 			'Sidebar Left',
-			get_template_directory_uri() . '/inc/builder-custom/images/sideleft.png',
+			get_template_directory_uri() . '/inc/builder-custom/images/side-left.png',
 			'Two column layout with the right side larger than the left.',
 			array( $this, 'save_columns' ),
 			'admin/two-columns',
@@ -114,7 +114,7 @@ class Spine_Builder_Custom {
 		ttfmake_add_section(
 			'wsuwpsidebarright',
 			'Sidebar Right',
-			get_template_directory_uri() . '/inc/builder-custom/images/sidebar.png',
+			get_template_directory_uri() . '/inc/builder-custom/images/side-right.png',
 			'Two column layout with the left side larger than the right.',
 			array( $this, 'save_columns' ),
 			'admin/two-columns',
