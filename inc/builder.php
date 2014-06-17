@@ -136,6 +136,14 @@ class Spine_Builder_Custom {
 		);
 	}
 
+	/**
+	 * Clean the data being passed from the title input field to ensure it is ready
+	 * for input into the database as part of the template.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
 	public function save_header( $data ) {
 		$clean_data = array();
 
