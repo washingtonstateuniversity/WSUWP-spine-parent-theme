@@ -122,6 +122,37 @@ class Spine_Builder_Custom {
 			100,
 			'builder-templates/'
 		);
+
+		ttfmake_add_section(
+			'wsuwpheader',
+			'Top Level Header',
+			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
+			'An H1 element to provide a page title or other top level header.',
+			array( $this, 'save_header' ),
+			'admin/h1-header',
+			'front-end/h1-header',
+			100,
+			'builder-templates'
+		);
+	}
+
+	/**
+	 * Clean the data being passed from the title input field to ensure it is ready
+	 * for input into the database as part of the template.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
+	public function save_header( $data ) {
+		$clean_data = array();
+
+		// The title_save_pre filter applies wp_filter_kses() to the title.
+		if ( isset( $data['title'] ) ) {
+			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
+		}
+
+		return $clean_data;
 	}
 
 	public function save_blank( $data ) {
