@@ -301,3 +301,17 @@ function spine_get_two_column_data( $ttfmake_section_data ) {
 
 	return $columns_array;
 }
+
+/**
+ * Output the input field for section wrapper that is shared amongst admin templates.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
+	?>
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+	</div>
+	<?php
+}
