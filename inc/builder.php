@@ -1,11 +1,21 @@
 <?php
-
+/**
+ * Class Spine_Builder_Custom
+ */
 class Spine_Builder_Custom {
+
+	/**
+	 * Add hooks, start up custom builder components.
+	 */
 	public function __construct() {
 
+		// This is pulled from the Make theme. We should keep it updated as upstream changes are pulled in.
 		define( 'TTFMAKE_VERSION', '1.0.10' );
+
+		// Include extra functions from Make that are not part of the builder, but are required.
 		include_once( 'builder-custom/extras.php' );
 
+		// Include the actual core builder files from the Make theme.
 		if ( is_admin() ) {
 			require get_template_directory() . '/inc/builder/core/base.php';
 		}
@@ -16,6 +26,9 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 	}
 
+	/**
+	 * Enqueue the scripts and styles used with the page builder.
+	 */
 	public function enqueue_scripts() {
 		global $pagenow;
 
