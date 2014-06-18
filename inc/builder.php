@@ -161,6 +161,13 @@ class Spine_Builder_Custom {
 		return $clean_data;
 	}
 
+	/**
+	 * Clean the data being passed from the save of a "Single" section in the admin.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
 	public function save_blank( $data ) {
 		$clean_data = array();
 
