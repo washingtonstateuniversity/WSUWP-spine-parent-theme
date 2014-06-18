@@ -29,15 +29,16 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				<?php
 				$editor_settings = array(
 					'tinymce'       => array(
-						'toolbar1' => 'bold,italic,link',
-						'toolbar2' => '',
+						'toolbar1' => 'bold,italic,link,underline,strikethrough,blockquote,wp_adv',
+						'toolbar2' => 'bullist,numlist,alignleft,aligncenter,alignright,alignjustify,outdent,indent,removeformat,formatselect',
 						'toolbar3' => '',
 						'toolbar4' => '',
 					),
 					'quicktags'     => array(
 						'buttons' => 'strong,em,link',
 					),
-					'textarea_name' => $column_name . '[content]'
+					'textarea_name' => $column_name . '[content]',
+					'hidetb' => '1',
 				);
 
 				if ( true === $ttfmake_is_js_template ) : ?>
