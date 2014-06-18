@@ -123,50 +123,6 @@ function ttfmake_get_view() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
-/**
- * Output a sidebar description that reflects its current status.
- *
- * @since  1.0.0.
- *
- * @param  string    $sidebar_id    The sidebar to look up the description for.
- * @return string                   The description.
- */
-function ttfmake_sidebar_description( $sidebar_id ) {
-	$description = '';
-
-	// Footer sidebars
-	if ( false !== strpos( $sidebar_id, 'footer-' ) ) {
-		$column = (int) str_replace( 'footer-', '', $sidebar_id );
-		$column_count = (int) get_theme_mod( 'footer-widget-areas', ttfmake_get_default( 'footer-widget-areas' ) );
-
-		if ( $column > $column_count ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Footer" section of the Theme Customizer.', 'make' );
-		}
-	}
-	// Other sidebars
-	else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
-		$location = str_replace( 'sidebar-', '', $sidebar_id );
-
-		$enabled_views = ttfmake_sidebar_list_enabled( $location );
-
-		// Not enabled anywhere
-		if ( empty( $enabled_views ) ) {
-			$description = __( 'This widget area is currently disabled. Enable it in the "Layout" section of the Theme Customizer.', 'make' );
-		}
-		// List enabled views
-		else {
-			$description = sprintf(
-				__( 'This widget area is currently enabled for the following views: %s. Change this in the "Layout" section of the Theme Customizer.', 'make' ),
-				esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
-			);
-		}
-	}
-
-	return esc_html( $description );
-}
-endif;
-
 if ( ! function_exists( 'ttfmake_sidebar_list_enabled' ) ) :
 /**
  * Compile a list of views where a particular sidebar is enabled.
