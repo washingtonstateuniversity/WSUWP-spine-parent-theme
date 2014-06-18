@@ -56,6 +56,7 @@ class Spine_Builder_Custom {
 	public function remove_extra_make() {
 		remove_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );
 		remove_action( 'post_submitbox_misc_actions', array( ttfmake_get_builder_base(), 'post_submitbox_misc_actions' ) );
+		remove_action( 'tiny_mce_before_init', array( ttfmake_get_builder_base(), 'tiny_mce_before_init' ), 15 );
 	}
 
 	/**
