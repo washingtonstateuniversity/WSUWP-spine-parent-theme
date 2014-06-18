@@ -54,7 +54,6 @@ class Spine_Builder_Custom {
 	 * support in the Spine parent theme.
 	 */
 	public function remove_extra_make() {
-		// Remove actions added by Make
 		remove_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );
 		remove_action( 'post_submitbox_misc_actions', array( ttfmake_get_builder_base(), 'post_submitbox_misc_actions' ) );
 	}
@@ -197,6 +196,13 @@ class Spine_Builder_Custom {
 		return $clean_data;
 	}
 
+	/**
+	 * Clean the data being passed from the save of a columns layout.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
 	public function save_columns( $data ) {
 		$clean_data = array();
 
