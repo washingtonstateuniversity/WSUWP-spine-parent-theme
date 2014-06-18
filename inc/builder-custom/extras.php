@@ -1,6 +1,4 @@
 <?php
-function ttfmake_get_google_font_uri() { return ''; }
-
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
  * Sanitizes a hex color.
@@ -66,6 +64,17 @@ function maybe_hash_hex_color( $color ) {
 
 	return $color;
 }
+endif;
+
+if ( ! function_exists( 'ttfmake_get_google_font_uri()' ) ) :
+	/**
+	 * The core page builder looks for a Google font setting at some point.
+	 *
+	 * @return string Always empty.
+	 */
+	function ttfmake_get_google_font_uri() {
+		return '';
+	}
 endif;
 
 if( ! function_exists( 'ttfmake_is_plus' ) ) :
