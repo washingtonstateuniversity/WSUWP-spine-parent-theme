@@ -123,39 +123,6 @@ function ttfmake_get_view() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_has_sidebar' ) ) :
-/**
- * Determine if the current view should show a sidebar in the given location.
- *
- * @since  1.0.0.
- *
- * @param  string    $location    The location to test for.
- * @return bool                   Whether or not the location has a sidebar.
- */
-function ttfmake_has_sidebar( $location ) {
-	global $wp_registered_sidebars;
-
-	// Validate the sidebar location
-	if ( ! in_array( 'sidebar-' . $location, array_keys( $wp_registered_sidebars ) ) ) {
-		return false;
-	}
-
-	// Get the view
-	$view = ttfmake_get_view();
-
-	// Get the relevant option
-	$show_sidebar = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttfmake_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
-
-	// Builder template doesn't support sidebars
-	if ( 'page' === $view && 'template-builder.php' === get_page_template_slug() ) {
-		$show_sidebar = false;
-	}
-
-	// Filter and return
-	return apply_filters( 'ttfmake_has_sidebar', $show_sidebar, $location, $view );
-}
-endif;
-
 if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 /**
  * Output a sidebar description that reflects its current status.
