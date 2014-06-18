@@ -312,6 +312,7 @@ function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_d
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
 		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
 	</div>
 	<?php
 }
@@ -326,6 +327,7 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
 		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php if ( isset( $ttfmake_section_data['data']['section-classes'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-classes'] ); ?>" />
+		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
 	<?php
 }
