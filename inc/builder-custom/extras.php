@@ -68,23 +68,6 @@ function maybe_hash_hex_color( $color ) {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_excerpt_more' ) ) :
-/**
- * Modify the excerpt suffix
- *
- * @since 1.0.0.
- *
- * @param string $more
- *
- * @return string
- */
-function ttfmake_excerpt_more( $more ) {
-	return ' &hellip;';
-}
-endif;
-
-add_filter( 'excerpt_more', 'ttfmake_excerpt_more' );
-
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
 /**
  * Determine the current view
