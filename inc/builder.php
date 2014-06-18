@@ -227,6 +227,10 @@ class Spine_Builder_Custom {
 			}
 		}
 
+		if ( isset( $data['section-classes'] ) ) {
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
+		}
+
 		return $clean_data;
 	}
 }
