@@ -128,6 +128,21 @@ class Spine_Builder_Custom {
 	}
 
 	/**
+	 * Clean a passed input value of arbitrary classes.
+	 *
+	 * @param string $classes A string of arbitrary classes from a text input.
+	 *
+	 * @return string Clean, space delimited classes for output.
+	 */
+	public function clean_classes( $classes ) {
+		$classes = explode( ' ', trim( $classes ) );
+		$classes = array_map( 'sanitize_key', $classes );
+		$classes = implode( ' ', $classes );
+
+		return $classes;
+	}
+
+	/**
 	 * Clean the data being passed from the title input field to ensure it is ready
 	 * for input into the database as part of the template.
 	 *
@@ -158,9 +173,7 @@ class Spine_Builder_Custom {
 		}
 
 		if ( isset( $data['section-classes'] ) ) {
-			$section_classes = explode( ' ', trim( $data['section-classes'] ) );
-			$section_classes = array_map( 'sanitize_key', $section_classes );
-			$clean_data['section-classes'] = implode( ' ', $section_classes );
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
 		}
 
 		return $clean_data;
