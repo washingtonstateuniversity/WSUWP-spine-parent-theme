@@ -157,6 +157,12 @@ class Spine_Builder_Custom {
 			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], get_the_ID(), 'db' );
 		}
 
+		if ( isset( $data['section-classes'] ) ) {
+			$section_classes = explode( ' ', trim( $data['section-classes'] ) );
+			$section_classes = array_map( 'sanitize_key', $section_classes );
+			$clean_data['section-classes'] = implode( ' ', $section_classes );
+		}
+
 		return $clean_data;
 	}
 
