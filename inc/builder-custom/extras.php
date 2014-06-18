@@ -17,32 +17,6 @@ endif;
 
 add_filter( 'wp_page_menu_args', 'ttfmake_page_menu_args' );
 
-if ( ! function_exists( 'ttfmake_body_classes' ) ) :
-/**
- * Adds custom classes to the array of body classes.
- *
- * @since  1.0.0.
- *
- * @param  array    $classes    Classes for the body element.
- * @return array                Modified class list.
- */
-function ttfmake_body_classes( $classes ) {
-	// Left Sidebar
-	if ( true === ttfmake_has_sidebar( 'left' ) ) {
-		$classes[] = 'has-left-sidebar';
-	}
-
-	// Right Sidebar
-	if ( true === ttfmake_has_sidebar( 'right' ) ) {
-		$classes[] = 'has-right-sidebar';
-	}
-
-	return $classes;
-}
-endif;
-
-add_filter( 'body_class', 'ttfmake_body_classes' );
-
 if ( ! function_exists( 'ttfmake_wp_title' ) ) :
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
