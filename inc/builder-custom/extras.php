@@ -123,37 +123,6 @@ function ttfmake_get_view() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_sidebar_list_enabled' ) ) :
-/**
- * Compile a list of views where a particular sidebar is enabled.
- *
- * @since  1.0.0.
- *
- * @param  string    $location    The sidebar to look up.
- * @return array                  The sidebar's current locations.
- */
-function ttfmake_sidebar_list_enabled( $location ) {
-	$enabled_views = array();
-
-	$views = array(
-		'blog'    => __( 'Blog (Post Page)', 'make' ),
-		'archive' => __( 'Archives', 'make' ),
-		'search'  => __( 'Search Results', 'make' ),
-		'post'    => __( 'Posts', 'make' ),
-		'page'    => __( 'Pages', 'make' ),
-	);
-
-	foreach ( $views as $view => $label ) {
-		$option = (bool) get_theme_mod( 'layout-' . $view . '-sidebar-' . $location, ttfmake_get_default( 'layout-' . $view . '-sidebar-' . $location ) );
-		if ( true === $option ) {
-			$enabled_views[] = $label;
-		}
-	}
-
-	return $enabled_views;
-}
-endif;
-
 if( ! function_exists( 'ttfmake_is_plus' ) ) :
 	/**
 	 * Parts of the page builder templates look for the plus version of Make.
