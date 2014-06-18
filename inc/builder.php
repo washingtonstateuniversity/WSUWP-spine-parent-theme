@@ -315,3 +315,17 @@ function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_d
 	</div>
 	<?php
 }
+
+/**
+ * Output the input field for section classes that is shared amongst admin templates.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_classes( $section_name, $ttfmake_section_data ) {
+	?>
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php if ( isset( $ttfmake_section_data['data']['section-classes'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-classes'] ); ?>" />
+	</div>
+	<?php
+}
