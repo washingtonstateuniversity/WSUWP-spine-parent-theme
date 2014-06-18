@@ -158,6 +158,10 @@ class Spine_Builder_Custom {
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
 
+		if ( isset( $data['section-classes'] ) ) {
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
+		}
+
 		return $clean_data;
 	}
 
