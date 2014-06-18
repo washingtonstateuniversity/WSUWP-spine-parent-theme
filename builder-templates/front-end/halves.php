@@ -3,8 +3,11 @@ global $ttfmake_section_data, $ttfmake_sections;
 
 $data_columns = spine_get_two_column_data( $ttfmake_section_data );
 $count = 'one';
+
+$section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+
 ?>
-<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row halves">
+<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row halves <?php echo esc_attr( $section_classes ); ?>">
 	<?php
 	if ( ! empty( $data_columns ) ) {
 		foreach( $data_columns as $column ) {

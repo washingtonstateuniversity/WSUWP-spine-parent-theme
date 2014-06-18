@@ -1,7 +1,10 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
+
+$section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+
 ?>
-<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single">
+<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single <?php echo $section_classes; ?>">
 	<div class="column one">
 
 		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>

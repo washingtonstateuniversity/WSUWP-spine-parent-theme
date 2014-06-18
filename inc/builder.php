@@ -1,11 +1,21 @@
 <?php
-
+/**
+ * Class Spine_Builder_Custom
+ */
 class Spine_Builder_Custom {
+
+	/**
+	 * Add hooks, start up custom builder components.
+	 */
 	public function __construct() {
 
+		// This is pulled from the Make theme. We should keep it updated as upstream changes are pulled in.
 		define( 'TTFMAKE_VERSION', '1.0.10' );
+
+		// Include extra functions from Make that are not part of the builder, but are required.
 		include_once( 'builder-custom/extras.php' );
 
+		// Include the actual core builder files from the Make theme.
 		if ( is_admin() ) {
 			require get_template_directory() . '/inc/builder/core/base.php';
 		}
@@ -16,17 +26,14 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 	}
 
+	/**
+	 * Enqueue the scripts and styles used with the page builder.
+	 */
 	public function enqueue_scripts() {
 		global $pagenow;
 
 		if ( 'page' === get_current_screen()->id ) {
-			wp_enqueue_script(
-				'ttfmake-admin-edit-page',
-				get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js',
-				array( 'jquery' ),
-				TTFMAKE_VERSION,
-				true
-			);
+			wp_enqueue_script( 'ttfmake-admin-edit-page', get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js', array( 'jquery' ), spine_get_script_version(), true );
 
 			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
 			wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
@@ -47,7 +54,6 @@ class Spine_Builder_Custom {
 	 * support in the Spine parent theme.
 	 */
 	public function remove_extra_make() {
-		// Remove actions added by Make
 		remove_action( 'edit_form_after_title', 'ttfmake_plus_quick_start' );
 		remove_action( 'post_submitbox_misc_actions', array( ttfmake_get_builder_base(), 'post_submitbox_misc_actions' ) );
 	}
@@ -128,6 +134,21 @@ class Spine_Builder_Custom {
 	}
 
 	/**
+	 * Clean a passed input value of arbitrary classes.
+	 *
+	 * @param string $classes A string of arbitrary classes from a text input.
+	 *
+	 * @return string Clean, space delimited classes for output.
+	 */
+	public function clean_classes( $classes ) {
+		$classes = explode( ' ', trim( $classes ) );
+		$classes = array_map( 'sanitize_key', $classes );
+		$classes = implode( ' ', $classes );
+
+		return $classes;
+	}
+
+	/**
 	 * Clean the data being passed from the title input field to ensure it is ready
 	 * for input into the database as part of the template.
 	 *
@@ -143,9 +164,20 @@ class Spine_Builder_Custom {
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
 		}
 
+		if ( isset( $data['section-classes'] ) ) {
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
+		}
+
 		return $clean_data;
 	}
 
+	/**
+	 * Clean the data being passed from the save of a "Single" section in the admin.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
 	public function save_blank( $data ) {
 		$clean_data = array();
 
@@ -157,9 +189,20 @@ class Spine_Builder_Custom {
 			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], get_the_ID(), 'db' );
 		}
 
+		if ( isset( $data['section-classes'] ) ) {
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
+		}
+
 		return $clean_data;
 	}
 
+	/**
+	 * Clean the data being passed from the save of a columns layout.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
 	public function save_columns( $data ) {
 		$clean_data = array();
 
@@ -201,13 +244,26 @@ class Spine_Builder_Custom {
 			}
 		}
 
+		if ( isset( $data['section-classes'] ) ) {
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
+		}
+
 		return $clean_data;
 	}
 }
 new Spine_Builder_Custom();
 
+/**
+ * Retrieve data for display in a two column format - halves, sidebar, etc - in
+ * a front end template.
+ *
+ * @param array $ttfmake_section_data Data to be prepped for column output.
+ *
+ * @return array Prepped data.
+ */
 function spine_get_two_column_data( $ttfmake_section_data ) {
 	$columns_number = 2;
+
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
 		$columns_order = $ttfmake_section_data['columns-order'];
@@ -222,7 +278,7 @@ function spine_get_two_column_data( $ttfmake_section_data ) {
 	if ( ! empty( $columns_order ) && ! empty( $columns_data ) ) {
 		$count = 0;
 		foreach ( $columns_order as $order => $key ) {
-			$columns_array[$order] = $columns_data[$key];
+			$columns_array[ $order ] = $columns_data[ $key ];
 			$count++;
 			if ( $count >= $columns_number ) {
 				break;
