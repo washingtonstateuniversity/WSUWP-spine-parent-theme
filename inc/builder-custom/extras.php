@@ -1,4 +1,10 @@
 <?php
+/**
+ * This is an extras file that contains some of the functions included with the
+ * Make theme that are used by the builder, but are not part of the core builder
+ * code.
+ */
+
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
  * Sanitizes a hex color.
@@ -67,23 +73,23 @@ function maybe_hash_hex_color( $color ) {
 endif;
 
 if ( ! function_exists( 'ttfmake_get_google_font_uri()' ) ) :
-	/**
-	 * The core page builder looks for a Google font setting at some point.
-	 *
-	 * @return string Always empty.
-	 */
-	function ttfmake_get_google_font_uri() {
-		return '';
-	}
+/**
+ * The core page builder looks for a Google font setting at some point.
+ *
+ * @return string Always empty.
+ */
+function ttfmake_get_google_font_uri() {
+	return '';
+}
 endif;
 
 if( ! function_exists( 'ttfmake_is_plus' ) ) :
-	/**
-	 * Parts of the page builder templates look for the plus version of Make.
-	 * 
-	 * @return bool
-	 */
-	function ttfmake_is_plus() {
-		return false;
-	}
+/**
+ * Parts of the page builder templates look for the plus version of Make.
+ *
+ * @return bool
+ */
+function ttfmake_is_plus() {
+	return false;
+}
 endif;
