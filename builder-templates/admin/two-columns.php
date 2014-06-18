@@ -37,7 +37,8 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 					'quicktags'     => array(
 						'buttons' => 'strong,em,link',
 					),
-					'textarea_name' => $column_name . '[content]'
+					'textarea_name' => $column_name . '[content]',
+					'hidetb' => '1',
 				);
 
 				if ( true === $ttfmake_is_js_template ) : ?>
