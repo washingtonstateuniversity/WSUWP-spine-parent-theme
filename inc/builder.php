@@ -253,8 +253,17 @@ class Spine_Builder_Custom {
 }
 new Spine_Builder_Custom();
 
+/**
+ * Retrieve data for display in a two column format - halves, sidebar, etc - in
+ * a front end template.
+ *
+ * @param array $ttfmake_section_data Data to be prepped for column output.
+ *
+ * @return array Prepped data.
+ */
 function spine_get_two_column_data( $ttfmake_section_data ) {
 	$columns_number = 2;
+
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
 		$columns_order = $ttfmake_section_data['columns-order'];
@@ -269,7 +278,7 @@ function spine_get_two_column_data( $ttfmake_section_data ) {
 	if ( ! empty( $columns_order ) && ! empty( $columns_data ) ) {
 		$count = 0;
 		foreach ( $columns_order as $order => $key ) {
-			$columns_array[$order] = $columns_data[$key];
+			$columns_array[ $order ] = $columns_data[ $key ];
 			$count++;
 			if ( $count >= $columns_number ) {
 				break;
