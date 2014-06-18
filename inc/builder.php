@@ -194,6 +194,10 @@ class Spine_Builder_Custom {
 			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
 		}
 
+		if ( isset( $data['section-wrapper'] ) ) {
+			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
+		}
+
 		return $clean_data;
 	}
 
