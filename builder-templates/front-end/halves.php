@@ -5,7 +5,11 @@ $data_columns = spine_get_two_column_data( $ttfmake_section_data );
 $count = 'one';
 
 $section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+$section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : false;
 
+if ( $section_wrapper_classes ) {
+	echo '<div class="' . esc_attr( $section_wrapper_classes ) . '">';
+}
 ?>
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row halves <?php echo esc_attr( $section_classes ); ?>">
 	<?php
@@ -30,3 +34,8 @@ $section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfm
 	}
 	?>
 </section>
+<?php
+
+if ( $section_wrapper_classes ) {
+	echo '</div>';
+}

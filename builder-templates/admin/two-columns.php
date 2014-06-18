@@ -55,6 +55,11 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
 		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php if ( isset( $ttfmake_section_data['data']['section-classes'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-classes'] ); ?>" />
 	</div>
+
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+	</div>
+
 	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="wsuwp-spine-halves-columns-order" />
 	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttfmake_load_section_footer(); ?>
