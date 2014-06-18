@@ -1,21 +1,5 @@
 <?php
 function ttfmake_get_google_font_uri() { return ''; }
-if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
-/**
- * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
- *
- * @since  1.0.0.
- *
- * @param  array    $args    Configuration arguments.
- * @return array             Modified page menu args.
- */
-function ttfmake_page_menu_args( $args ) {
-	$args['show_home'] = true;
-	return $args;
-}
-endif;
-
-add_filter( 'wp_page_menu_args', 'ttfmake_page_menu_args' );
 
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 /**
