@@ -324,7 +324,7 @@ function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_d
  * @param array  $ttfmake_section_data Data associated with the section.
  */
 function spine_output_builder_section_classes( $section_name, $ttfmake_section_data ) {
-	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter';
+	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter marginalize-ends';
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
 		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
