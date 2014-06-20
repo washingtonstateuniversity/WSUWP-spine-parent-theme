@@ -1,7 +1,7 @@
 <?php
 
 // Global version tracker.
-$wsuwp_spine_theme_version = '0.9.8';
+$wsuwp_spine_theme_version = '0.9.9';
 
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
