@@ -31,3 +31,7 @@
 .wsuwp-spine-halves-column {
 	width: 50%;
 }
+
+.builder-advanced-controls {
+	display: none;
+}
