@@ -82,7 +82,7 @@ class Spine_Builder_Custom {
 		$links[50] = array(
 			'href' => '#',
 			'class' => 'builder-toggle-advanced',
-			'label' => 'Show Advanced Controls',
+			'label' => 'Show advanced controls',
 		);
 
 		return $links;
