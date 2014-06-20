@@ -24,6 +24,8 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_extra_make' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
+
+		add_filter( 'ttfmake_builder_section_footer_links', array(  $this, 'add_builder_section_links' ), 10, 1 );
 	}
 
 	/**
@@ -36,6 +38,7 @@ class Spine_Builder_Custom {
 			wp_enqueue_script( 'ttfmake-admin-edit-page', get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js', array( 'jquery' ), spine_get_script_version(), true );
 
 			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
+			wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array('jquery'), spine_get_script_version(), true );
 			wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
 			wp_localize_script(
@@ -67,6 +70,23 @@ class Spine_Builder_Custom {
 		ttfmake_remove_section( 'gallery' );
 		ttfmake_remove_section( 'banner' );
 		ttfmake_remove_section( 'blank' );
+	}
+
+	/**
+	 * Add links to the defaults displayed at the bottom of each section.
+	 *
+	 * @param array $links Links to be displayed.
+	 *
+	 * @return array Modified list of links to display.
+	 */
+	public function add_builder_section_links( $links ) {
+		$links[50] = array(
+			'href' => '#',
+			'class' => 'builder-toggle-advanced',
+			'label' => 'Show advanced controls',
+		);
+
+		return $links;
 	}
 
 	/**
@@ -324,9 +344,10 @@ function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_d
  * @param array  $ttfmake_section_data Data associated with the section.
  */
 function spine_output_builder_section_classes( $section_name, $ttfmake_section_data ) {
+	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter marginalize-ends';
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
-		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php if ( isset( $ttfmake_section_data['data']['section-classes'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-classes'] ); ?>" />
+		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
 		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
 	<?php
