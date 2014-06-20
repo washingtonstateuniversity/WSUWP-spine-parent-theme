@@ -24,6 +24,8 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_extra_make' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
+
+		add_filter( 'ttfmake_builder_section_footer_links', array(  $this, 'add_builder_section_links' ), 10, 1 );
 	}
 
 	/**
@@ -67,6 +69,23 @@ class Spine_Builder_Custom {
 		ttfmake_remove_section( 'gallery' );
 		ttfmake_remove_section( 'banner' );
 		ttfmake_remove_section( 'blank' );
+	}
+
+	/**
+	 * Add links to the defaults displayed at the bottom of each section.
+	 *
+	 * @param array $links Links to be displayed.
+	 *
+	 * @return array Modified list of links to display.
+	 */
+	public function add_builder_section_links( $links ) {
+		$links[50] = array(
+			'href' => '#',
+			'class' => 'builder-toggle-advanced',
+			'label' => 'Show Advanced Controls',
+		);
+
+		return $links;
 	}
 
 	/**
