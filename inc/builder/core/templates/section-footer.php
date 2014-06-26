@@ -10,6 +10,7 @@ $links = apply_filters( 'ttfmake_builder_section_footer_links', array(
 		'label' => __( 'Remove this section', 'make' )
 	)
 ) );
+ksort( $links );
 ?>
 		<?php $i = 1; foreach ( $links as $link ) : ?>
 		<?php

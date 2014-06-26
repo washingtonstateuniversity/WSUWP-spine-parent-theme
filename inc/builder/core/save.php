@@ -271,7 +271,9 @@ class TTFMAKE_Builder_Save {
 		$post_content = $this->generate_post_content( $sanitized_sections );
 
 		// Sanitize and set the content
+		kses_remove_filters();
 		$data['post_content'] = sanitize_post_field( 'post_content', $post_content, get_the_ID(), 'db' );
+		kses_init_filters();
 
 		return $data;
 	}
