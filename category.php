@@ -4,7 +4,7 @@
 
 <?php get_template_part('parts/headers'); ?> 
 
-<section class="row sidebar side-right">
+<section class="row sidebar side-right gutter marginalize-ends">
 
 	<div class="column one">
 

@@ -8,7 +8,7 @@
 
 <?php get_template_part('parts/headers'); ?> 
 
-<section class="row halves">
+<section class="row halves gutter marginalize-ends">
 
 	<div class="column one">
 	
