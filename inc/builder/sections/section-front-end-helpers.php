@@ -326,10 +326,6 @@ function ttfmake_builder_get_banner_class( $ttfmake_section_data, $sections ) {
 	// Section classes
 	$banner_class .= ttfmake_get_builder_save()->section_classes( $ttfmake_section_data, $sections );
 
-	// Banner id
-	$banner_id     = ( isset( $ttfmake_section_data['id'] ) ) ? absint( $ttfmake_section_data['id'] ) : 1;
-	$banner_class .= ' builder-section-banner-' . $banner_id;
-
 	return apply_filters( 'ttfmake_builder_banner_class', $banner_class, $ttfmake_section_data );
 }
 
