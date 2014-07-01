@@ -23,7 +23,7 @@ main {
 
 /* Main Header Defaults (previously siteID) */
 
-.main-header {
+/* .main-header {
 	height: 142px;
 	background-color: #981e32;
 	background-color: #5e6a71;
@@ -66,7 +66,7 @@ main {
 .main-header sup span {
 	display: block;
 	line-height: 1em;
-	}
+	} */
 
 /* Main Header Alternates */
 /* How to use CSS to override the default headers

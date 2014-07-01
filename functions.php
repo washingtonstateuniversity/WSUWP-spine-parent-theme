@@ -76,6 +76,7 @@ function spine_get_option( $option_name ) {
 		'spine_color'               => 'white',
 		'large_format'              => '',
 		'theme_style'               => 'bookmark',
+		'secondary_colors'          => 'gray',
 		'theme_spacing'             => 'default',
 		'broken_binding'            => false,
 		'bleed'                     => true,
