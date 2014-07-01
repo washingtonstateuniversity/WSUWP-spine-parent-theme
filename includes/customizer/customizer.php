@@ -377,8 +377,8 @@ function spine_customize_register($wp_customize){
         'type'       => 'select',
         'choices'    => array(
             'default' => 'default (2em)',
-            'wide' => 'wide (4em)',
-            'narrow' => 'narrow (1em)'
+            'loose' => 'loose (4em)',
+            'tight' => 'tight (1em)'
         ),
     ));
  
