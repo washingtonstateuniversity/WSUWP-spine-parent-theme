@@ -85,3 +85,14 @@
 .row.margin figure figcaption {
 	
 	}
+	
+aside header {
+	font-weight: bold;
+	}
+.opensansy aside header {
+	xxfont-weight: normal;
+	xxfont-family: "OpenSans-CondBold";
+	xxfont-family: "OpenSans-Light";
+	font-size: 1.4em;
+	line-height: 1.6em;
+	}

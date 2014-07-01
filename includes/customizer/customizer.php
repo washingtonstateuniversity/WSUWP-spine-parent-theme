@@ -352,7 +352,7 @@ function spine_customize_register($wp_customize){
     
     $wp_customize->add_control('spine_secondary_colors', array(
         'settings'   => 'spine_options[secondary_colors]',
-        'label'      => __('Secondary Colors', 'spine'),
+        'label'      => __('Secondary Color', 'spine'),
         'section'    => 'section_spine_style',
         'type'       => 'select',
         'choices'    => array(
@@ -361,6 +361,24 @@ function spine_customize_register($wp_customize){
             'orange' => 'Orange',
             'blue' => 'Blue',
             'yellow' => 'Yellow'
+        ),
+    ));
+    
+    $wp_customize->add_setting('spine_options[theme_spacing]', array(
+        'default'        => 'default',
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+    
+    $wp_customize->add_control('spine_theme_spacing', array(
+        'settings'   => 'spine_options[theme_spacing]',
+        'label'      => __('Sitewide Spacing', 'spine'),
+        'section'    => 'section_spine_style',
+        'type'       => 'select',
+        'choices'    => array(
+            'default' => 'default (2em)',
+            'wide' => 'wide (4em)',
+            'narrow' => 'narrow (1em)'
         ),
     ));
  
