@@ -35,6 +35,13 @@
 	width: 2000px;
 	border: 0px;
 	}
+	
+.style-bookmark.colors-green .main-header { background: #8f7e35; }
+.style-bookmark.colors-orange .main-header { background: #b67233; }
+.style-bookmark.colors-blue .main-header { background: #4f868e; }
+.style-bookmark.colors-yellow .main-header { background: #c69214; }
+.style-bookmark.colors-gray .main-header { background: #5e6a71; }
+
 .main-header .header-group {
 	position: absolute;
 	width: 396px;
