@@ -5,6 +5,7 @@ $wsuwp_spine_theme_version = '0.9.10';
 
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
+include_once( 'includes/theme-images.php' ); // Manipulating images
 
 /**
  * Creates a script version based on this theme, the WSUWP Platform, and
@@ -235,21 +236,6 @@ function spine_theme_widgets_init() {
 	register_sidebar( $widget_options );
 }
 
-add_action( 'after_setup_theme', 'spine_theme_setup_theme' );
-/**
- * Setup some defaults provided by the theme.
- */
-function spine_theme_setup_theme() {
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 198, 198, true );
-
-	add_image_size( 'spine-thumbnail_size', 198, 198, true );
-	add_image_size( 'spine-small_size', 396, 99164 );
-	add_image_size( 'spine-medium_size', 792, 99164 );
-	add_image_size( 'spine-large_size', 990, 99164 );
-	add_image_size( 'spine-xlarge_size', 1188, 99164 );
-}
-
 add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10 );
 /**
  * Condense verbose menu classes provided by WordPress.
@@ -432,27 +418,4 @@ function spine_sectioned_body_classes( $classes ) {
 	}
 
 	return array_unique( $classes );
-}
-
-add_filter( 'wsuwp_install_default_image_sizes', 'spine_install_default_image_sizes' );
-/**
- * Use the filter provided by the WSUWP Platform to modify the default image
- * sizes whenever a new site is installed. Rather than using the passed parameters,
- * we're currently overwriting the defaults with our own.
- *
- * @param array $image_sizes List of default image sizes.
- *
- * @return array Modified list of default image sizes.
- */
-function spine_install_default_image_sizes( $image_sizes ) {
-	$image_sizes = array(
-		'thumbnail_size_w' => 198,
-		'thumbnail_size_h' => 198,
-		'medium_size_w'    => 396,
-		'medium_size_h'    => 99164,
-		'large_size_w'     => 792,
-		'large_size_h'     => 99164,
-	);
-
-	return $image_sizes;
 }
