@@ -3,9 +3,9 @@
 get_header();
 
 // If a featured image is assigned to the post, display as a background image.
-if ( has_post_thumbnail( get_the_ID() ) ) {
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
-	?><style> main { background-image: url(<?php echo esc_url( $image[0] ); ?>); }</style><?php
+if ( spine_has_featured_image() ) {
+	$image = spine_get_featured_image_src( 'single-post-thumbnail' );
+	?><style> main { background-image: url(<?php echo esc_url( $image ); ?>); }</style><?php
 }
 
 // If a position has been assigned to the featured image as a background, apply that style.
