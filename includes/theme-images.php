@@ -91,6 +91,20 @@ class Spine_Theme_Images {
 		}
 	}
 
+	/**
+	 * Check to see if a custom post thumbnail has been added to a post.
+	 *
+	 * @param string $type Type of added thumbnail to check for.
+	 *
+	 * @return bool True if thumbnail exists. False if not.
+	 */
+	public function has_post_thumbnail( $type ) {
+		if ( class_exists( 'MultiPostThumbnails' ) ) {
+			return MultiPostThumbnails::has_post_thumbnail( get_post_type(), $type );
+		}
+
+		return false;
+	}
 
 }
 $spine_theme_image = new Spine_Theme_Images();
@@ -106,6 +120,15 @@ function spine_the_featured_image( $size = 'spine-large_size' ) {
 }
 
 /**
+ * Wrapper to determine if the displayed post or page has a featured image assigned.
+ *
+ * @return bool True if featured image exists, false if not.
+ */
+function spine_has_featured_image() {
+	return has_post_thumbnail();
+}
+
+/**
  * Wraps functionality inside Spine_Theme_Images to display the background image
  * configured as one of the thumnbnails in Multiple Post Thumbnails by the theme.
  *
@@ -117,6 +140,16 @@ function spine_the_background_image( $size = 'spine-xlarge_size' ) {
 }
 
 /**
+ * Wrapper to determine if the displayed post or page has a background image assigned.
+ *
+ * @return bool True if background exists. False if not.
+ */
+function spine_has_background_image() {
+	global $spine_theme_image;
+	return $spine_theme_image->has_post_thumbnail( 'background-image' );
+}
+
+/**
  * Wraps functionality inside Spine_Theme_Images to display the thumbnail image
  * configured as one of the thumnbnails in Multiple Post Thumbnails by the theme.
  *
@@ -125,4 +158,14 @@ function spine_the_background_image( $size = 'spine-xlarge_size' ) {
 function spine_the_thumbnail_image( $size = 'spine-thumbnail_size' ) {
 	global $spine_theme_image;
 	$spine_theme_image->the_post_thumbnail( 'thumbnail-image', $size );
+}
+
+/**
+ * Wrapper to determine if the displayed post or page has a thumbnail image assigned.
+ *
+ * @return bool True if thumbnail exists. False if not.
+ */
+function spine_has_thumbnail_image() {
+	global $spine_theme_image;
+	return $spine_theme_image->has_post_thumbnail( 'thumbnail-image' );
 }
