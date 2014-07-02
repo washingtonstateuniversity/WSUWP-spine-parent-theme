@@ -130,7 +130,7 @@ $spine_theme_image = new Spine_Theme_Images();
  *
  * @param string $size Thumbnail size.
  */
-function spine_the_featured_image( $size = 'spine-large_size' ) {
+function spine_the_featured_image( $size = 'spine-medium_size' ) {
 	the_post_thumbnail( $size );
 }
 
@@ -150,7 +150,7 @@ function spine_has_featured_image() {
  *
  * @return bool|string URL of the image if available. False if not.
  */
-function spine_get_featured_image_src( $size = 'post-thumbnail' ) {
+function spine_get_featured_image_src( $size = 'spine-medium_size' ) {
 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
 
 	if ( isset( $image[0] ) ) {
@@ -188,7 +188,7 @@ function spine_has_background_image() {
  *
  * @return bool|string URL of the image if available. False if not.
  */
-function spine_get_background_image_src( $size = 'spine-xlarge-size' ) {
+function spine_get_background_image_src( $size = 'spine-xlarge_size' ) {
 	global $spine_theme_image;
 	return $spine_theme_image->get_thumbnail_image_src( 'background-image', $size );
 }
