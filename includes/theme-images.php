@@ -15,6 +15,8 @@ class Spine_Theme_Images {
 		if ( class_exists( 'MultiPostThumbnails' ) ) {
 			add_action( 'after_setup_theme', array( $this, 'setup_additional_post_thumbnails' ), 11 );
 		}
+
+		add_filter( 'wsuwp_install_default_image_sizes', 'install_default_image_sizes' );
 	}
 
 	/**
@@ -57,6 +59,28 @@ class Spine_Theme_Images {
 		add_image_size( 'spine-medium_size', 792, 99164 );
 		add_image_size( 'spine-large_size', 990, 99164 );
 		add_image_size( 'spine-xlarge_size', 1188, 99164 );
+	}
+
+	/**
+	 * Use the filter provided by the WSUWP Platform to modify the default image
+	 * sizes whenever a new site is installed. Rather than using the passed parameters,
+	 * we're currently overwriting the defaults with our own.
+	 *
+	 * @param array $image_sizes List of default image sizes.
+	 *
+	 * @return array Modified list of default image sizes.
+	 */
+	public function install_default_image_sizes( $image_sizes ) {
+		$image_sizes = array(
+			'thumbnail_size_w' => 198,
+			'thumbnail_size_h' => 198,
+			'medium_size_w'    => 396,
+			'medium_size_h'    => 99164,
+			'large_size_w'     => 792,
+			'large_size_h'     => 99164,
+		);
+
+		return $image_sizes;
 	}
 }
 new Spine_Theme_Images();
