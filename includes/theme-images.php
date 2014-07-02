@@ -16,7 +16,7 @@ class Spine_Theme_Images {
 			add_action( 'after_setup_theme', array( $this, 'setup_additional_post_thumbnails' ), 11 );
 		}
 
-		add_filter( 'wsuwp_install_default_image_sizes', 'install_default_image_sizes' );
+		add_filter( 'wsuwp_install_default_image_sizes', array( $this, 'install_default_image_sizes' ) );
 	}
 
 	/**
