@@ -106,6 +106,21 @@ class Spine_Theme_Images {
 		return false;
 	}
 
+	/**
+	 * Retrieve the source of an image added through multiple post thumbnails.
+	 *
+	 * @param string $type Type of thumbnail being requested.
+	 * @param string $size Size of thumbnail being requested.
+	 *
+	 * @return bool|string URL of the image if available. False if not.
+	 */
+	public function get_thumbnail_image_src( $type, $size = null ) {
+		if ( class_exists( 'MultiPostThumbnails' ) ) {
+			return MultiPostThumbnails::get_post_thumbnail_url( get_post_type(), $type, get_the_ID(), $size );
+		}
+
+		return false;
+	}
 }
 $spine_theme_image = new Spine_Theme_Images();
 
@@ -126,6 +141,23 @@ function spine_the_featured_image( $size = 'spine-large_size' ) {
  */
 function spine_has_featured_image() {
 	return has_post_thumbnail();
+}
+
+/**
+ * Retrieve the source URL for a featured image attached to a post.
+ *
+ * @param string $size Size of the thumbnail to retrieve.
+ *
+ * @return bool|string URL of the image if available. False if not.
+ */
+function spine_get_featured_image_src( $size = 'post-thumbnail' ) {
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
+
+	if ( isset( $image[0] ) ) {
+		return $image[0];
+	} else {
+		return false;
+	}
 }
 
 /**
@@ -150,6 +182,18 @@ function spine_has_background_image() {
 }
 
 /**
+ * Retrieve the source URL for a background image attached to a post.
+ *
+ * @param string $size Size of the thumbnail to retrieve.
+ *
+ * @return bool|string URL of the image if available. False if not.
+ */
+function spine_get_background_image_src( $size = 'spine-xlarge-size' ) {
+	global $spine_theme_image;
+	return $spine_theme_image->get_thumbnail_image_src( 'background-image', $size );
+}
+
+/**
  * Wraps functionality inside Spine_Theme_Images to display the thumbnail image
  * configured as one of the thumnbnails in Multiple Post Thumbnails by the theme.
  *
@@ -168,4 +212,16 @@ function spine_the_thumbnail_image( $size = 'spine-thumbnail_size' ) {
 function spine_has_thumbnail_image() {
 	global $spine_theme_image;
 	return $spine_theme_image->has_post_thumbnail( 'thumbnail-image' );
+}
+
+/**
+ * Retrieve the source URL for a thumbnail image attached to a post.
+ *
+ * @param string $size Size of the thumbnail to retrieve.
+ *
+ * @return bool|string URL of the image if available. False if not.
+ */
+function spine_get_thumbnail_image_src( $size = 'spine-thumbnail_size' ) {
+	global $spine_theme_image;
+	return $spine_theme_image->get_thumbnail_image_src( 'thumbnail-image', $size );
 }
