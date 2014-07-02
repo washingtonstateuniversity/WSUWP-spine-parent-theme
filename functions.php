@@ -420,6 +420,16 @@ function spine_sectioned_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
+add_filter( 'wsuwp_first_page_template', 'spine_install_default_template' );
+/**
+ * Filter the template used for the home page when creating a new site on the WSUWP Platform.
+ *
+ * @return string Default template to use for the first page.
+ */
+function spine_install_default_template() {
+	return 'templates/single.php';
+}
+
 add_filter( 'wsuwp_first_page_title', 'spine_install_default_title' );
 /**
  * Filter the title used for the home page when creating a new site on the WSUWP Platform.
