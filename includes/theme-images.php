@@ -83,6 +83,13 @@ class Spine_Theme_Images {
 		return $image_sizes;
 	}
 
+	/**
+	 * Use Multi Post Thumbnails to output the HTML necessary for displaying a custom
+	 * post thumbnail.
+	 *
+	 * @param string $type The type of post thumbnail to display.
+	 * @param string $size The size of the post thumbnail.
+	 */
 	public function the_post_thumbnail( $type, $size ) {
 		if ( class_exists( 'MultiPostThumbnails' ) ) {
 			MultiPostThumbnails::the_post_thumbnail( get_post_type(), $type, get_the_ID(), $size );
