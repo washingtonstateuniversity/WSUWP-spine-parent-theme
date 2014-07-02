@@ -430,7 +430,7 @@ function spine_install_default_content() {
 	$page_content = '<article>
 	<h2>Welcome to the WSU Web</h2>
 	<p>As a visual element, the WSU Spine is a 198px wide column that binds together the many websites of wsu.edu. As a framework, the WSU Spine is a minimal template that provides global tools and a responsive and flexible grid for every WSU website. With a uniform and global spine on the left and a blank, unwritten page to the right, the Spine balances the unity and diversity of our university.</p>
-	<img src="' . esc_url( get_template_directory_uri() . '/admin/customizer.png' ) . '" class="alignright">
+	<img src="' . esc_url( get_template_directory_uri() . '/includes/customizer/customizer.png' ) . '" class="alignright">
 	<h2>Getting Started</h2>
 	<ol>
 		<li>After <a href="' . esc_url( wp_login_url() ) . '">logging in</a>, head to the <a href="' . esc_url( admin_url( 'customize.php?theme=spine' ) ) . '">Customizer</a>.</li>
