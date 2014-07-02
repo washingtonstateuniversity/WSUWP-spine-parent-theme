@@ -236,21 +236,6 @@ function spine_theme_widgets_init() {
 	register_sidebar( $widget_options );
 }
 
-add_action( 'after_setup_theme', 'spine_theme_setup_theme' );
-/**
- * Setup some defaults provided by the theme.
- */
-function spine_theme_setup_theme() {
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 198, 198, true );
-
-	add_image_size( 'spine-thumbnail_size', 198, 198, true );
-	add_image_size( 'spine-small_size', 396, 99164 );
-	add_image_size( 'spine-medium_size', 792, 99164 );
-	add_image_size( 'spine-large_size', 990, 99164 );
-	add_image_size( 'spine-xlarge_size', 1188, 99164 );
-}
-
 add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10 );
 /**
  * Condense verbose menu classes provided by WordPress.

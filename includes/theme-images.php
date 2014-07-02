@@ -10,8 +10,10 @@ class Spine_Theme_Images {
 	 * Add hooks.
 	 */
 	public function __construct() {
+		add_action( 'after_setup_theme', array( $this, 'setup_image_sizes' ), 10 );
+
 		if ( class_exists( 'MultiPostThumbnails' ) ) {
-			add_action( 'after_setup_theme', array( $this, 'setup_additional_post_thumbnails' ) );
+			add_action( 'after_setup_theme', array( $this, 'setup_additional_post_thumbnails' ), 11 );
 		}
 	}
 
@@ -41,6 +43,20 @@ class Spine_Theme_Images {
 
 		$thumbnail_args['post_type'] = 'page';
 		new MultiPostThumbnails( $thumbnail_args );
+	}
+
+	/**
+	 * Setup the default image sizes used by the theme.
+	 */
+	public function setup_image_sizes() {
+		add_theme_support( 'post-thumbnails' );
+		set_post_thumbnail_size( 198, 198, true );
+
+		add_image_size( 'spine-thumbnail_size', 198, 198, true );
+		add_image_size( 'spine-small_size', 396, 99164 );
+		add_image_size( 'spine-medium_size', 792, 99164 );
+		add_image_size( 'spine-large_size', 990, 99164 );
+		add_image_size( 'spine-xlarge_size', 1188, 99164 );
 	}
 }
 new Spine_Theme_Images();
