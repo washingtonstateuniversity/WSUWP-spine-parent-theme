@@ -15,6 +15,54 @@ add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_scripts
 
 function spine_customize_register($wp_customize){
  
+    $wp_customize->add_section( 'title_tagline', array(
+     'title'    => __( 'Page Headers' ),
+	 'priority' => 20,
+	 ));
+
+	$wp_customize->add_control( 'blogname', array(
+		'label'      => __( 'Main Header' ),
+		'section'    => 'title_tagline',
+		));
+	$wp_customize->add_control( 'blogdescription', array(
+		'label'      => __( 'Main Subheader' ),
+		'section'    => 'title_tagline',
+		));
+		
+	$wp_customize->add_setting('spine_options[header_global]', array(
+        'default'        => false,
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+	$wp_customize->add_control('spine_options[header_global]', array(
+        'label'      => __('Use as global main header', 'spine'),
+        'section'    => 'title_tagline',
+        'settings'   => 'spine_options[header_global]',
+        'type'       => 'checkbox'
+    ));
+    $wp_customize->add_setting('spine_options[header_show]', array(
+        'default'        => true,
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+	$wp_customize->add_control('spine_options[header_show]', array(
+        'label'      => __('Show main header', 'spine'),
+        'section'    => 'title_tagline',
+        'settings'   => 'spine_options[header_show]',
+        'type'       => 'checkbox'
+    ));
+     $wp_customize->add_setting('spine_options[pagetitle_show]', array(
+        'default'        => true,
+        'capability'     => 'edit_theme_options',
+        'type'           => 'option',
+    ));
+	$wp_customize->add_control('spine_options[pagetitle_show]', array(
+        'label'      => __('Show page title', 'spine'),
+        'section'    => 'title_tagline',
+        'settings'   => 'spine_options[pagetitle_show]',
+        'type'       => 'checkbox'
+    ));
+    
     // Spine Options
     
     $wp_customize->add_section('section_spine_options', array(
@@ -345,7 +393,8 @@ function spine_customize_register($wp_customize){
         'section'    => 'section_spine_style',
         'type'       => 'select',
         'choices'    => array(
-            'gray' => 'Gray (none)',
+            'default' => 'Default',
+            'gray' => 'Gray',
             'green' => 'Green',
             'orange' => 'Orange',
             'blue' => 'Blue',
