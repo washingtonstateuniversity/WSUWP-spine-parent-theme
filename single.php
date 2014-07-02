@@ -44,7 +44,7 @@ if ( ! empty( $position ) ) {
 </section>
 
 <footer class="main-footer">
-	<section class="row halves pager prevnext">
+	<section class="row halves pager prevnext gutter">
 		<div class="column one">
 			<?php previous_post_link(); ?> 
 		</div>
@@ -55,7 +55,5 @@ if ( ! empty( $position ) ) {
 </footer>
 
 </main><!--/#page-->
-
-<a href="<?php echo get_edit_post_link(); ?>" class="wp-edit-link">Edit</a>
 
 <?php get_footer(); ?>
