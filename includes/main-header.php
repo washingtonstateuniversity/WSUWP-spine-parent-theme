@@ -116,7 +116,7 @@ function spine_get_main_header() {
 			$sub_link = get_permalink( $post->post_parent );
 			$sub_header_default = '<a href="' . $sub_link . '">' . $subsection_title . '</a>';
 		} else {
-			$sub_header_default = $page_title;
+			$sub_header_default = $site_tagline;
 		}
 	}
 
