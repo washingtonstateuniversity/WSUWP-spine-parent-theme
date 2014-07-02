@@ -82,5 +82,47 @@ class Spine_Theme_Images {
 
 		return $image_sizes;
 	}
+
+	public function the_post_thumbnail( $type, $size ) {
+		if ( class_exists( 'MultiPostThumbnails' ) ) {
+			MultiPostThumbnails::the_post_thumbnail( get_post_type(), $type, get_the_ID(), $size );
+		} else {
+			echo '';
+		}
+	}
+
+
 }
-new Spine_Theme_Images();
+$spine_theme_image = new Spine_Theme_Images();
+
+/**
+ * Use the_post_thumbnail to display the default featured image provided
+ * by WordPress core functionality.
+ *
+ * @param string $size Thumbnail size.
+ */
+function spine_the_featured_image( $size = 'spine-large_size' ) {
+	the_post_thumbnail( $size );
+}
+
+/**
+ * Wraps functionality inside Spine_Theme_Images to display the background image
+ * configured as one of the thumnbnails in Multiple Post Thumbnails by the theme.
+ *
+ * @param string $size Thumbnail size.
+ */
+function spine_the_background_image( $size = 'spine-xlarge_size' ) {
+	global $spine_theme_image;
+	$spine_theme_image->the_post_thumbnail( 'background-image', $size );
+}
+
+/**
+ * Wraps functionality inside Spine_Theme_Images to display the thumbnail image
+ * configured as one of the thumnbnails in Multiple Post Thumbnails by the theme.
+ *
+ * @param string $size Thumbnail size.
+ */
+function spine_the_thumbnail_image( $size = 'spine-thumbnail_size' ) {
+	global $spine_theme_image;
+	$spine_theme_image->the_post_thumbnail( 'thumbnail-image', $size );
+}
