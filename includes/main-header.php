@@ -8,6 +8,7 @@ class Spine_Main_Header {
 	 */
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_header_meta_box' ) );
+		add_action( 'save_post', array( $this, 'save_main_header' ), 10, 2 );
 	}
 
 	/**
@@ -34,6 +35,40 @@ class Spine_Main_Header {
 		<label for="spine_sub_header">Bottom Header Text:</label><br />
 		<input type="text" class="widefat" name="spine_sub_header" id="spine_sub_header" value="<?php echo esc_attr( $sub_header ); ?>" />
 		<?php
+	}
+
+	/**
+	 * Save a possible override of the default sup and sub headers at an individual page level.
+	 *
+	 * @param int     $post_id The current post ID.
+	 * @param WP_Post $post    Object representing the current post.
+	 */
+	function save_main_header( $post_id, $post ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['_spine_header_nonce'] ) || false === wp_verify_nonce( $_POST['_spine_header_nonce'], 'save-spine-main-header' ) ) {
+			return;
+		}
+
+		if ( 'auto-draft' === $post->post_status ) {
+			return;
+		}
+
+		if ( isset( $_POST['spine_sup_header'] ) && '' != trim( $_POST['spine_sup_header'] ) ) {
+			$sup_header = sanitize_post_field( 'post_title', $_POST['spine_sup_header'], $post->ID, 'db' );
+			update_post_meta( $post_id, 'sup-header', $sup_header );
+		} else {
+			delete_post_meta( $post_id, 'sup-header' );
+		}
+
+		if ( isset( $_POST['spine_sub_header'] ) && '' != trim( $_POST['spine_sub_header'] ) ) {
+			$sub_header = sanitize_post_field( 'post_title', $_POST['spine_sub_header'], $post->ID, 'db' );
+			update_post_meta( $post_id, 'sub-header', $sub_header );
+		} else {
+			delete_post_meta( $post_id, 'sub-header' );
+		}
 	}
 }
 new Spine_Main_Header();
