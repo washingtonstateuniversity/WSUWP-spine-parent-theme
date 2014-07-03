@@ -53,11 +53,18 @@ function spine_get_main_header() {
 	$site_tagline       = get_bloginfo( 'description', 'display' );
 	$page_title         = get_the_title();
 	$post_title         = get_the_title();
+
+	// Attempt to determine the section and subsection through page hierarchy.
 	$section_title      = spine_section_meta( 'title', 'section' );
 	$subsection_title   = spine_section_meta( 'title', 'subsection' );
 
+	// By default, the `sup-header` area is the site's configured Title
 	$sup_header_default	  = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
-	$sub_header_default   = spine_section_meta( 'title', 'subsection' );
+
+	// The `sub-header` area is properly set in the conditional logic that follows.
+	$sub_header_default   = '';
+
+	// Alternate `sup-header` and `sub-header` areas are available for targeting as data attributes via CSS.
 	$sup_header_alternate = '';
 	$sub_header_alternate = '';
 
