@@ -1,4 +1,77 @@
 <?php
+/**
+ * Class Spine_Main_Header
+ */
+class Spine_Main_Header {
+	/**
+	 * Setup hooks.
+	 */
+	public function __construct() {
+		add_action( 'add_meta_boxes', array( $this, 'add_header_meta_box' ) );
+		add_action( 'save_post', array( $this, 'save_main_header' ), 10, 2 );
+	}
+
+	/**
+	 * Add meta boxes used to override the spine's main header.
+	 */
+	public function add_header_meta_box() {
+		add_meta_box( 'spine-main-header', 'Spine Main Header', array( $this, 'display_main_header_meta_box' ), 'page' );
+	}
+
+	/**
+	 * Display the meta box for controlling `sup-header` and `sub-header` overrides on
+	 * a per page basis.
+	 */
+	public function display_main_header_meta_box( $post ) {
+		wp_nonce_field( 'save-spine-main-header', '_spine_header_nonce' );
+
+		$sup_header = get_post_meta( $post->ID, 'sup-header', true );
+		$sub_header = get_post_meta( $post->ID, 'sub-header', true );
+		?>
+		<p class="description">Text entered here for the top and bottom header areas will override the default values provided by the parent theme.</p>
+		<label for="spine_sup_header">Top Header Text:</label><br />
+		<input type="text" class="widefat" name="spine_sup_header" id="spine_sup_header" value="<?php echo esc_attr( $sup_header ); ?>" />
+		<br /><br />
+		<label for="spine_sub_header">Bottom Header Text:</label><br />
+		<input type="text" class="widefat" name="spine_sub_header" id="spine_sub_header" value="<?php echo esc_attr( $sub_header ); ?>" />
+		<?php
+	}
+
+	/**
+	 * Save a possible override of the default sup and sub headers at an individual page level.
+	 *
+	 * @param int     $post_id The current post ID.
+	 * @param WP_Post $post    Object representing the current post.
+	 */
+	function save_main_header( $post_id, $post ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['_spine_header_nonce'] ) || false === wp_verify_nonce( $_POST['_spine_header_nonce'], 'save-spine-main-header' ) ) {
+			return;
+		}
+
+		if ( 'auto-draft' === $post->post_status ) {
+			return;
+		}
+
+		if ( isset( $_POST['spine_sup_header'] ) && '' != trim( $_POST['spine_sup_header'] ) ) {
+			$sup_header = sanitize_post_field( 'post_title', $_POST['spine_sup_header'], $post->ID, 'db' );
+			update_post_meta( $post_id, 'sup-header', $sup_header );
+		} else {
+			delete_post_meta( $post_id, 'sup-header' );
+		}
+
+		if ( isset( $_POST['spine_sub_header'] ) && '' != trim( $_POST['spine_sub_header'] ) ) {
+			$sub_header = sanitize_post_field( 'post_title', $_POST['spine_sub_header'], $post->ID, 'db' );
+			update_post_meta( $post_id, 'sub-header', $sub_header );
+		} else {
+			delete_post_meta( $post_id, 'sub-header' );
+		}
+	}
+}
+new Spine_Main_Header();
 
 function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 
@@ -34,6 +107,12 @@ function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 	return null;
 }
 
+/**
+ * Determine what should be displayed in the spine's main header area for the
+ * sub and sub sections.
+ *
+ * @return array List of elements for output in main header.
+ */
 function spine_get_main_header() {
 	$page_for_posts = absint( get_option( 'page_for_posts', 0 ) );
 
@@ -47,11 +126,18 @@ function spine_get_main_header() {
 	$site_tagline       = get_bloginfo( 'description', 'display' );
 	$page_title         = get_the_title();
 	$post_title         = get_the_title();
+
+	// Attempt to determine the section and subsection through page hierarchy.
 	$section_title      = spine_section_meta( 'title', 'section' );
 	$subsection_title   = spine_section_meta( 'title', 'subsection' );
 
+	// By default, the `sup-header` area is the site's configured Title
 	$sup_header_default	  = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
-	$sub_header_default   = spine_section_meta( 'title', 'subsection' );
+
+	// The `sub-header` area is properly set in the conditional logic that follows.
+	$sub_header_default   = '';
+
+	// Alternate `sup-header` and `sub-header` areas are available for targeting as data attributes via CSS.
 	$sup_header_alternate = '';
 	$sub_header_alternate = '';
 
@@ -116,10 +202,12 @@ function spine_get_main_header() {
 			$sub_link = get_permalink( $post->post_parent );
 			$sub_header_default = '<a href="' . $sub_link . '">' . $subsection_title . '</a>';
 		} else {
-			$sub_header_default = $page_title;
+			$sub_header_default = $site_tagline;
 		}
 	}
 
+	// If this is the front page, explicitly overwrite to defaults that may have been
+	// changed in the is_page() area.
 	if ( is_front_page() ) {
 		$sup_header_default = $site_name;
 		$sub_header_default = $site_tagline;
@@ -145,6 +233,15 @@ function spine_get_main_header() {
 
 	if ( is_404() ) {
 		$sub_header_default = 'Page not found';
+	}
+
+	// If a global override is chosen, store the default as alternate and assign the title and tagline.
+	if ( true == spine_get_option( 'header_global' ) ) {
+		$sup_header_alternate = $sup_header_default;
+		$sup_header_default = $site_name;
+
+		$sub_header_alternate = $sub_header_default;
+		$sub_header_default = $site_tagline;
 	}
 
 	// Both sup and sub headers can be overridden with the use of post meta.

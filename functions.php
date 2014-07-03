@@ -1,7 +1,7 @@
 <?php
 
 // Global version tracker.
-$wsuwp_spine_theme_version = '0.9.10';
+$wsuwp_spine_theme_version = '0.9.11';
 
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
@@ -79,6 +79,7 @@ function spine_get_option( $option_name ) {
 		'theme_style'               => 'bookmark',
 		'secondary_colors'          => 'gray',
 		'theme_spacing'             => 'default',
+		'header_global'             => false,
 		'broken_binding'            => false,
 		'bleed'                     => true,
 		'crop'			            => false,
