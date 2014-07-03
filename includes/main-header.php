@@ -153,6 +153,15 @@ function spine_get_main_header() {
 		$sub_header_default = 'Page not found';
 	}
 
+	// If a global override is chosen, store the default as alternate and assign the title and tagline.
+	if ( true == spine_get_option( 'header_global' ) ) {
+		$sup_header_alternate = $sup_header_default;
+		$sup_header_default = $site_name;
+
+		$sub_header_alternate = $sub_header_default;
+		$sub_header_default = $site_tagline;
+	}
+
 	// Both sup and sub headers can be overridden with the use of post meta.
 	if ( is_singular() ) {
 		$sup_override = get_post_meta( get_the_ID(), 'sup-header', true );
