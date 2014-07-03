@@ -79,6 +79,7 @@ function spine_get_option( $option_name ) {
 		'theme_style'               => 'bookmark',
 		'secondary_colors'          => 'gray',
 		'theme_spacing'             => 'default',
+		'header_global'             => false,
 		'broken_binding'            => false,
 		'bleed'                     => true,
 		'crop'			            => false,
