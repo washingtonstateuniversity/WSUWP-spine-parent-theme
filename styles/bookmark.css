@@ -9,9 +9,16 @@
 */
 @import 'https://repo.wsu.edu/spine/1/styles/opensans.css';
 
+body {
+	background-image: url('bookmark/backgrounds/gradients/gradient-graytolight-south.png');
+	background-repeat: repeat-x;
+	background-position: left top;
+	background-color: #f9f9f9;
+	}
 .home main {
 	background: url('bookmark/backgrounds/letters/lightest-four.jpg') 0px 0px no-repeat;
-	background-size: 615px auto;
+	background-size: 792px auto;
+	min-height: 967px;
 	
 	}
 .home .opensansy main {
