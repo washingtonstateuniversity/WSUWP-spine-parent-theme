@@ -134,8 +134,6 @@ function spine_customize_register($wp_customize){
         'title'    => __('Front Page', 'static_front_page'),
     ));
     
-    
-    
     // SOCIAL CHANNELS
     $wp_customize->add_section('section_spine_social', array(
         'title'    => __('Spine: Social', 'spine'),
