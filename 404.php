@@ -4,7 +4,7 @@
 
 		<?php get_template_part('parts/headers'); ?>
 
-		<section class="row single">
+		<section class="row single gutter pad-top">
 
 			<div class="column one">
 
