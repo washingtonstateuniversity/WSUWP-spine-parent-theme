@@ -133,6 +133,8 @@ function spine_get_main_header() {
 		}
 	}
 
+	// If this is the front page, explicitly overwrite to defaults that may have been
+	// changed in the is_page() area.
 	if ( is_front_page() ) {
 		$sup_header_default = $site_name;
 		$sub_header_default = $site_tagline;
