@@ -1,4 +1,31 @@
 <?php
+/**
+ * Class Spine_Main_Header
+ */
+class Spine_Main_Header {
+	/**
+	 * Setup hooks.
+	 */
+	public function __construct() {
+		add_action( 'add_meta_boxes', array( $this, 'add_header_meta_box' ) );
+	}
+
+	/**
+	 * Add meta boxes used to override the spine's main header.
+	 */
+	public function add_header_meta_box() {
+		add_meta_box( 'spine-main-header', 'Spine Main Header', array( $this, 'display_main_header_meta_box' ), 'page' );
+	}
+
+	/**
+	 * Display the meta box for controlling `sup-header` and `sub-header` overrides on
+	 * a per page basis.
+	 */
+	public function display_main_header_meta_box() {
+
+	}
+}
+new Spine_Main_Header();
 
 function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 
