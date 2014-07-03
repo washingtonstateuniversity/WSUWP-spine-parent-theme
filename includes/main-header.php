@@ -21,8 +21,19 @@ class Spine_Main_Header {
 	 * Display the meta box for controlling `sup-header` and `sub-header` overrides on
 	 * a per page basis.
 	 */
-	public function display_main_header_meta_box() {
+	public function display_main_header_meta_box( $post ) {
+		wp_nonce_field( 'save-spine-main-header', '_spine_header_nonce' );
 
+		$sup_header = get_post_meta( $post->ID, 'sup-header', true );
+		$sub_header = get_post_meta( $post->ID, 'sub-header', true );
+		?>
+		<p class="description">Text entered here for the top and bottom header areas will override the default values provided by the parent theme.</p>
+		<label for="spine_sup_header">Top Header Text:</label><br />
+		<input type="text" class="widefat" name="spine_sup_header" id="spine_sup_header" value="<?php echo esc_attr( $sup_header ); ?>" />
+		<br /><br />
+		<label for="spine_sub_header">Bottom Header Text:</label><br />
+		<input type="text" class="widefat" name="spine_sub_header" id="spine_sub_header" value="<?php echo esc_attr( $sub_header ); ?>" />
+		<?php
 	}
 }
 new Spine_Main_Header();
