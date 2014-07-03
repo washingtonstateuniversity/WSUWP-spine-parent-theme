@@ -34,6 +34,12 @@ function spine_section_meta( $attribute = 'slug', $sectional = 'subsection' ) {
 	return null;
 }
 
+/**
+ * Determine what should be displayed in the spine's main header area for the
+ * sub and sub sections.
+ *
+ * @return array List of elements for output in main header.
+ */
 function spine_get_main_header() {
 	$page_for_posts = absint( get_option( 'page_for_posts', 0 ) );
 
