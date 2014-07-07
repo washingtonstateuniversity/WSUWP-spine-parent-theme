@@ -108,6 +108,9 @@ figcaption {
 	display: block;
 	margin: 1em auto;
 	}
+figure.aligncenter figcaption {
+	text-align: center;
+}
 .size-lt-large .alignleft,
 .size-lt-large .alignright {
 	clear: both;
