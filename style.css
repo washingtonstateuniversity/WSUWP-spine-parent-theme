@@ -106,9 +106,7 @@ figcaption {
 	}
 .aligncenter {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin: 1em;
+	margin: 1em auto;
 	}
 .size-lt-large .alignleft,
 .size-lt-large .alignright {
