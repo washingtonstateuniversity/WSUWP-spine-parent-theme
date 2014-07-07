@@ -304,17 +304,21 @@ function spine_theme_caption_markup( $output, $attr, $content ) {
 	$defaults = array(
 		'id'      => '',
 		'align'   => 'alignnone',
-		'width'   => '',
+		'width'   => 0,
 		'caption' => ''
 	);
 
 	$attr = shortcode_atts( $defaults, $attr );
+	$attr['width'] = absint( $attr['width'] );
+
 	if ( 1 > $attr['width'] || empty( $attr['caption'] ) ) {
 		return $content;
 	}
 
 	$attributes = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
 	$attributes .= ' class="' . esc_attr( $attr['align'] ) . '"';
+	$attributes .= ' style="width:' . $attr['width'] . 'px;"';
+
 	$output = '<figure' . $attributes .'><div class="liner cf">';
 	$output .= do_shortcode( $content );
 	$output .= '<figcaption>' . $attr['caption'] . '</figcaption>';
