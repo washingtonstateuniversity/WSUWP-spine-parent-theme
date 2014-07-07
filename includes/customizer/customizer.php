@@ -12,7 +12,12 @@ function spine_theme_customize_scripts() {
     wp_enqueue_script('customize-interface-scripts', get_template_directory_uri().'/includes/customizer/customize.js', array( 'jquery' ),'',true );
 }
 
-function spine_customize_register($wp_customize){
+/**
+ * Add custom settings and controls to the WP Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize
+ */
+function spine_customize_register( $wp_customize ){
  
     $wp_customize->add_section( 'title_tagline', array(
      'title'    => __( 'Page Headers' ),
