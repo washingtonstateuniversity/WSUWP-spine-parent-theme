@@ -170,6 +170,19 @@ class Spine_Builder_Custom {
 	}
 
 	/**
+	 * Allow span tags to be added in title areas via the kses allowed HTML filter.
+	 *
+	 * @return array List of tags and attributes allowed.
+	 */
+	public function allow_span_titles() {
+		$tags = array();
+		$tags['span']['class'] = true;
+		$tags['span']['id'] = true;
+
+		return $tags;
+	}
+
+	/**
 	 * Clean the data being passed from the title input field to ensure it is ready
 	 * for input into the database as part of the template.
 	 *
@@ -182,7 +195,9 @@ class Spine_Builder_Custom {
 
 		// The title_save_pre filter applies wp_filter_kses() to the title.
 		if ( isset( $data['title'] ) ) {
+			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
+			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 		}
 
 		if ( isset( $data['section-classes'] ) ) {
@@ -207,7 +222,9 @@ class Spine_Builder_Custom {
 		$clean_data = array();
 
 		if ( isset( $data['title'] ) ) {
+			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
+			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 		}
 
 		if ( isset( $data['content'] ) ) {
@@ -249,11 +266,15 @@ class Spine_Builder_Custom {
 			$i = 1;
 			foreach ( $data['columns'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {
+					add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 					$clean_data['columns'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
+					remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 
 					// The first title serves as the section title
 					if ( 1 === $i ) {
+						add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 						$clean_data['label'] = apply_filters( 'title_save_pre', $item['title'] );
+						remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
 					}
 				}
 
