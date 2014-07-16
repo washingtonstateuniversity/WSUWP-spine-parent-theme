@@ -17,9 +17,6 @@
 	<!-- DOCS -->
 	<link type="text/plain" rel="author" href="//repo.wsu.edu/spine/1/authors.txt" />
 	<link type="text/html" rel="help" href="http://brand.wsu.edu/media/web" />
-	
-	<!-- ANALYTICS -->
-	<!-- Your analytics code here -->
 
 	<!-- SCRIPTS and STYLES -->
 	<!-- Custom scripts and styles should be added with wp_enqueue_script() and wp_enqueue_style() -->

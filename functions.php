@@ -59,7 +59,6 @@ function spine_show_builder_page_template( $page_templates ) {
 	return $page_templates;
 }
 
-
 /**
  * Retrieve the requested spine option from the database.
  *
@@ -209,8 +208,10 @@ function spine_admin_enqueue_scripts() {
 	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
 }
 
-// Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
+/**
+ * Provide default navigation menus.
+ */
 function spine_theme_menus() {
 	register_nav_menus(
 		array(
@@ -220,7 +221,6 @@ function spine_theme_menus() {
 	);
 }
 
-// A Single Sidebar
 add_action( 'widgets_init', 'spine_theme_widgets_init' );
 /**
  * Register sidebars used by the theme.
@@ -256,46 +256,57 @@ function spine_abbridged_menu_classes( $classes ) {
 	return array();
 }
 
-// Custom Excerpt
-function spine_trim_excerpt($text) {
-$raw_excerpt = $text;
-if ( '' == $text ) {
-    //Retrieve the post content. 
-    $text = get_the_content('');
- 
-    //Delete all shortcode tags from the content. 
-    $text = strip_shortcodes( $text );
- 
-    $text = apply_filters('the_content', $text);
-    $text = str_replace(']]>', ']]&gt;', $text);
-     
-    $allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
-    $text = strip_tags($text, $allowed_tags);
-     
-    $excerpt_word_count = 105;
-    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
-     
-    $excerpt_end = '... <a href="'.get_permalink(). '">' . '&raquo; More ...' . '</a>';
-    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
-     
-    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
-    if ( count($words) > $excerpt_length ) {
-        array_pop($words);
-        $text = implode(' ', $words);
-        $text = $text . $excerpt_more;
-    } else {
-        $text = implode(' ', $words);
-    }
-}
-return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
-}
-//remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
+add_filter( 'get_the_excerpt', 'spine_trim_excerpt', 5 );
+/**
+ * Provide a custom trimmed excerpt.
+ *
+ * @param string $text The raw excerpt.
+ *
+ * @return string The modified excerpt.
+ */
+function spine_trim_excerpt( $text ) {
+	$raw_excerpt = $text;
+	if ( '' == $text ) {
+		//Retrieve the post content.
+		$text = get_the_content( '' );
 
-/* Default Image Markup */
+		//Delete all shortcode tags from the content.
+		$text = strip_shortcodes( $text );
+
+		$text = apply_filters( 'the_content', $text );
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
+		$text = strip_tags( $text, $allowed_tags );
+
+		$excerpt_word_count = 105;
+		$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
+
+		$excerpt_end = '... <a href="' . get_permalink() . '">' . '&raquo; More ...' . '</a>';
+		$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
+
+		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
+		if ( count( $words ) > $excerpt_length ) {
+			array_pop( $words );
+			$text = implode( ' ', $words );
+			$text = $text . $excerpt_more;
+		} else {
+			$text = implode( ' ', $words );
+		}
+	}
+	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
+}
 
 add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
-
+/**
+ * Modify the markup for an image caption.
+ *
+ * @param string $output  Empty by default.
+ * @param array  $attr    Attributes passed to the caption shortcode.
+ * @param string $content The content being parsed.
+ *
+ * @return string Modified output. If returned empty, default processing will continue.
+ */
 function spine_theme_caption_markup( $output, $attr, $content ) {
 	if ( is_feed() ) {
 		return $output;
@@ -327,27 +338,11 @@ function spine_theme_caption_markup( $output, $attr, $content ) {
 	return $output;
 }
 
-/* add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-
-function remove_width_attribute( $html ) {
-   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-   return $html;
-} */
-
-/* function image_tag_class($class, $id, $align, $size) {
-	return $align;
-}
-add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
-
-*/
-
-// SECTIONING
-// @todo remove this hack... :)
-function spine_is_subpage() {
-	return spine_is_sub();
-}
-
+/**
+ * Determine if the current page has a parent.
+ *
+ * @return bool|int The ID of the parent if found, otherwise false.
+ */
 function spine_is_sub() {
     $post = get_post();
 
@@ -375,7 +370,13 @@ function spine_speckled_body_classes( $classes ) {
 }
 
 add_filter('body_class', 'spine_categorized_body_classes');
-/* Add categorized in classes to body on singular views */
+/**
+ * Add 'categorized' in classes to body on singular views.
+ *
+ * @param array $classes List of classes to be added to the body element.
+ *
+ * @return array Modified list of classes.
+ */
 function spine_categorized_body_classes( $classes ) {
 	if ( has_category() && is_singular() ) {
 		foreach( get_the_category( get_the_ID() ) as $category ) {
