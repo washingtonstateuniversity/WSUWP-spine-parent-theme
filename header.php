@@ -6,7 +6,7 @@
 <head>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php wp_title( '|', true, 'right' ); ?> Washington State University</title>
+	<title><?php echo esc_html( spine_get_title() ); ?></title>
 	
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
