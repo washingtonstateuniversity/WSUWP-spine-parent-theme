@@ -256,41 +256,46 @@ function spine_abbridged_menu_classes( $classes ) {
 	return array();
 }
 
-// Custom Excerpt
-function spine_trim_excerpt($text) {
-$raw_excerpt = $text;
-if ( '' == $text ) {
-    //Retrieve the post content. 
-    $text = get_the_content('');
- 
-    //Delete all shortcode tags from the content. 
-    $text = strip_shortcodes( $text );
- 
-    $text = apply_filters('the_content', $text);
-    $text = str_replace(']]>', ']]&gt;', $text);
-     
-    $allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
-    $text = strip_tags($text, $allowed_tags);
-     
-    $excerpt_word_count = 105;
-    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
-     
-    $excerpt_end = '... <a href="'.get_permalink(). '">' . '&raquo; More ...' . '</a>';
-    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
-     
-    $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
-    if ( count($words) > $excerpt_length ) {
-        array_pop($words);
-        $text = implode(' ', $words);
-        $text = $text . $excerpt_more;
-    } else {
-        $text = implode(' ', $words);
-    }
+add_filter( 'get_the_excerpt', 'spine_trim_excerpt', 5 );
+/**
+ * Provide a custom trimmed excerpt.
+ *
+ * @param string $text The raw excerpt.
+ *
+ * @return string The modified excerpt.
+ */
+function spine_trim_excerpt( $text ) {
+	$raw_excerpt = $text;
+	if ( '' == $text ) {
+		//Retrieve the post content.
+		$text = get_the_content( '' );
+
+		//Delete all shortcode tags from the content.
+		$text = strip_shortcodes( $text );
+
+		$text = apply_filters( 'the_content', $text );
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
+		$text = strip_tags( $text, $allowed_tags );
+
+		$excerpt_word_count = 105;
+		$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
+
+		$excerpt_end = '... <a href="' . get_permalink() . '">' . '&raquo; More ...' . '</a>';
+		$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
+
+		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
+		if ( count( $words ) > $excerpt_length ) {
+			array_pop( $words );
+			$text = implode( ' ', $words );
+			$text = $text . $excerpt_more;
+		} else {
+			$text = implode( ' ', $words );
+		}
+	}
+	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
-return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
-}
-//remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'spine_trim_excerpt',5);
 
 /* Default Image Markup */
 
