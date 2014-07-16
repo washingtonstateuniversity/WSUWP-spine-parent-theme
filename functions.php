@@ -375,7 +375,13 @@ function spine_speckled_body_classes( $classes ) {
 }
 
 add_filter('body_class', 'spine_categorized_body_classes');
-/* Add categorized in classes to body on singular views */
+/**
+ * Add 'categorized' in classes to body on singular views.
+ *
+ * @param array $classes List of classes to be added to the body element.
+ *
+ * @return array Modified list of classes.
+ */
 function spine_categorized_body_classes( $classes ) {
 	if ( has_category() && is_singular() ) {
 		foreach( get_the_category( get_the_ID() ) as $category ) {
