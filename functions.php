@@ -59,7 +59,6 @@ function spine_show_builder_page_template( $page_templates ) {
 	return $page_templates;
 }
 
-
 /**
  * Retrieve the requested spine option from the database.
  *
@@ -209,7 +208,6 @@ function spine_admin_enqueue_scripts() {
 	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
 }
 
-// Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
 /**
  * Provide default navigation menus.
@@ -223,7 +221,6 @@ function spine_theme_menus() {
 	);
 }
 
-// A Single Sidebar
 add_action( 'widgets_init', 'spine_theme_widgets_init' );
 /**
  * Register sidebars used by the theme.
@@ -300,8 +297,6 @@ function spine_trim_excerpt( $text ) {
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
 
-/* Default Image Markup */
-
 add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
 /**
  * Modify the markup for an image caption.
@@ -343,7 +338,6 @@ function spine_theme_caption_markup( $output, $attr, $content ) {
 	return $output;
 }
 
-// SECTIONING
 /**
  * Determine if the current page has a parent.
  *
