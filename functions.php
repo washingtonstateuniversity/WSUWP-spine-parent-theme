@@ -300,7 +300,15 @@ function spine_trim_excerpt( $text ) {
 /* Default Image Markup */
 
 add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
-
+/**
+ * Modify the markup for an image caption.
+ *
+ * @param string $output  Empty by default.
+ * @param array  $attr    Attributes passed to the caption shortcode.
+ * @param string $content The content being parsed.
+ *
+ * @return string Modified output. If returned empty, default processing will continue.
+ */
 function spine_theme_caption_markup( $output, $attr, $content ) {
 	if ( is_feed() ) {
 		return $output;
