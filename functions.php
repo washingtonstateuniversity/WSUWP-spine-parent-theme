@@ -348,6 +348,11 @@ function spine_is_subpage() {
 	return spine_is_sub();
 }
 
+/**
+ * Determine if the current page has a parent.
+ *
+ * @return bool|int The ID of the parent if found, otherwise false.
+ */
 function spine_is_sub() {
     $post = get_post();
 
