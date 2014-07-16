@@ -211,6 +211,9 @@ function spine_admin_enqueue_scripts() {
 
 // Two Navigation Menus
 add_action( 'init', 'spine_theme_menus' );
+/**
+ * Provide default navigation menus.
+ */
 function spine_theme_menus() {
 	register_nav_menus(
 		array(
