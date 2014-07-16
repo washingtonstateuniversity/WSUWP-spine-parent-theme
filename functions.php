@@ -327,21 +327,6 @@ function spine_theme_caption_markup( $output, $attr, $content ) {
 	return $output;
 }
 
-/* add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-
-function remove_width_attribute( $html ) {
-   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-   return $html;
-} */
-
-/* function image_tag_class($class, $id, $align, $size) {
-	return $align;
-}
-add_filter('get_image_tag_class', 'image_tag_class', 0, 4);
-
-*/
-
 // SECTIONING
 /**
  * Determine if the current page has a parent.
