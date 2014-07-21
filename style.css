@@ -169,6 +169,14 @@ dl dd {
 	}
 	
 /* Article Headers */
+
+.h1-header + section.pad-top .column,
+.h1-header + section.pad .column,
+.h1-header + section .padded-top,
+.h1-header + section .padded {
+	padding-top: 0px;
+	}
+
 time .day, time .month, time .year {
 	font-weight: bold;
 	}
