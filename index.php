@@ -27,8 +27,8 @@ if ( is_home() ) {
 	<div class="column one">
 
 		<?php while ( have_posts() ) : the_post(); ?>
-				
-			<?php get_template_part('articles/post'); ?>
+
+			<?php get_template_part( 'articles/post', get_post_format() ); ?>
 
 		<?php endwhile; // end of the loop. ?>
 
