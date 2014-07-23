@@ -9,13 +9,8 @@
 	<div class="column one">
 	
 		<?php while ( have_posts() ) : the_post(); ?>
-				
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header class="entry-header">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			</header>
-			<?php the_content(); ?>
-		</article>
+
+			<?php get_template_part( 'articles/post', get_post_format() ); ?>
 
 		<?php endwhile; // end of the loop. ?>
 		
