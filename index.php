@@ -52,9 +52,17 @@ $args = array(
 	'total'        => $wp_query->max_num_pages, // Provide the number of pages this query expects to fill.
 	'current'      => max( 1, get_query_var('paged') ), // Provide either 1 or the page number we're on.
 );
-echo paginate_links( $args );
-
 ?>
+	<footer class="main-footer archive-footer">
+		<section class="row side-right pager prevnext gutter">
+			<div class="column one">
+				<?php echo paginate_links( $args ); ?>
+			</div>
+			<div class="column two">
+				<!-- intentionally empty -->
+			</div>
+		</section><!--pager-->
+	</footer>
 </main>
 <?php
 

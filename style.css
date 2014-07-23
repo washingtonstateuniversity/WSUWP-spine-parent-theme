@@ -138,7 +138,9 @@ figure.aligncenter figcaption {
 	content: "\00A0\00BB";
 	display: inline-block;
 	}
-
+.archive-footer .pager {
+	text-align: center;
+}
 /* Articles
 ------------------------------------------------------- */
 main article header h2 {
