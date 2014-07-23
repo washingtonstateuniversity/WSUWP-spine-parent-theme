@@ -25,27 +25,16 @@
 </section>
 
 <?php
-global $wp_query;
 
-$big = 99164; // need an unlikely integer
 $args = array(
-	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-	'format'       => 'page/%#%',
-	// 'total'        => 5,
-	// 'current'      => 0,
-	'show_all'     => False,
-	// 'end_size'     => 3,
-	// 'mid_size'     => 4,
-	'prev_next'    => True,
 	'prev_text'    => __('« Previous'),
 	'next_text'    => __('Next »'),
-	// 'type'         => 'plain',
-	'add_args'     => False,
-	'add_fragment' => ''
-); ?>
+);
 
-<?php echo paginate_links( $args ); ?>
+echo paginate_links( $args );
 
+?>
 </main>
+<?php
 
-<?php get_footer(); ?>
+get_footer();
