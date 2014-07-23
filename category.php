@@ -25,27 +25,20 @@
 </section>
 
 <?php
+/* @type WP_Query $wp_query */
 global $wp_query;
 
-$big = 99164; // need an unlikely integer
+$big = 99164;
 $args = array(
-	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+	'base'         => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 	'format'       => 'page/%#%',
-	// 'total'        => 5,
-	// 'current'      => 0,
-	'show_all'     => False,
-	// 'end_size'     => 3,
-	// 'mid_size'     => 4,
-	'prev_next'    => True,
-	'prev_text'    => __('« Previous'),
-	'next_text'    => __('Next »'),
-	// 'type'         => 'plain',
-	'add_args'     => False,
-	'add_fragment' => ''
-); ?>
+	'total'        => $wp_query->max_num_pages, // Provide the number of pages this query expects to fill.
+	'current'      => max( 1, get_query_var('paged') ), // Provide either 1 or the page number we're on.
+);
+echo paginate_links( $args );
 
-<?php echo paginate_links( $args ); ?>
-
+?>
 </main>
+<?php
 
-<?php get_footer(); ?>
+get_footer();
