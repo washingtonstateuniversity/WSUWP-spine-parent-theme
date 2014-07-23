@@ -6,7 +6,7 @@
 
 <?php get_template_part('parts/headers'); ?> 
 
-<section class="row sidebar gutter marginalize-ends">
+<section class="row sidebar side-right gutter marginalize-ends">
 
 	<div class="column one">
 	
