@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="spine-tag-template">
 
 <?php get_template_part('parts/headers'); ?> 
 
