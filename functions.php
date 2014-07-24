@@ -369,6 +369,23 @@ function spine_speckled_body_classes( $classes ) {
 	return $classes;
 }
 
+add_filter( 'body_class','spine_theme_images_classes' );
+/**
+ * Add classes indicated which theme images are available.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function spine_theme_images_classes( $classes ) {
+	
+	if ( spine_has_background_image() ) { $classes[] = 'has-background-image'; }
+	if ( spine_has_featured_image() ) { $classes[] = 'has-featured-image'; }
+	if ( spine_has_thumbnail_image() ) { $classes[] = 'has-thumbnail-image'; }
+
+	return $classes;
+}
+
 add_filter('body_class', 'spine_categorized_body_classes');
 /**
  * Add 'categorized' in classes to body on singular views.
