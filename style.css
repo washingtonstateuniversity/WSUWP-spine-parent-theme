@@ -9,8 +9,11 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: light
 */
-
-body {
+html {
+	background-repeat: no-repeat;
+	background-position: center;
+	}
+xxbody {
 	background: #f9f9f9;
 	}
 #jacket {
@@ -116,6 +119,35 @@ figure.aligncenter figcaption {
 	clear: both;
 	float: none;
 	margin: 1em 0 1em 0;
+	}
+	
+
+
+
+html {
+	background-position: center top;
+	background-repeat: no-repeat;
+	}
+body.has-background-image,
+.has-background-image main {
+	position: relative;
+	background: transparent !important;
+	}
+.featured-image {
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 400px;
+	display: block;
+	xxmargin-top: -142px;
+	z-index: 0;
+	}
+.featured-image img {
+	width: 100%;
+	height: auto;
+	border: none;
+	display: none;
 	}
 
 /* Pagers */
