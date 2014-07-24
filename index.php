@@ -22,7 +22,7 @@ if ( is_home() ) {
 
 <?php get_template_part('parts/headers'); ?> 
 
-<section class="row side-right gutter marginalize-ends">
+<section class="row side-right gutter pad-ends">
 
 	<div class="column one">
 
