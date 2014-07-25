@@ -17,6 +17,8 @@
  */
 $spine_main_header_values = spine_get_main_header();
 
+if ( spine_get_option( 'main_header_show' ) == 'true' ) :
+
 ?>
 <header class="main-header">
 	<div class="header-group hgroup guttered padded-bottom short">
@@ -26,3 +28,5 @@ $spine_main_header_values = spine_get_main_header();
 		
 	</div>
 </header>
+
+<?php endif; ?>
