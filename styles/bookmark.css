@@ -10,17 +10,29 @@
 @import 'https://repo.wsu.edu/spine/1/styles/opensans.css';
 
 body {
-	background-image: url('bookmark/backgrounds/gradients/gradient-graytolight-south.png');
+	background-image: url('bookmark/backgrounds/gradients/gradient-graytolight-south-2.jpg');
 	background-repeat: repeat-x;
 	background-position: left top;
 	background-color: #f9f9f9;
 	}
 .home main {
-	background: url('bookmark/backgrounds/letters/lightest-four.jpg') 0px 0px no-repeat;
+	background: url('bookmark/backgrounds/letters/lightest-four.jpg');
+	background-position: left top;
+	background-repeat: no-repeat;
 	background-size: 792px auto;
 	min-height: 967px;
-	
 	}
+.home #binder {
+	background: transparent url('bookmark/backgrounds/letters/lightest-spine.jpg');
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: left top;
+	}
+.home .size-lt-large main,
+.home .size-lt-large #binder {
+	background-position: left 50px;
+	}
+
 .home .opensansy main {
 	font-family: "OpenSans";
 	}
