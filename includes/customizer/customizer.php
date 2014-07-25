@@ -34,39 +34,39 @@ function spine_customize_register( $wp_customize ){
 		'section'    => 'title_tagline',
 	));
 
-	$wp_customize->add_setting('spine_options[header_global]', array(
+	$wp_customize->add_setting('spine_options[main_header_show]', array(
+		'default'        => true,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+	));
+	$wp_customize->add_control('spine_options[main_header_show]', array(
+		'label'      => __('Show main header', 'spine'),
+		'section'    => 'title_tagline',
+		'settings'   => 'spine_options[main_header_show]',
+		'type'       => 'checkbox'
+	));
+
+	$wp_customize->add_setting('spine_options[articletitle_show]', array(
+		'default'        => true,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+	));
+	$wp_customize->add_control('spine_options[articletitle_show]', array(
+		'label'      => __('Show article title', 'spine'),
+		'section'    => 'title_tagline',
+		'settings'   => 'spine_options[articletitle_show]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[articletitle_header]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
-	$wp_customize->add_control('spine_options[header_global]', array(
-		'label'      => __('Use as global main header', 'spine'),
+	$wp_customize->add_control('spine_options[articletitle_header]', array(
+		'label'      => __('Use article title in main header', 'spine'),
 		'section'    => 'title_tagline',
-		'settings'   => 'spine_options[header_global]',
-		'type'       => 'checkbox'
-	));
-
-	$wp_customize->add_setting('spine_options[header_show]', array(
-		'default'        => true,
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-	$wp_customize->add_control('spine_options[header_show]', array(
-		'label'      => __('Show main header', 'spine'),
-		'section'    => 'title_tagline',
-		'settings'   => 'spine_options[header_show]',
-		'type'       => 'checkbox'
-	));
-
-	$wp_customize->add_setting('spine_options[pagetitle_show]', array(
-		'default'        => true,
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-	$wp_customize->add_control('spine_options[pagetitle_show]', array(
-		'label'      => __('Show page title', 'spine'),
-		'section'    => 'title_tagline',
-		'settings'   => 'spine_options[pagetitle_show]',
+		'settings'   => 'spine_options[articletitle_header]',
 		'type'       => 'checkbox'
 	));
 
@@ -144,7 +144,7 @@ function spine_customize_register( $wp_customize ){
 	));
 
 	// Location One
-	$wp_customize->add_setting('spine_options[social_spot_one]', array( 'default' => 'http://www.facebook.com', 'capability' => 'edit_theme_options', 'type' => 'option' ));
+	$wp_customize->add_setting('spine_options[social_spot_one]', array( 'default' => 'https://www.facebook.com/WSUPullman', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('social_spot_one', array( 'section' => 'section_spine_social', 'settings' => 'spine_options[social_spot_one]', 'priority' => 302 ));
 
 	$wp_customize->add_setting('spine_options[social_spot_one_type]', array( 'default' => 'facebook', 'capability' => 'edit_theme_options', 'type' => 'option' ));
@@ -285,6 +285,19 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Cropped Spine (homepage)', 'spine'),
 		'section'    => 'section_spine_advanced_options',
 		'settings'   => 'spine_options[crop]',
+		'type'       => 'checkbox'
+	));
+	
+	// Spineless
+	$wp_customize->add_setting('spine_options[spineless]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+	));
+	$wp_customize->add_control('spine_spineless', array(
+		'label'      => __('Spineless (homepage)', 'spine'),
+		'section'    => 'section_spine_advanced_options',
+		'settings'   => 'spine_options[spineless]',
 		'type'       => 'checkbox'
 	));
 
