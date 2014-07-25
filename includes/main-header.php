@@ -252,6 +252,9 @@ function spine_get_main_header() {
 		if ( ! empty( $sup_override ) ) {
 			$sup_header_default = wp_kses_post( $sup_override );
 		}
+		if ( spine_get_option( 'articletitle_header' ) == 'true' ) {
+			$sub_header_default = $page_title;
+		}
 		if ( ! empty( $sub_override ) ) {
 			$sub_header_default = wp_kses_post( $sub_override );
 		}
