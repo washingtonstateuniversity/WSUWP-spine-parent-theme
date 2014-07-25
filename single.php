@@ -6,7 +6,7 @@ get_header();
 if ( spine_has_background_image() ) {
 	$background_image_src = spine_get_background_image_src();
 	?><style> html { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style><?php
-}
+	}
 
 // If a position has been assigned to the featured image as a background, apply that style.
 /* $position = get_post_meta( get_the_id(), 'position', true );
@@ -21,17 +21,12 @@ if ( ! empty( $position ) ) {
 
 <?php get_template_part('parts/headers'); ?>
 
-<?php if ( spine_has_featured_image() ) { 
-$featured_image_src = spine_get_featured_image_src(); ?>
+<?php if ( spine_has_featured_image() ) : ?> 
+<?php $featured_image_src = spine_get_featured_image_src(); ?>
 <figure class="featured-image" style="background-image: url('<?php echo $featured_image_src ?>');">
 	<?php spine_the_featured_image(); ?>
 </figure>
-<?php } ?>
-
-<style>
-
-
-</style>
+<?php endif; ?>
 
 <section class="row sidebar side-right gutter marginalize-ends">
 
