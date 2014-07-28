@@ -13,12 +13,7 @@
 		<?php endif; // is_single() or in_a_relationship() ?>
 		</hgroup>
 		<hgroup class="source">
-		<?php
-			// Published on
-			echo '<time class="article-date" datetime="'.get_the_date( 'c' ).'">';
-			echo the_date();
-			echo '</time>';
-		?>
+			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
 			<cite class="article-author" role="author"><?php the_author_posts_link(); ?></cite>
 		</hgroup>
 	</header>
