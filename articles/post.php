@@ -15,12 +15,6 @@
 		<hgroup class="source">
 		<?php
 			// Published on
-			/* $year = get_the_date('Y'); $day = get_the_date('j'); $month = get_the_date('F');
-			echo '<time class="article-date" datetime="'.get_the_date( 'c' ).'">';
-			echo '	<span class="month">'.$month.'</span>';
-			echo '	<span class="day">'.$day.'</span>';
-			echo '	<span class="year">'.$year.'</span>';
-			echo '</time>'; */
 			echo '<time class="article-date" datetime="'.get_the_date( 'c' ).'">';
 			echo the_date();
 			echo '</time>';
