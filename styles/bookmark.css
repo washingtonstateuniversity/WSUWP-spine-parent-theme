@@ -36,6 +36,10 @@ body {
 .home .opensansy main {
 	font-family: "OpenSans";
 	}
+	
+main {
+	min-height: 537px;
+	}
 
 /*
 .page.five1 main { background: url('bookmark/backgrounds/letters/black-one.jpg') left top no-repeat; }
