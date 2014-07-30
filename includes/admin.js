@@ -7,7 +7,7 @@
 ( function( $ ) {
 
 	// Update the site title in real time...
-	wp.customize( 'blogname', function( value ) {
+	/* wp.customize( 'blogname', function( value ) {
 		value.bind( function( newval ) {
 			$( '#site-title a' ).html( newval );
 		} );
@@ -46,6 +46,35 @@
 		value.bind( function( newval ) {
 			$('a').css('color', newval );
 		} );
-	} );
+	} ); */
+	
+	
 	
 } )( jQuery );
+
+/* function expandArea() {
+	
+	jQuery(this).dblclick(expandedArea).parents('[class*="position"]').addClass('expanded').siblings().removeClass('expanded').addClass('condensed').dblclick(condensedArea);
+	
+	}
+
+function expandedArea() {
+	
+	jQuery(this).dblclick(expandArea).parents('[class*="position"]').removeClass('expanded').siblings().on('dblclick', expandArea).removeClass('condensed').removeClass('condensed');
+	
+	}
+
+function condensedArea() {
+	
+	jQuery(this).removeClass('condensed').siblings().removeClass('expanded').removeClass('condensed').on('dblclick', expandArea);
+	
+	}
+
+jQuery(document).on('ready', function() {
+
+	jQuery('.sortable-background').on('dblclick', expandArea);
+		//jQuery(this).parents('[class*="position"]').siblings().toggleClass('expanded').on('dblclick', function() {
+		//	jQuery(this).toggleClass('expanded').siblings().toggleClass('condensed');
+		//});
+	
+	}); */
