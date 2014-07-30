@@ -19,21 +19,40 @@ add_action('customize_register', 'spine_customize_register');
  * @param WP_Customize_Manager $wp_customize
  */
 function spine_customize_register( $wp_customize ){
-	$wp_customize->add_section( 'title_tagline', array(
-		'title'    => __( 'Page Headers' ),
+	
+	$wp_customize->remove_section( 'title_tagline');
+	$wp_customize->remove_section( 'nav');
+	
+	// Page Headers
+	$wp_customize->add_section( 'section_main_header', array(
+		'title'    => __( 'Main Header' ),
 		'priority' => 20,
 	));
-
-	$wp_customize->add_control( 'blogname', array(
-		'label'      => __( 'Main Header' ),
-		'section'    => 'title_tagline',
-	));
-
-	$wp_customize->add_control( 'blogdescription', array(
-		'label'      => __( 'Main Subheader' ),
-		'section'    => 'title_tagline',
-	));
-
+	
+	$wp_customize->add_setting('spine_options[global_main_header_sup]', array(
+		'default' => '',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+		));
+	$wp_customize->add_control('global_main_header_sup', array(
+		'label' => 'Global Header Top (Optional)',
+		'section' => 'section_main_header',
+		'settings' => 'spine_options[global_main_header_sup]',
+		'type' => 'text',
+		'priority' => 25
+		));
+	$wp_customize->add_setting('spine_options[global_main_header_sub]', array(
+		'default' => '',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+		));
+	$wp_customize->add_control('global_main_header_sub', array(
+		'label' => 'Global Header Bottom (Optional)',
+		'section' => 'section_main_header',
+		'settings' => 'spine_options[global_main_header_sub]',
+		'type' => 'text',
+		'priority' => 30
+		));
 	$wp_customize->add_setting('spine_options[main_header_show]', array(
 		'default'        => true,
 		'capability'     => 'edit_theme_options',
@@ -41,9 +60,10 @@ function spine_customize_register( $wp_customize ){
 	));
 	$wp_customize->add_control('spine_options[main_header_show]', array(
 		'label'      => __('Show main header', 'spine'),
-		'section'    => 'title_tagline',
+		'section'    => 'section_main_header',
 		'settings'   => 'spine_options[main_header_show]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority' => 35
 	));
 
 	$wp_customize->add_setting('spine_options[articletitle_show]', array(
@@ -53,9 +73,10 @@ function spine_customize_register( $wp_customize ){
 	));
 	$wp_customize->add_control('spine_options[articletitle_show]', array(
 		'label'      => __('Show article title', 'spine'),
-		'section'    => 'title_tagline',
+		'section'    => 'section_main_header',
 		'settings'   => 'spine_options[articletitle_show]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority' => 40
 	));
 	
 	$wp_customize->add_setting('spine_options[articletitle_header]', array(
@@ -65,14 +86,15 @@ function spine_customize_register( $wp_customize ){
 	));
 	$wp_customize->add_control('spine_options[articletitle_header]', array(
 		'label'      => __('Use article title in main header', 'spine'),
-		'section'    => 'title_tagline',
+		'section'    => 'section_main_header',
 		'settings'   => 'spine_options[articletitle_header]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority' => 45
 	));
 
 	// Spine Options
 	$wp_customize->add_section('section_spine_options', array(
-		'title'    => __('Spine: Options', 'spine'),
+		'title'    => __('Spine Options', 'spine'),
 		'priority' => 124,
 	));
 
@@ -138,7 +160,7 @@ function spine_customize_register( $wp_customize ){
 
 	// SOCIAL CHANNELS
 	$wp_customize->add_section('section_spine_social', array(
-		'title'    => __('Spine: Social', 'spine'),
+		'title'    => __('Social Channels', 'spine'),
 		'priority' => 300,
 		'description'    => __( 'You can retain, replace, or remove social channels. Select "None" to remove/hide a location.' ),
 	));
@@ -201,7 +223,7 @@ function spine_customize_register( $wp_customize ){
 
 	// Contact
 	$wp_customize->add_section('section_spine_contact', array(
-		'title'    => __('Spine: Contact', 'spine'),
+		'title'    => __('Contact Information', 'spine'),
 		'priority' => 315,
 		'description'    => __( 'This is the official contact for your website.' ),
 	));
@@ -232,7 +254,7 @@ function spine_customize_register( $wp_customize ){
 
 	// Advanced
 	$wp_customize->add_section('section_spine_advanced_options', array(
-		'title'    => __('Spine: Advanced', 'spine_advanced'),
+		'title'    => __('Advanced Options', 'spine_advanced'),
 		'priority' => 320,
 	));
 
@@ -362,7 +384,7 @@ function spine_customize_register( $wp_customize ){
 
 	// Style Options
 	$wp_customize->add_section('section_spine_style', array(
-		'title'    => __('Spine: Theme', 'spine'),
+		'title'    => __('Style Options', 'spine'),
 		'priority' => 400,
 		'description' => 'These options may or may not be supported by your theme.',
 	));

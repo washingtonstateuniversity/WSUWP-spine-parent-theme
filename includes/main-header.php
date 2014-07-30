@@ -10,7 +10,7 @@ class Spine_Main_Header {
 		add_action( 'add_meta_boxes', array( $this, 'add_header_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save_main_header' ), 10, 2 );
 	}
-
+	
 	/**
 	 * Add meta boxes used to override the spine's main header.
 	 */
@@ -126,6 +126,8 @@ function spine_get_main_header() {
 	$site_tagline       = get_bloginfo( 'description', 'display' );
 	$page_title         = get_the_title();
 	$post_title         = get_the_title();
+	$global_sup_header 	= spine_get_option( 'global_main_header_sup' );
+	$global_sub_header 	= spine_get_option( 'global_main_header_sub' );
 
 	// Attempt to determine the section and subsection through page hierarchy.
 	$section_title      = spine_section_meta( 'title', 'section' );
@@ -154,6 +156,12 @@ function spine_get_main_header() {
 			$sub_header_default = single_cat_title( '', false );
 			$section_title = $posts_page_title;
 		}
+		if ( $global_sup_header != '' ) {
+			$sup_header_default = $global_sup_header;
+		}
+		if ( $global_sub_header != '' ) {
+			$sub_header_default = $global_sub_header;
+		}
 	}
 
 	// On date archive views, use one of the day, month, year as the sub header. If a tag or other
@@ -179,6 +187,12 @@ function spine_get_main_header() {
 			$sup_header_default = $posts_page_title;
 			$section_title = $posts_page_title;
 		}
+		if ( $global_sup_header != '' ) {
+			$sup_header_default = $global_sup_header;
+		}
+		if ( $global_sub_header != '' ) {
+			$sub_header_default = $global_sub_header;
+		}
 	}
 
 	// For any posts or post types, if page_for_posts is not set or this view is
@@ -192,6 +206,12 @@ function spine_get_main_header() {
 		} else {
 			$sub_header_default = $posts_page_title;
 		}
+		if ( $global_sup_header != '' ) {
+			$sup_header_default = $global_sup_header;
+		}
+		if ( $global_sub_header != '' ) {
+			$sub_header_default = $global_sub_header;
+		}
 	}
 
 	// If this page is a child of another page, use the subsection title as a sub
@@ -204,6 +224,12 @@ function spine_get_main_header() {
 		} else {
 			$sub_header_default = $site_tagline;
 		}
+		if ( $global_sup_header != '' ) {
+			$sup_header_default = $global_sup_header;
+		}
+		if ( $global_sub_header != '' ) {
+			$sub_header_default = $global_sub_header;
+		}
 	}
 
 	// If this is the front page, explicitly overwrite to defaults that may have been
@@ -211,6 +237,12 @@ function spine_get_main_header() {
 	if ( is_front_page() ) {
 		$sup_header_default = $site_name;
 		$sub_header_default = $site_tagline;
+		if ( $global_sup_header != '' ) {
+			$sup_header_default = $global_sup_header;
+		}
+		if ( $global_sub_header != '' ) {
+			$sub_header_default = $global_sub_header;
+		}
 	}
 
 	if ( is_home() && ! is_front_page() ) {
@@ -222,6 +254,12 @@ function spine_get_main_header() {
 		} else {
 			$sub_header_default = $posts_page_title;
 			$page_title = $posts_page_title;
+		}
+		if ( $global_sup_header != '' ) {
+			$sup_header_default = $global_sup_header;
+		}
+		if ( $global_sub_header != '' ) {
+			$sub_header_default = $global_sub_header;
 		}
 	}
 
@@ -245,7 +283,7 @@ function spine_get_main_header() {
 	}
 
 	// Both sup and sub headers can be overridden with the use of post meta.
-	if ( is_singular() ) {
+	if ( is_singular() || is_home() || is_front_page() ) {
 		$sup_override = get_post_meta( get_the_ID(), 'sup-header', true );
 		$sub_override = get_post_meta( get_the_ID(), 'sub-header', true );
 
