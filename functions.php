@@ -78,6 +78,8 @@ function spine_get_option( $option_name ) {
 		'theme_style'               => 'bookmark',
 		'secondary_colors'          => 'gray',
 		'theme_spacing'             => 'default',
+		'global_main_header_sup'	=> '',
+		'global_main_header_sub'	=> '',
 		'main_header_show'          => true,
 		'articletitle_show'         => true,
 		'articletitle_header'       => false,
@@ -208,6 +210,7 @@ add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
  */
 function spine_admin_enqueue_scripts() {
 	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
+	wp_enqueue_script( 'admin-interface-scripts', get_template_directory_uri() . '/includes/admin.js' );
 	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
 }
 
