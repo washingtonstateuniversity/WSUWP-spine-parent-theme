@@ -237,11 +237,11 @@ function spine_get_main_header() {
 	}
 
 	// If global headers are chosen, store the default as alternate and assign the global.
-	if ( $global_sup_header != '' ) {
+	if ( '' !== trim( $global_sup_header ) ) {
 		$sup_header_alternate = $sup_header_default;
 		$sup_header_default = $global_sup_header;
 	}
-	if ( $global_sub_header != '' ) {
+	if ( '' !== trim( $global_sub_header ) ) {
 		$sub_header_alternate = $sub_header_default;
 		$sub_header_default = $global_sub_header;
 	}
