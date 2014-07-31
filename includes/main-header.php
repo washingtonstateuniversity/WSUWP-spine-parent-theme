@@ -143,26 +143,13 @@ function spine_get_main_header() {
 	$sup_header_alternate = '';
 	$sub_header_alternate = '';
 
-	// On a category archive view, use the page title of the page_for_posts setting as the sup
-	// header if available, otherwise fallback to the site name.
-	if ( is_category() ) {
-		if ( 0 === $page_for_posts ) {
-			$sup_header_default = '<a href="' . esc_url( home_url() ) . '">' . esc_html( $site_name ) . '</a>';
-			$sub_header_default = single_cat_title( '', false );
-			$section_title = $site_name;
-		} else {
-			$sup_link = get_permalink( $page_for_posts );
-			$sup_header_default = '<a href="' . esc_url( $sup_link ) . '">' . $posts_page_title . '</a>';
-			$sub_header_default = single_cat_title( '', false );
-			$section_title = $posts_page_title;
-		}
-	}
-
 	// On date archive views, use one of the day, month, year as the sub header. If a tag or other
 	// non category archive, use 'Archives'. Use the page title of page_for_posts if available as the
 	// sup header, otherwise use the site name.
-	if ( is_archive() && ! is_category() ) {
-		if ( is_day() ) {
+	if ( is_archive() ) {
+		if ( is_category() ) {
+			$sub_header_default = single_cat_title( '', false );
+		} else if ( is_day() ) {
 			$sub_header_default = get_the_date();
 		} else if ( is_month() ) {
 			$sub_header_default = get_the_date( 'F Y' );
@@ -175,10 +162,8 @@ function spine_get_main_header() {
 		}
 
 		if ( 0 === $page_for_posts ) {
-			$sup_header_default = $site_name;
 			$section_title = $site_name;
 		} else {
-			$sup_header_default = $posts_page_title;
 			$section_title = $posts_page_title;
 		}
 	}
@@ -209,7 +194,8 @@ function spine_get_main_header() {
 	}
 
 	// If this is the front page, explicitly overwrite to defaults that may have been
-	// changed in the is_page() area.
+	// changed in the is_page() area. In both the front page and in the next block for
+	// is_home(), the site name as sup header should not link to home.
 	if ( is_front_page() ) {
 		$sup_header_default = $site_name;
 		$sub_header_default = $site_tagline;
@@ -220,7 +206,7 @@ function spine_get_main_header() {
 
 		if ( 0 === $page_for_posts ) {
 			$page_title = $site_name;
-			$sub_header_default = $site_name;
+			$sub_header_default = $site_tagline;
 		} else {
 			$sub_header_default = $posts_page_title;
 			$page_title = $posts_page_title;
@@ -238,15 +224,14 @@ function spine_get_main_header() {
 	}
 
 	// If global headers are chosen, store the default as alternate and assign the global.
-	
-		if ( $global_sup_header != '' ) {
-			$sup_header_alternate = $sup_header_default;
-			$sup_header_default = $global_sup_header;
-		}
-		if ( $global_sub_header != '' ) {
-			$sub_header_alternate = $sub_header_default;
-			$sub_header_default = $global_sub_header;
-		}
+	if ( '' !== trim( $global_sup_header ) ) {
+		$sup_header_alternate = $sup_header_default;
+		$sup_header_default = $global_sup_header;
+	}
+	if ( '' !== trim( $global_sub_header ) ) {
+		$sub_header_alternate = $sub_header_default;
+		$sub_header_default = $global_sub_header;
+	}
 
 	// Both sup and sub headers can be overridden with the use of post meta.
 	if ( is_singular() || is_front_page() ) {
