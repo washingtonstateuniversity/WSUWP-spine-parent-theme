@@ -147,7 +147,6 @@ function spine_get_main_header() {
 	// header if available, otherwise fallback to the site name.
 	if ( is_category() ) {
 		if ( 0 === $page_for_posts ) {
-			$sup_header_default = '<a href="' . esc_url( home_url() ) . '">' . esc_html( $site_name ) . '</a>';
 			$sub_header_default = single_cat_title( '', false );
 			$section_title = $site_name;
 		} else {
