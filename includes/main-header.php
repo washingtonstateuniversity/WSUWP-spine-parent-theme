@@ -150,8 +150,6 @@ function spine_get_main_header() {
 			$sub_header_default = single_cat_title( '', false );
 			$section_title = $site_name;
 		} else {
-			$sup_link = get_permalink( $page_for_posts );
-			$sup_header_default = '<a href="' . esc_url( $sup_link ) . '">' . $posts_page_title . '</a>';
 			$sub_header_default = single_cat_title( '', false );
 			$section_title = $posts_page_title;
 		}
