@@ -162,10 +162,8 @@ function spine_get_main_header() {
 		}
 
 		if ( 0 === $page_for_posts ) {
-			$sup_header_default = $site_name;
 			$section_title = $site_name;
 		} else {
-			$sup_header_default = $posts_page_title;
 			$section_title = $posts_page_title;
 		}
 	}
