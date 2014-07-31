@@ -194,7 +194,8 @@ function spine_get_main_header() {
 	}
 
 	// If this is the front page, explicitly overwrite to defaults that may have been
-	// changed in the is_page() area.
+	// changed in the is_page() area. In both the front page and in the next block for
+	// is_home(), the site name as sup header should not link to home.
 	if ( is_front_page() ) {
 		$sup_header_default = $site_name;
 		$sub_header_default = $site_tagline;
