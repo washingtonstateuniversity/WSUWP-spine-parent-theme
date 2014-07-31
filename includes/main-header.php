@@ -143,23 +143,13 @@ function spine_get_main_header() {
 	$sup_header_alternate = '';
 	$sub_header_alternate = '';
 
-	// On a category archive view, use the page title of the page_for_posts setting as the sup
-	// header if available, otherwise fallback to the site name.
-	if ( is_category() ) {
-		if ( 0 === $page_for_posts ) {
-			$sub_header_default = single_cat_title( '', false );
-			$section_title = $site_name;
-		} else {
-			$sub_header_default = single_cat_title( '', false );
-			$section_title = $posts_page_title;
-		}
-	}
-
 	// On date archive views, use one of the day, month, year as the sub header. If a tag or other
 	// non category archive, use 'Archives'. Use the page title of page_for_posts if available as the
 	// sup header, otherwise use the site name.
-	if ( is_archive() && ! is_category() ) {
-		if ( is_day() ) {
+	if ( is_archive() ) {
+		if ( is_category() ) {
+			$sub_header_default = single_cat_title( '', false );
+		} else if ( is_day() ) {
 			$sub_header_default = get_the_date();
 		} else if ( is_month() ) {
 			$sub_header_default = get_the_date( 'F Y' );
