@@ -206,7 +206,7 @@ function spine_get_main_header() {
 
 		if ( 0 === $page_for_posts ) {
 			$page_title = $site_name;
-			$sub_header_default = $site_name;
+			$sub_header_default = $site_tagline;
 		} else {
 			$sub_header_default = $posts_page_title;
 			$page_title = $posts_page_title;
