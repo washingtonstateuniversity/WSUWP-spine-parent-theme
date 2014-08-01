@@ -139,24 +139,20 @@ function spine_social_options() {
 
 	$social = array();
 
-	if ( isset( $spine_options['social_spot_one_type'] ) && $spine_options['social_spot_one_type'] != "none" ) {
-		$key = $spine_options['social_spot_one_type'];
-		$social[ $key ] = $spine_options['social_spot_one'];
+	if ( isset( $spine_options['social_spot_one_type'] ) && 'none' !== $spine_options['social_spot_one_type'] ) {
+		$social[ $spine_options['social_spot_one_type'] ] = $spine_options['social_spot_one'];
 	}
 
-	if ( isset( $spine_options['social_spot_two_type'] ) && $spine_options['social_spot_two_type'] != "none" ) {
-		$key = $spine_options['social_spot_two_type'];
-		$social[ $key ] = $spine_options['social_spot_two'];
+	if ( isset( $spine_options['social_spot_two_type'] ) && 'none' !== $spine_options['social_spot_two_type'] ) {
+		$social[ $spine_options['social_spot_two_type'] ] = $spine_options['social_spot_two'];
 	}
 
-	if ( isset( $spine_options['social_spot_three_type'] ) && $spine_options['social_spot_three_type'] != "none" ) {
-		$key = $spine_options['social_spot_three_type'];
-		$social[ $key ] = $spine_options['social_spot_three'];
+	if ( isset( $spine_options['social_spot_three_type'] ) && 'none' !== $spine_options['social_spot_three_type'] ) {
+		$social[ $spine_options['social_spot_three_type'] ] = $spine_options['social_spot_three'];
 	}
 
-	if ( isset( $spine_options['social_spot_four_type'] ) && $spine_options['social_spot_four_type'] != "none" ) {
-		$key = $spine_options['social_spot_four_type'];
-		$social[ $key ] = $spine_options['social_spot_four'];
+	if ( isset( $spine_options['social_spot_four_type'] ) && 'none' !== $spine_options['social_spot_four_type'] ) {
+		$social[ $spine_options['social_spot_four_type'] ] = $spine_options['social_spot_four'];
 	}
 
 	return $social;
