@@ -494,13 +494,13 @@ function spine_install_default_content() {
 
 /**
  * Build an appropriate title for a page view. This title should include the site name
- * and end with 'at WSU'
+ * and end with '| Washington State University'
  *
  * @return string Built title.
  */
 function spine_get_title() {
 	$site_part = ' ' . get_option( 'blogname' );
-	$global_part = ' at WSU';
+	$global_part = ' | Washington State University';
 	$view_title = wp_title( '|', false, 'right' );
 
 	$title = $view_title . $site_part . $global_part;
