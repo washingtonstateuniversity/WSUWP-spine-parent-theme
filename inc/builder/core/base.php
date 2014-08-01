@@ -249,7 +249,7 @@ class TTFMAKE_Builder_Base {
 		}
 	?>
 		<style type="text/css">
-			<?php if ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) : ?>
+			<?php if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) ) : ?>
 			#postdivrich {
 				display: none;
 			}
@@ -284,7 +284,7 @@ class TTFMAKE_Builder_Base {
 
 		// Do not complete the function if the product template is in use (i.e., the builder needs to be shown)
 		if ( 'page' === get_post_type() ) {
-			if ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) {
+			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && 'template-builder.php' === get_page_template_slug() ) ) {
 				$classes .= ' ttfmake-builder-active';
 			} else {
 				$classes .= ' ttfmake-default-active';

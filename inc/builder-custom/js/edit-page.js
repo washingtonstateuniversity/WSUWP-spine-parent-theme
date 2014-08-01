@@ -36,14 +36,14 @@
 			self.cache.$pageTemplate.on('change', self.templateToggle);
 
 			// Change default settings for new pages
-			//if ( typeof ttfmakeEditPageData !== 'undefined' && 'post-new.php' === ttfmakeEditPageData.pageNow && 'page' === pagenow ) {
+			if ( typeof ttfmakeEditPageData !== 'undefined' && 'post-new.php' === ttfmakeEditPageData.pageNow && 'page' === pagenow ) {
 				// Builder template is selected by default
-			//	self.cache.$pageTemplate.val('template-builder.php');
+				self.cache.$pageTemplate.val('template-builder.php');
 
 				// Comments and pings turned off by default
-			//	self.cache.$commentstatus.prop('checked', '');
-			//	self.cache.$pingstatus.prop('checked', '');
-			//}
+				self.cache.$commentstatus.prop('checked', '');
+				self.cache.$pingstatus.prop('checked', '');
+			}
 		},
 
 		templateToggle: function(e) {
