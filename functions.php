@@ -231,7 +231,7 @@ function spine_theme_widgets_init() {
 	$widget_options = array(
 		'name'          => __( 'Sidebar', 'sidebar' ),
 		'id'            => 'sidebar',
-		'before_widget' => '<aside id="%1$s2" class="%2$s">',
+		'before_widget' => '<aside id="%1$s2" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<header>',
 		'after_title'   => '</header>'
