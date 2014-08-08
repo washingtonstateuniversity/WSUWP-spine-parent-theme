@@ -90,13 +90,9 @@ main {
 figure {
 	position: relative;
 	}
-xxfigure .liner {
-	position: absolute;
-	width: 1000px;
-	background: white;
-	}
+
 figcaption {
-	padding: 5px 0px;
+	padding: 5px 0;
 	}
 	
 .alignleft {
