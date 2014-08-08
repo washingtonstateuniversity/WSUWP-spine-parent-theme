@@ -90,13 +90,9 @@ main {
 figure {
 	position: relative;
 	}
-xxfigure .liner {
-	position: absolute;
-	width: 1000px;
-	background: white;
-	}
+
 figcaption {
-	padding: 5px 0px;
+	padding: 5px 0;
 	}
 	
 .alignleft {
@@ -120,9 +116,26 @@ figure.aligncenter figcaption {
 	float: none;
 	margin: 1em 0 1em 0;
 	}
-	
 
+/** Default Gallery Styles */
+.gallery {
+	margin: auto;
+}
 
+.gallery .gallery-item {
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	text-align: center;
+}
+
+.gallery img {
+	border: 2px solid #cfcfcf;
+}
+
+.gallery .gallery-caption {
+	margin-left: 0;
+}
 
 html {
 	background-position: center top;

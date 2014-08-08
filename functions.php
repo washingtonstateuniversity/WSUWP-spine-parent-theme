@@ -3,6 +3,7 @@
 // Global version tracker.
 $wsuwp_spine_theme_version = '0.10.6';
 
+include_once( 'includes/theme-setup.php' ); // Setup basic portions of the theme.
 include_once( 'includes/main-header.php' ); // Include main header functionality.
 include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
 include_once( 'includes/theme-images.php' ); // Manipulating images
@@ -210,19 +211,6 @@ function spine_admin_enqueue_scripts() {
 	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
 }
 
-add_action( 'init', 'spine_theme_menus' );
-/**
- * Provide default navigation menus.
- */
-function spine_theme_menus() {
-	register_nav_menus(
-		array(
-		'site'    => 'Site',
-		'offsite' => 'Offsite',
-		)
-	);
-}
-
 add_action( 'widgets_init', 'spine_theme_widgets_init' );
 /**
  * Register sidebars used by the theme.
@@ -297,47 +285,6 @@ function spine_trim_excerpt( $text ) {
 		}
 	}
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
-}
-
-add_filter( 'img_caption_shortcode', 'spine_theme_caption_markup', 10, 3 );
-/**
- * Modify the markup for an image caption.
- *
- * @param string $output  Empty by default.
- * @param array  $attr    Attributes passed to the caption shortcode.
- * @param string $content The content being parsed.
- *
- * @return string Modified output. If returned empty, default processing will continue.
- */
-function spine_theme_caption_markup( $output, $attr, $content ) {
-	if ( is_feed() ) {
-		return $output;
-	}
-
-	$defaults = array(
-		'id'      => '',
-		'align'   => 'alignnone',
-		'width'   => 0,
-		'caption' => ''
-	);
-
-	$attr = shortcode_atts( $defaults, $attr );
-	$attr['width'] = absint( $attr['width'] );
-
-	if ( 1 > $attr['width'] || empty( $attr['caption'] ) ) {
-		return $content;
-	}
-
-	$attributes = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
-	$attributes .= ' class="' . esc_attr( $attr['align'] ) . '"';
-	$attributes .= ' style="width:' . $attr['width'] . 'px;"';
-
-	$output = '<figure' . $attributes .'><div class="liner cf">';
-	$output .= do_shortcode( $content );
-	$output .= '<figcaption>' . $attr['caption'] . '</figcaption>';
-	$output .= '</div></figure>';
-
-	return $output;
 }
 
 /**
