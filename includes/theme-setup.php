@@ -8,7 +8,7 @@ class Spine_Theme_Setup {
 	 */
 	public function __construct() {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
-		add_action( 'init', 'theme_menus' );
+		add_action( 'init', array( $this, 'theme_menus' ) );
 	}
 
 	/**
