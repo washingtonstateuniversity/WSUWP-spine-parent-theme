@@ -35,7 +35,7 @@
 	} else {
 		$opensans_included = "";
 	}
-	if ( spine_get_option( 'spineless' ) == 'true' ) {
+	if ( ( spine_get_option( 'spineless' ) == 'true' ) && is_front_page() ) {
 		$spineless = " spineless";
 	} else {
 		$spineless = "";
