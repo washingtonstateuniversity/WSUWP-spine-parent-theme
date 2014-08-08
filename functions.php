@@ -211,19 +211,6 @@ function spine_admin_enqueue_scripts() {
 	add_editor_style( 'admin-editor-styles', get_template_directory_uri() . '/includes/editor.css' );
 }
 
-add_action( 'init', 'spine_theme_menus' );
-/**
- * Provide default navigation menus.
- */
-function spine_theme_menus() {
-	register_nav_menus(
-		array(
-		'site'    => 'Site',
-		'offsite' => 'Offsite',
-		)
-	);
-}
-
 add_action( 'widgets_init', 'spine_theme_widgets_init' );
 /**
  * Register sidebars used by the theme.
