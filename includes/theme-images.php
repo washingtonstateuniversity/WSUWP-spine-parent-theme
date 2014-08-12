@@ -72,12 +72,14 @@ class Spine_Theme_Images {
 	 */
 	public function install_default_image_sizes( $image_sizes ) {
 		$image_sizes = array(
-			'thumbnail_size_w' => 198,
-			'thumbnail_size_h' => 198,
-			'medium_size_w'    => 396,
-			'medium_size_h'    => 99164,
-			'large_size_w'     => 792,
-			'large_size_h'     => 99164,
+			'thumbnail_size_w' 	=> 198,
+			'thumbnail_size_h' 	=> 198,
+			'small_size_w'   	=> 198,
+			'small_size_h'    	=> 99164,
+			'medium_size_w'    	=> 396,
+			'medium_size_h'    	=> 99164,
+			'large_size_w'     	=> 792,
+			'large_size_h'     	=> 99164,
 		);
 
 		return $image_sizes;
