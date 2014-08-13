@@ -51,29 +51,32 @@
 
 	<footer class="article-footer">
 	<?php
-	// Categorized In...
-	if ( has_category()) {
+	// Display site level categories attached to the post.
+	if ( has_category() ) {
 		echo '<dl class="categorized">';
 		echo '<dt><span class="categorized-default">Categorized</span></dt>';
-		foreach((get_the_category()) as $category) {
-			echo '<dd><a href="'.get_category_link($category->cat_ID).'">' . $category->cat_name . '</a></dd>';
+		foreach( (get_the_category() ) as $category) {
+			echo '<dd><a href="' . get_category_link( $category->cat_ID ) . '">' . $category->cat_name . '</a></dd>';
 		}
 		echo '</dl>';
 	}
-	if ( has_term('','wsuwp_university_category')) {
+
+	// Display University categories attached to the post.
+	if ( has_term( '', 'wsuwp_university_category' ) ) {
 		echo '<dl class="university-categorized">';
 		echo '<dt><span class="university-categorized-default">Categorized</span></dt>';
-		foreach((get_the_terms()) as $term) {
-			echo '<dd><a href="'.get_term_link($term->term_ID).'">' . $term->name . '</a></dd>';
+		foreach( ( get_the_terms() ) as $term ) {
+			echo '<dd><a href="' . get_term_link( $term->term_ID ) . '">' . $term->name . '</a></dd>';
 		}
 		echo '</dl>';
 	}
-	// Tagged As...
-	if ( has_tag()) {
+
+	// Display University tags attached to the post.
+	if ( has_tag() ) {
 		echo '<dl class="tagged">';
 		echo '<dt><span class="tagged-default">Tagged</span></dt>';
-		foreach((get_the_tags()) as $tag) {
-			echo '<dd><a href="'.get_tag_link($tag->term_id).'">' . $tag->name . '</a></dd>';
+		foreach( ( get_the_tags() ) as $tag ) {
+			echo '<dd><a href="' . get_tag_link( $tag->term_id ) . '">' . $tag->name . '</a></dd>';
 		}
 		echo '</dl>';
 	}
