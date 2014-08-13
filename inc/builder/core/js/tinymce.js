@@ -75,11 +75,15 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	};
 
 	oneApp.removeTinyMCE = function (id) {
-		tinyMCE.execCommand( 'mceRemoveEditor', false, id );
+		if ( typeof tinyMCE !== 'undefined' ) {
+			tinyMCE.execCommand( 'mceRemoveEditor', false, id );
+		}
 	};
 
 	oneApp.addTinyMCE = function (id) {
-		tinyMCE.execCommand( 'mceAddEditor', false, id );
+		if ( typeof tinyMCE !== 'undefined' ) {
+			tinyMCE.execCommand( 'mceAddEditor', false, id );
+		}
 	};
 
 	oneApp.syncEditorHeight = function(evt, baseEl) {

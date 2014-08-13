@@ -38,6 +38,10 @@
 .ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
 	display: none;
 }
+.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
+.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
+	width: 100%;
+}
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-text-columns-2 .ttfmake-text-column,
 	.ttfmake-gallery-columns-2 .ttfmake-gallery-item {
@@ -45,16 +49,36 @@
 		float: left;
 		padding: 0 10px;
 	}
-}
-.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
-	width: 50%;
+	.ttfmake-text-columns-2 .ttfmake-text-column-position-3,
+	.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
+		width: 0;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
+	.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
+		width: 50%;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-fourth .sortable-placeholder{
+		width: 25%;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-third .sortable-placeholder{
+		width: 33.3333%;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-two-thirds .sortable-placeholder{
+		width: 66.3333%;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-three-fourths .sortable-placeholder{
+		width: 75%;
+	}
 }
 /*---------------------------------------------------------
  Text and Gallery: Three column (html-builder.css)
 -------------------------------------------------------- */
 .ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
 	display: none;
+}
+.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
+.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
+	width: 100%;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-text-columns-3 .ttfmake-text-column,
@@ -63,10 +87,16 @@
 		float: left;
 		padding: 0 10px;
 	}
-}
-.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
-	width: 33.3333%;
+	.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
+	.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
+		width: 33.3333%;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-fourth .sortable-placeholder{
+		width: 25%;
+	}
+	.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-half .sortable-placeholder{
+		width: 50%;
+	}
 }
 .ttfmake-text-columns-3 .ttfmake-media-button-text {
 	display: none;  /*reset*/

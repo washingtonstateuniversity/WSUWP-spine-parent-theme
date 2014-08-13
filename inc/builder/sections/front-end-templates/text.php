@@ -14,7 +14,7 @@ $text_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
 	</h3>
 	<?php endif; ?>
 	<div class="builder-section-content">
-		<?php if ( ! empty( $text_columns ) ) : foreach ( $text_columns as $column ) :
+		<?php if ( ! empty( $text_columns ) ) : $i = 1; foreach ( $text_columns as $column ) :
 			$link_front = '';
 			$link_back = '';
 			if ( '' !== $column['image-link'] ) :
@@ -22,7 +22,7 @@ $text_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
 				$link_back = '</a>';
 			endif;
 			?>
-		<div class="builder-text-column">
+		<div class="builder-text-column builder-text-column-<?php echo $i; ?>" id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>-column-<?php echo $i; ?>">
 			<?php $image_html =  ttfmake_get_image( $column['image-id'], 'large' ); ?>
 			<?php if ( '' !== $image_html ) : ?>
 			<figure class="builder-text-image">
@@ -40,6 +40,6 @@ $text_columns = ttfmake_builder_get_text_array( $ttfmake_section_data );
 			</div>
 			<?php endif; ?>
 		</div>
-		<?php endforeach; endif; ?>
+		<?php $i++; endforeach; endif; ?>
 	</div>
 </section>

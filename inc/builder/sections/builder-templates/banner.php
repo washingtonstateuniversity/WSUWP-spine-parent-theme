@@ -13,6 +13,7 @@ $autoplay      = ( isset( $ttfmake_section_data['data']['autoplay'] ) ) ? $ttfma
 $transition    = ( isset( $ttfmake_section_data['data']['transition'] ) ) ? $ttfmake_section_data['data']['transition'] : 'scrollHorz';
 $delay         = ( isset( $ttfmake_section_data['data']['delay'] ) ) ? $ttfmake_section_data['data']['delay'] : 6000;
 $height        = ( isset( $ttfmake_section_data['data']['height'] ) ) ? $ttfmake_section_data['data']['height'] : 600;
+$responsive    = ( isset( $ttfmake_section_data['data']['responsive'] ) ) ? $ttfmake_section_data['data']['responsive'] : 'balanced';
 $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] ) ) ? $ttfmake_section_data['data']['banner-slide-order'] : array();
 ?>
 
@@ -74,7 +75,7 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 		<h4 class="ttfmake-banner-options-title">
 			<?php _e( 'Time between slides (in ms)', 'make' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[delay]" class="code" type="text" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
+		<input id="<?php echo $section_name; ?>[delay]" class="code" type="number" name="<?php echo $section_name; ?>[delay]" value="<?php echo absint( $delay ); ?>" />
 
 		<h4>
 			<?php _e( 'Transition effect', 'make' ); ?>
@@ -88,9 +89,18 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 
 	<div class="ttfmake-banner-options-container">
 		<h4 class="ttfmake-banner-options-title">
-			<?php _e( 'Section height', 'make' ); ?>
+			<?php _e( 'Section height (px)', 'make' ); ?>
 		</h4>
-		<input id="<?php echo $section_name; ?>[height]" class="code" type="text" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+		<input id="<?php echo $section_name; ?>[height]" class="code" type="number" name="<?php echo $section_name; ?>[height]" value="<?php echo absint( $height ); ?>" />
+
+		<h4>
+			<?php _e( 'Responsive behavior', 'make' ); ?>
+		</h4>
+		<select id="<?php echo $section_name; ?>[responsive]" name="<?php echo $section_name; ?>[responsive]">
+			<option value="balanced"<?php selected( 'balanced', $responsive ); ?>><?php _e( 'Default', 'make' ); ?></option>
+			<option value="aspect"<?php selected( 'aspect', $responsive ); ?>><?php _e( 'Maintain slider aspect ratio', 'make' ); ?></option>
+		</select>
+		<p class="help-text howto"><?php _e( 'Choose how the banner will respond to varying screen widths.', 'make' ); ?></p>
 	</div>
 
 	<div class="clear"></div>

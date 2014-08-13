@@ -216,6 +216,10 @@ class TTFMAKE_Section_Definitions {
 			$clean_data['height'] = absint( $data['height'] );
 		}
 
+		if ( isset( $data['responsive'] ) && in_array( $data['responsive'], array( 'aspect', 'balanced' ) ) ) {
+			$clean_data['responsive'] = $data['responsive'];
+		}
+
 		if ( isset( $data['banner-slide-order'] ) ) {
 			$clean_data['banner-slide-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
 		}
@@ -365,7 +369,7 @@ class TTFMAKE_Section_Definitions {
 	 */
 	public function admin_enqueue_scripts( $hook_suffix ) {
 		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || 'page' !== get_post_type() ) {
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			return;
 		}
 
@@ -486,7 +490,7 @@ class TTFMAKE_Section_Definitions {
 		$ttfmake_is_js_template = true;
 
 		// Only show when adding/editing pages
-		if ( 'page' !== $typenow || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
+		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
 			return;
 		}
 
