@@ -45,11 +45,12 @@ if ( $section_wrapper_classes ) {
 ?>
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single builder-section <?php echo $section_classes; ?> <?php echo esc_attr( ttfmake_builder_get_banner_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
 	<div class="column one">
-		<?php if ( '' !== $ttfmake_section_data['title'] ) : ?>
-			<h3 class="builder-banner-section-title">
-				<?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?>
-			</h3>
+		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>
+			<header>
+				<h2><?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?></h2>
+			</header>
 		<?php endif; ?>
+
 		<div class="builder-section-content<?php echo ( $is_slider ) ? ' cycle-slideshow' : ''; ?>"<?php echo ( $is_slider ) ? ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) : ''; ?>>
 			<?php if ( ! empty( $banner_slides ) ) : foreach ( $banner_slides as $slide ) : ?>
 				<div class="builder-banner-slide<?php echo ttfmake_builder_banner_slide_class( $slide ); ?>" style="<?php echo ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ); ?>">
