@@ -60,6 +60,14 @@
 		}
 		echo '</dl>';
 	}
+	if ( has_term('','wsuwp_university_category')) {
+		echo '<dl class="university-categorized">';
+		echo '<dt><span class="university-categorized-default">Categorized</span></dt>';
+		foreach((get_the_terms()) as $term) {
+			echo '<dd><a href="'.get_term_link($term->term_ID).'">' . $term->name . '</a></dd>';
+		}
+		echo '</dl>';
+	}
 	// Tagged As...
 	if ( has_tag()) {
 		echo '<dl class="tagged">';
