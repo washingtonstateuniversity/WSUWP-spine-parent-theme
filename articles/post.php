@@ -88,6 +88,23 @@
 		echo '</dl>';
 	}
 
+	// Display University locations attached to the post.
+	if ( has_term( '', 'wsuwp_university_location' ) ) {
+		$university_location_terms = get_the_terms( get_the_ID(), 'wsuwp_university_location' );
+		if ( ! is_wp_error( $university_location_terms ) ) {
+			echo '<dl class="university-location">';
+			echo '<dt><span class="university-location-default">Location</span></dt>';
+
+			foreach ( $university_location_terms as $term ) {
+				$term_link = get_term_link( $term->term_id, 'wsuwp_university_location' );
+				if ( ! is_wp_error( $term_link ) ) {
+					echo '<dd><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></dd>';
+				}
+			}
+			echo '</dl>';
+		}
+	}
+
 	// Comments Allowed
 	// if ( comments_open()) {}
 
