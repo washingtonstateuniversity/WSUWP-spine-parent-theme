@@ -63,15 +63,19 @@
 
 	// Display University categories attached to the post.
 	if ( has_term( '', 'wsuwp_university_category' ) ) {
-		echo '<dl class="university-categorized">';
-		echo '<dt><span class="university-categorized-default">Categorized</span></dt>';
-		foreach( ( get_the_terms( $post->ID, 'wsuwp_university_category' ) ) as $term ) {
-			$term_link = get_term_link( $term->term_id );
-			if ( ! is_wp_error( $term_link ) ) {
-				echo '<dd><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></dd>';
+		$university_category_terms = get_the_terms( get_the_ID(), 'wsuwp_university_category' );
+		if ( ! is_wp_error( $university_category_terms ) ) {
+			echo '<dl class="university-categorized">';
+			echo '<dt><span class="university-categorized-default">Categorized</span></dt>';
+
+			foreach ( $university_category_terms as $term ) {
+				$term_link = get_term_link( $term->term_id, 'wsuwp_university_category' );
+				if ( ! is_wp_error( $term_link ) ) {
+					echo '<dd><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></dd>';
+				}
 			}
+			echo '</dl>';
 		}
-		echo '</dl>';
 	}
 
 	// Display University tags attached to the post.
