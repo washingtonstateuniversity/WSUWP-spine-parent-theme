@@ -159,10 +159,10 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
 			__( 'Display multiple types of content in a banner or a slider.', 'make' ),
 			array( 'TTFMAKE_Section_Definitions', 'save_banner' ),
-			'sections/builder-templates/banner',
-			'sections/front-end-templates/banner',
+			'inc/builder/sections/builder-templates/banner',
+			'builder-templates/front-end/banner',
 			300,
-			'inc/builder/'
+			'/'
 		);
 	}
 
