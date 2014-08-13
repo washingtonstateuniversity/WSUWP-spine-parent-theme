@@ -66,7 +66,10 @@
 		echo '<dl class="university-categorized">';
 		echo '<dt><span class="university-categorized-default">Categorized</span></dt>';
 		foreach( ( get_the_terms( $post->ID, 'wsuwp_university_category' ) ) as $term ) {
-			echo '<dd><a href="' . get_term_link( $term->term_ID ) . '">' . $term->name . '</a></dd>';
+			$term_link = get_term_link( $term->term_id );
+			if ( ! is_wp_error( $term_link ) ) {
+				echo '<dd><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></dd>';
+			}
 		}
 		echo '</dl>';
 	}
