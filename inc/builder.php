@@ -152,6 +152,18 @@ class Spine_Builder_Custom {
 			100,
 			'builder-templates'
 		);
+
+		ttfmake_add_section(
+			'banner',
+			_x( 'Banner', 'section name', 'make' ),
+			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
+			__( 'Display multiple types of content in a banner or a slider.', 'make' ),
+			array( 'TTFMAKE_Section_Definitions', 'save_banner' ),
+			'sections/builder-templates/banner',
+			'sections/front-end-templates/banner',
+			300,
+			'inc/builder/'
+		);
 	}
 
 	/**
