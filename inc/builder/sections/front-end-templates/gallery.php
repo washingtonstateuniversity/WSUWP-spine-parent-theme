@@ -18,13 +18,13 @@ $aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_
 	<?php endif; ?>
 	<div class="builder-section-content">
 		<?php if ( ! empty( $gallery ) ) : $i = 0; foreach ( $gallery as $item ) :
-			$onclick = '';
+			$onclick = ' onclick="return false;"';
 			if ( '' !== $item['link'] ) :
 				$onclick = ' onclick="window.location.href = \'' . esc_js( esc_url( $item['link'] ) ) . '\';"';
 			endif;
 			$i++;
 		?>
-		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $ttfmake_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
+		<div class="builder-gallery-item<?php echo esc_attr( ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $i ) ); ?>"<?php echo $onclick; ?>>
 			<?php $image = ttfmake_builder_get_gallery_item_image( $item, $aspect ); ?>
 			<?php if ( '' !== $image ) : ?>
 				<?php echo $image; ?>

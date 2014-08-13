@@ -34,6 +34,8 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 </div>
 <?php endif; ?>
 
+<?php do_action( 'ttfmake_section_text_before_columns_select', $ttfmake_section_data ); ?>
+
 <div class="ttfmake-columns-select ttfmake-select">
 	<label for="<?php echo $section_name; ?>[columns-number]"><?php _e( 'Columns:', 'make' ); ?></label>
 	<select id="<?php echo $section_name; ?>[columns-number]" class="ttfmake-text-columns" name="<?php echo $section_name; ?>[columns-number]">
@@ -44,11 +46,15 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	</select>
 </div>
 
+<?php do_action( 'ttfmake_section_text_after_columns_select', $ttfmake_section_data ); ?>
+
 <div class="ttfmake-titlediv">
 	<div class="ttfmake-titlewrap">
 		<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php if ( isset( $ttfmake_section_data['data']['title'] ) ) echo esc_attr( htmlspecialchars( $ttfmake_section_data['data']['title'] ) ); ?>" autocomplete="off" />
 	</div>
 </div>
+
+<?php do_action( 'ttfmake_section_text_after_title', $ttfmake_section_data ); ?>
 
 <div class="ttfmake-text-columns-stage ttfmake-text-columns-<?php echo $columns_class; ?>">
 	<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
@@ -59,7 +65,7 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 		$title    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
 		$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
 	?>
-	<div class="ttfmake-text-column ttfmake-text-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
+	<div class="<?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
 			<div class="sortable-background"></div>
 		</div>
@@ -102,6 +108,8 @@ $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfm
 	</div>
 	<?php $j++; endforeach; ?>
 </div>
+
+<?php do_action( 'ttfmake_section_text_after_columns', $ttfmake_section_data ); ?>
 
 <div class="clear"></div>
 

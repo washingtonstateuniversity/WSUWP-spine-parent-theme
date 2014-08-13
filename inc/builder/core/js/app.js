@@ -80,39 +80,43 @@ var oneApp = oneApp || {};
 	};
 
 	oneApp.disableEditors = function ($item) {
-		/**
-		 * When moving the section, the TinyMCE instance must be removed. If it is not removed, it will be
-		 * unresponsive once placed. It is reinstated when the section is placed
-		 */
-		$('.wp-editor-area', $item).each(function () {
-			var $this = $(this),
-				id = $this.attr('id');
+		if ( typeof tinyMCE !== 'undefined' ) {
+			/**
+			 * When moving the section, the TinyMCE instance must be removed. If it is not removed, it will be
+			 * unresponsive once placed. It is reinstated when the section is placed
+			 */
+			$('.wp-editor-area', $item).each(function () {
+				var $this = $(this),
+					id = $this.attr('id');
 
-			oneApp.removeTinyMCE(id);
-			delete tinyMCE.editors.id;
-		});
+				oneApp.removeTinyMCE(id);
+				delete tinyMCE.editors.id;
+			});
+		}
 	};
 
 	oneApp.enableEditors = function ($item) {
-		/**
-		 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
-		 * that the TinyMCE editor is operable after a sort.
-		 */
-		$('.wp-editor-area', $item).each(function () {
-			var $this = $(this),
-				id = $this.attr('id'),
-				$wrap = $this.parents('.wp-editor-wrap'),
-				el = tinyMCE.DOM.get(id);
+		if ( typeof tinyMCE !== 'undefined' ) {
+			/**
+			 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
+			 * that the TinyMCE editor is operable after a sort.
+			 */
+			$('.wp-editor-area', $item).each(function () {
+				var $this = $(this),
+					id = $this.attr('id'),
+					$wrap = $this.parents('.wp-editor-wrap'),
+					el = tinyMCE.DOM.get(id);
 
-			// If the text area (i.e., non-tinyMCE) is showing, do not init the editor.
-			if ($wrap.hasClass('tmce-active')) {
-				// Restore the content, with pee
-				el.value = switchEditors.wpautop(el.value);
+				// If the text area (i.e., non-tinyMCE) is showing, do not init the editor.
+				if ($wrap.hasClass('tmce-active')) {
+					// Restore the content, with pee
+					el.value = switchEditors.wpautop(el.value);
 
-				// Activate tinyMCE
-				oneApp.addTinyMCE(id);
-			}
-		});
+					// Activate tinyMCE
+					oneApp.addTinyMCE(id);
+				}
+			});
+		}
 	};
 
 	oneApp.initViews = function () {

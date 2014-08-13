@@ -144,16 +144,23 @@ function ttfmake_builder_get_gallery_style( $ttfmake_section_data ) {
  *
  * @since  1.0.0.
  *
+ * @param  array     $item                    The item's data.
  * @param  array     $ttfmake_section_data    The section data.
  * @param  int       $i                       The current gallery item iterator
  * @return string                             The class.
  */
-function ttfmake_builder_get_gallery_item_class( $ttfmake_section_data, $i ) {
+function ttfmake_builder_get_gallery_item_class( $item, $ttfmake_section_data, $i ) {
 	if ( ! ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) ) {
 		return '';
 	}
 
 	$gallery_class = '';
+
+	// Link
+	$has_link = ( isset( $item['link'] ) && ! empty( $item['link'] ) ) ? true : false;
+	if ( true === $has_link ) {
+		$gallery_class .= ' has-link';
+	}
 
 	// Columns
 	$gallery_columns = ( isset( $ttfmake_section_data['columns'] ) ) ? absint( $ttfmake_section_data['columns'] ) : 1;

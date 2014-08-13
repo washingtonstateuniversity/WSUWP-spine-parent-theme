@@ -19,6 +19,7 @@
 
 		cacheElements: function() {
 			this.cache.$pageTemplate = $('#page_template');
+			this.cache.$builderToggle = $('#use-builder');
 			this.cache.$mainEditor = $('#postdivrich');
 			this.cache.$builder = $('#ttfmake-builder');
 			this.cache.$duplicator = $('.ttfmake-duplicator');
@@ -34,6 +35,7 @@
 
 			// Setup the event for toggling the Page Builder when the page template input changes
 			self.cache.$pageTemplate.on('change', self.templateToggle);
+			self.cache.$builderToggle.on('click', self.templateToggle);
 
 			// Change default settings for new pages
 			if ( typeof ttfmakeEditPageData !== 'undefined' && 'post-new.php' === ttfmakeEditPageData.pageNow && 'page' === pagenow ) {
@@ -44,13 +46,19 @@
 				self.cache.$commentstatus.prop('checked', '');
 				self.cache.$pingstatus.prop('checked', '');
 			}
+
+			// Make sure screen is correctly toggled on load
+			self.cache.$document.on('ready', function() {
+				self.cache.$pageTemplate.trigger('change');
+			});
 		},
 
 		templateToggle: function(e) {
 			var self = ttfmakeEditPage,
-				val = $(e.target).val();
+				$target = $(e.target),
+				val = $target.val();
 
-			if ('template-builder.php' === val) {
+			if ('template-builder.php' === val || $target.is(':checked')) {
 				self.cache.$mainEditor.hide();
 				self.cache.$builder.show();
 				self.cache.$duplicator.show();

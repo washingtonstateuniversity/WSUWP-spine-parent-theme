@@ -42,14 +42,34 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			start: function (event, ui) {
 				// Set the height of the placeholder to that of the sorted item
 				var $item = $(ui.item.get(0)),
-					$stage = $item.parents('.ttfmake-text-columns-stage');
+					$stage = $item.parents('.ttfmake-text-columns-stage'),
+					addClass = '';
+
+				// If text item, potentially add class to stage
+				if ($item.hasClass('ttfmake-text-column')) {
+					if ($item.hasClass('ttfmake-column-width-two-thirds')) {
+						addClass = 'current-item-two-thirds';
+					} else if ($item.hasClass('ttfmake-column-width-one-third')) {
+						addClass = 'current-item-one-third';
+					} else if ($item.hasClass('ttfmake-column-width-one-fourth')) {
+						addClass = 'current-item-one-fourth';
+					} else if ($item.hasClass('ttfmake-column-width-three-fourths')) {
+						addClass = 'current-item-three-fourths';
+					} else if ($item.hasClass('ttfmake-column-width-one-half')) {
+						addClass = 'current-item-one-half';
+					}
+
+					$stage.addClass(addClass);
+				}
 
 				$('.sortable-placeholder', $stage).height($item.height());
+
 				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttfmake-section-body'),
+					$columnsStage = $item.parents('.ttfmake-text-columns-stage'),
 					$orderInput = $('.ttfmake-text-columns-order', $stage),
 					i;
 
@@ -64,6 +84,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 						.addClass('ttfmake-text-column-position-' + i);
 					i++;
 				});
+
+				// Remove the temporary classes from stage
+				$columnsStage.removeClass('current-item-two-thirds current-item-one-third current-item-one-fourth current-item-three-fourths current-item-one-half');
 			}
 		});
 	};
