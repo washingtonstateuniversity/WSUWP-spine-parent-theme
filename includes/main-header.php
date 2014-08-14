@@ -187,7 +187,9 @@ function spine_get_main_header() {
 		if ( spine_is_sub() ) {
 			$post = get_post();
 			$sub_link = get_permalink( $post->post_parent );
-			$sub_header_default = '<a href="' . $sub_link . '">' . $subsection_title . '</a>';
+			// Perhaps, if we checked status of parent, we could link to it, but too often, parents are empty
+			// $sub_header_default = '<a href="' . $sub_link . '">' . $subsection_title . '</a>';
+			$sub_header_default = $subsection_title;
 		} else {
 			$sub_header_default = $site_tagline;
 		}
