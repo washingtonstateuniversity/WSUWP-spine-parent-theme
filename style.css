@@ -447,8 +447,8 @@ body.admin-bar {
 }
 
 .builder-section-banner .cycle-pager {
-	font-size: 40px;
-	font-size: 4rem;
+	font-size: 36px;
+	font-size: 3rem;
 	line-height: 1;
 	-webkit-user-select: none;
 	-moz-user-select: none;
