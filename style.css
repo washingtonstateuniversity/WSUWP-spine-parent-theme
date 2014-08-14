@@ -480,7 +480,7 @@ body.admin-bar {
 }
 
 .builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
-	font-family: FontAwesome;
+	font-family: Genericons;
 	font-size: 34px;
 	font-size: 3.4rem;
 	line-height: 1;
@@ -498,7 +498,7 @@ body.admin-bar {
 
 .builder-section-banner .cycle-prev:before, .ttfmake-shortcode-slider .cycle-prev:before {
 	left: 32px;
-	content: "\f0a8";
+	content: "\f430";
 }
 
 .builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-next {
@@ -507,7 +507,7 @@ body.admin-bar {
 
 .builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-next:before {
 	right: 32px;
-	content: "\f0a9";
+	content: "\f429";
 }
 
 .ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
