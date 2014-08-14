@@ -481,6 +481,10 @@
 	height: 54px;
 }
 
+.ttfmake-menu-list-item {
+	width: 33%;
+}
+
 .ttfmake-menu-list-item-link-icon-wrapper {
 	width: 61px;
 	height: 54px;
