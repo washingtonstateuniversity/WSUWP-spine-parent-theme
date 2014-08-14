@@ -446,7 +446,7 @@ body.admin-bar {
 	margin-bottom: 0;
 }
 
-.builder-section-banner .cycle-pager, .ttfmake-shortcode-slider .cycle-pager {
+.builder-section-banner .cycle-pager {
 	font-size: 40px;
 	font-size: 4rem;
 	line-height: 1;
@@ -458,15 +458,15 @@ body.admin-bar {
 	color: #eaecee;
 }
 
-.builder-section-banner .cycle-pager span, .ttfmake-shortcode-slider .cycle-pager span {
+.builder-section-banner .cycle-pager span {
 	cursor: pointer;
 }
 
-.builder-section-banner .cycle-pager .cycle-pager-active, .ttfmake-shortcode-slider .cycle-pager .cycle-pager-active {
+.builder-section-banner .cycle-pager .cycle-pager-active {
 	color: #b9bcbf;
 }
 
-.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-prev, .ttfmake-shortcode-slider .cycle-next {
+.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
 	position: absolute;
 	z-index: 999;
 	top: 50%;
@@ -474,12 +474,12 @@ body.admin-bar {
 }
 
 @media screen and (min-width: 800px) {
-	.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-prev, .ttfmake-shortcode-slider .cycle-next {
+	.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
 		opacity: .6;
 	}
 }
 
-.builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
+.builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before {
 	font-family: Genericons;
 	font-size: 34px;
 	font-size: 3.4rem;
@@ -491,26 +491,26 @@ body.admin-bar {
 }
 
 @media screen and (min-width: 800px) {
-	.builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next, .builder-section-banner:focus .cycle-prev, .builder-section-banner:focus .cycle-next, .ttfmake-shortcode-slider:hover .cycle-prev, .ttfmake-shortcode-slider:hover .cycle-next, .ttfmake-shortcode-slider:focus .cycle-prev, .ttfmake-shortcode-slider:focus .cycle-next {
+	.builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next, .builder-section-banner:focus .cycle-prev, .builder-section-banner:focus .cycle-next {
 		opacity: 1;
 	}
 }
 
-.builder-section-banner .cycle-prev:before, .ttfmake-shortcode-slider .cycle-prev:before {
+.builder-section-banner .cycle-prev:before {
 	left: 32px;
 	content: "\f430";
 }
 
-.builder-section-banner .cycle-next, .ttfmake-shortcode-slider .cycle-next {
+.builder-section-banner .cycle-next {
 	right: 0;
 }
 
-.builder-section-banner .cycle-next:before, .ttfmake-shortcode-slider .cycle-next:before {
+.builder-section-banner .cycle-next:before {
 	right: 32px;
 	content: "\f429";
 }
 
-.ttfmake-shortcode-slider .cycle-prev:before, .ttfmake-shortcode-slider .cycle-next:before {
+.ttfmake-shortcode-slider .cycle-prev:before {
 	top: -12px;
 	top: -1.2rem;
 }
