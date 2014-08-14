@@ -25,6 +25,8 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 
+		add_filter( 'ttfmake_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
+
 		add_filter( 'ttfmake_builder_section_footer_links', array(  $this, 'add_builder_section_links' ), 10, 1 );
 	}
 
@@ -50,6 +52,26 @@ class Spine_Builder_Custom {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Check to see if specific sections are being saved and enqueue necessary front end scripts
+	 * and styles if applicable.
+	 *
+	 * @param array $sections List of sections being saved as content in page builder.
+	 *
+	 * @return array Same list of sections.
+	 */
+	public function set_section_meta( $sections ) {
+		$section_types = wp_list_pluck( $sections, 'section-type' );
+
+		if ( in_array( 'banner', $section_types ) ) {
+			update_post_meta( get_the_ID(), '_has_builder_banner', 1 );
+		} else {
+			delete_post_meta( get_the_ID(), '_has_builder_banner' );
+		}
+
+		return $sections;
 	}
 
 	/**
@@ -150,6 +172,18 @@ class Spine_Builder_Custom {
 			'admin/h1-header',
 			'front-end/h1-header',
 			100,
+			'builder-templates'
+		);
+
+		ttfmake_add_section(
+			'banner',
+			_x( 'Banner', 'section name', 'make' ),
+			get_template_directory_uri() . '/inc/builder/sections/css/images/banner.png',
+			__( 'Display multiple types of content in a banner or a slider.', 'make' ),
+			array( $this, 'save_banner' ),
+			'admin/banner',
+			'front-end/banner',
+			300,
 			'builder-templates'
 		);
 	}
@@ -291,6 +325,77 @@ class Spine_Builder_Custom {
 				}
 
 				$i++;
+			}
+		}
+
+		if ( isset( $data['section-classes'] ) ) {
+			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
+		}
+
+		if ( isset( $data['section-wrapper'] ) ) {
+			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
+		}
+
+		return $clean_data;
+	}
+
+	/**
+	 * Clean the data being passed when saving the Banner layout.
+	 *
+	 * @param array $data Array of data inputs being passed.
+	 *
+	 * @return array Clean data.
+	 */
+	public function save_banner( $data ) {
+		$clean_data = array();
+
+		$clean_data['title']       = $clean_data['label'] = ( isset( $data['title'] ) ) ? apply_filters( 'title_save_pre', $data['title'] ) : '';
+		$clean_data['hide-arrows'] = ( isset( $data['hide-arrows'] ) && 1 === (int) $data['hide-arrows'] ) ? 1 : 0;
+		$clean_data['hide-dots']   = ( isset( $data['hide-dots'] ) && 1 === (int) $data['hide-dots'] ) ? 1 : 0;
+		$clean_data['autoplay']    = ( isset( $data['autoplay'] ) && 1 === (int) $data['autoplay'] ) ? 1 : 0;
+
+		if ( isset( $data['transition'] ) && in_array( $data['transition'], array( 'fade', 'scrollHorz', 'none' ) ) ) {
+			$clean_data['transition'] = $data['transition'];
+		}
+
+		if ( isset( $data['delay'] ) ) {
+			$clean_data['delay'] = absint( $data['delay'] );
+		}
+
+		if ( isset( $data['height'] ) ) {
+			$clean_data['height'] = absint( $data['height'] );
+		}
+
+		if ( isset( $data['responsive'] ) && in_array( $data['responsive'], array( 'aspect', 'balanced' ) ) ) {
+			$clean_data['responsive'] = $data['responsive'];
+		}
+
+		if ( isset( $data['banner-slide-order'] ) ) {
+			$clean_data['banner-slide-order'] = array_map( array( 'TTFMAKE_Builder_Save', 'clean_section_id' ), explode( ',', $data['banner-slide-order'] ) );
+		}
+
+		if ( isset( $data['banner-slides'] ) && is_array( $data['banner-slides'] ) ) {
+			foreach ( $data['banner-slides'] as $id => $slide ) {
+
+				if ( isset( $slide['content'] ) ) {
+					$clean_data['banner-slides'][ $id ]['content'] = sanitize_post_field( 'post_content', $slide['content'], ( get_post() ) ? get_the_ID() : 0, 'db' );
+				}
+
+				if ( isset( $slide['background-color'] ) ) {
+					$clean_data['banner-slides'][ $id ]['background-color'] = maybe_hash_hex_color( $slide['background-color'] );
+				}
+
+				$clean_data['banner-slides'][ $id ]['darken'] = ( isset( $slide['darken'] ) && 1 === (int) $slide['darken'] ) ? 1 : 0;
+
+				if ( isset( $slide['image-id'] ) ) {
+					$clean_data['banner-slides'][ $id ]['image-id'] = ttfmake_sanitize_image_id( $slide['image-id'] );
+				}
+
+				$clean_data['banner-slides'][ $id ]['alignment'] = ( isset( $slide['alignment'] ) && in_array( $slide['alignment'], array( 'none', 'left', 'right' ) ) ) ? $slide['alignment'] : 'none';
+
+				if ( isset( $slide['state'] ) ) {
+					$clean_data['banner-slides'][ $id ]['state'] = ( in_array( $slide['state'], array( 'open', 'closed' ) ) ) ? $slide['state'] : 'open';
+				}
 			}
 		}
 
