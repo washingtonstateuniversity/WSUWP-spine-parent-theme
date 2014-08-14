@@ -47,7 +47,6 @@ class Spine_Builder_Custom {
 				'ttfmake-admin-edit-page',
 				'ttfmakeEditPageData',
 				array(
-					'featuredImage' => __( 'Featured images are not available for this page while using the current page template.', 'make' ),
 					'pageNow'       => esc_js( $pagenow ),
 				)
 			);
