@@ -25,6 +25,8 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 
+		add_filter( 'ttfmake_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
+
 		add_filter( 'ttfmake_builder_section_footer_links', array(  $this, 'add_builder_section_links' ), 10, 1 );
 	}
 
@@ -50,6 +52,26 @@ class Spine_Builder_Custom {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Check to see if specific sections are being saved and enqueue necessary front end scripts
+	 * and styles if applicable.
+	 *
+	 * @param array $sections List of sections being saved as content in page builder.
+	 *
+	 * @return array Same list of sections.
+	 */
+	public function set_section_meta( $sections ) {
+		$section_types = wp_list_pluck( $sections, 'section-type' );
+
+		if ( in_array( 'banner', $section_types ) ) {
+			update_post_meta( get_the_ID(), '_has_builder_banner', 1 );
+		} else {
+			delete_post_meta( get_the_ID(), '_has_builder_banner' );
+		}
+
+		return $sections;
 	}
 
 	/**

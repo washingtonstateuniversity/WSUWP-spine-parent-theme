@@ -201,11 +201,14 @@ function spine_wp_enqueue_scripts() {
 	wp_enqueue_script( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
 
 	// Enqueue jQuery Cycle2 and Genericons when a page builder template is used.
-	// @todo restrict this to only when a slider has been added
 	if ( is_page_template( 'template-builder.php' ) ) {
-		// Enqueue the compilation of jQuery Cycle2 scripts required for the slider
-		wp_enqueue_script( 'wsu-cycle', get_template_directory_uri() . '/js/cycle2/jquery.cycle2.min.js', array( 'jquery' ), spine_get_script_version(), true );
-		wp_enqueue_style( 'genericons', get_template_directory_uri() . '/styles/genericons/genericons.css', array(), spine_get_script_version() );
+		$has_builder_banner = get_post_meta( get_the_ID(), '_has_builder_banner', true );
+
+		if ( $has_builder_banner ) {
+			// Enqueue the compilation of jQuery Cycle2 scripts required for the slider
+			wp_enqueue_script( 'wsu-cycle', get_template_directory_uri() . '/js/cycle2/jquery.cycle2.min.js', array( 'jquery' ), spine_get_script_version(), true );
+			wp_enqueue_style( 'genericons', get_template_directory_uri() . '/styles/genericons/genericons.css', array(), spine_get_script_version() );
+		}
 	}
 }
 
