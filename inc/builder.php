@@ -419,9 +419,7 @@ new Spine_Builder_Custom();
  *
  * @return array Prepped data.
  */
-function spine_get_two_column_data( $ttfmake_section_data ) {
-	$columns_number = 2;
-
+function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
 		$columns_order = $ttfmake_section_data['columns-order'];
