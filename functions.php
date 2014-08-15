@@ -193,6 +193,10 @@ function spine_wp_enqueue_scripts() {
 		wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
 	}
 
+	// All theme styles have been output at this time. Plugins and other themes should print styles here, before blocking
+	// Javascript resources are output.
+	do_action( 'spine_enqueue_styles' );
+
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
 	wp_enqueue_script( 'wsu-jquery-ui-full', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
