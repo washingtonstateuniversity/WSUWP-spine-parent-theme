@@ -24,66 +24,6 @@ main {
 	background-position: left top;
 	}
 
-/* Main Header Defaults (previously siteID) */
-
-/* .main-header {
-	height: 142px;
-	background-color: #981e32;
-	background-color: #5e6a71;
-	width: 300%;
-	position: relative;
-	}
-.main-header .header-group {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	max-width: 792px;
-	xxpadding-left: 2em;
-	padding-bottom: 1.5em;
-	}
-.main-header sup,
-.main-header sub {
-	display: block;
-	color: white;
-	line-height: 1em;
-	vertical-align: baseline;
-	margin: 0px;
-	xxpadding-left: 28px;
-	width: 100%;
-	}
-.main-header a,
-.main-header a:hover {
-	color: white;
-	}
-.main-header sup {
-	font-size: .9em;
-	text-transform: uppercase;
-	}
-.main-header sup a {
-	color: #e6e8e9;
-	}
-.main-header sub {
-	font-size: 2em;
-	xxpadding-bottom: .5em;
-	}
-.main-header sup span {
-	display: block;
-	line-height: 1em;
-	} */
-
-/* Main Header Alternates */
-/* How to use CSS to override the default headers
-.main-header sup:before,
-.main-header sub:before {
-	content: attr(data-default);
-	display: inline-block;
-	}
-.main-header sup span,
-.main-header sub span {
-	display: none;
-	}
-*/
-
 /* Figures and Images */
 
 
