@@ -108,7 +108,7 @@ main {
 /* Articles */
 .page h1.article-title {
 	font-weight: normal;
-	font-size: 2.5em;
+	font-size: 2.5rem;
 	}
 .row.margin figure.alignright {
 	width: 396px;
@@ -127,26 +127,38 @@ aside header {
 	xxfont-weight: normal;
 	xxfont-family: "OpenSans-CondBold";
 	xxfont-family: "OpenSans-Light";
-	font-size: 1.4em;
-	line-height: 1.6em;
+	font-size: 1.4rem;
+	line-height: 1.6rem;
 	}
 
 /* Headers */
 h1 {
 	font-weight: normal;
+	color: #464e54;
 	}
 h2 {
-	font-size: 1.4em;
+	font-size: 1.4rem;
 	color: #464e54;
 	}
 h3 {
 	color: #464e54;
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: normal;
 	}
 h4 {
-	font-size: 1.2em;
+	color: #464e54;
+	font-size: 1.1rem;
+	}
+h5 {
+	font-size: 1rem;
+	color: #464e54;
+	text-transform: uppercase;
+	font-weight: normal;
+	}
+h6 {
+	color: #464e54;
+	font-size: 1rem;
 	}
 
 /* Lists */
@@ -217,7 +229,7 @@ aside[class^="widget"] ul {
 
 aside[class^="widget"] ul li {
 	border-top: 1px #d7dadb solid;
-	padding: .3em 0;
+	padding: .3rem 0;
 	list-style: none;
 }
 
@@ -229,11 +241,16 @@ aside[class^="widget"] ul li {
 .colors-blue .main-header { background: #4f868e; }
 
 /* Yellow */
+
 .colors-yellow .main-header {
 	background: #c69214;
 	}
+	
 /* Gray */
-.colors-gray .main-header { background: #5e6a71; }
+
+.colors-gray .main-header {
+	background: #5e6a71;
+	}
 
 	
 
