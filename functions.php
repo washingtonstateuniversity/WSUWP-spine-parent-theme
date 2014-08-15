@@ -165,7 +165,7 @@ add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
  */
 function spine_wp_enqueue_scripts() {
 	// Much relies on the main stylesheet provided by the WSU Spine.
-	wp_enqueue_style( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.css', array(), spine_get_script_version() );
+	wp_enqueue_style( 'wsu-spine', 'https://repo.wsu.edu/spine/1/spine.min.css', array(), spine_get_script_version() );
 
 	/**
 	 * By default, a child theme has 3 styles enqueued—the main stylesheet, an extra stylesheet per the theme_style
@@ -190,15 +190,15 @@ function spine_wp_enqueue_scripts() {
 	}
 	
 	if ( true == spine_get_option( 'open_sans' ) ) {
-		wp_enqueue_style( 'wsu-spine-opensans', '//repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
+		wp_enqueue_style( 'wsu-spine-opensans', 'https://repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
 	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
-	wp_enqueue_script( 'wsu-jquery-ui-full', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'wsu-jquery-ui-full', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
 
 	// Much relies on the main Javascript provided by the WSU Spine.
-	wp_enqueue_script( 'wsu-spine', '//repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
+	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
 
 	// Enqueue jQuery Cycle2 and Genericons when a page builder template is used.
 	if ( is_page_template( 'template-builder.php' ) ) {
