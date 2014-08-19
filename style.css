@@ -81,10 +81,9 @@ html {
 	background-position: center top;
 	background-repeat: no-repeat;
 	}
-body.has-background-image,
 .has-background-image main {
 	position: relative;
-	background: transparent !important;
+	background-color: transparent;
 	}
 .featured-image {
 	width: 100%;

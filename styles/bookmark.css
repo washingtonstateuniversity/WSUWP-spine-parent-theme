@@ -9,11 +9,22 @@
 */
 @import 'https://repo.wsu.edu/spine/1/styles/opensans.css';
 
-body {
+html {
 	background-image: url('bookmark/backgrounds/gradients/gradient-graytolight-south-2.jpg');
 	background-repeat: repeat-x;
 	background-position: left top;
 	background-color: #f9f9f9;
+	min-height: 100%;
+	}
+
+body {
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center top;
+	}
+body.tag-back-bottom {
+	background-position: right bottom;
+	background-attachment: fixed;
 	}
 .home main {
 	background: url('bookmark/backgrounds/letters/lightest-four.jpg');

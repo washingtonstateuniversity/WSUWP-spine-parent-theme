@@ -6,7 +6,7 @@ if ( spine_has_background_image() ) {
 	$background_image_src = spine_get_background_image_src();
 	?>
 	
-	<style> html { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style>
+	<style> body { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style>
 	
 <?php } ?>
 
