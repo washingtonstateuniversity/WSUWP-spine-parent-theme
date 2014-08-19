@@ -364,6 +364,11 @@ function spine_categorized_body_classes( $classes ) {
 			$classes[] = 'categorized-' . $category->slug;
 		}
 	}
+	if ( has_tag() && is_singular() ) {
+		foreach( get_the_tags( get_the_ID() ) as $tag ) {
+			$classes[] = 'tagged-' . $tag->slug;
+		}
+	}
 
 	return array_unique( $classes );
 }
@@ -386,7 +391,8 @@ function spine_sectioned_body_classes( $classes ) {
 	$path = explode( '/', $path );
 
 	if ( is_singular() && ! empty( $path ) ) {
-		$depth = count( $path ) - 1;
+		$depth = count( $path );
+		if ( is_front_page() ) { $depth = '0'; }
 		$classes[] = 'depth-' . $depth;
 		$strip = array('?','=');
 
