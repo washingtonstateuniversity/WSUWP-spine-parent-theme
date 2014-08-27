@@ -255,7 +255,7 @@ function spine_customize_register( $wp_customize ){
 	// Advanced
 	$wp_customize->add_section('section_spine_advanced_options', array(
 		'title'    => __('Advanced Options', 'spine_advanced'),
-		'priority' => 320,
+		'priority' => 2000,
 	));
 
 	// Spine Version
@@ -292,8 +292,7 @@ function spine_customize_register( $wp_customize ){
 			' folio max-1386' => 'Max Width 1386px',
 			' folio max-1584' => 'Max Width 1584px',
 			' folio max-1782' => 'Max Width 1782px',
-			' folio max-1980' => 'Max Width 1980px',
-			' folio max-full' => 'Max Width 100%',
+			' folio max-1980' => 'Max Width 1980px'
 		),
 	));
 
@@ -442,15 +441,148 @@ function spine_customize_register( $wp_customize ){
 		),
 	));
 
-	// Include Open Sans
+	// Font Options
+	
+	$wp_customize->add_section('section_spine_fonts', array(
+		'title'    => __('Font Options', 'spine'),
+		'priority' => 1000,
+		'description' => 'Load Open Sans (select only needed fonts, the fewer the better)',
+		));
+	
+	$wp_customize->add_setting('spine_options[open_sans]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	
+	$wp_customize->add_setting('spine_options[open_sans_300]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_300]', array(
+		'label'      => __('Light', '300'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_300]',
+		'type'       => 'checkbox'
+		));
+	
+	$wp_customize->add_setting('spine_options[open_sans_300italic]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_300italic]', array(
+		'label'      => __('Light Italic', '300italic'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_300italic]',
+		'type'       => 'checkbox'
+		));
+	
+	$wp_customize->add_setting('spine_options[open_sans_400]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_400]', array(
+		'label'      => __('Normal', '400'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_400]',
+		'type'       => 'checkbox'
+		));
+	
+	$wp_customize->add_setting('spine_options[open_sans_400italic]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_400italic]', array(
+		'label'      => __('Italic', '400italic'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_400italic]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[open_sans_600]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_600]', array(
+		'label'      => __('Semi-Bold', '600'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_600]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[open_sans_600italic]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_600italic]', array(
+		'label'      => __('Semi-Bold Italic', '600italic'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_600italic]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[open_sans_700]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_700]', array(
+		'label'      => __('Bold', '700'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_700]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[open_sans_700italic]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_700italic]', array(
+		'label'      => __('Bold Italic', '700italic'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_700italic]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[open_sans_800]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_800]', array(
+		'label'      => __('Extra-Bold', '800'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_800]',
+		'type'       => 'checkbox'
+	));
+	
+	$wp_customize->add_setting('spine_options[open_sans_800italic]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		));
+	$wp_customize->add_control('spine_options[open_sans_800italic]', array(
+		'label'      => __('Extra-Bold Italic', '800italic'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans_800italic]',
+		'type'       => 'checkbox'
+	));
+	
 	$wp_customize->add_setting('spine_options[open_sans]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
 	$wp_customize->add_control('spine_open_sans', array(
-		'label'      => __('Enable Open Sans', 'spine'),
-		'section'    => 'section_spine_style',
+		'label'      => __('Apply Open Sans', 'spine'),
+		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_options[open_sans]',
 		'type'       => 'checkbox'
 	));

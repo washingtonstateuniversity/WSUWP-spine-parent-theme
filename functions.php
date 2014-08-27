@@ -99,6 +99,18 @@ function spine_get_option( $option_name ) {
 		'contact_email'             => 'info@wsu.edu',
 		'contact_ContactPoint'      => '',
 		'contact_ContactPointTitle' => 'Contact Page...',
+		// Open Sans Fonts
+		'open_sans'                 => false,
+		'open_sans_300'     		=> false,
+		'open_sans_300italic'     	=> false,
+		'open_sans_400'     		=> false,
+		'open_sans_400italic'     	=> false,
+		'open_sans_600'     		=> false,
+		'open_sans_600italic'    	=> false,
+		'open_sans_700'     		=> false,
+		'open_sans_700italic'     	=> false,
+		'open_sans_800'     		=> false,
+		'open_sans_800italic'     	=> false,
 	);
 
 	// A child theme can override all spine option defaults with the spine_option_defaults filter.

@@ -20,6 +20,7 @@
 
 	<!-- SCRIPTS and STYLES -->
 	<!-- Custom scripts and styles should be added with wp_enqueue_script() and wp_enqueue_style() -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 	<?php wp_head(); ?>
 
 	<!-- COMPATIBILITY -->
@@ -47,3 +48,10 @@
 <?php get_template_part('parts/before-binder'); ?> 
 <div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo $spineless; echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( spine_get_option( 'broken_binding' ) ); ?>">
 <?php get_template_part('parts/before-main'); ?>
+
+<?php
+
+	$spine_options = get_option( 'spine_options' );
+	print_r($spine_options)
+
+ ?>
