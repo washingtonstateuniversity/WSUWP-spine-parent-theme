@@ -239,8 +239,9 @@ body.admin-bar {
 #wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper {
     bottom:32px;
     box-shadow: none;
-}   
 }
+}
+
 @media (max-width: 780px) {
 
 body.admin-bar {
