@@ -485,7 +485,7 @@ function spine_customize_register( $wp_customize ){
 			true  => 'On',
 			false => 'Off',
 		),
-		'priority'   => 1
+		'priority'   => 1,
 	));
 
 	/**
@@ -503,7 +503,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Light', '300'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[300]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 2,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[300italic]', array(
@@ -516,7 +517,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Light Italic', '300italic'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[300italic]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 3,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[400]', array(
@@ -529,7 +531,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Normal', '400'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[400]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 4,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[400italic]', array(
@@ -542,7 +545,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Italic', '400italic'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[400italic]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 5,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[600]', array(
@@ -555,7 +559,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Semi-Bold', '600'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[600]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 6,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[600italic]', array(
@@ -568,7 +573,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Semi-Bold Italic', '600italic'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[600italic]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 7,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[700]', array(
@@ -581,7 +587,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Bold', '700'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[700]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 8,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[700italic]', array(
@@ -594,7 +601,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Bold Italic', '700italic'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[700italic]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 9,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[800]', array(
@@ -607,7 +615,8 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Extra-Bold', '800'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[800]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 10,
 	));
 
 	$wp_customize->add_setting('spine_open_sans[800italic]', array(
@@ -620,6 +629,7 @@ function spine_customize_register( $wp_customize ){
 		'label'      => __('Extra-Bold Italic', '800italic'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans[800italic]',
-		'type'       => 'checkbox'
+		'type'       => 'checkbox',
+		'priority'   => 11,
 	));
 }
