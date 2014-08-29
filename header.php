@@ -48,10 +48,3 @@
 <?php get_template_part('parts/before-binder'); ?> 
 <div id="binder" class="<?php echo esc_attr( spine_get_option( 'grid_style' ) ); echo $spineless; echo esc_attr( spine_get_option( 'large_format' ) ); echo esc_attr( spine_get_option( 'broken_binding' ) ); ?>">
 <?php get_template_part('parts/before-main'); ?>
-
-<?php
-
-	$spine_options = get_option( 'spine_options' );
-	// print_r($spine_options)
-
- ?>
