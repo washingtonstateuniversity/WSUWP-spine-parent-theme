@@ -88,7 +88,6 @@ function spine_get_option( $option_name ) {
 		'bleed'                     => true,
 		'crop'			            => false,
 		'spineless'		            => false,
-		'open_sans'                 => false,
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',
 		'contact_url'               => 'http://wsu.edu',
