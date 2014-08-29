@@ -441,14 +441,19 @@ function spine_customize_register( $wp_customize ){
 		),
 	));
 
-	// Font Options
-	
+	/**
+	 * Start the font options section.
+	 */
 	$wp_customize->add_section('section_spine_fonts', array(
 		'title'    => __('Font Options', 'spine'),
 		'priority' => 1000,
 		'description' => 'Load Open Sans (select only needed fonts, the fewer the better)',
 		));
-	
+
+	/**
+	 * A general option is available which tells the Spine Framework
+	 * to apply its Open Sans configuration.
+	 */
 	$wp_customize->add_setting('spine_options[open_sans]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
@@ -460,18 +465,24 @@ function spine_customize_register( $wp_customize ){
 		'settings'   => 'spine_options[open_sans]',
 		'type'       => 'checkbox'
 	));
-	
+
+	/**
+	 * Additional options are available for loading in various Open Sans
+	 * font weights and styles to be used with our without the Spine
+	 * Framework's default Open Sans configuration.
+	 */
 	$wp_customize->add_setting('spine_options[open_sans_300]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
-		));
+	));
+
 	$wp_customize->add_control('spine_options[open_sans_300]', array(
 		'label'      => __('Light', '300'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_options[open_sans_300]',
 		'type'       => 'checkbox'
-		));
+	));
 	
 	$wp_customize->add_setting('spine_options[open_sans_300italic]', array(
 		'default'        => false,
