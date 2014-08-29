@@ -217,9 +217,20 @@ function spine_wp_enqueue_scripts() {
 
 	$spine_open_sans = spine_get_open_sans_options();
 
+	/**
+	 * Build the URL used to pull additional Open Sans font weights and styles from
+	 * Google. If this page view has an admin bar, we can assume that several weights
+	 * and styles are already loaded and remove those from the requested set.
+	 */
 	if ( ! empty( $spine_open_sans ) ) {
+		$wp_default_open_sans = array( '300italic', '400italic', '600italic', '300', '400', '600' );
+
 		$build_open_sans_css = '//fonts.googleapis.com/css?family=Open+Sans%3A';
+
 		foreach( $spine_open_sans as $font_option ) {
+			if ( is_admin_bar_showing() && in_array( $font_option, $wp_default_open_sans ) ) {
+				continue;
+			}
 			$build_open_sans_css .= '%2C' . $font_option;
 		}
 		wp_enqueue_style( 'spine-open-sans', $build_open_sans_css, array(), false );
