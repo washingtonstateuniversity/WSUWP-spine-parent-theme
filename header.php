@@ -52,6 +52,6 @@
 <?php
 
 	$spine_options = get_option( 'spine_options' );
-	print_r($spine_options)
+	// print_r($spine_options)
 
  ?>

@@ -453,7 +453,13 @@ function spine_customize_register( $wp_customize ){
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
-		));
+	));
+	$wp_customize->add_control('spine_open_sans', array(
+		'label'      => __('Apply Open Sans', 'spine'),
+		'section'    => 'section_spine_fonts',
+		'settings'   => 'spine_options[open_sans]',
+		'type'       => 'checkbox'
+	));
 	
 	$wp_customize->add_setting('spine_options[open_sans_300]', array(
 		'default'        => false,
@@ -575,15 +581,5 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox'
 	));
 	
-	$wp_customize->add_setting('spine_options[open_sans]', array(
-		'default'        => false,
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-	$wp_customize->add_control('spine_open_sans', array(
-		'label'      => __('Apply Open Sans', 'spine'),
-		'section'    => 'section_spine_fonts',
-		'settings'   => 'spine_options[open_sans]',
-		'type'       => 'checkbox'
-	));
+	
 }
