@@ -477,10 +477,15 @@ function spine_customize_register( $wp_customize ){
 		'type'           => 'option',
 	));
 	$wp_customize->add_control('spine_options[open_sans]', array(
-		'label'      => __('Apply Open Sans', 'spine'),
+		'label'      => __('Apply Open Sans to Spine', 'spine'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_options[open_sans]',
-		'type'       => 'checkbox'
+		'type'       => 'radio',
+		'choices'    => array(
+			true  => 'On',
+			false => 'Off',
+		),
+		'priority'   => 1
 	));
 
 	/**
