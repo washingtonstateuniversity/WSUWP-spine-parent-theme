@@ -20,7 +20,7 @@
 
 	<!-- SCRIPTS and STYLES -->
 	<!-- Custom scripts and styles should be added with wp_enqueue_script() and wp_enqueue_style() -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
 	<?php wp_head(); ?>
 
 	<!-- COMPATIBILITY -->
