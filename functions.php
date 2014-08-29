@@ -98,18 +98,6 @@ function spine_get_option( $option_name ) {
 		'contact_email'             => 'info@wsu.edu',
 		'contact_ContactPoint'      => '',
 		'contact_ContactPointTitle' => 'Contact Page...',
-		// Open Sans Fonts
-		'open_sans'                 => false,
-		'open_sans_300'     		=> false,
-		'open_sans_300italic'     	=> false,
-		'open_sans_400'     		=> false,
-		'open_sans_400italic'     	=> false,
-		'open_sans_600'     		=> false,
-		'open_sans_600italic'    	=> false,
-		'open_sans_700'     		=> false,
-		'open_sans_700italic'     	=> false,
-		'open_sans_800'     		=> false,
-		'open_sans_800italic'     	=> false,
 	);
 
 	// A child theme can override all spine option defaults with the spine_option_defaults filter.
@@ -138,6 +126,29 @@ function spine_get_option( $option_name ) {
 	} else {
 		return false;
 	}
+}
+
+/**
+ * Retrieve a list of Open Sans weights and styles enabled for the site via
+ * the Customizer.
+ *
+ * @return array List of font weights and styles.
+ */
+function spine_get_open_sans_options() {
+	$spine_open_sans = get_option( 'spine_open_sans', array() );
+	$fonts = array();
+
+	foreach( $spine_open_sans as $k => $v ) {
+		if ( true === $v ) {
+			$fonts[] = $k;
+		}
+
+	}
+
+	// A child theme can override all spine open sans defaults with the spine_open_sans_options filter.
+	$fonts = apply_filters( 'spine_open_sans_options', $fonts );
+
+	return $fonts;
 }
 
 /**
