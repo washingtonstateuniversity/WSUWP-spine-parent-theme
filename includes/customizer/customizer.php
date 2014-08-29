@@ -19,45 +19,50 @@ add_action('customize_register', 'spine_customize_register');
  * @param WP_Customize_Manager $wp_customize
  */
 function spine_customize_register( $wp_customize ){
-	
+
 	$wp_customize->remove_section( 'title_tagline');
 	$wp_customize->remove_section( 'nav');
-	
+
 	// Page Headers
 	$wp_customize->add_section( 'section_main_header', array(
 		'title'    => __( 'Main Header' ),
 		'priority' => 20,
 	));
-	
+
 	$wp_customize->add_setting('spine_options[global_main_header_sup]', array(
 		'default' => '',
 		'capability' => 'edit_theme_options',
 		'type' => 'option'
-		));
+	));
+
 	$wp_customize->add_control('global_main_header_sup', array(
 		'label' => 'Global Header Top (Optional)',
 		'section' => 'section_main_header',
 		'settings' => 'spine_options[global_main_header_sup]',
 		'type' => 'text',
 		'priority' => 25
-		));
+	));
+
 	$wp_customize->add_setting('spine_options[global_main_header_sub]', array(
 		'default' => '',
 		'capability' => 'edit_theme_options',
 		'type' => 'option'
-		));
+	));
+
 	$wp_customize->add_control('global_main_header_sub', array(
 		'label' => 'Global Header Bottom (Optional)',
 		'section' => 'section_main_header',
 		'settings' => 'spine_options[global_main_header_sub]',
 		'type' => 'text',
 		'priority' => 30
-		));
+	));
+
 	$wp_customize->add_setting('spine_options[main_header_show]', array(
 		'default'        => true,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_options[main_header_show]', array(
 		'label'      => __('Show main header', 'spine'),
 		'section'    => 'section_main_header',
@@ -71,6 +76,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_options[articletitle_show]', array(
 		'label'      => __('Show article title', 'spine'),
 		'section'    => 'section_main_header',
@@ -78,12 +84,13 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox',
 		'priority' => 40
 	));
-	
+
 	$wp_customize->add_setting('spine_options[articletitle_header]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_options[articletitle_header]', array(
 		'label'      => __('Use article title in main header', 'spine'),
 		'section'    => 'section_main_header',
@@ -115,13 +122,14 @@ function spine_customize_register( $wp_customize ){
 			'fluid'  => 'Fluid'
 		),
 	));
- 
+
 	// Spine Color
 	$wp_customize->add_setting('spine_options[spine_color]', array(
 		'default'        => 'white',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control( 'spine_color_select', array(
 		'settings' => 'spine_options[spine_color]',
 		'label'    => 'Spinal Column Color',
@@ -147,6 +155,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_bleed', array(
 		'label'      => __('Bleed Spine Left', 'spine'),
 		'section'    => 'section_spine_options',
@@ -264,6 +273,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_version', array(
 		'label'      => __('Spine Version', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -281,6 +291,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_large_format', array(
 		'label'      => __('Large Format', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -302,19 +313,21 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_crop', array(
 		'label'      => __('Cropped Spine (homepage)', 'spine'),
 		'section'    => 'section_spine_advanced_options',
 		'settings'   => 'spine_options[crop]',
 		'type'       => 'checkbox'
 	));
-	
+
 	// Spineless
 	$wp_customize->add_setting('spine_options[spineless]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_spineless', array(
 		'label'      => __('Spineless (homepage)', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -328,6 +341,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_broken_binding', array(
 		'label'      => __('Bleed Main Right', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -393,6 +407,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_theme_style', array(
 		'settings'   => 'spine_options[theme_style]',
 		'label'      => __('Additional Styling', 'spine'),
@@ -409,6 +424,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_secondary_colors', array(
 		'settings'   => 'spine_options[secondary_colors]',
 		'label'      => __('Secondary Color', 'spine'),
@@ -429,6 +445,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
+
 	$wp_customize->add_control('spine_theme_spacing', array(
 		'settings'   => 'spine_options[theme_spacing]',
 		'label'      => __('Sitewide Spacing', 'spine'),
