@@ -215,6 +215,16 @@ function spine_wp_enqueue_scripts() {
 	// Javascript resources are output.
 	do_action( 'spine_enqueue_styles' );
 
+	$spine_open_sans = spine_get_open_sans_options();
+
+	if ( ! empty( $spine_open_sans ) ) {
+		$build_open_sans_css = '//fonts.googleapis.com/css?family=Open+Sans%3A';
+		foreach( $spine_open_sans as $font_option ) {
+			$build_open_sans_css .= '%2C' . $font_option;
+		}
+		wp_enqueue_style( 'spine-open-sans', $build_open_sans_css, array(), false );
+	}
+
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
 	wp_enqueue_script( 'wsu-jquery-ui-full', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
