@@ -356,6 +356,23 @@ function spine_is_sub() {
 	}
 }
 
+add_filter( 'body_class', 'spine_open_sans_body_class' );
+/**
+ * If Open Sans has been applied to the Spine, add the
+ * appropriate body class.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function spine_open_sans_body_class( $classes ) {
+	if ( 'true' == spine_get_option( 'open_sans' ) ) {
+		$classes[] = 'opensansy';
+	}
+
+	return $classes;
+}
+
 add_filter( 'body_class','spine_speckled_body_classes' );
 /**
  * Add randomized body classes.
