@@ -30,3 +30,13 @@
 	padding-left: 30px !important;
 	margin-left: -20px;
 	}
+#customize-control-spine_options-open_sans {
+	border-bottom: 1px #aaa dotted;
+	}	
+#customize-control-spine_options-open_sans label {
+	display: inline-block;
+	padding-right: 10px;
+	}
+#customize-control-spine_options-open_sans br {
+	display: none;
+	}
