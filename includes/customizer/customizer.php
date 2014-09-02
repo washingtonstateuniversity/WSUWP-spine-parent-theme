@@ -464,7 +464,7 @@ function spine_customize_register( $wp_customize ){
 	$wp_customize->add_section('section_spine_fonts', array(
 		'title'    => __('Font Options', 'spine'),
 		'priority' => 1000,
-		'description' => 'Select fonts to load. (<b>Beware.</b> Each font decreases the speed a page loads.)',
+		//'description' => 'Select fonts to load. (<b>Beware.</b> Each font decreases the speed a page loads.)',
 		));
 
 	/**
