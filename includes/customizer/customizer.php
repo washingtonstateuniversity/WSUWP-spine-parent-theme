@@ -269,7 +269,7 @@ function spine_customize_register( $wp_customize ){
 
 	// Spine Version
 	$wp_customize->add_setting('spine_options[version]', array(
-		'default'        => '',
+		'default'        => '1',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
@@ -280,8 +280,8 @@ function spine_customize_register( $wp_customize ){
 		'settings'   => 'spine_options[version]',
 		'type'       => 'select',
 		'choices'    => array(
-			''  => '1.0'/*,
-			'1.1' => '1.1'   */
+			'1'  => '1.0',
+			'develop' => 'develop'
 		),
 	));
 
