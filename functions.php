@@ -88,9 +88,10 @@ function spine_get_option( $option_name ) {
 		'bleed'                     => true,
 		'crop'			            => false,
 		'spineless'		            => false,
+		'open_sans'		            => 0,
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',
-		'contact_url'               => 'http://wsu.edu',
+		'contact_url'               => '',
 		'contact_streetAddress'     => 'PO Box 641227',
 		'contact_addressLocality'   => 'Pullman, WA',
 		'contact_postalCode'        => '99164',
@@ -366,7 +367,7 @@ add_filter( 'body_class', 'spine_open_sans_body_class' );
  * @return array Modified list of body classes.
  */
 function spine_open_sans_body_class( $classes ) {
-	if ( 'true' == spine_get_option( 'open_sans' ) ) {
+	if ( '1' == spine_get_option( 'open_sans' ) ) {
 		$classes[] = 'opensansy';
 	}
 
