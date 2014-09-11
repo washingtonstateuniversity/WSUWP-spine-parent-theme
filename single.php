@@ -28,7 +28,7 @@ if ( ! empty( $position ) ) {
 </figure>
 <?php endif; ?>
 
-<section class="row sidebar side-right gutter marginalize-ends">
+<section class="row side-right gutter pad-ends">
 
 	<div class="column one">
 	
