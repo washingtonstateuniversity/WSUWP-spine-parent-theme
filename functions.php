@@ -153,6 +153,27 @@ function spine_get_open_sans_options() {
 }
 
 /**
+ * Retrieve a list of Open Sans Condensed weights and styles enabled for the site
+ * via the Customizer.
+ *
+ * @return array List of font weights and styles.
+ */
+function spine_get_open_sans_condensed_options() {
+	$spine_open_sans_cond = get_option( 'spine_open_sans_cond', array() );
+	$fonts = array();
+
+	foreach( $spine_open_sans_cond as $k => $v ) {
+		if ( true === $v ) {
+			$fonts[] = $k;
+		}
+	}
+
+	$fonts = apply_filters( 'spine_open_sans_cond_options', $fonts );
+
+	return $fonts;
+}
+
+/**
  * Provide an array of social options when requested. These are originally
  * added through the theme customizer.
  *
@@ -223,6 +244,10 @@ function spine_wp_enqueue_scripts() {
 	// Javascript resources are output.
 	do_action( 'spine_enqueue_styles' );
 
+	$google_font_css_url = '//fonts.googleapis.com/css?family=';
+	$build_open_sans_css = '';
+	$build_open_sans_cond_css = '';
+	$count = 0;
 	$spine_open_sans = spine_get_open_sans_options();
 
 	/**
@@ -233,20 +258,50 @@ function spine_wp_enqueue_scripts() {
 	if ( ! empty( $spine_open_sans ) ) {
 		$wp_default_open_sans = array( '300italic', '400italic', '600italic', '300', '400', '600' );
 
-		$build_open_sans_css = '//fonts.googleapis.com/css?family=Open+Sans%3A';
-		$count = 0;
-
 		foreach( $spine_open_sans as $font_option ) {
 			if ( is_admin_bar_showing() && in_array( $font_option, $wp_default_open_sans ) ) {
 				continue;
 			}
-			$build_open_sans_css .= '%2C' . $font_option;
+			if ( 0 === $count ) {
+				$build_open_sans_css = 'Open+Sans%3A' . $font_option;
+			} else {
+				$build_open_sans_css .= '%2C' . $font_option;
+			}
+
 			$count++;
 		}
 
 		if ( 0 !== $count ) {
-			wp_enqueue_style( 'spine-open-sans', $build_open_sans_css, array(), false );
+			$google_font_css_url .= $build_open_sans_css;
 		}
+	}
+
+	$spine_open_sans_condensed = spine_get_open_sans_condensed_options();
+
+	$condensed_count = 0;
+	if ( ! empty( $spine_open_sans_condensed ) ) {
+		if ( 0 !== $count ) {
+			$build_open_sans_cond_css = '|Open+Sans+Condensed%3A';
+		} else {
+			$build_open_sans_cond_css = 'Open+Sans+Condensed%3A';
+		}
+
+		foreach( $spine_open_sans_condensed as $font_option ) {
+			if ( 0 === $condensed_count ) {
+				$build_open_sans_cond_css .= $font_option;
+			} else {
+				$build_open_sans_cond_css .= '%2C' . $font_option;
+			}
+
+			$count++;
+			$condensed_count++;
+		}
+
+		$google_font_css_url .= $build_open_sans_cond_css;
+	}
+
+	if( 0 !== $count ) {
+		wp_enqueue_style( 'spine-open-sans', $google_font_css_url, array(), false );
 	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.

@@ -643,7 +643,7 @@ function spine_customize_register( $wp_customize ){
 	));
 
 	$wp_customize->add_control('spine_open_sans_cond[300]', array(
-		'label'      => __('300 Condensed', '300'),
+		'label'      => __('300 Condensed Light', '300'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans_cond[300]',
 		'type'       => 'checkbox',
@@ -657,7 +657,7 @@ function spine_customize_register( $wp_customize ){
 	));
 
 	$wp_customize->add_control('spine_open_sans_cond[300italic]', array(
-		'label'      => __('300 Condensed Italic', '300italic'),
+		'label'      => __('300 Condensed Light Italic', '300italic'),
 		'section'    => 'section_spine_fonts',
 		'settings'   => 'spine_open_sans_cond[300italic]',
 		'type'       => 'checkbox',
