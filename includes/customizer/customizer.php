@@ -283,7 +283,7 @@ function spine_customize_register( $wp_customize ){
 		'settings'   => 'spine_options[version]',
 		'type'       => 'select',
 		'choices'    => array(
-			'1'  => '1.0',
+			'1'  => '1',
 			'develop' => 'develop'
 		),
 	));
