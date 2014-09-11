@@ -187,8 +187,15 @@ add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
  * Enqueue scripts and styles required for front end pageviews.
  */
 function spine_wp_enqueue_scripts() {
+
+	$spine_version = spine_get_option( 'spine_version' );
+	// This may be an unnecessary check, but we don't want to screw this up.
+	if ( 'develop' !== $spine_version && 0 === absint( $spine_version ) ) {
+		$spine_version = 1;
+	}
+
 	// Much relies on the main stylesheet provided by the WSU Spine.
-	wp_enqueue_style( 'wsu-spine', 'https://repo.wsu.edu/spine/1/spine.min.css', array(), spine_get_script_version() );
+	wp_enqueue_style( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.css', array(), spine_get_script_version() );
 
 	/**
 	 * By default, a child theme has 3 styles enqueued—the main stylesheet, an extra stylesheet per the theme_style
@@ -242,7 +249,7 @@ function spine_wp_enqueue_scripts() {
 	wp_enqueue_script( 'wsu-jquery-ui-full', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
 
 	// Much relies on the main Javascript provided by the WSU Spine.
-	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
+	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
 
 	// Enqueue jQuery Cycle2 and Genericons when a page builder template is used.
 	if ( is_page_template( 'template-builder.php' ) ) {
