@@ -72,7 +72,7 @@ function spine_get_option( $option_name ) {
 
 	// Defaults for the spine options will be compared to what is stored in spine_options.
 	$defaults = array(
-		'spine-version'             => '1',
+		'spine_version'             => '1',
 		'grid_style'                => 'hybrid',
 		'spine_color'               => 'white',
 		'large_format'              => '',
@@ -86,12 +86,12 @@ function spine_get_option( $option_name ) {
 		'articletitle_header'       => false,
 		'broken_binding'            => false,
 		'bleed'                     => true,
-		'crop'			            => false,
-		'spineless'		            => false,
-		'open_sans'                 => false,
+		'crop'                      => false,
+		'spineless'                 => false,
+		'open_sans'                 => 0,
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',
-		'contact_url'               => 'http://wsu.edu',
+		'contact_url'               => '',
 		'contact_streetAddress'     => 'PO Box 641227',
 		'contact_addressLocality'   => 'Pullman, WA',
 		'contact_postalCode'        => '99164',
@@ -130,6 +130,29 @@ function spine_get_option( $option_name ) {
 }
 
 /**
+ * Retrieve a list of Open Sans weights and styles enabled for the site via
+ * the Customizer.
+ *
+ * @return array List of font weights and styles.
+ */
+function spine_get_open_sans_options() {
+	$spine_open_sans = get_option( 'spine_open_sans', array() );
+	$fonts = array();
+
+	foreach( $spine_open_sans as $k => $v ) {
+		if ( true === $v ) {
+			$fonts[] = $k;
+		}
+
+	}
+
+	// A child theme can override all spine open sans defaults with the spine_open_sans_options filter.
+	$fonts = apply_filters( 'spine_open_sans_options', $fonts );
+
+	return $fonts;
+}
+
+/**
  * Provide an array of social options when requested. These are originally
  * added through the theme customizer.
  *
@@ -164,8 +187,15 @@ add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
  * Enqueue scripts and styles required for front end pageviews.
  */
 function spine_wp_enqueue_scripts() {
+
+	$spine_version = spine_get_option( 'spine_version' );
+	// This may be an unnecessary check, but we don't want to screw this up.
+	if ( 'develop' !== $spine_version && 0 === absint( $spine_version ) ) {
+		$spine_version = 1;
+	}
+
 	// Much relies on the main stylesheet provided by the WSU Spine.
-	wp_enqueue_style( 'wsu-spine', 'https://repo.wsu.edu/spine/1/spine.min.css', array(), spine_get_script_version() );
+	wp_enqueue_style( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.css', array(), spine_get_script_version() );
 
 	/**
 	 * By default, a child theme has 3 styles enqueued—the main stylesheet, an extra stylesheet per the theme_style
@@ -188,21 +218,43 @@ function spine_wp_enqueue_scripts() {
 		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 	}
-	
-	if ( true == spine_get_option( 'open_sans' ) ) {
-		wp_enqueue_style( 'wsu-spine-opensans', 'https://repo.wsu.edu/spine/1/styles/opensans.css', array(), spine_get_script_version() );
-	}
 
 	// All theme styles have been output at this time. Plugins and other themes should print styles here, before blocking
 	// Javascript resources are output.
 	do_action( 'spine_enqueue_styles' );
+
+	$spine_open_sans = spine_get_open_sans_options();
+
+	/**
+	 * Build the URL used to pull additional Open Sans font weights and styles from
+	 * Google. If this page view has an admin bar, we can assume that several weights
+	 * and styles are already loaded and remove those from the requested set.
+	 */
+	if ( ! empty( $spine_open_sans ) ) {
+		$wp_default_open_sans = array( '300italic', '400italic', '600italic', '300', '400', '600' );
+
+		$build_open_sans_css = '//fonts.googleapis.com/css?family=Open+Sans%3A';
+		$count = 0;
+
+		foreach( $spine_open_sans as $font_option ) {
+			if ( is_admin_bar_showing() && in_array( $font_option, $wp_default_open_sans ) ) {
+				continue;
+			}
+			$build_open_sans_css .= '%2C' . $font_option;
+			$count++;
+		}
+
+		if ( 0 !== $count ) {
+			wp_enqueue_style( 'spine-open-sans', $build_open_sans_css, array(), false );
+		}
+	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
 	wp_enqueue_script( 'wsu-jquery-ui-full', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
 
 	// Much relies on the main Javascript provided by the WSU Spine.
-	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/1/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
+	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
 
 	// Enqueue jQuery Cycle2 and Genericons when a page builder template is used.
 	if ( is_page_template( 'template-builder.php' ) ) {
@@ -315,6 +367,23 @@ function spine_is_sub() {
     } else {
 		return false;
 	}
+}
+
+add_filter( 'body_class', 'spine_open_sans_body_class' );
+/**
+ * If Open Sans has been applied to the Spine, add the
+ * appropriate body class.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function spine_open_sans_body_class( $classes ) {
+	if ( '1' == spine_get_option( 'open_sans' ) ) {
+		$classes[] = 'opensansy';
+	}
+
+	return $classes;
 }
 
 add_filter( 'body_class','spine_speckled_body_classes' );

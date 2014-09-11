@@ -23,6 +23,10 @@ main {
 	background-repeat: no-repeat;
 	background-position: left top;
 	}
+	
+.opensansy main {
+	font-family: 'Open Sans', 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+	}
 
 /* Figures and Images */
 
@@ -213,8 +217,6 @@ article footer a:hover {
 .article-footer .tagged dt:after {
 	content: attr(data-default);
 	}
-
-
 
 /* Admin Bar */
 @media (min-width: 989px) {

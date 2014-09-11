@@ -1,5 +1,3 @@
-@import 'https://repo.wsu.edu/spine/1/styles/opensans.css';
-
 body:not(.has-background-image) {
 	background-image: url('bookmark/backgrounds/gradients/gradient-graytolight-south-2.jpg');
 	background-repeat: repeat-x;
@@ -32,10 +30,6 @@ body:not(.has-background-image) {
 .home .size-lt-large main,
 .home .size-lt-large #binder {
 	background-position: left top;
-	}
-
-.home .opensansy main {
-	font-family: "OpenSans";
 	}
 	
 main {
@@ -91,15 +85,13 @@ main {
 
 /* Open Sans */
 .opensansy .main-header sup {
-	font-family: "OpenSans-CondBold";
-	xxfont-family: "OpenSans-Semibold";
+
 	font-size: 1rem;
 	font-weight: normal;
 	
 	}
 .opensansy .main-header sub {
-	font-family: "OpenSans-CondLight";
-	font-family: "OpenSans-Light";
+
 	font-size: 2rem;
 	font-weight: normal;
 	
@@ -124,9 +116,7 @@ aside header {
 	font-weight: bold;
 	}
 .opensansy aside header {
-	xxfont-weight: normal;
-	xxfont-family: "OpenSans-CondBold";
-	xxfont-family: "OpenSans-Light";
+
 	font-size: 1.4rem;
 	line-height: 1.6rem;
 	}
