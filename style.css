@@ -129,6 +129,13 @@ html {
 .archive-footer .pager {
 	text-align: center;
 }
+
+/* Spine Candidates */
+.unbound,
+.rebound {
+	box-sizing: border-box;
+	}
+
 /* Articles
 ------------------------------------------------------- */
 main article header h2 {
