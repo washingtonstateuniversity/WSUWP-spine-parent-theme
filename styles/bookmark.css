@@ -5,43 +5,23 @@ body:not(.has-background-image) {
 	background-color: #f9f9f9;
 	min-height: 100%;
 	}
-
 #jacket {
 	background-repeat: no-repeat;
 	background-position: center top;
+	}
+body.home:not(.has-background-image) #jacket {
+	background: url('bookmark/backgrounds/letters/light-one.jpg');
+	background-position: center top;
+	background-repeat: no-repeat;
 	}
 .tagged-style-background-bottom #jacket {
 	background-position: right bottom;
 	background-attachment: fixed;
 	}
-.home main {
-	background: url('bookmark/backgrounds/letters/lightest-four.jpg');
-	background-position: left top;
-	background-repeat: no-repeat;
-	background-size: 792px auto;
-	min-height: 967px;
-	}
-.home #binder {
-	background: transparent url('bookmark/backgrounds/letters/lightest-spine.jpg');
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position: left top;
-	}
-.home .size-lt-large main,
-.home .size-lt-large #binder {
-	background-position: left top;
-	}
-	
-main {
-	min-height: 537px;
-	}
-
 /*
-.page.five1 main { background: url('bookmark/backgrounds/letters/black-one.jpg') left top no-repeat; }
-.page.five2 main { background: url('bookmark/backgrounds/letters/black-two.jpg') left top no-repeat; }
-.page.five3 main { background: url('bookmark/backgrounds/letters/lightest-one.jpg') left top no-repeat; }
-.page.five4 main { background: url('bookmark/backgrounds/letters/black-one.jpg') left top no-repeat; }
-.page.five5 main { background: url('bookmark/backgrounds/letters/black-one.jpg') left top no-repeat; }
+body.home:not(.has-background-image) #jacket.size-lt-medium {
+	background-position: center 142px;
+	}
 */
 
 /* Bookmark Style */
@@ -53,10 +33,6 @@ main {
 	width: 2000px;
 	border: 0px;
 	}
-.main-header {
-	/* height: auto;
-	min-height: 142px; */
-	}
 .main-header .header-group {
 	position: absolute;
 	width: 396px;
@@ -66,7 +42,7 @@ main {
 .size-lt-medium .main-header {
 	left: 0px;
 	}
-.size-gt-small .main-header  .header-group {
+.size-gt-small .main-header .header-group {
 	padding: 2rem 0rem 1.1rem 1.3rem;
 	}
 .sup-header-default,
@@ -85,40 +61,21 @@ main {
 
 /* Open Sans */
 .opensansy .main-header sup {
-
 	font-size: 1rem;
-	font-weight: normal;
-	
+	font-weight: normal;	
 	}
 .opensansy .main-header sub {
-
 	font-size: 2rem;
 	font-weight: normal;
-	
 	}
 	
 /* Articles */
 .page h1.article-title {
 	font-weight: normal;
 	font-size: 2.5rem;
-	}
-.row.margin figure.alignright {
-	width: 396px;
 	}	
-.size-gt-medium .row.margin figure.alignright {
-	margin: 5px -160px 10px 20px;
-	}
-.row.margin figure figcaption {
-	
-	}
-	
 aside header {
 	font-weight: bold;
-	}
-.opensansy aside header {
-
-	font-size: 1.4rem;
-	line-height: 1.6rem;
 	}
 
 /* Headers */
