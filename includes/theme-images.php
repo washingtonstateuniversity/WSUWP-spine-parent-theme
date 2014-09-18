@@ -159,7 +159,7 @@ function spine_has_featured_image() {
  *
  * @return bool|string URL of the image if available. False if not.
  */
-function spine_get_featured_image_src( $size = 'spine-medium_size' ) {
+function spine_get_featured_image_src( $size = 'spine-xlarge_size' ) {
 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
 
 	if ( isset( $image[0] ) ) {
