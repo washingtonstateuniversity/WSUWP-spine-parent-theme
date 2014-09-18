@@ -543,7 +543,14 @@ add_filter( 'safecss_default_css', 'spine_editcss_intro' );
  * Filter the introductory text display in the editCSS plugin.
  */
 function spine_editcss_intro() {
-	return 'Welcome. You may delete these comments and get started with your custom styles. But first, it\'s a good idea to review the WSU web standards at brand.wsu.edu/media/web/web-standards/. As a general rule of thumb, if your styles target aspects of the spine (#spine), that\'s against standard, whereas if you\'re styling elsewhere on the page, it\'s all good.';
+	return "Welcome to custom CSS for the WSU Spine Theme!
+
+You may delete these comments and get started with your custom stylesheet. Before doing so, please review the WSU web standards:
+
+http://brand.wsu.edu/media/web/web-standards/
+
+As a general rule of thumb, if your styles target aspects of the spine (#spine), that's against standard, whereas if you're styling elsewhere on the page, it's all good.";
+
 }
 
 add_filter( 'wsuwp_first_page_template', 'spine_install_default_template' );
