@@ -163,6 +163,18 @@ class Spine_Builder_Custom {
 		);
 
 		ttfmake_add_section(
+			'wsuwpthirds',
+			'Three Columns',
+			get_template_directory_uri() . '/inc/builder-custom/images/thirds.png',
+			'Three column layout, all equal sizes.',
+			array( $this, 'save_columns' ),
+			'admin/three-columns',
+			'front-end/thirds',
+			100,
+			'builder-templates'
+		);
+
+		ttfmake_add_section(
 			'wsuwpheader',
 			'Top Level Header',
 			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
@@ -185,6 +197,7 @@ class Spine_Builder_Custom {
 			300,
 			'builder-templates'
 		);
+
 	}
 
 	/**
@@ -419,9 +432,7 @@ new Spine_Builder_Custom();
  *
  * @return array Prepped data.
  */
-function spine_get_two_column_data( $ttfmake_section_data ) {
-	$columns_number = 2;
-
+function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
 		$columns_order = $ttfmake_section_data['columns-order'];

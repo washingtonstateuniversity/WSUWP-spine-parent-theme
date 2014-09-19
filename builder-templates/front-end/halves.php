@@ -1,7 +1,7 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
 
-$data_columns = spine_get_two_column_data( $ttfmake_section_data );
+$data_columns = spine_get_column_data( $ttfmake_section_data, 2 );
 $count = 'one';
 
 $section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';

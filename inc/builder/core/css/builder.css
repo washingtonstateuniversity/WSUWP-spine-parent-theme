@@ -465,3 +465,29 @@
 		padding-left: 10px !important;
 	}
 }
+
+/** Custom Builder Styles **/
+.section-type-description {
+	height: 64px;
+	margin-top: 0;
+}
+
+.ttfmake-menu-list h4 {
+	margin-bottom: 0;
+}
+
+.ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
+	width: 61px;
+	height: 54px;
+}
+
+.ttfmake-menu-list-item {
+	width: 33%;
+}
+
+.ttfmake-menu-list-item-link-icon-wrapper {
+	width: 61px;
+	height: 54px;
+	margin-right: 10px;
+	background-size: 53px 45px;
+}

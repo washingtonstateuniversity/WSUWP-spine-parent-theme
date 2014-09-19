@@ -1,6 +1,6 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
-$text_columns = spine_get_two_column_data( $ttfmake_section_data );
+$text_columns = spine_get_column_data( $ttfmake_section_data, 2 );
 
 $section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : false;
