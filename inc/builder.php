@@ -505,6 +505,13 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 	<?php
 }
 
+/**
+ * Output a selection tool for the type of layout a section should have. This allows classes
+ * to be assigned for various multi column layouts.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
 function spine_output_builder_section_layout( $section_name, $ttfmake_section_data ) {
 	if ( 'wsuwpthirds' === $ttfmake_section_data['section']['id'] ) {
 		$options = array( 'thirds', 'triptych' );
