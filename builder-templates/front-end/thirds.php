@@ -8,12 +8,13 @@ $count = 0;
 
 $section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : false;
+$section_layout = ( isset( $ttfmake_section_data['section-layout'] ) ) ? $ttfmake_section_data['section-layout'] : 'thirds';
 
 if ( $section_wrapper_classes ) {
 	echo '<div class="' . esc_attr( $section_wrapper_classes ) . '">';
 }
 ?>
-	<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row thirds <?php echo esc_attr( $section_classes ); ?>">
+	<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row <?php echo esc_attr( $section_layout ); ?> <?php echo esc_attr( $section_classes ); ?>">
 		<?php
 		if ( ! empty( $data_columns ) ) {
 			foreach( $data_columns as $column ) {

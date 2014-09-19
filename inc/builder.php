@@ -348,6 +348,10 @@ class Spine_Builder_Custom {
 			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
 		}
 
+		if ( isset( $data['section-layout'] ) ) {
+			$clean_data['section-layout'] = $this->clean_classes( $data['section-layout'] );
+		}
+
 		return $clean_data;
 	}
 
@@ -487,4 +491,27 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
 	<?php
+}
+
+function spine_output_builder_section_layout( $section_name, $ttfmake_section_data ) {
+	if ( 'wsuwpthirds' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'thirds', 'triptych');
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'thirds';
+		}
+
+		?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
+			<label for="<?php echo $section_name; ?>[section-layout]">Section Layout</label>
+			<select id="<?php echo $section_name; ?>[section-layout]"
+					name="<?php echo $section_name; ?>[section-layout]"
+					value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
+				<?php
+				foreach( $options as $option ) {
+					echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
+				}
+				?></select>
+		</div><?php
+	}
 }
