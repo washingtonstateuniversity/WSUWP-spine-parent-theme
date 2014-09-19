@@ -483,7 +483,7 @@ function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
-		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
 		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
 	</div>
 	<?php
@@ -499,7 +499,7 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter pad-top';
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
-		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
+		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes:</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
 		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
 	<?php
@@ -539,7 +539,7 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 	}
 
 	?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
-		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout</label>
+		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
 		<select id="<?php echo $section_name; ?>[section-layout]"
 				name="<?php echo $section_name; ?>[section-layout]"
 				value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
@@ -548,5 +548,6 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 				echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
 			}
 			?></select>
+		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
 	</div><?php
 }
