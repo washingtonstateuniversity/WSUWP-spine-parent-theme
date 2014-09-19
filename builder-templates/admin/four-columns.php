@@ -5,7 +5,7 @@ ttfmake_load_section_header();
 global $ttfmake_section_data, $ttfmake_is_js_template;
 
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
-$section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, 2);
+$section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, 4);
 
 ?>
 	<div class="wsuwp-spine-halves-stage">
@@ -29,7 +29,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				<?php
 				$editor_settings = array(
 					'tinymce'       => array(
-						'toolbar1' => 'bold,italic,link,unlink,underline,strikethrough,blockquote,wp_adv',
+						'toolbar1' => 'bold,italic,link,underline,strikethrough,blockquote,wp_adv',
 						'toolbar2' => 'bullist,numlist,alignleft,aligncenter,alignright,alignjustify,outdent,indent,removeformat,formatselect',
 						'toolbar3' => '',
 						'toolbar4' => '',
@@ -52,11 +52,11 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 
 	<div class="clear"></div>
 	<div id="<?php echo $section_name; ?>-advanced" class="builder-advanced-controls">
-<?php
-spine_output_builder_section_layout( $section_name, $ttfmake_section_data );
-spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
-spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
-?>
+		<?php
+		spine_output_builder_section_layout( $section_name, $ttfmake_section_data );
+		spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
+		spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
+		?>
 	</div>
 	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="wsuwp-spine-halves-columns-order" />
 	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />

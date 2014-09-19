@@ -163,6 +163,30 @@ class Spine_Builder_Custom {
 		);
 
 		ttfmake_add_section(
+			'wsuwpthirds',
+			'Three Columns',
+			get_template_directory_uri() . '/inc/builder-custom/images/thirds.png',
+			'Three column layout, choose between thirds and triptych.',
+			array( $this, 'save_columns' ),
+			'admin/three-columns',
+			'front-end/thirds',
+			100,
+			'builder-templates'
+		);
+
+		ttfmake_add_section(
+			'wsuwpquarters',
+			'Four Columns',
+			get_template_directory_uri() . '/inc/builder-custom/images/quarters.png',
+			'Four column layout, all equal sizes.',
+			array( $this, 'save_columns' ),
+			'admin/four-columns',
+			'front-end/quarters',
+			100,
+			'builder-templates'
+		);
+
+		ttfmake_add_section(
 			'wsuwpheader',
 			'Top Level Header',
 			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
@@ -185,6 +209,7 @@ class Spine_Builder_Custom {
 			300,
 			'builder-templates'
 		);
+
 	}
 
 	/**
@@ -335,6 +360,10 @@ class Spine_Builder_Custom {
 			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
 		}
 
+		if ( isset( $data['section-layout'] ) ) {
+			$clean_data['section-layout'] = $this->clean_classes( $data['section-layout'] );
+		}
+
 		return $clean_data;
 	}
 
@@ -419,9 +448,7 @@ new Spine_Builder_Custom();
  *
  * @return array Prepped data.
  */
-function spine_get_two_column_data( $ttfmake_section_data ) {
-	$columns_number = 2;
-
+function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 	$columns_order = array();
 	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
 		$columns_order = $ttfmake_section_data['columns-order'];
@@ -456,7 +483,7 @@ function spine_get_two_column_data( $ttfmake_section_data ) {
 function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
-		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
 		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
 	</div>
 	<?php
@@ -472,8 +499,55 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter pad-top';
 	?>
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
-		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
+		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes:</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
 		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
 	<?php
+}
+
+/**
+ * Output a selection tool for the type of layout a section should have. This allows classes
+ * to be assigned for various multi column layouts.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_layout( $section_name, $ttfmake_section_data ) {
+	if ( 'wsuwpthirds' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'thirds', 'triptych' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'thirds';
+		}
+	} elseif ( 'wsuwpsidebarleft' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-left', 'margin-left' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-left';
+		}
+	} elseif ( 'wsuwpsidebarright' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-right', 'margin-right' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-right';
+		}
+	} else {
+		return;
+	}
+
+	?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
+		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
+		<select id="<?php echo $section_name; ?>[section-layout]"
+				name="<?php echo $section_name; ?>[section-layout]"
+				value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
+			<?php
+			foreach( $options as $option ) {
+				echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
+			}
+			?></select>
+		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
+	</div><?php
 }

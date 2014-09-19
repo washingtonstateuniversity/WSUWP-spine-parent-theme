@@ -35,3 +35,12 @@
 .builder-advanced-controls {
 	display: none;
 }
+
+.wsuwp-builder-meta label {
+	font-weight: 700;
+	line-height: 2rem;
+}
+
+.wsuwp-builder-meta {
+	margin-top: 10px;
+}
