@@ -495,23 +495,39 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 
 function spine_output_builder_section_layout( $section_name, $ttfmake_section_data ) {
 	if ( 'wsuwpthirds' === $ttfmake_section_data['section']['id'] ) {
-		$options = array( 'thirds', 'triptych');
+		$options = array( 'thirds', 'triptych' );
 		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
 			$current = $ttfmake_section_data['data']['section-layout'];
 		} else {
 			$current = 'thirds';
 		}
-
-		?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
-			<label for="<?php echo $section_name; ?>[section-layout]">Section Layout</label>
-			<select id="<?php echo $section_name; ?>[section-layout]"
-					name="<?php echo $section_name; ?>[section-layout]"
-					value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
-				<?php
-				foreach( $options as $option ) {
-					echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
-				}
-				?></select>
-		</div><?php
+	} elseif ( 'wsuwpsidebarleft' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-left', 'margin-left' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-left';
+		}
+	} elseif ( 'wsuwpsidebarright' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-right', 'margin-right' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-right';
+		}
+	} else {
+		return;
 	}
+
+	?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
+		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout</label>
+		<select id="<?php echo $section_name; ?>[section-layout]"
+				name="<?php echo $section_name; ?>[section-layout]"
+				value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
+			<?php
+			foreach( $options as $option ) {
+				echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
+			}
+			?></select>
+	</div><?php
 }
