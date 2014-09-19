@@ -166,10 +166,22 @@ class Spine_Builder_Custom {
 			'wsuwpthirds',
 			'Three Columns',
 			get_template_directory_uri() . '/inc/builder-custom/images/thirds.png',
-			'Three column layout, all equal sizes.',
+			'Three column layout, choose between thirds and triptych.',
 			array( $this, 'save_columns' ),
 			'admin/three-columns',
 			'front-end/thirds',
+			100,
+			'builder-templates'
+		);
+
+		ttfmake_add_section(
+			'wsuwpquarters',
+			'Four Columns',
+			get_template_directory_uri() . '/inc/builder-custom/images/quarters.png',
+			'Four column layout, all equal sizes.',
+			array( $this, 'save_columns' ),
+			'admin/four-columns',
+			'front-end/quarters',
 			100,
 			'builder-templates'
 		);
