@@ -1,6 +1,6 @@
 <nav id="spine-sitenav" class="spine-sitenav">
 	<?php
-	$site = array(
+	$spine_site_args = array(
 		'theme_location'  => 'site',
 		'menu'            => 'site',
 		'container'       => false,
@@ -11,6 +11,6 @@
 		'items_wrap'      => '<ul>%3$s</ul>',
 		'depth'           => 5,
 	);
-	wp_nav_menu( $site );
+	wp_nav_menu( $spine_site_args );
 	?>
 </nav>

@@ -1,6 +1,6 @@
 <nav id="spine-offsitenav" class="spine-offsitenav">
 	<?php
-	$offsite = array(
+	$spine_offsite_args = array(
 		'theme_location'  => 'offsite',
 		'menu'            => 'offsite',
 		'container'       => false,
@@ -12,6 +12,6 @@
 		'items_wrap'      => '<ul>%3$s</ul>',
 		'depth'           => 3,
 	);
-	wp_nav_menu( $offsite );
+	wp_nav_menu( $spine_offsite_args );
 	?>
 </nav>
