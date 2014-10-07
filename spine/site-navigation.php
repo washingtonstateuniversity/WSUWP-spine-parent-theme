@@ -9,7 +9,7 @@
 		'menu_class'      => null,
 		'menu_id'         => null,
 		'items_wrap'      => '<ul>%3$s</ul>',
-		'depth'           => 5,
+		'depth'           => 3,
 	);
 	wp_nav_menu( $spine_site_args );
 	?>
