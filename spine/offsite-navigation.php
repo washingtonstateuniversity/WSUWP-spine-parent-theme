@@ -8,11 +8,9 @@
 		'container_id'    => false,
 		'menu_class'      => null,
 		'menu_id'         => null,
-		'echo'            => true,
 		'fallback_cb'     => false,
 		'items_wrap'      => '<ul>%3$s</ul>',
 		'depth'           => 3,
-		'walker'          => ''
 	);
 	wp_nav_menu( $offsite );
 	?>
