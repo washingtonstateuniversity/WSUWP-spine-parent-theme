@@ -30,7 +30,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				$editor_settings = array(
 					'tinymce'       => array(
 						'toolbar1' => 'bold,italic,link,unlink,underline,strikethrough,blockquote,wp_adv',
-						'toolbar2' => 'bullist,numlist,alignleft,aligncenter,alignright,alignjustify,outdent,indent,removeformat,formatselect',
+						'toolbar2' => 'bullist,numlist,alignleft,aligncenter,alignright,alignjustify,outdent,indent,forecolor,removeformat,formatselect',
 						'toolbar3' => '',
 						'toolbar4' => '',
 					),
