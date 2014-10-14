@@ -32,7 +32,7 @@
 			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
 				the_content( '<span class="content-more-default">&raquo; More ...</span>' );
 			} else {
-				the_excerpt();
+				the_content();
 			}
 			?>
 		</div><!-- .article-summary -->
