@@ -226,13 +226,13 @@ article footer a:hover {
 	}
 
 /* Admin Bar */
-@media (min-width: 791px) {
+@media (min-width: 989px) {
 .admin-bar #spine #glue {
 	margin-top: 32px;
 	}
 }
 
-@media (max-width: 791px) {
+@media (max-width: 989px) {
 body.admin-bar {
     margin-top: -32px !important;
     padding-bottom: 32px !important;
