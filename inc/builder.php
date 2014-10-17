@@ -228,14 +228,20 @@ class Spine_Builder_Custom {
 	}
 
 	/**
-	 * Allow span tags to be added in title areas via the kses allowed HTML filter.
+	 * Allow phrasing tags to be added in title areas via the kses allowed HTML filter.
 	 *
 	 * @return array List of tags and attributes allowed.
 	 */
-	public function allow_span_titles() {
+	public function allow_phrasing_in_titles() {
+		$phrasing_tags = array( 'b', 'big', 'i', 'small', 'tt', 'abbr', 'acronym', 'cite', 'code', 'dfn', 'em', 'kbd', 'strong',
+								'samp', 'var', 'a', 'bdo', 'br', 'q', 'span', 'sub', 'sup', 'label', 'wbr', 'del', 'ins' );
+
 		$tags = array();
-		$tags['span']['class'] = true;
-		$tags['span']['id'] = true;
+
+		foreach( $phrasing_tags as $tag ) {
+			$tags[ $tag ]['class'] = true;
+			$tags[ $tag ]['id'] = true;
+		}
 
 		return $tags;
 	}
@@ -253,9 +259,9 @@ class Spine_Builder_Custom {
 
 		// The title_save_pre filter applies wp_filter_kses() to the title.
 		if ( isset( $data['title'] ) ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 		}
 
 		if ( isset( $data['section-classes'] ) ) {
@@ -280,9 +286,9 @@ class Spine_Builder_Custom {
 		$clean_data = array();
 
 		if ( isset( $data['title'] ) ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 		}
 
 		if ( isset( $data['content'] ) ) {
@@ -324,15 +330,15 @@ class Spine_Builder_Custom {
 			$i = 1;
 			foreach ( $data['columns'] as $id => $item ) {
 				if ( isset( $item['title'] ) ) {
-					add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+					add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 					$clean_data['columns'][ $id ]['title'] = apply_filters( 'title_save_pre', $item['title'] );
-					remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+					remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 
 					// The first title serves as the section title
 					if ( 1 === $i ) {
-						add_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+						add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 						$clean_data['label'] = apply_filters( 'title_save_pre', $item['title'] );
-						remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_span_titles' ) );
+						remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
 					}
 				}
 
