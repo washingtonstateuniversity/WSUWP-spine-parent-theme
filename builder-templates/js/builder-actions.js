@@ -28,26 +28,28 @@
 		});
 	}
 
+	var toggle_column = function(e) {
+		e.preventDefault();
+
+		var $this = $( e.target );
+		var column_parent = $($this.parents('.wsuwp-spine-builder-column'));
+
+		column_parent.find('.wsuwp-column-content' ).toggle();
+
+		var column_visibility = column_parent.find('.wsuwp-column-visible' );
+
+		if ( 'visible' === column_visibility.val() ) {
+			column_visibility.val('invisible');
+		} else {
+			column_visibility.val('visible');
+		}
+	};
+
 	/**
 	 * Setup a toggle switch on individual columns within sections.
 	 */
 	var setup_column_toggle = function() {
-		$('.ttfmake-section' ).on('click', '.wsuwp-column-toggle', function(e) {
-			e.preventDefault();
-
-			var $this = $( e.target );
-			var column_parent = $($this.parents('.wsuwp-spine-builder-column'));
-
-			column_parent.find('.wsuwp-column-content' ).toggle();
-
-			var column_visibility = column_parent.find('.wsuwp-column-visible' );
-
-			if ( 'visible' === column_visibility.val() ) {
-				column_visibility.val('invisible');
-			} else {
-				column_visibility.val('visible');
-			}
-		});
+		$('.ttfmake-section' ).on('click', '.wsuwp-column-toggle', toggle_column );
 	};
 
 	// Fire the default actions on page load.
