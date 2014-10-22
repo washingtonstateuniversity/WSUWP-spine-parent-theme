@@ -25,9 +25,23 @@
 			$(this ).html('Hide advanced controls' ).removeClass('builder-toggle-advanced' ).addClass('builder-toggle-advanced-visible');
 
 			setup_hide_toggle();
-		})
+		});
 	}
 
-	// Fire the default action on page load.
+	/**
+	 * Setup a toggle switch on individual columns within sections.
+	 */
+	var setup_column_toggle = function() {
+		$('.ttfmake-section' ).on('click', '.wsuwp-column-toggle', function(e) {
+			e.preventDefault();
+
+			var $this = $( e.target );
+			var column_parent = $this.parents('.wsuwp-spine-builder-column');
+			$(column_parent ).find('.wp-editor-wrap' ).toggle();
+		});
+	};
+
+	// Fire the default actions on page load.
 	setup_show_toggle();
+	setup_column_toggle();
 }(jQuery));
