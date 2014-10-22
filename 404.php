@@ -11,7 +11,7 @@
 				<article id="post-0" class="post error404 no-results not-found">
 
 					<header class="article-header">
-						<h1 class="article-title">This is somewhat embarrassing, isn't it?</h1>
+						<h1 class="article-title">Page Not Found</h1>
 					</header>
 
 					<div class="entry-content">
