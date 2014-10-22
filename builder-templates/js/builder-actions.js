@@ -25,9 +25,39 @@
 			$(this ).html('Hide advanced controls' ).removeClass('builder-toggle-advanced' ).addClass('builder-toggle-advanced-visible');
 
 			setup_hide_toggle();
-		})
+		});
 	}
 
-	// Fire the default action on page load.
+	var toggle_column = function(e) {
+		e.preventDefault();
+
+		var $this = $( e.target );
+		var column_parent = $($this.parents('.wsuwp-spine-builder-column'));
+		var column_visibility = column_parent.find('.wsuwp-column-visible' );
+
+		column_parent.find('.wsuwp-column-content' ).toggle();
+
+		if ( 'visible' === column_visibility.val() ) {
+			column_visibility.val('invisible');
+		} else {
+			column_visibility.val('visible');
+		}
+
+		if ( $this.hasClass( 'wsuwp-toggle-closed' ) ) {
+			$this.removeClass( 'wsuwp-toggle-closed' );
+		} else {
+			$this.addClass( 'wsuwp-toggle-closed' );
+		}
+	};
+
+	/**
+	 * Setup a toggle switch on individual columns within sections.
+	 */
+	var setup_column_toggle = function() {
+		$('#wpbody').on('click', '.wsuwp-column-toggle', toggle_column );
+	};
+
+	// Fire the default actions on page load.
 	setup_show_toggle();
+	setup_column_toggle();
 }(jQuery));
