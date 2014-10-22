@@ -54,7 +54,7 @@
 	 * Setup a toggle switch on individual columns within sections.
 	 */
 	var setup_column_toggle = function() {
-		$('.ttfmake-section' ).on('click', '.wsuwp-column-toggle', toggle_column );
+		$('#wpbody').on('click', '.wsuwp-column-toggle', toggle_column );
 	};
 
 	// Fire the default actions on page load.
