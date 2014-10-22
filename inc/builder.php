@@ -132,7 +132,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/halves.png',
 			'Two column layout with equal size columns.',
 			array( $this, 'save_columns' ),
-			'admin/two-columns',
+			'admin/columns',
 			'front-end/halves',
 			100,
 			'builder-templates/'
@@ -144,7 +144,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/side-left.png',
 			'Two column layout with the right side larger than the left.',
 			array( $this, 'save_columns' ),
-			'admin/two-columns',
+			'admin/columns',
 			'front-end/sidebar-left',
 			100,
 			'builder-templates/'
@@ -156,7 +156,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/side-right.png',
 			'Two column layout with the left side larger than the right.',
 			array( $this, 'save_columns' ),
-			'admin/two-columns',
+			'admin/columns',
 			'front-end/sidebar-right',
 			100,
 			'builder-templates/'
@@ -168,7 +168,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/thirds.png',
 			'Three column layout, choose between thirds and triptych.',
 			array( $this, 'save_columns' ),
-			'admin/three-columns',
+			'admin/columns',
 			'front-end/thirds',
 			100,
 			'builder-templates'
@@ -180,7 +180,7 @@ class Spine_Builder_Custom {
 			get_template_directory_uri() . '/inc/builder-custom/images/quarters.png',
 			'Four column layout, all equal sizes.',
 			array( $this, 'save_columns' ),
-			'admin/four-columns',
+			'admin/columns',
 			'front-end/quarters',
 			100,
 			'builder-templates'
