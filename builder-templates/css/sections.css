@@ -54,3 +54,16 @@
 	font-size: 13px;
 	line-height: 14px;
 }
+
+.wsuwp-column-toggle .handlediv {
+	background: #fefefe;
+	width: 27px;
+	height: 14px;
+}
+
+.js .meta-box-sortables .postbox .wsuwp-column-toggle .handlediv:before {
+	padding-top: 0;
+	margin-top: -2px;
+	padding-left: 17px;
+	color: #333;
+}

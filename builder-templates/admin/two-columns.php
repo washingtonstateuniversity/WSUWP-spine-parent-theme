@@ -17,7 +17,10 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 			?>
 			<div class="wsuwp-spine-halves-column wsuwp-spine-halves-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
 				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttfmake' ); ?>" class="ttfmake-sortable-handle">
-					<div class="sortable-background"><div class="wsuwp-builder-column-title">Column <?php echo $j; ?> of 2</div></div>
+					<div class="sortable-background">
+						<a href="#" class="wsuwp-column-toggle" title="Click to toggle"><div class="handlediv"></div></a>
+						<div class="wsuwp-builder-column-title">Column <?php echo $j; ?> of 2</div>
+					</div>
 				</div>
 
 				<div class="ttfmake-titlediv">
