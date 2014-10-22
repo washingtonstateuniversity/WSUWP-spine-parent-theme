@@ -9,7 +9,7 @@
 <?php get_template_part('parts/headers'); ?>
 <?php get_template_part('parts/featured-images'); ?>
 
-<section class="row sidebar side-right gutter pad-ends">
+<section class="row side-right gutter pad-ends">
 
 	<div class="column one">
 	
