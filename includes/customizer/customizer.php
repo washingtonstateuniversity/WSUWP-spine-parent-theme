@@ -184,7 +184,7 @@ function spine_customize_register( $wp_customize ){
 		'section' => 'section_spine_social',
 		'settings' => 'spine_options[social_spot_one_type]',
 		'type' => 'select',
-		'choices' => array('none' => 'None', 'facebook' => 'Facebook', 'twitter' => 'Twitter', 'youtube' => 'YouTube', 'directory' => 'Directory', 'linkedin' => 'LinkedIn', 'tumblr' => 'Tumblr', 'pinterest' => 'Pinterest'),
+		'choices' => array('none' => 'None', 'directory' => 'Directory', 'facebook' => 'Facebook', 'flickr' => 'Flickr', 'googleplus' => 'Google Plus', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn', 'pinterest' => 'Pinterest', 'tumblr' => 'Tumblr', 'twitter' => 'Twitter', 'vimeo' => 'Vimeo', 'youtube' => 'YouTube'),
 		'priority' => 301,
 	));
 
@@ -198,7 +198,7 @@ function spine_customize_register( $wp_customize ){
 		'section' => 'section_spine_social',
 		'settings' => 'spine_options[social_spot_two_type]',
 		'type' => 'select',
-		'choices' => array('none' => 'None', 'facebook' => 'Facebook', 'twitter' => 'Twitter', 'youtube' => 'YouTube', 'directory' => 'Directory', 'linkedin' => 'LinkedIn', 'tumblr' => 'Tumblr', 'pinterest' => 'Pinterest'),
+		'choices' => array('none' => 'None', 'directory' => 'Directory', 'facebook' => 'Facebook', 'flickr' => 'Flickr', 'googleplus' => 'Google Plus', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn', 'pinterest' => 'Pinterest', 'tumblr' => 'Tumblr', 'twitter' => 'Twitter', 'vimeo' => 'Vimeo', 'youtube' => 'YouTube'),
 		'priority' => 303,
 	));
 
@@ -212,7 +212,7 @@ function spine_customize_register( $wp_customize ){
 		'section' => 'section_spine_social',
 		'settings' => 'spine_options[social_spot_three_type]',
 		'type' => 'select',
-		'choices' => array('none' => 'None', 'facebook' => 'Facebook', 'twitter' => 'Twitter', 'youtube' => 'YouTube', 'directory' => 'Directory', 'linkedin' => 'LinkedIn', 'tumblr' => 'Tumblr', 'pinterest' => 'Pinterest'),
+		'choices' => array('none' => 'None', 'directory' => 'Directory', 'facebook' => 'Facebook', 'flickr' => 'Flickr', 'googleplus' => 'Google Plus', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn', 'pinterest' => 'Pinterest', 'tumblr' => 'Tumblr', 'twitter' => 'Twitter', 'vimeo' => 'Vimeo', 'youtube' => 'YouTube'),
 		'priority' => 305,
 	));
 
@@ -226,7 +226,7 @@ function spine_customize_register( $wp_customize ){
 		'section' => 'section_spine_social',
 		'settings' => 'spine_options[social_spot_four_type]',
 		'type' => 'select',
-		'choices' => array('none' => 'None', 'facebook' => 'Facebook', 'twitter' => 'Twitter', 'youtube' => 'YouTube', 'directory' => 'Directory', 'linkedin' => 'LinkedIn', 'tumblr' => 'Tumblr', 'pinterest' => 'Pinterest'),
+		'choices' => array('none' => 'None', 'directory' => 'Directory', 'facebook' => 'Facebook', 'flickr' => 'Flickr', 'googleplus' => 'Google Plus', 'instagram' => 'Instagram', 'linkedin' => 'LinkedIn', 'pinterest' => 'Pinterest', 'tumblr' => 'Tumblr', 'twitter' => 'Twitter', 'vimeo' => 'Vimeo', 'youtube' => 'YouTube'),
 		'priority' => 307,
 	));
 
