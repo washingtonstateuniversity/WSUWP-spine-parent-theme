@@ -354,6 +354,11 @@ class Spine_Builder_Custom {
 					$clean_data['columns'][ $id ]['content'] = sanitize_post_field( 'post_content', $item['content'], get_the_ID(), 'db' );
 				}
 
+				if ( isset( $item['toggle'] ) ) {
+					if ( in_array( $item['toggle'], array( 'visible', 'invisible' ) ) ) {
+						$clean_data['columns'][ $id ]['toggle'] = $item['toggle'];
+					}
+				}
 				$i++;
 			}
 		}

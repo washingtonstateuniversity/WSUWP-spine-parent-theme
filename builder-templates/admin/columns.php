@@ -24,6 +24,17 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 			$column_name = $section_name . '[columns][' . $i . ']';
 			$title    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
 			$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
+			$visible  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['toggle'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['toggle'] : 'visible';
+
+			if ( ! in_array( $visible, array( 'visible', 'invisible' ) ) ) {
+				$visible = 'visible';
+			}
+
+			if ( 'invisible' === $visible ) {
+				$column_style = 'style="display: none;"';
+			} else {
+				$column_style = '';
+			}
 			?>
 			<div class="wsuwp-spine-builder-column wsuwp-spine-builder-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
 				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttfmake' ); ?>" class="ttfmake-sortable-handle">
@@ -39,6 +50,8 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 					</div>
 				</div>
 
+				<div class="wsuwp-column-content" <?php echo $column_style; ?>>
+					<input type="hidden" class="wsuwp-column-visible" name="<?php echo $column_name; ?>[toggle]" value="<?php echo $visible; ?>" />
 				<?php
 				$editor_settings = array(
 					'tinymce'       => true,
@@ -52,6 +65,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				<?php else : ?>
 					<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortext' . $ttfmake_section_data['data']['id'] . $i, $editor_settings ); ?>
 				<?php endif; ?>
+				</div>
 			</div>
 			<?php $j++; endforeach; ?>
 	</div>

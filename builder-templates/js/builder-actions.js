@@ -36,8 +36,17 @@
 			e.preventDefault();
 
 			var $this = $( e.target );
-			var column_parent = $this.parents('.wsuwp-spine-builder-column');
-			$(column_parent ).find('.wp-editor-wrap' ).toggle();
+			var column_parent = $($this.parents('.wsuwp-spine-builder-column'));
+
+			column_parent.find('.wsuwp-column-content' ).toggle();
+
+			var column_visibility = column_parent.find('.wsuwp-column-visible' );
+
+			if ( 'visible' === column_visibility.val() ) {
+				column_visibility.val('invisible');
+			} else {
+				column_visibility.val('visible');
+			}
 		});
 	};
 
