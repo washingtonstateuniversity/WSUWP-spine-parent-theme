@@ -7,7 +7,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 	oneApp.HalvesView = oneApp.SectionView.extend({
 		events: function() {
 			return _.extend({}, oneApp.SectionView.prototype.events, {
-				'change .wsuwp-spine-halves-column' : 'handleColumns'
+				'change .wsuwp-spine-builder-column' : 'handleColumns'
 			});
 		},
 
@@ -45,7 +45,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttfmake-section-body'),
-					$orderInput = $('.wsuwp-spine-halves-columns-order', $stage),
+					$orderInput = $('.wsuwp-spine-builder-columns-order', $stage),
 					i;
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
@@ -53,10 +53,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 				// Label the columns according to the position they are in
 				i = 1;
-				$('.wsuwp-spine-halves-column', $stage).each(function(){
+				$('.wsuwp-spine-builder-column', $stage).each(function(){
 					$(this)
-						.removeClass('wsuwp-spine-halves-column-position-1 wsuwp-spine-halves-column-position-2')
-						.addClass('wsuwp-spine-halves-column-position-' + i);
+						.removeClass('wsuwp-spine-builder-column-position-1 wsuwp-spine-builder-column-position-2')
+						.addClass('wsuwp-spine-builder-column-position-' + i);
 					i++;
 				});
 			}

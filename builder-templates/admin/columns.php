@@ -25,7 +25,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 			$title    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
 			$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
 			?>
-			<div class="wsuwp-spine-halves-column wsuwp-spine-builder-column wsuwp-spine-halves-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
+			<div class="wsuwp-spine-builder-column wsuwp-spine-builder-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
 				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttfmake' ); ?>" class="ttfmake-sortable-handle">
 					<div class="sortable-background">
 						<a href="#" class="wsuwp-column-toggle" title="Click to toggle"><div class="handlediv"></div></a>
@@ -64,6 +64,6 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 		spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
 		?>
 	</div>
-	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="wsuwp-spine-halves-columns-order" />
+	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="wsuwp-spine-builder-columns-order" />
 	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
 <?php ttfmake_load_section_footer(); ?>
