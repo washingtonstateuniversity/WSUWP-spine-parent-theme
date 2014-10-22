@@ -22,14 +22,14 @@
 }
 @media screen and ( min-width: 1160px ) {
 	.wsuwp-spine-halves-column {
-		width: 50%;
+		width: 100%;
 		float: left;
 		padding: 0 10px;
 	}
 }
 
 .wsuwp-spine-halves-column {
-	width: 50%;
+	width: 100%;
 }
 
 .builder-advanced-controls {
@@ -43,4 +43,14 @@
 
 .wsuwp-builder-meta {
 	margin-top: 10px;
+}
+
+.wsuwp-builder-column-title {
+	width: 150px;
+	margin: 0 auto;
+	background: #fefefe;
+	text-align: center;
+	color: #111;
+	font-size: 13px;
+	line-height: 14px;
 }
