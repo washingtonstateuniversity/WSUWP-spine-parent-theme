@@ -67,3 +67,7 @@
 	padding-left: 17px;
 	color: #333;
 }
+
+.js .meta-box-sortables .postbox .wsuwp-column-toggle .wsuwp-toggle-closed:before {
+	content: '\f140';
+}

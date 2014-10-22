@@ -33,15 +33,20 @@
 
 		var $this = $( e.target );
 		var column_parent = $($this.parents('.wsuwp-spine-builder-column'));
+		var column_visibility = column_parent.find('.wsuwp-column-visible' );
 
 		column_parent.find('.wsuwp-column-content' ).toggle();
-
-		var column_visibility = column_parent.find('.wsuwp-column-visible' );
 
 		if ( 'visible' === column_visibility.val() ) {
 			column_visibility.val('invisible');
 		} else {
 			column_visibility.val('visible');
+		}
+
+		if ( $this.hasClass( 'wsuwp-toggle-closed' ) ) {
+			$this.removeClass( 'wsuwp-toggle-closed' );
+		} else {
+			$this.addClass( 'wsuwp-toggle-closed' );
 		}
 	};
 
