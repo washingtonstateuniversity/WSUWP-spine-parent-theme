@@ -18,22 +18,27 @@
 		</hgroup>
 	</header>
 
-	<?php if ( !is_singular() ) : ?>
+	<?php if ( ! is_singular() ) : ?>
 		<div class="article-summary">
 			<?php
 
-			if ( has_post_thumbnail()) {
-				?><figure class="article-thumbnail"><?php the_post_thumbnail(array(132,132,true)); ?></figure><?php
+			if ( has_post_thumbnail() ) {
+				?><figure class="article-thumbnail"><?php the_post_thumbnail( array( 132, 132, true ) ); ?></figure><?php
 			}
 
+			// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
+			// to that. If an option is set specifically to display excerpts, default to that. Otherwise show
+			// full content.
 			if ( $post->post_excerpt ) {
-				echo get_the_excerpt();
-				echo '<a href="' . get_permalink() . '"><span class="excerpt-more-default">&raquo; More ...</span></a>';
+				echo get_the_excerpt() . ' <a href="' . get_permalink() . '"><span class="excerpt-more-default">&raquo; More ...</span></a>';
 			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
 				the_content( '<span class="content-more-default">&raquo; More ...</span>' );
+			} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
+				the_excerpt();
 			} else {
 				the_content();
 			}
+
 			?>
 		</div><!-- .article-summary -->
 	<?php else : ?>
@@ -55,7 +60,7 @@
 	if ( has_category() ) {
 		echo '<dl class="categorized">';
 		echo '<dt><span class="categorized-default">Categorized</span></dt>';
-		foreach( (get_the_category() ) as $category) {
+		foreach( get_the_category() as $category ) {
 			echo '<dd><a href="' . get_category_link( $category->cat_ID ) . '">' . $category->cat_name . '</a></dd>';
 		}
 		echo '</dl>';
@@ -82,7 +87,7 @@
 	if ( has_tag() ) {
 		echo '<dl class="tagged">';
 		echo '<dt><span class="tagged-default">Tagged</span></dt>';
-		foreach( ( get_the_tags() ) as $tag ) {
+		foreach( get_the_tags() as $tag ) {
 			echo '<dd><a href="' . get_tag_link( $tag->term_id ) . '">' . $tag->name . '</a></dd>';
 		}
 		echo '</dl>';
@@ -109,8 +114,8 @@
 	// if ( comments_open()) {}
 
 	// If the user viewing the post can edit it, show an edit link.
-	if ( current_user_can( 'edit_post', $post->ID ) && !is_singular() ) {
-		?><dl class="editors"><?php edit_post_link('Edit', '<span class="edit-link">', '</span>' ); ?></dl><?php
+	if ( current_user_can( 'edit_post', $post->ID ) && ! is_singular() ) {
+		?><dl class="editors"><?php edit_post_link( 'Edit', '<span class="edit-link">', '</span>' ); ?></dl><?php
 	}
 
 	// If a user has filled out their description and this is a multi-author blog, show a bio on their entries.
