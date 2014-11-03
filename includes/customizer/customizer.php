@@ -352,6 +352,24 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox'
 	));
 
+	// Show full content or excerpts on archive pages.
+	$wp_customize->add_setting('spine_options[archive_content_display]', array(
+		'default'        => 'full',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+	));
+
+	$wp_customize->add_control('archive_content_display', array(
+		'label'      => __('Archive Content Display', 'spine'),
+		'section'    => 'section_spine_advanced_options',
+		'settings'   => 'spine_options[archive_content_display]',
+		'type'       => 'select',
+		'choices'    => array(
+			'full'  => 'Full Content',
+			'excerpt' => 'Automatic Excerpt',
+		),
+	));
+
 	// Offer Dynamic Shortcuts
 	/*$wp_customize->add_setting('spine_options[index_shortcuts]', array(
 		'default'        => 'google',

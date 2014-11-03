@@ -99,6 +99,7 @@ function spine_get_option( $option_name ) {
 		'contact_email'             => 'info@wsu.edu',
 		'contact_ContactPoint'      => '',
 		'contact_ContactPointTitle' => 'Contact Page...',
+		'archive_content_display'   => 'full',
 	);
 
 	// A child theme can override all spine option defaults with the spine_option_defaults filter.
