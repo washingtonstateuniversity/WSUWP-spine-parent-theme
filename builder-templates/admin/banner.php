@@ -25,8 +25,8 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 		<div class="ttfmake-banner-slides-stage">
 			<?php foreach ( $section_order as $key => $section_id  ) : ?>
 				<?php if ( isset( $ttfmake_section_data['data']['banner-slides'][ $section_id ] ) ) : ?>
-					<?php global $ttfmake_slide_id; $ttfmake_slide_id = $section_id; ?>
-					<?php get_template_part( '/inc/builder/sections/builder-templates/banner', 'slide' ); ?>
+					<?php global $ttfmake_slide_id; $ttfmake_slide_id = $section_id; ?>asdf
+					<?php get_template_part( '/builder-templates/admin/banner', 'slide' ); ?>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</div>

@@ -503,8 +503,8 @@ class TTFMAKE_Section_Definitions {
 			),
 			array(
 				'id' => 'banner-slide',
-				'builder_template' => 'sections/builder-templates/banner-slide',
-				'path' => 'inc/builder/',
+				'builder_template' => 'banner-slide',
+				'path' => 'builder-templates/admin/',
 			),
 		);
 
