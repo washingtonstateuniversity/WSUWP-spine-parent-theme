@@ -54,6 +54,7 @@ if ( $section_wrapper_classes ) {
 		<div class="builder-section-content<?php echo ( $is_slider ) ? ' cycle-slideshow' : ''; ?>"<?php echo ( $is_slider ) ? ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) : ''; ?>>
 			<?php if ( ! empty( $banner_slides ) ) : foreach ( $banner_slides as $slide ) : ?>
 				<div class="builder-banner-slide<?php echo ttfmake_builder_banner_slide_class( $slide ); ?>" style="<?php echo ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ); ?>">
+					<?php if ( ! empty( $slide['slide-url'] ) ) : ?><a href="<?php echo esc_url( $slide['slide-url'] ); ?>"><?php endif; ?>
 					<div class="builder-banner-content">
 						<div class="builder-banner-inner-content">
 							<?php ttfmake_get_builder_save()->the_builder_content( $slide['content'] ); ?>
@@ -62,6 +63,7 @@ if ( $section_wrapper_classes ) {
 					<?php if ( 0 !== absint( $slide['darken'] ) ) : ?>
 						<div class="builder-banner-overlay"></div>
 					<?php endif; ?>
+					<?php if ( ! empty( $slide['slide-url'] ) ) : ?></a><?php endif; ?>
 				</div>
 			<?php endforeach; endif; ?>
 			<?php if ( $is_slider && false === (bool) $ttfmake_section_data['hide-arrows'] ) : ?>
