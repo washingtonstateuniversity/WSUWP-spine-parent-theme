@@ -149,6 +149,10 @@ function spine_get_main_header() {
 	if ( is_archive() ) {
 		if ( is_category() ) {
 			$sub_header_default = single_cat_title( '', false );
+		} else if ( is_tag() ) {
+			$sub_header_default = single_tag_title( 'Tag: ', false );
+		} else if ( is_tax( 'wsuwp_university_category' ) ) {
+			$sub_header_default = single_term_title( '', false );
 		} else if ( is_day() ) {
 			$sub_header_default = get_the_date();
 		} else if ( is_month() ) {
