@@ -143,12 +143,15 @@ function spine_get_main_header() {
 	$sup_header_alternate = '';
 	$sub_header_alternate = '';
 
-	// On date archive views, use one of the day, month, year as the sub header. If a tag or other
-	// non category archive, use 'Archives'. Use the page title of page_for_posts if available as the
-	// sup header, otherwise use the site name.
+	// On date archive views, use one of the day, month, year as the sub header. Use the page title of
+	// page_for_posts if available as the sup header, otherwise use the site name.
 	if ( is_archive() ) {
 		if ( is_category() ) {
 			$sub_header_default = single_cat_title( '', false );
+		} else if ( is_tag() ) {
+			$sub_header_default = single_tag_title( '', false );
+		} else if ( is_tax( 'wsuwp_university_category' ) ) {
+			$sub_header_default = single_term_title( '', false );
 		} else if ( is_day() ) {
 			$sub_header_default = get_the_date();
 		} else if ( is_month() ) {
