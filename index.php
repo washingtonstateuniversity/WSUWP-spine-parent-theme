@@ -14,6 +14,10 @@ if ( is_home() ) {
 	$main_class = 'spine-tax-index';
 } elseif ( is_archive() ) {
 	$main_class = 'spine-archive-index';
+} elseif ( is_search() ) {
+	$main_class = 'spine-search-index';
+} else {
+	$main_class = '';
 }
 
 ?>
