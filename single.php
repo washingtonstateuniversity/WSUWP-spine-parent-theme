@@ -34,7 +34,7 @@ if ( ! empty( $position ) ) {
 	
 		<?php while ( have_posts() ) : the_post(); ?>
 				
-			<?php get_template_part( 'articles/post' ) ?>
+			<?php get_template_part( 'articles/post', get_post_type() ) ?>
 
 			<?php // get_comments( ); ?>
 
