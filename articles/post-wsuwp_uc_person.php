@@ -2,6 +2,11 @@
 
 	<header class="article-header">
 		<hgroup>
+			<?php
+			if ( has_post_thumbnail() ) {
+				?><figure class="article-thumbnail"><?php the_post_thumbnail( array( 132, 132, true ) ); ?></figure><?php
+			}
+			?>
 			<?php if ( is_single() ) : ?>
 				<h1 class="article-title"><?php the_title(); ?></h1>
 			<?php else : ?>
@@ -13,10 +18,6 @@
 	<?php if ( ! is_singular() ) : ?>
 		<div class="article-summary">
 			<?php
-
-			if ( has_post_thumbnail() ) {
-				?><figure class="article-thumbnail"><?php the_post_thumbnail( array( 132, 132, true ) ); ?></figure><?php
-			}
 
 			// If a manual excerpt is available, display this. Otherwise, only the most basic information is needed.
 			if ( $post->post_excerpt ) {

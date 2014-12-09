@@ -150,11 +150,9 @@ main article header h2 {
 	}
 figure.article-thumbnail {
 	float: right;
-	margin: 0px 0px 5px 10px;
-	xbackground: white;
-	}
+	margin: 0 0 5px 10px;
+}
 
-	
 /*  Block Level */
 dl dt {
 	font-weight: bold;
@@ -439,4 +437,19 @@ body.admin-bar {
 .ttfmake-shortcode-slider .cycle-prev:before {
 	top: -12px;
 	top: -1.2rem;
+}
+
+/* University Center Objects */
+article.wsuwp_uc_person {
+	clear: left;
+}
+
+.post-type-archive-wsuwp_uc_person figure.article-thumbnail {
+	clear: left;
+	float: left;
+	margin: 0 10px 5px 0;
+}
+
+.post-type-archive-wsuwp_uc_person .article-title {
+	padding-top: 0;
 }
