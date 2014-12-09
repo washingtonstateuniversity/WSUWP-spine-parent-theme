@@ -6,8 +6,6 @@
 
 			<?php get_template_part( 'articles/post', get_post_type() ) ?>
 
-			<?php // get_comments( ); ?>
-
 		<?php endwhile; ?>
 
 	</div><!--/column-->
