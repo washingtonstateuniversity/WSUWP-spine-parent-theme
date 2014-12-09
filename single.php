@@ -18,29 +18,14 @@ if ( spine_has_background_image() ) {
 <figure class="featured-image" style="background-image: url('<?php echo $featured_image_src ?>');">
 	<?php spine_the_featured_image(); ?>
 </figure>
-<?php endif; ?>
+<?php endif;
 
-<section class="row side-right gutter pad-ends">
-
-	<div class="column one">
-	
-		<?php while ( have_posts() ) : the_post(); ?>
-				
-			<?php get_template_part( 'articles/post', get_post_type() ) ?>
-
-			<?php // get_comments( ); ?>
-
-		<?php endwhile; ?>
-		
-	</div><!--/column-->
-
-	<div class="column two">
-		
-		<?php get_sidebar(); ?>
-		
-	</div><!--/column two-->
-
-</section>
+if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
+	get_template_part( 'parts/single-layout', 'university-center' );
+} else {
+	get_template_part( 'parts/single-layout', 'standard' );
+}
+?>
 
 <footer class="main-footer">
 	<section class="row halves pager prevnext gutter">
