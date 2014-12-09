@@ -6,15 +6,7 @@ get_header();
 if ( spine_has_background_image() ) {
 	$background_image_src = spine_get_background_image_src();
 	?><style> html { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style><?php
-	}
-
-// If a position has been assigned to the featured image as a background, apply that style.
-/* $position = get_post_meta( get_the_id(), 'position', true );
-if ( ! empty( $position ) ) {
-	$position = absint( $position ) - 132;
-	?><style>main section:nth-of-type(1) { margin-top: <?php echo $position; ?>px; }</style><?php
-} */
-
+}
 ?>
 
 <main>
