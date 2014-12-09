@@ -453,3 +453,25 @@ article.wsuwp_uc_person {
 .post-type-archive-wsuwp_uc_person .article-title {
 	padding-top: 0;
 }
+
+.wsuwp-uc-entities,
+.wsuwp-uc-people,
+.wsuwp-uc-projects,
+.wsuwp-uc-publications {
+	float: left;
+	width: 33%;
+}
+
+.wsuwp_uc_person .article-body,
+.wsuwp_uc_entity .article-body,
+.wsuwp_uc_project .article-body,
+.wsuwp_uc_publication .article-body {
+	clear: both;
+}
+
+.wsuwp_uc_person .article-footer,
+.wsuwp_uc_entity .article-footer,
+.wsuwp_uc_project .article-footer,
+.wsuwp_uc_publication .article-footer {
+	clear: left;
+}
