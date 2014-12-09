@@ -3,14 +3,10 @@
 	<header class="article-header">
 		<hgroup>
 			<?php if ( is_single() ) : ?>
-				<?php if ( spine_get_option( 'articletitle_show' ) == 'true' ) : ?>
-					<h1 class="article-title"><?php the_title(); ?></h1>
-				<?php endif; ?>
+				<h1 class="article-title"><?php the_title(); ?></h1>
 			<?php else : ?>
-				<h2 class="article-title">
-					<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-				</h2>
-			<?php endif; // is_single() or in_a_relationship() ?>
+				<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<?php endif; ?>
 		</hgroup>
 		<hgroup class="source">
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
