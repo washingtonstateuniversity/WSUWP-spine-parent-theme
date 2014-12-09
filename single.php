@@ -6,15 +6,7 @@ get_header();
 if ( spine_has_background_image() ) {
 	$background_image_src = spine_get_background_image_src();
 	?><style> html { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style><?php
-	}
-
-// If a position has been assigned to the featured image as a background, apply that style.
-/* $position = get_post_meta( get_the_id(), 'position', true );
-if ( ! empty( $position ) ) {
-	$position = absint( $position ) - 132;
-	?><style>main section:nth-of-type(1) { margin-top: <?php echo $position; ?>px; }</style><?php
-} */
-
+}
 ?>
 
 <main>
@@ -26,29 +18,14 @@ if ( ! empty( $position ) ) {
 <figure class="featured-image" style="background-image: url('<?php echo $featured_image_src ?>');">
 	<?php spine_the_featured_image(); ?>
 </figure>
-<?php endif; ?>
+<?php endif;
 
-<section class="row side-right gutter pad-ends">
-
-	<div class="column one">
-	
-		<?php while ( have_posts() ) : the_post(); ?>
-				
-			<?php get_template_part( 'articles/post' ) ?>
-
-			<?php // get_comments( ); ?>
-
-		<?php endwhile; ?>
-		
-	</div><!--/column-->
-
-	<div class="column two">
-		
-		<?php get_sidebar(); ?>
-		
-	</div><!--/column two-->
-
-</section>
+if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
+	get_template_part( 'parts/single-layout', 'university-center' );
+} else {
+	get_template_part( 'parts/single-layout', get_post_type() );
+}
+?>
 
 <footer class="main-footer">
 	<section class="row halves pager prevnext gutter">

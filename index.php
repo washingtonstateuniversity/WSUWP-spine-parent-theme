@@ -24,28 +24,16 @@ if ( is_home() ) {
 
 <main class="<?php echo $main_class; ?>">
 
-<?php get_template_part('parts/headers'); ?> 
-
-<section class="row side-right gutter pad-ends">
-
-	<div class="column one">
-
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php get_template_part( 'articles/post', get_post_format() ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
-	</div><!--/column-->
-
-	<div class="column two">
-		
-		<?php get_sidebar(); ?>
-		
-	</div><!--/column two-->
-
-</section>
 <?php
+
+get_template_part('parts/headers');
+
+if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
+	get_template_part( 'parts/archive-layout', 'university-center' );
+} else {
+	get_template_part( 'parts/archive-layout', get_post_type() );
+}
+
 /* @type WP_Query $wp_query */
 global $wp_query;
 
