@@ -18,17 +18,9 @@
 				?><figure class="article-thumbnail"><?php the_post_thumbnail( array( 132, 132, true ) ); ?></figure><?php
 			}
 
-			// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
-			// to that. If an option is set specifically to display excerpts, default to that. Otherwise show
-			// full content.
+			// If a manual excerpt is available, display this. Otherwise, only the most basic information is needed.
 			if ( $post->post_excerpt ) {
-				echo get_the_excerpt() . ' <a href="' . get_permalink() . '"><span class="excerpt-more-default">&raquo; More ...</span></a>';
-			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
-				the_content( '<span class="content-more-default">&raquo; More ...</span>' );
-			} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
-				the_excerpt();
-			} else {
-				the_content();
+				echo get_the_excerpt();
 			}
 
 			?>
