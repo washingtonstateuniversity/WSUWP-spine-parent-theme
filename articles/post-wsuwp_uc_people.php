@@ -8,10 +8,6 @@
 				<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<?php endif; ?>
 		</hgroup>
-		<hgroup class="source">
-			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
-			<cite class="article-author" role="author"><?php the_author_posts_link(); ?></cite>
-		</hgroup>
 	</header>
 
 	<?php if ( ! is_singular() ) : ?>
