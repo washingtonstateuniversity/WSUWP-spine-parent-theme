@@ -31,7 +31,7 @@ get_template_part('parts/headers');
 if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
 	get_template_part( 'parts/archive-layout', 'university-center' );
 } else {
-	get_template_part( 'parts/archive-layout', 'standard' );
+	get_template_part( 'parts/archive-layout', get_post_type() );
 }
 
 /* @type WP_Query $wp_query */

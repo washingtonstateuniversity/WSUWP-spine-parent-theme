@@ -23,7 +23,7 @@ if ( spine_has_background_image() ) {
 if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
 	get_template_part( 'parts/single-layout', 'university-center' );
 } else {
-	get_template_part( 'parts/single-layout', 'standard' );
+	get_template_part( 'parts/single-layout', get_post_type() );
 }
 ?>
 
