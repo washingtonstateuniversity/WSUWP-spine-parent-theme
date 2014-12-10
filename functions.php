@@ -454,7 +454,7 @@ add_filter( 'body_class', 'spine_campus_body_class' );
  */
 function spine_campus_body_class( $classes ) {
 	if ( spine_get_option( 'campus_location' ) != '' ) {
-		$classes[] = spine_get_option( 'campus_location' ).'-signature';
+		$classes[] = esc_attr( spine_get_option( 'campus_location' ) ).'-signature';
 	}
 
 	return $classes;
