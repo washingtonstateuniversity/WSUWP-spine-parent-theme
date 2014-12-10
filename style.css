@@ -224,7 +224,7 @@ article footer a:hover {
 	}
 
 /* Admin Bar */
-@media (min-width: 989px) {
+@media (min-width: 990px) {
 .admin-bar #spine #glue {
 	margin-top: 32px;
 	}
