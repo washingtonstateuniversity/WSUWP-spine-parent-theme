@@ -10,7 +10,7 @@ class Spine_Builder_Custom {
 	public function __construct() {
 
 		// This is pulled from the Make theme. We should keep it updated as upstream changes are pulled in.
-		define( 'TTFMAKE_VERSION', '1.1.0' );
+		define( 'TTFMAKE_VERSION', '1.4.6' );
 
 		// Include extra functions from Make that are not part of the builder, but are required.
 		include_once( 'builder-custom/extras.php' );
@@ -565,4 +565,11 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 			?></select>
 		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
 	</div><?php
+}
+
+/**
+ * Override for method expected by upstream project Make.
+ */
+function ttfmake_is_plus() {
+	return false;
 }
