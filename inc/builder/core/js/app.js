@@ -1,7 +1,7 @@
 /*global jQuery, tinyMCE, switchEditors */
-var oneApp = oneApp || {};
+var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
 
-(function ($, oneApp) {
+(function ($, oneApp, ttfMakeFrames) {
 	'use strict';
 
 	// Kickoff Backbone App
@@ -14,7 +14,9 @@ var oneApp = oneApp || {};
 
 	oneApp.cache = {
 		$sectionOrder: $('#ttfmake-section-order'),
-		$scrollHandle: $('html, body')
+		$scrollHandle: $('html, body'),
+		$makeEditor: $('#wp-make-wrap'),
+		$makeTextArea: $('#make')
 	};
 
 	oneApp.initSortables = function () {
@@ -29,14 +31,22 @@ var oneApp = oneApp || {};
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttfmake-stage');
 
-				$('.sortable-placeholder', $stage).height($item.height());
-				oneApp.disableEditors($item);
+				$item.css('-webkit-transform', 'translateZ(0)');
+				$('.sortable-placeholder', $stage).height(parseInt($item.height(), 10) - 2);
 			},
 			stop: function (event, ui) {
-				var $item = $(ui.item.get(0));
+				var $item = $(ui.item.get(0)),
+					$frames = $('iframe', $item);
 
+				$item.css('-webkit-transform', '');
 				oneApp.setOrder( $(this).sortable('toArray', {attribute: 'data-id'}), oneApp.cache.$sectionOrder );
-				oneApp.enableEditors($item);
+
+				$.each($frames, function() {
+					var id = $(this).attr('id').replace('ttfmake-iframe-', '');
+					setTimeout(function() {
+						oneApp.initFrame(id);
+					}, 100);
+				});
 			}
 		});
 	};
@@ -72,51 +82,11 @@ var oneApp = oneApp || {};
 		} else {
 			currentOrderArray = currentOrder.split(',');
 			currentOrderArray = _.reject(currentOrderArray, function (item) {
-				return parseInt(id, 10) === parseInt(item, 10);
+				return id.toString() === item.toString();
 			});
 		}
 
 		oneApp.setOrder(currentOrderArray, $input);
-	};
-
-	oneApp.disableEditors = function ($item) {
-		if ( typeof tinyMCE !== 'undefined' ) {
-			/**
-			 * When moving the section, the TinyMCE instance must be removed. If it is not removed, it will be
-			 * unresponsive once placed. It is reinstated when the section is placed
-			 */
-			$('.wp-editor-area', $item).each(function () {
-				var $this = $(this),
-					id = $this.attr('id');
-
-				oneApp.removeTinyMCE(id);
-				delete tinyMCE.editors.id;
-			});
-		}
-	};
-
-	oneApp.enableEditors = function ($item) {
-		if ( typeof tinyMCE !== 'undefined' ) {
-			/**
-			 * Reinstate the TinyMCE editor now that is it placed. This is a critical step in order to make sure
-			 * that the TinyMCE editor is operable after a sort.
-			 */
-			$('.wp-editor-area', $item).each(function () {
-				var $this = $(this),
-					id = $this.attr('id'),
-					$wrap = $this.parents('.wp-editor-wrap'),
-					el = tinyMCE.DOM.get(id);
-
-				// If the text area (i.e., non-tinyMCE) is showing, do not init the editor.
-				if ($wrap.hasClass('tmce-active')) {
-					// Restore the content, with pee
-					el.value = switchEditors.wpautop(el.value);
-
-					// Activate tinyMCE
-					oneApp.addTinyMCE(id);
-				}
-			});
-		}
 	};
 
 	oneApp.initViews = function () {
@@ -159,6 +129,157 @@ var oneApp = oneApp || {};
 		$('input[type="text"]', view.$el).not('.wp-color-picker').first().focus();
 	};
 
+	oneApp.filliframe = function (iframeID) {
+		var iframe = document.getElementById(iframeID),
+			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+			iframeBody = $('body', iframeContent),
+			content;
+
+		content = oneApp.getMakeContent();
+
+		// Since content is being displayed in the iframe, run it through autop
+		content = switchEditors.wpautop(oneApp.wrapShortcodes(content));
+
+		iframeBody.html(content);
+	};
+
+	oneApp.setTextArea = function (textAreaID) {
+		$('#' + textAreaID).val(oneApp.getMakeContent());
+	};
+
+	oneApp.getMakeContent = function () {
+		var content = '';
+
+		if (oneApp.isVisualActive()) {
+			content = tinyMCE.get('make').getContent();
+		} else {
+			content = oneApp.cache.$makeTextArea.val();
+		}
+
+		return content;
+	};
+
+	oneApp.setMakeContent = function (content) {
+		if (oneApp.isVisualActive()) {
+			tinyMCE.get('make').setContent(content);
+		} else {
+			oneApp.cache.$makeTextArea.val(switchEditors.pre_wpautop(content));
+		}
+	};
+
+	oneApp.setMakeContentFromTextArea = function (iframeID, textAreaID) {
+		var textAreaContent = $('#' + textAreaID).val();
+
+		oneApp.setActiveiframeID(iframeID);
+		oneApp.setActiveTextAreaID(textAreaID);
+		oneApp.setMakeContent(textAreaContent);
+	};
+
+	oneApp.setActiveiframeID = function(iframeID) {
+		oneApp.activeiframeID = iframeID;
+	};
+
+	oneApp.setActiveTextAreaID = function(textAreaID) {
+		oneApp.activeTextAreaID = textAreaID;
+	};
+
+	oneApp.getActiveiframeID = function() {
+		if (oneApp.hasOwnProperty('activeiframeID')) {
+			return oneApp.activeiframeID;
+		} else {
+			return '';
+		}
+	};
+
+	oneApp.getActiveTextAreaID = function() {
+		if (oneApp.hasOwnProperty('activeTextAreaID')) {
+			return oneApp.activeTextAreaID;
+		} else {
+			return '';
+		}
+	};
+
+	oneApp.isTextActive = function() {
+		return oneApp.cache.$makeEditor.hasClass('html-active');
+	};
+
+	oneApp.isVisualActive = function() {
+		return oneApp.cache.$makeEditor.hasClass('tmce-active');
+	};
+
+	oneApp.initFrames = function() {
+		if (ttfMakeFrames.length > 0) {
+			var link = oneApp.getFrameHeadLinks();
+
+			// Add content and CSS
+			_.each(ttfMakeFrames, function(id) {
+				oneApp.initFrame(id, link);
+			});
+		}
+	};
+
+	oneApp.initFrame = function(id, link) {
+		var content = $('#ttfmake-content-' + id).val(),
+			iframe = document.getElementById('ttfmake-iframe-' + id),
+			iframeContent = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document,
+			iframeHead = $('head', iframeContent),
+			iframeBody = $('body', iframeContent);
+
+		link = link || oneApp.getFrameHeadLinks();
+
+		iframeHead.html(link);
+		iframeBody.html(switchEditors.wpautop(oneApp.wrapShortcodes(content)));
+	};
+
+	oneApp.getFrameHeadLinks = function() {
+		var scripts = tinyMCEPreInit.mceInit.make.content_css.split(','),
+			link = '';
+
+		// Create the CSS links for the head
+		_.each(scripts, function(e) {
+			link += '<link type="text/css" rel="stylesheet" href="' + e + '" />';
+		});
+
+		return link;
+	};
+
+	oneApp.wrapShortcodes = function(content) {
+		return content.replace(/^(<p>)?(\[.*\])(<\/p>)?$/gm, '<div class="shortcode-wrapper">$2</div>');
+	};
+
+	oneApp.triggerInitFrames = function() {
+		$(document).ready(function(){
+			oneApp.initFrames();
+		});
+	};
+
+	$('body').on('click', '.ttfmake-remove-image-from-modal', function(evt){
+		evt.preventDefault();
+
+		var $parent = oneApp.$currentPlaceholder.parents('.ttfmake-uploader'),
+			$input = $('.ttfmake-media-uploader-value', $parent);
+
+		// Remove the image
+		oneApp.$currentPlaceholder.css('background-image', '');
+		$parent.removeClass('ttfmake-has-image-set');
+
+		// Remove the value from the input
+		$input.removeAttr('value');
+
+		wp.media.frames.frame.close();
+	});
+
+	wp.media.view.Sidebar = wp.media.view.Sidebar.extend({
+		render: function() {
+			this.$el.html( wp.media.template( 'ttfmake-remove-image' ) );
+			return this;
+		}
+	});
+
+	// Leaving function to avoid errors if 3rd party code uses it. Deprecated in 1.4.0.
+	oneApp.initAllEditors = function(id, model) {};
+
 	oneApp.initSortables();
 	oneApp.initViews();
-})(jQuery, oneApp);
+	oneApp.triggerInitFrames();
+})(jQuery, oneApp, ttfMakeFrames);

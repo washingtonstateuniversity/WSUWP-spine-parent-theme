@@ -38,9 +38,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Initiate the color picker
 			oneApp.initializeBannerSlidesColorPicker(view);
 
-			// Initiate the text editor
-			oneApp.initAllEditors(view.idAttr, view.model);
-
 			// Add the section value to the sortable order
 			oneApp.addOrderValue(view.model.get('id'), $('.ttfmake-banner-slide-order', $(view.$el).parents('.ttfmake-banner-slides')));
 		},
@@ -65,7 +62,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		}
 
 		$selector.sortable({
-			handle: '.ttfmake-banner-slide-header',
+			handle: '.ttfmake-sortable-handle',
 			placeholder: 'sortable-placeholder',
 			forcePlaceholderSizeType: true,
 			distance: 2,
@@ -76,7 +73,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$stage = $item.parents('.ttfmake-banner-slides-stage');
 
 				$('.sortable-placeholder', $stage).height($item.height());
-				oneApp.disableEditors($item);
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
@@ -84,7 +80,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$orderInput = $('.ttfmake-banner-slide-order', $stage);
 
 				oneApp.setOrder($(this).sortable('toArray', {attribute: 'data-id'}), $orderInput);
-				oneApp.enableEditors($item);
 			}
 		});
 	};
@@ -95,22 +90,17 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		view = view || '';
 
 		if (view.$el) {
-			$selector = $('.ttfmake-banner-slide-background-color', view.$el);
+			$selector = $('.ttfmake-configuration-color-picker', view.$el);
 		} else {
-			$selector = $('.ttfmake-banner-slide-background-color');
+			$selector = $('.ttfmake-configuration-color-picker');
 		}
 
-		$selector.wpColorPicker({
-			defaultColor: ''
-		});
+		$selector.wpColorPicker();
 	};
 
 	// Initialize the sortables
 	$oneApp.on('afterSectionViewAdded', function(evt, view) {
 		if ('banner' === view.model.get('sectionType')) {
-			// Notify that the tinyMCE editors should not be initiated
-			view.noTinyMCEInit = true;
-
 			// Add an initial slide item
 			$('.ttfmake-add-slide', view.$el).trigger('click', {type: 'pseudo'});
 

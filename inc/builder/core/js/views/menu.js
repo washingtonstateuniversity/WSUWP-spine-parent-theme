@@ -20,8 +20,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		},
 
 		events: {
-			'click .ttfmake-menu-list-item-link': 'addSection',
-			'click .ttfmake-menu-tab-link': 'menuToggle'
+			'click .ttfmake-menu-list-item-link': 'addSection'
 		},
 
 		addSection: function (evt) {
@@ -59,11 +58,6 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			oneApp.scrollToAddedView(view);
 
 			oneApp.sections.toggleStageClass();
-
-			if (view.noTinyMCEInit === undefined) {
-				oneApp.initAllEditors(view.idAttr, section);
-			}
-
 			oneApp.addOrderValue(section.get('id'), oneApp.cache.$sectionOrder);
 		},
 
