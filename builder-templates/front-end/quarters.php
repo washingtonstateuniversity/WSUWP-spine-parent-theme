@@ -18,7 +18,7 @@ if ( $section_wrapper_classes ) {
 		if ( ! empty( $data_columns ) ) {
 			foreach( $data_columns as $column ) {
 				?>
-				<div class="column <?php echo $column_count[ $count ]; $count++; ?>">
+				<div class="column <?php echo $column_count[ $count ]; $count++; ?> <?php if ( isset( $column['column-classes'] ) ) : echo esc_attr( $column['column-classes'] ); endif; ?>">
 
 					<?php if ( '' !== $column['title'] ) : ?>
 						<header>
