@@ -570,3 +570,14 @@ function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 function ttfmake_is_plus() {
 	return false;
 }
+
+function spine_builder_add_column_title( $column_name, $title ) {
+	ob_start();
+	?>
+	<div class="ttfmake-column-title">
+		<input type="text" name="<?php echo esc_attr( $column_name ); ?>[title]" value="<?php echo esc_attr( $title ); ?>" />
+	</div>
+	<?php
+	$output = ob_get_clean();
+	return $output;
+}
