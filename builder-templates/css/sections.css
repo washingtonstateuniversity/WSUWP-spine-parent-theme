@@ -71,3 +71,8 @@
 .js .meta-box-sortables .postbox .wsuwp-column-toggle .wsuwp-toggle-closed:before {
 	content: '\f140';
 }
+
+.section-type-description {
+	line-height: 1.1rem;
+	margin-top: 6px;
+}
