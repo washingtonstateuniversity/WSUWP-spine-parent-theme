@@ -12,7 +12,7 @@ $banner_slides = ttfmake_builder_get_banner_array( $ttfmake_section_data );
 $is_slider = ( count( $banner_slides ) > 1 ) ? true : false;
 
 $responsive = ( isset( $ttfmake_section_data['responsive'] ) ) ? $ttfmake_section_data['responsive'] : 'balanced';
-$slider_height = absint( $ttfmake_section_data['height'] );
+$slider_height = ( isset( $ttfmake_section_data['height'] ) ) ? absint( $ttfmake_section_data['height'] ) : 0;
 if ( 0 === $slider_height ) {
 	$slider_height = 600;
 }

@@ -268,7 +268,79 @@ class Spine_Builder_Custom {
 			$header_args
 		);
 
-		$banner_args = $this->get_default_section_args();
+		$banner_args = array(
+			100 => array(
+				'type'  => 'section_title',
+				'name'  => 'title',
+				'label' => __( 'Enter section title', 'make' ),
+				'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
+			),
+			200 => array(
+				'type'    => 'checkbox',
+				'label'   => __( 'Hide navigation arrows', 'make' ),
+				'name'    => 'hide-arrows',
+				'default' => 0
+			),
+			300 => array(
+				'type'    => 'checkbox',
+				'label'   => __( 'Hide navigation dots', 'make' ),
+				'name'    => 'hide-dots',
+				'default' => 0
+			),
+			400 => array(
+				'type'    => 'checkbox',
+				'label'   => __( 'Autoplay slideshow', 'make' ),
+				'name'    => 'autoplay',
+				'default' => 1
+			),
+			500 => array(
+				'type'    => 'text',
+				'label'   => __( 'Time between slides (ms)', 'make' ),
+				'name'    => 'delay',
+				'default' => 6000
+			),
+			600 => array(
+				'type'    => 'select',
+				'label'   => __( 'Transition effect', 'make' ),
+				'name'    => 'transition',
+				'default' => 'scrollHorz',
+				'options' => array(
+					'scrollHorz' => __( 'Slide horizontal', 'make' ),
+					'fade'       => __( 'Fade', 'make' ),
+					'none'       => __( 'None', 'make' ),
+				)
+			),
+			700 => array(
+				'type'    => 'text',
+				'label'   => __( 'Section height (px)', 'make' ),
+				'name'    => 'height',
+				'default' => 600
+			),
+			800 => array(
+				'type'        => 'select',
+				'label'       => __( 'Responsive behavior', 'make' ),
+				'name'        => 'responsive',
+				'default'     => 'balanced',
+				'description' => __( 'Choose how the banner will respond to varying screen widths.', 'make' ),
+				'options'     => array(
+					'balanced' => __( 'Default', 'make' ),
+					'aspect'   => __( 'Aspect', 'make' ),
+				)
+			),
+			900 => array(
+				'type'    => 'text',
+				'name'    => 'section-classes',
+				'class'   => 'ttfmake-section-classes',
+				'label'   => 'Section Classes',
+				'default' => 'gutter pad-top',
+			),
+			910 => array(
+				'type'    => 'text',
+				'name'    => 'section-wrapper',
+				'class'   => 'ttfmake-section-wrapper',
+				'label'   => 'Section Wrapper Classes',
+			),
+		);
 		ttfmake_add_section(
 			'banner',
 			_x( 'Banner', 'section name', 'make' ),
