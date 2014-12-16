@@ -91,10 +91,8 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data );
 			ksort( $column_buttons );
 			?>
 			<div class="wsuwp-spine-builder-column wsuwp-spine-builder-column-position-<?php echo $j; ?> <?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
-				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttfmake' ); ?>" class="ttfmake-sortable-handle">
-					<div class="sortable-background column-sortable-background">
-						<div class="wsuwp-builder-column-title">Column <?php echo $j; ?> of <?php echo $wsuwp_range; ?></div>
-					</div>
+				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
+					<div class="sortable-background column-sortable-background"></div>
 				</div>
 
 				<?php
