@@ -128,6 +128,7 @@ class Spine_Builder_Custom {
 	 */
 	public function add_builder_sections() {
 		$single_args = $this->get_default_section_args();
+		unset( $single_args[100] );
 		ttfmake_add_section(
 			'wsuwpsingle',
 			'Single',
