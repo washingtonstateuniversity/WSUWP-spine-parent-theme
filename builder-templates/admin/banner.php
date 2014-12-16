@@ -17,10 +17,6 @@ $responsive    = ( isset( $ttfmake_section_data['data']['responsive'] ) ) ? $ttf
 $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] ) ) ? $ttfmake_section_data['data']['banner-slide-order'] : array();
 ?>
 
-	<div class="ttfmake-add-slide-wrapper">
-		<a href="#" class="button button-primary ttfmake-button-large button-large ttfmake-add-slide"><?php _e( 'Add New Slide', 'make' ); ?></a>
-	</div>
-
 	<div class="ttfmake-banner-slides">
 		<div class="ttfmake-banner-slides-stage">
 			<?php foreach ( $section_order as $key => $section_id  ) : ?>
