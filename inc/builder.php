@@ -102,12 +102,6 @@ class Spine_Builder_Custom {
 	 */
 	private function get_default_section_args() {
 		$args = array(
-			100 => array(
-				'type'  => 'section_title',
-				'name'  => 'title',
-				'label' => __( 'Enter section title', 'make' ),
-				'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-			),
 			200 => array(
 				'type'    => 'text',
 				'name'    => 'section-classes',
@@ -130,7 +124,6 @@ class Spine_Builder_Custom {
 	 */
 	public function add_builder_sections() {
 		$single_args = $this->get_default_section_args();
-		unset( $single_args[100] );
 		ttfmake_add_section(
 			'wsuwpsingle',
 			'Single',
@@ -254,7 +247,6 @@ class Spine_Builder_Custom {
 		);
 
 		$header_args = $this->get_default_section_args();
-		unset( $header_args[100] );
 		ttfmake_add_section(
 			'wsuwpheader',
 			'Top Level Header',
