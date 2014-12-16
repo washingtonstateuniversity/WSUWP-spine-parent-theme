@@ -594,8 +594,8 @@ class Spine_Builder_Custom {
 					$clean_data['banner-slides'][ $id ]['state'] = ( in_array( $slide['state'], array( 'open', 'closed' ) ) ) ? $slide['state'] : 'open';
 				}
 
-				if ( isset( $slide['spine_slide_url'] ) ) {
-					$clean_data['banner-slides'][ $id ]['slide-url'] = esc_url_raw( $slide['spine_slide_url'] );
+				if ( isset( $slide['slide-url'] ) ) {
+					$clean_data['banner-slides'][ $id ]['slide-url'] = esc_url_raw( $slide['slide-url'] );
 				}
 			}
 		}
