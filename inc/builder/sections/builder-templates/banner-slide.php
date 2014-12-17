@@ -6,9 +6,9 @@
 global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_slide_id;
 $section_name = 'ttfmake-section';
 if ( true === $ttfmake_is_js_template ) {
-    $section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
+	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
 } else {
-    $section_name .= '[' . $ttfmake_section_data['data']['id'] . '][banner-slides][' . $ttfmake_slide_id . ']';
+	$section_name .= '[' . $ttfmake_section_data[ 'data' ][ 'id' ] . '][banner-slides][' . $ttfmake_slide_id . ']';
 }
 
 $content          = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] : '';
@@ -17,92 +17,96 @@ $darken           = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 $image_id         = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] : 0;
 $alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] : 'none';
 $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
+
+// Set up the combined section + slide ID
+$section_id  = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '';
+$combined_id = ( true === $ttfmake_is_js_template ) ? '{{{ parentID }}}-{{{ id }}}' : $section_id . '-' . $ttfmake_slide_id;
+$overlay_id  = 'ttfmake-overlay-' . $combined_id;
 ?>
+
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
-<div class="ttfmake-banner-slide<?php if ( 'open' === $state ) echo ' ttfmake-banner-slide-open'; ?>" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-section-type="banner-slide">
+<div class="ttfmake-banner-slide" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-section-type="banner-slide">
 <?php endif; ?>
-	<div class="ttfmake-banner-slide-header">
-		<h3>
-			<em><?php _e( 'Slide', 'make' ); ?></em>
-		</h3>
-		<a href="#" class="ttfmake-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
-			<div class="handlediv"></div>
-		</a>
+
+	<div title="<?php esc_attr_e( 'Drag-and-drop this slide into place', 'make' ); ?>" class="ttfmake-sortable-handle">
+		<div class="sortable-background"></div>
 	</div>
 
-	<div class="clear"></div>
+	<?php echo ttfmake_get_builder_base()->add_uploader( $section_name, ttfmake_sanitize_image_id( $image_id ), __( 'Set banner image', 'make' ) ); ?>
 
-	<div class="ttfmake-banner-slide-body">
+	<a href="#" class="configure-banner-slide-link ttfmake-banner-slide-configure ttfmake-overlay-open" title="<?php esc_attr_e( 'Configure slide', 'make' ); ?>" data-overlay="#<?php echo $overlay_id; ?>">
+		<span>
+			<?php _e( 'Configure slide', 'make' ); ?>
+		</span>
+	</a>
+	<a href="#" class="edit-content-link edit-banner-slide-link<?php if ( ! empty( $content ) ) : ?> item-has-content<?php endif; ?>" title="<?php esc_attr_e( 'Edit content', 'make' ); ?>" data-textarea="ttfmake-content-<?php echo $combined_id; ?>">
+		<span>
+			<?php _e( 'Edit content', 'make' ); ?>
+		</span>
+	</a>
+	<a href="#" class="remove-banner-slide-link ttfmake-banner-slide-remove" title="<?php esc_attr_e( 'Delete slide', 'make' ); ?>">
+		<span>
+			<?php _e( 'Delete slide', 'make' ); ?>
+		</span>
+	</a>
 
-		<div class="ttfmake-banner-slide-option-wrapper">
-			<h4><?php _e( 'Background image', 'make' ); ?></h4>
+	<?php ttfmake_get_builder_base()->add_frame( $combined_id, $section_name . '[content]', $content, false ); ?>
 
-			<p>
-				<input id="<?php echo $section_name; ?>[darken]" type="checkbox" name="<?php echo $section_name; ?>[darken]" value="1"<?php checked( $darken ); ?> />
-				<label for="<?php echo $section_name; ?>[darken]">
-					<?php _e( 'Darken to improve readability', 'make' ); ?>
-				</label>
-			</p>
+	<?php
+	global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overlay_title;
+	$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
+	$ttfmake_overlay_id    = $overlay_id;
+	$ttfmake_overlay_title = __( 'Configure slide', 'make' );
 
-			<div class="ttfmake-banner-slide-background-color-wrapper">
-				<h4>
-					<label for="<?php echo $section_name; ?>[background-color]"><?php _e( 'Background color', 'make' ); ?></label>
-				</h4>
-				<input id="<?php echo $section_name; ?>[background-color]" type="text" name="<?php echo $section_name; ?>[background-color]" class="ttfmake-banner-slide-background-color" value="<?php echo maybe_hash_hex_color( $background_color ); ?>"/>
-			</div>
+	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
-			<div class="ttfmake-banner-slide-alignment-wrapper">
-				<h4>
-					<label for="<?php echo $section_name; ?>[alignment]"><?php _e( 'Content position', 'make' ); ?></label>
-				</h4>
-				<select id="<?php echo $section_name; ?>[alignment]" name="<?php echo $section_name; ?>[alignment]">
-					<option value="none"<?php selected( 'none', $alignment ); ?>><?php _e( 'None', 'make' ); ?></option>
-					<option value="left"<?php selected( 'left', $alignment ); ?>><?php _e( 'Left', 'make' ); ?></option>
-					<option value="right"<?php selected( 'right', $alignment ); ?>><?php _e( 'Right', 'make' ); ?></option>
-				</select>
-			</div>
+	$inputs = apply_filters( 'make_banner_slide_configuration', array(
+		100 => array(
+			'type'    => 'select',
+			'name'    => 'alignment',
+			'label'   => __( 'Content position', 'make' ),
+			'default' => 'none',
+			'options' => array(
+				'none'  => __( 'None', 'make' ),
+				'left'  => __( 'Left', 'make' ),
+				'right' => __( 'Right', 'make' ),
+			),
+		),
+		200 => array(
+			'type'    => 'checkbox',
+			'label'   => __( 'Darken background to improve readability', 'make' ),
+			'name'    => 'darken',
+			'default' => 0
+		),
+		300 => array(
+			'type'    => 'color',
+			'label'   => __( 'Background color', 'make' ),
+			'name'    => 'background-color',
+			'class'   => 'ttfmake-gallery-background-color ttfmake-configuration-color-picker',
+			'default' => '',
+		),
+	) );
 
-		</div>
+	// Sort the config in case 3rd party code added another input
+	ksort( $inputs, SORT_NUMERIC );
 
-		<div class="ttfmake-banner-slide-background-image-wrapper">
-			<?php
-			ttfmake_get_builder_base()->add_uploader(
-				$section_name,
-				ttfmake_sanitize_image_id( $image_id ),
-				array(
-					'add'    => __( 'Set slide image', 'make' ),
-					'remove' => __( 'Remove slide image', 'make' ),
-					'title'  => __( 'Slide image', 'make' ),
-					'button' => __( 'Use as slide image', 'make' ),
-				)
-			);
-			?>
-		</div>
+	// Print the inputs
+	$output = '';
 
-		<div class="clear"></div>
+	foreach ( $inputs as $input ) {
+		if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
+			$section_data  = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ] : array();
+			$output       .= ttfmake_create_input( $section_name, $input, $section_data );
+		}
+	}
 
-		<h2>
-			<?php _e( 'Slide content overlay', 'make' ); ?>
-		</h2>
+	echo $output;
 
-		<?php
-		$editor_settings = array(
-			'tinymce'       => true,
-			'quicktags'     => true,
-			'textarea_name' => $section_name . '[content]'
-		);
+	get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
+	?>
 
-		if ( true === $ttfmake_is_js_template ) : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfmakeeditorbannerslidetemp', $editor_settings ); ?>
-		<?php else : ?>
-			<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditorbannerslide' . $ttfmake_slide_id, $editor_settings ); ?>
-		<?php endif; ?>
-
-		<a href="#" class="ttfmake-banner-slide-remove">
-			<?php _e( 'Remove this slide', 'make' ); ?>
-		</a>
-	</div>
 	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
-<?php if ( true !== $ttfmake_is_js_template ) : ?>
+
+	<?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
 <?php endif; ?>

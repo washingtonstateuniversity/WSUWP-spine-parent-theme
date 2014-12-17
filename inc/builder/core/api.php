@@ -79,10 +79,21 @@ class TTFMAKE_Sections {
 	 * @param  string    $display_template    Path to the template used for the frontend.
 	 * @param  int       $order               The order in which to display the item.
 	 * @param  string    $path                The path to the template files.
+	 * @param  array     $config              Array of configuration options for the section.
 	 * @return void
 	 */
-	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
-		$this->_sections[ $id ] = array(
+	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path, $config = array() ) {
+		/**
+		 * Allow the added sections to be filtered.
+		 *
+		 * This filters allows for dynamically altering sections as they get added. This can help enforce policies for
+		 * sections by sanitizing the registered values.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $section    The section being added.
+		 */
+		$this->_sections[ $id ] = apply_filters( 'make_add_section', array(
 			'id'               => $id,
 			'label'            => $label,
 			'icon'             => $icon,
@@ -92,7 +103,8 @@ class TTFMAKE_Sections {
 			'display_template' => $display_template,
 			'order'            => $order,
 			'path'             => $path,
-		);
+			'config'           => $config,
+		) );
 	}
 
 	/**
@@ -182,10 +194,11 @@ if ( ! function_exists( 'ttfmake_add_section' ) ) :
  * @param  string    $display_template    Path to the template used for the frontend.
  * @param  int       $order               The order in which to display the item.
  * @param  string    $path                The path to the template files.
+ * @param  array     $config              Array of configuration options for the section.
  * @return void
  */
-function ttfmake_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
-	ttfmake_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path );
+function ttfmake_add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path, $config = array() ) {
+	ttfmake_get_sections_class()->add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path, $config );
 }
 endif;
 

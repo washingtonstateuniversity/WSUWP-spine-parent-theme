@@ -45,6 +45,9 @@ class TTFMAKE_Builder_Base {
 		// Include the API
 		require get_template_directory() . '/inc/builder/core/api.php';
 
+		// Include the configuration helpers
+		require get_template_directory() . '/inc/builder/core/configuration-helpers.php';
+
 		// Add the core sections
 		require get_template_directory() . '/inc/builder/sections/section-definitions.php';
 
@@ -63,7 +66,6 @@ class TTFMAKE_Builder_Base {
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
 		add_action( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 15, 2 );
-		add_action( 'after_wp_tiny_mce', array( $this, 'after_wp_tiny_mce' ) );
 		add_action( 'post_submitbox_misc_actions', array( $this, 'builder_toggle' ) );
 
 		if ( false === ttfmake_is_plus() ) {
@@ -154,6 +156,61 @@ class TTFMAKE_Builder_Base {
 
 		// Print the current sections
 		foreach ( $section_data as $section ) {
+			/**
+			 * In Make 1.4.0, the blank section was deprecated. Any existing blank sections are converted to 1 column,
+			 * text sections.
+			 */
+			if ( isset( $section['section-type'] ) && 'blank' === $section['section-type'] && isset( $registered_sections['text'] ) ) {
+				// Convert the data for the section
+				$content = ( ! empty( $section['content'] ) ) ? $section['content'] : '';
+				$title   = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+				$label   = ( ! empty( $section['label'] ) ) ? $section['label'] : '';
+				$state   = ( ! empty( $section['state'] ) ) ? $section['state'] : 'open';
+				$id      = ( ! empty( $section['id'] ) ) ? $section['id'] : time();
+
+				// Set the data
+				$section = array(
+					'id'             => $id,
+					'state'          => $state,
+					'section-type'   => 'text',
+					'title'          => $title,
+					'label'          => $label,
+					'columns-number' => 1,
+					'columns-order'  => array(
+						0 => 1,
+						1 => 2,
+						2 => 3,
+						3 => 4,
+					),
+					'columns'        => array(
+						1 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => $content,
+							''
+						),
+						2 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => '',
+							''
+						),
+						3 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => '',
+							''
+						),
+						4 => array(
+							'title'    => '',
+							'image-id' => 0,
+							'content'  => '',
+							''
+						),
+					)
+				);
+			}
+
 			if ( isset( $registered_sections[ $section['section-type'] ]['display_template'] ) ) {
 				// Print the saved section
 				$this->load_section( $registered_sections[ $section['section-type'] ], $section );
@@ -202,15 +259,6 @@ class TTFMAKE_Builder_Base {
 			'backbone',
 		);
 
-		// Only load full scripts for WordPress.com and those with SCRIPT_DEBUG set to true
-		wp_register_script(
-			'ttfmake-builder/js/tinymce.js',
-			get_template_directory_uri() . '/inc/builder/core/js/tinymce.js',
-			array(),
-			TTFMAKE_VERSION,
-			true
-		);
-
 		wp_register_script(
 			'ttfmake-builder/js/models/section.js',
 			get_template_directory_uri() . '/inc/builder/core/js/models/section.js',
@@ -243,29 +291,48 @@ class TTFMAKE_Builder_Base {
 			true
 		);
 
+		wp_register_script(
+			'ttfmake-builder/js/views/overlay.js',
+			get_template_directory_uri() . '/inc/builder/core/js/views/overlay.js',
+			array(),
+			TTFMAKE_VERSION,
+			true
+		);
+
+		/**
+		 * Filter the dependencies for the Make builder JS.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $dependencies    The list of dependencies.
+		 */
+		$dependencies = apply_filters(
+			'ttfmake_builder_js_dependencies',
+			array_merge(
+				$dependencies,
+				array(
+					'ttfmake-builder/js/models/section.js',
+					'ttfmake-builder/js/collections/sections.js',
+					'ttfmake-builder/js/views/menu.js',
+					'ttfmake-builder/js/views/section.js',
+					'ttfmake-builder/js/views/overlay.js',
+				)
+			)
+		);
+
 		wp_enqueue_script(
 			'ttfmake-builder',
 			get_template_directory_uri() . '/inc/builder/core/js/app.js',
-			apply_filters(
-				'ttfmake_builder_js_dependencies',
-				array_merge(
-					$dependencies,
-					array(
-						'ttfmake-builder/js/tinymce.js',
-						'ttfmake-builder/js/models/section.js',
-						'ttfmake-builder/js/collections/sections.js',
-						'ttfmake-builder/js/views/menu.js',
-						'ttfmake-builder/js/views/section.js',
-					)
-				)
-			),
+			$dependencies,
 			TTFMAKE_VERSION,
 			true
 		);
 
 		// Add data needed for the JS
 		$data = array(
-			'pageID' => get_the_ID(),
+			'pageID'        => get_the_ID(),
+			'postRefresh'   => true,
+			'confirmString' => __( 'Delete the section?', 'make' ),
 		);
 
 		wp_localize_script(
@@ -328,8 +395,22 @@ class TTFMAKE_Builder_Base {
 		if ( ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			if ( 'post-new.php' === $pagenow || ( 'post.php' === $pagenow && ttfmake_is_builder_page() ) ) {
 				$classes .= ' ttfmake-builder-active';
+
+				// Add a class to denote Make Plus
+				if ( ttfmake_is_plus() ) {
+					$classes .= ' make-plus-enabled';
+				} else {
+					$classes .= ' make-plus-disabled';
+				}
 			} else {
 				$classes .= ' ttfmake-default-active';
+			}
+
+			// Add a class to denote Make Plus
+			if ( ttfmake_is_plus() ) {
+				$classes .= ' make-plus-enabled';
+			} else {
+				$classes .= ' make-plus-disabled';
 			}
 		}
 
@@ -343,38 +424,60 @@ class TTFMAKE_Builder_Base {
 	 *
 	 * @param  string    $section_name    Name of the current section.
 	 * @param  int       $image_id        ID of the current image.
-	 * @param  array     $messages        Message to show.
-	 * @return void
+	 * @param  string    $title           Title for the media modal.
+	 * @return string                     Either return the string or echo it.
 	 */
-	public function add_uploader( $section_name, $image_id = 0, $messages = array() ) {
-		$image        = ttfmake_get_image( $image_id, 'large' );
-		$add_state    = ( '' === $image ) ? 'ttfmake-show' : 'ttfmake-hide';
-		$remove_state = ( '' === $image ) ? 'ttfmake-hide' : 'ttfmake-show';
-
-		// Set default messages. Note that the theme textdomain is not used in some cases
-		// because the strings are core i18ns
-		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image', 'make' )    : $messages['add'];
-		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image', 'make' ) : $messages['remove'];
-		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
-		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
+	public function add_uploader( $section_name, $image_id = 0, $title = '' ) {
+		$image = ttfmake_get_image_src( $image_id, 'large' );
+		$title = ( ! empty( $title ) ) ? $title : __( 'Set image', 'make' );
+		ob_start();
 		?>
-		<div class="ttfmake-uploader">
-			<div class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add">
-				<?php if ( '' !== $image ) : ?>
-					<?php echo $image; ?>
-				<?php endif; ?>
-			</div>
-			<div class="ttfmake-media-link-wrap">
-				<a href="#" class="ttfmake-media-uploader-add ttfmake-media-uploader-set-link <?php echo $add_state; ?>" data-title="<?php echo esc_attr( $messages['title'] ); ?>" data-button-text="<?php echo esc_attr( $messages['button'] ); ?>">
-					<?php echo $messages['add']; ?>
-				</a>
-				<a href="#" class="ttfmake-media-uploader-remove <?php echo $remove_state; ?>">
-					<?php echo $messages['remove']; ?>
-				</a>
-			</div>
+		<div class="ttfmake-uploader<?php if ( ! empty( $image[0] ) ) : ?> ttfmake-has-image-set<?php endif; ?>">
+			<div data-title="<?php echo esc_attr( $title ); ?>" class="ttfmake-media-uploader-placeholder ttfmake-media-uploader-add"<?php if ( ! empty( $image[0] ) ) : ?> style="background-image: url(<?php echo addcslashes( esc_url_raw( $image[0] ), '"' ); ?>);"<?php endif; ?>></div>
 			<input type="hidden" name="<?php echo esc_attr( $section_name ); ?>[image-id]" value="<?php echo ttfmake_sanitize_image_id( $image_id ); ?>" class="ttfmake-media-uploader-value" />
 		</div>
 	<?php
+		$output = ob_get_clean();
+		return $output;
+	}
+
+	/**
+	 * Create an iframe preview area that is connected to a TinyMCE modal window.
+	 *
+	 * @since  1.4.0.
+	 *
+	 * @param  string    $id               The unique ID to identify the different areas.
+	 * @param  string    $textarea_name    The name of the textarea.
+	 * @param  string    $content          The content for the text area.
+	 * @param  bool      $iframe           Whether or not to add an iframe to preview content.
+	 * @return void
+	 */
+	public function add_frame( $id, $textarea_name, $content = '', $iframe = true ) {
+		global $ttfmake_is_js_template;
+		$iframe_id   = 'ttfmake-iframe-' . $id;
+		$textarea_id = 'ttfmake-content-' . $id;
+	?>
+		<?php if ( true === $iframe ) : ?>
+		<div class="ttfmake-iframe-wrapper">
+			<div class="ttfmake-iframe-overlay">
+				<a href="#" class="edit-content-link" data-textarea="<?php echo esc_attr( $textarea_id ); ?>" data-iframe="<?php echo esc_attr( $iframe_id ); ?>">
+					<span class="screen-reader-text">
+						<?php _e( 'Edit content', 'make' ); ?>
+					</span>
+				</a>
+			</div>
+			<iframe width="100%" height="300" id="<?php echo esc_attr( $iframe_id ); ?>" scrolling="no"></iframe>
+		</div>
+		<?php endif; ?>
+
+		<textarea id="<?php echo esc_attr( $textarea_id ); ?>" name="<?php echo esc_attr( $textarea_name ); ?>" style="display:none;"><?php echo esc_textarea( $content ); ?></textarea>
+
+		<?php if ( true !== $ttfmake_is_js_template && true === $iframe ) : ?>
+		<script type="text/javascript">
+			var ttfMakeFrames = ttfMakeFrames || [];
+			ttfMakeFrames.push('<?php echo esc_js( $id ); ?>');
+		</script>
+		<?php endif;
 	}
 
 	/**
@@ -400,8 +503,8 @@ class TTFMAKE_Builder_Base {
 
 		// Include the template
 		ttfmake_load_section_template(
-			$section['builder_template'],
-			$section['path']
+			$ttfmake_section_data['section']['builder_template'],
+			$ttfmake_section_data['section']['path']
 		);
 
 		// Destroy the variable as a good citizen does
@@ -425,29 +528,33 @@ class TTFMAKE_Builder_Base {
 		}
 
 		// Print the templates
-		foreach ( ttfmake_get_sections() as $key => $section ) : ?>
+		foreach ( ttfmake_get_sections() as $section ) : ?>
 			<script type="text/html" id="tmpl-ttfmake-<?php echo esc_attr( $section['id'] ); ?>">
 			<?php
 			ob_start();
 			$this->load_section( $section, array() );
 			$html = ob_get_clean();
-
-			$html = str_replace(
-				array(
-					'temp',
-				),
-				array(
-					'{{{ id }}}',
-				),
-				$html
-			);
-
 			echo $html;
 			?>
 		</script>
 		<?php endforeach;
 
 		unset( $GLOBALS['ttfmake_is_js_template'] );
+
+		// Load the overlay for TinyMCE
+		get_template_part( '/inc/builder/core/templates/overlay', 'tinymce' );
+
+		// Print the template for removing images
+		?>
+			<script type="text/html" id="tmpl-ttfmake-remove-image">
+				<div class="ttfmake-remove-current-image">
+					<h3><?php _e( 'Current image', 'make' ); ?></h3>
+					<a href="#" class="ttfmake-remove-image-from-modal">
+						<?php _e( 'Remove Current Image', 'make' ); ?>
+					</a>
+				</div>
+			</script>
+		<?php
 	}
 
 	/**
@@ -557,26 +664,6 @@ class TTFMAKE_Builder_Base {
 		}
 
 		return $mce_init;
-	}
-
-	/**
-	 * Denote the default editor for the user.
-	 *
-	 * Note that it would usually be ideal to expose this via a JS variable using wp_localize_script; however, it is
-	 * being printed here in order to guarantee that nothing changes this value before it would otherwise be printed.
-	 * The "after_wp_tiny_mce" action appears to be the most reliable place to print this variable.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  array    $settings   TinyMCE settings.
-	 * @return void
-	 */
-	public function after_wp_tiny_mce( $settings ) {
-		?>
-		<script type="text/javascript">
-			var ttfmakeMCE = '<?php echo esc_js( wp_default_editor() ); ?>';
-		</script>
-	<?php
 	}
 
 	/**
@@ -692,7 +779,16 @@ function ttfmake_will_be_builder_page() {
 	$template    = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
 	$use_builder = isset( $_POST['use-builder'] ) ? (int) isset( $_POST['use-builder'] ) : 0;
 
-	return ( 'template-builder.php' === $template || 1 === $use_builder );
+	/**
+	 * Allow developers to dynamically change the builder page status.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param bool      $will_be_builder_page    Whether or not this page will be a builder page.
+	 * @param string    $template                The template name.
+	 * @param int       $use_builder             Value of the "use-builder" input. 1 === use builder. 0 === do not use builder.
+	 */
+	return apply_filters( 'make_will_be_builder_page', ( 'template-builder.php' === $template || 1 === $use_builder ), $template, $use_builder );
 }
 endif;
 
@@ -707,6 +803,20 @@ if ( ! function_exists( 'ttfmake_load_section_header' ) ) :
 function ttfmake_load_section_header() {
 	global $ttfmake_section_data;
 	get_template_part( 'inc/builder/core/templates/section', 'header' );
+
+	/**
+	 * Allow for script execution in the header of a builder section.
+	 *
+	 * This action is a variable action that allows a developer to hook into specific section types (e.g., 'text'). Do
+	 * not confuse "id" in this context as the individual section id (e.g., 14092814910).
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $ttfmake_section_data    The array of data for the section.
+	 */
+	do_action( 'make_section_' . $ttfmake_section_data['section']['id'] . '_before', $ttfmake_section_data );
+
+	// Backcompat
 	do_action( 'ttfmake_section_' . $ttfmake_section_data['section']['id'] . '_before', $ttfmake_section_data );
 }
 endif;
@@ -722,6 +832,20 @@ if ( ! function_exists( 'ttfmake_load_section_footer' ) ) :
 function ttfmake_load_section_footer() {
 	global $ttfmake_section_data;
 	get_template_part( 'inc/builder/core/templates/section', 'footer' );
+
+	/**
+	 * Allow for script execution in the footer of a builder section.
+	 *
+	 * This action is a variable action that allows a developer to hook into specific section types (e.g., 'text'). Do
+	 * not confuse "id" in this context as the individual section id (e.g., 14092814910).
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $ttfmake_section_data    The array of data for the section.
+	 */
+	do_action( 'make_section_' . $ttfmake_section_data['section']['id'] . '_after', $ttfmake_section_data );
+
+	// Backcompat
 	do_action( 'ttfmake_section_' . $ttfmake_section_data['section']['id'] . '_after', $ttfmake_section_data );
 }
 endif;
@@ -733,21 +857,29 @@ if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
  *
  * @since  1.0.4.
  *
- * @param  string    $slug    The relative path and filename (w/out suffix) required
- *                            to substitute the template in a child theme.
- * @param  string    $path    An optional path extension to point to the template in
- *                            the parent theme or a plugin.
- * @return string
+ * @param  string    $slug    The relative path and filename (w/out suffix) required to substitute the template in a child theme.
+ * @param  string    $path    An optional path extension to point to the template in the parent theme or a plugin.
+ * @return string             The template filename if one is located.
  */
 function ttfmake_load_section_template( $slug, $path ) {
-	$located = '';
-
 	$templates = array(
 		$slug . '.php',
 		trailingslashit( $path ) . $slug . '.php'
 	);
+
+	/**
+	 * Filter the templates to try and load.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param array    $templates    The list of template to try and load.
+	 * @param string   $slug         The template slug.
+	 * @param string   $path         The path to the template.
+	 */
+	$templates = apply_filters( 'make_load_section_template', $templates, $slug, $path );
+
 	if ( '' === $located = locate_template( $templates, true, false ) ) {
-		if ( file_exists( $templates[1] ) ) {
+		if ( isset( $templates[1] ) && file_exists( $templates[1] ) ) {
 			require( $templates[1] );
 			$located = $templates[1];
 		}
@@ -776,7 +908,16 @@ function ttfmake_get_wp_editor_id( $data, $is_js_template ) {
 		$id = $id_base . $data['data']['id'];
 	}
 
-	return $id;
+	/**
+	 * Alter the wp_editor ID.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $id                The ID for the editor.
+	 * @param array     $data              The section data.
+	 * @param bool      $is_js_template    Whether or not this is in the context of a JS template.
+	 */
+	return apply_filters( 'make_get_wp_editor_id', $id, $data, $is_js_template );
 }
 endif;
 
@@ -799,22 +940,16 @@ function ttfmake_get_section_name( $data, $is_js_template ) {
 		$name .= '[' . $data['data']['id'] . ']';
 	}
 
-	return $name;
-}
-endif;
-
-if ( ! function_exists( 'ttfmake_sanitize_text' ) ) :
-/**
- * Allow only the allowedtags array in a string.
- *
- * @since  1.0.0.
- *
- * @param  string    $string    The unsanitized string.
- * @return string               The sanitized string.
- */
-function ttfmake_sanitize_text( $string ) {
-	global $allowedtags;
-	return wp_kses( $string , $allowedtags );
+	/**
+	 * Alter section name.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $name              The name of the section.
+	 * @param array     $data              The section data.
+	 * @param bool      $is_js_template    Whether or not this is in the context of a JS template.
+	 */
+	return apply_filters( 'make_get_section_name', $name, $data, $is_js_template );
 }
 endif;
 
@@ -832,17 +967,28 @@ if ( ! function_exists( 'ttfmake_get_image' ) ) :
  * @return string                 HTML for the image. Empty string if image cannot be produced.
  */
 function ttfmake_get_image( $image_id, $size ) {
+	$return = '';
+
 	if ( false === strpos( $image_id, 'x' ) ) {
-		return wp_get_attachment_image( $image_id, $size );
+		$return = wp_get_attachment_image( $image_id, $size );
 	} else {
 		$image = ttfmake_get_placeholder_image( $image_id );
 
 		if ( ! empty( $image ) && isset( $image['src'] ) && isset( $image['alt'] ) && isset( $image['class'] ) && isset( $image['height'] ) && isset( $image['width'] ) ) {
-			return '<img src="' . $image['src'] . '" alt="' . $image['alt'] . '" class="' . $image['class'] . '" height="' . $image['height'] . '" width="' . $image['width'] . '" />';
-		} else {
-			return '';
+			$return = '<img src="' . $image['src'] . '" alt="' . $image['alt'] . '" class="' . $image['class'] . '" height="' . $image['height'] . '" width="' . $image['width'] . '" />';
 		}
 	}
+
+	/**
+	 * Filter the image HTML.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $return      The image HTML.
+	 * @param int       $image_id    The ID for the image.
+	 * @param bool      $size        The requested image size.
+	 */
+	return apply_filters( 'make_get_image', $return, $image_id, $size );
 }
 endif;
 
@@ -878,7 +1024,16 @@ function ttfmake_get_image_src( $image_id, $size ) {
 		}
 	}
 
-	return $src;
+	/**
+	 * Filter the image source attributes.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $src         The image source attributes.
+	 * @param int       $image_id    The ID for the image.
+	 * @param bool      $size        The requested image size.
+	 */
+	return apply_filters( 'make_get_image_src', $src, $image_id, $size );
 }
 endif;
 
@@ -895,12 +1050,22 @@ if ( ! function_exists( 'ttfmake_get_placeholder_image' ) ) :
  */
 function ttfmake_get_placeholder_image( $image_id ) {
 	global $ttfmake_placeholder_images;
+	$return = array();
 
 	if ( isset( $ttfmake_placeholder_images[ $image_id ] ) ) {
-		return $ttfmake_placeholder_images[ $image_id ];
-	} else {
-		return array();
+		$return = $ttfmake_placeholder_images[ $image_id ];
 	}
+
+	/**
+	 * Filter the image source attributes.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param string    $return                        The image source attributes.
+	 * @param int       $image_id                      The ID for the image.
+	 * @param bool      $ttfmake_placeholder_images    The list of placeholder images.
+	 */
+	return apply_filters( 'make_get_placeholder_image', $return, $image_id, $ttfmake_placeholder_images );
 }
 endif;
 

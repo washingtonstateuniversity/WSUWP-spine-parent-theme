@@ -1,73 +1,41 @@
-/*---------------------------------------------------------
- Text and Gallery section (html-builder.css)
--------------------------------------------------------- */
-.wsuwp-spine-builder-column{
-	margin-bottom: 40px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-@media screen and ( min-width: 1160px ) {
-	.wsuwp-spine-builder-column {
-		margin-bottom: 0; /*reset*/
-	}
+.ttfmake-column-title {
+	height: 40px;
 }
 
-/*---------------------------------------------------------
- Text and Gallery: Two column (html-builder.css)
--------------------------------------------------------- */
-.wsuwp-spine-builder-column .wsuwp-spine-builder-column-position-2,
-.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
-	display: none;
-}
-@media screen and ( min-width: 1160px ) {
-	.wsuwp-spine-builder-column {
-		width: 100%;
-		float: left;
-		padding: 0 10px;
-	}
+.ttfmake-column-title input {
+	height: 38px;
+	width: 100%;
+	margin: 0;
 }
 
-.wsuwp-spine-builder-column {
+.spine-builder-layout-single .ttfmake-titlewrap {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.spine-builder-layout-single .ttfmake-iframe-wrapper {
 	width: 100%;
 }
 
-.builder-advanced-controls {
-	display: none;
+.configure-banner-slide-link, .configure-column-link,
+.remove-banner-slide-link,
+.make-plus-disabled .configure-column-link,
+.make-plus-disabled .edit-content-link {
+	top: 0;
 }
 
-.wsuwp-builder-meta label {
-	font-weight: 700;
-	line-height: 2rem;
+.spine-builder-layout-single .edit-content-link {
+	right: 0;
 }
 
-.wsuwp-builder-meta {
-	margin-top: 10px;
+.spine-builder-layout-single .configure-column-link {
+	right: 45px;
 }
 
-.wsuwp-builder-column-title {
-	width: 150px;
-	margin: 0 auto;
-	background: #fefefe;
-	text-align: center;
-	color: #111;
-	font-size: 13px;
-	line-height: 14px;
+.sortable-background {
+	height: 38px;
 }
 
-.wsuwp-column-toggle .handlediv {
-	background: #fefefe;
-	width: 27px;
-	height: 14px;
-}
-
-.js .meta-box-sortables .postbox .wsuwp-column-toggle .handlediv:before {
-	padding-top: 0;
-	margin-top: -2px;
-	padding-left: 17px;
-	color: #333;
-}
-
-.js .meta-box-sortables .postbox .wsuwp-column-toggle .wsuwp-toggle-closed:before {
-	content: '\f140';
+.ttfmake-sortable-handle {
+	height: 40px;
 }

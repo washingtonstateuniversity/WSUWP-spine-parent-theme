@@ -19,8 +19,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-section-remove': 'removeSection',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
-			'click .ttfmake-media-uploader-remove': 'removeImage',
-			'click .wp-switch-editor': 'adjustEditorHeightOnClick'
+			'click .edit-content-link': 'openTinyMCEOverlay',
+			'click .ttfmake-overlay-open': 'openConfigurationOverlay',
+			'click .ttfmake-overlay-close': 'closeConfigurationOverlay'
 		},
 
 		initialize: function (options) {
@@ -71,6 +72,12 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 
 		removeSection: function (evt) {
 			evt.preventDefault();
+
+			// Confirm the action
+			if (false === window.confirm(ttfmakeBuilderData.confirmString)) {
+				return;
+			}
+
 			oneApp.removeOrderValue(this.model.get('id'), oneApp.cache.$sectionOrder);
 
 			// Fade and slide out the section, then cleanup view and reset stage on complete
@@ -84,7 +91,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			}.bind(this));
 		},
 
-		constructHeader: function () {
+		constructHeader: function (evt) {
 			if ('' === this.$headerTitle) {
 				this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
 			}
@@ -122,6 +129,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				frame = frame || {},
 				props, image;
 
+			oneApp.$currentPlaceholder = $placeholder;
+
 			// If the media frame already exists, reopen it.
 			if ('function' === typeof frame.open) {
 				frame.open();
@@ -131,6 +140,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			// Create the media frame.
 			frame = wp.media.frames.frame = wp.media({
 				title: $this.data('title'),
+				className: 'media-frame ttfmake-builder-uploader',
 				button: {
 					text: $this.data('buttonText')
 				},
@@ -151,13 +161,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					attachment
 				);
 
-				// The URL property is blank, so complete it
-				props.url = attachment.url;
-
-				image = wp.media.string.image( props );
-
 				// Show the image
-				$placeholder.html(image);
+				$placeholder.css('background-image', 'url(' + attachment.url + ')');
+				$parent.addClass('ttfmake-has-image-set');
 
 				// Record the chosen value
 				$input.val(attachment.id);
@@ -173,30 +179,60 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			frame.open();
 		},
 
-		removeImage: function (evt) {
+		openTinyMCEOverlay: function (evt) {
+			evt.preventDefault();
+			oneApp.tinymceOverlay.open();
+
+			var $target = $(evt.target),
+				iframeID = ($target.attr('data-iframe')) ? $target.attr('data-iframe') : '',
+				textAreaID = $target.attr('data-textarea');
+
+			oneApp.setMakeContentFromTextArea(iframeID, textAreaID);
+		},
+
+		openConfigurationOverlay: function (evt) {
+			evt.preventDefault();
+
+			var self = this,
+				$this = $(evt.target),
+				$overlay = $($this.attr('data-overlay')),
+				$wrapper = $('.ttfmake-overlay-wrapper', $overlay);
+
+			$overlay.show(1, function(){
+				$('.wp-color-result', $overlay).click().off('click');
+				$( 'body' ).off( 'click.wpcolorpicker' );
+				self.setSize($overlay, $wrapper);
+				$overlay.find('input,select').filter(':first').focus();
+			});
+
+			$oneApp.trigger('ttfOverlayOpened', [this.model.get('sectionType'), $overlay]);
+		},
+
+		setSize: function($overlay, $wrapper) {
+			var $body = $('.ttfmake-overlay-body', $wrapper),
+				bodyHeight = $body.height(),
+				wrapperHeight;
+
+			wrapperHeight =
+				parseInt(bodyHeight, 10) + // Body height
+					20 + // Bottom padding
+					30 + // Button height
+					37; // Header height
+
+			$wrapper
+				.height(wrapperHeight)
+				.css({
+					'margin-top': -1 * parseInt(wrapperHeight/2, 10) + 'px'
+				})
+		},
+
+		closeConfigurationOverlay: function (evt) {
 			evt.preventDefault();
 
 			var $this = $(evt.target),
-				$parent = $this.parents('.ttfmake-uploader'),
-				$placeholder = $('.ttfmake-media-uploader-placeholder', $parent),
-				$input = $('.ttfmake-media-uploader-value', $parent),
-				$set = $('.ttfmake-media-uploader-add', $parent);
+				$overlay = $this.parents('.ttfmake-overlay');
 
-			// Remove the image
-			$placeholder.empty();
-
-			// Remove the value from the input
-			$input.removeAttr('value');
-
-			// Hide the remove link
-			$this.hide();
-
-			// Show the set link
-			$set.show();
-		},
-
-		adjustEditorHeightOnClick: function (evt) {
-			oneApp.adjustEditorHeightOnClick(evt);
+			$overlay.hide();
 		}
 	});
 })(window, Backbone, jQuery, _, oneApp, $oneApp);

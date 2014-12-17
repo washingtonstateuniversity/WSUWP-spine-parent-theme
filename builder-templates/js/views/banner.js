@@ -43,6 +43,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		},
 
 		getParentID: function() {
+
 			var idAttr = this.$el.attr('id'),
 				id = idAttr.replace('ttfmake-section-', '');
 
