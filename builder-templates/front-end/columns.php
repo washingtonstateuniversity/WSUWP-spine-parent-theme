@@ -25,6 +25,8 @@ if ( 'wsuwpsidebarright' === $section_type || 'wsuwpsidebarleft' === $section_ty
 	$section_layout = 'halves';
 } elseif ( 'wsuwpquarters' === $section_type ) {
 	$section_layout = 'quarters';
+} else {
+	$section_layout = '';
 }
 
 if ( $section_wrapper_classes ) {
