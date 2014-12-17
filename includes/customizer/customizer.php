@@ -122,6 +122,31 @@ function spine_customize_register( $wp_customize ){
 			'fluid'  => 'Fluid'
 		),
 	));
+	
+	// Signature
+	$wp_customize->add_setting('spine_options[campus_location]', array(
+		'default'        => '',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+	));
+
+	$wp_customize->add_control('campus_location', array(
+		'label'      => __('Signature', 'spine'),
+		'section'    => 'section_spine_options',
+		'settings'   => 'spine_options[campus_location]',
+		'type'       => 'select',
+		'choices'    => array(
+			''  => 'Select Campus/Location',
+			'spokane' => 'Spokane',
+			'tricities' => 'Tri-Cities',
+			'vancouver' => 'Vancouver',
+			'globalcampus' => 'Global Campus',
+			'extension' => 'Extension',
+			// 'everett' => 'Everett',
+			// 'healthsciences-spokane' => 'Health Sciences Spokane',
+			// 'healthsciences' => 'Health Sciences'
+		),
+	));
 
 	// Spine Color
 	$wp_customize->add_setting('spine_options[spine_color]', array(
@@ -239,7 +264,7 @@ function spine_customize_register( $wp_customize ){
 
 	$wp_customize->add_setting('spine_options[contact_department]', array( 'default' => '', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('contact_department', array( 'label' => 'Your Unit (Dep., College, etc.)', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_department]', 'priority' => 405 ));
-	
+
 	$wp_customize->add_setting('spine_options[contact_url]', array( 'default' => '', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('contact_url', array( 'label' => 'Your Unit URL (Optional)', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_url]', 'priority' => 406 ));
 
