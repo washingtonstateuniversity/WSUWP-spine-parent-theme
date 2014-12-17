@@ -138,12 +138,13 @@ function spine_customize_register( $wp_customize ){
 		'choices'    => array(
 			''  => 'Select Campus/Location',
 			'spokane' => 'Spokane',
-			'spokane-healthsciences' => 'Spokane Health Sciences',
 			'tricities' => 'Tri-Cities',
 			'vancouver' => 'Vancouver',
 			'global' => 'Global Campus',
 			'extension' => 'Extension',
-			'everett' => 'Everett'
+			// 'everett' => 'Everett',
+			'healthsciences-spokane' => 'Health Sciences Spokane',
+			'healthsciences' => 'Health Sciences'
 		),
 	));
 
