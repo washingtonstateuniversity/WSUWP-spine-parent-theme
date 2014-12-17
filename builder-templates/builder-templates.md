@@ -16,7 +16,11 @@ These are used when saving pages to compile the final content that will be store
 
 ## Default Templates
 
-* Side Left
-* Side Right
+* H1 Header
 * Single
+* Side Left (`side-left` or `margin-left` layouts)
+* Side Right (`side-right` or `margin-right` layouts)
 * Halves
+* Thirds (`thirds` or `triptych` layouts)
+* Quarters
+* Banner (Slideshow)
