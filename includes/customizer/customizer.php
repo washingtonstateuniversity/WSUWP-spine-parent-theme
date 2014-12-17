@@ -261,10 +261,10 @@ function spine_customize_register( $wp_customize ){
 		'priority' => 315,
 		'description'    => __( 'This is the official contact for your website.' ),
 	));
-	
+
 	$wp_customize->add_setting('spine_options[contact_department]', array( 'default' => '', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('contact_department', array( 'label' => 'Your Unit (Dep., College, etc.)', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_department]', 'priority' => 405 ));
-	
+
 	$wp_customize->add_setting('spine_options[contact_url]', array( 'default' => '', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('contact_url', array( 'label' => 'Your Unit URL (Optional)', 'section' => 'section_spine_contact', 'settings' => 'spine_options[contact_url]', 'priority' => 406 ));
 
