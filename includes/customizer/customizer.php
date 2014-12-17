@@ -140,7 +140,7 @@ function spine_customize_register( $wp_customize ){
 			'spokane' => 'Spokane',
 			'tricities' => 'Tri-Cities',
 			'vancouver' => 'Vancouver',
-			'global' => 'Global Campus',
+			'globalcampus' => 'Global Campus',
 			'extension' => 'Extension',
 			// 'everett' => 'Everett',
 			'healthsciences-spokane' => 'Health Sciences Spokane',
