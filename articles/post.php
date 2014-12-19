@@ -22,8 +22,10 @@
 		<div class="article-summary">
 			<?php
 
-			if ( has_post_thumbnail() ) {
-				?><figure class="article-thumbnail"><?php the_post_thumbnail( array( 132, 132, true ) ); ?></figure><?php
+			if ( spine_has_thumbnail_image() ) {
+				?><figure class="article-thumbnail"><?php spine_the_thumbnail_image(); ?></figure><?php
+			} elseif ( spine_has_featured_image() ) {
+				?><figure class="article-thumbnail"><?php the_post_thumbnail( 'spine-thumbnail_size' ); ?></figure><?php
 			}
 
 			// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
