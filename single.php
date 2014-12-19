@@ -13,7 +13,7 @@ if ( spine_has_background_image() ) {
 
 <?php get_template_part('parts/headers'); ?>
 
-<?php if ( spine_has_featured_image() ) : ?> 
+<?php if ( spine_has_featured_image() ) : ?>
 <?php $featured_image_src = spine_get_featured_image_src(); ?>
 <figure class="featured-image" style="background-image: url('<?php echo $featured_image_src ?>');">
 	<?php spine_the_featured_image(); ?>
@@ -30,7 +30,7 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 <footer class="main-footer">
 	<section class="row halves pager prevnext gutter">
 		<div class="column one">
-			<?php previous_post_link(); ?> 
+			<?php previous_post_link(); ?>
 		</div>
 		<div class="column two">
 			<?php next_post_link(); ?>

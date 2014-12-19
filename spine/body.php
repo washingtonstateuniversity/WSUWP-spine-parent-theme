@@ -20,7 +20,7 @@ if ( true == spine_get_option( 'crop' ) && is_front_page() ) {
 		<?php get_template_part( 'spine/offsite-navigation' ); ?>
 
 	</section>
-		
+
 <?php get_template_part( 'spine/footer' ); ?>
 
 </div><!--/glue-->

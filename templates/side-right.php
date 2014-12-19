@@ -12,18 +12,18 @@
 <section class="row side-right gutter pad-ends">
 
 	<div class="column one">
-	
+
 		<?php get_template_part('articles/article'); ?>
-		
+
 	</div><!--/column-->
-	
+
 	<div class="column two">
-		
-		<?php 
+
+		<?php
 		$column = get_post_meta( get_the_ID(), 'column-two', true );
 		if( ! empty( $column ) ) { echo $column; }
 		?>
-		
+
 	</div>
 
 </section>

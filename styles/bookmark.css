@@ -62,18 +62,18 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 /* Open Sans */
 .opensansy .main-header sup {
 	font-size: 1rem;
-	font-weight: normal;	
+	font-weight: normal;
 	}
 .opensansy .main-header sub {
 	font-size: 2rem;
 	font-weight: normal;
 	}
-	
+
 /* Articles */
 .page h1.article-title {
 	font-weight: normal;
 	font-size: 2.5rem;
-	}	
+	}
 aside header {
 	font-weight: bold;
 	}
@@ -165,7 +165,7 @@ main {
 	position: relative;
 	}
 
-	
+
 /* Widgets */
 aside[class^="widget"] header {
 	padding-bottom: .3rem;
@@ -201,7 +201,7 @@ aside[class^="widget"] ul li {
 .colors-gray .main-header {
 	background: #5e6a71;
 	}
-	
+
 /* Tables */
 
 body main .tablepress td,
@@ -217,7 +217,7 @@ body main .tablepress th ~ th {
 .tablepress tfoot th {
 	border-top-color: #d7dadb;
 	}
-	
+
 .tablepress thead tr th {
 	background: rgba(215,218,219,1);
 	}
@@ -303,7 +303,7 @@ main .tablepress .row-hover tr:hover td {
 .dataTables_wrapper .tablepress .sorting_desc {
 	background: #b5babe;
 	}
-	
+
 .dataTables_wrapper .paginate_disabled_next::after,
 .dataTables_wrapper .paginate_disabled_previous::before,
 .dataTables_wrapper .paginate_enabled_next::after,
@@ -318,4 +318,4 @@ main .tablepress .row-hover tr:hover td {
 	color: #981e32;
 	}
 
-	
+

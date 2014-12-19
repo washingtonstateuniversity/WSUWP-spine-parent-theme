@@ -7,13 +7,13 @@
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<title><?php echo esc_html( spine_get_title() ); ?></title>
-	
+
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
-	
+
 	<!-- RESPOND -->
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
-	
+
 	<!-- DOCS -->
 	<link type="text/plain" rel="author" href="//repo.wsu.edu/spine/1/authors.txt" />
 	<link type="text/html" rel="help" href="http://brand.wsu.edu/media/web" />

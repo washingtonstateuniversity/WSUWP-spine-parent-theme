@@ -14,7 +14,7 @@
 	<div class="column one">
 
 		<?php get_template_part('articles/article'); ?>
-		
+
 	</div><!--/column-->
 
 </section>

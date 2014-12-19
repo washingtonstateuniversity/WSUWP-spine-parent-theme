@@ -12,14 +12,14 @@
 <section class="row halves gutter pad-ends">
 
 	<div class="column one">
-	
+
 		<?php get_template_part('articles/article'); ?>
-		
+
 	</div><!--/column-->
-	
+
 	<div class="column two">
-	
-	
+
+
 	</div>
 
 </section>

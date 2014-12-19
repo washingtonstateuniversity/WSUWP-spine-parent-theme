@@ -6,7 +6,7 @@
 </div><!--/jacket-->
 <?php get_template_part('parts/after-jacket'); ?>
 
-<?php get_template_part('parts/contact'); ?> 
+<?php get_template_part('parts/contact'); ?>
 
 <?php wp_footer(); ?>
 
