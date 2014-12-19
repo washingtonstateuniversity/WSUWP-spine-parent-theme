@@ -22,7 +22,7 @@ main {
 	background-repeat: no-repeat;
 	background-position: left top;
 	}
-	
+
 .opensansy main {
 	font-family: 'Open Sans', 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
 	}
@@ -36,7 +36,7 @@ figure {
 figcaption {
 	padding: 5px 0;
 	}
-	
+
 .alignleft {
 	float: left;
 	margin: 0 1em 1em 0;
@@ -166,7 +166,7 @@ dl dd {
 	display: inline-block;
 	padding-right: .3em;
 	}
-	
+
 /* Article Headers */
 
 .h1-header + section.pad-top .column,

@@ -485,7 +485,7 @@ add_filter( 'body_class','spine_theme_images_classes' );
  * @return array Modified list of body classes.
  */
 function spine_theme_images_classes( $classes ) {
-	
+
 	if ( spine_has_background_image() && is_singular() ) { $classes[] = 'has-background-image'; }
 	if ( spine_has_featured_image() && is_singular() ) { $classes[] = 'has-featured-image'; }
 	if ( spine_has_thumbnail_image() && is_singular() ) { $classes[] = 'has-thumbnail-image'; }

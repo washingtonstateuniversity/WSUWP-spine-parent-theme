@@ -122,7 +122,7 @@ function spine_customize_register( $wp_customize ){
 			'fluid'  => 'Fluid'
 		),
 	));
-	
+
 	// Signature
 	$wp_customize->add_setting('spine_options[campus_location]', array(
 		'default'        => '',
@@ -401,7 +401,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
- 
+
 	$wp_customize->add_control('spine_index_shortcuts', array(
 		'label'      => __('Coming: Offer Index Shortcuts', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -415,7 +415,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
- 
+
 	$wp_customize->add_control('spine_local_site_shortcuts', array(
 		'label'      => __('Offer Site Shortcuts', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -429,7 +429,7 @@ function spine_customize_register( $wp_customize ){
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
- 
+
 	$wp_customize->add_control('spine_search_local', array(
 		'label'      => __('Coming: Local Search Engine', 'spine'),
 		'section'    => 'section_spine_advanced_options',
@@ -678,7 +678,7 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox',
 		'priority'   => 11,
 	));
-	
+
 	$wp_customize->add_setting('spine_open_sans_cond[300]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
@@ -692,7 +692,7 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox',
 		'priority'   => 12,
 	));
-	
+
 	$wp_customize->add_setting('spine_open_sans_cond[300italic]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
@@ -706,7 +706,7 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox',
 		'priority'   => 12,
 	));
-	
+
 	$wp_customize->add_setting('spine_open_sans_cond[700]', array(
 		'default'        => false,
 		'capability'     => 'edit_theme_options',
@@ -721,5 +721,5 @@ function spine_customize_register( $wp_customize ){
 		'priority'   => 12,
 	));
 
-	
+
 }

@@ -9,7 +9,7 @@
 		?>
 		</ul>
 	</nav>
-	
+
 	<nav id="wsu-global-links" class="spine-global-links">
 		<ul>
 			<li class="zzusis-link"><a href="http://zzusis.wsu.edu/">Zzusis</a></li>
@@ -17,6 +17,6 @@
 			<li class="policies-link"><a href="http://policies.wsu.edu/">Policies</a></li>
 			<li class="copyright-link"><a href="http://copyright.wsu.edu">&copy;</a></li>
 		</ul>
-	</nav>	
+	</nav>
 
 </footer>

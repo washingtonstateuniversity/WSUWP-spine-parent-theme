@@ -10,7 +10,7 @@ class Spine_Main_Header {
 		add_action( 'add_meta_boxes', array( $this, 'add_header_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save_main_header' ), 10, 2 );
 	}
-	
+
 	/**
 	 * Add meta boxes used to override the spine's main header.
 	 */

@@ -24,7 +24,7 @@ x#accordion-section-section_spine_social label.focused::after {
 .accordion-section.focused {
 	background: red;
 	}
-	
+
 select option[value="none"][selected="selected"] + li input {
 	display: none;
 	}

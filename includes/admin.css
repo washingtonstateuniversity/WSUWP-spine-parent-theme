@@ -16,12 +16,12 @@
 .condensed *:not(.ttfmake-sortable-handle) {
 	display: none;
 	}
-	
+
 .wsuwp-spine-builder-column.expanded {
 	width: 100%;
 	box-sizing: border-box;
 	}
-	
+
 .wsuwp-spine-builder-column.expanded:nth-of-type(1) {
 	padding-right: 30px !important;
 	margin-right: -20px;
