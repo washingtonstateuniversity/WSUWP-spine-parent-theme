@@ -205,7 +205,7 @@ function spine_social_options() {
 	return $social;
 }
 
-add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts', 20 );
 /**
  * Enqueue scripts and styles required for front end pageviews.
  */
