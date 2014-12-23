@@ -143,8 +143,8 @@ function spine_customize_register( $wp_customize ){
 			'globalcampus' => 'Global Campus',
 			'extension' => 'Extension',
 			// 'everett' => 'Everett',
-			// 'healthsciences-spokane' => 'Health Sciences Spokane',
-			// 'healthsciences' => 'Health Sciences'
+			'healthsciences-spokane' => 'Health Sciences Spokane',
+			//'healthsciences' => 'Health Sciences',
 		),
 	));
 
