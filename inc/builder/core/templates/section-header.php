@@ -24,7 +24,24 @@ if ( ! empty( $ttfmake_section_data['section']['config'] ) ) {
 	);
 }
 
-$links = apply_filters( 'make_builder_section_links', apply_filters( 'ttfmake_builder_section_footer_links', $links ) );
+/**
+ * Deprecated: Filter the definitions for the links that appear in each Builder section's footer.
+ *
+ * This filter is deprecated. Use make_builder_section_links instead.
+ *
+ * @since 1.0.7.
+ *
+ * @param array    $links    The link definition array.
+ */
+$links = apply_filters( 'ttfmake_builder_section_footer_links', $links );
+/**
+ * Filter the definitions for the buttons that appear in each Builder section's header.
+ *
+ * @since 1.4.0.
+ *
+ * @param array    $links    The button definition array.
+ */
+$links = apply_filters( 'make_builder_section_links', $links );
 ksort( $links );
 ?>
 
