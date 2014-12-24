@@ -103,8 +103,19 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 		 */
 		$column_buttons = apply_filters( 'make_column_buttons', $column_buttons, $ttfmake_section_data );
 		ksort( $column_buttons );
+
+		/**
+		 * Filter the classes applied to each column in a Columns section.
+		 *
+		 * @since 1.2.0.
+		 *
+		 * @param string    $column_classes          The classes for the column.
+		 * @param int       $i                       The column number.
+		 * @param array     $ttfmake_section_data    The array of data for the section.
+		 */
+		$column_classes = apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data );
 	?>
-	<div class="<?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
+	<div class="<?php echo esc_attr( $column_classes ); ?>" data-id="<?php echo $i; ?>">
 		<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
 			<div class="sortable-background column-sortable-background"></div>
 		</div>
@@ -150,6 +161,13 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data ); ?>
 
 		get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
+		/**
+		 * Filter the definitions of the Columns section's column configuration inputs.
+		 *
+		 * @since 1.4.0.
+		 *
+		 * @param array    $inputs    The input definition array.
+		 */
 		$inputs = apply_filters( 'make_column_configuration', array(
 			100 => array(
 				'type'    => 'section_title',

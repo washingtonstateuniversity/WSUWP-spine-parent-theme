@@ -58,6 +58,13 @@ $overlay_id  = 'ttfmake-overlay-' . $combined_id;
 
 	get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
+	/**
+	 * Filter the definitions of the Gallery item configuration inputs.
+	 *
+	 * @since 1.4.0.
+	 *
+	 * @param array    $inputs    The input definition array.
+	 */
 	$inputs = apply_filters( 'make_gallery_item_configuration', array(
 		100 => array(
 			'type'    => 'section_title',
