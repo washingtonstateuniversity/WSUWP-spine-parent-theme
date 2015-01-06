@@ -11,7 +11,7 @@
 
 	<div class="column two">
 		<?php if ( function_exists( 'wsuwp_uc_get_meta' ) ) {
-			$display_fields = array( 'prefix', 'first_name', 'last_name', 'title', 'office', 'email', 'phone' );
+			$display_fields = array( 'prefix', 'first_name', 'last_name', 'title', 'title_secondary', 'office', 'email', 'phone' );
 			$display_data = array();
 			foreach( $display_fields as $df ) {
 				$display_data[ $df ] = wsuwp_uc_get_meta( get_the_ID(), $df );
@@ -21,6 +21,7 @@
 
 			if ( ! empty( $display_name ) ) : ?><h1 class="article-title"><?php echo esc_html( $display_name ); ?></h1><?php endif;
 			if ( ! empty( $display_data['title'] ) ) : ?><div class="person-title"><?php echo esc_html( $display_data['title'] ); ?></div><?php endif;
+			if ( ! empty( $display_data['title_secondary'] ) ) : ?><div class="person-title-secondary"><?php echo esc_html( $display_data['title_secondary'] ); ?></div><?php endif;
 			if ( ! empty( $display_data['office'] ) ) : ?><div class="person-office"><strong>Office</strong> <?php echo esc_html( $display_data['office'] ); ?></div><?php endif;
 			if ( ! empty( $display_data['email'] ) ) : ?><div class="person-email"><strong>Email:</strong> <?php echo esc_html( $display_data['email'] ); ?></div><?php endif;
 			if ( ! empty( $display_data['phone'] ) ) : ?><div class="person-phone"><strong>Phone:</strong> <?php echo esc_html( $display_data['phone'] ); ?></div><?php endif;

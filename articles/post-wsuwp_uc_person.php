@@ -9,7 +9,7 @@
 				}
 
 				if ( function_exists( 'wsuwp_uc_get_meta' ) ) {
-					$display_fields = array( 'prefix', 'first_name', 'last_name', 'title', 'office', 'email', 'phone' );
+					$display_fields = array( 'prefix', 'first_name', 'last_name', 'title', 'title_secondary', 'office', 'email', 'phone' );
 					$display_data = array();
 					foreach( $display_fields as $df ) {
 						$display_data[ $df ] = wsuwp_uc_get_meta( get_the_ID(), $df );
@@ -21,6 +21,7 @@
 					<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php echo esc_html( $display_name ); ?></a></h2><?php
 
 					if ( ! empty( $display_data['title'] ) ) : ?><div class="person-title"><?php echo esc_html( $display_data['title'] ); ?></div><?php endif;
+					if ( ! empty( $display_data['title_secondary'] ) ) : ?><div class="person-title-secondary"><?php echo esc_html( $display_data['title_secondary'] ); ?></div><?php endif;
 
 				} ?>
 			</hgroup>
