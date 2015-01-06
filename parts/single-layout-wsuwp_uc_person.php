@@ -1,5 +1,6 @@
 <?php while ( have_posts() ) : the_post(); ?>
 <section class="row halves gutter pad-ends">
+
 	<div class="column one">
 		<?php
 		if ( has_post_thumbnail() ) {
@@ -7,9 +8,26 @@
 		}
 		?>
 	</div>
+
 	<div class="column two">
-		<h1 class="article-title"><?php the_title(); ?></h1>
+		<?php if ( function_exists( 'wsuwp_uc_get_meta' ) ) {
+			$display_fields = array( 'prefix', 'first_name', 'last_name', 'title', 'office', 'email', 'phone' );
+			$display_data = array();
+			foreach( $display_fields as $df ) {
+				$display_data[ $df ] = wsuwp_uc_get_meta( get_the_ID(), $df );
+			}
+
+			$display_name = join( ' ', array( $display_data['prefix'], $display_data['first_name'], $display_data['last_name'] ) );
+
+			if ( ! empty( $display_name ) ) : ?><h1 class="article-title"><?php echo esc_html( $display_name ); ?></h1><?php endif;
+			if ( ! empty( $display_data['title'] ) ) : ?><div class="person-title"><?php echo esc_html( $display_data['title'] ); ?></div><?php endif;
+			if ( ! empty( $display_data['office'] ) ) : ?><div class="person-office"><strong>Office</strong> <?php echo esc_html( $display_data['office'] ); ?></div><?php endif;
+			if ( ! empty( $display_data['email'] ) ) : ?><div class="person-email"><strong>Email:</strong> <?php echo esc_html( $display_data['email'] ); ?></div><?php endif;
+			if ( ! empty( $display_data['phone'] ) ) : ?><div class="person-phone"><strong>Phone:</strong> <?php echo esc_html( $display_data['phone'] ); ?></div><?php endif;
+
+		} ?>
 	</div>
+
 </section>
 
 <section class="row single gutter pad-ends">
