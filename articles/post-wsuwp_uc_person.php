@@ -8,11 +8,7 @@
 					?><figure class="article-thumbnail"><?php the_post_thumbnail( array( 132, 132, true ) ); ?></figure><?php
 				}
 				?>
-				<?php if ( is_single() ) : ?>
-					<h1 class="article-title"><?php the_title(); ?></h1>
-				<?php else : ?>
-					<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-				<?php endif; ?>
+				<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			</hgroup>
 		</header>
 
