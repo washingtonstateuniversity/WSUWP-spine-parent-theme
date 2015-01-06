@@ -16,7 +16,11 @@ if ( spine_has_background_image() ) {
 get_template_part('parts/headers');
 
 if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
-	get_template_part( 'parts/single-layout', 'university-center' );
+	if ( 'wsuwp_uc_person' === get_post_type() ) {
+		get_template_part( 'parts/single-layout', 'wsuwp_uc_person' );
+	} else {
+		get_template_part( 'parts/single-layout', 'university-center' );
+	}
 } else {
 	if ( spine_has_featured_image() ) {
 		$featured_image_src = spine_get_featured_image_src();
