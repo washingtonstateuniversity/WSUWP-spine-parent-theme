@@ -454,6 +454,11 @@ article.wsuwp_uc_person {
 	margin: 0 10px 5px 0;
 }
 
+.single-wsuwp_uc_person figure.article-thumbnail {
+	float: left;
+	margin: 0 0 5px 0;
+}
+
 .post-type-archive-wsuwp_uc_person .article-title {
 	padding-top: 0;
 }
