@@ -212,7 +212,7 @@ function spine_customize_register( $wp_customize ){
 	));
 
 	// Location Two
-	$wp_customize->add_setting('spine_options[social_spot_two]', array( 'default' => 'http://twitter.com/wsupullman', 'capability' => 'edit_theme_options', 'type' => 'option' ));
+	$wp_customize->add_setting('spine_options[social_spot_two]', array( 'default' => 'https://twitter.com/wsupullman', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('social_spot_two', array( 'section' => 'section_spine_social', 'settings' => 'spine_options[social_spot_two]', 'priority' => 304 ));
 
 	$wp_customize->add_setting('spine_options[social_spot_two_type]', array( 'default' => 'twitter', 'capability' => 'edit_theme_options', 'type' => 'option' ));
@@ -226,7 +226,7 @@ function spine_customize_register( $wp_customize ){
 	));
 
 	// Location Three
-	$wp_customize->add_setting('spine_options[social_spot_three]', array( 'default' => 'http://www.youtube.com/washingtonstateuniv', 'capability' => 'edit_theme_options', 'type' => 'option' ));
+	$wp_customize->add_setting('spine_options[social_spot_three]', array( 'default' => 'https://www.youtube.com/washingtonstateuniv', 'capability' => 'edit_theme_options', 'type' => 'option' ));
 	$wp_customize->add_control('social_spot_three', array( 'section' => 'section_spine_social', 'settings' => 'spine_options[social_spot_three]', 'priority' => 306 ));
 
 	$wp_customize->add_setting('spine_options[social_spot_three_type]', array( 'default' => 'youtube', 'capability' => 'edit_theme_options', 'type' => 'option' ));
