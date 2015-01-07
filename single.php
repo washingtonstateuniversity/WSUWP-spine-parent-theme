@@ -35,7 +35,7 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 ?>
 
 <footer class="main-footer">
-	<section class="row halves pager prevnext gutter">
+	<section class="row halves pager prevnext gutter pad-ends">
 		<div class="column one">
 			<?php previous_post_link(); ?>
 		</div>
