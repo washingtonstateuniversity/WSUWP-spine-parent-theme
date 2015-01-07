@@ -84,17 +84,12 @@ function spine_get_campus_home_url() {
 }
 
 /**
- * Retrieve the requested spine option from the database.
+ * A set of defaults for the options set in the customizer for the Spine theme.
  *
- * @param string $option_name The option name or key to retrieve.
- *
- * @return mixed The value of the option if found. False if not found.
+ * @return array List of default options.
  */
-function spine_get_option( $option_name ) {
-	$spine_options = get_option( 'spine_options' );
-
-	// Defaults for the spine options will be compared to what is stored in spine_options.
-	$defaults = array(
+function spine_get_option_defaults() {
+	return array(
 		'spine_version'             => '1',
 		'grid_style'                => 'hybrid',
 		'campus_location'           => '',
@@ -124,7 +119,29 @@ function spine_get_option( $option_name ) {
 		'contact_ContactPoint'      => '',
 		'contact_ContactPointTitle' => 'Contact Page...',
 		'archive_content_display'   => 'full',
+		'social_spot_one_type'      => 'facebook',
+		'social_spot_one'           => 'https://www.facebook.com/WSUPullman',
+		'social_spot_two_type'      => 'twitter',
+		'social_spot_two'           => 'https://twitter.com/wsupullman',
+		'social_spot_three_type'    => 'youtube',
+		'social_spot_three'         => 'https://www.youtube.com/washingtonstateuniv',
+		'social_spot_four_type'     => 'directory',
+		'social_spot_four'          => 'http://social.wsu.edu',
 	);
+}
+
+/**
+ * Retrieve the requested spine option from the database.
+ *
+ * @param string $option_name The option name or key to retrieve.
+ *
+ * @return mixed The value of the option if found. False if not found.
+ */
+function spine_get_option( $option_name ) {
+	$spine_options = get_option( 'spine_options' );
+
+	// Defaults for the spine options will be compared to what is stored in spine_options.
+	$defaults = spine_get_option_defaults();
 
 	// A child theme can override all spine option defaults with the spine_option_defaults filter.
 	$defaults = apply_filters( 'spine_option_defaults', $defaults );
@@ -206,6 +223,14 @@ function spine_get_open_sans_condensed_options() {
  */
 function spine_social_options() {
 	$spine_options = get_option( 'spine_options' );
+
+	// Defaults for the spine options will be compared to what is stored in spine_options.
+	$defaults = spine_get_option_defaults();
+
+	// A child theme can override all spine option defaults with the spine_option_defaults filter.
+	$defaults = apply_filters( 'spine_option_defaults', $defaults );
+
+	$spine_options = wp_parse_args( $spine_options, $defaults );
 
 	$social = array();
 
