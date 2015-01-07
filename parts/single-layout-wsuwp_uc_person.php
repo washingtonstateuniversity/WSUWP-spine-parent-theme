@@ -11,13 +11,16 @@
 
 	<div class="column two">
 		<?php if ( function_exists( 'wsuwp_uc_get_meta' ) ) {
-			$display_fields = array( 'prefix', 'first_name', 'last_name', 'title', 'title_secondary', 'office', 'email', 'phone' );
+			$display_fields = array( 'prefix', 'first_name', 'last_name', 'suffix', 'title', 'title_secondary', 'office', 'email', 'phone' );
 			$display_data = array();
 			foreach( $display_fields as $df ) {
 				$display_data[ $df ] = wsuwp_uc_get_meta( get_the_ID(), $df );
 			}
 
-			$display_name = join( ' ', array( $display_data['prefix'], $display_data['first_name'], $display_data['last_name'] ) );
+			$display_name_array = array( $display_data['prefix'], $display_data['first_name'], $display_data['last_name'] );
+			$display_name_array = array_filter( $display_name_array, 'trim' );
+			$display_name = join( ' ', $display_name_array );
+			if ( ! empty( trim( $display_data['suffix'] ) ) ) : $display_name .= ', ' . $display_data['suffix']; endif;
 
 			if ( ! empty( $display_name ) ) : ?><h1 class="article-title"><?php echo esc_html( $display_name ); ?></h1><?php endif;
 			if ( ! empty( $display_data['title'] ) ) : ?><div class="person-title"><?php echo esc_html( $display_data['title'] ); ?></div><?php endif;
