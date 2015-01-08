@@ -361,6 +361,22 @@ function spine_wp_enqueue_scripts() {
 	// Much relies on the main Javascript provided by the WSU Spine.
 	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
 
+	// Override default options in the WSU Spine.
+	$spineoptions = array(
+		'social' => array(
+			'share_text' => esc_js( spine_get_title() ),
+			'twitter_text' => esc_js( spine_get_title() ),
+			'twitter_handle' => 'wsupullman',
+		),
+	);
+	// If a Twitter account has been added in the Customizer, use that for the via handle.
+	$spine_social_options = spine_social_options();
+	if ( isset( $spine_social_options['twitter'] ) ) {
+		$twitter_handle = array_pop( array_filter( explode( '/', $spine_social_options['twitter'] ) ) );
+		$spineoptions['social']['twitter_handle'] = esc_js( $twitter_handle );
+	}
+	wp_localize_script( 'wsu-spine', 'spineoptions', $spineoptions );
+
 	// Enqueue jQuery Cycle2 and Genericons when a page builder template is used.
 	if ( is_page_template( 'template-builder.php' ) ) {
 		$has_builder_banner = get_post_meta( get_the_ID(), '_has_builder_banner', true );
