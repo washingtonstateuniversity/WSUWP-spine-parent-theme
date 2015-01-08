@@ -1,5 +1,283 @@
-img.size-full,
-img.size-large {
-	width: 100%;
+/*---------------------------------------------------------
+ Body (editor-style.css)
+-------------------------------------------------------- */
+html {
+	font-size: 62.5%; /* 10px */
+}
+body {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	line-height: 1.55;
+	color: #171717;
+}
+a {
+	color: #3070d1;
+	font-weight: bold;
+	text-decoration: none;
+}
+/*---------------------------------------------------------
+ Images (editor-style.css)
+-------------------------------------------------------- */
+img {
+	margin-bottom: 22px;
 	height: auto;
+}
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 32px;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 32px;
+}
+.aligncenter {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+}
+/*---------------------------------------------------------
+ Code (editor-style.css)
+-------------------------------------------------------- */
+tt,
+kbd,
+pre,
+code,
+samp {
+	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+}
+/*---------------------------------------------------------
+ Elements (editor-style.css)
+-------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1,
+h4,
+h6 {
+	font-weight: normal;
+}
+h5,
+h6 {
+	text-transform: uppercase;
+}
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+}
+blockquote p {
+	font-size: 135%; /* 20px */
+}
+blockquote p cite,
+blockquote cite {
+	font-size: 75%; /* 12px */
+}
+.ttfmake-testimonial {
+	padding: 10px 20px;
+	background-color: #eaecee;
+}
+tt,
+kbd,
+pre,
+code,
+samp {
+	padding: 4px;
+	font-size: 93.75%; /* 15px */
+	background-color: #eaecee;
+}
+pre {
+	padding: 33px 32px;
+	font-size: 93.75%; /* 15px */
+}
+mark {
+	text-decoration: none;
+	background-color: #fff9c0;
+}
+ins {
+	color: inherit;
+}
+dt {
+	font-weight: bold;
+}
+del,
+strike {
+	color: inherit;
+}
+/*---------------------------------------------------------
+ Table (editor-style.css)
+-------------------------------------------------------- */
+table {
+	width: 100%;
+	text-align: left;
+}
+table caption {
+	font-weight: bold;
+}
+table th,
+table td {
+	padding: 5px 10px;
+}
+/*---------------------------------------------------------
+ Media (editor-style.css)
+-------------------------------------------------------- */
+* {
+	max-width: 100%;
+}
+.wp-caption,
+.wp-caption-text {
+	font-style: italic;
+	text-align: left;
+}
+.shortcode-wrapper{
+	display: block;
+	margin-bottom: 22px;
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #aaa;
+	background-color: #fafafa;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	word-wrap: break-word;
+}
+/*---------------------------------------------------------
+ Rules (editor-style.css)
+-------------------------------------------------------- */
+hr.ttfmake-hr {
+	border-color: #eaecee;
+	border-width: 0;
+	height: 1px;
+}
+/* Deprecated in 1.4.1 */
+hr.ttfmake-line-dashed {
+	border-top: 1px dashed #eaecee;
+}
+hr.ttfmake-line-double {
+	border-top: 6px double #eaecee;
+}
+/*---------------------------------------------------------
+ Buttons (editor-style.css)
+-------------------------------------------------------- */
+.ttfmake-button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	padding: 10px 14px;
+	font-size: 13px;
+	color: #ffffff;
+	border: 0;
+	background: #171717;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+/* Deprecated in 1.4.1 */
+.color-primary-background {
+	background-color: #0094c5;
+}
+.color-secondary-background {
+	background-color: #eaecee;
+}
+.ttfmake-success {
+	background-color: #339d56;
+}
+.ttfmake-error {
+	background-color: #d04242;
+}
+.ttfmake-important {
+	background-color: #f89e01;
+}
+.ttfmake-download:after {
+	content: "\f0ab";
+	padding-left: 6px;
+	font-family: FontAwesome;
+}
+/*---------------------------------------------------------
+ Notices / Alerts (editor-style.css)
+-------------------------------------------------------- */
+.ttfmake-notice {
+	background: #e5e5e5;
+	border: 2px solid #808080;
+	color: #808080;
+	margin-bottom: 22px;
+	margin-bottom: 2.2rem;
+	padding: 10px 20px;
+}
+.ttfmake-notice p {
+	margin-top: 0;
+}
+.ttfmake-notice p:last-of-type {
+	margin-bottom: 0; //reset
+}
+/* Deprecated in 1.4.1 */
+.ttfmake-alert {
+	margin-bottom: 22px;
+	padding: 33px 32px;
+	font-size: 14px;
+	background-color: #eaecee;
+}
+.ttfmake-alert.ttfmake-success {
+	color: #339d56;
+	background-color: #eef7f1;
+}
+.ttfmake-alert.ttfmake-error {
+	color: #d04242;
+	background-color: #f7eeee;
+}
+.ttfmake-alert.ttfmake-important {
+	color: #f89e01;
+	background-color: #fffde5;
+}
+/*---------------------------------------------------------
+ Lists (editor-style.css)
+-------------------------------------------------------- */
+ul {
+	list-style: disc;
+}
+ol {
+	list-style: decimal;
+}
+ul,
+ol {
+	margin: 0 0 22px 0;
+	padding-left: 20px;
+}
+ul.ttfmake-list,
+ol.ttfmake-list {
+	padding-left: 0;
+	list-style: none;
+}
+ul.ttfmake-list li:before,
+ol.ttfmake-list li:before {
+	padding-right: 10px;
+	font-family: FontAwesome;
+}
+/* Deprecated in 1.4.1 */
+ul.ttfmake-list-check li:before,
+ol.ttfmake-list-check li:before {
+	content: "\f14a";
+	color: #339d56;
+}
+ul.ttfmake-list-check2 li:before,
+ol.ttfmake-list-check2 li:before {
+	content: "\f046";
+	color: #339d56;
+}
+ul.ttfmake-list-star li:before,
+ol.ttfmake-list-star li:before {
+	content: "\f005";
+	color: #f89e01;
+}
+ul.ttfmake-list-dot li:before,
+ol.ttfmake-list-dot li:before {
+	content: "\f192";
+	color: #0094c5;
 }
