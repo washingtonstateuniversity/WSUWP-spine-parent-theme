@@ -1,5 +1,178 @@
-img.size-full,
-img.size-large {
-	width: 100%;
+/*---------------------------------------------------------
+ Body (editor-style.css)
+-------------------------------------------------------- */
+html {
+	font-size: 62.5%; /* 10px */
+}
+body {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	color: #171717;
+}
+a {
+	color: #3070d1;
+	font-weight: bold;
+	text-decoration: none;
+}
+/*---------------------------------------------------------
+ Images (editor-style.css)
+-------------------------------------------------------- */
+img {
+	margin-bottom: 22px;
 	height: auto;
+}
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 32px;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 32px;
+}
+.aligncenter {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+}
+/*---------------------------------------------------------
+ Code (editor-style.css)
+-------------------------------------------------------- */
+tt,
+kbd,
+pre,
+code,
+samp {
+	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+}
+/*---------------------------------------------------------
+ Elements (editor-style.css)
+-------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1,
+h4,
+h6 {
+	font-weight: normal;
+}
+h5,
+h6 {
+	text-transform: uppercase;
+}
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+}
+blockquote p {
+	font-size: 135%; /* 20px */
+}
+blockquote p cite,
+blockquote cite {
+	font-size: 75%; /* 12px */
+}
+
+tt,
+kbd,
+pre,
+code,
+samp {
+	padding: 4px;
+	font-size: 93.75%; /* 15px */
+	background-color: #eaecee;
+}
+pre {
+	padding: 33px 32px;
+	font-size: 93.75%; /* 15px */
+}
+mark {
+	text-decoration: none;
+	background-color: #fff9c0;
+}
+ins {
+	color: inherit;
+}
+dt {
+	font-weight: bold;
+}
+del,
+strike {
+	color: inherit;
+}
+/*---------------------------------------------------------
+ Table (editor-style.css)
+-------------------------------------------------------- */
+table {
+	width: 100%;
+	text-align: left;
+}
+table caption {
+	font-weight: bold;
+}
+table th,
+table td {
+	padding: 5px 10px;
+}
+/*---------------------------------------------------------
+ Media (editor-style.css)
+-------------------------------------------------------- */
+* {
+	max-width: 100%;
+}
+.wp-caption,
+.wp-caption-text {
+	font-style: italic;
+	text-align: left;
+}
+.shortcode-wrapper{
+	display: block;
+	margin-bottom: 22px;
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #aaa;
+	background-color: #fafafa;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	word-wrap: break-word;
+}
+
+/*---------------------------------------------------------
+ Buttons (editor-style.css)
+-------------------------------------------------------- */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	padding: 10px 14px;
+	font-size: 13px;
+	color: #ffffff;
+	border: 0;
+	background: #171717;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/*---------------------------------------------------------
+ Lists (editor-style.css)
+-------------------------------------------------------- */
+ul {
+	list-style: disc;
+}
+ol {
+	list-style: decimal;
+}
+ul,
+ol {
+	margin: 0 0 22px 0;
+	padding-left: 20px;
 }
