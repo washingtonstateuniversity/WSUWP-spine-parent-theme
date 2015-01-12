@@ -460,7 +460,7 @@ function spine_trim_excerpt( $text ) {
 		$excerpt_word_count = 105;
 		$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
 
-		$excerpt_end = '... <a href="' . get_permalink() . '">' . '&raquo; More ...' . '</a>';
+		$excerpt_end = '... <a href="' . get_permalink() . '" class="truncate-more-link"><span class="truncate-more-default">' . '&raquo; More ...' . '</span></a>';
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
 
 		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
