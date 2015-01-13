@@ -1,5 +1,5 @@
 /*global jQuery, tinyMCE, switchEditors */
-var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || {};
+var oneApp = oneApp || {}, ttfMakeFrames = ttfMakeFrames || [];
 
 (function ($, oneApp, ttfMakeFrames) {
 	'use strict';
