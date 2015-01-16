@@ -47,3 +47,12 @@
 #customize-control-spine_options-open_sans br {
 	display: none;
 	}
+
+.mce-fullscreen #ttfmake-tinymce-overlay .ttfmake-overlay-wrapper {
+	width: 100% !important;
+	height: 100% !important;
+	margin-left: 0 !important;
+	margin-top: 0 !important;
+	top: 0 !important;
+	left: 0 !important;
+}
