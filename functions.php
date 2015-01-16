@@ -460,7 +460,7 @@ function spine_trim_excerpt( $text ) {
 		$excerpt_word_count = 105;
 		$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
 
-		$excerpt_end = '... <a href="' . get_permalink() . '">' . '&raquo; More ...' . '</a>';
+		$excerpt_end = '... <a href="' . get_permalink() . '" class="more-link"><span class="more-default">' . '&raquo; More ...' . '</span></a>';
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . $excerpt_end );
 
 		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
@@ -618,6 +618,32 @@ function spine_sectioned_body_classes( $classes ) {
 	}
 
 	return array_unique( $classes );
+}
+
+add_filter( 'post_class', 'spine_excerpt_style_classes' );
+/**
+ * Add excerpt style in classes to article on list views.
+ *
+ * @param array $classes List of classes to be added to the article element.
+ *
+ * @return array Modified list of classes.
+ */
+function spine_excerpt_style_classes( $classes ) {
+	global $post;
+	if ( !is_singular() ) {
+			
+		if ( $post->post_excerpt ) {
+			$classes[] = "summary-excerpted";
+		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
+			$classes[] = "summary-divided";
+		} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
+			$classes[] = "summary-truncated";
+		} else {
+			$classes[] = "summary-unabridged";
+		}
+	}
+	
+	return $classes;
 }
 
 
