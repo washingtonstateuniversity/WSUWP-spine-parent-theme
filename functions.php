@@ -620,33 +620,32 @@ function spine_sectioned_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 
+add_filter( 'post_class', 'spine_excerpt_style_classes' );
 /**
  * Add excerpt style in classes to article on list views.
  *
- * @param array $classes List of classes to be added to the body element.
+ * @param array $classes List of classes to be added to the article element.
  *
  * @return array Modified list of classes.
  */
 function spine_excerpt_style_classes( $classes ) {
 	global $post;
-	if ( ! is_singular() ) {
+	if ( !is_singular() ) {
 			
-			if ( $post->post_excerpt ) {
-				$classes[] = "summary-excerpted";
-			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
-				$classes[] = "summary-divided";
-			} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
-				$classes[] = "summary-truncated";
-			} else {
-				$classes[] = "summary-unabridged";
-			}
-			
-			return $classes;
-		
+		if ( $post->post_excerpt ) {
+			$classes[] = "summary-excerpted";
+		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
+			$classes[] = "summary-divided";
+		} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
+			$classes[] = "summary-truncated";
+		} else {
+			$classes[] = "summary-unabridged";
 		}
 	}
 	
-add_filter( 'post_class', 'spine_excerpt_style_classes' );
+	return $classes;
+}
+
 
 add_filter( 'safecss_default_css', 'spine_editcss_intro' );
 /**
