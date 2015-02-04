@@ -24,7 +24,7 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_extra_make' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
-		add_action( 'admin_footer', array( $this, 'print_templates' ) );
+
 		add_filter( 'ttfmake_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
 	}
 
@@ -40,9 +40,6 @@ class Spine_Builder_Custom {
 			wp_enqueue_style( 'make-builder-styles', get_template_directory_uri() . '/inc/builder/sections/css/sections.css', array(), spine_get_script_version() );
 			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
 
-			wp_enqueue_script( 'wsuwp-builder-banner-slide-model', get_template_directory_uri() . '/builder-templates/js/models/banner-slide.js', array(), spine_get_script_version(), true );
-			wp_enqueue_script( 'wsuwp-builder-banner-slide-view', get_template_directory_uri() . '/builder-templates/js/views/banner-slide.js', array(), spine_get_script_version(), true );
-			wp_enqueue_script( 'wsuwp-builder-banner-view', get_template_directory_uri() . '/builder-templates/js/views/banner.js', array(), spine_get_script_version(), true );
 			wp_enqueue_script( 'wsuwp-builder-columns', get_template_directory_uri() . '/builder-templates/js/columns.js', array(), spine_get_script_version(), true );
 
 			wp_localize_script(
@@ -537,54 +534,6 @@ class Spine_Builder_Custom {
 		}
 
 		return $clean_data;
-	}
-
-	/**
-	 * Print out the JS section templates
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	public function print_templates() {
-		global $hook_suffix, $typenow, $ttfmake_is_js_template;
-		$ttfmake_is_js_template = true;
-
-		// Only show when adding/editing pages
-		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
-			return;
-		}
-
-		// Define the templates to print
-		$templates = array(
-			array(
-				'id' => 'banner-slide',
-				'builder_template' => 'sections/builder-templates/banner-slide',
-				'path' => 'inc/builder/',
-			),
-		);
-
-		// Print the templates
-		foreach ( $templates as $template ) : ?>
-			<script type="text/html" id="tmpl-ttfmake-<?php echo $template['id']; ?>">
-				<?php
-				ob_start();
-				ttfmake_get_builder_base()->load_section( $template, array() );
-				$html = ob_get_clean();
-				$html = str_replace(
-					array(
-						'temp',
-					),
-					array(
-						'{{{ id }}}',
-					),
-					$html
-				);
-				echo $html;
-				?>
-			</script>
-		<?php endforeach;
-		unset( $GLOBALS['ttfmake_is_js_template'] );
 	}
 }
 new Spine_Builder_Custom();
