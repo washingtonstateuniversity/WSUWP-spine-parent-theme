@@ -389,7 +389,7 @@ function spine_wp_enqueue_scripts() {
 	}
 }
 
-add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts', 15 );
+add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
 /**
  * Enqueue styles required for admin pageviews.
  */
