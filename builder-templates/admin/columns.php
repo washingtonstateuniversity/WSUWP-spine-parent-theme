@@ -138,12 +138,13 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data );
 
 				get_template_part( '/inc/builder/core/templates/overlay', 'header' );
 
-				$inputs = apply_filters( 'make_column_configuration', array(
+				/*$inputs = apply_filters( 'make_column_configuration', array(
 					100 => array(
-						'type'    => 'text',
-						'name'    => 'column-classes',
-						'label'   => 'Column CSS Classes',
+						'type'    => 'section_title',
+						'name'    => 'title',
+						'label'   => __( 'Enter column title', 'make' ),
 						'default' => '',
+						'class'   => 'ttfmake-configuration-title',
 					),
 				) );
 
@@ -160,7 +161,7 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data );
 					}
 				}
 
-				echo $output;
+				echo $output; */
 
 				get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
 				?>
