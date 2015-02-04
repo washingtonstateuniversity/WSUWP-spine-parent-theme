@@ -40,6 +40,7 @@ class Spine_Builder_Custom {
 			wp_enqueue_style( 'make-builder-styles', get_template_directory_uri() . '/inc/builder/sections/css/sections.css', array(), spine_get_script_version() );
 			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
 
+			wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array('jquery'), spine_get_script_version(), true );
 			wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
 			wp_localize_script(
