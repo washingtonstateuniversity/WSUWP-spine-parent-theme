@@ -86,22 +86,3 @@
 	width: 100%;
 	margin: 0;
 }
-
-.spine-builder-layout-single .ttfmake-titlewrap {
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-.spine-builder-layout-single .ttfmake-iframe-wrapper {
-	width: 100%;
-}
-
-.spine-builder-layout-single .edit-content-link {
-	top: 0;
-	right: 0;
-}
-
-.spine-builder-layout-single .configure-column-link {
-	top: 0;
-	right: 45px;
-}
