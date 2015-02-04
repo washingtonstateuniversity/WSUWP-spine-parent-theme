@@ -146,7 +146,7 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			500,
+			100,
 			'builder-templates/',
 			$halves_args
 		);
@@ -173,7 +173,7 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			400,
+			100,
 			'builder-templates/',
 			$sidebar_left_args
 		);
@@ -200,7 +200,7 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			300,
+			100,
 			'builder-templates/',
 			$sidebar_right_args
 		);
@@ -227,7 +227,7 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			600,
+			100,
 			'builder-templates',
 			$thirds_args
 		);
@@ -241,7 +241,7 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			700,
+			100,
 			'builder-templates',
 			$quarters_args
 		);
@@ -341,7 +341,7 @@ class Spine_Builder_Custom {
 			array( $this, 'save_banner' ),
 			'admin/banner',
 			'front-end/banner',
-			800,
+			300,
 			'builder-templates',
 			$banner_args
 		);
