@@ -76,13 +76,3 @@
 	line-height: 1.1rem;
 	margin-top: 6px;
 }
-
-.ttfmake-column-title {
-	height: 40px;
-}
-
-.ttfmake-column-title input {
-	height: 38px;
-	width: 100%;
-	margin: 0;
-}
