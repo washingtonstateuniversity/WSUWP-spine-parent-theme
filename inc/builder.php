@@ -694,14 +694,6 @@ function ttfmake_is_plus() {
 	return false;
 }
 
-/**
- * Add a title field in the builder for any of our various columns when called.
- *
- * @param string $column_name
- * @param string $title
- *
- * @return string
- */
 function spine_builder_add_column_title( $column_name, $title ) {
 	ob_start();
 	?>
