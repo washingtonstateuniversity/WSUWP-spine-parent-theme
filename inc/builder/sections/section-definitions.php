@@ -566,7 +566,7 @@ class TTFMAKE_Section_Definitions {
 		}
 
 		// Add additional dependencies to the Builder JS
-		add_filter( 'make_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
+		add_filter( 'ttfmake_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 
 		// Add the section CSS
 		wp_enqueue_style(

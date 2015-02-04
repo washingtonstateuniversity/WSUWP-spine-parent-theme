@@ -334,10 +334,10 @@ class TTFMAKE_Builder_Save {
 	 */
 	public function generate_post_content( $data ) {
 		// Run wpautop when saving the data
-		add_filter( 'make_the_builder_content', 'wpautop' );
+		add_filter( 'ttfmake_the_builder_content', 'wpautop' );
 
 		// Handle oEmbeds correctly
-		add_filter( 'make_the_builder_content', array( $this, 'embed_handling' ), 8 );
+		add_filter( 'ttfmake_the_builder_content', array( $this, 'embed_handling' ), 8 );
 		add_filter( 'embed_handler_html', array( $this, 'embed_handler_html' ) , 10, 3 );
 		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ) , 10, 4 );
 
