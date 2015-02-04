@@ -172,7 +172,7 @@ class Spine_Builder_Custom {
 			'Two column layout with the right side larger than the left.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/columns',
+			'front-end/sidebar-left',
 			100,
 			'builder-templates/',
 			$sidebar_left_args
@@ -199,7 +199,7 @@ class Spine_Builder_Custom {
 			'Two column layout with the left side larger than the right.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/columns',
+			'front-end/sidebar-right',
 			100,
 			'builder-templates/',
 			$sidebar_right_args
