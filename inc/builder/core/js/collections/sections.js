@@ -16,9 +16,6 @@ var oneApp = oneApp || {};
 				this.$stage.removeClass('ttfmake-stage-closed');
 			} else {
 				this.$stage.addClass('ttfmake-stage-closed');
-				$('html, body').animate({
-					scrollTop: $('#ttfmake-menu').offset().top
-				}, oneApp.options.closeSpeed);
 			}
 		}
 	});

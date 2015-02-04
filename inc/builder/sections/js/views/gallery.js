@@ -69,8 +69,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				var $item = $(ui.item.get(0)),
 					$stage = $item.parents('.ttfmake-gallery-items-stage');
 
-				$('.sortable-placeholder', $stage)
-					.height(parseInt($item.height(), 10) - 2); // -2 to account for placeholder border
+				$('.sortable-placeholder', $stage).height($item.height());
 			},
 			stop: function (event, ui) {
 				var $item = $(ui.item.get(0)),
@@ -93,7 +92,9 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			$selector = $('.ttfmake-gallery-background-color');
 		}
 
-		$selector.wpColorPicker();
+		$selector.wpColorPicker({
+			defaultColor: ''
+		});
 	};
 
 	// Initialize the sortables
