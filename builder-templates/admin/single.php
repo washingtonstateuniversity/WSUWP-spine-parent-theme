@@ -7,7 +7,7 @@ $content = ( isset( $ttfmake_section_data['data']['content'] ) ) ? $ttfmake_sect
 
 $iframe_id   = 'ttfmake-iframe-' . $section_id;
 $textarea_id = 'ttfmake-content-' . $section_id;
-$overlay_id  = 'ttfmake-overlay-' . $section_id . '-1';
+$overlay_id  = 'ttfmake-overlay-' . $section_id;
 $title       = ( isset( $ttfmake_section_data['data']['title'] ) ) ? $ttfmake_section_data['data']['title'] : '';
 
 $item_has_content = ( ! empty( $content ) ) ? ' item-has-content' : '';
