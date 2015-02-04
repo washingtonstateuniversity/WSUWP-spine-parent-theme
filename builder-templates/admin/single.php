@@ -29,6 +29,12 @@ if ( true === $ttfmake_is_js_template ) {
 }
 
 ?>
+<div id="<?php echo $section_name; ?>-advanced" class="builder-advanced-controls">
+<?php
+spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
+spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
+?>
+</div>
 <input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
 
 <?php ttfmake_load_section_footer(); ?>

@@ -26,6 +26,8 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 
 		add_filter( 'ttfmake_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
+
+		add_filter( 'ttfmake_builder_section_footer_links', array(  $this, 'add_builder_section_links' ), 10, 1 );
 	}
 
 	/**
@@ -92,6 +94,23 @@ class Spine_Builder_Custom {
 	}
 
 	/**
+	 * Add links to the defaults displayed at the bottom of each section.
+	 *
+	 * @param array $links Links to be displayed.
+	 *
+	 * @return array Modified list of links to display.
+	 */
+	public function add_builder_section_links( $links ) {
+		$links[50] = array(
+			'href' => '#',
+			'class' => 'builder-toggle-advanced',
+			'label' => 'Show advanced controls',
+		);
+
+		return $links;
+	}
+
+	/**
 	 * Add the custom sections used in our implementation of the page builder.
 	 */
 	public function add_builder_sections() {
@@ -104,28 +123,7 @@ class Spine_Builder_Custom {
 			'admin/single',
 			'front-end/single',
 			200,
-			'builder-templates/',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-			)
+			'builder-templates/'
 		);
 
 		ttfmake_add_section(
@@ -137,28 +135,7 @@ class Spine_Builder_Custom {
 			'admin/columns',
 			'front-end/halves',
 			100,
-			'builder-templates/',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-			)
+			'builder-templates/'
 		);
 
 		ttfmake_add_section(
@@ -170,39 +147,7 @@ class Spine_Builder_Custom {
 			'admin/columns',
 			'front-end/sidebar-left',
 			100,
-			'builder-templates/',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-				400 => array(
-					'type'    => 'select',
-					'name'    => 'section-layout',
-					'class'   => 'ttfmake-text-columns',
-					'label'   => 'Columns Layout',
-					'default' => 'side-left',
-					'options' => array(
-						'side-left' => 'Side Left',
-						'margin-left'  => 'Margin Left',
-					),
-				),
-			)
+			'builder-templates/'
 		);
 
 		ttfmake_add_section(
@@ -214,39 +159,7 @@ class Spine_Builder_Custom {
 			'admin/columns',
 			'front-end/sidebar-right',
 			100,
-			'builder-templates/',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-				400 => array(
-					'type'    => 'select',
-					'name'    => 'section-layout',
-					'class'   => 'ttfmake-text-columns',
-					'label'   => 'Columns Layout',
-					'default' => 'side-right',
-					'options' => array(
-						'side-right' => 'Side Right',
-						'margin-right'  => 'Margin Right',
-					),
-				),
-			)
+			'builder-templates/'
 		);
 
 		ttfmake_add_section(
@@ -258,39 +171,7 @@ class Spine_Builder_Custom {
 			'admin/columns',
 			'front-end/thirds',
 			100,
-			'builder-templates',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-				400 => array(
-					'type'    => 'select',
-					'name'    => 'section-layout',
-					'class'   => 'ttfmake-text-columns',
-					'label'   => 'Columns Layout',
-					'default' => 'thirds',
-					'options' => array(
-						'thirds' => 'Equal Thirds',
-						'triptych'  => 'Triptych',
-					),
-				),
-			)
+			'builder-templates'
 		);
 
 		ttfmake_add_section(
@@ -302,28 +183,7 @@ class Spine_Builder_Custom {
 			'admin/columns',
 			'front-end/quarters',
 			100,
-			'builder-templates',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-			)
+			'builder-templates'
 		);
 
 		ttfmake_add_section(
@@ -335,22 +195,7 @@ class Spine_Builder_Custom {
 			'admin/h1-header',
 			'front-end/h1-header',
 			100,
-			'builder-templates',
-			array(
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-			)
+			'builder-templates'
 		);
 
 		ttfmake_add_section(
@@ -362,28 +207,7 @@ class Spine_Builder_Custom {
 			'admin/banner',
 			'front-end/banner',
 			300,
-			'builder-templates',
-			array(
-				100 => array(
-					'type'  => 'section_title',
-					'name'  => 'title',
-					'label' => __( 'Enter section title', 'make' ),
-					'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-				),
-				200 => array(
-					'type'    => 'text',
-					'name'    => 'section-classes',
-					'class'   => 'ttfmake-section-classes',
-					'label'   => 'Section Classes',
-					'default' => 'gutter pad-top',
-				),
-				300 => array(
-					'type'    => 'text',
-					'name'    => 'section-wrapper',
-					'class'   => 'ttfmake-section-wrapper',
-					'label'   => 'Section Wrapper Classes',
-				),
-			)
+			'builder-templates'
 		);
 
 	}
@@ -491,12 +315,6 @@ class Spine_Builder_Custom {
 	 */
 	public function save_columns( $data ) {
 		$clean_data = array();
-
-		if ( isset( $data['title'] ) ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-		}
 
 		if ( isset( $data['columns-number'] ) ) {
 			if ( in_array( $data['columns-number'], range( 1, 4 ) ) ) {
@@ -669,6 +487,84 @@ function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 	}
 
 	return $columns_array;
+}
+
+/**
+ * Output the input field for section wrapper that is shared amongst admin templates.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
+	?>
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
+	</div>
+	<?php
+}
+
+/**
+ * Output the input field for section classes that is shared amongst admin templates.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_classes( $section_name, $ttfmake_section_data ) {
+	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter pad-top';
+	?>
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes:</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
+		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
+	</div>
+	<?php
+}
+
+/**
+ * Output a selection tool for the type of layout a section should have. This allows classes
+ * to be assigned for various multi column layouts.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_layout( $section_name, $ttfmake_section_data ) {
+	if ( 'wsuwpthirds' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'thirds', 'triptych' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'thirds';
+		}
+	} elseif ( 'wsuwpsidebarleft' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-left', 'margin-left' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-left';
+		}
+	} elseif ( 'wsuwpsidebarright' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-right', 'margin-right' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-right';
+		}
+	} else {
+		return;
+	}
+
+	?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
+		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
+		<select id="<?php echo $section_name; ?>[section-layout]"
+				name="<?php echo $section_name; ?>[section-layout]"
+				value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
+			<?php
+			foreach( $options as $option ) {
+				echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
+			}
+			?></select>
+		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
+	</div><?php
 }
 
 /**
