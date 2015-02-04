@@ -25,7 +25,7 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
 		add_action( 'admin_footer', array( $this, 'print_templates' ) );
-		add_filter( 'make_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
+		add_filter( 'ttfmake_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
 	}
 
 	/**
