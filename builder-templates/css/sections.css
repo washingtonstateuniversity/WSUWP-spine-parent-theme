@@ -96,25 +96,12 @@
 	width: 100%;
 }
 
-.configure-banner-slide-link, .configure-column-link,
-.remove-banner-slide-link,
-.make-plus-disabled .configure-column-link,
-.make-plus-disabled .edit-content-link {
-	top: 0;
-}
-
 .spine-builder-layout-single .edit-content-link {
+	top: 0;
 	right: 0;
 }
 
 .spine-builder-layout-single .configure-column-link {
+	top: 0;
 	right: 45px;
-}
-
-.sortable-background {
-	height: 38px;
-}
-
-.ttfmake-sortable-handle {
-	height: 40px;
 }
