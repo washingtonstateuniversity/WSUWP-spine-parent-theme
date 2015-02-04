@@ -145,7 +145,7 @@ class Spine_Builder_Custom {
 			'Two column layout with equal size columns.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/columns',
+			'front-end/halves',
 			100,
 			'builder-templates/',
 			$halves_args
@@ -226,7 +226,7 @@ class Spine_Builder_Custom {
 			'Three column layout, choose between thirds and triptych.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/columns',
+			'front-end/thirds',
 			100,
 			'builder-templates',
 			$thirds_args
@@ -240,7 +240,7 @@ class Spine_Builder_Custom {
 			'Four column layout, all equal sizes.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/columns',
+			'front-end/quarters',
 			100,
 			'builder-templates',
 			$quarters_args
