@@ -623,8 +623,8 @@ class Spine_Builder_Custom {
 		$templates = array(
 			array(
 				'id' => 'banner-slide',
-				'builder_template' => 'admin/banner-slide',
-				'path' => 'builder-templates/',
+				'builder_template' => 'sections/builder-templates/banner-slide',
+				'path' => 'inc/builder/',
 			),
 		);
 
