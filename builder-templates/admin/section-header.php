@@ -27,6 +27,11 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 		 * @param array    $links    The list of footer links.
 		 */
 		$links = apply_filters( 'make_builder_section_footer_links', array(
+			50 => array(
+				'href' => '#',
+				'class' => 'ttfmake-section-configure',
+				'label' => __( 'Configure this section', 'spine' ),
+			),
 			100 => array(
 				'href'  => '#',
 				'class' => 'ttfmake-section-remove',
@@ -47,7 +52,7 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 			?>
 		<a<?php echo $href . $id . $class; ?>>
 			<?php echo $label; ?>
-			</a><?php if ( $i < count( $links ) ) : ?>&nbsp;&#124;&nbsp;<?php endif; ?>
+			</a>
 		<?php $i++; endforeach; ?>
 
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">

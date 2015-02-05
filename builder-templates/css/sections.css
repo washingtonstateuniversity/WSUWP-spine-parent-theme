@@ -82,11 +82,16 @@
 	position: relative;
 }
 
+.ttfmake-section-configure,
 .ttfmake-section-remove {
 	font-size: 0;
 	position: absolute;
 	top: 0;
 	right: 40px;
+}
+
+.ttfmake-section-configure {
+	right: 68px;
 }
 
 .ttfmake-menu-list h4 {
