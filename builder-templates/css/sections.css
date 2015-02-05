@@ -86,3 +86,68 @@
 	top: 0;
 	right: 40px;
 }
+
+.section-type-description {
+	margin-top: 15px;
+	padding-bottom: 15px;
+}
+
+.section-type-description p {
+	display: none;
+	position: absolute;
+	bottom: -44px;
+	background: #333;
+	margin-top: 0;
+	width: 216px;
+	margin-left: -54px;
+	color: #fff;
+	padding: 3px;
+	margin-bottom: 0;
+	z-index: 99163;
+	border: 1px solid #eee;
+}
+
+.ttfmake-menu-list-item:hover .section-type-description p {
+	display: block;
+}
+
+.ttfmake-menu-list-item {
+	float: left;
+	width: 50%;
+	height: 100%;
+	margin-bottom: 0; /*reset*/
+	text-align: center;
+	border-right: 1px solid #eeeeee;
+	border-bottom: 1px solid #eeeeee;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media screen and (min-width: 1160px) {
+	.ttfmake-menu-list-item {
+		width: 12.5%;
+	}
+	.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
+		border-right: 1px solid #eeeeee;
+	}
+	.ttfmake-menu-list-item-link:nth-child(4) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(8) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(12) .ttfmake-menu-list-item {
+		border-right: 0; /*reset*/
+	}
+}
+
+.ttfmake-menu-list-item-link-icon-wrapper {
+	display: inline-block;
+	width: 75%;
+	height: 75%;
+	margin-top: 18px;
+	margin-left: 14px;
+	margin-right: 14px;
+	background-color: #ffffff;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 58px 50px;
+	border: 1px solid #dfdfdf;
+}
