@@ -18,6 +18,38 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 		<h3>
 			<span class="ttfmake-section-header-title"><?php echo esc_html( $header_title ); ?></span><em><?php echo ( esc_html( $ttfmake_section_data['section']['label'] ) ); ?></em>
 		</h3>
+		<?php
+		/**
+		 * Filter the builder section footer links.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $links    The list of footer links.
+		 */
+		$links = apply_filters( 'make_builder_section_footer_links', array(
+			100 => array(
+				'href'  => '#',
+				'class' => 'ttfmake-section-remove',
+				'label' => __( 'Remove this section', 'make' )
+			)
+		) );
+		ksort( $links );
+		?>
+		<?php $i = 1; foreach ( $links as $link ) : ?>
+			<?php
+			$href  = ( isset( $link['href'] ) ) ? ' href="' . esc_url( $link['href'] ) . '"' : '';
+			$id    = ( isset( $link['id'] ) ) ? ' id="' . esc_attr( $link['id'] ) . '"' : '';
+			$label = ( isset( $link['label'] ) ) ? esc_html( $link['label'] ) : '';
+
+			// Set up the class value with a base class
+			$class_base = ' class="ttfmake-builder-section-footer-link';
+			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
+			?>
+		<a<?php echo $href . $id . $class; ?>>
+			<?php echo $label; ?>
+			</a><?php if ( $i < count( $links ) ) : ?>&nbsp;&#124;&nbsp;<?php endif; ?>
+		<?php $i++; endforeach; ?>
+
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
 			<div class="handlediv"></div>
 		</a>
