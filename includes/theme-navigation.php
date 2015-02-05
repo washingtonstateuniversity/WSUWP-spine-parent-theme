@@ -7,12 +7,26 @@
  */
 class Spine_Theme_Navigation {
 	public function __construct() {
+		add_action( 'init', array( $this, 'theme_menus' ) );
+
 		// Filters for navigation handled by WordPress core.
 		add_filter( 'nav_menu_css_class', array( $this, 'abbridged_menu_classes' ), 10 );
 
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
 		add_filter( 'bu_navigation_filter_anchor_atts', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
+	}
+
+	/**
+	 * Setup the default navigation menus used in the Spine.
+	 */
+	public function theme_menus() {
+		register_nav_menus(
+			array(
+				'site'    => 'Site',
+				'offsite' => 'Offsite',
+			)
+		);
 	}
 
 	/**
