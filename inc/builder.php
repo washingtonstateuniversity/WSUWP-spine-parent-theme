@@ -10,7 +10,7 @@ class Spine_Builder_Custom {
 	public function __construct() {
 
 		// This is pulled from the Make theme. We should keep it updated as upstream changes are pulled in.
-		define( 'TTFMAKE_VERSION', '1.1.0' );
+		define( 'TTFMAKE_VERSION', '1.3.2' );
 
 		// Include extra functions from Make that are not part of the builder, but are required.
 		include_once( 'builder-custom/extras.php' );
