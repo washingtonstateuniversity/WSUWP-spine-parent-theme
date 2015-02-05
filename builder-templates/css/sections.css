@@ -87,6 +87,10 @@
 	right: 40px;
 }
 
+.ttfmake-menu-list h4 {
+	font-size: 1em;
+}
+
 .section-type-description {
 	margin-top: 15px;
 	padding-bottom: 15px;
@@ -98,8 +102,9 @@
 	bottom: -44px;
 	background: #333;
 	margin-top: 0;
-	width: 216px;
-	margin-left: -54px;
+	width: 200%;
+	min-height: 38px;
+	margin-left: -50%;
 	color: #fff;
 	padding: 3px;
 	margin-bottom: 0;
@@ -112,6 +117,7 @@
 }
 
 .ttfmake-menu-list-item {
+	position: relative;
 	float: left;
 	width: 50%;
 	height: 100%;
@@ -142,9 +148,9 @@
 	display: inline-block;
 	width: 75%;
 	height: 75%;
-	margin-top: 18px;
-	margin-left: 14px;
-	margin-right: 14px;
+	margin-top: 12%;
+	margin-left: 11%;
+	margin-right: 13%;
 	background-color: #ffffff;
 	background-position: center center;
 	background-repeat: no-repeat;

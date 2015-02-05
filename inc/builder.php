@@ -164,7 +164,7 @@ class Spine_Builder_Custom {
 
 		ttfmake_add_section(
 			'wsuwpthirds',
-			'Three Columns',
+			'Thirds',
 			get_template_directory_uri() . '/inc/builder-custom/images/thirds.png',
 			'Three column layout, choose between thirds and triptych.',
 			array( $this, 'save_columns' ),
@@ -176,7 +176,7 @@ class Spine_Builder_Custom {
 
 		ttfmake_add_section(
 			'wsuwpquarters',
-			'Four Columns',
+			'Quarters',
 			get_template_directory_uri() . '/inc/builder-custom/images/quarters.png',
 			'Four column layout, all equal sizes.',
 			array( $this, 'save_columns' ),
@@ -188,7 +188,7 @@ class Spine_Builder_Custom {
 
 		ttfmake_add_section(
 			'wsuwpheader',
-			'Top Level Header',
+			'H1 Header',
 			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
 			'An H1 element to provide a page title or other top level header.',
 			array( $this, 'save_header' ),
