@@ -584,3 +584,17 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
 	</div><?php
 }
+
+/**
+ * Load a common header template when adding sections to a page builder instance.
+ */
+function spine_load_section_header() {
+	get_template_part( 'builder-templates/admin/section', 'header' );
+}
+
+/**
+ * Load a common footer template when adding sections to a page builder instance.
+ */
+function spine_load_section_footer() {
+	get_template_part( 'builder-templates/admin/section', 'footer' );
+}

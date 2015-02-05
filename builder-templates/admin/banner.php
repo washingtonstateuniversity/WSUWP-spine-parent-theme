@@ -1,8 +1,6 @@
 <?php
-/**
- * @package Make
- */
-get_template_part( 'builder-templates/admin/section', 'header' );
+
+spine_load_section_header();
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
 $section_name  = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
@@ -113,4 +111,5 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 		?>
 	</div>
 	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
-<?php ttfmake_load_section_footer();
+<?php
+spine_load_section_footer();
