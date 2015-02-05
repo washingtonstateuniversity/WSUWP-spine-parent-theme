@@ -8,7 +8,6 @@ class Spine_Theme_Setup {
 	 */
 	public function __construct() {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
-		add_action( 'init', array( $this, 'theme_menus' ) );
 	}
 
 	/**
@@ -16,18 +15,6 @@ class Spine_Theme_Setup {
 	 */
 	public function add_theme_support() {
 		add_theme_support( 'html5', array( 'gallery', 'caption' ) );
-	}
-
-	/**
-	 * Provide default navigation menus.
-	 */
-	function theme_menus() {
-		register_nav_menus(
-			array(
-				'site'    => 'Site',
-				'offsite' => 'Offsite',
-			)
-		);
 	}
 }
 new Spine_Theme_Setup();
