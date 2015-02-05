@@ -456,6 +456,24 @@ class Spine_Builder_Custom {
 new Spine_Builder_Custom();
 
 /**
+ * Determine if the companion plugin is installed.
+ *
+ * @since  1.0.4.
+ *
+ * @return bool    Whether or not the companion plugin is installed.
+ */
+function ttfmake_is_plus() {
+	/**
+	 * Allow for toggling of the Make Plus status.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param bool    $is_plus    Whether or not Make Plus is installed.
+	 */
+	return apply_filters( 'make_is_plus', class_exists( 'TTFMP_App' ) );
+}
+
+/**
  * Retrieve data for display in a two column format - halves, sidebar, etc - in
  * a front end template.
  *
