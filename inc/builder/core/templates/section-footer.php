@@ -3,7 +3,14 @@
  * @package Make
  */
 
-$links = apply_filters( 'ttfmake_builder_section_footer_links', array(
+/**
+ * Filter the builder section footer links.
+ *
+ * @since 1.2.3.
+ *
+ * @param array    $links    The list of footer links.
+ */
+$links = apply_filters( 'make_builder_section_footer_links', array(
 	100 => array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-remove',
@@ -22,10 +29,26 @@ ksort( $links );
 			$class_base = ' class="ttfmake-builder-section-footer-link';
 			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 		?>
+		<?php
+		/**
+		 * Execute code before the section footer links are displayed.
+		 *
+		 * @since 1.2.3.
+		 */
+		do_action( 'make_before_builder_footer_links' );
+		?>
 		<a<?php echo $href . $id . $class; ?>>
 			<?php echo $label; ?>
 		</a><?php if ( $i < count( $links ) ) : ?>&nbsp;&#124;&nbsp;<?php endif; ?>
 		<?php $i++; endforeach; ?>
+		<?php
+		/**
+		 * Execute code after the section footer links are displayed.
+		 *
+		 * @since 1.2.3.
+		 */
+		do_action( 'make_after_builder_footer_links' );
+		?>
 	</div>
 <?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
 </div>

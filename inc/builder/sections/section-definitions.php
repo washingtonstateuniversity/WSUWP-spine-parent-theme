@@ -503,8 +503,8 @@ class TTFMAKE_Section_Definitions {
 			),
 			array(
 				'id' => 'banner-slide',
-				'builder_template' => 'banner-slide',
-				'path' => 'builder-templates/admin/',
+				'builder_template' => 'sections/builder-templates/banner-slide',
+				'path' => 'inc/builder/',
 			),
 		);
 
@@ -534,22 +534,28 @@ class TTFMAKE_Section_Definitions {
 	/**
 	 * An array of defaults for all the Builder section settings
 	 *
-	 * @since 1.0.4.
+	 * @since  1.0.4.
 	 *
-	 * @return array
+	 * @return array    The section defaults.
 	 */
 	public function get_section_defaults() {
-		$defaults = array(
-			// Placeholder
-		);
+		// Note that this function does not do anything yet. It is part of an API refresh that is happening over time.
+		$defaults = array();
 
-		return apply_filters( 'ttfmake_section_defaults', $defaults );
+		/**
+		 * Filter the section defaults.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $defaults    The default section data
+		 */
+		return apply_filters( 'make_section_defaults', $defaults );
 	}
 
 	/**
 	 * Define the choices for section setting dropdowns.
 	 *
-	 * @since 1.0.4.
+	 * @since  1.0.4.
 	 *
 	 * @param  string    $key             The key for the section setting.
 	 * @param  string    $section_type    The section type.
@@ -560,11 +566,19 @@ class TTFMAKE_Section_Definitions {
 
 		$choice_id = "$section_type-$key";
 
-		switch ( $choice_id ) {
-			// Placeholder
-		}
+		// Note that this function does not do anything yet. It is part of an API refresh that is happening over time.
+		switch ( $choice_id ) {}
 
-		return apply_filters( 'ttfmake_section_choices', $choices, $key, $section_type );
+		/**
+		 * Filter the section choices.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $choices         The default section choices.
+		 * @param string   $key             The key for the data.
+		 * @param string   $section_type    The type of section this relates to.
+		 */
+		return apply_filters( 'make_section_choices', $choices, $key, $section_type );
 	}
 }
 endif;
@@ -581,8 +595,19 @@ if ( ! function_exists( 'ttfmake_get_section_default' ) ) :
  */
 function ttfmake_get_section_default( $key, $section_type ) {
 	$defaults = ttfmake_get_section_definitions()->get_section_defaults();
-	$id = "$section_type-$key";
-	return ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
+	$id       = "$section_type-$key";
+	$value    = ( isset( $defaults[ $id ] ) ) ? $defaults[ $id ] : false;
+
+	/**
+	 * Filter the default section data that is received.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param mixed     $value           The section value.
+	 * @param string    $key             The key to get data for.
+	 * @param string    $section_type    The type of section the data is for.
+	 */
+	return apply_filters( 'make_get_section_default', $value, $key, $section_type );
 }
 endif;
 
@@ -620,7 +645,16 @@ function ttfmake_sanitize_section_choice( $value, $key, $section_type ) {
 		$value = ttfmake_get_section_default( $key, $section_type );
 	}
 
-	return $value;
+	/**
+	 * Allow developers to alter a section choice during the sanitization process.
+	 *
+	 * @since 1.2.3.
+	 *
+	 * @param mixed     $value           The value for the section choice.
+	 * @param string    $key             The key for the section choice.
+	 * @param string    $section_type    The section type.
+	 */
+	return apply_filters( 'make_sanitize_section_choice', $value, $key, $section_type );
 }
 endif;
 

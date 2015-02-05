@@ -82,7 +82,17 @@ class TTFMAKE_Sections {
 	 * @return void
 	 */
 	public function add_section( $id, $label, $icon, $description, $save_callback, $builder_template, $display_template, $order, $path ) {
-		$this->_sections[ $id ] = array(
+		/**
+		 * Allow the added sections to be filtered.
+		 *
+		 * This filters allows for dynamically altering sections as they get added. This can help enforce policies for
+		 * sections by sanitizing the registered values.
+		 *
+		 * @since 1.2.3.
+		 *
+		 * @param array    $section    The section being added.
+		 */
+		$this->_sections[ $id ] = apply_filters( 'make_add_section', array(
 			'id'               => $id,
 			'label'            => $label,
 			'icon'             => $icon,
@@ -92,7 +102,7 @@ class TTFMAKE_Sections {
 			'display_template' => $display_template,
 			'order'            => $order,
 			'path'             => $path,
-		);
+		) );
 	}
 
 	/**
