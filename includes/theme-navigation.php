@@ -7,8 +7,30 @@
  */
 class Spine_Theme_Navigation {
 	public function __construct() {
+		// Filters for navigation handled by WordPress core.
+		add_filter( 'nav_menu_css_class', array( $this, 'abbridged_menu_classes' ), 10 );
+
+		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
 		add_filter( 'bu_navigation_filter_anchor_atts', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
+	}
+
+	/**
+	 * Condense verbose menu classes provided by WordPress.
+	 *
+	 * Removes the default current-menu-item and current_page_parent classes
+	 * if they are found on this page view and replaces them with 'current'.
+	 *
+	 * @param array $classes Current list of nav menu classes.
+	 *
+	 * @return array Modified list of nav menu classes.
+	 */
+	public function abbridged_menu_classes( $classes ) {
+		if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
+			return array( 'current' );
+		}
+
+		return array();
 	}
 
 	/**

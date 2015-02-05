@@ -416,25 +416,6 @@ function spine_theme_widgets_init() {
 	register_sidebar( $widget_options );
 }
 
-add_filter( 'nav_menu_css_class', 'spine_abbridged_menu_classes', 10 );
-/**
- * Condense verbose menu classes provided by WordPress.
- *
- * Removes the default current-menu-item and current_page_parent classes
- * if they are found on this page view and replaces them with 'current'.
- *
- * @param array $classes Current list of nav menu classes.
- *
- * @return array Modified list of nav menu classes.
- */
-function spine_abbridged_menu_classes( $classes ) {
-	if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
-		return array( 'current' );
-	}
-
-	return array();
-}
-
 add_filter( 'get_the_excerpt', 'spine_trim_excerpt', 5 );
 /**
  * Provide a custom trimmed excerpt.
