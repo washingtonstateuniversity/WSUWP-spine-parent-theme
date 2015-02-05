@@ -2,7 +2,7 @@
 /**
  * @package Make
  */
-ttfmake_load_section_header();
+get_template_part( 'builder-templates/admin/section', 'header' );
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
 $section_name  = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
