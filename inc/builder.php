@@ -133,7 +133,7 @@ class Spine_Builder_Custom {
 			'Two column layout with equal size columns.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/halves',
+			'front-end/columns',
 			100,
 			'builder-templates/'
 		);
@@ -145,7 +145,7 @@ class Spine_Builder_Custom {
 			'Two column layout with the right side larger than the left.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/sidebar-left',
+			'front-end/columns',
 			100,
 			'builder-templates/'
 		);
@@ -157,7 +157,7 @@ class Spine_Builder_Custom {
 			'Two column layout with the left side larger than the right.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/sidebar-right',
+			'front-end/columns',
 			100,
 			'builder-templates/'
 		);
@@ -169,7 +169,7 @@ class Spine_Builder_Custom {
 			'Three column layout, choose between thirds and triptych.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/thirds',
+			'front-end/columns',
 			100,
 			'builder-templates'
 		);
@@ -181,7 +181,7 @@ class Spine_Builder_Custom {
 			'Four column layout, all equal sizes.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
-			'front-end/quarters',
+			'front-end/columns',
 			100,
 			'builder-templates'
 		);
