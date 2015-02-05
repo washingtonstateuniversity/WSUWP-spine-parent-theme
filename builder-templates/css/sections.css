@@ -170,3 +170,11 @@
 	background-image: none;
 	opacity: 1;
 }
+
+.ttfmake-section-open {
+	margin-bottom: 0;
+}
+
+.ttfmake-section-body {
+	padding-bottom: 20px;
+}
