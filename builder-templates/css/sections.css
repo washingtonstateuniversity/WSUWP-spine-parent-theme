@@ -72,6 +72,10 @@
 	content: '\f140';
 }
 
+.ttfmake-menu-tab {
+	display: none;
+}
+
 .ttfmake-section-header {
 	position: relative;
 }
