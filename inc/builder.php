@@ -119,9 +119,9 @@ class Spine_Builder_Custom {
 			'Single',
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
 			'A single column layout.',
-			array( $this, 'save_blank' ),
-			'admin/single',
-			'front-end/single',
+			array( $this, 'save_columns' ),
+			'admin/columns',
+			'front-end/columns',
 			200,
 			'builder-templates/'
 		);

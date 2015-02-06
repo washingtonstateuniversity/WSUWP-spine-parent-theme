@@ -8,6 +8,7 @@ $section_type_columns = array(
 	'wsuwpthirds'       => 3,
 	'wsuwphalves'       => 2,
 	'wsuwpquarters'     => 4,
+	'wsuwpsingle'       => 1,
 );
 $data_columns = spine_get_column_data( $ttfmake_section_data, $section_type_columns[ $section_type ] );
 
@@ -24,7 +25,7 @@ if ( 'wsuwpsidebarright' === $section_type || 'wsuwpsidebarleft' === $section_ty
 } elseif ( 'wsuwpquarters' === $section_type ) {
 	$section_layout = 'quarters';
 } else {
-	$section_layout = '';
+	$section_layout = 'single';
 }
 
 if ( $section_wrapper_classes ) {

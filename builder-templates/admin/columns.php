@@ -11,7 +11,7 @@ if ( in_array( $ttfmake_section_data['section']['id'], array( 'wsuwphalves', 'ws
 } elseif ( 'wsuwpquarters' === $ttfmake_section_data['section']['id'] ) {
 	$wsuwp_range = 4;
 } else {
-	$wsuwp_range = 2;
+	$wsuwp_range = 1;
 }
 
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
