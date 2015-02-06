@@ -1,6 +1,7 @@
 /*---------------------------------------------------------
  Set a default position for the configure and remove icons.
 --------------------------------------------------------- */
+.spine-builder-column-configure,
 .spine-builder-section-configure,
 .ttfmake-section-remove {
 	position: absolute;
@@ -11,6 +12,7 @@
 /*---------------------------------------------------------
  Styles for the configure/gear icon attached to a section.
 --------------------------------------------------------- */
+.spine-builder-column-configure,
 .spine-builder-section-configure {
 	display: inline-block;
 	height: 100%;
@@ -36,6 +38,7 @@
 /*---------------------------------------------------------
  Hide button labels (builder.css)
 -------------------------------------------------------- */
+.spine-builder-column-configure span,
 .spine-builder-section-configure span {
 	display: none; /*reset*/
 	text-indent: -9999px;
@@ -45,6 +48,7 @@
 /*---------------------------------------------------------
  Section header buttons hover state (builder.css)
 -------------------------------------------------------- */
+.spine-builder-column-configure:hover,
 .spine-builder-section-configure:hover {
 	color: #222;
 }
@@ -55,16 +59,19 @@
 /*---------------------------------------------------------
  Section header icons (builder.css)
 -------------------------------------------------------- */
+.spine-builder-column-configure:before,
 .spine-builder-section-configure:before {
 	font: 400 20px/40px dashicons;
 	speak: none; /*reset*/
-}
-
-.spine-builder-section-configure:before {
 	content: "\f111";
 }
 
+.spine-builder-column-configure:before {
+	font: 400 20px/30px dashicons;
+}
+
 @media screen and ( max-width: 782px ) {
+	.spine-builder-column-configure:before,
 	.spine-builder-section-configure:before {
 		line-height: 48px;
 	}
