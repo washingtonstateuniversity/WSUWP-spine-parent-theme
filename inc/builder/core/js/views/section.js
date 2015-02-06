@@ -94,10 +94,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				$column = $this.parents('.wsuwp-spine-builder-column'),
 				$columnAdvanced = $('.spine-builder-column-overlay', $column);
 
-			if ($columnAdvanced.hasClass('spine-builder-column-overlay-open')) {
-				$columnAdvanced.removeClass('spine-builder-column-overlay-open');
+			if ($columnAdvanced.hasClass('spine-builder-overlay-open')) {
+				$columnAdvanced.removeClass('spine-builder-overlay-open');
 			} else {
-				$columnAdvanced.addClass('spine-builder-column-overlay-open');
+				$columnAdvanced.addClass('spine-builder-overlay-open');
 			}
 		},
 
