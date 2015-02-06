@@ -69,6 +69,19 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 					<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortext' . $ttfmake_section_data['data']['id'] . $i, $editor_settings ); ?>
 				<?php endif; ?>
 				</div>
+				<div class="spine-builder-column-overlay">
+					<div class="spine-builder-column-overlay-wrapper">
+						<div class="spine-builder-column-overlay-header">
+							<div class="spine-builder-column-overlay-title">Configure Section</div>
+							<div class="spine-builder-column-overlay-close">Done</div>
+						</div>
+						<div class="spine-builder-column-overlay-body">
+							<?php
+							spine_output_builder_column_classes( $column_name, $ttfmake_section_data, $j );
+							?>
+						</div>
+					</div>
+				</div>
 			</div>
 			<?php $j++; endforeach; ?>
 	</div>

@@ -19,6 +19,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .ttfmake-section-remove': 'removeSection',
 			'click .spine-builder-section-configure': 'toggleOverlay',
 			'click .spine-builder-overlay-close': 'toggleOverlay',
+			'click .spine-builder-column-configure': 'toggleColumnOverlay',
+			'click .spine-builder-column-overlay-close': 'toggleColumnOverlay',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
 			'click .ttfmake-media-uploader-remove': 'removeImage',
@@ -83,7 +85,20 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			} else {
 				$sectionAdvanced.addClass('spine-builder-overlay-open');
 			}
+		},
 
+		toggleColumnOverlay: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$column = $this.parents('.wsuwp-spine-builder-column'),
+				$columnAdvanced = $('.spine-builder-column-overlay', $column);
+
+			if ($columnAdvanced.hasClass('spine-builder-column-overlay-open')) {
+				$columnAdvanced.removeClass('spine-builder-column-overlay-open');
+			} else {
+				$columnAdvanced.addClass('spine-builder-column-overlay-open');
+			}
 		},
 
 		removeSection: function (evt) {

@@ -539,6 +539,27 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 }
 
 /**
+ * Output the input field for column classes used in column configuration.
+ * @param $column_name
+ * @param $section_data
+ * @param $column
+ */
+function spine_output_builder_column_classes( $column_name, $section_data, $column ) {
+	$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
+	?>
+	<div class="wsuwp-builder-meta" style="width: 100%; margin-top: 10px;">
+		<label for="<?php echo $column_name; ?>[column-classes]">Column Classes</label>
+		<input type="text"
+			   id="<?php echo $column_name; ?>[column-classes]"
+			   name="<?php echo $column_name; ?>[column-classes]"
+			   class="spine-builder-column-classes widefat"
+			   value="<?php echo esc_attr( $column_classes ); ?>" />
+		<p class="description">Enter space delimited class names here to apply them to the <code>div.column</code> element represented by this builder area.</p>
+	</div>
+	<?php
+}
+
+/**
  * Output a selection tool for the type of layout a section should have. This allows classes
  * to be assigned for various multi column layouts.
  *
