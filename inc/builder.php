@@ -359,6 +359,11 @@ class Spine_Builder_Custom {
 						$clean_data['columns'][ $id ]['toggle'] = $item['toggle'];
 					}
 				}
+
+				if ( isset( $item['column-classes'] ) ) {
+					$clean_data['columns'][ $id ]['column-classes'] = $this->clean_classes( $item['column-classes'] );
+				}
+
 				$i++;
 			}
 		}
