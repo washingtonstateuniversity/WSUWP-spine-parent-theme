@@ -29,7 +29,7 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 		$links = apply_filters( 'make_builder_section_footer_links', array(
 			50 => array(
 				'href' => '#',
-				'class' => 'ttfmake-section-configure',
+				'class' => 'spine-builder-section-configure',
 				'label' => __( 'Configure this section', 'spine' ),
 			),
 			100 => array(
@@ -51,7 +51,7 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 			$class      = ( isset( $link['class'] ) ) ? $class_base . ' ' . esc_attr( $link['class'] ) . '"' : '"';
 			?>
 		<a<?php echo $href . $id . $class; ?>>
-			<?php echo $label; ?>
+			<span><?php echo $label; ?></span>
 			</a>
 		<?php $i++; endforeach; ?>
 

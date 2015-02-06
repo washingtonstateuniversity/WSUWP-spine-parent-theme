@@ -17,6 +17,8 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		events: {
 			'click .ttfmake-section-toggle': 'toggleSection',
 			'click .ttfmake-section-remove': 'removeSection',
+			'click .spine-builder-section-configure': 'toggleOverlay',
+			'click .spine-builder-overlay-close': 'toggleOverlay',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
 			'click .ttfmake-media-uploader-remove': 'removeImage',
@@ -67,6 +69,21 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					$input.val('open');
 				});
 			}
+		},
+
+		toggleOverlay: function (evt) {
+			evt.preventDefault();
+
+			var $this = $(evt.target),
+				$section = $this.parents('.ttfmake-section'),
+				$sectionAdvanced = $('.spine-builder-overlay', $section);
+
+			if ($sectionAdvanced.hasClass('spine-builder-overlay-open')) {
+				$sectionAdvanced.removeClass('spine-builder-overlay-open');
+			} else {
+				$sectionAdvanced.addClass('spine-builder-overlay-open');
+			}
+
 		},
 
 		removeSection: function (evt) {
