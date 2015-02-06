@@ -122,16 +122,31 @@
 /*---------------------------------------------------------
  Banner (html-builder.css)
 -------------------------------------------------------- */
+.ttfmake-banner-slide {
+	margin-bottom: 10px;
+}
+
 .ttfmake-banner-slide-body {
 	padding: 12px;
 }
 .ttfmake-banner-slides .ttfmake-banner-slide-header h3 {
-	background-color: #ffffff;
+	background-color: #eee;
 }
+
+.ttfmake-section-open .ttfmake-banner-slide-toggle .handlediv {
+	border-left: 1px solid #d9d9d9;
+}
+
+#poststuff .ttfmake-banner-slide-header h3 {
+	line-height: 40px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 .ttfmake-banner-options {
 	float: left;
 	width: 100%;
-	margin-top: 40px;
+	margin-top: 0;
 }
 .ttfmake-banner-options-container {
 	float: left;
