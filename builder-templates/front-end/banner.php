@@ -7,6 +7,7 @@ global $ttfmake_section_data, $ttfmake_sections;
 
 $section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : false;
+$column_classes = ( isset( $ttfmake_section_data['column-classes'] ) ) ? $ttfmake_section_data['column-classes'] : '';
 
 $banner_slides = ttfmake_builder_get_banner_array( $ttfmake_section_data );
 $is_slider = ( count( $banner_slides ) > 1 ) ? true : false;
@@ -44,7 +45,7 @@ if ( $section_wrapper_classes ) {
 }
 ?>
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single builder-section <?php echo $section_classes; ?> <?php echo esc_attr( ttfmake_builder_get_banner_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
-	<div class="column one">
+	<div class="column one <?php echo esc_attr( $column_classes ); ?>">
 		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>
 			<header>
 				<h2><?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?></h2>
