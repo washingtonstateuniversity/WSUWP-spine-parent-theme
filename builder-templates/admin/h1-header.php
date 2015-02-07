@@ -26,22 +26,22 @@ spine_load_section_header();
 			</div>
 		</div>
 	</div>
-	<div class="spine-builder-overlay">
-		<div class="spine-builder-overlay-wrapper">
-			<div class="spine-builder-overlay-header">
-				<div class="spine-builder-overlay-title">Configure Section</div>
-				<div class="spine-builder-overlay-close">Done</div>
-			</div>
-			<div class="spine-builder-overlay-body">
-				<?php
-				spine_output_builder_section_layout( $section_name, $ttfmake_section_data );
-				spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
-				spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
-				?>
-			</div>
+<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+</div>
+<div class="spine-builder-overlay">
+	<div class="spine-builder-overlay-wrapper">
+		<div class="spine-builder-overlay-header">
+			<div class="spine-builder-overlay-title">Configure Section</div>
+			<div class="spine-builder-overlay-close">Done</div>
+		</div>
+		<div class="spine-builder-overlay-body">
+			<?php
+			spine_output_builder_section_layout( $section_name, $ttfmake_section_data );
+			spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
+			spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
+			?>
 		</div>
 	</div>
-<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
 </div>
 <?php spine_load_section_footer(); ?>
 
