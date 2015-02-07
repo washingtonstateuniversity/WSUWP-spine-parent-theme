@@ -442,11 +442,11 @@ class Spine_Builder_Custom {
 new Spine_Builder_Custom();
 
 /**
- * Determine if the companion plugin is installed.
+ * The upstream Make project has a premium plugin, Make Plus, that
+ * is checked for throughout the code base. We should always return
+ * false.
  *
- * @since  1.0.4.
- *
- * @return bool    Whether or not the companion plugin is installed.
+ * @return bool Always false. Whether or not the companion plugin is installed.
  */
 function ttfmake_is_plus() {
 	return false;
