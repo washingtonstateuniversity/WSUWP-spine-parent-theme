@@ -70,6 +70,18 @@
 	font: 400 20px/30px dashicons;
 }
 
+.ttfmake-section-wsuwpheader .spine-builder-column-configure {
+	right: 0;
+	background: #eee;
+	border: 1px solid #ccc;
+	height: 94%;
+	padding-left: 10px;
+}
+
+.ttfmake-section-wsuwpheader .spine-builder-column-configure:before {
+	font: 400 20px/40px dashicons;
+}
+
 @media screen and ( max-width: 782px ) {
 	.spine-builder-column-configure:before,
 	.spine-builder-section-configure:before {
