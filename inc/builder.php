@@ -449,14 +449,7 @@ new Spine_Builder_Custom();
  * @return bool    Whether or not the companion plugin is installed.
  */
 function ttfmake_is_plus() {
-	/**
-	 * Allow for toggling of the Make Plus status.
-	 *
-	 * @since 1.2.3.
-	 *
-	 * @param bool    $is_plus    Whether or not Make Plus is installed.
-	 */
-	return apply_filters( 'make_is_plus', class_exists( 'TTFMP_App' ) );
+	return false;
 }
 
 /**
