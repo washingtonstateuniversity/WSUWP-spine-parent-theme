@@ -253,6 +253,10 @@ class Spine_Builder_Custom {
 			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
 		}
 
+		if ( isset( $data['column-classes'] ) ) {
+			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
+		}
+
 		return $clean_data;
 	}
 
@@ -523,8 +527,13 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
  * @param $section_data
  * @param $column
  */
-function spine_output_builder_column_classes( $column_name, $section_data, $column ) {
-	$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
+function spine_output_builder_column_classes( $column_name, $section_data, $column = false ) {
+	if ( $column ) {
+		$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
+	} else {
+		$column_classes = ( isset( $section_data['data']['column-classes'] ) ) ? $section_data['data']['column-classes'] : '';
+	}
+
 	?>
 	<div class="wsuwp-builder-meta" style="width: 100%; margin-top: 10px;">
 		<label for="<?php echo $column_name; ?>[column-classes]">Column Classes</label>
