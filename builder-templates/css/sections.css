@@ -166,7 +166,7 @@
 }
 
 .spine-builder-overlay-body {
-	padding: 20px !important;
+	padding: 5px 20px 20px 20px !important;
 	clear: both;
 	overflow-y: hidden;
 	max-height: 500px;

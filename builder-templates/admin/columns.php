@@ -72,7 +72,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				<div class="spine-builder-column-overlay">
 					<div class="spine-builder-column-overlay-wrapper">
 						<div class="spine-builder-overlay-header">
-							<div class="spine-builder-overlay-title">Configure Section</div>
+							<div class="spine-builder-overlay-title">Configure Column</div>
 							<div class="spine-builder-column-overlay-close">Done</div>
 						</div>
 						<div class="spine-builder-overlay-body">
