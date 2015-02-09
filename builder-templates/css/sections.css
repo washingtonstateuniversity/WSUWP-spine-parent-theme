@@ -326,6 +326,12 @@
 		border-right: 0; /*reset*/
 	}
 }
+@media screen and (max-width: 1160px) {
+	.ttfmake-menu-list-item .section-type-description p {
+		width: 97%;
+		margin-left: 0;
+	}
+}
 
 .ttfmake-menu-list-item-link-icon-wrapper {
 	display: inline-block;
