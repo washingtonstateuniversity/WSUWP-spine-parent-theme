@@ -14,6 +14,17 @@ if ( in_array( $ttfmake_section_data['section']['id'], array( 'wsuwphalves', 'ws
 	$wsuwp_range = 1;
 }
 
+// We didn't always treat single as a column layout. Provide a shim for the old data structure.
+if ( 'wsuwpsingle' === $ttfmake_section_data['section']['id'] ) {
+	if ( ! empty( $ttfmake_section_data['data']['content'] ) ) {
+		$ttfmake_section_data['data']['columns'][ 1 ]['content'] = $ttfmake_section_data['data']['content'];
+	}
+
+	if ( ! empty( $ttfmake_section_data['data']['title'] ) ) {
+		$ttfmake_section_data['data']['columns'][ 1 ]['title'] = $ttfmake_section_data['data']['title'];
+	}
+}
+
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, $wsuwp_range);
 
