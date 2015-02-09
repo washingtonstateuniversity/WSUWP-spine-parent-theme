@@ -1,6 +1,6 @@
 <?php
 
-ttfmake_load_section_header();
+spine_load_section_header();
 
 global $ttfmake_section_data, $ttfmake_is_js_template;
 
@@ -11,162 +11,109 @@ if ( in_array( $ttfmake_section_data['section']['id'], array( 'wsuwphalves', 'ws
 } elseif ( 'wsuwpquarters' === $ttfmake_section_data['section']['id'] ) {
 	$wsuwp_range = 4;
 } else {
-	$wsuwp_range = 2;
+	$wsuwp_range = 1;
 }
 
-$section_id     = ( isset( $ttfmake_section_data['data']['id'] ) ) ? $ttfmake_section_data['data']['id'] : '{{{ id }}}';
+// We didn't always treat single as a column layout. Provide a shim for the old data structure.
+if ( 'wsuwpsingle' === $ttfmake_section_data['section']['id'] ) {
+	if ( ! empty( $ttfmake_section_data['data']['content'] ) ) {
+		$ttfmake_section_data['data']['columns'][ 1 ]['content'] = $ttfmake_section_data['data']['content'];
+	}
+
+	if ( ! empty( $ttfmake_section_data['data']['title'] ) ) {
+		$ttfmake_section_data['data']['columns'][ 1 ]['title'] = $ttfmake_section_data['data']['title'];
+	}
+}
+
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
-$columns_number = ( isset( $ttfmake_section_data['data']['columns-number'] ) ) ? $ttfmake_section_data['data']['columns-number'] : $wsuwp_range;
 $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, $wsuwp_range);
-$columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfmake_is_js_template ) ? $columns_number : $wsuwp_range;
-
-/**
- * Execute code before the columns select input is displayed.
- *
- * @since 1.2.3.
- *
- * @param array    $ttfmake_section_data    The data for the section.
- */
-do_action( 'make_section_text_before_columns_select', $ttfmake_section_data );
-
-/**
- * Execute code after the columns select input is displayed.
- *
- * @since 1.2.3.
- *
- * @param array    $ttfmake_section_data    The data for the section.
- */
-do_action( 'make_section_text_after_columns_select', $ttfmake_section_data );
-
-/**
- * Execute code after the section title is displayed.
- *
- * @since 1.2.3.
- *
- * @param array    $ttfmake_section_data    The data for the section.
- */
-do_action( 'make_section_text_after_title', $ttfmake_section_data );
 
 ?>
-	<div class="wsuwp-spine-halves-stage ttfmake-text-columns-stage ttfmake-text-columns-<?php echo $columns_class; ?>">
+	<div class="wsuwp-spine-halves-stage">
 		<?php $j = 1; foreach ( $section_order as $key => $i ) : ?>
 			<?php
 			$column_name = $section_name . '[columns][' . $i . ']';
-			$iframe_id   = 'ttfmake-iframe-' . $section_id . '-' . $i;
-			$textarea_id = 'ttfmake-content-' . $section_id . '-' . $i;
-			$overlay_id  = 'ttfmake-overlay-' . $section_id . '-' . $i;
-			$link        = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-link'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-link'] : '';
-			$image_id    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['image-id'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['image-id'] : 0;
-			$title       = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
-			$content     = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
+			$title    = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['title'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['title'] : '';
+			$content  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['content'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['content'] : '';
+			$visible  = ( isset( $ttfmake_section_data['data']['columns'][ $i ]['toggle'] ) ) ? $ttfmake_section_data['data']['columns'][ $i ]['toggle'] : 'visible';
 
-			$item_has_content = ( ! empty( $content ) ) ? ' item-has-content' : '';
+			if ( ! in_array( $visible, array( 'visible', 'invisible' ) ) ) {
+				$visible = 'visible';
+			}
 
-			$column_buttons = array(
-				100 => array(
-					'label'              => __( 'Configure column', 'make' ),
-					'href'               => '#',
-					'class'              => 'configure-column-link ttfmake-overlay-open',
-					'title'              => __( 'Configure column', 'make' ),
-					'other-a-attributes' => ' data-overlay="#' . $overlay_id .'"',
-				),
-				200 => array(
-					'label'              => __( 'Edit text column', 'make' ),
-					'href'               => '#',
-					'class'              => 'edit-content-link edit-text-column-link' . $item_has_content,
-					'title'              => __( 'Edit content', 'make' ),
-					'other-a-attributes' => 'data-textarea="' . esc_attr( $textarea_id ) . '" data-iframe="' . esc_attr( $iframe_id ) . '"',
-				),
-			);
-
-			/**
-			 * Filter the buttons added to a text column.
-			 *
-			 * @since 1.4.0.
-			 *
-			 * @param array    $column_buttons          The current list of buttons.
-			 * @param array    $ttfmake_section_data    All data for the section.
-			 */
-			$column_buttons = apply_filters( 'make_column_buttons', $column_buttons, $ttfmake_section_data );
-			ksort( $column_buttons );
+			if ( 'invisible' === $visible ) {
+				$column_style = 'style="display: none;"';
+				$toggle_class = 'wsuwp-toggle-closed';
+			} else {
+				$column_style = '';
+				$toggle_class = '';
+			}
 			?>
-			<div class="wsuwp-spine-builder-column wsuwp-spine-builder-column-position-<?php echo $j; ?> <?php echo esc_attr( apply_filters( 'ttfmake-text-column-classes', 'ttfmake-text-column ttfmake-text-column-position-' . $j, $i, $ttfmake_section_data ) ); ?>" data-id="<?php echo $i; ?>">
-				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'make' ); ?>" class="ttfmake-sortable-handle">
-					<div class="sortable-background column-sortable-background"></div>
+			<div class="wsuwp-spine-builder-column wsuwp-spine-builder-column-position-<?php echo $j; ?>" data-id="<?php echo $i; ?>">
+				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttfmake' ); ?>" class="ttfmake-sortable-handle">
+					<div class="sortable-background">
+						<a href="#" class="spine-builder-column-configure"><span>Configure this column</span></a>
+						<a href="#" class="wsuwp-column-toggle" title="Click to toggle"><div class="handlediv <?php echo $toggle_class; ?>"></div></a>
+						<div class="wsuwp-builder-column-title">Column <?php echo $j; ?> of <?php echo $wsuwp_range; ?></div>
+					</div>
 				</div>
 
+				<div class="ttfmake-titlediv">
+					<div class="ttfmake-titlewrap">
+						<input placeholder="<?php esc_attr_e( 'Enter title here', 'ttfmake' ); ?>" type="text" name="<?php echo $column_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php echo esc_attr( htmlspecialchars( $title ) ); ?>" autocomplete="off" />
+					</div>
+				</div>
+
+				<div class="wsuwp-column-content" <?php echo $column_style; ?>>
+					<input type="hidden" class="wsuwp-column-visible" name="<?php echo $column_name; ?>[toggle]" value="<?php echo $visible; ?>" />
 				<?php
-				/**
-				 * Execute code before an individual text column is displayed.
-				 *
-				 * @since 1.2.3.
-				 *
-				 * @param array    $ttfmake_section_data    The data for the section.
-				 */
-				do_action( 'make_section_text_before_column', $ttfmake_section_data, $i );
-				?>
+				$editor_settings = array(
+					'tinymce'       => true,
+					'quicktags'     => true,
+					'editor_height' => 345,
+					'textarea_name' => $column_name . '[content]',
+				);
 
-				<?php foreach ( $column_buttons as $button ) : ?>
-					<a href="<?php echo esc_url( $button['href'] ); ?>" class="column-buttons <?php echo esc_attr( $button['class'] ); ?>" title="<?php echo esc_attr( $button['title'] ); ?>" <?php if ( ! empty( $button['other-a-attributes'] ) ) echo $button['other-a-attributes']; ?>>
-			<span>
-				<?php echo esc_html( $button['label'] ); ?>
-			</span>
-					</a>
-				<?php endforeach; ?>
-
-				<?php echo spine_builder_add_column_title( $column_name, $title); ?>
-				<?php ttfmake_get_builder_base()->add_frame( $section_id . '-' . $i, $column_name . '[content]', $content ); ?>
-
-				<?php
-				/**
-				 * Execute code after an individual text column is displayed.
-				 *
-				 * @since 1.2.3.
-				 *
-				 * @param array    $ttfmake_section_data    The data for the section.
-				 */
-				do_action( 'make_section_text_after_column', $ttfmake_section_data, $i );
-				?>
-
-				<?php
-				global $ttfmake_overlay_class, $ttfmake_overlay_id, $ttfmake_overlay_title;
-				$ttfmake_overlay_class = 'ttfmake-configuration-overlay';
-				$ttfmake_overlay_id    = $overlay_id;
-				$ttfmake_overlay_title = __( 'Configure column', 'make' );
-
-				get_template_part( '/inc/builder/core/templates/overlay', 'header' );
-
-				$inputs = apply_filters( 'make_column_configuration', array(
-					100 => array(
-						'type'    => 'text',
-						'name'    => 'column-classes',
-						'label'   => 'Column CSS Classes',
-						'default' => '',
-					),
-				) );
-
-				// Sort the config in case 3rd party code added another input
-				ksort( $inputs, SORT_NUMERIC );
-
-				// Print the inputs
-				$output = '';
-
-				foreach ( $inputs as $input ) {
-					if ( isset( $input['type'] ) && isset( $input['name'] ) ) {
-						$section_data  = ( isset( $ttfmake_section_data['data']['columns'][ $i ] ) ) ? $ttfmake_section_data['data']['columns'][ $i ] : array();
-						$output       .= ttfmake_create_input( $column_name, $input, $section_data );
-					}
-				}
-
-				echo $output;
-
-				get_template_part( '/inc/builder/core/templates/overlay', 'footer' );
-				?>
+				if ( true === $ttfmake_is_js_template ) : ?>
+					<?php ttfmake_get_builder_base()->wp_editor( '', 'ttfmakeeditortextcolumn' . $i . 'temp', $editor_settings ); ?>
+				<?php else : ?>
+					<?php ttfmake_get_builder_base()->wp_editor( $content, 'ttfmakeeditortext' . $ttfmake_section_data['data']['id'] . $i, $editor_settings ); ?>
+				<?php endif; ?>
+				</div>
+				<div class="spine-builder-column-overlay">
+					<div class="spine-builder-column-overlay-wrapper">
+						<div class="spine-builder-overlay-header">
+							<div class="spine-builder-overlay-title">Configure Column</div>
+							<div class="spine-builder-column-overlay-close">Done</div>
+						</div>
+						<div class="spine-builder-overlay-body">
+							<?php
+							spine_output_builder_column_classes( $column_name, $ttfmake_section_data, $j );
+							?>
+						</div>
+					</div>
+				</div>
 			</div>
 			<?php $j++; endforeach; ?>
 	</div>
 
 	<div class="clear"></div>
-	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttfmake-text-columns-order wsuwp-spine-builder-columns-order" />
+	<div class="spine-builder-overlay">
+		<div class="spine-builder-overlay-wrapper">
+			<div class="spine-builder-overlay-header">
+				<div class="spine-builder-overlay-title">Configure Section</div>
+				<div class="spine-builder-overlay-close">Done</div>
+			</div>
+			<div class="spine-builder-overlay-body">
+				<?php
+				spine_output_builder_section_layout( $section_name, $ttfmake_section_data );
+				spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
+				spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
+				?>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="wsuwp-spine-builder-columns-order" />
 	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
-<?php ttfmake_load_section_footer(); ?>
+<?php
+spine_load_section_footer();

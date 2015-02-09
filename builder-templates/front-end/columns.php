@@ -2,15 +2,14 @@
 global $ttfmake_section_data, $ttfmake_sections;
 
 $section_type = ( isset( $ttfmake_section_data['section-type'] ) ) ? $ttfmake_section_data['section-type'] : 'wsuwpsidebarright';
-
 $section_type_columns = array(
 	'wsuwpsidebarright' => 2,
 	'wsuwpsidebarleft'  => 2,
 	'wsuwpthirds'       => 3,
 	'wsuwphalves'       => 2,
 	'wsuwpquarters'     => 4,
+	'wsuwpsingle'       => 1,
 );
-
 $data_columns = spine_get_column_data( $ttfmake_section_data, $section_type_columns[ $section_type ] );
 
 $column_count = array( 'one', 'two', 'three', 'four' );
@@ -26,7 +25,7 @@ if ( 'wsuwpsidebarright' === $section_type || 'wsuwpsidebarleft' === $section_ty
 } elseif ( 'wsuwpquarters' === $section_type ) {
 	$section_layout = 'quarters';
 } else {
-	$section_layout = '';
+	$section_layout = 'single';
 }
 
 if ( $section_wrapper_classes ) {
@@ -57,7 +56,6 @@ if ( $section_wrapper_classes ) {
 		?>
 	</section>
 <?php
-
 if ( $section_wrapper_classes ) {
 	echo '</div>';
 }

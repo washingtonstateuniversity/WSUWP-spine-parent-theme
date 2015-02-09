@@ -10,7 +10,7 @@ class Spine_Builder_Custom {
 	public function __construct() {
 
 		// This is pulled from the Make theme. We should keep it updated as upstream changes are pulled in.
-		define( 'TTFMAKE_VERSION', '1.4.8' );
+		define( 'TTFMAKE_VERSION', '1.3.2' );
 
 		// Include extra functions from Make that are not part of the builder, but are required.
 		include_once( 'builder-custom/extras.php' );
@@ -24,7 +24,7 @@ class Spine_Builder_Custom {
 		add_action( 'admin_init', array( $this, 'remove_extra_make' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
-		add_action( 'admin_footer', array( $this, 'print_templates' ) );
+
 		add_filter( 'make_insert_post_data_sections', array( $this, 'set_section_meta' ), 10, 1 );
 	}
 
@@ -37,13 +37,9 @@ class Spine_Builder_Custom {
 		if ( 'page' === get_current_screen()->id ) {
 			wp_enqueue_script( 'ttfmake-admin-edit-page', get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js', array( 'jquery' ), spine_get_script_version(), true );
 
-			wp_enqueue_style( 'make-builder-styles', get_template_directory_uri() . '/inc/builder/sections/css/sections.css', array(), spine_get_script_version() );
 			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
-
-			wp_enqueue_script( 'wsuwp-builder-banner-slide-model', get_template_directory_uri() . '/builder-templates/js/models/banner-slide.js', array(), spine_get_script_version(), true );
-			wp_enqueue_script( 'wsuwp-builder-banner-slide-view', get_template_directory_uri() . '/builder-templates/js/views/banner-slide.js', array(), spine_get_script_version(), true );
-			wp_enqueue_script( 'wsuwp-builder-banner-view', get_template_directory_uri() . '/builder-templates/js/views/banner.js', array(), spine_get_script_version(), true );
-			wp_enqueue_script( 'wsuwp-builder-columns', get_template_directory_uri() . '/builder-templates/js/columns.js', array(), spine_get_script_version(), true );
+			wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array('jquery'), spine_get_script_version(), true );
+			wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
 			wp_localize_script(
 				'ttfmake-admin-edit-page',
@@ -96,48 +92,21 @@ class Spine_Builder_Custom {
 	}
 
 	/**
-	 * Provide a set of default options to add to each of our section types.
-	 *
-	 * @return array
-	 */
-	private function get_default_section_args() {
-		$args = array(
-			200 => array(
-				'type'    => 'text',
-				'name'    => 'section-classes',
-				'class'   => 'ttfmake-section-classes',
-				'label'   => 'Section Classes',
-				'default' => 'gutter pad-top',
-			),
-			300 => array(
-				'type'    => 'text',
-				'name'    => 'section-wrapper',
-				'class'   => 'ttfmake-section-wrapper',
-				'label'   => 'Section Wrapper Classes',
-			)
-		);
-		return $args;
-	}
-
-	/**
 	 * Add the custom sections used in our implementation of the page builder.
 	 */
 	public function add_builder_sections() {
-		$single_args = $this->get_default_section_args();
 		ttfmake_add_section(
 			'wsuwpsingle',
 			'Single',
 			get_template_directory_uri() . '/inc/builder/sections/css/images/blank.png',
 			'A single column layout.',
-			array( $this, 'save_blank' ),
-			'admin/single',
-			'front-end/single',
+			array( $this, 'save_columns' ),
+			'admin/columns',
+			'front-end/columns',
 			200,
-			'builder-templates/',
-			$single_args
+			'builder-templates/'
 		);
 
-		$halves_args = $this->get_default_section_args();
 		ttfmake_add_section(
 			'wsuwphalves',
 			'Halves',
@@ -147,24 +116,9 @@ class Spine_Builder_Custom {
 			'admin/columns',
 			'front-end/columns',
 			500,
-			'builder-templates/',
-			$halves_args
+			'builder-templates/'
 		);
 
-		$sidebar_left_args = array(
-			400 => array(
-				'type'    => 'select',
-				'name'    => 'section-layout',
-				'class'   => 'ttfmake-text-columns',
-				'label'   => 'Columns Layout',
-				'default' => 'side-left',
-				'options' => array(
-					'side-left' => 'Side Left',
-					'margin-left'  => 'Margin Left',
-				),
-			),
-		);
-		$sidebar_left_args = wp_parse_args( $sidebar_left_args, $this->get_default_section_args() );
 		ttfmake_add_section(
 			'wsuwpsidebarleft',
 			'Sidebar Left',
@@ -173,25 +127,10 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			400,
-			'builder-templates/',
-			$sidebar_left_args
+			300,
+			'builder-templates/'
 		);
 
-		$sidebar_right_args = array(
-			400 => array(
-				'type'    => 'select',
-				'name'    => 'section-layout',
-				'class'   => 'ttfmake-text-columns',
-				'label'   => 'Columns Layout',
-				'default' => 'side-right',
-				'options' => array(
-					'side-right' => 'Side Right',
-					'margin-right'  => 'Margin Right',
-				),
-			),
-		);
-		$sidebar_right_args = wp_parse_args( $sidebar_right_args, $this->get_default_section_args() );
 		ttfmake_add_section(
 			'wsuwpsidebarright',
 			'Sidebar Right',
@@ -200,139 +139,46 @@ class Spine_Builder_Custom {
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
-			300,
-			'builder-templates/',
-			$sidebar_right_args
+			400,
+			'builder-templates/'
 		);
 
-		$thirds_args = array(
-			400 => array(
-				'type'    => 'select',
-				'name'    => 'section-layout',
-				'class'   => 'ttfmake-text-columns',
-				'label'   => 'Columns Layout',
-				'default' => 'thirds',
-				'options' => array(
-					'thirds' => 'Equal Thirds',
-					'triptych'  => 'Triptych',
-				),
-			),
-		);
-		$thirds_args = wp_parse_args( $thirds_args, $this->get_default_section_args() );
 		ttfmake_add_section(
 			'wsuwpthirds',
-			'Three Columns',
+			'Thirds',
 			get_template_directory_uri() . '/inc/builder-custom/images/thirds.png',
 			'Three column layout, choose between thirds and triptych.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
 			600,
-			'builder-templates',
-			$thirds_args
+			'builder-templates'
 		);
 
-		$quarters_args = $this->get_default_section_args();
 		ttfmake_add_section(
 			'wsuwpquarters',
-			'Four Columns',
+			'Quarters',
 			get_template_directory_uri() . '/inc/builder-custom/images/quarters.png',
 			'Four column layout, all equal sizes.',
 			array( $this, 'save_columns' ),
 			'admin/columns',
 			'front-end/columns',
 			700,
-			'builder-templates',
-			$quarters_args
+			'builder-templates'
 		);
 
-		$header_args = $this->get_default_section_args();
 		ttfmake_add_section(
 			'wsuwpheader',
-			'Top Level Header',
+			'H1 Header',
 			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
 			'An H1 element to provide a page title or other top level header.',
 			array( $this, 'save_header' ),
 			'admin/h1-header',
 			'front-end/h1-header',
 			100,
-			'builder-templates',
-			$header_args
+			'builder-templates'
 		);
 
-		$banner_args = array(
-			100 => array(
-				'type'  => 'section_title',
-				'name'  => 'title',
-				'label' => __( 'Enter section title', 'make' ),
-				'class' => 'ttfmake-configuration-title ttfmake-section-header-title-input',
-			),
-			200 => array(
-				'type'    => 'checkbox',
-				'label'   => __( 'Hide navigation arrows', 'make' ),
-				'name'    => 'hide-arrows',
-				'default' => 0
-			),
-			300 => array(
-				'type'    => 'checkbox',
-				'label'   => __( 'Hide navigation dots', 'make' ),
-				'name'    => 'hide-dots',
-				'default' => 0
-			),
-			400 => array(
-				'type'    => 'checkbox',
-				'label'   => __( 'Autoplay slideshow', 'make' ),
-				'name'    => 'autoplay',
-				'default' => 1
-			),
-			500 => array(
-				'type'    => 'text',
-				'label'   => __( 'Time between slides (ms)', 'make' ),
-				'name'    => 'delay',
-				'default' => 6000
-			),
-			600 => array(
-				'type'    => 'select',
-				'label'   => __( 'Transition effect', 'make' ),
-				'name'    => 'transition',
-				'default' => 'scrollHorz',
-				'options' => array(
-					'scrollHorz' => __( 'Slide horizontal', 'make' ),
-					'fade'       => __( 'Fade', 'make' ),
-					'none'       => __( 'None', 'make' ),
-				)
-			),
-			700 => array(
-				'type'    => 'text',
-				'label'   => __( 'Section height (px)', 'make' ),
-				'name'    => 'height',
-				'default' => 600
-			),
-			800 => array(
-				'type'        => 'select',
-				'label'       => __( 'Responsive behavior', 'make' ),
-				'name'        => 'responsive',
-				'default'     => 'balanced',
-				'description' => __( 'Choose how the banner will respond to varying screen widths.', 'make' ),
-				'options'     => array(
-					'balanced' => __( 'Default', 'make' ),
-					'aspect'   => __( 'Aspect', 'make' ),
-				)
-			),
-			900 => array(
-				'type'    => 'text',
-				'name'    => 'section-classes',
-				'class'   => 'ttfmake-section-classes',
-				'label'   => 'Section Classes',
-				'default' => 'gutter pad-top',
-			),
-			910 => array(
-				'type'    => 'text',
-				'name'    => 'section-wrapper',
-				'class'   => 'ttfmake-section-wrapper',
-				'label'   => 'Section Wrapper Classes',
-			),
-		);
 		ttfmake_add_section(
 			'banner',
 			_x( 'Banner', 'section name', 'make' ),
@@ -342,8 +188,7 @@ class Spine_Builder_Custom {
 			'admin/banner',
 			'front-end/banner',
 			800,
-			'builder-templates',
-			$banner_args
+			'builder-templates'
 		);
 
 	}
@@ -408,40 +253,10 @@ class Spine_Builder_Custom {
 			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
 		}
 
-		return $clean_data;
-	}
-
-	/**
-	 * Clean the data being passed from the save of a "Single" section in the admin.
-	 *
-	 * @param array $data Array of data inputs being passed.
-	 *
-	 * @return array Clean data.
-	 */
-	public function save_blank( $data ) {
-		$clean_data = array();
-
-		if ( isset( $data['title'] ) ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-		}
-
-		if ( isset( $data['content'] ) ) {
-			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], get_the_ID(), 'db' );
-		}
-
-		if ( isset( $data['section-classes'] ) ) {
-			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
-		}
-
-		if ( isset( $data['section-wrapper'] ) ) {
-			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
-		}
-
 		if ( isset( $data['column-classes'] ) ) {
 			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
 		}
+
 		return $clean_data;
 	}
 
@@ -454,12 +269,6 @@ class Spine_Builder_Custom {
 	 */
 	public function save_columns( $data ) {
 		$clean_data = array();
-
-		if ( isset( $data['title'] ) ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-		}
 
 		if ( isset( $data['columns-number'] ) ) {
 			if ( in_array( $data['columns-number'], range( 1, 4 ) ) ) {
@@ -586,8 +395,8 @@ class Spine_Builder_Custom {
 					$clean_data['banner-slides'][ $id ]['state'] = ( in_array( $slide['state'], array( 'open', 'closed' ) ) ) ? $slide['state'] : 'open';
 				}
 
-				if ( isset( $slide['slide-url'] ) ) {
-					$clean_data['banner-slides'][ $id ]['slide-url'] = esc_url_raw( $slide['slide-url'] );
+				if ( isset( $slide['spine_slide_url'] ) ) {
+					$clean_data['banner-slides'][ $id ]['slide-url'] = esc_url_raw( $slide['spine_slide_url'] );
 				}
 			}
 		}
@@ -600,76 +409,44 @@ class Spine_Builder_Custom {
 			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
 		}
 
-		return $clean_data;
-	}
-
-	/**
-	 * Print out the JS section templates
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	public function print_templates() {
-		global $hook_suffix, $typenow, $ttfmake_is_js_template;
-		$ttfmake_is_js_template = true;
-
-		// Only show when adding/editing pages
-		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
-			return;
+		if ( isset( $data['column-classes'] ) ) {
+			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
 		}
 
-		// Define the templates to print
-		$templates = array(
-			array(
-				'id' => 'banner-slide',
-				'builder_template' => 'admin/banner-slide',
-				'path' => 'builder-templates/',
-			),
-		);
-
-		// Print the templates
-		foreach ( $templates as $template ) : ?>
-			<script type="text/html" id="tmpl-ttfmake-<?php echo $template['id']; ?>">
-				<?php
-				ob_start();
-				ttfmake_get_builder_base()->load_section( $template, array() );
-				$html = ob_get_clean();
-				$html = str_replace(
-					array(
-						'temp',
-					),
-					array(
-						'{{{ id }}}',
-					),
-					$html
-				);
-				echo $html;
-				?>
-			</script>
-		<?php endforeach;
-		unset( $GLOBALS['ttfmake_is_js_template'] );
+		return $clean_data;
 	}
 }
 new Spine_Builder_Custom();
 
 /**
- * Retrieve data for display in a two column format - halves, sidebar, etc - in
- * a front end template.
+ * The upstream Make project has a premium plugin, Make Plus, that
+ * is checked for throughout the code base. We should always return
+ * false.
  *
- * @param array $ttfmake_section_data Data to be prepped for column output.
+ * @return bool Always false. Whether or not the companion plugin is installed.
+ */
+function ttfmake_is_plus() {
+	return false;
+}
+
+/**
+ * Retrieve data for display in a column format for use in any front end
+ * template.
+ *
+ * @param array $section_data   Data to be prepped for column output.
+ * @param int   $columns_number Number of columns to retrieve.
  *
  * @return array Prepped data.
  */
-function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
+function spine_get_column_data( $section_data, $columns_number = 2 ) {
 	$columns_order = array();
-	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
-		$columns_order = $ttfmake_section_data['columns-order'];
+	if ( isset( $section_data['columns-order'] ) ) {
+		$columns_order = $section_data['columns-order'];
 	}
 
 	$columns_data = array();
-	if ( isset( $ttfmake_section_data['columns'] ) ) {
-		$columns_data = $ttfmake_section_data['columns'];
+	if ( isset( $section_data['columns'] ) ) {
+		$columns_data = $section_data['columns'];
 	}
 
 	$columns_array = array();
@@ -688,27 +465,119 @@ function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
 }
 
 /**
- * Override for method expected by upstream project Make.
+ * Output the input field for section wrapper that is shared amongst admin templates.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
  */
-function ttfmake_is_plus() {
-	return false;
+function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
+	?>
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
+		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
+	</div>
+	<?php
 }
 
 /**
- * Add a title field in the builder for any of our various columns when called.
+ * Output the input field for section classes that is shared amongst admin templates.
  *
- * @param string $column_name
- * @param string $title
- *
- * @return string
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
  */
-function spine_builder_add_column_title( $column_name, $title ) {
-	ob_start();
+function spine_output_builder_section_classes( $section_name, $ttfmake_section_data ) {
+	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter pad-top';
 	?>
-	<div class="ttfmake-column-title">
-		<input type="text" name="<?php echo esc_attr( $column_name ); ?>[title]" value="<?php echo esc_attr( $title ); ?>" />
+	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
+		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes:</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
+		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
 	<?php
-	$output = ob_get_clean();
-	return $output;
+}
+
+/**
+ * Output the input field for column classes used in column configuration.
+ * @param $column_name
+ * @param $section_data
+ * @param $column
+ */
+function spine_output_builder_column_classes( $column_name, $section_data, $column = false ) {
+	if ( $column ) {
+		$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
+	} else {
+		$column_classes = ( isset( $section_data['data']['column-classes'] ) ) ? $section_data['data']['column-classes'] : '';
+	}
+
+	?>
+	<div class="wsuwp-builder-meta" style="width: 100%; margin-top: 10px;">
+		<label for="<?php echo $column_name; ?>[column-classes]">Column Classes</label>
+		<input type="text"
+			   id="<?php echo $column_name; ?>[column-classes]"
+			   name="<?php echo $column_name; ?>[column-classes]"
+			   class="spine-builder-column-classes widefat"
+			   value="<?php echo esc_attr( $column_classes ); ?>" />
+		<p class="description">Enter space delimited class names here to apply them to the <code>div.column</code> element represented by this builder area.</p>
+	</div>
+	<?php
+}
+
+/**
+ * Output a selection tool for the type of layout a section should have. This allows classes
+ * to be assigned for various multi column layouts.
+ *
+ * @param string $section_name         Current section being displayed.
+ * @param array  $ttfmake_section_data Data associated with the section.
+ */
+function spine_output_builder_section_layout( $section_name, $ttfmake_section_data ) {
+	if ( 'wsuwpthirds' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'thirds', 'triptych' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'thirds';
+		}
+	} elseif ( 'wsuwpsidebarleft' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-left', 'margin-left' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-left';
+		}
+	} elseif ( 'wsuwpsidebarright' === $ttfmake_section_data['section']['id'] ) {
+		$options = array( 'side-right', 'margin-right' );
+		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
+			$current = $ttfmake_section_data['data']['section-layout'];
+		} else {
+			$current = 'side-right';
+		}
+	} else {
+		return;
+	}
+
+	?><div class="wsuwp-builder-meta" style="width:100%; margin-top: 10px;">
+		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
+		<select id="<?php echo $section_name; ?>[section-layout]"
+				name="<?php echo $section_name; ?>[section-layout]"
+				value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
+			<?php
+			foreach( $options as $option ) {
+				echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
+			}
+			?></select>
+		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
+	</div><?php
+}
+
+/**
+ * Load a common header template when adding sections to a page builder instance.
+ */
+function spine_load_section_header() {
+	get_template_part( 'builder-templates/admin/section', 'header' );
+}
+
+/**
+ * Load a common footer template when adding sections to a page builder instance.
+ */
+function spine_load_section_footer() {
+	get_template_part( 'builder-templates/admin/section', 'footer' );
 }
