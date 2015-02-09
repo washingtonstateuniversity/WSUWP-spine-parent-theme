@@ -430,22 +430,23 @@ function ttfmake_is_plus() {
 }
 
 /**
- * Retrieve data for display in a two column format - halves, sidebar, etc - in
- * a front end template.
+ * Retrieve data for display in a column format for use in any front end
+ * template.
  *
- * @param array $ttfmake_section_data Data to be prepped for column output.
+ * @param array $section_data   Data to be prepped for column output.
+ * @param int   $columns_number Number of columns to retrieve.
  *
  * @return array Prepped data.
  */
-function spine_get_column_data( $ttfmake_section_data, $columns_number = 2 ) {
+function spine_get_column_data( $section_data, $columns_number = 2 ) {
 	$columns_order = array();
-	if ( isset( $ttfmake_section_data['columns-order'] ) ) {
-		$columns_order = $ttfmake_section_data['columns-order'];
+	if ( isset( $section_data['columns-order'] ) ) {
+		$columns_order = $section_data['columns-order'];
 	}
 
 	$columns_data = array();
-	if ( isset( $ttfmake_section_data['columns'] ) ) {
-		$columns_data = $ttfmake_section_data['columns'];
+	if ( isset( $section_data['columns'] ) ) {
+		$columns_data = $section_data['columns'];
 	}
 
 	$columns_array = array();
