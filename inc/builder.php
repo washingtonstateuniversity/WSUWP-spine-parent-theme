@@ -261,37 +261,6 @@ class Spine_Builder_Custom {
 	}
 
 	/**
-	 * Clean the data being passed from the save of a "Single" section in the admin.
-	 *
-	 * @param array $data Array of data inputs being passed.
-	 *
-	 * @return array Clean data.
-	 */
-	public function save_blank( $data ) {
-		$clean_data = array();
-
-		if ( isset( $data['title'] ) ) {
-			add_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-			$clean_data['title'] = $clean_data['label'] = apply_filters( 'title_save_pre', $data['title'] );
-			remove_filter( 'wp_kses_allowed_html', array( $this, 'allow_phrasing_in_titles' ) );
-		}
-
-		if ( isset( $data['content'] ) ) {
-			$clean_data['content'] = sanitize_post_field( 'post_content', $data['content'], get_the_ID(), 'db' );
-		}
-
-		if ( isset( $data['section-classes'] ) ) {
-			$clean_data['section-classes'] = $this->clean_classes( $data['section-classes'] );
-		}
-
-		if ( isset( $data['section-wrapper'] ) ) {
-			$clean_data['section-wrapper'] = $this->clean_classes( $data['section-wrapper'] );
-		}
-
-		return $clean_data;
-	}
-
-	/**
 	 * Clean the data being passed from the save of a columns layout.
 	 *
 	 * @param array $data Array of data inputs being passed.
