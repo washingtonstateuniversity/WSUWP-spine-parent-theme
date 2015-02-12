@@ -14,7 +14,7 @@ class Spine_Theme_Navigation {
 
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
-		add_filter( 'bu_navigation_filter_anchor_atts', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
+		add_filter( 'bu_navigation_filter_anchor_attrs', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
 	}
 
 	/**
