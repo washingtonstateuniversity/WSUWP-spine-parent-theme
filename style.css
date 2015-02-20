@@ -56,11 +56,15 @@ figure.aligncenter figcaption {
 	text-align: center;
 	}
 
-.size-lt-large .alignleft,
-.size-lt-large .alignright {
+.size-lt-medium img.size-medium.alignleft,
+.size-lt-medium img.size-medium.alignright,
+.size-lt-medium img.size-large.alignleft,
+.size-lt-medium img.size-large.alignright {
+	width: 100%;
+	height: auto;
 	clear: both;
 	float: none;
-	margin: 1em 0 1em 0;
+	margin: 1em 0;
 	}
 
 /** Default Gallery Styles */
