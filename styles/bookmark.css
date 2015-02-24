@@ -35,7 +35,7 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 	height: auto;
 	}
 .main-header .header-group,
-.main-header .header-group:not(.x):not(.y) {
+.main-header .header-group:not(.x) {
 	position: relative;
 	width: 396px;
 	bottom: 0;
