@@ -47,6 +47,9 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 .size-lt-medium .main-header {
 	left: 0px;
 	}
+.size-lt-medium .main-header .header-group {
+	width: 100%;
+	}
 .main-header .header-group {
 	padding: 2rem 0rem 1.1rem 1.3rem;
 	}
