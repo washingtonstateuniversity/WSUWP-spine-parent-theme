@@ -39,6 +39,9 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 	bottom: 0;
 	padding-right: 0;
 	}
+.size-xlarge .max-1188 .main-header .header-group { width: 594px; }
+.size-xlarge .max-1396 .main-header .header-group { width: 792px; }
+
 .size-lt-medium .main-header {
 	left: 0px;
 	}
