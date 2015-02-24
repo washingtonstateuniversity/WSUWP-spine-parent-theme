@@ -50,6 +50,15 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 .main-header .header-group {
 	padding: 2rem 0rem 1.1rem 1.3rem;
 	}
+.size-small .main-header .header-group {
+	padding: 2rem 0rem 1.1rem 2rem;
+	}
+.size-small.spacing-tight .main-header .header-group {
+	padding: 2rem 0rem 1.1rem 1rem;
+	}
+.size-small.spacing-loose .main-header .header-group {
+	padding: 2rem 0rem 1.1rem 4rem;
+	}
 .sup-header-default,
 .sub-header-default {
 	display: block;
