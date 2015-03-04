@@ -32,11 +32,11 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 	left: 330px;
 	width: 2000px;
 	border: 0px;
+	height: auto;
 	}
-.main-header .header-group {
-	position: absolute;
+.style-bookmark .main-header .header-group {
+	position: relative;
 	width: 396px;
-	bottom: 0;
 	padding-right: 0;
 	}
 .size-lt-medium .main-header {
