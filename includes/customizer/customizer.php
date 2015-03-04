@@ -143,6 +143,7 @@ function spine_customize_register( $wp_customize ){
 			'spokane'                => 'Spokane',
 			'tricities'              => 'Tri-Cities',
 			'vancouver'              => 'Vancouver',
+			'campaign'         	     => 'Campaign',
 		),
 	));
 
