@@ -136,14 +136,14 @@ function spine_customize_register( $wp_customize ){
 		'settings'   => 'spine_options[campus_location]',
 		'type'       => 'select',
 		'choices'    => array(
-			''                       => 'Select Campus/Location',
-			'extension'              => 'Extension',
-			'globalcampus'           => 'Global Campus',
-			'healthsciences-spokane' => 'Health Sciences Spokane',
-			'spokane'                => 'Spokane',
-			'tricities'              => 'Tri-Cities',
-			'vancouver'              => 'Vancouver',
-			'campaign'         	     => 'Campaign',
+			''                       	=> 'Select Campus/Location',
+			'extension'              	=> 'Extension',
+			'globalcampus'           	=> 'Global Campus',
+			'healthsciences-spokane' 	=> 'Health Sciences Spokane',
+			'spokane'                	=> 'Spokane',
+			'tricities'              	=> 'Tri-Cities',
+			'vancouver'              	=> 'Vancouver',
+			'campaign'					=> 'Campaign',
 		),
 	));
 
