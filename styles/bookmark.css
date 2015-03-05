@@ -25,7 +25,7 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 */
 
 /* Bookmark Style */
-.style-bookmark .main-header {
+.main-header:not(.unset) {
 	background: #981e32;
 	position: relative;
 	top: 0px;
@@ -34,16 +34,17 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 	border: 0px;
 	height: auto;
 	}
-.style-bookmark .main-header .header-group {
+.main-header .header-group:not(.unset) {
 	position: relative;
 	width: 396px;
-	padding-right: 0;
+	padding: 2rem 0rem 1.1rem 1.3rem;
 	}
 .size-lt-medium .main-header {
 	left: 0px;
 	}
-.size-gt-small .main-header .header-group {
-	padding: 2rem 0rem 1.1rem 1.3rem;
+.size-lt-medium .main-header:not(.unset),
+.size-lt-medium .main-header .header-group:not(.unset) {
+	width: 100%;
 	}
 .sup-header-default,
 .sub-header-default {
