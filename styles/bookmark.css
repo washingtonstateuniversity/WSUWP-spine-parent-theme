@@ -32,18 +32,35 @@ body.home:not(.has-background-image) #jacket.size-lt-medium {
 	left: 330px;
 	width: 2000px;
 	border: 0px;
+	height: auto;
 	}
-.main-header .header-group {
-	position: absolute;
+.main-header .header-group,
+.main-header .header-group:not(.x) {
+	position: relative;
 	width: 396px;
 	bottom: 0;
 	padding-right: 0;
 	}
+.size-xlarge .max-1188 .main-header .header-group { width: 594px; }
+.size-xlarge .max-1396 .main-header .header-group { width: 792px; }
+
 .size-lt-medium .main-header {
 	left: 0px;
 	}
-.size-gt-small .main-header .header-group {
+.size-lt-medium .main-header .header-group {
+	width: 100%;
+	}
+.main-header .header-group {
 	padding: 2rem 0rem 1.1rem 1.3rem;
+	}
+.size-small .main-header .header-group {
+	padding: 2rem 0rem 1.1rem 2rem;
+	}
+.size-small.spacing-tight .main-header .header-group {
+	padding: 2rem 0rem 1.1rem 1rem;
+	}
+.size-small.spacing-loose .main-header .header-group {
+	padding: 2rem 0rem 1.1rem 4rem;
 	}
 .sup-header-default,
 .sub-header-default {

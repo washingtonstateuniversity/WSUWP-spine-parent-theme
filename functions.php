@@ -623,6 +623,10 @@ function spine_excerpt_style_classes( $classes ) {
 		} else {
 			$classes[] = "summary-unabridged";
 		}
+		if ( spine_has_background_image() ) { $classes[] = 'has-background-image'; }
+		if ( spine_has_featured_image() ) { $classes[] = 'has-featured-image'; }
+		if ( spine_has_thumbnail_image() ) { $classes[] = 'has-thumbnail-image'; }
+
 	}
 	
 	return $classes;
