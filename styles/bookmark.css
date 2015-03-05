@@ -18,11 +18,6 @@ body.home:not(.has-background-image) #jacket {
 	background-position: right bottom;
 	background-attachment: fixed;
 	}
-/*
-body.home:not(.has-background-image) #jacket.size-lt-medium {
-	background-position: center 142px;
-	}
-*/
 
 /* Bookmark Style */
 .main-header:not(.unset) {
@@ -318,5 +313,3 @@ main .tablepress .row-hover tr:hover td {
 .dataTables_wrapper .paginate_enabled_previous:hover::before {
 	color: #981e32;
 	}
-
-
