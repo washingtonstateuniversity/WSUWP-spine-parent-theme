@@ -379,7 +379,8 @@ function spine_wp_enqueue_scripts() {
 	// If a Twitter account has been added in the Customizer, use that for the via handle.
 	$spine_social_options = spine_social_options();
 	if ( isset( $spine_social_options['twitter'] ) ) {
-		$twitter_handle = array_pop( array_filter( explode( '/', $spine_social_options['twitter'] ) ) );
+		$twitter_array =  array_filter( explode( '/', $spine_social_options['twitter'] ) );
+		$twitter_handle = array_pop( $twitter_array );
 		$spineoptions['social']['twitter_handle'] = esc_js( $twitter_handle );
 	}
 	wp_localize_script( 'wsu-spine', 'spineoptions', $spineoptions );
