@@ -281,14 +281,20 @@ function spine_wp_enqueue_scripts() {
 	 *     wp_dequeue_style( 'spine-theme-extra' );
 	 *
 	 * In all cases, the main spine CSS is enqueued separately from this logic. See above.
+	 *
+	 * If "Skeletal" styling is chosen in the Customizer, no `spine-theme-extra` stylesheet will be enqueued.
 	 */
 	if ( is_child_theme() ) {
 		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
-		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
+			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+		}
 		wp_enqueue_style( 'spine-theme-child', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 	} else {
 		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
-		wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
+			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+		}
 	}
 
 	// All theme styles have been output at this time. Plugins and other themes should print styles here, before blocking
