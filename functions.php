@@ -620,7 +620,9 @@ add_filter( 'post_class', 'spine_excerpt_style_classes' );
 function spine_excerpt_style_classes( $classes ) {
 	global $post;
 	if ( !is_singular() ) {
-			
+		
+		$classes[] = "is-one-of-many";
+		
 		if ( $post->post_excerpt ) {
 			$classes[] = "summary-excerpted";
 		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
@@ -634,6 +636,10 @@ function spine_excerpt_style_classes( $classes ) {
 		if ( spine_has_featured_image() ) { $classes[] = 'has-featured-image'; }
 		if ( spine_has_thumbnail_image() ) { $classes[] = 'has-thumbnail-image'; }
 
+	} else {
+		
+		$classes[] = "is-one";
+		
 	}
 	
 	return $classes;
