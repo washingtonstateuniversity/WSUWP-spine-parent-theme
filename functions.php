@@ -513,6 +513,24 @@ function spine_campus_body_class( $classes ) {
 	return $classes;
 }
 
+add_filter( 'body_class', 'spine_singularity_body_class' );
+/**
+ * Indicate not only single post, but also singularity.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function spine_singularity_body_class( $classes ) {
+	if ( is_singular() ) {
+		$classes[] = 'singular';
+	} else {
+		$classes[] = 'not-singular';
+	}
+
+	return $classes;
+}
+
 add_filter( 'body_class','spine_speckled_body_classes' );
 /**
  * Add randomized body classes.
@@ -621,8 +639,6 @@ function spine_excerpt_style_classes( $classes ) {
 	global $post;
 	if ( !is_singular() ) {
 		
-		$classes[] = "is-one-of-many";
-		
 		if ( $post->post_excerpt ) {
 			$classes[] = "summary-excerpted";
 		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
@@ -636,10 +652,6 @@ function spine_excerpt_style_classes( $classes ) {
 		if ( spine_has_featured_image() ) { $classes[] = 'has-featured-image'; }
 		if ( spine_has_thumbnail_image() ) { $classes[] = 'has-thumbnail-image'; }
 
-	} else {
-		
-		$classes[] = "is-one";
-		
 	}
 	
 	return $classes;
