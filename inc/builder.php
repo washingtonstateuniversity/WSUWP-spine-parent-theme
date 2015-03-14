@@ -257,6 +257,10 @@ class Spine_Builder_Custom {
 			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
 		}
 
+		if ( isset( $data['label'] ) ) {
+			$clean_data['label'] = sanitize_text_field( $data['label'] );
+		}
+
 		return $clean_data;
 	}
 
@@ -332,6 +336,10 @@ class Spine_Builder_Custom {
 
 		if ( isset( $data['section-layout'] ) ) {
 			$clean_data['section-layout'] = $this->clean_classes( $data['section-layout'] );
+		}
+
+		if ( isset( $data['label'] ) ) {
+			$clean_data['label'] = sanitize_text_field( $data['label'] );
 		}
 
 		return $clean_data;
@@ -413,6 +421,10 @@ class Spine_Builder_Custom {
 			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
 		}
 
+		if ( isset( $data['label'] ) ) {
+			$clean_data['label'] = sanitize_text_field( $data['label'] );
+		}
+
 		return $clean_data;
 	}
 }
@@ -491,6 +503,24 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 	<div class="wsuwp-builder-meta" style="width:100%; margin-top:10px;">
 		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes:</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
 		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
+	</div>
+	<?php
+}
+
+/**
+ * Output the input field for section label shared amongst admin templates. This label helps
+ * to identify sections when minimized without requiring the entry of a title for the front-end.
+ *
+ * @param $section_name
+ * @param $ttfmake_section_data
+ */
+function spine_output_builder_section_label( $section_name, $ttfmake_section_data ) {
+	$section_label = ( isset( $ttfmake_section_data['data']['label'] ) ) ? $ttfmake_section_data['data']['label'] : '';
+	?>
+	<div class="wsuwp-builder-meta" style="width: 100%; margin-top: 10px;">
+		<label for="<?php echo $section_name; ?>[label]">Section Label:</label>
+		<input type="text" id="<?php echo $section_name; ?>[label]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[label]" value="<?php echo esc_attr( $section_label ); ?>" />
+		<p class="description">Enter a label to use to identify sections without titles.</p>
 	</div>
 	<?php
 }
