@@ -115,6 +115,7 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 				spine_output_builder_section_layout( $section_name, $ttfmake_section_data );
 				spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
 				spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
+				spine_output_builder_section_label( $section_name, $ttfmake_section_data );
 				spine_output_builder_column_classes( $section_name, $ttfmake_section_data );
 				?>
 			</div>
