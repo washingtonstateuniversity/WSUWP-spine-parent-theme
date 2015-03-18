@@ -15,6 +15,8 @@ get_header();
 		</div>
 	</section>
 
+	<?php get_template_part( 'parts/footers' ); ?>
+
 </main>
 <?php
 
