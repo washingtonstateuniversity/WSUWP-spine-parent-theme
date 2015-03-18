@@ -29,6 +29,8 @@ get_header();
 
 		<?php endwhile; endif; ?>
 
+		<?php get_template_part( 'parts/footers' ); ?>
+
 	</main>
 
 <?php get_footer(); ?>

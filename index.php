@@ -55,6 +55,9 @@ $args = array(
 			</div>
 		</section><!--pager-->
 	</footer>
+
+	<?php get_template_part( 'parts/footers' ); ?>
+
 </main>
 <?php
 

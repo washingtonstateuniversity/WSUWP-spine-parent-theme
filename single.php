@@ -45,6 +45,8 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 	</section><!--pager-->
 </footer>
 
+	<?php get_template_part( 'parts/footers' ); ?>
+
 </main><!--/#page-->
 
 <?php get_footer(); ?>
