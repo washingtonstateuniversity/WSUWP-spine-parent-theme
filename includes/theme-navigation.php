@@ -10,7 +10,7 @@ class Spine_Theme_Navigation {
 		add_action( 'init', array( $this, 'theme_menus' ) );
 
 		// Filters for navigation handled by WordPress core.
-		add_filter( 'nav_menu_css_class', array( $this, 'abbridged_menu_classes' ), 10 );
+		add_filter( 'nav_menu_css_class', array( $this, 'abbridged_menu_classes' ), 10, 4 );
 
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
@@ -30,21 +30,29 @@ class Spine_Theme_Navigation {
 	}
 
 	/**
-	 * Condense verbose menu classes provided by WordPress.
-	 *
-	 * Removes the default current-menu-item and current_page_parent classes
+	 * Condense verbose menu classes provided by WordPress when processing the Spine
+	 * navigation. Removes the default current-menu-item and current_page_parent classes
 	 * if they are found on this page view and replaces them with 'current'.
+	 *
+	 * If this is not a menu in the Spine navigation, the `current` classes is appended to
+	 * the array, but other classes are left alone.
 	 *
 	 * @param array $classes Current list of nav menu classes.
 	 *
 	 * @return array Modified list of nav menu classes.
 	 */
-	public function abbridged_menu_classes( $classes ) {
-		if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
-			return array( 'current' );
+	public function abbridged_menu_classes( $classes, $item, $args, $depth ) {
+		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
+			if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
+				$classes = array( 'current' );
+			} else {
+				$classes = array();
+			}
+		} elseif( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
+			$classes[] = 'current';
 		}
 
-		return array();
+		return $classes;
 	}
 
 	/**
