@@ -261,6 +261,14 @@ class Spine_Builder_Custom {
 			$clean_data['label'] = sanitize_text_field( $data['label'] );
 		}
 
+		if ( isset( $data['background-img'] ) ) {
+			$clean_data['background-img'] = esc_url_raw( $data['background-img'] );
+		}
+
+		if ( isset( $data['background-mobile-img'] ) ) {
+			$clean_data['background-mobile-img'] = esc_url_raw( $data['background-mobile-img'] );
+		}
+
 		return $clean_data;
 	}
 
@@ -340,6 +348,14 @@ class Spine_Builder_Custom {
 
 		if ( isset( $data['label'] ) ) {
 			$clean_data['label'] = sanitize_text_field( $data['label'] );
+		}
+
+		if ( isset( $data['background-img'] ) ) {
+			$clean_data['background-img'] = esc_url_raw( $data['background-img'] );
+		}
+
+		if ( isset( $data['background-mobile-img'] ) ) {
+			$clean_data['background-mobile-img'] = esc_url_raw( $data['background-mobile-img'] );
 		}
 
 		return $clean_data;
@@ -423,6 +439,14 @@ class Spine_Builder_Custom {
 
 		if ( isset( $data['label'] ) ) {
 			$clean_data['label'] = sanitize_text_field( $data['label'] );
+		}
+
+		if ( isset( $data['background-img'] ) ) {
+			$clean_data['background-img'] = esc_url_raw( $data['background-img'] );
+		}
+
+		if ( isset( $data['background-mobile-img'] ) ) {
+			$clean_data['background-mobile-img'] = esc_url_raw( $data['background-mobile-img'] );
 		}
 
 		return $clean_data;
@@ -596,6 +620,36 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 			?></select>
 		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
 	</div><?php
+}
+
+/**
+ * Output an input field to capture background images.
+ *
+ * @param $section_name
+ * @param $ttfmake_section_data
+ */
+function spine_output_builder_section_background( $section_name, $ttfmake_section_data ) {
+	$section_background = ( isset( $ttfmake_section_data['data']['background-img'] ) ) ? $ttfmake_section_data['data']['background-img'] : '';
+	$section_mobile_background = ( isset( $ttfmake_section_data['data']['background-img'] ) ) ? $ttfmake_section_data['data']['background-mobile-img'] : '';
+
+	?>
+	<div class="wsuwp-builder-meta" style="width: 100%; margin-top: 10px;">
+		<label for="<?php echo $section_name; ?>[background-img]">Background Image</label>
+		<input type="text"
+			   class="wsuwp-builder-section-image widefat"
+			   id="<?php echo $section_name; ?>[background-img]"
+			   name="<?php echo $section_name; ?>[background-img]"
+			   value="<?php echo $section_background; ?>" />
+		<br/>
+		<label for="<?php echo $section_name; ?>[background-mobile-img]">Mobile Background Image</label>
+		<input type="text"
+			   class="wsuwp-builder-section-image widefat"
+			   id="<?php echo $section_name; ?>[background-mobile-img]"
+			   name="<?php echo $section_name; ?>[background-mobile-img]"
+			   value="<?php echo $section_mobile_background; ?>" />
+		<p class="description">Background images on sections are an in progress feature. :)</p>
+	</div>
+<?php
 }
 
 /**
