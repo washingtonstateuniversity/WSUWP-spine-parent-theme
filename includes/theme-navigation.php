@@ -10,7 +10,7 @@ class Spine_Theme_Navigation {
 		add_action( 'init', array( $this, 'theme_menus' ) );
 
 		// Filters for navigation handled by WordPress core.
-		add_filter( 'nav_menu_css_class', array( $this, 'abbridged_menu_classes' ), 10, 4 );
+		add_filter( 'nav_menu_css_class', array( $this, 'abbridged_menu_classes' ), 10, 3 );
 
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
@@ -37,11 +37,13 @@ class Spine_Theme_Navigation {
 	 * If this is not a menu in the Spine navigation, the `current` classes is appended to
 	 * the array, but other classes are left alone.
 	 *
-	 * @param array $classes Current list of nav menu classes.
+	 * @param array    $classes Current list of nav menu classes.
+	 * @param WP_Post  $item    Post object representing the menu item.
+	 * @param stdClass $args    Arguments used to create the menu.
 	 *
 	 * @return array Modified list of nav menu classes.
 	 */
-	public function abbridged_menu_classes( $classes, $item, $args, $depth ) {
+	public function abbridged_menu_classes( $classes, $item, $args ) {
 		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
 			if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
 				$classes = array( 'current' );
