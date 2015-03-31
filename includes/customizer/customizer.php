@@ -173,6 +173,20 @@ function spine_customize_register( $wp_customize ){
 		),
 	));
 
+	// Search Opened by Default
+	$wp_customize->add_setting('spine_options[search_opened]', array(
+		'default'        => false,
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+	));
+	
+	$wp_customize->add_control('spine_search_opened', array(
+		'label'      => __('Search Opened', 'spine'),
+		'section'    => 'section_spine_options',
+		'settings'   => 'spine_options[search_opened]',
+		'type'       => 'checkbox'
+	));
+
 	// Bleed Spine Leftward
 	$wp_customize->add_setting('spine_options[bleed]', array(
 		'default'        => false,

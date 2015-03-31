@@ -6,9 +6,15 @@ if ( true == spine_get_option( 'crop' ) && is_front_page() ) {
 	$cropping = '';
 }
 
+if ( true == spine_get_option( 'search_opened' ) ) {
+	$search_state = ' search-opened';
+} else {
+	$search_state = '';
+}
+
 ?>
 
-<div id="spine" class="spine-column <?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo $cropping; echo esc_attr( spine_get_option( 'bleed' ) ); ?> shelved">
+<div id="spine" class="spine-column <?php echo esc_attr( spine_get_option( 'spine_color' ) ); echo $search_state; echo $cropping; echo esc_attr( spine_get_option( 'bleed' ) ); ?> shelved">
 <div id="glue" class="spine-glue">
 
 <?php get_template_part( 'spine/header' ); ?>
