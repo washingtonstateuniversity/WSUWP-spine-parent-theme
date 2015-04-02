@@ -522,10 +522,10 @@ add_filter( 'body_class', 'spine_singularity_body_class' );
  * @return array Modified list of body classes.
  */
 function spine_singularity_body_class( $classes ) {
-	if ( is_singular() ) {
-		$classes[] = 'singular';
+	if ( is_singular() && ! isset( $classes['single'] ) ) {
+		$classes[] = 'single';
 	} else {
-		$classes[] = 'not-singular';
+		$classes[] = 'not-single';
 	}
 
 	return $classes;
