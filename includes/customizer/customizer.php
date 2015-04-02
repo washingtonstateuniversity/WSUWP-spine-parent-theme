@@ -412,52 +412,6 @@ function spine_customize_register( $wp_customize ){
 		),
 	));
 
-	// Offer Dynamic Shortcuts
-	/*$wp_customize->add_setting('spine_options[index_shortcuts]', array(
-		'default'        => 'google',
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-
-	$wp_customize->add_control('spine_index_shortcuts', array(
-		'label'      => __('Coming: Offer Index Shortcuts', 'spine'),
-		'section'    => 'section_spine_advanced_options',
-		'settings'   => 'spine_options[index_shortcuts]',
-		'type'       => 'checkbox'
-	));
-
-
-	$wp_customize->add_setting('spine_options[local_site_shortcuts]', array(
-		'default'        => 'google',
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-
-	$wp_customize->add_control('spine_local_site_shortcuts', array(
-		'label'      => __('Offer Site Shortcuts', 'spine'),
-		'section'    => 'section_spine_advanced_options',
-		'settings'   => 'spine_options[local_site_shortcuts]',
-		'type'       => 'checkbox'
-	));
-
-	// Local Search
-	$wp_customize->add_setting('spine_options[search_local]', array(
-		'default'        => 'google',
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-
-	$wp_customize->add_control('spine_search_local', array(
-		'label'      => __('Coming: Local Search Engine', 'spine'),
-		'section'    => 'section_spine_advanced_options',
-		'settings'   => 'spine_options[search_local]',
-		'type'       => 'radio',
-		'choices'    => array(
-			'google' => 'Google',
-			'wordpress' => 'WordPress'
-		),
-	));*/
-
 	// Style Options
 	$wp_customize->add_section('section_spine_style', array(
 		'title'    => __('Style Options', 'spine'),
@@ -737,6 +691,4 @@ function spine_customize_register( $wp_customize ){
 		'type'       => 'checkbox',
 		'priority'   => 12,
 	));
-
-
 }
