@@ -174,17 +174,21 @@ function spine_customize_register( $wp_customize ){
 	));
 
 	// Search Opened by Default
-	$wp_customize->add_setting('spine_options[search_opened]', array(
-		'default'        => false,
+	$wp_customize->add_setting( 'spine_options[search_state]', array(
+		'default'        => 'closed',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
 	));
 	
-	$wp_customize->add_control('spine_search_opened', array(
-		'label'      => __('Search Opened', 'spine'),
+	$wp_customize->add_control( 'spine_search_state', array(
+		'label'      => __('Search Status', 'spine'),
 		'section'    => 'section_spine_options',
-		'settings'   => 'spine_options[search_opened]',
-		'type'       => 'checkbox'
+		'settings'   => 'spine_options[search_state]',
+		'type'       => 'select',
+		'choices'    => array(
+			'open'   => 'Open',
+			'closed' => 'Closed',
+		),
 	));
 
 	// Bleed Spine Leftward
