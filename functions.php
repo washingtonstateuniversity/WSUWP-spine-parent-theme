@@ -106,6 +106,7 @@ function spine_get_option_defaults() {
 		'articletitle_header'       => false,
 		'broken_binding'            => false,
 		'bleed'                     => true,
+		'search_state'              => 'closed',
 		'crop'                      => false,
 		'spineless'                 => false,
 		'open_sans'                 => 0,
