@@ -480,6 +480,39 @@ function spine_is_sub() {
 	}
 }
 
+add_filter( 'body_class', 'spine_site_body_class');
+/**
+ * Add body classes for the site domain and path to help with targeting on multiple
+ * sites using this theme.
+ *
+ * @param array $classes
+ *
+ * @return array
+ */
+function spine_site_body_class( $classes ) {
+	if ( ! function_exists( 'wsuwp_get_current_site' ) ) {
+		return $classes;
+	}
+
+	$site = wsuwp_get_current_site();
+	$site_domain = 'domain-' . sanitize_title_with_dashes( $site->domain );
+	$site_path = 'path-' . sanitize_title_with_dashes( $site->path );
+
+	if ( 'path-' === $site_path ) {
+		$site_path = 'path-none';
+	}
+
+	if ( ! isset( $classes[ $site_domain ] ) ) {
+		$classes[] = $site_domain;
+	}
+
+	if ( ! isset( $classes[ $site_path ] ) ) {
+		$classes[] = $site_path;
+	}
+
+	return $classes;
+}
+
 add_filter( 'body_class', 'spine_open_sans_body_class' );
 /**
  * If Open Sans has been applied to the Spine, add the
