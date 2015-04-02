@@ -514,6 +514,24 @@ function spine_campus_body_class( $classes ) {
 	return $classes;
 }
 
+add_filter( 'body_class', 'spine_singularity_body_class' );
+/**
+ * Indicate not only single post, but also singularity.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function spine_singularity_body_class( $classes ) {
+	if ( is_singular() && ! isset( $classes['single'] ) ) {
+		$classes[] = 'single';
+	} else {
+		$classes[] = 'not-single';
+	}
+
+	return $classes;
+}
+
 add_filter( 'body_class','spine_speckled_body_classes' );
 /**
  * Add randomized body classes.
@@ -621,7 +639,7 @@ add_filter( 'post_class', 'spine_excerpt_style_classes' );
 function spine_excerpt_style_classes( $classes ) {
 	global $post;
 	if ( !is_singular() ) {
-			
+		
 		if ( $post->post_excerpt ) {
 			$classes[] = "summary-excerpted";
 		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
