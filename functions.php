@@ -81,7 +81,7 @@ function spine_get_campus_home_url() {
 		return esc_url( $campus_urls[ $campus_location ] );
 	}
 
-	return 'https://wsu.edu/';
+	return apply_filters( 'spine_get_campus_home_url', 'https://wsu.edu/' );
 }
 
 /**
