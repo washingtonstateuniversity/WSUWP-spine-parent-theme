@@ -10,7 +10,6 @@ body:not(.has-background-image) {
 	background-position: center top;
 	}
 body.home:not(.has-background-image) #jacket {
-	background: url('bookmark/backgrounds/letters/light-one.jpg');
 	background-position: center top;
 	background-repeat: no-repeat;
 	}
@@ -18,11 +17,6 @@ body.home:not(.has-background-image) #jacket {
 	background-position: right bottom;
 	background-attachment: fixed;
 	}
-/*
-body.home:not(.has-background-image) #jacket.size-lt-medium {
-	background-position: center 142px;
-	}
-*/
 
 /* Bookmark Style */
 .style-bookmark .main-header {
