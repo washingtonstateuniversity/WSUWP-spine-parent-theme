@@ -269,6 +269,8 @@ class Spine_Builder_Custom {
 			$clean_data['background-mobile-img'] = esc_url_raw( $data['background-mobile-img'] );
 		}
 
+		$clean_data = apply_filters( 'spine_builder_save_header', $clean_data, $data );
+
 		return $clean_data;
 	}
 
@@ -357,6 +359,8 @@ class Spine_Builder_Custom {
 		if ( isset( $data['background-mobile-img'] ) ) {
 			$clean_data['background-mobile-img'] = esc_url_raw( $data['background-mobile-img'] );
 		}
+
+		$clean_data = apply_filters( 'spine_builder_save_columns', $clean_data, $data );
 
 		return $clean_data;
 	}
@@ -448,6 +452,8 @@ class Spine_Builder_Custom {
 		if ( isset( $data['background-mobile-img'] ) ) {
 			$clean_data['background-mobile-img'] = esc_url_raw( $data['background-mobile-img'] );
 		}
+
+		$clean_data = apply_filters( 'spine_builder_save_banner', $clean_data, $data );
 
 		return $clean_data;
 	}
