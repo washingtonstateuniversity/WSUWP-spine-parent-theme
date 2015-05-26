@@ -63,7 +63,7 @@ if ( $section_background || $section_mobile_background ) {
 }
 
 if ( $section_wrapper_classes ) {
-	?><div class="<?php echo esc_attr( $section_wrapper_classes ); ?>"
+	?><div class="section-wrapper <?php echo esc_attr( $section_wrapper_classes ); ?>"
 	<?php if ( $section_background ) : echo 'data-background="' . esc_url( $section_background ) . '"'; endif; ?>
 	<?php if ( $section_mobile_background ) : echo 'data-background-mobile="' . esc_url( $section_mobile_background ) . '"'; endif; ?>>
 <?php
