@@ -175,19 +175,38 @@ function spine_get_option( $option_name ) {
 
 /**
  * Retrieve a list of Open Sans weights and styles enabled for the site via
- * the Customizer.
+ * the Customizer. Apply defaults expected by both the Spine, when Open Sans
+ * is enabled, and by WordPress when the admin bar is showing.
  *
  * @return array List of font weights and styles.
  */
 function spine_get_open_sans_options() {
 	$spine_open_sans = get_option( 'spine_open_sans', array() );
+	$enabled = absint( spine_get_option( 'open_sans' ) );
+
+	// The WordPress admin bar expects these to exist when it is showing.
+	if ( is_admin_bar_showing() ) {
+		$spine_open_sans['300'] = true;
+		$spine_open_sans['400'] = true;
+		$spine_open_sans['600'] = true;
+		$spine_open_sans['300italic'] = true;
+		$spine_open_sans['400italic'] = true;
+		$spine_open_sans['600italic'] = true;
+	}
+
+	// When Open Sans is enabled, the Spine expects these to exist.
+	if ( 1 === $enabled ) {
+		$spine_open_sans['400'] = true;
+		$spine_open_sans['400italic'] = true;
+		$spine_open_sans['700'] = true;
+	}
+
 	$fonts = array();
 
 	foreach( $spine_open_sans as $k => $v ) {
 		if ( true === $v ) {
 			$fonts[] = $k;
 		}
-
 	}
 
 	// A child theme can override all spine open sans defaults with the spine_open_sans_options filter.
@@ -204,6 +223,12 @@ function spine_get_open_sans_options() {
  */
 function spine_get_open_sans_condensed_options() {
 	$spine_open_sans_cond = get_option( 'spine_open_sans_cond', array() );
+	$enabled = absint( spine_get_option( 'open_sans' ) );
+
+	if ( 0 ===  $enabled ) {
+		return array();
+	}
+
 	$fonts = array();
 
 	foreach( $spine_open_sans_cond as $k => $v ) {
@@ -303,23 +328,13 @@ function spine_wp_enqueue_scripts() {
 	do_action( 'spine_enqueue_styles' );
 
 	$google_font_css_url = '//fonts.googleapis.com/css?family=';
-	$build_open_sans_css = '';
-	$build_open_sans_cond_css = '';
 	$count = 0;
 	$spine_open_sans = spine_get_open_sans_options();
 
-	/**
-	 * Build the URL used to pull additional Open Sans font weights and styles from
-	 * Google. If this page view has an admin bar, we can assume that several weights
-	 * and styles are already loaded and remove those from the requested set.
-	 */
+	// Build the URL used to pull additional Open Sans font weights and styles from Google.
 	if ( ! empty( $spine_open_sans ) ) {
-		$wp_default_open_sans = array( '300italic', '400italic', '600italic', '300', '400', '600' );
-
+		$build_open_sans_css = '';
 		foreach( $spine_open_sans as $font_option ) {
-			if ( is_admin_bar_showing() && in_array( $font_option, $wp_default_open_sans ) ) {
-				continue;
-			}
 			if ( 0 === $count ) {
 				$build_open_sans_css = 'Open+Sans%3A' . $font_option;
 			} else {
@@ -358,9 +373,11 @@ function spine_wp_enqueue_scripts() {
 		$google_font_css_url .= $build_open_sans_cond_css;
 	}
 
-	if( 0 !== $count ) {
-		wp_enqueue_style( 'spine-open-sans', $google_font_css_url, array(), false );
-	}
+	$google_font_css_url .= '&subset=latin,latin-ext';
+
+	// Deregister the default Open Sans URL provided by WordPress core and instead provide our own.
+	wp_deregister_style( 'open-sans' );
+	wp_enqueue_style( 'open-sans', $google_font_css_url, array(), false );
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
