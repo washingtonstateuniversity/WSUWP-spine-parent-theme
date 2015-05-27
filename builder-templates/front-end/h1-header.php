@@ -39,10 +39,25 @@ if ( $section_background || $section_mobile_background ) {
 }
 
 if ( $section_has_wrapper ) {
-	?><div <?php if ( '' !== $section_id ) : echo 'id="' . esc_attr( $section_id ) . '"'; endif; ?> class="section-wrapper <?php echo esc_attr( $section_wrapper_classes ); ?>"
-	<?php if ( $section_background ) : echo 'data-background="' . esc_url( $section_background ) . '"'; endif; ?>
-	<?php if ( $section_mobile_background ) : echo 'data-background-mobile="' . esc_url( $section_mobile_background ) . '"'; endif; ?>>
-	<?php
+	$section_wrapper_html = '<div';
+
+	if ( '' !== $section_id ) {
+		$section_wrapper_html .= ' id="' . esc_attr( $section_id ) . '"';
+	}
+
+	$section_wrapper_html .= ' class="section-wrapper ' . esc_attr( $section_wrapper_classes ) . '"';
+
+	if ( $section_background ) {
+		$section_wrapper_html .= ' data-background="' . esc_url( $section_background ) . '"';
+	}
+
+	if ( $section_mobile_background ) {
+		$section_wrapper_html .= ' data-background-mobile="' . esc_url( $section_mobile_background ) . '"';
+	}
+
+	$section_wrapper_html .= '>';
+
+	echo $section_wrapper_html;
 
 	// Reset section_id so that the default is built for the section.
 	$section_id = '';
