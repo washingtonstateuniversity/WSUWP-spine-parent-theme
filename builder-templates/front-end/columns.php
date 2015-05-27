@@ -1,22 +1,8 @@
 <?php
 global $ttfmake_section_data, $ttfmake_sections;
 
+// Default to sidebar right if a section type has not been specified.
 $section_type = ( isset( $ttfmake_section_data['section-type'] ) ) ? $ttfmake_section_data['section-type'] : 'wsuwpsidebarright';
-$section_type_columns = array(
-	'wsuwpsidebarright' => 2,
-	'wsuwpsidebarleft'  => 2,
-	'wsuwpthirds'       => 3,
-	'wsuwphalves'       => 2,
-	'wsuwpquarters'     => 4,
-	'wsuwpsingle'       => 1,
-);
-$data_columns = spine_get_column_data( $ttfmake_section_data, $section_type_columns[ $section_type ] );
-
-$column_count = array( 'one', 'two', 'three', 'four' );
-$count = 0;
-
-$section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
-$section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : false;
 
 if ( 'wsuwpsidebarright' === $section_type || 'wsuwpsidebarleft' === $section_type || 'wsuwpthirds' === $section_type ) {
 	$section_layout = ( isset( $ttfmake_section_data['section-layout'] ) ) ? $ttfmake_section_data['section-layout'] : 'side-right';
@@ -28,12 +14,38 @@ if ( 'wsuwpsidebarright' === $section_type || 'wsuwpsidebarleft' === $section_ty
 	$section_layout = 'single';
 }
 
+// Provide a list matching the number of columns to the selected section type.
+$section_type_columns = array(
+	'wsuwpsidebarright' => 2,
+	'wsuwpsidebarleft'  => 2,
+	'wsuwpthirds'       => 3,
+	'wsuwphalves'       => 2,
+	'wsuwpquarters'     => 4,
+	'wsuwpsingle'       => 1,
+);
+
+// Retrieve data for the column being output.
+$data_columns = spine_get_column_data( $ttfmake_section_data, $section_type_columns[ $section_type ] );
+
+// Assume by default that the section has no wrapper.
+$section_has_wrapper = false;
+
+// Sections can have ids (provided by outside forces other than this theme), classes, and wrappers with classes.
+$section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+$section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
+
+// If a child theme or plugin has declared a section ID, we handle that.
+// This may be supported in the parent theme one day.
+$section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
+
+// If a background image has been assigned to the section, capture it for use.
 if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_section_data['background-img'] ) ) {
 	$section_background = $ttfmake_section_data['background-img'];
 } else {
 	$section_background = false;
 }
 
+// If a mobile background image has been assigned to the section, capture it. Fallback to the section background.
 if ( isset( $ttfmake_section_data['background-mobile-img'] ) && ! empty( $ttfmake_section_data['background-mobile-img'] ) ) {
 	$section_mobile_background = $ttfmake_section_data['background-mobile-img'];
 } elseif( $section_background ) {
@@ -42,25 +54,55 @@ if ( isset( $ttfmake_section_data['background-mobile-img'] ) && ! empty( $ttfmak
 	$section_mobile_background = false;
 }
 
-if ( $section_background || $section_mobile_background ) {
-	if ( $section_wrapper_classes ) {
-		$section_wrapper_classes .= ' section-wrapper-has-background';
-	} else {
-		$section_wrapper_classes = 'section-wrapper-has-background';
-	}
+// If a section has wrapper classes assigned, assume it (obviously) needs a wrapper.
+if ( '' !== $section_wrapper_classes ) {
+	$section_has_wrapper = true;
 }
 
-if ( $section_wrapper_classes ) {
-	?><div class="section-wrapper <?php echo esc_attr( $section_wrapper_classes ); ?>"
-		<?php if ( $section_background ) : echo 'data-background="' . esc_url( $section_background ) . '"'; endif; ?>
-		<?php if ( $section_mobile_background ) : echo 'data-background-mobile="' . esc_url( $section_mobile_background ) . '"'; endif; ?>>
-	<?php
+// If a background image has been assigned, a wrapper is required.
+if ( $section_background || $section_mobile_background ) {
+	$section_has_wrapper = true;
+	$section_wrapper_classes .= ' section-wrapper-has-background';
+}
+
+if ( $section_has_wrapper ) {
+	$section_wrapper_html = '<div';
+
+	if ( '' !== $section_id ) {
+		$section_wrapper_html .= ' id="' . esc_attr( $section_id ) . '"';
+	}
+
+	$section_wrapper_html .= ' class="section-wrapper ' . esc_attr( $section_wrapper_classes ) . '"';
+
+	if ( $section_background ) {
+		$section_wrapper_html .= ' data-background="' . esc_url( $section_background ) . '"';
+	}
+
+	if ( $section_mobile_background ) {
+		$section_wrapper_html .= ' data-background-mobile="' . esc_url( $section_mobile_background ) . '"';
+	}
+
+	$section_wrapper_html .= '>';
+
+	echo $section_wrapper_html;
+
+	// Reset section_id so that the default is built for the section.
+	$section_id = '';
+}
+
+// If a section ID is not available for use, we build a default ID.
+if ( '' === $section_id ) {
+	$section_id = 'builder-section-' . esc_attr( $ttfmake_section_data['id'] );
+} else {
+	$section_id = sanitize_key( $section_id );
 }
 ?>
-	<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>"
-			 class="row <?php echo esc_attr( $section_layout ); ?> <?php echo esc_attr( $section_classes ); ?>">
+	<section id="<?php echo esc_attr( $section_id ); ?>" class="row <?php echo esc_attr( $section_layout ); ?> <?php echo esc_attr( $section_classes ); ?>">
 		<?php
 		if ( ! empty( $data_columns ) ) {
+			// We output the column's number as part of a class and need to track count.
+			$column_count = array( 'one', 'two', 'three', 'four' );
+			$count = 0;
 			foreach( $data_columns as $column ) {
 				?>
 				<div class="column <?php echo $column_count[ $count ]; $count++; ?> <?php if ( isset( $column['column-classes'] ) ) : echo esc_attr( $column['column-classes'] ); endif; ?>">
@@ -82,6 +124,6 @@ if ( $section_wrapper_classes ) {
 		?>
 	</section>
 <?php
-if ( $section_wrapper_classes ) {
+if ( $section_has_wrapper ) {
 	echo '</div>';
 }

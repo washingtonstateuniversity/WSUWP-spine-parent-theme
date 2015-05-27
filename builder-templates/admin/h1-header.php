@@ -41,6 +41,8 @@ spine_load_section_header();
 			spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
 			spine_output_builder_section_label( $section_name, $ttfmake_section_data );
 			spine_output_builder_section_background( $section_name, $ttfmake_section_data );
+
+			do_action( 'spine_output_builder_section', $section_name, $ttfmake_section_data, 'h1-header' );
 			?>
 		</div>
 	</div>
