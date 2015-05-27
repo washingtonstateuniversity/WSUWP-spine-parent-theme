@@ -514,7 +514,7 @@ function spine_get_column_data( $section_data, $columns_number = 2 ) {
  */
 function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
 	?>
-	<div class="wsuwp-builder-meta" style="width:100%;">
+	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
 		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
 	</div>
@@ -530,7 +530,7 @@ function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_d
 function spine_output_builder_section_classes( $section_name, $ttfmake_section_data ) {
 	$section_classes = ( isset( $ttfmake_section_data['data']['section-classes'] ) ) ? $ttfmake_section_data['data']['section-classes'] : 'gutter pad-top';
 	?>
-	<div class="wsuwp-builder-meta" style="width:100%;">
+	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[section-classes]">Section Classes:</label><input type="text" id="<?php echo $section_name; ?>[section-classes]" class="wsuwp-builder-section-classes widefat" name="<?php echo $section_name; ?>[section-classes]" value="<?php echo esc_attr( $section_classes ); ?>" />
 		<p class="description">Enter space delimited class names here to apply them to the <code>section</code> element represented by this builder area.</p>
 	</div>
@@ -547,7 +547,7 @@ function spine_output_builder_section_classes( $section_name, $ttfmake_section_d
 function spine_output_builder_section_label( $section_name, $ttfmake_section_data ) {
 	$section_label = ( isset( $ttfmake_section_data['data']['label'] ) ) ? $ttfmake_section_data['data']['label'] : '';
 	?>
-	<div class="wsuwp-builder-meta" style="width: 100%;">
+	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[label]">Section Label:</label>
 		<input type="text" id="<?php echo $section_name; ?>[label]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[label]" value="<?php echo esc_attr( $section_label ); ?>" />
 		<p class="description">Enter a label to use to identify sections without titles.</p>
@@ -569,7 +569,7 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 	}
 
 	?>
-	<div class="wsuwp-builder-meta" style="width: 100%;">
+	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[column-classes]">Column Classes</label>
 		<input type="text"
 			   id="<?php echo $column_name; ?>[column-classes]"
@@ -614,7 +614,7 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 		return;
 	}
 
-	?><div class="wsuwp-builder-meta" style="width:100%;">
+	?><div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
 		<select id="<?php echo $section_name; ?>[section-layout]"
 				name="<?php echo $section_name; ?>[section-layout]"
@@ -639,7 +639,7 @@ function spine_output_builder_section_background( $section_name, $ttfmake_sectio
 	$section_mobile_background = ( isset( $ttfmake_section_data['data']['background-img'] ) ) ? $ttfmake_section_data['data']['background-mobile-img'] : '';
 
 	?>
-	<div class="wsuwp-builder-meta" style="width: 100%; margin-top: 10px;">
+	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[background-img]">Background Image</label>
 		<input type="text"
 			   class="wsuwp-builder-section-image widefat"
