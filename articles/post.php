@@ -23,9 +23,9 @@
 			<?php
 
 			if ( spine_has_thumbnail_image() ) {
-				?><figure class="article-thumbnail"><?php spine_the_thumbnail_image(); ?></figure><?php
+				?><figure class="article-thumbnail"><a href="<?php the_permalink(); ?>"><?php spine_the_thumbnail_image(); ?></a></figure><?php
 			} elseif ( spine_has_featured_image() ) {
-				?><figure class="article-thumbnail"><?php the_post_thumbnail( 'spine-thumbnail_size' ); ?></figure><?php
+				?><figure class="article-thumbnail"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'spine-thumbnail_size' ); ?></a></figure><?php
 			}
 
 			// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
