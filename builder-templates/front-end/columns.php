@@ -33,7 +33,10 @@ $section_has_wrapper = false;
 // Sections can have ids (provided by outside forces other than this theme), classes, and wrappers with classes.
 $section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
-$section_ids             = ( isset( $ttfmake_section_data['section-ids'] ) )     ? $ttfmake_section_data['section-ids']     : '';
+
+// If a child theme or plugin has declared a section ID, we handle that.
+// This may be supported in the parent theme one day.
+$section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
 
 // If a background image has been assigned to the section, capture it for use.
 if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_section_data['background-img'] ) ) {
@@ -64,15 +67,24 @@ if ( $section_background || $section_mobile_background ) {
 
 if ( $section_has_wrapper ) {
 	?><div
-		<?php if ( '' !== $section_ids ) : echo ' id="' . esc_attr( $section_ids ) . '"'; endif; ?>
+		<?php if ( '' !== $section_id ) : echo ' id="' . esc_attr( $section_id ) . '"'; endif; ?>
 		class="section-wrapper <?php echo esc_attr( $section_wrapper_classes ); ?>"
 		<?php if ( $section_background ) : echo 'data-background="' . esc_url( $section_background ) . '"'; endif; ?>
 		<?php if ( $section_mobile_background ) : echo 'data-background-mobile="' . esc_url( $section_mobile_background ) . '"'; endif; ?>>
 	<?php
+
+	// Reset section_id so that the default is built for the section.
+	$section_id = '';
+}
+
+// If a section ID is not available for use, we build a default ID.
+if ( '' === $section_id ) {
+	$section_id = 'builder-section-' . esc_attr( $ttfmake_section_data['id'] );
+} else {
+	$section_id = sanitize_key( $section_id );
 }
 ?>
-	<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] );?><?php if ( false === $section_has_wrapper ) : echo ' ' . esc_attr( $section_ids ); endif; ?>"
-			 class="row <?php echo esc_attr( $section_layout ); ?> <?php echo esc_attr( $section_classes ); ?>">
+	<section id="<?php echo esc_attr( $section_id ); ?>" class="row <?php echo esc_attr( $section_layout ); ?> <?php echo esc_attr( $section_classes ); ?>">
 		<?php
 		if ( ! empty( $data_columns ) ) {
 			// We output the column's number as part of a class and need to track count.
