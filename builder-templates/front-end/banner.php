@@ -1,12 +1,17 @@
 <?php
-/**
- * @package Make
- */
-
 global $ttfmake_section_data, $ttfmake_sections;
 
-$section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
-$section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : false;
+// Assume by default that the section has no wrapper.
+$section_has_wrapper = false;
+
+// Sections can have ids (provided by outside forces other than this theme), classes, and wrappers with classes.
+$section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+$section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
+
+// If a child theme or plugin has declared a section ID, we handle that.
+// This may be supported in the parent theme one day.
+$section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
+
 $column_classes = ( isset( $ttfmake_section_data['column-classes'] ) ) ? $ttfmake_section_data['column-classes'] : '';
 
 $banner_slides = ttfmake_builder_get_banner_array( $ttfmake_section_data );
@@ -54,22 +59,34 @@ if ( isset( $ttfmake_section_data['background-mobile-img'] ) && ! empty( $ttfmak
 	$section_mobile_background = false;
 }
 
-if ( $section_background || $section_mobile_background ) {
-	if ( $section_wrapper_classes ) {
-		$section_wrapper_classes .= ' section-wrapper-has-background';
-	} else {
-		$section_wrapper_classes = 'section-wrapper-has-background';
-	}
+// If a section has wrapper classes assigned, assume it (obviously) needs a wrapper.
+if ( '' !== $section_wrapper_classes ) {
+	$section_has_wrapper = true;
 }
 
-if ( $section_wrapper_classes ) {
-	?><div class="section-wrapper <?php echo esc_attr( $section_wrapper_classes ); ?>"
-	<?php if ( $section_background ) : echo 'data-background="' . esc_url( $section_background ) . '"'; endif; ?>
-	<?php if ( $section_mobile_background ) : echo 'data-background-mobile="' . esc_url( $section_mobile_background ) . '"'; endif; ?>>
-<?php
+if ( $section_background || $section_mobile_background ) {
+	$section_has_wrapper = true;
+	$section_wrapper_classes .= ' section-wrapper-has-background';
+}
+
+if ( $section_has_wrapper ) {
+	?><div <?php if ( '' !== $section_id ) : echo 'id="' . esc_attr( $section_id ) . '"'; endif; ?> class="section-wrapper <?php echo esc_attr( $section_wrapper_classes ); ?>"
+		<?php if ( $section_background ) : echo 'data-background="' . esc_url( $section_background ) . '"'; endif; ?>
+		<?php if ( $section_mobile_background ) : echo 'data-background-mobile="' . esc_url( $section_mobile_background ) . '"'; endif; ?>>
+	<?php
+
+	// Reset section_id so that the default is built for the section.
+	$section_id = '';
+}
+
+// If a section ID is not available for use, we build a default ID.
+if ( '' === $section_id ) {
+	$section_id = 'builder-section-' . esc_attr( $ttfmake_section_data['id'] );
+} else {
+	$section_id = sanitize_key( $section_id );
 }
 ?>
-<section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="row single builder-section <?php echo $section_classes; ?> <?php echo esc_attr( ttfmake_builder_get_banner_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
+<section id="<?php echo esc_attr( $section_id ); ?>" class="row single builder-section <?php echo $section_classes; ?> <?php echo esc_attr( ttfmake_builder_get_banner_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>">
 	<div class="column one <?php echo esc_attr( $column_classes ); ?>">
 		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>
 			<header>
@@ -104,6 +121,6 @@ if ( $section_wrapper_classes ) {
 </section>
 <?php
 
-if ( $section_wrapper_classes ) {
+if ( $section_has_wrapper ) {
 	echo '</div>';
 }
