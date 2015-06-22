@@ -597,14 +597,14 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 			$current = 'thirds';
 		}
 	} elseif ( 'wsuwpsidebarleft' === $ttfmake_section_data['section']['id'] ) {
-		$options = array( 'side-left', 'margin-left' );
+		$options = array( 'side-left', 'margin-left','halves','side-right','margin-right' );
 		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
 			$current = $ttfmake_section_data['data']['section-layout'];
 		} else {
 			$current = 'side-left';
 		}
 	} elseif ( 'wsuwpsidebarright' === $ttfmake_section_data['section']['id'] ) {
-		$options = array( 'side-right', 'margin-right' );
+		$options = array( 'side-right', 'margin-right','halves','side-left','margin-left' );
 		if ( isset( $ttfmake_section_data['data']['section-layout'] ) && in_array( $ttfmake_section_data['data']['section-layout'], $options ) ) {
 			$current = $ttfmake_section_data['data']['section-layout'];
 		} else {
