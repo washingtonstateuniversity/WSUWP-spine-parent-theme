@@ -167,7 +167,7 @@ function spine_has_featured_image() {
 function spine_get_featured_image_src( $size = 'spine-xlarge_size' ) {
 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
 
-	if ( isset( $image[0] ) ) {
+	if ( isset( $image[0] ) && ! empty( $image[0] ) ) {
 		return $image[0];
 	} else {
 		return false;
