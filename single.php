@@ -28,9 +28,7 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 	if ( spine_has_featured_image() ) {
 		$featured_image_src = spine_get_featured_image_src();
 
-		if ( ! empty( trim( $featured_image_src ) ) ) {
-			?><figure class="featured-image" style="background-image: url('<?php echo $featured_image_src ?>');"><?php spine_the_featured_image(); ?></figure><?php
-		}
+		?><figure class="featured-image" style="background-image: url('<?php echo $featured_image_src ?>');"><?php spine_the_featured_image(); ?></figure><?php
 	}
 	get_template_part( 'parts/single-layout', get_post_type() );
 }
