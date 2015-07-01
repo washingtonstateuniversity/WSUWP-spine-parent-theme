@@ -6,9 +6,7 @@ get_header();
 if ( spine_has_background_image() ) {
 	$background_image_src = spine_get_background_image_src();
 
-	if ( ! empty( trim( $background_image_src ) ) ) {
-		?><style> html { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style><?php
-	}
+	?><style> html { background-image: url(<?php echo esc_url( $background_image_src ); ?>); }</style><?php
 }
 ?>
 
