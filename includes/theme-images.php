@@ -146,10 +146,15 @@ function spine_the_featured_image( $size = 'spine-medium_size' ) {
 /**
  * Wrapper to determine if the displayed post or page has a featured image assigned.
  *
+ * We use our `spine_get_featured_image_src()` rather than `has_thumbnail()` as we
+ * want to ensure the source of the image is valid and not empty as a result of a
+ * misplaced media attachment.
+ *
+ *
  * @return bool True if featured image exists, false if not.
  */
 function spine_has_featured_image() {
-	return has_post_thumbnail();
+	return spine_get_featured_image_src();
 }
 
 /**
@@ -162,7 +167,7 @@ function spine_has_featured_image() {
 function spine_get_featured_image_src( $size = 'spine-xlarge_size' ) {
 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
 
-	if ( isset( $image[0] ) ) {
+	if ( isset( $image[0] ) && ! empty( $image[0] ) ) {
 		return $image[0];
 	} else {
 		return false;
