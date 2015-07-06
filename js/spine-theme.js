@@ -1,0 +1,18 @@
+(function($,window){
+	/**
+	 * Look for any sections with background images stored as data attributes
+	 * and convert the data attribute into inline CSS for that section.
+	 */
+	process_section_backgrounds = function() {
+		var $bg_sections = $('.section-wrapper-has-background');
+
+		$bg_sections.each( function() {
+			var background_image = $(this).data('background');
+			$(this).css('background-image', 'url(' + background_image + ')' );
+		});
+	};
+
+	$(document).ready( function() {
+		process_section_backgrounds();
+	});
+}(jQuery,window));

@@ -413,6 +413,9 @@ function spine_wp_enqueue_scripts() {
 			wp_enqueue_style( 'genericons', get_template_directory_uri() . '/styles/genericons/genericons.css', array(), spine_get_script_version() );
 		}
 	}
+
+	// Enqueue scripting for the entire parent theme.
+	wp_enqueue_script( 'wsu-spine-theme-js', get_template_directory_uri() . '/js/spine-theme.js', array( 'jquery' ), spine_get_script_version(), true );
 }
 
 add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
