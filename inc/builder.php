@@ -209,6 +209,21 @@ class Spine_Builder_Custom {
 	}
 
 	/**
+	 * Clean a header element against an allowed list.
+	 *
+	 * @param string $header_element
+	 *
+	 * @return string
+	 */
+	public function clean_header_element( $header_element ) {
+		if ( in_array( $header_element, array( 'h2', 'h3', 'h4' ) ) ) {
+			return $header_element;
+		}
+
+		return 'h2';
+	}
+
+	/**
 	 * Allow phrasing tags to be added in title areas via the kses allowed HTML filter.
 	 *
 	 * @return array List of tags and attributes allowed.
@@ -332,6 +347,9 @@ class Spine_Builder_Custom {
 					$clean_data['columns'][ $id ]['column-classes'] = $this->clean_classes( $item['column-classes'] );
 				}
 
+				if ( isset( $item['header-level'] ) ) {
+					$clean_data['columns'][ $id ]['header-level'] = $this->clean_header_element( $item['header-level'] );
+				}
 				$i++;
 			}
 		}
@@ -556,16 +574,19 @@ function spine_output_builder_section_label( $section_name, $ttfmake_section_dat
 }
 
 /**
- * Output the input field for column classes used in column configuration.
- * @param $column_name
- * @param $section_data
- * @param $column
+ * Output the input field for column classes and header levels used in column configuration.
+ *
+ * @param string $column_name
+ * @param array  $section_data
+ * @param int    $column
  */
 function spine_output_builder_column_classes( $column_name, $section_data, $column = false ) {
 	if ( $column ) {
 		$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
+		$header_level = ( isset( $section_data['data']['columns'][ $column ]['header-level'] ) ) ? $section_data['data']['columns'][ $column ]['header-level'] : 'h2';
 	} else {
 		$column_classes = ( isset( $section_data['data']['column-classes'] ) ) ? $section_data['data']['column-classes'] : '';
+		$header_level = ( isset( $section_data['data']['header-level'] ) ) ? $section_data['data']['header-level'] : 'h2';
 	}
 
 	?>
@@ -577,6 +598,17 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 			   class="spine-builder-column-classes widefat"
 			   value="<?php echo esc_attr( $column_classes ); ?>" />
 		<p class="description">Enter space delimited class names here to apply them to the <code>div.column</code> element represented by this builder area.</p>
+	</div>
+	<div class="wsuwp-builder-meta">
+		<label for="<?php echo $column_name; ?>[header-level]">Header Level</label>
+		<select id="<?php echo $column_name; ?>[header-level]"
+				name="<?php echo $column_name; ?>[header-level]"
+				class="">
+			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
+			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>
+			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
+		</select>
+		<p class="description">This header will wrap the column title. H2 by default.</p>
 	</div>
 	<?php
 }

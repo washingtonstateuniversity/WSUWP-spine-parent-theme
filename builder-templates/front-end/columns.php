@@ -108,8 +108,9 @@ if ( '' === $section_id ) {
 				<div class="column <?php echo $column_count[ $count ]; $count++; ?> <?php if ( isset( $column['column-classes'] ) ) : echo esc_attr( $column['column-classes'] ); endif; ?>">
 
 					<?php if ( '' !== $column['title'] ) : ?>
+						<?php $header_level = in_array( $column['header-level'], array( 'h2','h3','h4') ) ? $column['header-level'] : 'h2'; ?>
 						<header>
-							<h2><?php echo apply_filters( 'the_title', $column['title'] ); ?></h2>
+							<<?php echo $header_level; ?>><?php echo apply_filters( 'the_title', $column['title'] ); ?></<?php echo $header_level; ?>>
 						</header>
 					<?php endif; ?>
 
