@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="no-js no-svg lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
 <head>
-
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<title><?php echo esc_html( spine_get_title() ); ?></title>
 
