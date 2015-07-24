@@ -48,7 +48,7 @@ body.home:not(.has-background-image) #jacket {
 	padding: 2rem 0 1.1rem 1.3rem;
 	}
 .size-small .main-header .header-group {
-	padding: 2rem 0 1.1rem 2rem;
+	padding: 2rem 1rem 1.1rem 1rem;
 	}
 .size-small.spacing-tight .main-header .header-group {
 	padding: 2rem 0 1.1rem 1rem;
@@ -56,6 +56,11 @@ body.home:not(.has-background-image) #jacket {
 .size-small.spacing-loose .main-header .header-group {
 	padding: 2rem 0 1.1rem 4rem;
 	}
+
+.size-small .main-header {
+	width: 100%;
+}
+
 .sup-header-default,
 .sub-header-default {
 	display: block;
