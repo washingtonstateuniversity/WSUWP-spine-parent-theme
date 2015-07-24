@@ -56,6 +56,11 @@ body.home:not(.has-background-image) #jacket {
 .size-small.spacing-loose .main-header .header-group {
 	padding: 2rem 0 1.1rem 4rem;
 	}
+
+.size-small .style-bookmark .main-header {
+	width: 100%;
+}
+
 .sup-header-default,
 .sub-header-default {
 	display: block;
