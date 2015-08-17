@@ -563,6 +563,8 @@ if ( ! function_exists( 'ttfmake_is_builder_page' ) ) :
 
 		$is_builder_page = $has_builder_template || $has_builder_meta;
 
+		$is_builder_page = apply_filters( 'spine_builder_force_builder', $is_builder_page );
+
 		/**
 		 * Allow a developer to dynamically change whether the post uses the builder or not.
 		 *

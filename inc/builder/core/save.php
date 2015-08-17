@@ -81,6 +81,11 @@ class TTFMAKE_Builder_Save {
 			return;
 		}
 
+		// If the builder is forced to be toggled on, force the "toggle" on.
+		if ( apply_filters( 'spine_builder_force_builder', false ) ) {
+			$_POST['use-builder'] = 1;
+		}
+
 		// Indicate if the post is a builder post; handled earlier because if won't pass future tests
 		if ( isset( $_POST['use-builder'] ) && 1 === (int) $_POST['use-builder'] ) {
 			update_post_meta( $post_id, '_ttfmake-use-builder', 1 );
