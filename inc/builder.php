@@ -31,24 +31,27 @@ class Spine_Builder_Custom {
 	/**
 	 * Enqueue the scripts and styles used with the page builder.
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts( $hook_suffix ) {
 		global $pagenow;
 
-		if ( 'page' === get_current_screen()->id ) {
-			wp_enqueue_script( 'ttfmake-admin-edit-page', get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js', array( 'jquery' ), spine_get_script_version(), true );
-
-			wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
-			wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array('jquery'), spine_get_script_version(), true );
-			wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
-
-			wp_localize_script(
-				'ttfmake-admin-edit-page',
-				'ttfmakeEditPageData',
-				array(
-					'pageNow'       => esc_js( $pagenow ),
-				)
-			);
+		// Only load resources if they are needed on the current page
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
+			return;
 		}
+
+		wp_enqueue_script( 'ttfmake-admin-edit-page', get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js', array( 'jquery' ), spine_get_script_version(), true );
+
+		wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
+		wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array('jquery'), spine_get_script_version(), true );
+		wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
+
+		wp_localize_script(
+			'ttfmake-admin-edit-page',
+			'ttfmakeEditPageData',
+			array(
+				'pageNow'       => esc_js( $pagenow ),
+			)
+		);
 	}
 
 	/**
