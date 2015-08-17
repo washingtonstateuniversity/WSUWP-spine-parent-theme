@@ -120,6 +120,11 @@ class TTFMAKE_Builder_Base {
 			return;
 		}
 
+		// If the builder is forced to be toggled on, don't show the option to toggle off.
+		if ( apply_filters( 'spine_builder_force_builder', false ) ) {
+			return;
+		}
+
 		$using_builder = get_post_meta( get_the_ID(), '_ttfmake-use-builder', true );
 	?>
 		<div class="misc-pub-section">
