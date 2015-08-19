@@ -500,6 +500,47 @@ function spine_is_sub() {
 	}
 }
 
+add_filter('body_class', 'spine_author_body_classes');
+/**
+ * Add 'authored' in classes to body on singular views.
+ *
+ * @param array $classes List of classes to be added to the body element.
+ *
+ * @return array Modified list of classes.
+ */
+function spine_author_body_classes( $classes ) {
+	$post = get_post();
+    $author_id = $post->post_author;
+    
+	if ( is_singular() ) {
+		$author_class = get_the_author_meta('user_nicename',$author_id); 
+		$classes[] = 'authored-'.$author_class;
+	}
+
+	return $classes;
+}
+
+add_filter( 'post_class', 'spine_author_post_classes' );
+/**
+ * Add author to classes to article on list views.
+ *
+ * @param array $classes List of classes to be added to the article element.
+ *
+ * @return array Modified list of classes.
+ */
+function spine_author_post_classes( $classes ) {
+	$post = get_post();
+    $author_id = $post->post_author;
+	if ( !is_singular() ) {
+		
+		$author_class = get_the_author_meta('user_nicename',$author_id); 
+		$classes[] = 'author-'.$author_class;
+
+	}
+	
+	return $classes;
+}
+
 add_filter( 'body_class', 'spine_site_body_class');
 /**
  * Add body classes for the site domain and path to help with targeting on multiple
