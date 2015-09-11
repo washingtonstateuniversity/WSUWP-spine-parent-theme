@@ -346,7 +346,11 @@ function spine_wp_enqueue_scripts() {
 
 		if ( 0 !== $count ) {
 			$google_font_css_url .= $build_open_sans_css;
+		} else {
+			$google_font_css_url = '';
 		}
+	} else {
+		$google_font_css_url = '';
 	}
 
 	$spine_open_sans_condensed = spine_get_open_sans_condensed_options();
@@ -373,11 +377,14 @@ function spine_wp_enqueue_scripts() {
 		$google_font_css_url .= $build_open_sans_cond_css;
 	}
 
-	$google_font_css_url .= '&subset=latin,latin-ext';
+	// Only enqueue a custom Google Fonts URL if extra options have been selected for Open Sans.
+	if ( '' !== $google_font_css_url ) {
+		$google_font_css_url .= '&subset=latin,latin-ext';
 
-	// Deregister the default Open Sans URL provided by WordPress core and instead provide our own.
-	wp_deregister_style( 'open-sans' );
-	wp_enqueue_style( 'open-sans', $google_font_css_url, array(), false );
+		// Deregister the default Open Sans URL provided by WordPress core and instead provide our own.
+		wp_deregister_style( 'open-sans' );
+		wp_enqueue_style( 'open-sans', $google_font_css_url, array(), false );
+	}
 
 	// WordPress core provides much of jQuery UI, but not in a nice enough package to enqueue all at once.
 	// For this reason, we'll pull the entire package from the Google CDN.
