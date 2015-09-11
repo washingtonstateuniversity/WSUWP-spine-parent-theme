@@ -488,3 +488,9 @@ article.wsuwp_uc_person {
 .wsuwp_uc_publication .article-footer {
 	clear: left;
 }
+
+.single-tribe_events #tribe-events-content .tribe-events-event-meta dt,
+.single-tribe_events #tribe-events-content .tribe-events-event-meta dd {
+	line-height: 1.5;
+	float: left;
+}
