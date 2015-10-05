@@ -34,13 +34,13 @@ function spine_get_script_version() {
 
 add_action( 'init', 'spine_load_builder_module', 10 );
 /**
- * If enabled at the platform or installation level, include the
- * necessary files for the Make builder tool.
+ * Allow our version of Make's builder tool to be disabled at the
+ * platform or WordPress installation level.
  *
  * Note: admin_init is too late for this to be brought in.
  */
 function spine_load_builder_module() {
-	if ( true === apply_filters( 'spine_enable_builder_module', false ) ) {
+	if ( true === apply_filters( 'spine_enable_builder_module', true ) ) {
 		include_once( 'inc/builder.php' );
 	}
 }
