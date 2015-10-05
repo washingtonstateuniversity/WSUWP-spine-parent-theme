@@ -488,6 +488,8 @@ function spine_trim_excerpt( $text ) {
 		} else {
 			$text = implode( ' ', $words );
 		}
+
+		$text = force_balance_tags( $text );
 	}
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
