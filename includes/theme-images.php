@@ -17,6 +17,8 @@ class Spine_Theme_Images {
 		}
 
 		add_filter( 'wsuwp_install_default_image_sizes', array( $this, 'install_default_image_sizes' ) );
+		add_filter( 'admin_post_thumbnail_html', array( $this, 'meta_featured_image_position' ), 10, 2 );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 	}
 
 	/**
@@ -129,6 +131,65 @@ class Spine_Theme_Images {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Provide an input to manually adjust a featured image's background position.
+	 *
+	 * @param string $content HTML output for the featured image area in the post editor.
+	 * @param int    $post_id ID of the post.
+	 * @return string
+	 */
+	public function meta_featured_image_position( $content, $post_id ) {
+		$position = sanitize_html_class( get_post_meta( $post_id, '_featured_image_position', true ) );
+
+		$content .= wp_nonce_field( 'save-spine-featured-image', '_spine_featured_image_nonce', true, false );
+
+		$content .= '<div class="featured-image-meta-extra">
+						<label for="featured-image-position">Background Position</label>
+						<select name="featured_image_position" id="featured-image-position">
+							<option value="0">--- No Change ---</option>
+							<option value="background-position-center" '        . selected( $position, 'background-position-center', false )        . '>
+								Center Center</option>
+							<option value="background-position-center-top" '    . selected( $position, 'background-position-center-top', false )    . '>
+								Center Top</option>
+							<option value="background-position-right-top" '     . selected( $position, 'background-position-right-top', false )     . '>
+								Right Top</option>
+							<option value="background-position-right-center" '  . selected( $position, 'background-position-right-center', false )  . '>
+								Right Center</option>
+							<option value="background-position-right-bottom" '  . selected( $position, 'background-position-right-bottom', false )  . '>
+								Right Bottom</option>
+							<option value="background-position-center-bottom" ' . selected( $position, 'background-position-center-bottom', false ) . '>
+								Center Bottom</option>
+							<option value="background-position-left-bottom" '   . selected( $position, 'background-position-left-bottom', false )   . '>
+								Left Bottom</option>
+							<option value="background-position-left-center" '   . selected( $position, 'background-position-left-center', false )   . '>
+								Left Center</option>
+							<option value="background-position-left-top" '      . selected( $position, 'background-position-left-top', false )      . '>
+								Left Top</option>
+						</select>
+						<p class="description">When the featured image is displayed as a background, the above will adjust its position.</p>
+					</div>';
+
+		return $content;
+	}
+
+	public function save_post( $post_id, $post ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['_spine_featured_image_nonce'] ) || false === wp_verify_nonce( $_POST['_spine_featured_image_nonce'], 'save-spine-featured-image' ) ) {
+			return;
+		}
+
+		if ( 'auto-draft' === $post->post_status ) {
+			return;
+		}
+
+		if ( isset( $_POST['featured_image_position'] ) && ! empty( sanitize_html_class( $_POST['featured_image_position'] ) ) ) {
+			update_post_meta( $post_id, '_featured_image_position', sanitize_html_class( $_POST['featured_image_position'] ) );
+		}
 	}
 }
 $spine_theme_image = new Spine_Theme_Images();
