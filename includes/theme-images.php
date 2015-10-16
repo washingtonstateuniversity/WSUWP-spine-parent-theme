@@ -189,6 +189,8 @@ class Spine_Theme_Images {
 
 		if ( isset( $_POST['featured_image_position'] ) && ! empty( sanitize_html_class( $_POST['featured_image_position'] ) ) ) {
 			update_post_meta( $post_id, '_featured_image_position', sanitize_html_class( $_POST['featured_image_position'] ) );
+		} elseif ( 0 == $_POST['featured_image_position'] ) {
+			delete_post_meta( $post_id, '_featured_image_position' );
 		}
 	}
 }
