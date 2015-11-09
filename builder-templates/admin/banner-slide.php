@@ -17,6 +17,7 @@ $darken           = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 $image_id         = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['image-id'] : 0;
 $alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['alignment'] : 'none';
 $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
+$slide_title      = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['slide-title'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['slide-title'] : '';
 $slide_url        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['slide-url'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['slide-url'] : false;
 ?>
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
@@ -81,6 +82,9 @@ $slide_url        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 		</div>
 
 		<div class="clear"></div>
+
+		<h2>Slide Title:</h2>
+		<input type="text" id="spine-slide-title" name="<?php echo $section_name; ?>[spine_slide_title]" style="width: 100%;" value="<?php echo esc_attr( $slide_title ); ?>" />
 
 		<h2>Slide URL:</h2>
 		<input type="text" id="spine-slide-url" name="<?php echo $section_name; ?>[spine_slide_url]" style="width: 100%;" value="<?php echo esc_attr( $slide_url ); ?>"/>
