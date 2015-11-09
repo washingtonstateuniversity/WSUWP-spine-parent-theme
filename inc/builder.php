@@ -447,6 +447,10 @@ class Spine_Builder_Custom {
 				if ( isset( $slide['spine_slide_url'] ) ) {
 					$clean_data['banner-slides'][ $id ]['slide-url'] = esc_url_raw( $slide['spine_slide_url'] );
 				}
+
+				if ( isset( $slide['spine_slide_title'] ) ) {
+					$clean_data['banner-slides'][ $id ]['slide-title'] = sanitize_text_field( $slide['spine_slide_title'] );
+				}
 			}
 		}
 

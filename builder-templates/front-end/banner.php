@@ -114,6 +114,11 @@ if ( '' === $section_id ) {
 				<div class="builder-banner-slide<?php echo ttfmake_builder_banner_slide_class( $slide ); ?>" style="<?php echo ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ); ?>">
 					<?php if ( ! empty( $slide['slide-url'] ) ) : ?><a href="<?php echo esc_url( $slide['slide-url'] ); ?>"><?php endif; ?>
 					<div class="builder-banner-content">
+						<?php if ( ! empty( $slide['slide-title'] ) ) : ?>
+						<div class="builder-banner-inner-title">
+							<span class="builder-banner-slide-title"><?php echo esc_html( $slide['slide-title'] ); ?></span>
+						</div>
+						<?php endif; ?>
 						<div class="builder-banner-inner-content">
 							<?php ttfmake_get_builder_save()->the_builder_content( $slide['content'] ); ?>
 						</div>
