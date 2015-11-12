@@ -1,3 +1,5 @@
+<div class="main-body">
+
 <section class="row side-right gutter pad-ends">
 
 	<div class="column one">
@@ -17,3 +19,5 @@
 	</div><!--/column two-->
 
 </section>
+
+</div><!--/main-body-->
