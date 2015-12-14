@@ -154,23 +154,35 @@ function spine_customize_register( $wp_customize ){
 		'type'           => 'option',
 	));
 
+	$spine_colors = array(
+		'white' => 'Default (white)',
+		'lightest' => 'Lightest',
+		'lighter' => 'Lighter',
+		'gray' => 'Gray',
+		'dark' => 'Dark',
+		'darker' => 'Darker',
+		'darkest' => 'Darkest (black)',
+		'crimson' => 'Crimson',
+	);
+
+	/**
+	 * Account for deprecated color options. If a site has previously
+	 * selected a deprecated option, we'll continue to offer it.
+	 */
+	$current_color = spine_get_option( 'spine_color' );
+	if ( 'light' === $current_color ) {
+		$spine_colors['light'] = 'Light';
+	}
+	if ( 'velum' === $current_color ) {
+		$spine_colors['velum'] = 'Transparent';
+	}
+
 	$wp_customize->add_control( 'spine_color_select', array(
 		'settings' => 'spine_options[spine_color]',
 		'label'    => 'Spinal Column Color',
 		'section'  => 'section_spine_options',
 		'type'     => 'select',
-		'choices'  => array(
-			'white' => 'Default (white)',
-			'lightest' => 'Lightest',
-			'lighter' => 'Lighter',
-			'light' => 'Light',
-			'gray' => 'Gray',
-			'dark' => 'Dark',
-			'darker' => 'Darker',
-			'darkest' => 'Darkest (black)',
-			'crimson' => 'Crimson',
-			'velum' => 'Transparent'
-		),
+		'choices'  => $spine_colors,
 	));
 
 	// Search Opened by Default
