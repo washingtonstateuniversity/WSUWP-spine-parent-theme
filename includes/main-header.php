@@ -202,6 +202,7 @@ function spine_get_main_header() {
 		$sub_header_default = $site_tagline;
 	}
 
+	// If a static front page is set, `is_home()` will be true if this is the page for posts.
 	if ( is_home() && ! is_front_page() ) {
 		$sup_header_default = $site_name;
 
@@ -234,10 +235,17 @@ function spine_get_main_header() {
 		$sub_header_default = $global_sub_header;
 	}
 
-	// Both sup and sub headers can be overridden with the use of post meta.
-	if ( is_singular() || is_front_page() ) {
-		$sup_override = get_post_meta( get_the_ID(), 'sup-header', true );
-		$sub_override = get_post_meta( get_the_ID(), 'sub-header', true );
+	// Both sup and sub headers can be overridden with the use of post meta if
+	// this is a singular template, the front page, or the page used for posts.
+	if ( is_singular() || is_front_page() || ( is_home() && 0 < $page_for_posts ) ) {
+		if ( is_home() && 0 < $page_for_posts ) {
+			$post_id = $page_for_posts;
+		} else {
+			$post_id = get_the_ID();
+		}
+
+		$sup_override = get_post_meta( $post_id, 'sup-header', true );
+		$sub_override = get_post_meta( $post_id, 'sub-header', true );
 
 		if ( ! empty( $sup_override ) ) {
 			$sup_header_default = wp_kses_post( $sup_override );
