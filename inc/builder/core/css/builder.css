@@ -240,7 +240,7 @@
 	font-size: 13px !important;
 	font-weight: 700 !important;
 	font-family: 'Open Sans', sans-serif !important;
-	line-height: 1.7 !important;
+	line-height: 30px !important;
 	border-top: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
 	background-color: #eee;
@@ -272,8 +272,7 @@
 }
 .ttfmake-section .handlediv {
 	position: relative;
-	height: 40px;
-	padding-left: 10px;
+	height: 32px;
 	border-left: 1px solid #d9d9d9;
 }
 @media screen and ( max-width: 782px ) {
@@ -290,9 +289,9 @@
 }
 .ttfmake-section-toggle .handlediv,
 .ttfmake-banner-slide-toggle .handlediv {
-	top: -40px;
+	top: -45px;
 	right: 0; /*reset*/
-	margin-bottom: -40px;
+	margin-bottom: -45px;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-toggle .handlediv,
@@ -304,7 +303,14 @@
 .ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
 .ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
 	content: '\f140';
-	top: 1px;
+	font: 400 20px/40px dashicons;
+	width: 20px;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	text-indent: -1px;
+	position: absolute;
+	top: -5px;
+	right: 7px;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
@@ -403,9 +409,16 @@
 }
 .ttfmake-section-remove:before {
 	content: "\f182";
+	position: absolute;
+	right: 5px;
+	top: 9px;
 }
+.spine-builder-section-configure:before,
 .ttfmake-section-configure:before {
 	content: "\f111";
+	position: absolute;
+	right: 10px;
+	top: 8px;
 }
 .ttfmp-duplicate-section:before {
 	content: "\f105";
