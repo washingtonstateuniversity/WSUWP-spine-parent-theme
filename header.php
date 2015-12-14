@@ -9,14 +9,14 @@
 	<title><?php echo esc_html( spine_get_title() ); ?></title>
 
 	<!-- FAVICON -->
-	<link rel="shortcut icon" href="//repo.wsu.edu/spine/1/favicon.ico" />
+	<link rel="shortcut icon" href="https://repo.wsu.edu/spine/1/favicon.ico" />
 
 	<!-- RESPOND -->
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 
 	<!-- DOCS -->
-	<link type="text/plain" rel="author" href="//repo.wsu.edu/spine/1/authors.txt" />
-	<link type="text/html" rel="help" href="http://brand.wsu.edu/media/web" />
+	<link type="text/plain" rel="author" href="https://repo.wsu.edu/spine/1/authors.txt" />
+	<link type="text/html" rel="help" href="https://brand.wsu.edu/media/web" />
 
 	<!-- SCRIPTS and STYLES -->
 	<!-- Custom scripts and styles should be added with wp_enqueue_script() and wp_enqueue_style() -->
