@@ -730,7 +730,7 @@ function spine_editcss_intro() {
 
 You may delete these comments and get started with your custom stylesheet. Before doing so, please review the WSU web standards:
 
-http://brand.wsu.edu/media/web/web-standards/
+https://brand.wsu.edu/media/web/web-standards/
 
 As a general rule of thumb, if your styles target aspects of the spine (#spine), that's against standard, whereas if you're styling elsewhere on the page, it's all good.";
 

@@ -13,9 +13,9 @@
 	<nav id="wsu-global-links" class="spine-global-links">
 		<ul>
 			<li class="mywsu-link"><a href="https://portal.wsu.edu/">myWSU</a></li>
-			<li class="access-link"><a href="http://access.wsu.edu/">Access</a></li>
+			<li class="access-link"><a href="https://access.wsu.edu/">Access</a></li>
 			<li class="policies-link"><a href="https://policies.wsu.edu/">Policies</a></li>
-			<li class="copyright-link"><a href="http://copyright.wsu.edu">&copy;</a></li>
+			<li class="copyright-link"><a href="https://copyright.wsu.edu">&copy;</a></li>
 		</ul>
 	</nav>
 
