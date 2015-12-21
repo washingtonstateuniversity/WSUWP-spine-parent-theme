@@ -254,6 +254,7 @@ article footer a:hover {
 
 .article-footer {
 	position: relative;
+	clear: both;
 }
 
 .article-footer .categorized dt:after,
