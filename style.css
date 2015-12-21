@@ -521,3 +521,7 @@ article.wsuwp_uc_person {
 	line-height: 1.5;
 	float: left;
 }
+
+#spine .spine-actions>ul li {
+	width: 33%;
+}
