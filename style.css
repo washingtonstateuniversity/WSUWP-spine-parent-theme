@@ -155,6 +155,10 @@ main article header h2 {
 	margin-bottom: 0;
 }
 
+.article-header {
+	position: relative;
+}
+
 .article-header hgroup.source,
 .article-header .hgroup.source {
 	text-transform: uppercase;
@@ -520,4 +524,89 @@ article.wsuwp_uc_person {
 .single-tribe_events #tribe-events-content .tribe-events-event-meta dd {
 	line-height: 1.5;
 	float: left;
+}
+
+/** In content social sharing styles. */
+.social-share-bar {
+	position: absolute;
+	bottom: 3px;
+	right: 0;
+	text-align: right;
+	-webkit-font-smoothing: antialiased;
+	height: 26px;
+}
+
+.social-share-bar li {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	color: #444;
+	position: relative;
+}
+
+.social-share-bar a {
+	font-size: 0;
+}
+
+.social-share-bar a:before {
+	font-family: Spine-Icons, "Open Sans", sans-serif;
+	font-size: 1.4rem;
+	color: #959a9e;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+	width: 35px;
+	height: 35px;
+	display: block;
+}
+
+.social-share-bar .by-facebook a:before {
+	content: "F";
+}
+
+.social-share-bar .by-facebook:hover a:before {
+	color: #3b5998;
+}
+
+.social-share-bar .by-twitter a:before {
+	content: "T";
+}
+
+.social-share-bar .by-twitter:hover a:before {
+	color: #4099FF;
+}
+
+.social-share-bar .by-googleplus a:before {
+	content: "G";
+}
+
+.social-share-bar .by-googleplus:hover a:before {
+	color: #dd4b39;
+}
+.social-share-bar .by-linkedin a:before {
+	content: "L";
+}
+
+.social-share-bar .by-linkedin:hover a:before {
+	color: #0e76a8;
+}
+
+.social-share-bar .by-email a:before {
+	content: "@";
+}
+
+.social-share-bar .by-email:hover a:before {
+	color: #981e32;
+}
+
+@media screen and (max-width: 1200px) {
+	.social-share-bar {
+		position: relative;
+		margin: 5px 0;
+		text-align: left;
+	}
 }
