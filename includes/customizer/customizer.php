@@ -424,6 +424,25 @@ function spine_customize_register( $wp_customize ){
 		),
 	));
 
+	$wp_customize->add_setting( 'spine_options[post_social_placement]', array(
+		'default' => 'none',
+		'capability' => 'edit_theme_options',
+		'type' => 'option',
+	));
+
+	$wp_customize->add_control( 'post_social_placement', array(
+		'label' => __( 'Post Social Sharing Placement', 'spine' ),
+		'section' => 'section_spine_advanced_options',
+		'settings' => 'spine_options[post_social_placement]',
+		'type' => 'select',
+		'choices' => array(
+			'none' => 'Hidden',
+			'top' => 'Top Only',
+			'bottom' => 'Bottom Only',
+			'both' => 'Top and Bottom',
+		),
+	));
+
 	// Style Options
 	$wp_customize->add_section('section_spine_style', array(
 		'title'    => __('Style Options', 'spine'),

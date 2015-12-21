@@ -155,6 +155,10 @@ main article header h2 {
 	margin-bottom: 0;
 }
 
+.article-header {
+	position: relative;
+}
+
 .article-header hgroup.source,
 .article-header .hgroup.source {
 	text-transform: uppercase;
@@ -246,6 +250,10 @@ article footer a {
 
 article footer a:hover {
 	color: rgba(128,128,128,1);
+}
+
+.article-footer {
+	position: relative;
 }
 
 .article-footer .categorized dt:after,
@@ -524,4 +532,114 @@ article.wsuwp_uc_person {
 
 #spine .spine-actions>ul li {
 	width: 33%;
+}
+
+/** In content social sharing styles. */
+.social-share-bar {
+	position: absolute;
+	bottom: 3px;
+	right: 0;
+	text-align: right;
+	-webkit-font-smoothing: antialiased;
+	height: 25px;
+}
+
+.article-footer .social-share-bar {
+	top: 10px;
+	bottom: initial;
+}
+
+.social-share-bar .channel-title {
+	font-size: 0;
+	display: none;
+}
+
+.social-share-bar ul {
+	height: 25px;
+	padding: 0;
+	margin: 0;
+}
+
+.social-share-bar li {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	color: #444;
+	padding: 0;
+	margin: 0 0 0 8px;
+	position: relative;
+}
+
+.social-share-bar li a {
+	display: block;
+	width: 25px;
+	height: 25px;
+}
+
+.social-share-bar a:before {
+	font-family: Spine-Icons, "Open Sans", sans-serif;
+	font-size: 1.4rem;
+	color: #959a9e;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+	width: 25px;
+	height: 25px;
+	display: block;
+}
+
+.social-share-bar .by-facebook a:before {
+	content: "F";
+}
+
+.social-share-bar .by-facebook:hover a:before {
+	color: #3b5998;
+}
+
+.social-share-bar .by-twitter a:before {
+	content: "T";
+}
+
+.social-share-bar .by-twitter:hover a:before {
+	color: #4099FF;
+}
+
+.social-share-bar .by-googleplus a:before {
+	content: "G";
+}
+
+.social-share-bar .by-googleplus:hover a:before {
+	color: #dd4b39;
+}
+.social-share-bar .by-linkedin a:before {
+	content: "L";
+}
+
+.social-share-bar .by-linkedin:hover a:before {
+	color: #0e76a8;
+}
+
+.social-share-bar .by-email a:before {
+	content: "@";
+}
+
+.social-share-bar .by-email:hover a:before {
+	color: #981e32;
+}
+
+@media screen and (max-width: 1200px) {
+	.social-share-bar {
+		position: relative;
+		margin: 5px 0;
+		text-align: left;
+	}
+
+	.article-footer .social-share-bar {
+		margin: 0;
+		padding: 5px 0 15px 0;
+	}
 }
