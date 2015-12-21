@@ -533,19 +533,34 @@ article.wsuwp_uc_person {
 	right: 0;
 	text-align: right;
 	-webkit-font-smoothing: antialiased;
-	height: 26px;
+	height: 25px;
+}
+
+.social-share-bar .channel-title {
+	font-size: 0;
+	display: none;
+}
+
+.social-share-bar ul {
+	height: 25px;
+	padding: 0;
+	margin: 0;
 }
 
 .social-share-bar li {
 	display: inline-block;
-	width: 35px;
-	height: 35px;
+	width: 25px;
+	height: 25px;
 	color: #444;
+	padding: 0;
+	margin: 0 0 0 8px;
 	position: relative;
 }
 
-.social-share-bar a {
-	font-size: 0;
+.social-share-bar li a {
+	display: block;
+	width: 25px;
+	height: 25px;
 }
 
 .social-share-bar a:before {
@@ -559,8 +574,8 @@ article.wsuwp_uc_person {
 	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
-	width: 35px;
-	height: 35px;
+	width: 25px;
+	height: 25px;
 	display: block;
 }
 

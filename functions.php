@@ -129,6 +129,7 @@ function spine_get_option_defaults() {
 		'social_spot_three'         => 'https://www.youtube.com/washingtonstateuniv',
 		'social_spot_four_type'     => 'directory',
 		'social_spot_four'          => 'http://social.wsu.edu',
+		'post_social_placement'     => 'none',
 	);
 }
 

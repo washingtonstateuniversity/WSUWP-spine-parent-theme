@@ -1,3 +1,8 @@
+<?php
+$post_share_url = esc_url( get_permalink() );
+$post_share_title = rawurlencode( spine_get_title() );
+$post_share_placement = spine_get_option( 'post_social_placement' );
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="article-header">
@@ -16,11 +21,10 @@
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
 			<cite class="article-author" role="author"><?php the_author_posts_link(); ?></cite>
 		</hgroup>
-		<?php
-		$post_share_url = esc_url( get_permalink() );
-		$post_share_title = rawurlencode( spine_get_title() );
-		?>
+
+		<?php if ( in_array( $post_share_placement, array( 'top', 'both' ) ) ) : ?>
 		<div class="social-share-bar">
+			<ul>
 			<li class="by-facebook">
 				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Facebook</span></a></li>
 			<li class="by-twitter">
@@ -33,6 +37,7 @@
 				<a href="mailto:?subject=<?php echo $post_share_title; ?>&amp;body=<?php echo $post_share_url; ?>"><span class="channel-title">Email this post</span></a></li>
 			</ul>
 		</div>
+		<?php endif; ?>
 	</header>
 
 	<?php if ( ! is_singular() ) : ?>
