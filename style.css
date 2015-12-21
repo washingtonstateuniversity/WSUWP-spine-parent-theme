@@ -252,6 +252,10 @@ article footer a:hover {
 	color: rgba(128,128,128,1);
 }
 
+.article-footer {
+	position: relative;
+}
+
 .article-footer .categorized dt:after,
 .article-footer .tagged dt:after {
 	content: attr(data-default);
@@ -536,6 +540,11 @@ article.wsuwp_uc_person {
 	height: 25px;
 }
 
+.article-footer .social-share-bar {
+	top: 10px;
+	bottom: initial;
+}
+
 .social-share-bar .channel-title {
 	font-size: 0;
 	display: none;
@@ -623,5 +632,10 @@ article.wsuwp_uc_person {
 		position: relative;
 		margin: 5px 0;
 		text-align: left;
+	}
+
+	.article-footer .social-share-bar {
+		margin: 0;
+		padding: 5px 0 15px 0;
 	}
 }
