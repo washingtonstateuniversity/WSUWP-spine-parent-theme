@@ -22,7 +22,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 			<cite class="article-author" role="author"><?php the_author_posts_link(); ?></cite>
 		</hgroup>
 
-		<?php if ( in_array( $post_share_placement, array( 'top', 'both' ) ) ) : ?>
+		<?php if ( is_singular() && in_array( $post_share_placement, array( 'top', 'both' ) ) ) : ?>
 		<div class="social-share-bar">
 			<ul>
 			<li class="by-facebook">
@@ -79,7 +79,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 	<?php endif; // comments_open() ?>
 
 	<footer class="article-footer">
-		<?php if ( in_array( $post_share_placement, array( 'bottom', 'both' ) ) ) : ?>
+		<?php if ( is_singular() && in_array( $post_share_placement, array( 'bottom', 'both' ) ) ) : ?>
 			<div class="social-share-bar">
 				<ul>
 					<li class="by-facebook">
