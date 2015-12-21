@@ -72,12 +72,6 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 		</div>
 	<?php endif; ?>
 
-	<?php if ( comments_open() && is_singular() ) : ?>
-	<blockquote class="comments">
-
-	</blockquote>
-	<?php endif; // comments_open() ?>
-
 	<footer class="article-footer">
 		<?php if ( is_singular() && in_array( $post_share_placement, array( 'bottom', 'both' ) ) ) : ?>
 			<div class="social-share-bar">
@@ -148,14 +142,6 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 			}
 			echo '</dl>';
 		}
-	}
-
-	// Comments Allowed
-	// if ( comments_open()) {}
-
-	// If the user viewing the post can edit it, show an edit link.
-	if ( current_user_can( 'edit_post', $post->ID ) && ! is_singular() ) {
-		?><dl class="editors"><?php edit_post_link( 'Edit', '<span class="edit-link">', '</span>' ); ?></dl><?php
 	}
 
 	// If a user has filled out their description and this is a multi-author blog, show a bio on their entries.
