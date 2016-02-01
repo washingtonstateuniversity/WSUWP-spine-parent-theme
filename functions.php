@@ -316,7 +316,13 @@ function spine_wp_enqueue_scripts() {
 		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
 			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 		}
-		wp_enqueue_style( 'spine-theme-child', get_stylesheet_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+
+		if ( apply_filters( 'spine_child_min_css', false ) ) {
+			$child_stylesheet = 'style.min.css';
+		} else {
+			$child_stylesheet = 'style.css';
+		}
+		wp_enqueue_style( 'spine-theme-child', get_stylesheet_directory_uri() . '/' . $child_stylesheet, array( 'wsu-spine' ), spine_get_script_version() );
 	} else {
 		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
