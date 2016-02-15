@@ -9,3 +9,8 @@
 
 # Ignore PHPStorm project files.
 .idea
+
+# Ignore composer and node files.
+composer.lock
+node_modules/
+vendor/
