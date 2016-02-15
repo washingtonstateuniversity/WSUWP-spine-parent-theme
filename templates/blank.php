@@ -15,8 +15,9 @@
 		<?php the_content(); ?>
 	</div><!-- #post -->
 
-<?php endwhile; endif; ?>
-
+<?php
+endwhile;
+endif;
+?>
 </main>
-
-<?php get_footer(); ?>
+<?php get_footer();

@@ -4,16 +4,16 @@
 
 <main>
 
-<?php if ( have_posts() ) : while( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<?php get_template_part('parts/headers'); ?>
-<?php get_template_part('parts/featured-images'); ?>
+<?php get_template_part( 'parts/headers' ); ?>
+<?php get_template_part( 'parts/featured-images' ); ?>
 
 <section class="row halves gutter pad-ends">
 
 	<div class="column one">
 
-		<?php get_template_part('articles/article'); ?>
+		<?php get_template_part( 'articles/article' ); ?>
 
 	</div><!--/column-->
 
@@ -23,10 +23,11 @@
 	</div>
 
 </section>
-<?php endwhile; endif; ?>
+<?php
+endwhile;
+endif;
 
-	<?php get_template_part( 'parts/footers' ); ?>
-
+get_template_part( 'parts/footers' );
+?>
 </main>
-
-<?php get_footer(); ?>
+<?php get_footer();
