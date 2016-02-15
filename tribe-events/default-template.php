@@ -4,7 +4,7 @@ get_header();
 ?>
 <main>
 
-	<?php get_template_part('parts/headers'); ?>
+	<?php get_template_part( 'parts/headers' ); ?>
 
 	<section class="row single gutter pad-ends">
 
