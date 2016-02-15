@@ -16,7 +16,7 @@
 		<?php
 		$column = get_post_meta( get_the_ID(), 'column-one', true );
 		if ( ! empty( $column ) ) {
-			echo $column;
+			echo wp_kses_post( $column );
 		}
 		?>
 
