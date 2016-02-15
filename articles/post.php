@@ -19,7 +19,15 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 		</hgroup>
 		<hgroup class="source">
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
-			<cite class="article-author" role="author"><?php the_author_posts_link(); ?></cite>
+			<cite class="article-author" role="author">
+				<?php
+					if ( '1' === spine_get_option( 'show_author_page' ) ) {
+						the_author_posts_link();
+					} else {
+						echo esc_html( get_the_author() );
+					}
+				?>
+			</cite>
 		</hgroup>
 
 		<?php if ( is_singular() && in_array( $post_share_placement, array( 'top', 'both' ) ) ) : ?>
@@ -157,11 +165,13 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 			<div class="author-description">
 				<h2><?php printf( __( 'About %s', 'twentytwelve' ), get_the_author() ); ?></h2>
 				<p><?php the_author_meta( 'description' ); ?></p>
+				<?php if ( '1' === spine_get_option( 'show_author_page' ) ) : ?>
 				<div class="author-link">
 					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
 						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'twentytwelve' ), get_the_author() ); ?>
 					</a>
 				</div><!-- .author-link	-->
+				<?php endif; ?>
 			</div><!-- .author-description -->
 		</div><!-- .author-info -->
 	<?php endif; ?>

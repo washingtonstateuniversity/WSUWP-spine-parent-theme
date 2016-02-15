@@ -443,6 +443,23 @@ function spine_customize_register( $wp_customize ){
 		),
 	));
 
+	$wp_customize->add_setting( 'spine_options[show_author_page]', array(
+		'default' => '1',
+		'capability' => 'edit_theme_options',
+		'type' => 'option',
+	) );
+
+	$wp_customize->add_control('show_author_page', array(
+		'label'      => __( 'Show Author Page', 'spine' ),
+		'section'    => 'section_spine_advanced_options',
+		'settings'   => 'spine_options[show_author_page]',
+		'type'       => 'radio',
+		'choices'    => array(
+			true  => 'On',
+			false => 'Off',
+		),
+	));
+
 	// Style Options
 	$wp_customize->add_section('section_spine_style', array(
 		'title'    => __('Style Options', 'spine'),
