@@ -22,7 +22,7 @@
 		<?php
 		$column = get_post_meta( get_the_ID(), 'column-two', true );
 		if ( ! empty( $column ) ) {
-			echo $column;
+			echo wp_kses_post( $column );
 		}
 		?>
 
