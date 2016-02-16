@@ -12,7 +12,7 @@ $spine_classes[] = esc_attr( spine_get_option( 'bleed' ) );
 $spine_classes = implode( ' ', $spine_classes );
 ?>
 
-<div id="spine" class="spine-column <?php echo $spine_classes; ?> shelved">
+<div id="spine" class="spine-column <?php echo esc_attr( $spine_classes ); ?> shelved">
 <div id="glue" class="spine-glue">
 
 <?php get_template_part( 'spine/header' ); ?>
