@@ -16,7 +16,7 @@
  * sub_header_alternate
  */
 $spine_main_header_values = spine_get_main_header();
-wp_strip_all_tags()
+
 if ( true === spine_get_option( 'main_header_show' ) ) :
 
 ?>
