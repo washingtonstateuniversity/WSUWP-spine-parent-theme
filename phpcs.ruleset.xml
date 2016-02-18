@@ -6,5 +6,7 @@
         <exclude name="WordPress.NamingConventions.ValidFunctionName" />
         <exclude name="WordPress.Files.FileName" />
         <exclude name="WordPress.XSS.EscapeOutput" />
+        <exclude name="Generic.Formatting.DisallowMultipleStatements" />
+        <exclude name="Generic.WhiteSpace.ScopeIndent" />
     </rule>
 </ruleset>
