@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Spine_Builder_Custom
  */
@@ -20,7 +21,7 @@ class Spine_Builder_Custom {
 			require get_template_directory() . '/inc/builder/core/base.php';
 		}
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ),11 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_extra_make' ), 11 );
 		add_action( 'admin_init', array( $this, 'remove_builder_sections' ), 11 );
 		add_action( 'admin_init', array( $this, 'add_builder_sections' ), 12 );
@@ -35,23 +36,17 @@ class Spine_Builder_Custom {
 		global $pagenow;
 
 		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() )	) {
 			return;
 		}
 
 		wp_enqueue_script( 'ttfmake-admin-edit-page', get_template_directory_uri() . '/inc/builder-custom/js/edit-page.js', array( 'jquery' ), spine_get_script_version(), true );
 
 		wp_enqueue_style( 'wsuwp-builder-styles', get_template_directory_uri() . '/builder-templates/css/sections.css', array(), spine_get_script_version() );
-		wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array('jquery'), spine_get_script_version(), true );
+		wp_enqueue_script( 'wsuwp-builder-actions', get_template_directory_uri() . '/builder-templates/js/builder-actions.js', array( 'jquery' ), spine_get_script_version(), true );
 		wp_enqueue_script( 'wsuwp-builder-two-columns', get_template_directory_uri() . '/builder-templates/js/two-columns.js', array(), spine_get_script_version(), true );
 
-		wp_localize_script(
-			'ttfmake-admin-edit-page',
-			'ttfmakeEditPageData',
-			array(
-				'pageNow'       => esc_js( $pagenow ),
-			)
-		);
+		wp_localize_script( 'ttfmake-admin-edit-page', 'ttfmakeEditPageData', array( 'pageNow' => esc_js( $pagenow ) ) );
 	}
 
 	/**
@@ -232,12 +227,38 @@ class Spine_Builder_Custom {
 	 * @return array List of tags and attributes allowed.
 	 */
 	public function allow_phrasing_in_titles() {
-		$phrasing_tags = array( 'b', 'big', 'i', 'small', 'tt', 'abbr', 'acronym', 'cite', 'code', 'dfn', 'em', 'kbd', 'strong',
-								'samp', 'var', 'a', 'bdo', 'br', 'q', 'span', 'sub', 'sup', 'label', 'wbr', 'del', 'ins' );
+		$phrasing_tags = array(
+			'b',
+			'big',
+			'i',
+			'small',
+			'tt',
+			'abbr',
+			'acronym',
+			'cite',
+			'code',
+			'dfn',
+			'em',
+			'kbd',
+			'strong',
+			'samp',
+			'var',
+			'a',
+			'bdo',
+			'br',
+			'q',
+			'span',
+			'sub',
+			'sup',
+			'label',
+			'wbr',
+			'del',
+			'ins',
+		);
 
 		$tags = array();
 
-		foreach( $phrasing_tags as $tag ) {
+		foreach ( $phrasing_tags as $tag ) {
 			$tags[ $tag ]['class'] = true;
 			$tags[ $tag ]['id'] = true;
 		}
@@ -483,6 +504,7 @@ class Spine_Builder_Custom {
 		return $clean_data;
 	}
 }
+
 new Spine_Builder_Custom();
 
 /**
@@ -534,14 +556,20 @@ function spine_get_column_data( $section_data, $columns_number = 2 ) {
 /**
  * Output the input field for section wrapper that is shared amongst admin templates.
  *
- * @param string $section_name         Current section being displayed.
- * @param array  $ttfmake_section_data Data associated with the section.
+ * @param string $section_name Current section being displayed.
+ * @param array $ttfmake_section_data Data associated with the section.
  */
 function spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data ) {
 	?>
 	<div class="wsuwp-builder-meta">
-		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text" id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat" name="<?php echo $section_name; ?>[section-wrapper]" value="<?php if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] ); ?>" />
-		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this <code>section</code> with those class names applied.</p>
+		<label for="<?php echo $section_name; ?>[section-wrapper]">Section Wrapper:</label><input type="text"
+		id="<?php echo $section_name; ?>[section-wrapper]" class="wsuwp-builder-section-wrapper widefat"
+		name="<?php echo $section_name; ?>[section-wrapper]" value="<?php
+		if ( isset( $ttfmake_section_data['data']['section-wrapper'] ) ) {
+			echo esc_attr( $ttfmake_section_data['data']['section-wrapper'] );
+		} ?>"/>
+		<p class="description">Enter space delimited class names here to output a <code>div</code> element around this
+			<code>section</code> with those class names applied.</p>
 	</div>
 	<?php
 }
@@ -584,33 +612,34 @@ function spine_output_builder_section_label( $section_name, $ttfmake_section_dat
  * Output the input field for column classes and header levels used in column configuration.
  *
  * @param string $column_name
- * @param array  $section_data
- * @param int    $column
+ * @param array $section_data
+ * @param int $column
  */
 function spine_output_builder_column_classes( $column_name, $section_data, $column = false ) {
 	if ( $column ) {
 		$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
-		$header_level = ( isset( $section_data['data']['columns'][ $column ]['header-level'] ) ) ? $section_data['data']['columns'][ $column ]['header-level'] : 'h2';
+		$header_level   = ( isset( $section_data['data']['columns'][ $column ]['header-level'] ) ) ? $section_data['data']['columns'][ $column ]['header-level'] : 'h2';
 	} else {
 		$column_classes = ( isset( $section_data['data']['column-classes'] ) ) ? $section_data['data']['column-classes'] : '';
-		$header_level = ( isset( $section_data['data']['header-level'] ) ) ? $section_data['data']['header-level'] : 'h2';
+		$header_level   = ( isset( $section_data['data']['header-level'] ) ) ? $section_data['data']['header-level'] : 'h2';
 	}
 
 	?>
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[column-classes]">Column Classes</label>
 		<input type="text"
-			   id="<?php echo $column_name; ?>[column-classes]"
-			   name="<?php echo $column_name; ?>[column-classes]"
-			   class="spine-builder-column-classes widefat"
-			   value="<?php echo esc_attr( $column_classes ); ?>" />
-		<p class="description">Enter space delimited class names here to apply them to the <code>div.column</code> element represented by this builder area.</p>
+		       id="<?php echo $column_name; ?>[column-classes]"
+		       name="<?php echo $column_name; ?>[column-classes]"
+		       class="spine-builder-column-classes widefat"
+		       value="<?php echo esc_attr( $column_classes ); ?>"/>
+		<p class="description">Enter space delimited class names here to apply them to the <code>div.column</code>
+			element represented by this builder area.</p>
 	</div>
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[header-level]">Header Level</label>
 		<select id="<?php echo $column_name; ?>[header-level]"
-				name="<?php echo $column_name; ?>[header-level]"
-				class="">
+		        name="<?php echo $column_name; ?>[header-level]"
+		        class="">
 			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
 			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>
 			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
@@ -653,17 +682,20 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 		return;
 	}
 
-	?><div class="wsuwp-builder-meta">
-		<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
-		<select id="<?php echo $section_name; ?>[section-layout]"
-				name="<?php echo $section_name; ?>[section-layout]"
-				value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); ?>">
-			<?php
-			foreach( $options as $option ) {
-				echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
-			}
-			?></select>
-		<p class="description">See the WSU Spine <a href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids" target="_blank">grid layout documentation</a> for more information on section layouts.</p>
+	?>
+	<div class="wsuwp-builder-meta">
+	<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
+	<select id="<?php echo $section_name; ?>[section-layout]" name="<?php echo $section_name; ?>[section-layout]"
+	        value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) { echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); } ?>">
+	<?php
+	foreach ( $options as $option ) {
+		echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
+	}
+	?>
+	</select>
+	<p class="description">See the WSU Spine <a
+			href="https://github.com/washingtonstateuniversity/WSU-spine/wiki/II.2.-Page:-Size,-Layouts,-and-Grids"
+			target="_blank">grid layout documentation</a> for more information on section layouts.</p>
 	</div><?php
 }
 
@@ -674,27 +706,27 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
  * @param $ttfmake_section_data
  */
 function spine_output_builder_section_background( $section_name, $ttfmake_section_data ) {
-	$section_background = ( isset( $ttfmake_section_data['data']['background-img'] ) ) ? $ttfmake_section_data['data']['background-img'] : '';
+	$section_background        = ( isset( $ttfmake_section_data['data']['background-img'] ) ) ? $ttfmake_section_data['data']['background-img'] : '';
 	$section_mobile_background = ( isset( $ttfmake_section_data['data']['background-img'] ) ) ? $ttfmake_section_data['data']['background-mobile-img'] : '';
 
 	?>
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[background-img]">Background Image</label>
 		<input type="text"
-			   class="wsuwp-builder-section-image widefat"
-			   id="<?php echo $section_name; ?>[background-img]"
-			   name="<?php echo $section_name; ?>[background-img]"
-			   value="<?php echo $section_background; ?>" />
+		       class="wsuwp-builder-section-image widefat"
+		       id="<?php echo $section_name; ?>[background-img]"
+		       name="<?php echo $section_name; ?>[background-img]"
+		       value="<?php echo $section_background; ?>"/>
 		<br/>
 		<label for="<?php echo $section_name; ?>[background-mobile-img]">Mobile Background Image</label>
 		<input type="text"
-			   class="wsuwp-builder-section-image widefat"
-			   id="<?php echo $section_name; ?>[background-mobile-img]"
-			   name="<?php echo $section_name; ?>[background-mobile-img]"
-			   value="<?php echo $section_mobile_background; ?>" />
+		       class="wsuwp-builder-section-image widefat"
+		       id="<?php echo $section_name; ?>[background-mobile-img]"
+		       name="<?php echo $section_name; ?>[background-mobile-img]"
+		       value="<?php echo $section_mobile_background; ?>"/>
 		<p class="description">Background images on sections are an in progress feature. :)</p>
 	</div>
-<?php
+	<?php
 }
 
 /**

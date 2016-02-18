@@ -12,7 +12,7 @@ if ( spine_has_featured_image() ) {
 	$featured_image_src = spine_get_featured_image_src();
 	$featured_image_position = get_post_meta( get_the_ID(), '_featured_image_position', true );
 
-	if ( ! $featured_image_position || $featured_image_position !== sanitize_html_class( $featured_image_position ) ) {
+	if ( ! $featured_image_position || sanitize_html_class( $featured_image_position ) !== $featured_image_position ) {
 		$featured_image_position = '';
 	}
 

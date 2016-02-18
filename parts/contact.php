@@ -12,9 +12,9 @@
 	<meta itemprop="telephone" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_telephone' ) ); ?>">
 	<meta itemprop="email" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_email' ) ); ?>">
 	<?php
-		$contact_point = spine_get_option( 'contact_ContactPoint' );
-		if ( ! empty( $contact_point ) ) {
-			?><meta itemprop="ContactPoint" title="<?php echo esc_attr( spine_get_option( 'contact_ContactPointTitle' ) ); ?>" class="optional" content="<?php echo esc_attr( $contact_point ); ?>"><?php
-		}
+	$contact_point = spine_get_option( 'contact_ContactPoint' );
+	if ( ! empty( $contact_point ) ) {
+		?><meta itemprop="ContactPoint" title="<?php echo esc_attr( spine_get_option( 'contact_ContactPointTitle' ) ); ?>" class="optional" content="<?php echo esc_attr( $contact_point ); ?>"><?php
+	}
 	?>
 </div>
