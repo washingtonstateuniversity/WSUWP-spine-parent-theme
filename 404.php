@@ -2,7 +2,7 @@
 
 	<main class="spine-single-template">
 
-		<?php get_template_part('parts/headers'); ?>
+		<?php get_template_part( 'parts/headers' ); ?>
 
 		<section class="row single gutter pad-top">
 
@@ -29,4 +29,4 @@
 
 	</main>
 
-<?php get_footer(); ?>
+<?php get_footer();

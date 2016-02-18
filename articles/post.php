@@ -21,11 +21,11 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
 			<cite class="article-author" role="author">
 				<?php
-					if ( '1' === spine_get_option( 'show_author_page' ) ) {
-						the_author_posts_link();
-					} else {
-						echo esc_html( get_the_author() );
-					}
+				if ( '1' === spine_get_option( 'show_author_page' ) ) {
+					the_author_posts_link();
+				} else {
+					echo esc_html( get_the_author() );
+				}
 				?>
 			</cite>
 		</hgroup>
@@ -102,7 +102,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 	if ( has_category() ) {
 		echo '<dl class="categorized">';
 		echo '<dt><span class="categorized-default">Categorized</span></dt>';
-		foreach( get_the_category() as $category ) {
+		foreach ( get_the_category() as $category ) {
 			echo '<dd><a href="' . get_category_link( $category->cat_ID ) . '">' . $category->cat_name . '</a></dd>';
 		}
 		echo '</dl>';
@@ -129,7 +129,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 	if ( has_tag() ) {
 		echo '<dl class="tagged">';
 		echo '<dt><span class="tagged-default">Tagged</span></dt>';
-		foreach( get_the_tags() as $tag ) {
+		foreach ( get_the_tags() as $tag ) {
 			echo '<dd><a href="' . get_tag_link( $tag->term_id ) . '">' . $tag->name . '</a></dd>';
 		}
 		echo '</dl>';

@@ -3,7 +3,8 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 ?>
 
 <?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
-<div class="ttfmake-section <?php if ( isset( $ttfmake_section_data['data']['state'] ) && 'open' === $ttfmake_section_data['data']['state'] ) echo 'ttfmake-section-open'; ?> ttfmake-section-<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>" id="<?php echo 'ttfmake-section-' . esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>">
+<div class="ttfmake-section <?php
+if ( isset( $ttfmake_section_data['data']['state'] ) && 'open' === $ttfmake_section_data['data']['state'] ) { echo 'ttfmake-section-open'; } ?> ttfmake-section-<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>" id="<?php echo 'ttfmake-section-' . esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-id="<?php echo esc_attr( $ttfmake_section_data['data']['id'] ); ?>" data-section-type="<?php echo esc_attr( $ttfmake_section_data['section']['id'] ); ?>">
 	<?php endif; ?>
 	<?php
 	/**
@@ -35,8 +36,8 @@ global $ttfmake_section_data, $ttfmake_is_js_template;
 			100 => array(
 				'href'  => '#',
 				'class' => 'ttfmake-section-remove',
-				'label' => __( 'Remove this section', 'make' )
-			)
+				'label' => __( 'Remove this section', 'make' ),
+			),
 		) );
 		ksort( $links );
 		?>

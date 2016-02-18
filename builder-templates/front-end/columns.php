@@ -48,7 +48,7 @@ if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_secti
 // If a mobile background image has been assigned to the section, capture it. Fallback to the section background.
 if ( isset( $ttfmake_section_data['background-mobile-img'] ) && ! empty( $ttfmake_section_data['background-mobile-img'] ) ) {
 	$section_mobile_background = $ttfmake_section_data['background-mobile-img'];
-} elseif( $section_background ) {
+} elseif ( $section_background ) {
 	$section_mobile_background = $section_background;
 } else {
 	$section_mobile_background = false;
@@ -103,7 +103,7 @@ if ( '' === $section_id ) {
 			// We output the column's number as part of a class and need to track count.
 			$column_count = array( 'one', 'two', 'three', 'four' );
 			$count = 0;
-			foreach( $data_columns as $column ) {
+			foreach ( $data_columns as $column ) {
 				?>
 				<div class="column <?php echo $column_count[ $count ]; $count++; ?> <?php if ( isset( $column['column-classes'] ) ) : echo esc_attr( $column['column-classes'] ); endif; ?>">
 

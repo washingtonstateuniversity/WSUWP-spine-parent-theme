@@ -20,7 +20,7 @@ if ( ! function_exists( 'sanitize_hex_color' ) ) :
 		}
 
 		// 3 or 6 hex digits, or the empty string.
-		if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
+		if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
 			return $color;
 		}
 
@@ -82,12 +82,7 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
 	 */
 	function ttfmake_get_view() {
 		// Post types
-		$post_types = get_post_types(
-			array(
-				'public' => true,
-				'_builtin' => false
-			)
-		);
+		$post_types = get_post_types( array( 'public' => true, '_builtin' => false ) );
 		$post_types[] = 'post';
 
 		// Post parent
@@ -102,21 +97,13 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
 		// Blog
 		if ( is_home() ) {
 			$view = 'blog';
-		}
-		// Archives
-		else if ( is_archive() ) {
+		} else if ( is_archive() ) {
 			$view = 'archive';
-		}
-		// Search results
-		else if ( is_search() ) {
+		} else if ( is_search() ) {
 			$view = 'search';
-		}
-		// Posts and public custom post types
-		else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
+		} else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
 			$view = 'post';
-		}
-		// Pages
-		else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
+		} else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
 			$view = 'page';
 		}
 
@@ -194,9 +181,8 @@ if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 			if ( $column > $column_count ) {
 				$description = __( 'This widget area is currently disabled. Enable it in the "Footer" panel of the Customizer.', 'make' );
 			}
-		}
-		// Other sidebars
-		else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
+		} else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
+			// Other sidebars
 			$location = str_replace( 'sidebar-', '', $sidebar_id );
 
 			$enabled_views = ttfmake_sidebar_list_enabled( $location );
@@ -204,9 +190,8 @@ if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 			// Not enabled anywhere
 			if ( empty( $enabled_views ) ) {
 				$description = __( 'This widget area is currently disabled. Enable it in the "Content & Layout" panel of the Customizer.', 'make' );
-			}
-			// List enabled views
-			else {
+			} else {
+				// List enabled views
 				$description = sprintf(
 					__( 'This widget area is currently enabled for the following views: %s. Change this in the "Content & Layout" panel of the Customizer.', 'make' ),
 					esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
@@ -299,7 +284,7 @@ function ttfmake_check_package( $source, $remote_source, $upgrader ) {
 
 	// A proper archive should have a style.css file in the single subdirectory
 	if ( ! file_exists( $working_directory . 'style.css' ) && strpos( $source, 'make-plus-' ) >= 0 ) {
-		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings[ 'incompatible_archive' ], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.', 'make' ) );
+		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings['incompatible_archive'], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.', 'make' ) );
 	}
 
 	return $source;
