@@ -4,5 +4,6 @@
 
     <rule ref="WordPress-Extra">
         <exclude name="WordPress.NamingConventions.ValidFunctionName" />
+        <exclude name="WordPress.Files.FileName" />
     </rule>
 </ruleset>
