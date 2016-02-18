@@ -84,33 +84,6 @@ endif;
 
 //add_filter( 'wp_title', 'ttfmake_wp_title', 10, 2 );
 
-if ( ! function_exists( 'ttfmake_setup_author' ) ) :
-	/**
-	 * Sets the authordata global when viewing an author archive.
-	 *
-	 * This provides backwards compatibility with
-	 * http://core.trac.wordpress.org/changeset/25574
-	 *
-	 * It removes the need to call the_post() and rewind_posts() in an author
-	 * template to print information about the author.
-	 *
-	 * @global WP_Query $wp_query WordPress Query object.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	function ttfmake_setup_author() {
-		global $wp_query;
-
-		if ( ! isset( $GLOBALS['authordata'] ) && $wp_query->is_author() && isset( $wp_query->post ) ) {
-			$GLOBALS['authordata'] = get_userdata( $wp_query->post->post_author );
-		}
-	}
-endif;
-
-//add_action( 'wp', 'ttfmake_setup_author' );
-
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 	/**
 	 * Sanitizes a hex color.
