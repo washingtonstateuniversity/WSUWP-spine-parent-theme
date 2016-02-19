@@ -3,9 +3,9 @@
 	<nav id="wsu-social-channels" class="spine-social-channels">
 		<ul>
 		<?php
-			foreach( spine_social_options() as $socialite => $social_url ) {
-				echo '<li class="' . esc_attr( $socialite ) . '-channel"><a href="' . esc_url( $social_url ) . '">' . esc_html( $socialite ) . '</a></li>'."\r\n";
-			}
+		foreach ( spine_social_options() as $socialite => $social_url ) {
+			echo '<li class="' . esc_attr( $socialite ) . '-channel"><a href="' . esc_url( $social_url ) . '">' . esc_html( $socialite ) . '</a></li>'."\r\n";
+		}
 		?>
 		</ul>
 	</nav>

@@ -51,7 +51,7 @@ class Spine_Theme_Navigation {
 			} else {
 				$classes = array();
 			}
-		} elseif( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
+		} elseif ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
 			$classes[] = 'current';
 		}
 

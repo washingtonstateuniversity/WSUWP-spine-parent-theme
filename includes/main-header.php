@@ -262,17 +262,17 @@ function spine_get_main_header() {
 	$sub_header_default = apply_filters( 'spine_sub_header_default', $sub_header_default );
 
 	$main_header_elements = array(
-		'site_name'				=>	$site_name,
-		'site_tagline'			=>	$site_tagline,
-		'page_title'			=>	$page_title,
-		'post_title'			=>	$post_title,
-		'section_title'			=>	$section_title,
-		'subsection_title'		=>	$subsection_title,
-		'posts_page_title'		=>	$posts_page_title,
-		'sup_header_default'	=>	$sup_header_default,
-		'sub_header_default'	=>	$sub_header_default,
-		'sup_header_alternate'	=>	$sup_header_alternate,
-		'sub_header_alternate'	=>	$sub_header_alternate
+		'site_name'            => $site_name,
+		'site_tagline'         => $site_tagline,
+		'page_title'           => $page_title,
+		'post_title'           => $post_title,
+		'section_title'        => $section_title,
+		'subsection_title'     => $subsection_title,
+		'posts_page_title'     => $posts_page_title,
+		'sup_header_default'   => $sup_header_default,
+		'sub_header_default'   => $sub_header_default,
+		'sup_header_alternate' => $sup_header_alternate,
+		'sub_header_alternate' => $sub_header_alternate,
 	);
 
 	return apply_filters( 'spine_main_header_elements', $main_header_elements );

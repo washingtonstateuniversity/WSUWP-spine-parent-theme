@@ -1,7 +1,7 @@
 <div id="contact-details" itemscope itemtype="http://schema.org/Organization">
 	<meta itemprop="name" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_name' ) ); ?>">
 	<meta itemprop="department" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_department' ) ); ?>">
-	<?php if ( spine_get_option( 'contact_url' ) != '' ) : ?>
+	<?php if ( spine_get_option( 'contact_url' ) !== '' ) : ?>
 	<meta itemprop="url" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_url' ) ); ?>">
 	<?php endif; ?>
 	<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
@@ -12,9 +12,9 @@
 	<meta itemprop="telephone" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_telephone' ) ); ?>">
 	<meta itemprop="email" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_email' ) ); ?>">
 	<?php
-		$contact_point = spine_get_option( 'contact_ContactPoint' );
-		if ( ! empty( $contact_point ) ) {
-			?><meta itemprop="ContactPoint" title="<?php echo esc_attr( spine_get_option( 'contact_ContactPointTitle' ) ); ?>" class="optional" content="<?php echo esc_attr( $contact_point ); ?>"><?php
-		}
+	$contact_point = spine_get_option( 'contact_ContactPoint' );
+	if ( ! empty( $contact_point ) ) {
+		?><meta itemprop="ContactPoint" title="<?php echo esc_attr( spine_get_option( 'contact_ContactPointTitle' ) ); ?>" class="optional" content="<?php echo esc_attr( $contact_point ); ?>"><?php
+	}
 	?>
 </div>

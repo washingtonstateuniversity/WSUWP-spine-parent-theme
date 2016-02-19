@@ -44,4 +44,4 @@ $description = ( isset( $ttfmake_section_data['data']['gallery-items'][ $ttfmake
 	</a>
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
-<?php endif; ?>
+<?php endif;

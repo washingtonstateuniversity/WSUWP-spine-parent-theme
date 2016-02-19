@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="WSUWP Spine Parent Theme">
+    <description>Sniffs for the coding standards of the WSUWP Spine Parent Theme</description>
+
+    <rule ref="WordPress-Extra">
+        <exclude name="WordPress.NamingConventions.ValidFunctionName" />
+        <exclude name="WordPress.Files.FileName" />
+        <exclude name="WordPress.XSS.EscapeOutput" />
+        <exclude name="WordPress.CSRF.NonceVerification" />
+        <exclude name="Generic.Formatting.DisallowMultipleStatements" />
+        <exclude name="Generic.WhiteSpace.ScopeIndent" />
+        <exclude name="WordPress.PHP.StrictComparisons" />
+        <exclude name="WordPress.WP.EnqueuedResources" />
+        <exclude name="WordPress.WP.PreparedSQL" />
+    </rule>
+</ruleset>

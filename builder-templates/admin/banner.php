@@ -21,12 +21,15 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 
 	<div class="ttfmake-banner-slides">
 		<div class="ttfmake-banner-slides-stage">
-			<?php foreach ( $section_order as $key => $section_id  ) : ?>
-				<?php if ( isset( $ttfmake_section_data['data']['banner-slides'][ $section_id ] ) ) : ?>
-					<?php global $ttfmake_slide_id; $ttfmake_slide_id = $section_id; ?>
-					<?php get_template_part( '/builder-templates/admin/banner', 'slide' ); ?>
-				<?php endif; ?>
-			<?php endforeach; ?>
+			<?php
+			foreach ( $section_order as $key => $section_id  ) {
+				if ( isset( $ttfmake_section_data['data']['banner-slides'][ $section_id ] ) ) {
+					global $ttfmake_slide_id;
+					$ttfmake_slide_id = $section_id;
+					get_template_part( '/builder-templates/admin/banner', 'slide' );
+				}
+			}
+			?>
 		</div>
 		<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[banner-slide-order]" class="ttfmake-banner-slide-order" />
 	</div>
@@ -124,6 +127,11 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 			</div>
 		</div>
 	</div>
-	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php
+	if ( isset( $ttfmake_section_data['data']['state'] ) ) {
+		echo esc_attr( $ttfmake_section_data['data']['state'] );
+	} else {
+		echo 'open';
+	} ?>" />
 <?php
 spine_load_section_footer();

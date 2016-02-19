@@ -17,16 +17,16 @@ if ( in_array( $ttfmake_section_data['section']['id'], array( 'wsuwphalves', 'ws
 // We didn't always treat single as a column layout. Provide a shim for the old data structure.
 if ( 'wsuwpsingle' === $ttfmake_section_data['section']['id'] ) {
 	if ( ! empty( $ttfmake_section_data['data']['content'] ) ) {
-		$ttfmake_section_data['data']['columns'][ 1 ]['content'] = $ttfmake_section_data['data']['content'];
+		$ttfmake_section_data['data']['columns'][1]['content'] = $ttfmake_section_data['data']['content'];
 	}
 
 	if ( ! empty( $ttfmake_section_data['data']['title'] ) ) {
-		$ttfmake_section_data['data']['columns'][ 1 ]['title'] = $ttfmake_section_data['data']['title'];
+		$ttfmake_section_data['data']['columns'][1]['title'] = $ttfmake_section_data['data']['title'];
 	}
 }
 
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
-$section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, $wsuwp_range);
+$section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range( 1, $wsuwp_range );
 
 ?>
 	<div class="wsuwp-spine-halves-stage">
@@ -94,7 +94,9 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 					</div>
 				</div>
 			</div>
-			<?php $j++; endforeach; ?>
+			<?php
+			$j++;
+		endforeach; ?>
 	</div>
 
 	<div class="clear"></div>
@@ -118,6 +120,11 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 		</div>
 	</div>
 	<input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="wsuwp-spine-builder-columns-order" />
-	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+	<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php
+	if ( isset( $ttfmake_section_data['data']['state'] ) ) {
+		echo esc_attr( $ttfmake_section_data['data']['state'] );
+	} else {
+		echo 'open';
+	} ?>" />
 <?php
 spine_load_section_footer();

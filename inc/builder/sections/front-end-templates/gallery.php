@@ -5,9 +5,9 @@
 
 global $ttfmake_section_data, $ttfmake_sections;
 $gallery  = ttfmake_builder_get_gallery_array( $ttfmake_section_data );
-$darken   = ( isset( $ttfmake_section_data[ 'darken' ] ) ) ? absint( $ttfmake_section_data[ 'darken' ] ) : 0;
-$captions = ( isset( $ttfmake_section_data[ 'captions' ] ) ) ? esc_attr( $ttfmake_section_data[ 'captions' ] ) : 'reveal';
-$aspect   = ( isset( $ttfmake_section_data[ 'aspect' ] ) ) ? esc_attr( $ttfmake_section_data[ 'aspect' ] ) : 'square';
+$darken   = ( isset( $ttfmake_section_data['darken'] ) ) ? absint( $ttfmake_section_data['darken'] ) : 0;
+$captions = ( isset( $ttfmake_section_data['captions'] ) ) ? esc_attr( $ttfmake_section_data['captions'] ) : 'reveal';
+$aspect   = ( isset( $ttfmake_section_data['aspect'] ) ) ? esc_attr( $ttfmake_section_data['aspect'] ) : 'square';
 ?>
 
 <section id="builder-section-<?php echo esc_attr( $ttfmake_section_data['id'] ); ?>" class="builder-section<?php echo esc_attr( ttfmake_builder_get_gallery_class( $ttfmake_section_data, $ttfmake_sections ) ); ?>" style="<?php echo esc_attr( ttfmake_builder_get_gallery_style( $ttfmake_section_data ) ); ?>">

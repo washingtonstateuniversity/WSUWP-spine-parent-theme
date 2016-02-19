@@ -11,7 +11,7 @@
 				if ( function_exists( 'wsuwp_uc_get_meta' ) ) {
 					$display_fields = array( 'prefix', 'first_name', 'last_name', 'suffix', 'title', 'title_secondary', 'office', 'email', 'phone' );
 					$display_data = array();
-					foreach( $display_fields as $df ) {
+					foreach ( $display_fields as $df ) {
 						$display_data[ $df ] = wsuwp_uc_get_meta( get_the_ID(), $df );
 					}
 
@@ -19,12 +19,17 @@
 					if ( ! empty( trim( $display_data['first_name'] ) ) && ! empty( trim( $display_data['last_name'] ) ) ) {
 						$display_name = trim( join( ', ', array( $display_data['last_name'], $display_data['first_name'] ) ) );
 
-						if ( ! empty( $display_data['suffix'] ) ) : $display_name .= ', ' . $display_data['suffix']; endif;
+						if ( ! empty( $display_data['suffix'] ) ) {
+							$display_name .= ', ' . $display_data['suffix'];
+						}
 					}
 
 					// If no display name is available, use the title.
-					if ( empty( $display_name ) ) : $display_name = get_the_title(); endif; ?>
+					if ( empty( $display_name ) ) {
+						$display_name = get_the_title();
+					}
 
+					?>
 					<h2 class="article-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php echo esc_html( $display_name ); ?></a></h2><?php
 
 					if ( ! empty( $display_data['title'] ) ) : ?><div class="person-title"><?php echo esc_html( $display_data['title'] ); ?></div><?php endif;

@@ -433,7 +433,7 @@ class TTFMAKE_Builder_Base {
 		$ttfmake_is_js_template = true;
 
 		// Only show when adding/editing pages
-		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
+		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
 			return;
 		}
 
@@ -517,9 +517,7 @@ class TTFMAKE_Builder_Base {
 			$post = $GLOBALS['post_ID'];
 		}
 
-		wp_enqueue_media( array(
-			'post' => $post
-		) );
+		wp_enqueue_media( array( 'post' => $post ) );
 
 		$img = '<span class="wp-media-buttons-icon"></span>';
 
@@ -693,7 +691,7 @@ function ttfmake_get_post_types_supporting_builder() {
 }
 endif;
 
-if ( ! function_exists( 'ttfmake_will_be_builder_page' ) ):
+if ( ! function_exists( 'ttfmake_will_be_builder_page' ) ) :
 /**
  * Determines if a page in the process of being saved will use the builder template.
  *
@@ -702,7 +700,7 @@ if ( ! function_exists( 'ttfmake_will_be_builder_page' ) ):
  * @return bool    True if the builder template will be used; false if it will not.
  */
 function ttfmake_will_be_builder_page() {
-	$template    = isset( $_POST[ 'page_template' ] ) ? $_POST[ 'page_template' ] : '';
+	$template    = isset( $_POST['page_template'] ) ? $_POST['page_template'] : '';
 	$use_builder = isset( $_POST['use-builder'] ) ? (int) isset( $_POST['use-builder'] ) : 0;
 
 	/**
@@ -790,7 +788,7 @@ if ( ! function_exists( 'ttfmake_load_section_template' ) ) :
 function ttfmake_load_section_template( $slug, $path ) {
 	$templates = array(
 		$slug . '.php',
-		trailingslashit( $path ) . $slug . '.php'
+		trailingslashit( $path ) . $slug . '.php',
 	);
 
 	/**

@@ -116,5 +116,5 @@ $section_order    = ( ! empty( $ttfmake_section_data['data']['gallery-item-order
 	</div>
 </div>
 
-<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) { echo esc_attr( $ttfmake_section_data['data']['state'] ); } else { echo 'open'; } ?>" />
 <?php ttfmake_load_section_footer();

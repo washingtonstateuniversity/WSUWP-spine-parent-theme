@@ -3,114 +3,6 @@
  * @package Make
  */
 
-if ( ! function_exists( 'ttfmake_page_menu_args' ) ) :
-	/**
-	 * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  array    $args    Configuration arguments.
-	 * @return array             Modified page menu args.
-	 */
-	function ttfmake_page_menu_args( $args ) {
-		$args['show_home'] = true;
-		return $args;
-	}
-endif;
-
-//add_filter( 'wp_page_menu_args', 'ttfmake_page_menu_args' );
-
-if ( ! function_exists( 'ttfmake_body_classes' ) ) :
-	/**
-	 * Adds custom classes to the array of body classes.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  array    $classes    Classes for the body element.
-	 * @return array                Modified class list.
-	 */
-	function ttfmake_body_classes( $classes ) {
-		// Left Sidebar
-		if ( true === ttfmake_has_sidebar( 'left' ) ) {
-			$classes[] = 'has-left-sidebar';
-		}
-
-		// Right Sidebar
-		if ( true === ttfmake_has_sidebar( 'right' ) ) {
-			$classes[] = 'has-right-sidebar';
-		}
-
-		return $classes;
-	}
-endif;
-
-//add_filter( 'body_class', 'ttfmake_body_classes' );
-
-if ( ! function_exists( 'ttfmake_wp_title' ) ) :
-	/**
-	 * Filters wp_title to print a neat <title> tag based on what is being viewed.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @param  string    $title    Default title text for current view.
-	 * @param  string    $sep      Optional separator.
-	 *
-	 * @return string              The filtered title.
-	 */
-	function ttfmake_wp_title( $title, $sep ) {
-		global $page, $paged;
-
-		if ( is_feed() ) {
-			return $title;
-		}
-
-		// Add the blog name
-		$title .= get_bloginfo( 'name' );
-
-		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo( 'description', 'display' );
-		if ( $site_description && ( is_home() || is_front_page() ) ) {
-			$title .= " $sep $site_description";
-		}
-
-		// Add a page number if necessary:
-		if ( $paged >= 2 || $page >= 2 ) {
-			$title .= " $sep " . sprintf( __( 'Page %s', 'make' ), max( $paged, $page ) );
-		}
-
-		return $title;
-	}
-endif;
-
-//add_filter( 'wp_title', 'ttfmake_wp_title', 10, 2 );
-
-if ( ! function_exists( 'ttfmake_setup_author' ) ) :
-	/**
-	 * Sets the authordata global when viewing an author archive.
-	 *
-	 * This provides backwards compatibility with
-	 * http://core.trac.wordpress.org/changeset/25574
-	 *
-	 * It removes the need to call the_post() and rewind_posts() in an author
-	 * template to print information about the author.
-	 *
-	 * @global WP_Query $wp_query WordPress Query object.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	function ttfmake_setup_author() {
-		global $wp_query;
-
-		if ( ! isset( $GLOBALS['authordata'] ) && $wp_query->is_author() && isset( $wp_query->post ) ) {
-			$GLOBALS['authordata'] = get_userdata( $wp_query->post->post_author );
-		}
-	}
-endif;
-
-//add_action( 'wp', 'ttfmake_setup_author' );
-
 if ( ! function_exists( 'sanitize_hex_color' ) ) :
 	/**
 	 * Sanitizes a hex color.
@@ -128,7 +20,7 @@ if ( ! function_exists( 'sanitize_hex_color' ) ) :
 		}
 
 		// 3 or 6 hex digits, or the empty string.
-		if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
+		if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
 			return $color;
 		}
 
@@ -178,23 +70,6 @@ if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'ttfmake_excerpt_more' ) ) :
-	/**
-	 * Modify the excerpt suffix
-	 *
-	 * @since 1.0.0.
-	 *
-	 * @param string $more
-	 *
-	 * @return string
-	 */
-	function ttfmake_excerpt_more( $more ) {
-		return ' &hellip;';
-	}
-endif;
-
-//add_filter( 'excerpt_more', 'ttfmake_excerpt_more' );
-
 if ( ! function_exists( 'ttfmake_get_view' ) ) :
 	/**
 	 * Determine the current view.
@@ -207,12 +82,7 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
 	 */
 	function ttfmake_get_view() {
 		// Post types
-		$post_types = get_post_types(
-			array(
-				'public' => true,
-				'_builtin' => false
-			)
-		);
+		$post_types = get_post_types( array( 'public' => true, '_builtin' => false ) );
 		$post_types[] = 'post';
 
 		// Post parent
@@ -227,21 +97,13 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
 		// Blog
 		if ( is_home() ) {
 			$view = 'blog';
-		}
-		// Archives
-		else if ( is_archive() ) {
+		} else if ( is_archive() ) {
 			$view = 'archive';
-		}
-		// Search results
-		else if ( is_search() ) {
+		} else if ( is_search() ) {
 			$view = 'search';
-		}
-		// Posts and public custom post types
-		else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
+		} else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
 			$view = 'post';
-		}
-		// Pages
-		else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
+		} else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
 			$view = 'page';
 		}
 
@@ -319,9 +181,8 @@ if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 			if ( $column > $column_count ) {
 				$description = __( 'This widget area is currently disabled. Enable it in the "Footer" panel of the Customizer.', 'make' );
 			}
-		}
-		// Other sidebars
-		else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
+		} else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
+			// Other sidebars
 			$location = str_replace( 'sidebar-', '', $sidebar_id );
 
 			$enabled_views = ttfmake_sidebar_list_enabled( $location );
@@ -329,9 +190,8 @@ if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 			// Not enabled anywhere
 			if ( empty( $enabled_views ) ) {
 				$description = __( 'This widget area is currently disabled. Enable it in the "Content & Layout" panel of the Customizer.', 'make' );
-			}
-			// List enabled views
-			else {
+			} else {
+				// List enabled views
 				$description = sprintf(
 					__( 'This widget area is currently enabled for the following views: %s. Change this in the "Content & Layout" panel of the Customizer.', 'make' ),
 					esc_html( implode( _x( ', ', 'list item separator', 'make' ), $enabled_views ) )
@@ -424,7 +284,7 @@ function ttfmake_check_package( $source, $remote_source, $upgrader ) {
 
 	// A proper archive should have a style.css file in the single subdirectory
 	if ( ! file_exists( $working_directory . 'style.css' ) && strpos( $source, 'make-plus-' ) >= 0 ) {
-		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings[ 'incompatible_archive' ], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.', 'make' ) );
+		return new WP_Error( 'incompatible_archive_theme_no_style', $upgrader->strings['incompatible_archive'], __( 'The uploaded package appears to be a plugin. PLEASE INSTALL AS A PLUGIN.', 'make' ) );
 	}
 
 	return $source;
@@ -510,7 +370,8 @@ if ( ! function_exists( 'ttfmake_create_array_from_meta_keys' ) ) :
 			 * For all but the last piece of the key, create a new sub-array (if necessary), and update the $current
 			 * variable to a reference of that sub-array.
 			 */
-			for ( $i = 0; $i < count( $pieces ) - 1; $i++ ) {
+			$i_count = count( $pieces ) - 1;
+			for ( $i = 0; $i < $i_count; $i++ ) {
 				$step = $pieces[ $i ];
 				if ( ! isset( $current[ $step ] ) ) {
 					$current[ $step ] = array();

@@ -13,7 +13,7 @@
 			'item_tag'        => 'li', // HTML tag to use for individual menu items
 			'identify_top'    => false, // If set to true, uses post name as HTML ID attribute for top level posts
 			'whitelist_top'   => null, // optional string or array of post names to whitelist for top level
-			'echo'            => 1 // whether to display immediately or return
+			'echo'            => 1, // whether to display immediately or return
 		);
 		bu_navigation_display_primary( $bu_nav_args );
 	} else {

@@ -1,3 +1,3 @@
 <?php
 
-get_template_part('spine/body');
+get_template_part( 'spine/body' );

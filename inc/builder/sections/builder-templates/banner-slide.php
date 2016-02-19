@@ -6,9 +6,9 @@
 global $ttfmake_section_data, $ttfmake_is_js_template, $ttfmake_slide_id;
 $section_name = 'ttfmake-section';
 if ( true === $ttfmake_is_js_template ) {
-    $section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
+	$section_name .= '[{{{ parentID }}}][banner-slides][{{{ id }}}]';
 } else {
-    $section_name .= '[' . $ttfmake_section_data['data']['id'] . '][banner-slides][' . $ttfmake_slide_id . ']';
+	$section_name .= '[' . $ttfmake_section_data['data']['id'] . '][banner-slides][' . $ttfmake_slide_id . ']';
 }
 
 $content          = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['content'] : '';
@@ -19,7 +19,7 @@ $alignment        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] ) ) ? $ttfmake_section_data['data']['banner-slides'][ $ttfmake_slide_id ]['state'] : 'open';
 ?>
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
-<div class="ttfmake-banner-slide<?php if ( 'open' === $state ) echo ' ttfmake-banner-slide-open'; ?>" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-section-type="banner-slide">
+<div class="ttfmake-banner-slide<?php if ( 'open' === $state ) { echo ' ttfmake-banner-slide-open'; } ?>" id="ttfmake-banner-slide-<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-id="<?php echo esc_attr( $ttfmake_slide_id ); ?>" data-section-type="banner-slide">
 <?php endif; ?>
 	<div class="ttfmake-banner-slide-header">
 		<h3>
@@ -89,7 +89,7 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 		$editor_settings = array(
 			'tinymce'       => true,
 			'quicktags'     => true,
-			'textarea_name' => $section_name . '[content]'
+			'textarea_name' => $section_name . '[content]',
 		);
 
 		if ( true === $ttfmake_is_js_template ) : ?>
@@ -105,4 +105,4 @@ $state            = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 	<input type="hidden" class="ttfmake-banner-slide-state" name="<?php echo $section_name; ?>[state]" value="<?php echo esc_attr( $state ); ?>" />
 <?php if ( true !== $ttfmake_is_js_template ) : ?>
 </div>
-<?php endif; ?>
+<?php endif;
