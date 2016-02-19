@@ -55,7 +55,7 @@ add_filter( 'theme_page_templates', 'spine_show_builder_page_template', 10, 1 );
  * @return array Modified list of page templates.
  */
 function spine_show_builder_page_template( $page_templates ) {
-	if ( false === apply_filters( 'spine_enable_builder_module', false ) ) {
+	if ( false === apply_filters( 'spine_enable_builder_module', true ) ) {
 		unset( $page_templates['template-builder.php'] );
 	}
 	return $page_templates;
