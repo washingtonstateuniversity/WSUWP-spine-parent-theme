@@ -8,7 +8,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 	<header class="article-header">
 		<hgroup>
 		<?php if ( is_single() ) : ?>
-			<?php if ( spine_get_option( 'articletitle_show' ) == 'true' ) : ?>
+			<?php if ( true === spine_get_option( 'articletitle_show' ) ) : ?>
 				<h1 class="article-title"><?php the_title(); ?></h1>
 			<?php endif; ?>
 		<?php else : ?>

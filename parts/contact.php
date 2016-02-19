@@ -1,7 +1,7 @@
 <div id="contact-details" itemscope itemtype="http://schema.org/Organization">
 	<meta itemprop="name" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_name' ) ); ?>">
 	<meta itemprop="department" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_department' ) ); ?>">
-	<?php if ( spine_get_option( 'contact_url' ) != '' ) : ?>
+	<?php if ( spine_get_option( 'contact_url' ) !== '' ) : ?>
 	<meta itemprop="url" class="required" content="<?php echo esc_attr( spine_get_option( 'contact_url' ) ); ?>">
 	<?php endif; ?>
 	<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">

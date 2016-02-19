@@ -4,7 +4,7 @@ $spine_classes = array();
 $spine_classes[] = esc_attr( spine_get_option( 'spine_color' ) );
 $spine_classes[] = esc_attr( 'search-' . spine_get_option( 'search_state' ) );
 
-if ( true == spine_get_option( 'crop' ) && is_front_page() ) {
+if ( true === spine_get_option( 'crop' ) && is_front_page() ) {
 	$spine_classes[] = 'cropped';
 }
 
