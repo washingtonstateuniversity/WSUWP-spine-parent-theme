@@ -1,12 +1,12 @@
 <?php get_template_part( 'spine' ); ?>
 
-<?php get_template_part('parts/after-main'); ?>
+<?php get_template_part( 'parts/after-main' ); ?>
 </div><!--/binder-->
-<?php get_template_part('parts/after-binder'); ?>
+<?php get_template_part( 'parts/after-binder' ); ?>
 </div><!--/jacket-->
-<?php get_template_part('parts/after-jacket'); ?>
+<?php get_template_part( 'parts/after-jacket' ); ?>
 
-<?php get_template_part('parts/contact'); ?>
+<?php get_template_part( 'parts/contact' ); ?>
 
 <?php wp_footer(); ?>
 

@@ -52,7 +52,7 @@ class TTFMAKE_Builder_Save {
 	 */
 	public function __construct() {
 		// Only add filters when the builder is being saved
-		if ( isset( $_POST[ 'ttfmake-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttfmake-builder-nonce' ], 'save' ) && isset( $_POST['ttfmake-section-order'] ) ) {
+		if ( isset( $_POST['ttfmake-builder-nonce'] ) && wp_verify_nonce( $_POST['ttfmake-builder-nonce'], 'save' ) && isset( $_POST['ttfmake-section-order'] ) ) {
 			// Save the post's meta data
 			add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 
@@ -99,7 +99,7 @@ class TTFMAKE_Builder_Save {
 		}
 
 		// Process and save data
-		if ( isset( $_POST[ 'ttfmake-builder-nonce' ] ) && wp_verify_nonce( $_POST[ 'ttfmake-builder-nonce' ], 'save' ) && isset( $_POST['ttfmake-section-order'] ) ) {
+		if ( isset( $_POST['ttfmake-builder-nonce'] ) && wp_verify_nonce( $_POST['ttfmake-builder-nonce'], 'save' ) && isset( $_POST['ttfmake-section-order'] ) ) {
 			$this->save_data( $this->get_sanitized_sections(), $post_id );
 		}
 	}
@@ -246,8 +246,7 @@ class TTFMAKE_Builder_Save {
 		foreach ( $array as $key => $value ) {
 			if ( is_array( $value ) ) {
 				$result = $result + $this->flatten_array( $value, $prefix . $key . $separator, $separator );
-			}
-			else {
+			} else {
 				$result[ $prefix . $key ] = $value;
 			}
 		}
@@ -289,7 +288,7 @@ class TTFMAKE_Builder_Save {
 	 * @return array                Modified post data.
 	 */
 	public function wp_insert_post_data( $data, $postarr ) {
-		if ( ! ttfmake_will_be_builder_page() || ! isset( $_POST[ 'ttfmake-builder-nonce' ] ) || ! wp_verify_nonce( $_POST[ 'ttfmake-builder-nonce' ], 'save' ) ) {
+		if ( ! ttfmake_will_be_builder_page() || ! isset( $_POST['ttfmake-builder-nonce'] ) || ! wp_verify_nonce( $_POST['ttfmake-builder-nonce'], 'save' ) ) {
 			return $data;
 		}
 

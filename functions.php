@@ -45,7 +45,7 @@ function spine_load_builder_module() {
 	}
 }
 
-add_filter( 'theme_page_templates', 'spine_show_builder_page_template', 10, 1);
+add_filter( 'theme_page_templates', 'spine_show_builder_page_template', 10, 1 );
 /**
  * If builder functionality is not available, do not show the builder template
  * on the list of available page templates.
@@ -205,7 +205,7 @@ function spine_get_open_sans_options() {
 
 	$fonts = array();
 
-	foreach( $spine_open_sans as $k => $v ) {
+	foreach ( $spine_open_sans as $k => $v ) {
 		if ( true === $v ) {
 			$fonts[] = $k;
 		}
@@ -227,13 +227,13 @@ function spine_get_open_sans_condensed_options() {
 	$spine_open_sans_cond = get_option( 'spine_open_sans_cond', array() );
 	$enabled = absint( spine_get_option( 'open_sans' ) );
 
-	if ( 0 ===  $enabled ) {
+	if ( 0 === $enabled ) {
 		return array();
 	}
 
 	$fonts = array();
 
-	foreach( $spine_open_sans_cond as $k => $v ) {
+	foreach ( $spine_open_sans_cond as $k => $v ) {
 		if ( true === $v ) {
 			$fonts[] = $k;
 		}
@@ -342,7 +342,7 @@ function spine_wp_enqueue_scripts() {
 	// Build the URL used to pull additional Open Sans font weights and styles from Google.
 	if ( ! empty( $spine_open_sans ) ) {
 		$build_open_sans_css = '';
-		foreach( $spine_open_sans as $font_option ) {
+		foreach ( $spine_open_sans as $font_option ) {
 			if ( 0 === $count ) {
 				$build_open_sans_css = 'Open+Sans%3A' . $font_option;
 			} else {
@@ -371,7 +371,7 @@ function spine_wp_enqueue_scripts() {
 			$build_open_sans_cond_css = 'Open+Sans+Condensed%3A';
 		}
 
-		foreach( $spine_open_sans_condensed as $font_option ) {
+		foreach ( $spine_open_sans_condensed as $font_option ) {
 			if ( 0 === $condensed_count ) {
 				$build_open_sans_cond_css .= $font_option;
 			} else {
@@ -412,7 +412,7 @@ function spine_wp_enqueue_scripts() {
 	// If a Twitter account has been added in the Customizer, use that for the via handle.
 	$spine_social_options = spine_social_options();
 	if ( isset( $spine_social_options['twitter'] ) ) {
-		$twitter_array =  array_filter( explode( '/', $spine_social_options['twitter'] ) );
+		$twitter_array = array_filter( explode( '/', $spine_social_options['twitter'] ) );
 		$twitter_handle = array_pop( $twitter_array );
 		$spineoptions['social']['twitter_handle'] = esc_js( $twitter_handle );
 	}
@@ -454,7 +454,7 @@ function spine_theme_widgets_init() {
 		'before_widget' => '<aside id="%1$s2" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<header>',
-		'after_title'   => '</header>'
+		'after_title'   => '</header>',
 	);
 	register_sidebar( $widget_options );
 }
@@ -508,16 +508,16 @@ function spine_trim_excerpt( $text ) {
  * @return bool|int The ID of the parent if found, otherwise false.
  */
 function spine_is_sub() {
-    $post = get_post();
+	$post = get_post();
 
-    if ( is_page() && $post->post_parent ) {
-        return $post->post_parent;
-    } else {
+	if ( is_page() && $post->post_parent ) {
+		return $post->post_parent;
+	} else {
 		return false;
 	}
 }
 
-add_filter( 'body_class', 'spine_site_body_class');
+add_filter( 'body_class', 'spine_site_body_class' );
 /**
  * Add body classes for the site domain and path to help with targeting on multiple
  * sites using this theme.
@@ -635,7 +635,7 @@ function spine_theme_images_classes( $classes ) {
 	return $classes;
 }
 
-add_filter('body_class', 'spine_categorized_body_classes');
+add_filter( 'body_class', 'spine_categorized_body_classes' );
 /**
  * Add 'categorized' in classes to body on singular views.
  *
@@ -645,12 +645,12 @@ add_filter('body_class', 'spine_categorized_body_classes');
  */
 function spine_categorized_body_classes( $classes ) {
 	if ( has_category() && is_singular() ) {
-		foreach( get_the_category( get_the_ID() ) as $category ) {
+		foreach ( get_the_category( get_the_ID() ) as $category ) {
 			$classes[] = 'categorized-' . $category->slug;
 		}
 	}
 	if ( has_tag() && is_singular() ) {
-		foreach( get_the_tags( get_the_ID() ) as $tag ) {
+		foreach ( get_the_tags( get_the_ID() ) as $tag ) {
 			$classes[] = 'tagged-' . $tag->slug;
 		}
 	}
@@ -679,15 +679,15 @@ function spine_sectioned_body_classes( $classes ) {
 		$depth = count( $path );
 		if ( is_front_page() ) { $depth = '0'; }
 		$classes[] = 'depth-' . $depth;
-		$strip = array('?','=');
+		$strip = array( '?', '=' );
 
 		if ( 1 === count( $path ) ) {
-			$classes[] = 'section-' . str_replace( $strip, "", $path[0]);
-			$classes[] = 'page-' . str_replace( $strip, "", $path[0]);
+			$classes[] = 'section-' . str_replace( $strip, '', $path[0] );
+			$classes[] = 'page-' . str_replace( $strip, '', $path[0] );
 		} else {
 			$classes[] = 'section-' . array_shift( $path );
 			$prefix = 'sub-';
-			foreach( $path as $part ) {
+			foreach ( $path as $part ) {
 				$classes[] = $prefix.'section-' . $part;
 				$prefix = 'sub-'.$prefix;
 			}
@@ -708,23 +708,22 @@ add_filter( 'post_class', 'spine_excerpt_style_classes' );
  */
 function spine_excerpt_style_classes( $classes ) {
 	global $post;
-	if ( !is_singular() ) {
-		
+
+	if ( ! is_singular() ) {
 		if ( $post->post_excerpt ) {
-			$classes[] = "summary-excerpted";
+			$classes[] = 'summary-excerpted';
 		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
-			$classes[] = "summary-divided";
+			$classes[] = 'summary-divided';
 		} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
-			$classes[] = "summary-truncated";
+			$classes[] = 'summary-truncated';
 		} else {
-			$classes[] = "summary-unabridged";
+			$classes[] = 'summary-unabridged';
 		}
 		if ( spine_has_background_image() ) { $classes[] = 'has-background-image'; }
 		if ( spine_has_featured_image() ) { $classes[] = 'has-featured-image'; }
 		if ( spine_has_thumbnail_image() ) { $classes[] = 'has-thumbnail-image'; }
-
 	}
-	
+
 	return $classes;
 }
 

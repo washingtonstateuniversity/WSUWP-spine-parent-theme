@@ -14,8 +14,8 @@ $links = apply_filters( 'make_builder_section_footer_links', array(
 	100 => array(
 		'href'  => '#',
 		'class' => 'ttfmake-section-remove',
-		'label' => __( 'Remove this section', 'make' )
-	)
+		'label' => __( 'Remove this section', 'make' ),
+	),
 ) );
 ksort( $links );
 ?>
@@ -52,4 +52,4 @@ ksort( $links );
 	</div>
 <?php if ( ! isset( $ttfmake_is_js_template ) || true !== $ttfmake_is_js_template ) : ?>
 </div>
-<?php endif; ?>
+<?php endif;

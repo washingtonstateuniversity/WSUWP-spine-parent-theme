@@ -8,7 +8,7 @@ ttfmake_load_section_header();
 global $ttfmake_section_data, $ttfmake_is_js_template;
 $section_name   = ttfmake_get_section_name( $ttfmake_section_data, $ttfmake_is_js_template );
 $columns_number = ( isset( $ttfmake_section_data['data']['columns-number'] ) ) ? $ttfmake_section_data['data']['columns-number'] : 3;
-$section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range(1, 4);
+$section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) ? $ttfmake_section_data['data']['columns-order'] : range( 1, 4 );
 $columns_class  = ( in_array( $columns_number, range( 1, 4 ) ) && true !== $ttfmake_is_js_template ) ? $columns_number : 3;
 ?>
 
@@ -68,7 +68,7 @@ do_action( 'make_section_text_after_columns_select', $ttfmake_section_data );
 
 <div class="ttfmake-titlediv">
 	<div class="ttfmake-titlewrap">
-		<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php if ( isset( $ttfmake_section_data['data']['title'] ) ) echo esc_attr( htmlspecialchars( $ttfmake_section_data['data']['title'] ) ); ?>" autocomplete="off" />
+		<input placeholder="<?php esc_attr_e( 'Enter title here' ); ?>" type="text" name="<?php echo $section_name; ?>[title]" class="ttfmake-title ttfmake-section-header-title-input" value="<?php if ( isset( $ttfmake_section_data['data']['title'] ) ) { echo esc_attr( htmlspecialchars( $ttfmake_section_data['data']['title'] ) ); } ?>" autocomplete="off" />
 	</div>
 </div>
 
@@ -131,7 +131,7 @@ do_action( 'make_section_text_after_title', $ttfmake_section_data );
 			'quicktags'     => array(
 				'buttons' => 'strong,em,link',
 			),
-			'textarea_name' => $column_name . '[content]'
+			'textarea_name' => $column_name . '[content]',
 		);
 
 		if ( true === $ttfmake_is_js_template ) : ?>
@@ -168,5 +168,5 @@ do_action( 'make_section_text_after_columns', $ttfmake_section_data );
 <div class="clear"></div>
 
 <input type="hidden" value="<?php echo esc_attr( implode( ',', $section_order ) ); ?>" name="<?php echo $section_name; ?>[columns-order]" class="ttfmake-text-columns-order" />
-<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) echo esc_attr( $ttfmake_section_data['data']['state'] ); else echo 'open'; ?>" />
+<input type="hidden" class="ttfmake-section-state" name="<?php echo $section_name; ?>[state]" value="<?php if ( isset( $ttfmake_section_data['data']['state'] ) ) { echo esc_attr( $ttfmake_section_data['data']['state'] ); } else { echo 'open'; } ?>" />
 <?php ttfmake_load_section_footer();

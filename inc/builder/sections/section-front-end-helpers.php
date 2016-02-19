@@ -53,7 +53,7 @@ function ttfmake_builder_get_gallery_array( $ttfmake_section_data ) {
 	$gallery_array = array();
 	if ( ! empty( $gallery_order ) && ! empty( $gallery_items ) ) {
 		foreach ( $gallery_order as $order => $key ) {
-			$gallery_array[$order] = $gallery_items[$key];
+			$gallery_array[ $order ] = $gallery_items[ $key ];
 		}
 	}
 
@@ -230,11 +230,11 @@ function ttfmake_builder_get_gallery_item_image( $item, $aspect ) {
 	global $ttfmake_section_data;
 	$image = '';
 
-	if ( ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) && 0 !== ttfmake_sanitize_image_id( $item[ 'image-id' ] ) ) {
+	if ( ttfmake_builder_is_section_type( 'gallery', $ttfmake_section_data ) && 0 !== ttfmake_sanitize_image_id( $item['image-id'] ) ) {
 		$image_style = '';
 
-		$image_src = ttfmake_get_image_src( $item[ 'image-id' ], 'large' );
-		if ( isset( $image_src[0]  ) ) {
+		$image_src = ttfmake_get_image_src( $item['image-id'], 'large' );
+		if ( isset( $image_src[0] ) ) {
 			$image_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
 
@@ -289,7 +289,7 @@ function ttfmake_builder_get_text_array( $ttfmake_section_data ) {
 	if ( ! empty( $columns_order ) && ! empty( $columns_data ) ) {
 		$count = 0;
 		foreach ( $columns_order as $order => $key ) {
-			$columns_array[$order] = $columns_data[$key];
+			$columns_array[ $order ] = $columns_data[ $key ];
 			$count++;
 			if ( $count >= $columns_number ) {
 				break;
@@ -367,7 +367,7 @@ function ttfmake_builder_get_banner_array( $ttfmake_section_data ) {
 
 		if ( ! empty( $banner_order ) && ! empty( $banner_slides ) ) {
 			foreach ( $banner_order as $order => $key ) {
-				$banner_array[$order] = $banner_slides[$key];
+				$banner_array[ $order ] = $banner_slides[ $key ];
 			}
 		}
 	}
@@ -425,7 +425,7 @@ function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
 		$atts = shortcode_atts( array(
 			'autoplay'   => true,
 			'transition' => 'scrollHorz',
-			'delay'      => 6000
+			'delay'      => 6000,
 		), $ttfmake_section_data );
 
 		// Data attributes

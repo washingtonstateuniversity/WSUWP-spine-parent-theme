@@ -490,7 +490,7 @@ class TTFMAKE_Section_Definitions {
 		$ttfmake_is_js_template = true;
 
 		// Only show when adding/editing pages
-		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) )) {
+		if ( ! ttfmake_post_type_supports_builder( $typenow ) || ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) ) {
 			return;
 		}
 
@@ -559,7 +559,7 @@ class TTFMAKE_Section_Definitions {
 	 *
 	 * @param  string    $key             The key for the section setting.
 	 * @param  string    $section_type    The section type.
- 	 * @return array                      The array of choices for the section setting.
+	 * @return array                      The array of choices for the section setting.
 	 */
 	public function get_choices( $key, $section_type ) {
 		$choices = array( 0 );

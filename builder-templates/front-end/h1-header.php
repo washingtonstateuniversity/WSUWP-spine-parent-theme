@@ -22,7 +22,7 @@ if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_secti
 
 if ( isset( $ttfmake_section_data['background-mobile-img'] ) && ! empty( $ttfmake_section_data['background-mobile-img'] ) ) {
 	$section_mobile_background = $ttfmake_section_data['background-mobile-img'];
-} elseif( $section_background ) {
+} elseif ( $section_background ) {
 	$section_mobile_background = $section_background;
 } else {
 	$section_mobile_background = false;
