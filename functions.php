@@ -508,10 +508,10 @@ function spine_trim_excerpt( $text ) {
  * @return bool|int The ID of the parent if found, otherwise false.
  */
 function spine_is_sub() {
-	$post = get_post();
+	$_post = get_post();
 
-	if ( is_page() && $post->post_parent ) {
-		return $post->post_parent;
+	if ( is_page() && $_post->post_parent ) {
+		return $_post->post_parent;
 	} else {
 		return false;
 	}
