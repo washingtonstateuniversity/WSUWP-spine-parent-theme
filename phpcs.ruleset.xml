@@ -11,5 +11,6 @@
         <exclude name="Generic.WhiteSpace.ScopeIndent" />
         <exclude name="WordPress.PHP.StrictComparisons" />
         <exclude name="WordPress.WP.EnqueuedResources" />
+        <exclude name="WordPress.WP.PreparedSQL" />
     </rule>
 </ruleset>
