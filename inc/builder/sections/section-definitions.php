@@ -564,11 +564,6 @@ class TTFMAKE_Section_Definitions {
 	public function get_choices( $key, $section_type ) {
 		$choices = array( 0 );
 
-		$choice_id = "$section_type-$key";
-
-		// Note that this function does not do anything yet. It is part of an API refresh that is happening over time.
-		switch ( $choice_id ) {}
-
 		/**
 		 * Filter the section choices.
 		 *
