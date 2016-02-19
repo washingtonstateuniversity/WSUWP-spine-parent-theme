@@ -370,7 +370,8 @@ if ( ! function_exists( 'ttfmake_create_array_from_meta_keys' ) ) :
 			 * For all but the last piece of the key, create a new sub-array (if necessary), and update the $current
 			 * variable to a reference of that sub-array.
 			 */
-			for ( $i = 0; $i < count( $pieces ) - 1; $i++ ) {
+			$i_count = count( $pieces ) - 1;
+			for ( $i = 0; $i < $i_count; $i++ ) {
 				$step = $pieces[ $i ];
 				if ( ! isset( $current[ $step ] ) ) {
 					$current[ $step ] = array();
