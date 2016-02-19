@@ -8,5 +8,6 @@
         <exclude name="WordPress.XSS.EscapeOutput" />
         <exclude name="Generic.Formatting.DisallowMultipleStatements" />
         <exclude name="Generic.WhiteSpace.ScopeIndent" />
+        <exclude name="WordPress.PHP.StrictComparisons" />
     </rule>
 </ruleset>
