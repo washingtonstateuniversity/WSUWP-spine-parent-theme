@@ -10,5 +10,6 @@
         <exclude name="Generic.Formatting.DisallowMultipleStatements" />
         <exclude name="Generic.WhiteSpace.ScopeIndent" />
         <exclude name="WordPress.PHP.StrictComparisons" />
+        <exclude name="WordPress.WP.EnqueuedResources" />
     </rule>
 </ruleset>
