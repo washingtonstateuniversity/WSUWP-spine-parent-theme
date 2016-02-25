@@ -1,20 +1,6 @@
-#customize-control-spine_options-open_sans {
-	padding-bottom: 0;
-	margin-bottom: 0;
-}
-
 #customize-control-spine_open_sans-300:before {
 	border-top: 1px #aaa dotted;
 	content: "Select additional fonts to load. (Beware. Each font decreases the speed a page loads.)";
 	display: block;
 	padding: 5px 0;
-}
-
-#customize-control-spine_options-open_sans label {
-	display: inline-block;
-	padding-right: 10px;
-}
-
-#customize-control-spine_options-open_sans br {
-	display: none;
 }
