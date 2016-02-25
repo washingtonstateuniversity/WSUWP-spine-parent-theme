@@ -448,6 +448,7 @@ add_action( 'customize_controls_enqueue_scripts', 'spine_customizer_enqueue_scri
  */
 function spine_customizer_enqueue_scripts() {
 	wp_enqueue_style( 'spine-customizer-styles', get_template_directory_uri() . '/css/customizer.css' );
+	wp_enqueue_script( 'spine-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), spine_get_script_version(), true );
 }
 
 add_action( 'widgets_init', 'spine_theme_widgets_init' );

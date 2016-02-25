@@ -3,14 +3,6 @@
 // http://codex.wordpress.org/Plugin_API/Action_Reference/customize_register
 // http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/
 
-add_action( 'customize_controls_enqueue_scripts', 'spine_theme_customize_scripts' );
-/**
- * Enqueue custom scripts and styles for use with the customizer.
- */
-function spine_theme_customize_scripts() {
-	wp_enqueue_script( 'customize-interface-scripts', get_template_directory_uri() . '/includes/customizer/customize.js', array( 'jquery' ), '', true );
-}
-
 add_action( 'customize_register', 'spine_customize_register' );
 /**
  * Add custom settings and controls to the WP Customizer.
