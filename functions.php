@@ -109,7 +109,7 @@ function spine_get_option_defaults() {
 		'search_state'              => 'closed',
 		'crop'                      => false,
 		'spineless'                 => false,
-		'open_sans'                 => 0,
+		'open_sans'                 => '1',
 		'contact_name'              => 'Washington State University',
 		'contact_department'        => '',
 		'contact_url'               => '',
