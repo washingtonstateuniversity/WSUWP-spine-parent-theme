@@ -440,7 +440,6 @@ add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
  */
 function spine_admin_enqueue_scripts() {
 	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
-	wp_enqueue_script( 'admin-interface-scripts', get_template_directory_uri() . '/includes/admin.js' );
 	add_editor_style( 'includes/editor.css' );
 }
 
