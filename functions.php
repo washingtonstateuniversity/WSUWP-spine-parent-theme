@@ -6,7 +6,7 @@ $wsuwp_spine_theme_version = '0.24.2';
 include_once( 'includes/theme-setup.php' ); // Setup basic portions of the theme.
 include_once( 'includes/theme-navigation.php' ); // Include functionality for navigation.
 include_once( 'includes/main-header.php' ); // Include main header functionality.
-include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
+include_once( 'includes/theme-customizer.php' ); // Include customizer functionality.
 include_once( 'includes/theme-images.php' ); // Manipulating images
 
 /**
