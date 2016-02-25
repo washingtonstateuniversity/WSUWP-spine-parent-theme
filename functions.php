@@ -201,6 +201,7 @@ function spine_get_open_sans_options() {
 		$spine_open_sans['400'] = true;
 		$spine_open_sans['400italic'] = true;
 		$spine_open_sans['700'] = true;
+		$spine_open_sans['700italic'] = true;
 	}
 
 	$fonts = array();
