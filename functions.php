@@ -750,7 +750,7 @@ add_filter( 'wsuwp_first_page_template', 'spine_install_default_template' );
  * @return string Default template to use for the first page.
  */
 function spine_install_default_template() {
-	return 'templates/single.php';
+	return 'template-builder.php';
 }
 
 add_filter( 'wsuwp_first_page_title', 'spine_install_default_title' );
