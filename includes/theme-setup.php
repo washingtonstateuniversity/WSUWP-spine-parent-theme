@@ -7,9 +7,17 @@ class Spine_Theme_Setup {
 	 * Setup hooks.
 	 */
 	public function __construct() {
+		add_action( 'admin_init', array( $this, 'add_editor_style' ) );
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
 		add_action( 'template_redirect', array( $this, 'check_author_page' ) );
 		add_filter( 'author_link', array( $this, 'filter_author_link' ) );
+	}
+
+	/**
+	 * Add the stylesheet used inside the editor.
+	 */
+	public function add_editor_style() {
+		add_editor_style( 'css/editor.css' );
 	}
 
 	/**

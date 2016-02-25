@@ -434,14 +434,6 @@ function spine_wp_enqueue_scripts() {
 	wp_enqueue_script( 'wsu-spine-theme-js', get_template_directory_uri() . '/js/spine-theme.js', array( 'jquery' ), spine_get_script_version(), true );
 }
 
-add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
-/**
- * Enqueue styles required for admin pageviews.
- */
-function spine_admin_enqueue_scripts() {
-	add_editor_style( 'includes/editor.css' );
-}
-
 add_action( 'customize_controls_enqueue_scripts', 'spine_customizer_enqueue_scripts' );
 /**
  * Enqueue the styles and scripts used inside the Customizer.
