@@ -731,6 +731,7 @@ function spine_customize_register( $wp_customize ) {
 		'label'    => __( 'Apply Open Sans to page', 'spine' ),
 		'section'  => 'section_spine_fonts',
 		'settings' => 'spine_options[open_sans]',
+		'description' => 'Select additional fonts to load. (Beware. Each font decreases the speed a page loads.)',
 		'type'     => 'radio',
 		'choices'  => array(
 			true  => 'On',
