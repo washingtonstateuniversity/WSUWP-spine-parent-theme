@@ -92,7 +92,7 @@ function spine_get_campus_home_url() {
 function spine_get_option_defaults() {
 	return array(
 		'spine_version'             => '1',
-		'grid_style'                => 'hybrid',
+		'grid_style'                => 'fluid',
 		'campus_location'           => '',
 		'spine_color'               => 'white',
 		'large_format'              => '',
