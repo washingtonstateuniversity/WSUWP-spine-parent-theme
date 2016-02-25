@@ -724,7 +724,7 @@ function spine_customize_register( $wp_customize ) {
 	 * to apply its Open Sans configuration.
 	 */
 	$wp_customize->add_setting( 'spine_options[open_sans]', array(
-		'default'    => false,
+		'default'    => '1',
 		'capability' => 'edit_theme_options',
 		'type'       => 'option',
 	) );
@@ -774,7 +774,7 @@ function spine_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'spine_open_sans[400]', array(
-		'default'    => false,
+		'default'    => true,
 		'capability' => 'edit_theme_options',
 		'type'       => 'option',
 	) );
@@ -788,7 +788,7 @@ function spine_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'spine_open_sans[400italic]', array(
-		'default'    => false,
+		'default'    => true,
 		'capability' => 'edit_theme_options',
 		'type'       => 'option',
 	) );
@@ -830,7 +830,7 @@ function spine_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'spine_open_sans[700]', array(
-		'default'    => false,
+		'default'    => true,
 		'capability' => 'edit_theme_options',
 		'type'       => 'option',
 	) );
@@ -844,7 +844,7 @@ function spine_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'spine_open_sans[700italic]', array(
-		'default'    => false,
+		'default'    => true,
 		'capability' => 'edit_theme_options',
 		'type'       => 'option',
 	) );
