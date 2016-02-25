@@ -439,8 +439,15 @@ add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
  * Enqueue styles required for admin pageviews.
  */
 function spine_admin_enqueue_scripts() {
-	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
 	add_editor_style( 'includes/editor.css' );
+}
+
+add_action( 'customize_controls_enqueue_scripts', 'spine_customizer_enqueue_scripts' );
+/**
+ * Enqueue the styles and scripts used inside the Customizer.
+ */
+function spine_customizer_enqueue_scripts() {
+	wp_enqueue_style( 'spine-customizer-styles', get_template_directory_uri() . '/css/customizer.css' );
 }
 
 add_action( 'widgets_init', 'spine_theme_widgets_init' );
