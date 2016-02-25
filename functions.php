@@ -760,7 +760,7 @@ add_filter( 'wsuwp_first_page_title', 'spine_install_default_title' );
  * @return string Default title to add to the home page.
  */
 function spine_install_default_title() {
-	return 'Welcome to the WSU Web';
+	return 'Home';
 }
 
 add_filter( 'wsuwp_first_page_content', 'spine_install_default_content' );
