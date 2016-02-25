@@ -1,0 +1,11 @@
+#customize-control-spine_options-open_sans {
+	position: relative;
+	padding-bottom: 4rem;
+}
+
+#customize-control-spine_options-open_sans .description {
+	position: absolute;
+	bottom: 0;
+	border-bottom: 1px #aaa dotted;
+	padding-bottom: 1rem;
+}

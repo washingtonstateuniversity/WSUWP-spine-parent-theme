@@ -5,8 +5,8 @@ $wsuwp_spine_theme_version = '0.24.2';
 
 include_once( 'includes/theme-setup.php' ); // Setup basic portions of the theme.
 include_once( 'includes/theme-navigation.php' ); // Include functionality for navigation.
-include_once( 'includes/main-header.php' ); // Include main header functionality.
-include_once( 'includes/customizer/customizer.php' ); // Include customizer functionality.
+include_once( 'includes/theme-main-header.php' ); // Include main header functionality.
+include_once( 'includes/theme-customizer.php' ); // Include customizer functionality.
 include_once( 'includes/theme-images.php' ); // Manipulating images
 
 /**
@@ -434,14 +434,13 @@ function spine_wp_enqueue_scripts() {
 	wp_enqueue_script( 'wsu-spine-theme-js', get_template_directory_uri() . '/js/spine-theme.js', array( 'jquery' ), spine_get_script_version(), true );
 }
 
-add_action( 'admin_enqueue_scripts', 'spine_admin_enqueue_scripts' );
+add_action( 'customize_controls_enqueue_scripts', 'spine_customizer_enqueue_scripts' );
 /**
- * Enqueue styles required for admin pageviews.
+ * Enqueue the styles and scripts used inside the Customizer.
  */
-function spine_admin_enqueue_scripts() {
-	wp_enqueue_style( 'admin-interface-styles', get_template_directory_uri() . '/includes/admin.css' );
-	wp_enqueue_script( 'admin-interface-scripts', get_template_directory_uri() . '/includes/admin.js' );
-	add_editor_style( 'includes/editor.css' );
+function spine_customizer_enqueue_scripts() {
+	wp_enqueue_style( 'spine-customizer-styles', get_template_directory_uri() . '/css/customizer.css' );
+	wp_enqueue_script( 'spine-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), spine_get_script_version(), true );
 }
 
 add_action( 'widgets_init', 'spine_theme_widgets_init' );
