@@ -666,7 +666,7 @@ class Spine_Theme_Customizer {
 		) );
 
 		$wp_customize->add_setting( 'spine_options[secondary_colors]', array(
-			'default'    => 'gray',
+			'default'    => 'default',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );
@@ -677,7 +677,7 @@ class Spine_Theme_Customizer {
 			'section'  => 'section_spine_style',
 			'type'     => 'select',
 			'choices'  => array(
-				'default' => 'Default',
+				'default' => 'Crimson',
 				'gray'    => 'Gray',
 				'green'   => 'Green',
 				'orange'  => 'Orange',
