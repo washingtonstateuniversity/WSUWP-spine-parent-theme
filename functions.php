@@ -770,18 +770,38 @@ add_filter( 'wsuwp_first_page_content', 'spine_install_default_content' );
  * @return string Default content to add to the home page.
  */
 function spine_install_default_content() {
-	$page_content = '<p>As a visual element, the WSU Spine is a 198px wide column that binds together the many websites of wsu.edu. As a framework, the WSU Spine is a minimal template that provides global tools and a responsive and flexible grid for every WSU website. With a uniform and global spine on the left and a blank, unwritten page to the right, the Spine balances the unity and diversity of our university.</p>
-	<img src="' . esc_url( get_template_directory_uri() . '/includes/customizer/customizer.png' ) . '" class="alignright">
-	<h2>Getting Started</h2>
-	<ol>
-		<li>After <a href="' . esc_url( wp_login_url() ) . '">logging in</a>, head to the <a href="' . esc_url( admin_url( 'customize.php?theme=spine' ) ) . '">Customizer</a>.</li>
-		<li>Enter your Site Title and Tagline.</li>
-		<li>Expand "Contact Details" and enter the information of the unit responsible for this site.</li>
-		<li>Optionally, you can replace or remove one or more of the university\'s social channels.</li>
-		<li>Optionally, you can alter the Spine\'s default behavior in "Spine Options".</li>
-		<li>Head to <a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '">Pages</a> and <a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">Appearance -> Menus</a> to begin building out your site.</li>
-		<li>And finally, delete or modify your <a href="' . esc_url( admin_url( 'post.php?post=1&action=edit' ) ) . '">Hello World post</a> to remove this primer.</li>
-	</ol>';
+	ob_start();
+
+	?>
+	<section class="row single h1-header gutter pad-top">
+		<div class="column one ">
+			<h1>Welcome</h1>
+		</div>
+	</section>
+	<section class="row single gutter padded-top">
+		<div class="column one">
+			<p>This home page was automatically created with your new site. As soon as this page is edited, this introduction will be replaced with the content you save.</p>
+			<p>You can login to your dashboard at <a href="<?php echo esc_url( admin_url() ); ?>"><?php echo esc_url( admin_url() ); ?></a>.</p>
+		</div>
+	</section>
+	<section class="row single gutter pad-top">
+		<div class="column one">
+			<h2>Getting started</h2>
+			<ul>
+				<li>Verify your site's title and tagline description in <a href="<?php echo esc_url( admin_url( 'options-general.php' ) ); ?>">General Settings</a>.</li>
+				<li>Use the <a href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>">Customizer</a> to modify WSU Spine options and customize several parts of your site.</li>
+				<li>Add <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=page' ) ); ?>">Pages</a> and modify <a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">Menus</a> to begin building out your site.</li>
+				<li>Add <a href="<?php echo esc_url( admin_url( 'edit.php' ) ); ?>">Posts</a> to share updates on your work with the world.</li>
+				<li>Join the <a href="https://wsu-web.slack.com/signup">WSU Web Slack</a> team to discuss your site with the WSU web community.</li>
+				<li>Attend <a href="https://web.wsu.edu/open-lab/">Open Labs</a> on Friday mornings to do the same in person.</li>
+				<li>Subscribe to posts on <a href="https://web.wsu.edu/">web.wsu.edu</a> to receive updates on the web at WSU.</li>
+			</ul>
+		</div>
+		<div class="column two"></div>
+	</section>
+	<?php
+	$page_content = ob_get_contents();
+	ob_end_clean();
 
 	return $page_content;
 }
