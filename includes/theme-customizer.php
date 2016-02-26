@@ -100,7 +100,7 @@ class Spine_Theme_Customizer {
 
 		// Grid
 		$wp_customize->add_setting( 'spine_options[grid_style]', array(
-			'default'    => 'hybrid',
+			'default'    => 'fluid',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );
