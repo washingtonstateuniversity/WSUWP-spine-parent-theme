@@ -97,7 +97,7 @@ function spine_get_option_defaults() {
 		'spine_color'               => 'white',
 		'large_format'              => '',
 		'theme_style'               => 'bookmark',
-		'secondary_colors'          => 'gray',
+		'secondary_colors'          => 'default',  // Crimson
 		'theme_spacing'             => 'default',
 		'global_main_header_sup'	=> '',
 		'global_main_header_sub'	=> '',
