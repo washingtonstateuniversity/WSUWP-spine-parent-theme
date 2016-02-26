@@ -14,15 +14,13 @@ class Spine_Theme_Customizer {
 	 * @param WP_Customize_Manager $wp_customize
 	 */
 	public function customize_register( $wp_customize ) {
+		// We don't support Site Icons in the theme right now.
+		$wp_customize->remove_control( 'site_icon' );
 
-		$wp_customize->remove_section( 'title_tagline' );
-		$wp_customize->remove_section( 'nav' );
-
-		// Page Headers
-		$wp_customize->add_section( 'section_main_header', array(
-			'title'    => __( 'Main Header' ),
-			'priority' => 20,
-		) );
+		// We control the display of header text in another way, though
+		// we may want to support this in the future instead of our
+		// custom option.
+		$wp_customize->remove_control( 'header_text' );
 
 		$wp_customize->add_setting( 'spine_options[global_main_header_sup]', array(
 			'default'    => '',
@@ -32,7 +30,7 @@ class Spine_Theme_Customizer {
 
 		$wp_customize->add_control( 'global_main_header_sup', array(
 			'label'    => 'Global Header Top (Optional)',
-			'section'  => 'section_main_header',
+			'section'  => 'title_tagline',
 			'settings' => 'spine_options[global_main_header_sup]',
 			'type'     => 'text',
 			'priority' => 25,
@@ -46,7 +44,7 @@ class Spine_Theme_Customizer {
 
 		$wp_customize->add_control( 'global_main_header_sub', array(
 			'label'    => 'Global Header Bottom (Optional)',
-			'section'  => 'section_main_header',
+			'section'  => 'title_tagline',
 			'settings' => 'spine_options[global_main_header_sub]',
 			'type'     => 'text',
 			'priority' => 30,
@@ -60,7 +58,7 @@ class Spine_Theme_Customizer {
 
 		$wp_customize->add_control( 'spine_options[main_header_show]', array(
 			'label'    => __( 'Show main header', 'spine' ),
-			'section'  => 'section_main_header',
+			'section'  => 'title_tagline',
 			'settings' => 'spine_options[main_header_show]',
 			'type'     => 'checkbox',
 			'priority' => 35,
@@ -74,7 +72,7 @@ class Spine_Theme_Customizer {
 
 		$wp_customize->add_control( 'spine_options[articletitle_show]', array(
 			'label'    => __( 'Show article title', 'spine' ),
-			'section'  => 'section_main_header',
+			'section'  => 'title_tagline',
 			'settings' => 'spine_options[articletitle_show]',
 			'type'     => 'checkbox',
 			'priority' => 40,
@@ -88,7 +86,7 @@ class Spine_Theme_Customizer {
 
 		$wp_customize->add_control( 'spine_options[articletitle_header]', array(
 			'label'    => __( 'Use article title in main header', 'spine' ),
-			'section'  => 'section_main_header',
+			'section'  => 'title_tagline',
 			'settings' => 'spine_options[articletitle_header]',
 			'type'     => 'checkbox',
 			'priority' => 45,
