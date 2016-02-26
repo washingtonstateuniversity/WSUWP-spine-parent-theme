@@ -743,6 +743,16 @@ As a general rule of thumb, if your styles target aspects of the spine (#spine),
 
 }
 
+add_filter( 'wsuwp_install_site_description', 'spine_install_site_description' );
+/**
+ * Filter the default site description used when creating a new site on the WSUWP Platform.
+ *
+ * @return string Site description to use for the new site.
+ */
+function spine_install_site_description() {
+	return 'A new WSU WordPress website';
+}
+
 add_filter( 'wsuwp_first_page_template', 'spine_install_default_template' );
 /**
  * Filter the template used for the home page when creating a new site on the WSUWP Platform.
