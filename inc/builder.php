@@ -374,6 +374,10 @@ class Spine_Builder_Custom {
 				if ( isset( $item['header-level'] ) ) {
 					$clean_data['columns'][ $id ]['header-level'] = $this->clean_header_element( $item['header-level'] );
 				}
+
+				if ( isset( $item['column-background-image'] ) ) {
+					$clean_data['columns'][ $id ]['column-background-image'] = esc_url_raw( $item['column-background-image'] );
+				}
 				$i++;
 			}
 		}
@@ -619,9 +623,11 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 	if ( $column ) {
 		$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
 		$header_level   = ( isset( $section_data['data']['columns'][ $column ]['header-level'] ) ) ? $section_data['data']['columns'][ $column ]['header-level'] : 'h2';
+		$column_background = ( isset( $section_data['data']['columns'][ $column ]['column-background-image'] ) ) ? $section_data['data']['columns'][ $column ]['column-background-image'] : '';
 	} else {
 		$column_classes = ( isset( $section_data['data']['column-classes'] ) ) ? $section_data['data']['column-classes'] : '';
 		$header_level   = ( isset( $section_data['data']['header-level'] ) ) ? $section_data['data']['header-level'] : 'h2';
+		$column_background = ( isset( $section_data['data']['column-background-image'] ) ) ? $section_data['data']['column-background-image'] : '';
 	}
 
 	?>
@@ -645,6 +651,15 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
 		</select>
 		<p class="description">This header will wrap the column title. H2 by default.</p>
+	</div>
+	<div class=wsuwp-builder-meta">
+		<label for="<?php echo $column_name; ?>[column-background-image]">Background Image</label>
+		<input type="text"
+		       id="<?php echo $column_name; ?>[column-background-image]"
+		       name="<?php echo $column_name; ?>[column-background-image]"
+		       class="spine-builder-column-classes widefat"
+		       value="<?php echo esc_attr( $column_background ); ?>" />
+		<p class="description">Enter the URL of an image to apply it as this column's background.</p>
 	</div>
 	<?php
 }
