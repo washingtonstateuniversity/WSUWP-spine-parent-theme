@@ -104,8 +104,13 @@ if ( '' === $section_id ) {
 			$column_count = array( 'one', 'two', 'three', 'four' );
 			$count = 0;
 			foreach ( $data_columns as $column ) {
+				if ( isset( $column['column-background-image'] ) && ! empty( $column['column-background-image'] ) ) {
+					$column_background = "background-image:url('" . esc_url( $column['column-background-image'] ) ."');";
+				} else {
+					$column_background = '';
+				}
 				?>
-				<div class="column <?php echo $column_count[ $count ]; $count++; ?> <?php if ( isset( $column['column-classes'] ) ) : echo esc_attr( $column['column-classes'] ); endif; ?>">
+				<div style="<?php echo $column_background; ?>" class="column <?php echo $column_count[ $count ]; $count++; ?> <?php if ( isset( $column['column-classes'] ) ) : echo esc_attr( $column['column-classes'] ); endif; ?>">
 
 					<?php if ( '' !== $column['title'] ) : ?>
 						<?php $header_level = in_array( $column['header-level'], array( 'h2', 'h3', 'h4' ) ) ? $column['header-level'] : 'h2'; ?>
