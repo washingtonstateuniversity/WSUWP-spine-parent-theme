@@ -2,6 +2,13 @@
 $post_share_url = esc_url( get_permalink() );
 $post_share_title = rawurlencode( spine_get_title() );
 $post_share_placement = spine_get_option( 'post_social_placement' );
+$spine_social_options = spine_social_options();
+if ( ! empty( $spine_social_options['twitter'] ) ) {
+	$twitter_array = explode( '/', $spine_social_options['twitter'] );
+	$twitter_handle = esc_attr( array_pop( $twitter_array ) );
+} else {
+	$twitter_handle = 'wsupullman';
+}
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -30,22 +37,11 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 			</cite>
 		</hgroup>
 
-		<?php if ( is_singular() && in_array( $post_share_placement, array( 'top', 'both' ) ) ) : ?>
-		<div class="social-share-bar">
-			<ul>
-			<li class="by-facebook">
-				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Facebook</span></a></li>
-			<li class="by-twitter">
-				<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=wsupullman" target="_blank"><span class="channel-title">Share on Twitter</span></a></li>
-			<li class="by-googleplus">
-				<a href="https://plus.google.com/share?url=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Google+</span></a></li>
-			<li class="by-linkedin">
-				<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $post_share_url; ?>&amp;summary=<?php echo $post_share_title; ?>&amp;source=undefined" target="_blank"><span class="channel-title">Share on Linkedin</span></a></li>
-			<li class="by-email">
-				<a href="mailto:?subject=<?php echo $post_share_title; ?>&amp;body=<?php echo $post_share_url; ?>"><span class="channel-title">Email this post</span></a></li>
-			</ul>
-		</div>
-		<?php endif; ?>
+		<?php
+		if ( is_singular() && in_array( $post_share_placement, array( 'top', 'both' ) ) ) {
+			get_template_part( 'parts/share-tools' );
+		}
+		?>
 	</header>
 
 	<?php if ( ! is_singular() ) : ?>
@@ -81,22 +77,11 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 	<?php endif; ?>
 
 	<footer class="article-footer">
-		<?php if ( is_singular() && in_array( $post_share_placement, array( 'bottom', 'both' ) ) ) : ?>
-			<div class="social-share-bar">
-				<ul>
-					<li class="by-facebook">
-						<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Facebook</span></a></li>
-					<li class="by-twitter">
-						<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=wsupullman" target="_blank"><span class="channel-title">Share on Twitter</span></a></li>
-					<li class="by-googleplus">
-						<a href="https://plus.google.com/share?url=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Google+</span></a></li>
-					<li class="by-linkedin">
-						<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $post_share_url; ?>&amp;summary=<?php echo $post_share_title; ?>&amp;source=undefined" target="_blank"><span class="channel-title">Share on Linkedin</span></a></li>
-					<li class="by-email">
-						<a href="mailto:?subject=<?php echo $post_share_title; ?>&amp;body=<?php echo $post_share_url; ?>"><span class="channel-title">Email this post</span></a></li>
-				</ul>
-			</div>
-		<?php endif; ?>
+		<?php
+		if ( is_singular() && in_array( $post_share_placement, array( 'bottom', 'both' ) ) ) {
+			get_template_part( 'parts/share-tools' );
+		}
+		?>
 	<?php
 	// Display site level categories attached to the post.
 	if ( has_category() ) {
