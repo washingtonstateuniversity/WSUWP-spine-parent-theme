@@ -4,7 +4,7 @@ $post_share_title = rawurlencode( spine_get_title() );
 $post_share_placement = spine_get_option( 'post_social_placement' );
 $spine_social_options = spine_social_options();
 if ( ! empty( $spine_social_options['twitter'] ) ) {
-	$twitter_array = array_filter( explode( '/', $spine_social_options['twitter'] ) );
+	$twitter_array = explode( '/', $spine_social_options['twitter'] );
 	$twitter_handle = array_pop( $twitter_array );
 } else {
 	$twitter_handle = 'wsupullman';
