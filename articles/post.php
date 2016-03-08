@@ -2,6 +2,13 @@
 $post_share_url = esc_url( get_permalink() );
 $post_share_title = rawurlencode( spine_get_title() );
 $post_share_placement = spine_get_option( 'post_social_placement' );
+$spine_social_options = spine_social_options();
+if ( ! empty( $spine_social_options['twitter'] ) ) {
+	$twitter_array = array_filter( explode( '/', $spine_social_options['twitter'] ) );
+	$twitter_handle = array_pop( $twitter_array );
+} else {
+	$twitter_handle = 'wsupullman';
+}
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -36,7 +43,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 			<li class="by-facebook">
 				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Facebook</span></a></li>
 			<li class="by-twitter">
-				<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=wsupullman" target="_blank"><span class="channel-title">Share on Twitter</span></a></li>
+				<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=<?php echo $twitter_handle; ?>" target="_blank"><span class="channel-title">Share on Twitter</span></a></li>
 			<li class="by-googleplus">
 				<a href="https://plus.google.com/share?url=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Google+</span></a></li>
 			<li class="by-linkedin">
@@ -87,7 +94,7 @@ $post_share_placement = spine_get_option( 'post_social_placement' );
 					<li class="by-facebook">
 						<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Facebook</span></a></li>
 					<li class="by-twitter">
-						<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=wsupullman" target="_blank"><span class="channel-title">Share on Twitter</span></a></li>
+						<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=<?php echo $twitter_handle; ?>" target="_blank"><span class="channel-title">Share on Twitter</span></a></li>
 					<li class="by-googleplus">
 						<a href="https://plus.google.com/share?url=<?php echo $post_share_url; ?>"><span class="channel-title">Share on Google+</span></a></li>
 					<li class="by-linkedin">
