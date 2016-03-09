@@ -831,3 +831,13 @@ function spine_get_title() {
 
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
 }
+
+/**
+ * Remove Yoast SEO title filter.
+ */
+if ( defined( 'WPSEO_VERSION' ) ) {
+	add_action( 'init', 'remove_wpseo_title_rewrite' );
+	function remove_wpseo_title_rewrite() {
+		remove_filter( 'wp_title', array( WPSEO_Frontend::get_instance(), 'title' ), 15 );
+	}
+}
