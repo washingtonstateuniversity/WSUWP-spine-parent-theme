@@ -332,6 +332,8 @@ function spine_wp_enqueue_scripts() {
 		}
 	}
 
+	wp_enqueue_style( 'spine-theme-print', get_template_directory_uri() . '/css/print.css', array(), spine_get_script_version(), 'print' );
+
 	// All theme styles have been output at this time. Plugins and other themes should print styles here, before blocking
 	// Javascript resources are output.
 	do_action( 'spine_enqueue_styles' );
