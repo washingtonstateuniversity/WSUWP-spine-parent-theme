@@ -29,6 +29,8 @@ main {
     margin-left: 0;
 }
 
+/* This background image will only appear when the end user has selected their option
+   to print background images */
 .main-header {
     margin-top: 32px;
     background-image: url('https://repo.wsu.edu/spine/develop/marks/wsu-signature-horizontal.svg');
