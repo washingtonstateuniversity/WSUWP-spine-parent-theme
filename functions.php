@@ -834,12 +834,33 @@ function spine_get_title() {
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
 }
 
+add_filter( 'option_wpseo_titles', 'spine_wpseo_title_options' );
+add_filter( 'pre_update_option_wpseo_titles', 'spine_wpseo_title_options' );
 /**
- * Remove Yoast SEO title filter.
+ * Override the options from Yoast SEO 'Titles & Metas' page.
+ *
+ * @param array Default option values.
+ *
+ * @return array Modified option values.
  */
-if ( defined( 'WPSEO_VERSION' ) ) {
-	add_action( 'init', 'remove_wpseo_title_rewrite' );
-	function remove_wpseo_title_rewrite() {
-		remove_filter( 'wp_title', array( WPSEO_Frontend::get_instance(), 'title' ), 15 );
-	}
+function spine_wpseo_title_options( $options ) {
+	$article_title = '%%title%% %%page%% |';
+	$taxonomy_term_title = '%%term_title%% Archives %%page%% |';
+
+
+	$options['forcerewritetitle'] = '';
+	$options['separator'] = 'sc-pipe';
+	$options['title-home-wpseo'] = '%%sitename%% %%page%% |';
+	$options['title-author-wpseo'] = '%%name%% |';
+	$options['title-archive-wpseo'] = '%%date%% %%page%% |';
+	$options['title-search-wpseo'] = '';
+	$options['title-404-wpseo'] = 'Page not found |';
+	$options['title-post'] = $article_title;
+	$options['title-page'] = $article_title;
+	$options['title-attachment'] = '%%title%% |';
+	$options['title-tax-category'] = $taxonomy_term_title;
+	$options['title-tax-post_tag'] = $taxonomy_term_title;
+	$options['title-tax-post_format'] = $taxonomy_term_title;
+
+	return $options;
 }
