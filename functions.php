@@ -825,11 +825,21 @@ function spine_install_default_content() {
  * @return string Built title.
  */
 function spine_get_title() {
-	$site_part = ' ' . get_option( 'blogname' );
+	$site_part = get_option( 'blogname' );
 	$global_part = ' | Washington State University';
 	$view_title = wp_title( '|', false, 'right' );
 
 	$title = $view_title . $site_part . $global_part;
 
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
+}
+
+/**
+ * Remove Yoast SEO title filter.
+ */
+if ( defined( 'WPSEO_VERSION' ) ) {
+	add_action( 'init', 'remove_wpseo_title_rewrite' );
+	function remove_wpseo_title_rewrite() {
+		remove_filter( 'wp_title', array( WPSEO_Frontend::get_instance(), 'title' ), 15 );
+	}
 }
