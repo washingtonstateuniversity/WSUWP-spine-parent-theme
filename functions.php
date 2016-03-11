@@ -864,3 +864,11 @@ function spine_wpseo_title_options( $options ) {
 
 	return $options;
 }
+
+add_action( 'admin_menu', 'spine_remove_wpseo_titles_page', 999 );
+/**
+ * Remove the Yoast SEO 'Titles & Metas' page.
+ */
+function spine_remove_wpseo_titles_page() {
+  $page = remove_submenu_page( 'wpseo_dashboard', 'wpseo_titles' );
+}
