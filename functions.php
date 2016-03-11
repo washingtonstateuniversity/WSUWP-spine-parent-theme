@@ -870,5 +870,14 @@ add_action( 'admin_menu', 'spine_remove_wpseo_titles_page', 999 );
  * Remove the Yoast SEO 'Titles & Metas' page.
  */
 function spine_remove_wpseo_titles_page() {
-  $page = remove_submenu_page( 'wpseo_dashboard', 'wpseo_titles' );
+	$page = remove_submenu_page( 'wpseo_dashboard', 'wpseo_titles' );
+}
+
+add_filter( 'wpseo_opengraph_title', 'spine_wpseo_meta_title' );
+add_filter( 'wpseo_twitter_title', 'spine_wpseo_meta_title' );
+/**
+ * Filter the content value of 'og:title' and 'twitter:title' meta tag.
+ */
+function spine_wpseo_meta_title( $title ) {
+	return spine_get_title();
 }
