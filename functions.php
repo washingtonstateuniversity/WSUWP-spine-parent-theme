@@ -829,7 +829,15 @@ function spine_get_title() {
 	$global_part = ' | Washington State University';
 	$view_title = wp_title( '|', false, 'right' );
 
-	$title = $view_title . $site_part . $global_part;
+	if ( ! defined( 'WPSEO_VERSION' ) ) {
+		$title = $view_title . $site_part . $global_part;
+	} else {
+		if ( is_front_page() ) {
+			$title = $site_part . $global_part;
+		} else {
+			$title = $view_title . ' ' . $site_part . $global_part;
+		}
+	}
 
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
 }
@@ -847,9 +855,7 @@ function spine_wpseo_title_options( $options ) {
 	$article_title = '%%title%% %%page%% |';
 	$taxonomy_term_title = '%%term_title%% Archives %%page%% |';
 
-
 	$options['forcerewritetitle'] = '';
-	$options['separator'] = 'sc-pipe';
 	$options['title-home-wpseo'] = '%%sitename%% %%page%% |';
 	$options['title-author-wpseo'] = '%%name%% |';
 	$options['title-archive-wpseo'] = '%%date%% %%page%% |';
@@ -861,6 +867,10 @@ function spine_wpseo_title_options( $options ) {
 	$options['title-tax-category'] = $taxonomy_term_title;
 	$options['title-tax-post_tag'] = $taxonomy_term_title;
 	$options['title-tax-post_format'] = $taxonomy_term_title;
+	// Should do something a little more clever here, maybe use `get_taxonomies()`.
+	$options['title-tax-wsuwp_university_category'] = $taxonomy_term_title;
+	$options['title-tax-wsuwp_university_location'] = $taxonomy_term_title;
+	$options['title-tax-wsuwp_university_org'] = $taxonomy_term_title;
 
 	return $options;
 }
