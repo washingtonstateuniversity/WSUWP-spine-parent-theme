@@ -342,8 +342,7 @@ article footer a:hover {
 	border-left-width: 8rem;
 	border-right-width: 8rem;
 	box-sizing: border-box;
-	font-size: 15px;
-	font-size: 1.5rem;
+	font-size: 0;
 	line-height: 1.35;
 	position: absolute;
 	right: 0;
@@ -355,7 +354,6 @@ article footer a:hover {
 	margin-bottom: 0;
 	color: #fff;
 	text-shadow: 1px 0 8px rgba(0, 0, 0, .15);
-	white-space: nowrap;
 }
 
 .builder-banner-content:after {
@@ -375,7 +373,7 @@ article footer a:hover {
 
 .builder-banner-inner-title {
 	padding-bottom: 1rem;
-	white-space: normal;
+	font-size: 1.5rem;
 }
 
 .builder-banner-inner-content {
@@ -383,7 +381,7 @@ article footer a:hover {
 	width: 100%;
 	max-width: 98%;
 	vertical-align: middle;
-	white-space: normal;
+	font-size: 1.5rem;
 }
 
 .builder-banner-inner-content *:last-child {
@@ -458,8 +456,8 @@ article footer a:hover {
 		opacity: .6;
 	}
 
-	.builder-banner-content {
-		font-size: 21px;
+	.builder-banner-inner-title,
+	.builder-banner-inner-content {
 		font-size: 2.1rem;
 	}
 
