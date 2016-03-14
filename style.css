@@ -342,29 +342,17 @@ article footer a:hover {
 	border-left-width: 8rem;
 	border-right-width: 8rem;
 	box-sizing: border-box;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
 	font-size: 0;
+	height: 100%;
 	line-height: 1.35;
-	position: absolute;
-	right: 0;
 	left: 0;
 	overflow: hidden;
-	width: 100%;
-	height: 100%;
-	min-height: 100%;
-	margin-bottom: 0;
-	color: #fff;
+	position: absolute;
+	right: 0;
 	text-shadow: 1px 0 8px rgba(0, 0, 0, .15);
-}
-
-.builder-banner-content:after {
-	display: inline-block;
-	height: 100%;
-	content: "";
-	vertical-align: middle;
-}
-
-.content-position-none .builder-banner-content {
-	text-align: center;
 }
 
 .content-position-right .builder-banner-content {
@@ -377,15 +365,16 @@ article footer a:hover {
 }
 
 .builder-banner-inner-content {
-	display: inline-block;
-	width: 100%;
-	max-width: 98%;
-	vertical-align: middle;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
 	font-size: 1.5rem;
 }
-
-.builder-banner-inner-content *:last-child {
-	margin-bottom: 0;
+/* Might help in cases where there is too much content in a slide. */
+.builder-banner-inner-content * {
+	display: flex;
 }
 
 .builder-section-banner .cycle-pager {
