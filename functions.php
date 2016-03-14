@@ -829,6 +829,7 @@ function spine_get_title() {
 	$global_part = ' | Washington State University';
 
 	if ( defined( 'WPSEO_VERSION' ) ) {
+		remove_filter( 'pre_get_document_title', array( WPSEO_Frontend::get_instance(), 'title' ), 15 );
 		remove_filter( 'wp_title', array( WPSEO_Frontend::get_instance(), 'title' ), 15 );
 	}
 
@@ -848,7 +849,7 @@ add_filter( 'pre_update_option_wpseo_titles', 'spine_wpseo_title_options' );
 /**
  * Override the options from Yoast SEO 'Titles & Metas' page.
  *
- * @param array Default option values.
+ * @param array $options Default option values.
  *
  * @return array Modified option values.
  */
@@ -865,11 +866,12 @@ function spine_remove_wpseo_titles_page() {
 	$page = remove_submenu_page( 'wpseo_dashboard', 'wpseo_titles' );
 }
 
-add_filter( 'wpseo_opengraph_title', 'spine_wpseo_meta_title' );
-add_filter( 'wpseo_twitter_title', 'spine_wpseo_meta_title' );
+add_filter( 'wpseo_opengraph_title', 'spine_titles_filter' );
+add_filter( 'wpseo_twitter_title', 'spine_titles_filter' );
+add_filter( 'pre_get_document_title', 'spine_titles_filter' );
 /**
  * Filter the content value of 'og:title' and 'twitter:title' meta tag.
  */
-function spine_wpseo_meta_title( $title ) {
+function spine_titles_filter() {
 	return spine_get_title();
 }
