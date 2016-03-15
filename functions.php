@@ -857,7 +857,7 @@ function spine_wpseo_title_options( $options ) {
 	$site_part = get_option( 'blogname' );
 	$global_part = ' | Washington State University';
 	$article_title = '%%title%% | ' . $site_part . $global_part;
-	$taxonomies = get_taxonomies(); 
+	$taxonomies = get_taxonomies();
 
 	$options['forcerewritetitle'] = '';
 	$options['title-post'] = $article_title;
@@ -866,7 +866,7 @@ function spine_wpseo_title_options( $options ) {
 
 	if ( $taxonomies ) {
 		foreach ( $taxonomies as $taxonomy ) {
-			$options['hideeditbox-tax-' . $taxonomy ] = true;
+			$options[ 'hideeditbox-tax-' . $taxonomy ] = true;
 		}
 	}
 
@@ -896,7 +896,7 @@ add_action( 'admin_enqueue_scripts', 'spine_wpseo_metabox' );
  * Enqueue script for modifying the Yoast SEO metabox.
  */
 function spine_wpseo_metabox( $hook ) {
-	if ( ! in_array( $hook, array( 'edit.php', 'post.php', 'post-new.php') ) ) {
+	if ( ! in_array( $hook, array( 'edit.php', 'post.php', 'post-new.php' ) ) ) {
 		return;
 	}
 
