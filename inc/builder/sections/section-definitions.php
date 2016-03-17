@@ -444,14 +444,6 @@ class TTFMAKE_Section_Definitions {
 		// Add additional dependencies to the Builder JS
 		add_filter( 'ttfmake_builder_js_dependencies', array( $this, 'add_js_dependencies' ) );
 
-		// Add the section CSS
-		wp_enqueue_style(
-			'ttfmake-sections/css/sections.css',
-			get_template_directory_uri() . '/inc/builder/sections/css/sections.css',
-			array(),
-			TTFMAKE_VERSION,
-			'all'
-		);
 	}
 
 	/**
