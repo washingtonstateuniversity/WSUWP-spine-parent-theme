@@ -825,7 +825,7 @@ function spine_install_default_content() {
  * @return string Built title.
  */
 function spine_get_title() {
-	$site_part = ' ' . get_option( 'blogname' );
+	$site_part = get_option( 'blogname' );
 	$global_part = ' | Washington State University';
 	$view_title = wp_title( '|', false, 'right' );
 
