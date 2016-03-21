@@ -322,18 +322,9 @@ article footer a:hover {
 	background-color: rgba(0, 0, 0, .5);
 }
 
-@media screen and (min-width: 800px) {
-	.builder-banner-overlay, .builder-section-overlay {
-		background-color: rgba(0, 0, 0, .4);
-	}
-}
-
-.builder-banner-overlay {
-	z-index: -1;
-}
-
+.builder-banner-overlay,
 .builder-section-overlay {
-	z-index: 1;
+	z-index: -1;
 }
 
 .builder-banner-slide {
@@ -347,71 +338,43 @@ article footer a:hover {
 }
 
 .builder-banner-content {
-	font-size: 15px;
-	font-size: 1.5rem;
+	border: 2rem solid transparent;
+	border-left-width: 8rem;
+	border-right-width: 8rem;
+	box-sizing: border-box;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	font-size: 0;
+	height: 100%;
 	line-height: 1.35;
-	position: absolute;
-	right: 0;
 	left: 0;
 	overflow: hidden;
-	width: 100%;
-	height: 100%;
-	min-height: 100%;
-	margin-bottom: 0;
-	padding: 11px 96px;
-	padding: 1.1rem 9.6rem;
-	color: #fff;
+	position: absolute;
+	right: 0;
 	text-shadow: 1px 0 8px rgba(0, 0, 0, .15);
 }
 
-@media screen and (min-width: 800px) {
-	.builder-banner-content {
-		font-size: 21px;
-		font-size: 2.1rem;
-		padding: 11px 128px;
-		padding: 0 12.8rem 0 12.8rem;
-	}
+.content-position-right .builder-banner-content {
+	text-align: right;
 }
 
-.builder-banner-content:after {
-	display: inline-block;
-	height: 100%;
-	content: "";
-	vertical-align: middle;
-}
-
-@media screen and (min-width: 800px) {
-	.content-position-none .builder-banner-content {
-		margin-right: auto;
-		margin-left: auto;
-	}
-}
-
-@media screen and (min-width: 800px) {
-	.content-position-left .builder-banner-content {
-		right: auto;
-		float: left;
-		width: 50%;
-	}
-}
-
-@media screen and (min-width: 800px) {
-	.content-position-right .builder-banner-content {
-		left: auto;
-		float: right;
-		width: 50%;
-	}
+.builder-banner-inner-title {
+	padding-bottom: 1rem;
+	font-size: 1.5rem;
 }
 
 .builder-banner-inner-content {
-	display: inline-block;
-	width: 100%;
-	max-width: 98%;
-	vertical-align: middle;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	font-size: 1rem;
 }
-
-.builder-banner-inner-content *:last-child {
-	margin-bottom: 0;
+/* Might help in cases where there is too much content in a slide. */
+.builder-banner-inner-content * {
+	display: flex;
 }
 
 .builder-section-banner .cycle-pager {
@@ -434,34 +397,23 @@ article footer a:hover {
 	color: #b9bcbf;
 }
 
-.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
+.builder-section-banner .cycle-prev,
+.builder-section-banner .cycle-next {
 	position: absolute;
 	z-index: 999;
 	top: 50%;
 	cursor: pointer;
+	height: 4rem;
+	margin-top: -4rem;
 }
 
-@media screen and (min-width: 800px) {
-	.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
-		opacity: .6;
-	}
-}
-
-.builder-section-banner .cycle-prev:before, .builder-section-banner .cycle-next:before {
+.builder-section-banner .cycle-prev:before,
+.builder-section-banner .cycle-next:before {
 	font-family: Genericons;
-	font-size: 34px;
 	font-size: 3.4rem;
-	line-height: 1;
+	line-height: 4rem;
 	position: relative;
-	top: -34px;
-	top: -3.4rem;
 	color: #eaecee;
-}
-
-@media screen and (min-width: 800px) {
-	.builder-section-banner:hover .cycle-prev, .builder-section-banner:hover .cycle-next, .builder-section-banner:focus .cycle-prev, .builder-section-banner:focus .cycle-next {
-		opacity: 1;
-	}
 }
 
 .builder-section-banner .cycle-prev:before {
@@ -478,9 +430,44 @@ article footer a:hover {
 	content: "\f429";
 }
 
-.ttfmake-shortcode-slider .cycle-prev:before {
-	top: -12px;
-	top: -1.2rem;
+@media screen and (min-width: 800px) {
+	.builder-banner-overlay, .builder-section-overlay {
+		background-color: rgba(0, 0, 0, .4);
+	}
+
+	.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
+		opacity: .6;
+	}
+
+	.builder-banner-inner-title {
+		font-size: 2rem;
+	}
+	.builder-banner-inner-content {
+		font-size: 1.25rem;
+	}
+
+	.builder-section-banner:hover .cycle-prev,
+	.builder-section-banner:hover .cycle-next,
+	.builder-section-banner:focus .cycle-prev,
+	.builder-section-banner:focus .cycle-next {
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width: 693px) {
+	.builder-banner-content {
+		border-left-width: 3rem;
+		border-right-width: 3rem;
+	}
+	.builder-section-banner .cycle-prev:before {
+		font-size: 30px;
+		left: 0.4rem;
+	}
+	.builder-section-banner .cycle-next:before {
+		font-size: 30px;
+		right: 0.4rem;
+	}
+	
 }
 
 /* University Center Objects */
