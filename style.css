@@ -370,7 +370,7 @@ article footer a:hover {
 	flex-direction: column;
 	justify-content: center;
 	overflow: hidden;
-	font-size: 1.5rem;
+	font-size: 1rem;
 }
 /* Might help in cases where there is too much content in a slide. */
 .builder-banner-inner-content * {
@@ -403,17 +403,16 @@ article footer a:hover {
 	z-index: 999;
 	top: 50%;
 	cursor: pointer;
+	height: 4rem;
+	margin-top: -4rem;
 }
 
 .builder-section-banner .cycle-prev:before,
 .builder-section-banner .cycle-next:before {
 	font-family: Genericons;
-	font-size: 34px;
 	font-size: 3.4rem;
-	line-height: 1;
+	line-height: 4rem;
 	position: relative;
-	top: -34px;
-	top: -3.4rem;
 	color: #eaecee;
 }
 
@@ -431,11 +430,6 @@ article footer a:hover {
 	content: "\f429";
 }
 
-.ttfmake-shortcode-slider .cycle-prev:before {
-	top: -12px;
-	top: -1.2rem;
-}
-
 @media screen and (min-width: 800px) {
 	.builder-banner-overlay, .builder-section-overlay {
 		background-color: rgba(0, 0, 0, .4);
@@ -445,9 +439,11 @@ article footer a:hover {
 		opacity: .6;
 	}
 
-	.builder-banner-inner-title,
+	.builder-banner-inner-title {
+		font-size: 2rem;
+	}
 	.builder-banner-inner-content {
-		font-size: 2.1rem;
+		font-size: 1.25rem;
 	}
 
 	.builder-section-banner:hover .cycle-prev,
@@ -460,16 +456,16 @@ article footer a:hover {
 
 @media screen and (max-width: 693px) {
 	.builder-banner-content {
-		border-left-width: 4rem;
-		border-right-width: 4rem;
+		border-left-width: 3rem;
+		border-right-width: 3rem;
 	}
 	.builder-section-banner .cycle-prev:before {
 		font-size: 30px;
-		left: 1rem;
+		left: 0.4rem;
 	}
 	.builder-section-banner .cycle-next:before {
-		font-size: 34px;
-		right: 1rem;
+		font-size: 30px;
+		right: 0.4rem;
 	}
 	
 }
