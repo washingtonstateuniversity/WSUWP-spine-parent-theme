@@ -1,56 +1,31 @@
 /*---------------------------------------------------------
  Builder (builder.css)
 -------------------------------------------------------- */
+#ttfmake-builder .inside {
+	padding: 0;
+}
+
 .ttfmake-titlediv {
 	position: relative;
 	margin-bottom: 20px;
 }
-.ttfmake-titlediv .ttfmake-title,
-.ttfmake-configuration-overlay-input-wrap .ttfmake-configuration-title {
+.ttfmake-titlediv .ttfmake-title {
 	width: 100%;
 	height: 41px;
-	margin: 0; /*reset*/
+	margin: 0;
 	padding: 0 8px;
 	font-size: 19px;
-	-webkit-box-shadow: none; /*reset*/
-	box-shadow: none; /*reset*/
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+	box-shadow: none;
 	box-sizing: border-box;
 }
 .ttfmake-titlediv .ttfmake-title:focus {
 	border: 1px solid #ddd;
-	-webkit-box-shadow: none; /*reset*/
-	box-shadow: none; /*reset*/
+	box-shadow: none;
 }
-#ttfmake-builder .inside {
-	padding: 0; /*reset*/
-}
+
 #ttfmake-builder *:focus {
-	outline: none !important; /*reset*/
-	box-shadow: none !important; /*reset*/
-}
-.ttfmake-stage {
-	clear: both;
-	padding-top: 10px;
-}
-.ttfmake-stage-closed {
-	padding-top: 0; /*reset*/
-}
-.ttfmake-stage .sortable-placeholder {
-	margin-bottom: 10px;
-}
-/*---------------------------------------------------------
- Common (builder.css)
--------------------------------------------------------- */
-.clear {
-	clear: both;
-}
-.ttfmake-show {
-	display: block;
-}
-.ttfmake-hide {
-	display: none; /*reset*/
+	outline: none !important;
+	box-shadow: none !important;
 }
 /*---------------------------------------------------------
  Menu (builder.css)
@@ -60,24 +35,64 @@
 }
 .ttfmake-menu-pane {
 	margin-bottom: 40px;
-	border-top: none; /*reset*/
-	line-height: 0; /*reset*/
+	border-top: none;
+	line-height: 0;
 }
 .ttfmake-menu-list {
 	display: inline-block;
 	width: 100%;
-	margin: 0; /*reset*/
+	margin: 0;
 }
-.ttfmake-menu-list h4 {
-	margin: 0; /*reset*/
-	font-size: 14px;
+.ttfmake-menu-list-item {
+	float: left;
+	width: 50%;
+	height: 100%;
+	margin-bottom: 0;
+	position: relative;
+	text-align: center;
+	border-right: 1px solid #eeeeee;
+	border-bottom: 1px solid #eeeeee;
+	box-sizing: border-box;
+}
+.ttfmake-menu-list-item:hover {
+	background-color: #fafafa;
+}
+.ttfmake-menu-list-item:last-of-type {
+	margin-right: 0;
+}
+@media screen and (min-width: 1160px) {
+	.ttfmake-menu-list-item {
+		width: 12.5%;
+	}
+	.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
+		border-right: 1px solid #eeeeee;
+	}
+	.ttfmake-menu-list-item-link:nth-child(4) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(8) .ttfmake-menu-list-item,
+	.ttfmake-menu-list-item-link:nth-child(12) .ttfmake-menu-list-item {
+		border-right: 0;
+	}
+}
+.ttfmake-menu-list-item-link {
+	display: block;
+}
+.ttfmake-menu-list-item-link-icon-wrapper {
+	background: #ffffff center center/58px 50px no-repeat;
+	border: 1px solid #dfdfdf;
+	display: inline-block;
+	height: 75%;
+	margin: 12% 13% 0 11%;
+	width: 75%;
+}
+.ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
+	border-color: #bbb;
 }
 .ttfmake-menu-list a {
-	text-decoration: none; /*reset*/
-	color: #777777 !important;
+	text-decoration: none;
+	color: #777;
 }
 .ttfmake-menu-list a:hover {
-	color: #333333 !important;
+	color: #333;
 }
 .ttfmake-menu-list a .ttfmake-menu-list-item-link-icon {
 	display: block;
@@ -89,110 +104,51 @@
 .ttfmake-menu-list a:hover .ttfmake-menu-list-item-link-icon {
 	visibility: visible;
 }
-.ttfmake-menu-list-item {
-	float: left;
-	width: 50%;
-	height: 155px;
-	margin-bottom: 0; /*reset*/
-	text-align: center;
-	border-right: 1px solid #eeeeee;
-	border-bottom: 1px solid #eeeeee;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttfmake-menu-list-item:hover .ttfmake-menu-list-item-link-icon-wrapper {
-	border-color: #bbbbbb;
-}
-.ttfmake-menu-list-item:last-of-type {
-	margin-right: 0; /*reset*/
-}
-.ttfmake-menu-list-item:hover {
-	background-color: #fafafa;
-}
-@media screen and (min-width: 1160px) {
-	.ttfmake-menu-list-item {
-		width: 25%;
-	}
-	.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
-		border-right: 1px solid #eeeeee;
-	}
-	.ttfmake-menu-list-item-link:nth-child(4) .ttfmake-menu-list-item,
-	.ttfmake-menu-list-item-link:nth-child(8) .ttfmake-menu-list-item,
-	.ttfmake-menu-list-item-link:nth-child(12) .ttfmake-menu-list-item {
-		border-right: 0; /*reset*/
-	}
-}
-.ttfmake-menu-list-item a {
-	color: #21759b;
-}
-.ttfmake-menu-list-item a:hover {
-	color: #d54e21;
-}
-.ttfmake-menu-list-item-link {
-	display: block;
-}
-.ttfmake-menu-list-item-link-icon-wrapper {
-	display: inline-block;
-	width: 84px;
-	height: 74px;
-	margin-top: 25px;
-	margin-left: 25px;
-	margin-right: 25px;
-	background-color: #ffffff;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 70px 60px;
-	border: 1px solid #dfdfdf;
-}
 .section-type-description {
-	margin-top: 18px;
+	margin-top: 15px;
+	padding-bottom: 15px;
 }
-/*---------------------------------------------------------
- Sortable handle (builder.css)
--------------------------------------------------------- */
-.ttfmake-sortable-handle {
-	position: relative;
-	width: 100%;
-	height: 20px;
-	border: 1px solid #d9d9d9;
-	border-bottom: 0; /*reset*/
-	background-color: #eee;
-	cursor: move;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.section-type-description p {
+	display: none;
+	position: absolute;
+	bottom: -44px;
+	background: #333;
+	margin: 0 0 0 -50%;
+	width: 200%;
+	min-height: 38px;
+	color: #fff;
+	padding: 3px;
+	z-index: 99163;
+	border: 1px solid #eee;
 }
-.sortable-background,
-.ttfmp-widget-list li .sortable-background {
+.ttfmake-menu-list-item:hover .section-type-description p {
 	display: block;
-	height: 18px;
-	background: url(images/sortable-background.png) center center repeat-x;
-	opacity: .5;
 }
-.ttfmake-gallery-item:hover .sortable-background,
-.ttfmake-text-column:hover .sortable-background.column-sortable-background,
-.ttfmake-banner-slide:hover .sortable-background {
-	opacity: 1; /*reset*/
+@media screen and (max-width: 1160px) {
+	.ttfmake-menu-list-item .section-type-description p {
+		width: 97%;
+		margin-left: 0;
+	}
+}
+.ttfmake-menu-list h4 {
+	margin: 0;
+	font-size: 1em;
+}
+.ttfmake-menu-tab {
+	display: none;
 }
 /*---------------------------------------------------------
- Forms (builder.css)
+ Stage (builder.css)
 -------------------------------------------------------- */
-.ttfmake-section input[type=checkbox],
-.ttfmake-section input[type=radio],
-.ttfmake-section input[type=search],
-.ttfmake-section input[type=number],
-.ttfmake-section input[type=text],
-.ttfmake-section textarea {
-	-webkit-box-shadow: none; /*reset*/
-	box-shadow: none; /*reset*/
+ .ttfmake-stage {
+	clear: both;
+	padding-top: 10px;
 }
-.ttfmake-section input[type=text]:focus,
-.ttfmake-section input[type=number]:focus {
-	border-color: #ddd;
+.ttfmake-stage-closed {
+	padding-top: 0;
 }
-.ttfmake-configuration-overlay-input-wrap select {
-	border: 1px solid #ddd;
+.ttfmake-stage .sortable-placeholder {
+	margin-bottom: 10px;
 }
 /*---------------------------------------------------------
  Sections (builder.css)
@@ -201,37 +157,16 @@
 	overflow: hidden;
 	width: 100%;
 	margin-bottom: 10px;
-	border-bottom: 0; /*reset*/
+	border-bottom: 0;
 	background-color: #fff;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttfmake-section-body {
-	display: none;
-	float: left;
-	width: 100%;
-	padding: 20px 20px 40px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .ttfmake-section-open {
-	margin-bottom: 40px;
-}
-.ttfmake-section-open .ttfmake-section-body {
-	display: block; /*reset*/
-}
-.ttfmake-section-header-title {
-	max-width: 90%;
-	display: inline-block;
-}
-.ttfmake-section h4 {
-	margin: 20px 0 10px;
-	font-size: 13px;
+	margin-bottom: 0;
 }
 .ttfmake-section-header {
 	cursor: move;
+	position: relative;
 }
 .ttfmake-section-header h3 {
 	float: left;
@@ -244,19 +179,17 @@
 	border-top: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
 	background-color: #eee;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	 -webkit-transition: background-color 300ms ease;
-    -moz-transition: background-color 300ms ease;
-    -o-transition: background-color 300ms ease;
-    -ms-transition: background-color 300ms ease;
     transition: background-color 300ms ease;
 }
 .ttfmake-section-open .ttfmake-section-header h3 {
 	color: #fff;
 	border-color: #222;
 	background-color: #222;
+}
+.ttfmake-section-header-title {
+	max-width: 90%;
+	display: inline-block;
 }
 .ttfmake-section-header span {
 	font-weight: bold;
@@ -269,20 +202,30 @@
 }
 .ttfmake-section-open .ttfmake-section-header em {
 	color: #bbb;
+} 
+.ttfmake-section-body {
+	display: none;
+	float: left;
+	width: 100%;
+	padding: 20px 20px;
+	box-sizing: border-box;
+}
+.ttfmake-section-open .ttfmake-section-body {
+	display: block;
 }
 .ttfmake-section .handlediv {
 	position: relative;
 	height: 32px;
 	border-left: 1px solid #d9d9d9;
 }
+.ttfmake-section-open .handlediv {
+    border-left-color: #999;
+}
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section .handlediv {
 		height: 48px;
-		margin-top: 0; /*reset*/
+		margin-top: 0;
 	}
-}
-.ttfmake-section-open .handlediv {
-	border-left-color: #999;
 }
 .ttfmake-section-toggle:focus {
 	border: none !important;
@@ -290,8 +233,11 @@
 .ttfmake-section-toggle .handlediv,
 .ttfmake-banner-slide-toggle .handlediv {
 	top: -45px;
-	right: 0; /*reset*/
+	right: 0;
 	margin-bottom: -45px;
+}
+.ttfmake-section-open .ttfmake-banner-slide-toggle .handlediv {
+	border-left: 1px solid #d9d9d9;
 }
 @media screen and ( max-width: 782px ) {
 	.ttfmake-section-toggle .handlediv,
@@ -318,748 +264,113 @@
 		top: 5px;
 	}
 }
-.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:hover:before,
-.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
+.ttfmake-section .ttfmake-section-header .handlediv:hover:before,
+.ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
 	color: #222;
 }
-.ttfmake-stage .ttfmake-section-open .ttfmake-section-header .handlediv:hover:before,
-.ttfmake-stage .ttfmake-section-open .ttfmake-banner-slide-header .handlediv:hover:before {
+.ttfmake-section-open .ttfmake-section-header .handlediv:hover:before,
+.ttfmake-section-open .ttfmake-banner-slide-header .handlediv:hover:before {
 	color: #fff;
 }
-.ttfmake-stage .ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
-.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
+.ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
+.ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
 	content: '\f142';
 }
-.ttfmake-media-link-wrap {
-	margin-bottom: 8px;
-}
-.ttfmake-media-uploader-add {
-	display: inline-block;
-	cursor: pointer;
-}
-.ttfmake-section-open .ttfmake-builder-section-link,
-.ttfmake-section:hover .ttfmake-builder-section-link {
-	visibility: visible;
-}
-.ttfmake-builder-section-link {
-	visibility: hidden;
-}
-/*---------------------------------------------------------
- Sections header buttons (builder.css)
--------------------------------------------------------- */
-.ttf-make-section-header-button-wrapper {
-	position: absolute;
-	right: 45px;
-}
-.ttfmake-section-remove,
-.ttfmake-section-configure,
-.ttfmp-duplicate-section {
-	display: inline-block;
-	height: 100%;
-	padding: 0 10px 0 7px;
-	color: #aaa;
-	text-decoration: none;  /*reset*/
-}
-.ttfmake-section-open .ttfmake-section-remove,
-.ttfmake-section-open .ttfmake-section-configure,
-.ttfmake-section-open .ttfmp-duplicate-section {
-	color: #bbb;
-}
-/*---------------------------------------------------------
- Hide Configure Section button when closed (builder.css)
--------------------------------------------------------- */
-.ttfmake-section .ttfmake-section-configure {
-	display: none;
-}
-.ttfmake-section-open .ttfmake-section-configure {
-	display: inline-block;
-}
-/*---------------------------------------------------------
- Hide button labels (builder.css)
--------------------------------------------------------- */
-.ttfmake-section-remove span,
-.ttfmake-section-configure span,
-.ttfmp-duplicate-section span {
-	display: none; /*reset*/
-	text-indent: -9999px;
-	white-space: nowrap;
-	overflow: hidden;
-}
-/*---------------------------------------------------------
- Section header buttons hover state (builder.css)
--------------------------------------------------------- */
-.ttfmake-section-remove:hover,
-.ttfmake-section-configure:hover,
-.ttfmp-duplicate-section:hover {
-	color: #222;
-}
-.ttfmake-section-open .ttfmake-section-remove:hover,
-.ttfmake-section-open .ttfmake-section-configure:hover,
-.ttfmake-section-open .ttfmp-duplicate-section:hover {
-	color: #fff;
-}
-/*---------------------------------------------------------
- Section header icons (builder.css)
--------------------------------------------------------- */
-.ttfmake-section-remove:before,
-.ttfmake-section-configure:before,
-.ttfmp-duplicate-section:before {
+.wsuwp-column-toggle .handlediv:before {
+	content: '\f142';
+	color: #777;
 	font: 400 20px/40px dashicons;
-	speak: none; /*reset*/
-}
-.ttfmake-section-remove:before {
-	content: "\f182";
 	position: absolute;
-	right: 5px;
-	top: 9px;
+	right: 9px;
+	top: -4px;
 }
-.spine-builder-section-configure:before,
-.ttfmake-section-configure:before {
-	content: "\f111";
-	position: absolute;
-	right: 10px;
-	top: 8px;
+.wsuwp-column-toggle .wsuwp-toggle-closed:before {
+	content: '\f140';
 }
-.ttfmp-duplicate-section:before {
-	content: "\f105";
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-section-remove:before,
-	.ttfmake-section-configure:before,
-	.ttfmp-duplicate-section:before {
-		line-height: 48px;
-	}
+.wsuwp-column-toggle .handlediv {
+	background: #eee;
+	width: 27px;
+	height: 29px;
+	border-left-color: #cbcbcb;
 }
 /*---------------------------------------------------------
- Media placeholder (builder.css)
+ Forms (builder.css)
 -------------------------------------------------------- */
-.ttfmake-media-uploader-placeholder {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 220px;
-	border: 1px solid #dfdfdf;
-	background-color: #fafafa;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.ttfmake-section input[type=checkbox],
+.ttfmake-section input[type=radio],
+.ttfmake-section input[type=search],
+.ttfmake-section input[type=number],
+.ttfmake-section input[type=text],
+.ttfmake-section textarea {
+	box-shadow: none;
+}
+.ttfmake-section input[type=text]:focus,
+.ttfmake-section input[type=number]:focus {
+	border-color: #ddd;
 }
 /*---------------------------------------------------------
- Media placeholder icon (builder.css)
+ Header buttons (builder.css)
 -------------------------------------------------------- */
-.ttfmake-media-uploader-placeholder:before {
-	content: "\f128";
-	display: block;
-	color: #d9d9d9;
-	font: 60px/220px dashicons;
-	text-align: center;
-}
-/*---------------------------------------------------------
- Media placeholder hover state (builder.css)
--------------------------------------------------------- */
-.ttfmake-media-uploader-placeholder:hover:before {
-	color: #c7c7c7;
-}
-.ttfmake-media-uploader-placeholder img {
-	position: absolute;
-	max-width: 100%;
-	max-height: 228px;
-	width: auto;
-	height: auto;
-	top: 0; /*reset*/
-	right: 0; /*reset*/
-	bottom: 0; /*reset*/
-	left: 0; /*reset*/
-	margin: auto;
-	padding: 8px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttfmake-section-body iframe {
-	background: #fff !important;
-}
-/*---------------------------------------------------------
- Media placeholder if has image set (builder.css)
--------------------------------------------------------- */
-.ttfmake-has-image-set {
-	background-color: #fff;
-}
-.ttfmake-has-image-set .ttfmake-media-uploader-placeholder:before {
-	content: none;
-}
-.ttfmake-has-image-set:hover .ttfmake-media-uploader-placeholder {
-	opacity: .8;
-}
-/*---------------------------------------------------------
- Overlay (builder.css)
--------------------------------------------------------- */
-.ttfmake-overlay {
-	display: none;
-	z-index: 99999;
-	position: fixed;
-	top: 0; /*reset*/
-	left: 0; /*reset*/
-	right: 0; /*reset*/
-	bottom: 0; /*reset*/
-	background: url(images/background.png) top left repeat;
-	background: rgba(0, 0, 0, 0.7) ;
-}
-.ttfmake-overlay-wrapper {
-	position: fixed !important;
-	top: 50% !important;
-	left: 50% !important;
-	min-height: 150px !important;
-	padding-bottom: 20px !important;
-	background-color: #fff;
-	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.3);
-	box-shadow: 0 3px 6px rgba(0,0,0,.3);
-	/* Fix webkit bug. @link https://github.com/mgcrea/angular-strap/issues/1234#issuecomment-61913920 */
-	-webkit-transform: translate3d(0,0,0);
-}
-.ttfmake-overlay-window-head {
-	padding: 0; /*reser*/
-	min-height: 36px;
-	background: #fcfcfc;
-}
-.ttfmake-overlay-title {
-  	width: 300px;
-	margin: 0;
-	padding: 0 36px 0 10px;
-	color: #444;
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 36px;
-	text-rendering: optimizelegibility;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.ttfmake-overlay-close {
-	display: block;
-	position: absolute;
-	top: 0; /*reset*/
-	right: 0; /*reset*/
-	padding: 0 10px;
-	font-size: 15px;
-	font-size: 15px;
-	color: #fff;
-	line-height: 37px;
-	text-align: center;
-	background-color: #1bc865;
-	cursor: pointer;
-}
-.ttfmake-configuration-overlay-input-wrap  .ttfmake-uploader {
-	width: 100%;
-}
-.ttfmake-configuration-overlay .ttfmake-overlay-wrapper {
-	margin-left: -200px;
-	width: 400px;
-}
-#ttfmake-tinymce-overlay .ttfmake-overlay-wrapper {
-	width: 800px !important;
-	height: 500px !important;
-	margin-left: -400px !important;
-	margin-top: -250px !important;
-}
-#ttfmake-tinymce-overlay .ttfmake-overlay-body {
-	overflow-y: hidden;
-}
-.ttfmake-overlay-wrapper * {
-	-webkit-font-smoothing: subpixel-antialiased !important;
-}
-.ttfmake-overlay-header {
-	border-bottom: 1px solid #dfdfdf;
-}
-.ttfmake-overlay-header h2 {
-	float: left;
-}
-.ttfmake-overlay-header .ttfmake-overlay-close {
-	float: right;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-.ttfmake-configuration-overlay-input-wrap {
-	padding: 20px 0 !important;
-	border-bottom: 1px solid #efefef !important;
-}
-.ttfmake-configuration-overlay-input-wrap {
-	zoom: 1;
-}
-.ttfmake-configuration-overlay-input-wrap:before,
-.ttfmake-configuration-overlay-input-wrap:after {
-	display: table;
-	content: "";
-}
-.ttfmake-configuration-overlay-input-wrap:after {
-	clear: both;
-}
-.ttfmake-configuration-overlay-input-wrap label {
-	position: relative;
-	top: 2px;
-	float: left;
-}
-.ttfmake-configuration-overlay-input-wrap select,
-.ttfmake-configuration-overlay-input-wrap input {
-	float: right;
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container,
-.ttfmake-configuration-overlay-input-wrap  .ttfmake-uploader {
-	clear: both;
-	float: left;
-	width: 100%;
-	margin-top: 20px;
-}
-.ttfmake-configuration-overlay-input-wrap input[type=checkbox] {
-	position: relative;
-	top: 5px;
-}
-.ttfmake-configuration-description {
-	float: left;
-	margin-top: 20px;
-	color: #666;
-	font-style: italic;
-}
-.ttfmake-configuration-overlay-input-wrap select,
-.ttfmake-configuration-overlay-input-wrap input {
-	margin-left: auto;
-}
-.ttfmake-overlay-body {
-	padding: 20px !important;
-	clear: both;
-	overflow-y: scroll;
-	max-height: 500px;
-}
-.ttfmake-overlay-body .ttfmake-configuration-overlay-input-wrap:last-of-type {
-	padding-bottom: 0 !important;
-	border-bottom: 0 !important;
-}
-.ttfmake-configuration-title {
-	width: 100%;
-	height: 41px;
-	padding: 0 8px;
-	font-size: 19px;
-}
-.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-title-wrap {
-	padding-top: 0 !important; /*reset*/
-	border-bottom: 0 !important; /*reset*/
-}
-.ttfmake-configuration-overlay-input-wrap.ttfmake-configuration-media-wrap {
-	display: block; /*reset*/
-	clear: both;
-	width: 100%;
-}
-/*---------------------------------------------------------
- Color picker (builder.css)
--------------------------------------------------------- */
-.wp-color-result.wp-picker-open:after {
-	display: none;
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .button {
-	margin-left: 0; /*reset*/
-	margin-right: 4px; /*reset*/
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .wp-picker-holder {
-	margin-left: -8px;
-}
-.ttfmake-configuration-overlay-input-wrap .wp-picker-container .iris-picker {
-	border: 0; /*reset*/
-}
-/*---------------------------------------------------------
- iFrame (builder.css)
--------------------------------------------------------- */
-.ttfmake-iframe-wrapper {
-	position: relative;
-	border: 1px solid #ddd;
-}
-.ttfmake-iframe-wrapper iframe {
-	overflow: hidden;
-	padding: 12px !important; /*12px+8px from body*/
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-.ttfmake-iframe-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%; /* same as iframe */
-	height: 300px; /* same as iframe */
-}
-.ttfmake-iframe-overlay .edit-content-link {
-	display: block;
-	width: 100%;
-	height: 100%;
-}
-/*---------------------------------------------------------
- Media Modal (builder.css)
--------------------------------------------------------- */
-.ttfmake-remove-current-image {
-	display: none;
-}
-.ttfmake-builder-uploader .ttfmake-remove-current-image {
-	display: block;
-	float: left;
-}
-.ttfmake-builder-uploader .ttfmake-remove-current-image a.ttfmake-remove-image-from-modal {
-	color: #bc0b0b;
-	text-decoration: none; /*reset*/
-}
-.ttfmake-builder-uploader .ttfmake-remove-current-image a.ttfmake-remove-image-from-modal:hover {
-	color: red;
-}
-
-/** inc/builder/sections/css/sections.css **/
-
-/*---------------------------------------------------------
- Text and Gallery section (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-text-column,
-.ttfmake-gallery-item {
-	margin-bottom: 40px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-@media screen and ( min-width: 1160px ) {
-	.ttfmake-text-column,
-	.ttfmake-gallery-item {
-		margin-bottom: 0; /*reset*/
-	}
-}
-.ttfmake-section .ttfmake-gallery-items-stage .sortable-placeholder {
-	margin-bottom: 38px;
-}
-.ttfmake-plus-info {
-	float: left;
-}
-/*---------------------------------------------------------
- Text and Gallery: One column (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-text-columns-1 .ttfmake-text-column-position-2,
-.ttfmake-text-columns-1 .ttfmake-text-column-position-3,
-.ttfmake-text-columns-1 .ttfmake-text-column-position-4 {
-	display: none;
-}
-.ttfmake-text-columns-1 .ttfmake-sortable-handle {
-	visibility: hidden;
-}
-/*---------------------------------------------------------
- Text and Gallery: Two column (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-text-columns-2 .ttfmake-text-column-position-3,
-.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
-	display: none;
-}
-.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
-	width: 100%;
-}
-@media screen and ( min-width: 1160px ) {
-	.ttfmake-text-columns-2 .ttfmake-text-column,
-	.ttfmake-gallery-columns-2 .ttfmake-gallery-item {
-		width: 50%;
-		float: left;
-		padding: 0 10px;
-	}
-	.ttfmake-text-columns-2 .ttfmake-text-column-position-3,
-	.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
-		width: 0;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2 .sortable-placeholder,
-	.ttfmake-gallery-items-stage.ttfmake-gallery-columns-2 .sortable-placeholder {
-		width: 50%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-fourth .sortable-placeholder{
-		width: 25%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-one-third .sortable-placeholder{
-		width: 33.3333%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-two-thirds .sortable-placeholder{
-		width: 66.3333%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-2.current-item-three-fourths .sortable-placeholder{
-		width: 75%;
-	}
-}
-/*---------------------------------------------------------
- Text and Gallery: Three column (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-text-columns-3 .ttfmake-text-column-position-4 {
-	display: none;
-}
-.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
-	width: 100%;
-}
-@media screen and ( min-width: 1160px ) {
-	.ttfmake-text-columns-3 .ttfmake-text-column,
-	.ttfmake-gallery-columns-3 .ttfmake-gallery-item {
-		width: 33.3333%;
-		float: left;
-		padding: 0 10px;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-3 .sortable-placeholder,
-	.ttfmake-gallery-items-stage.ttfmake-gallery-columns-3 .sortable-placeholder {
-		width: 33.3333%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-fourth .sortable-placeholder{
-		width: 25%;
-	}
-	.ttfmake-text-columns-stage.ttfmake-text-columns-3.current-item-one-half .sortable-placeholder{
-		width: 50%;
-	}
-}
-.ttfmake-text-columns-3 .ttfmake-media-button-text {
-	display: none;  /*reset*/
-}
-/*---------------------------------------------------------
- Text and Gallery: Four column (html-builder.css)
--------------------------------------------------------- */
-@media screen and ( min-width: 1260px ) {
-	.ttfmake-text-columns-4 .ttfmake-text-column,
-	.ttfmake-gallery-columns-4 .ttfmake-gallery-item {
-		width: 25%;
-		float: left;
-		padding: 0 10px;
-	}
-}
-.ttfmake-text-columns-stage.ttfmake-text-columns-4 .sortable-placeholder,
-.ttfmake-gallery-items-stage.ttfmake-gallery-columns-4 .sortable-placeholder {
-	width: 25%;
-}
-.ttfmake-text-columns-4 .ttfmake-media-button-text {
-	display: none;  /*reset*/
-}
-/*---------------------------------------------------------
- Banner (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-banner-slide {
-	margin-bottom: 10px;
-}
-
-.ttfmake-banner-slide-body {
-	padding: 12px;
-}
-.ttfmake-banner-slides .ttfmake-banner-slide-header h3 {
-	background-color: #eee;
-}
-
-.ttfmake-section-open .ttfmake-banner-slide-toggle .handlediv {
-	border-left: 1px solid #d9d9d9;
-}
-
-#poststuff .ttfmake-banner-slide-header h3 {
-	line-height: 40px;
-	padding-top: 0;
-	padding-bottom: 0;
-}
-
-.ttfmake-banner-options {
-	float: left;
-	width: 100%;
-	margin-top: 0;
-}
-.ttfmake-banner-options-container {
-	float: left;
-	margin-right: 40px;
-}
-.ttfmake-banner-options-title {
-	margin-top: 8px;
-}
-/*---------------------------------------------------------
- Banner: Slide  (html-builder.css)
--------------------------------------------------------- */
-@media screen and ( min-width: 1160px ) {
-	.ttfmake-banner-slide-option-wrapper,
-	.ttfmake-banner-slide-background-image-wrapper,
-	.ttfmake-gallery-background-image-wrapper,
-	.ttfmake-gallery-background-options-wrapper {
-		width: 50%;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-	.ttfmake-banner-slide-option-wrapper,
-	.ttfmake-gallery-background-options-wrapper {
-		float: right;
-		padding-left: 20px;
-	}
-	.ttfmake-banner-slide-background-image-wrapper,
-	.ttfmake-gallery-background-image-wrapper {
-		float: left;
-	}
-}
-.ttfmake-banner-slide-header h3 em {
-	font-weight: normal; /*reset*/
-	color: #999999;
-}
-.ttfmake-add-slide-wrapper,
-.ttfmake-add-gallery-item-wrapper {
-	margin-bottom: 20px;
-}
-.ttfmake-add-slide-wrapper a:before,
-.ttfmake-add-gallery-item-wrapper a:before {
-	content: "\f132";
-	font-family: Dashicons;
-	position: relative;
-	top: 1px;
-	padding-right: 4px;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-add-slide-wrapper a:before,
-	.ttfmake-add-gallery-item-wrapper a:before {
-		top: 3px;
-	}
-}
-.ttfmake-banner-slide .ttfmake-banner-slide-body {
-	display: none;
-}
-.ttfmake-banner-slide-open .ttfmake-banner-slide-body {
-	display: block;
-}
-.ttfmake-stage .ttfmake-banner-slides .sortable-placeholder {
-	width: 100%;
-	margin-bottom: 8px;
-}
-/*---------------------------------------------------------
- Gallery (html-builder.css)
--------------------------------------------------------- */
-.ttfmake-gallery-items-stage {
-	float: left;
-	width: 100%;
-}
-.ttfmake-gallery-item {
-	margin-bottom: 40px;
-}
-.ttfmake-columns-select-wrapper,
-.ttfmake-captions-select-wrapper,
-.ttfmake-aspect-select-wrapper{
-	display: inline-block;
-	float: right;
-	margin-left: 20px;
-	padding: 0 0 12px;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-columns-select-wrapper,
-	.ttfmake-captions-select-wrapper,
-	.ttfmake-aspect-select-wrapper{
-		display: block;
-		float: none;
-		margin: 0; /*reset*/
-	}
-}
-#poststuff .ttfmake-large-title {
-	padding-top: 12px;
-	border-top: 1px solid #dfdfdf;
-}
-#poststuff .ttfmake-large-title:before {
-	content: "\f108";
-	font-family: Dashicons;
-	position: relative;
-	top: 7px;
-	font-size: 30px;
-}
-.ttfmake-gallery-background-options-wrapper label {
-	vertical-align: top;
-}
-.ttfmake-gallery-item-description-wrapper textarea {
-	width: 100%;
-	height: 75px;
-}
-.ttfmake-gallery-background-options-container {
-	float: left;
-	width: 100%;
-}
-/*---------------------------------------------------------
- Quick Start info (sections.css)
--------------------------------------------------------- */
-.ttfmp-import-message-hide {
-	display: none;
-}
-.ttfmake-default-active .ttfmp-import-message {
-	display: none;
-}
-
-/** builder-templates/css/sections.css **/
-/*---------------------------------------------------------
- Set a default position for the configure and remove icons.
---------------------------------------------------------- */
 .spine-builder-column-configure,
 .spine-builder-section-configure,
 .ttfmake-section-remove {
-	position: absolute;
-	top: 0;
-	right: 40px;
-}
-
-/*---------------------------------------------------------
- Styles for the configure/gear icon attached to a section.
---------------------------------------------------------- */
-.spine-builder-column-configure,
-.spine-builder-section-configure {
+	color: #aaa;
 	display: inline-block;
 	height: 100%;
 	padding: 0 7px 0 7px;
-	color: #aaa;
-	text-decoration: none;  /*reset*/
+	position: absolute;
+	right: 40px;
+	text-decoration: none;
+	top: 0;
 }
 
 .spine-builder-section-configure {
 	right: 68px;
 }
-
-/*---------------------------------------------------------
- Hide Configure Section button when closed (builder.css)
--------------------------------------------------------- */
 .ttfmake-section .spine-builder-section-configure {
 	display: none;
 }
 .ttfmake-section-open .spine-builder-section-configure {
 	display: inline-block;
 }
-
-/*---------------------------------------------------------
- Hide button labels (builder.css)
--------------------------------------------------------- */
 .spine-builder-column-configure span,
-.spine-builder-section-configure span {
-	display: none; /*reset*/
+.spine-builder-section-configure span,
+.ttfmake-section-remove span {
+	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
 	overflow: hidden;
 }
-/*---------------------------------------------------------
- Section header buttons hover state (builder.css)
--------------------------------------------------------- */
 .spine-builder-column-configure:hover,
-.spine-builder-section-configure:hover {
+.spine-builder-section-configure:hover.
+.ttfmake-section-remove:hover {
 	color: #222;
 }
-
-.ttfmake-section-open .spine-builder-section-configure:hover {
+.ttfmake-section-open .spine-builder-section-configure:hover,
+.ttfmake-section-open .ttfmake-section-remove:hover {
 	color: #fff;
 }
-/*---------------------------------------------------------
- Section header icons (builder.css)
--------------------------------------------------------- */
+.spine-builder-column-configure:hover {
+	color: #222;
+}
+.spine-builder-column-configure:before,
+.spine-builder-section-configure:before,
+.ttfmake-section-remove:before {
+	font: 400 20px/40px dashicons;
+	speak: none;
+}
 .spine-builder-column-configure:before,
 .spine-builder-section-configure:before {
-	font: 400 20px/40px dashicons;
-	speak: none; /*reset*/
 	content: "\f111";
 }
-
-.spine-builder-column-configure:before {
-	font: 400 20px/30px dashicons;
+.spine-builder-section-configure:before {
+	position: absolute;
+	right: 10px;
+	top: 8px;
 }
-
+.spine-builder-column-configure:before {
+    font: 400 20px/30px dashicons;
+}
 .ttfmake-section-wsuwpheader .spine-builder-column-configure {
 	right: 0;
 	background: #eee;
@@ -1071,14 +382,60 @@
 .ttfmake-section-wsuwpheader .spine-builder-column-configure:before {
 	font: 400 20px/40px dashicons;
 }
-
-@media screen and ( max-width: 782px ) {
-	.spine-builder-column-configure:before,
-	.spine-builder-section-configure:before {
-		line-height: 48px;
+.ttfmake-section-remove:before {
+	content: "\f182";
+	position: absolute;
+	right: 5px;
+	top: 9px;
+}
+/*---------------------------------------------------------
+ Columns (html-builder.css)
+-------------------------------------------------------- */
+@media screen and ( min-width: 1160px ) {
+	.wsuwp-spine-builder-column {
+		float: left;
+		margin-bottom: 0;
+		padding: 0 10px;
+		width: 100%;
 	}
 }
-
+.wsuwp-spine-builder-column {
+	box-sizing: border-box;
+	padding-bottom: 20px;
+	margin-bottom: 40px;
+	width: 100%;
+}
+.wsuwp-builder-column-title {
+	width: 120px;
+	margin: 0 auto;
+	background: none;
+	text-align: center;
+	color: #777;
+	font-size: 13px;
+	line-height: 30px;
+}
+/*---------------------------------------------------------
+ Sortable handle (builder.css)
+-------------------------------------------------------- */
+.ttfmake-sortable-handle {
+	position: relative;
+	width: 100%;
+	height: 30px;
+	border: 1px solid #d9d9d9;
+	border-bottom: 0;
+	background-color: #eee;
+	cursor: move;
+	box-sizing: border-box;
+}
+.sortable-background {
+	display: block;
+	height: 30px;
+	background-image: none;
+	opacity: 1;
+}
+/*---------------------------------------------------------
+ Section and column configuraton (sections.css)
+-------------------------------------------------------- */
 .spine-builder-column-overlay,
 .spine-builder-overlay {
 	display: none;
@@ -1090,7 +447,6 @@
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.7);
 }
-
 .spine-builder-column-overlay-wrapper,
 .spine-builder-overlay-wrapper {
 	position: fixed !important;
@@ -1103,28 +459,21 @@
 	min-height: 150px !important;
 	padding-bottom: 20px !important;
 	background-color: #fff;
-	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.3);
 	box-shadow: 0 3px 6px rgba(0,0,0,.3);
-	/* Fix webkit bug. @link https://github.com/mgcrea/angular-strap/issues/1234#issuecomment-61913920 */
-	-webkit-transform: translate3d(0,0,0);
 }
-
 .spine-builder-column-overlay-wrapper {
 	height: 310px;
 	margin-top: -100px;
 }
-
 .spine-builder-overlay-header {
-	padding: 0; /*reset*/
+	padding: 0;
 	min-height: 36px;
 	background: #fcfcfc;
 	border-bottom: 1px solid #dfdfdf;
 }
-
 .spine-builder-overlay-header h2 {
 	float: left;
 }
-
 .spine-builder-overlay-title {
 	width: 300px;
 	margin: 0;
@@ -1138,13 +487,12 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
 .spine-builder-column-overlay-close,
 .spine-builder-overlay-close {
 	display: block;
 	position: absolute;
-	top: 0; /*reset*/
-	right: 0; /*reset*/
+	top: 0;
+	right: 0;
 	padding: 0 10px;
 	font-size: 15px;
 	font-size: 15px;
@@ -1154,207 +502,154 @@
 	background-color: #00a5bd;
 	cursor: pointer;
 }
-
 .spine-builder-overlay-body {
 	padding: 5px 20px 20px 20px !important;
 	clear: both;
 	overflow-y: hidden;
 	max-height: 500px;
 }
-
 .spine-builder-overlay-open {
 	display: block;
 }
-
 .spine-builder-column-overlay-wrapper *,
 .spine-builder-overlay-wrapper * {
 	-webkit-font-smoothing: subpixel-antialiased !important;
 }
-
-.spine-builder-overlay-header .spine-builder-column-overlay-close,
-.spine-builder-overlay-header .spine-builder-overlay-close {
-	float: right;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-/*---------------------------------------------------------
- Text and Gallery section (html-builder.css)
--------------------------------------------------------- */
-.wsuwp-spine-builder-column{
-	margin-bottom: 40px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-@media screen and ( min-width: 1160px ) {
-	.wsuwp-spine-builder-column {
-		margin-bottom: 0; /*reset*/
-	}
-}
-
-/*---------------------------------------------------------
- Text and Gallery: Two column (html-builder.css)
--------------------------------------------------------- */
-.wsuwp-spine-builder-column .wsuwp-spine-builder-column-position-2,
-.ttfmake-text-columns-2 .ttfmake-text-column-position-4 {
-	display: none;
-}
-@media screen and ( min-width: 1160px ) {
-	.wsuwp-spine-builder-column {
-		width: 100%;
-		float: left;
-		padding: 0 10px;
-	}
-}
-
-.wsuwp-spine-builder-column {
-	width: 100%;
-	padding-bottom: 20px;
-}
-
 .wsuwp-builder-meta label {
 	font-weight: 700;
 	line-height: 2rem;
 }
-
 .wsuwp-builder-meta {
 	width: 100%;
 	margin-top: 10px;
 }
-
-.wsuwp-builder-column-title {
-	width: 120px;
-	margin: 0 auto;
-	background: none;
-	text-align: center;
-	color: #777;
-	font-size: 13px;
-	line-height: 30px;
+/*---------------------------------------------------------
+ Banner (html-builder.css)
+-------------------------------------------------------- */
+.ttfmake-add-slide-wrapper {
+	margin-bottom: 20px;
 }
-
-.wsuwp-column-toggle .handlediv:before {
-	content: '\f142';
-	color: #777;
-	font: 400 20px/40px dashicons;
-	position: absolute;
-	right: 9px;
-	top: -4px;
-}
-
-.wsuwp-column-toggle .wsuwp-toggle-closed:before {
-	content: '\f140';
-}
-
-.wsuwp-column-toggle .handlediv {
-	background: #eee;
-	width: 27px;
-	height: 29px;
-	border-left-color: #cbcbcb;
-}
-
-.ttfmake-menu-tab {
-	display: none;
-}
-
-.ttfmake-section-header {
+.ttfmake-add-slide-wrapper a:before {
+	content: "\f132";
+	font-family: Dashicons;
 	position: relative;
+	top: 1px;
+	padding-right: 4px;
 }
-
-.ttfmake-menu-list h4 {
-	font-size: 1em;
+@media screen and ( max-width: 782px ) {
+	.ttfmake-add-slide-wrapper a:before {
+		top: 3px;
+	}
 }
-
-.section-type-description {
-	margin-top: 15px;
-	padding-bottom: 15px;
+.ttfmake-banner-slide {
+	margin-bottom: 10px;
 }
-
-.section-type-description p {
+.ttfmake-banner-slide-body {
 	display: none;
-	position: absolute;
-	bottom: -44px;
-	background: #333;
-	margin-top: 0;
-	width: 200%;
-	min-height: 38px;
-	margin-left: -50%;
-	color: #fff;
-	padding: 3px;
-	margin-bottom: 0;
-	z-index: 99163;
-	border: 1px solid #eee;
+	padding: 12px;
 }
-
-.ttfmake-menu-list-item:hover .section-type-description p {
+.ttfmake-banner-slide-open .ttfmake-banner-slide-body {
 	display: block;
 }
-
-.ttfmake-menu-list-item {
+.ttfmake-banner-slides .ttfmake-banner-slide-header h3 {
+	background-color: #eee;
+}
+#poststuff .ttfmake-banner-slide-header h3 {
+	line-height: 40px;
+	padding: 0;
+	padding-bottom: 0;
+}
+.ttfmake-banner-slide-header h3 em {
+	font-weight: normal;
+	color: #999;
+}
+@media screen and ( min-width: 1160px ) {
+	.ttfmake-banner-slide-option-wrapper,
+	.ttfmake-banner-slide-background-image-wrapper {
+		width: 50%;
+		box-sizing: border-box;
+	}
+	.ttfmake-banner-slide-option-wrapper {
+		float: right;
+		padding-left: 20px;
+	}
+	.ttfmake-banner-slide-background-image-wrapper {
+		float: left;
+	}
+}
+.ttfmake-media-uploader-add {
+	display: inline-block;
+	cursor: pointer;
+}
+.ttfmake-media-uploader-placeholder {
 	position: relative;
-	float: left;
-	width: 50%;
-	height: 100%;
-	margin-bottom: 0; /*reset*/
-	text-align: center;
-	border-right: 1px solid #eeeeee;
-	border-bottom: 1px solid #eeeeee;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+	display: block;
+	width: 100%;
+	height: 220px;
+	border: 1px solid #dfdfdf;
+	background-color: #fafafa;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 	box-sizing: border-box;
 }
-
-@media screen and (min-width: 1160px) {
-	.ttfmake-menu-list-item {
-		width: 12.5%;
-	}
-	.ttfmake-menu-list-item-link:nth-child(even) .ttfmake-menu-list-item {
-		border-right: 1px solid #eeeeee;
-	}
-	.ttfmake-menu-list-item-link:nth-child(4) .ttfmake-menu-list-item,
-	.ttfmake-menu-list-item-link:nth-child(8) .ttfmake-menu-list-item,
-	.ttfmake-menu-list-item-link:nth-child(12) .ttfmake-menu-list-item {
-		border-right: 0; /*reset*/
-	}
-}
-@media screen and (max-width: 1160px) {
-	.ttfmake-menu-list-item .section-type-description p {
-		width: 97%;
-		margin-left: 0;
-	}
-}
-
-.ttfmake-menu-list-item-link-icon-wrapper {
-	display: inline-block;
-	width: 75%;
-	height: 75%;
-	margin-top: 12%;
-	margin-left: 11%;
-	margin-right: 13%;
-	background-color: #ffffff;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 58px 50px;
-	border: 1px solid #dfdfdf;
-}
-
-.ttfmake-sortable-handle {
-	height: 30px;
-}
-
-.sortable-background, .ttfmp-widget-list li .sortable-background {
+.ttfmake-media-uploader-placeholder:before {
+	content: "\f128";
 	display: block;
-	height: 30px;
-	background-image: none;
-	opacity: 1;
+	color: #d9d9d9;
+	font: 60px/220px dashicons;
+	text-align: center;
 }
-
-.ttfmake-section-open {
-	margin-bottom: 0;
+.ttfmake-media-uploader-placeholder:hover:before {
+	color: #c7c7c7;
 }
-
-.ttfmake-section-body {
-	padding-bottom: 20px;
+.ttfmake-media-uploader-placeholder img {
+	position: absolute;
+	max-width: 100%;
+	max-height: 228px;
+	width: auto;
+	height: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	padding: 8px;
+	box-sizing: border-box;
+}
+.ttfmake-media-link-wrap {
+	margin-bottom: 8px;
+}
+.ttfmake-banner-options {
+	float: left;
+	width: 100%;
+	margin-top: 0;
+}
+#poststuff .ttfmake-large-title {
+	padding-top: 12px;
+	border-top: 1px solid #dfdfdf;
+}
+.ttfmake-large-title:before {
+    content: "\f108";
+    font-family: Dashicons;
+    position: relative;
+    top: 7px;
+    font-size: 30px;
+}
+.ttfmake-banner-options-container {
+	float: left;
+	margin-right: 40px;
+}
+/*---------------------------------------------------------
+ Common (builder.css)
+-------------------------------------------------------- */
+.ttfmake-show {
+	display: block;
+}
+.ttfmake-hide {
+	display: none;
+}
+.ttfmake-section h4 {
+    margin: 20px 0 10px;
+    font-size: 13px;
 }
