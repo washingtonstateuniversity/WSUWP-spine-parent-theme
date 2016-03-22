@@ -69,18 +69,18 @@ figure.aligncenter figcaption {
 
 /** Default Gallery Styles */
 .gallery {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
 	margin: auto;
-}
-
-.gallery:after {
-	content: '';
-	display: table;
-	clear: both;
 }
 
 .gallery .gallery-item {
 	box-sizing: border-box;
-	float: left;
 	padding: 1rem;
 	text-align: center;
 }
@@ -145,22 +145,6 @@ figure.aligncenter figcaption {
 	}
 	.gallery-item:nth-child(even) {
 		padding-right: 0;
-	}
-	.gallery-item:nth-child(2n+3) {
-		clear: both;
-	}
-}
-
-@media only screen and (min-width:694px) {
-	.gallery-columns-2 .gallery-item:nth-child(2n+3),
-	.gallery-columns-3 .gallery-item:nth-child(3n+4),
-	.gallery-columns-4 .gallery-item:nth-child(4n+5),
-	.gallery-columns-5 .gallery-item:nth-child(5n+6),
-	.gallery-columns-6 .gallery-item:nth-child(6n+7),
-	.gallery-columns-7 .gallery-item:nth-child(7n+8),
-	.gallery-columns-8 .gallery-item:nth-child(8n+9),
-	.gallery-columns-9 .gallery-item:nth-child(9n+10) {
-		clear: both;
 	}
 }
 
