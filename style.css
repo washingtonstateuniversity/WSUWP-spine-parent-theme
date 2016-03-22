@@ -69,22 +69,83 @@ figure.aligncenter figcaption {
 
 /** Default Gallery Styles */
 .gallery {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
 	margin: auto;
 }
 
 .gallery .gallery-item {
-	float: left;
-	margin-top: 10px;
-	margin-left: 10px;
+	box-sizing: border-box;
+	padding: 1rem;
 	text-align: center;
+}
+
+.gallery-columns-1 .gallery-item {
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	width: 33.333333%;
+}
+
+.gallery-columns-4 .gallery-item {
+	width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	width: 11.11%;
 }
 
 .gallery img {
 	border: 2px solid #cfcfcf;
+	box-sizing: border-box;
+	display: block;
+	margin: 0 auto;
 }
 
-.gallery .gallery-caption {
-	margin-left: 0;
+@media only screen and (max-width:693px) {
+	.gallery-columns-1 .gallery-item,
+	.gallery-columns-2 .gallery-item,
+	.gallery-columns-3 .gallery-item,
+	.gallery-columns-4 .gallery-item,
+	.gallery-columns-5 .gallery-item,
+	.gallery-columns-6 .gallery-item,
+	.gallery-columns-7 .gallery-item,
+	.gallery-columns-8 .gallery-item,
+	.gallery-columns-9 .gallery-item {
+		width: 50%;
+	}
+	.gallery-item:nth-child(odd) {
+		padding-left: 0;
+	}
+	.gallery-item:nth-child(even) {
+		padding-right: 0;
+	}
 }
 
 html {
@@ -467,7 +528,7 @@ article footer a:hover {
 		font-size: 30px;
 		right: 0.4rem;
 	}
-	
+
 }
 
 /* University Center Objects */
