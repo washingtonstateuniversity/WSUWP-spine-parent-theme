@@ -276,16 +276,24 @@
 .ttfmake-banner-slide-toggle .handlediv {
 	color: #aaa;
 }
-.ttfmake-builder-section-footer-link:hover,
 .ttfmake-section-toggle .handlediv:hover,
 .spine-builder-column-configure:hover,
 .wsuwp-column-toggle .handlediv:hover,
 .ttfmake-banner-slide-toggle .handlediv:hover {
 	color: #222;
 }
-.ttfmake-section-open .ttfmake-builder-section-footer-link:hover,
+.spine-builder-section-configure:hover,
 .ttfmake-section-open .ttfmake-section-toggle .handlediv:hover {
 	color: #fff;
+}
+.spine-builder-section-configure:focus {
+	color: #eff0f1;
+}
+.ttfmake-section-remove:hover {
+	color: #c60c30;
+}
+.ttfmake-section-remove:focus {
+	color: #981e32;
 }
 .ttfmake-section-toggle:focus {
 	border: none !important;
