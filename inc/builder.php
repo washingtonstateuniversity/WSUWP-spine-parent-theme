@@ -650,7 +650,7 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 		</select>
 		<p class="description">This header will wrap the column title. H2 by default.</p>
 	</div>
-	<div class=wsuwp-builder-meta">
+	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[column-background-image]">Background Image</label>
 		<input type="text"
 		       id="<?php echo $column_name; ?>[column-background-image]"
