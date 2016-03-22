@@ -546,6 +546,9 @@
 	display: none;
 	padding: 12px;
 }
+#poststuff .ttfmake-banner-slide-body h2 {
+	padding: 12px 0 4px 0;
+}
 .ttfmake-banner-slide-open .ttfmake-banner-slide-body {
 	display: block;
 }
@@ -606,13 +609,30 @@
 .ttfmake-media-link-wrap {
 	margin-bottom: 8px;
 }
+.ttfmake-media-uploader-set-link,
+.ttfmake-media-uploader-remove,
+.ttfmake-banner-slide-remove {
+	margin-top: 12px;
+}
+.ttfmake-media-link-wrap:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.ttfmake-media-uploader-set-link,
+.ttfmake-media-uploader-remove {
+	float: left;
+}
+.ttfmake-banner-slide-remove {
+	display: inline-block;
+}
 .ttfmake-banner-options {
 	float: left;
 	width: 100%;
 	margin-top: 0;
 }
 #poststuff .ttfmake-large-title {
-	font-weight: bold;
+	font-weight: 700;
 	padding: 12px 0;
 }
 .ttfmake-large-title:before {
@@ -633,6 +653,7 @@
 .ttfmake-show {
 	display: block;
 }
+
 .ttfmake-hide {
 	display: none;
 }
