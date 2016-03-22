@@ -72,19 +72,96 @@ figure.aligncenter figcaption {
 	margin: auto;
 }
 
+.gallery:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
 .gallery .gallery-item {
+	box-sizing: border-box;
 	float: left;
-	margin-top: 10px;
-	margin-left: 10px;
+	padding: 1rem;
 	text-align: center;
+}
+
+.gallery-columns-1 .gallery-item {
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	width: 33.333333%;
+}
+
+.gallery-columns-4 .gallery-item {
+	width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	width: 11.11%;
 }
 
 .gallery img {
 	border: 2px solid #cfcfcf;
+	box-sizing: border-box;
+	display: block;
+	margin: 0 auto;
 }
 
-.gallery .gallery-caption {
-	margin-left: 0;
+@media only screen and (max-width:693px) {
+	.gallery-columns-1 .gallery-item,
+	.gallery-columns-2 .gallery-item,
+	.gallery-columns-3 .gallery-item,
+	.gallery-columns-4 .gallery-item,
+	.gallery-columns-5 .gallery-item,
+	.gallery-columns-6 .gallery-item,
+	.gallery-columns-7 .gallery-item,
+	.gallery-columns-8 .gallery-item,
+	.gallery-columns-9 .gallery-item {
+		width: 50%;
+	}
+	.gallery-item:nth-child(odd) {
+		padding-left: 0;
+	}
+	.gallery-item:nth-child(even) {
+		padding-right: 0;
+	}
+	.gallery-item:nth-child(2n+3) {
+		clear: both;
+	}
+}
+
+@media only screen and (min-width:694px) {
+	.gallery-columns-2 .gallery-item:nth-child(2n+3),
+	.gallery-columns-3 .gallery-item:nth-child(3n+4),
+	.gallery-columns-4 .gallery-item:nth-child(4n+5),
+	.gallery-columns-5 .gallery-item:nth-child(5n+6),
+	.gallery-columns-6 .gallery-item:nth-child(6n+7),
+	.gallery-columns-7 .gallery-item:nth-child(7n+8),
+	.gallery-columns-8 .gallery-item:nth-child(8n+9),
+	.gallery-columns-9 .gallery-item:nth-child(9n+10) {
+		clear: both;
+	}
 }
 
 html {
@@ -467,7 +544,7 @@ article footer a:hover {
 		font-size: 30px;
 		right: 0.4rem;
 	}
-	
+
 }
 
 /* University Center Objects */
