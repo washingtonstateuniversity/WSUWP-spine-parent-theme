@@ -181,8 +181,8 @@
 	border-bottom: 1px solid #d9d9d9;
 	background-color: #eee;
 	box-sizing: border-box;
-    transition: background-color 300ms ease;
-    margin: 0;
+	transition: background-color 300ms ease;
+	margin: 0;
 }
 .ttfmake-section-open .ttfmake-section-header h3 {
 	color: #fff;
@@ -298,7 +298,7 @@
 	position: relative;
 }
 .postbox .ttfmake-section-open .handlediv {
-    border-left-color: #999;
+	border-left-color: #999;
 }
 .postbox .wsuwp-column-toggle .handlediv {
 	width: 27px;
@@ -403,38 +403,51 @@
 -------------------------------------------------------- */
 .spine-builder-column-overlay,
 .spine-builder-overlay {
+	background: rgba(0, 0, 0, 0.7);
 	display: none;
-	z-index: 99999;
-	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	white-space: nowrap;
+	z-index: 99999;
+	position: fixed;
+}
+.spine-builder-column-overlay:before,
+.spine-builder-overlay:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
 }
 .spine-builder-column-overlay-wrapper,
 .spine-builder-overlay-wrapper {
-	position: fixed !important;
-	width: 400px;
-	height: 520px;
-	margin-left: -200px;
-	margin-top: -200px;
-	top: 50% !important;
-	left: 50% !important;
-	min-height: 150px !important;
-	padding-bottom: 20px !important;
-	background-color: #fff;
+	background: #fff;
 	box-shadow: 0 3px 6px rgba(0,0,0,.3);
-}
-.spine-builder-column-overlay-wrapper {
-	height: 310px;
-	margin-top: -100px;
+	box-sizing: border-box;
+	display: inline-block;
+	margin-top: 37px;
+	max-height: 90%;
+	max-height: calc( 90% - 37px);
+	max-width: 400px;
+	min-height: 150px;
+	overflow: auto;
+	position: relative;
+	text-align: left;
+	vertical-align: middle;
+	white-space: normal;
+	width: 100%;
 }
 .spine-builder-overlay-header {
 	padding: 0;
 	min-height: 36px;
 	background: #fcfcfc;
 	border-bottom: 1px solid #dfdfdf;
+	margin-top: -37px;
+	max-width: 400px;
+	position: fixed;
+	width: 100%;
 }
 .spine-builder-overlay-header h2 {
 	float: left;
@@ -470,8 +483,6 @@
 .spine-builder-overlay-body {
 	padding: 5px 20px 20px 20px !important;
 	clear: both;
-	overflow-y: hidden;
-	max-height: 500px;
 }
 .spine-builder-overlay-open {
 	display: block;
@@ -605,12 +616,12 @@
 	padding: 12px 0;
 }
 .ttfmake-large-title:before {
-    content: "\f108";
-    font-family: Dashicons;
-    font-weight: normal;
-    position: relative;
-    top: 7px;
-    font-size: 30px;
+	content: "\f108";
+	font-family: Dashicons;
+	font-weight: normal;
+	position: relative;
+	top: 7px;
+	font-size: 30px;
 }
 .ttfmake-banner-options-container {
 	float: left;
@@ -626,6 +637,6 @@
 	display: none;
 }
 .ttfmake-section h4 {
-    margin: 20px 0 10px;
-    font-size: 13px;
+	margin: 20px 0 10px;
+	font-size: 13px;
 }
