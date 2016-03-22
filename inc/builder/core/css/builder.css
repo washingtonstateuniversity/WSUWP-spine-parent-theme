@@ -58,6 +58,7 @@
 	background-color: #fafafa;
 }
 .ttfmake-menu-list-item:last-of-type {
+	border-right: none;
 	margin-right: 0;
 }
 @media screen and (min-width: 1160px) {
@@ -166,10 +167,10 @@
 }
 .ttfmake-section-header {
 	cursor: move;
+	margin: 1em 0;
 	position: relative;
 }
 .ttfmake-section-header h3 {
-	float: left;
 	width: 100%;
 	color: #222;
 	font-size: 13px !important;
@@ -181,6 +182,7 @@
 	background-color: #eee;
 	box-sizing: border-box;
     transition: background-color 300ms ease;
+    margin: 0;
 }
 .ttfmake-section-open .ttfmake-section-header h3 {
 	color: #fff;
@@ -193,105 +195,29 @@
 }
 .ttfmake-section-header span {
 	font-weight: bold;
+	margin-left: 12px;
+}
+.ttfmake-section-header span:empty {
+	margin-left: 0;
 }
 .ttfmake-section-header em {
-	margin-left: 10px;
+	margin-left: 12px;
 	color: #777;
 	font-weight: normal !important;
 	font-style: normal !important;
 }
 .ttfmake-section-open .ttfmake-section-header em {
 	color: #bbb;
-} 
+}
 .ttfmake-section-body {
 	display: none;
 	float: left;
 	width: 100%;
-	padding: 20px 20px;
+	padding: 20px;
 	box-sizing: border-box;
 }
 .ttfmake-section-open .ttfmake-section-body {
 	display: block;
-}
-.ttfmake-section .handlediv {
-	position: relative;
-	height: 32px;
-	border-left: 1px solid #d9d9d9;
-}
-.ttfmake-section-open .handlediv {
-    border-left-color: #999;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-section .handlediv {
-		height: 48px;
-		margin-top: 0;
-	}
-}
-.ttfmake-section-toggle:focus {
-	border: none !important;
-}
-.ttfmake-section-toggle .handlediv,
-.ttfmake-banner-slide-toggle .handlediv {
-	top: -45px;
-	right: 0;
-	margin-bottom: -45px;
-}
-.ttfmake-section-open .ttfmake-banner-slide-toggle .handlediv {
-	border-left: 1px solid #d9d9d9;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-section-toggle .handlediv,
-	.ttfmake-banner-slide-toggle .handlediv {
-		top: -48px;
-		margin-bottom: -48px;
-	}
-}
-.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
-.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
-	content: '\f140';
-	font: 400 20px/40px dashicons;
-	width: 20px;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-	text-indent: -1px;
-	position: absolute;
-	top: -5px;
-	right: 7px;
-}
-@media screen and ( max-width: 782px ) {
-	.ttfmake-stage .ttfmake-section .ttfmake-section-header .handlediv:before,
-	.ttfmake-stage .ttfmake-section .ttfmake-banner-slide-header .handlediv:before {
-		top: 5px;
-	}
-}
-.ttfmake-section .ttfmake-section-header .handlediv:hover:before,
-.ttfmake-section .ttfmake-banner-slide-header .handlediv:hover:before {
-	color: #222;
-}
-.ttfmake-section-open .ttfmake-section-header .handlediv:hover:before,
-.ttfmake-section-open .ttfmake-banner-slide-header .handlediv:hover:before {
-	color: #fff;
-}
-.ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
-.ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
-	content: '\f142';
-}
-.wsuwp-column-toggle .handlediv:before {
-	content: '\f142';
-	color: #777;
-	font: 400 20px/40px dashicons;
-	position: absolute;
-	right: 9px;
-	top: -4px;
-}
-.wsuwp-column-toggle .wsuwp-toggle-closed:before {
-	content: '\f140';
-}
-.wsuwp-column-toggle .handlediv {
-	background: #eee;
-	width: 27px;
-	height: 29px;
-	border-left-color: #cbcbcb;
 }
 /*---------------------------------------------------------
  Forms (builder.css)
@@ -311,83 +237,122 @@
 /*---------------------------------------------------------
  Header buttons (builder.css)
 -------------------------------------------------------- */
+.ttfmake-builder-section-footer-link,
+.ttfmake-section-toggle,
 .spine-builder-column-configure,
-.spine-builder-section-configure,
-.ttfmake-section-remove {
-	color: #aaa;
-	display: inline-block;
+.wsuwp-column-toggle,
+.ttfmake-banner-slide-toggle {
 	height: 100%;
-	padding: 0 7px 0 7px;
 	position: absolute;
-	right: 40px;
 	text-decoration: none;
 	top: 0;
 }
-
-.spine-builder-section-configure {
-	right: 68px;
+.ttfmake-builder-section-footer-link,
+.spine-builder-column-configure {
+	padding: 0 10px;
 }
-.ttfmake-section .spine-builder-section-configure {
+.spine-builder-section-configure {
 	display: none;
+	right: 81px;
 }
 .ttfmake-section-open .spine-builder-section-configure {
 	display: inline-block;
 }
-.spine-builder-column-configure span,
-.spine-builder-section-configure span,
-.ttfmake-section-remove span {
+.ttfmake-section-remove {
+	right: 49px;
+}
+.ttfmake-section-toggle,
+.wsuwp-column-toggle,
+.ttfmake-banner-slide-toggle {
+	right: 0;
+}
+.spine-builder-column-configure {
+	right: 39px;
+}
+.ttfmake-builder-section-footer-link,
+.ttfmake-section-toggle .handlediv,
+.spine-builder-column-configure,
+.wsuwp-column-toggle .handlediv,
+.ttfmake-banner-slide-toggle .handlediv {
+	color: #aaa;
+}
+.ttfmake-builder-section-footer-link:hover,
+.ttfmake-section-toggle .handlediv:hover,
+.spine-builder-column-configure:hover,
+.wsuwp-column-toggle .handlediv:hover,
+.ttfmake-banner-slide-toggle .handlediv:hover {
+	color: #222;
+}
+.ttfmake-section-open .ttfmake-builder-section-footer-link:hover,
+.ttfmake-section-open .ttfmake-section-toggle .handlediv:hover {
+	color: #fff;
+}
+.ttfmake-section-toggle:focus {
+	border: none !important;
+}
+.postbox .ttfmake-section .handlediv {
+	border-left: 1px solid #d9d9d9;
+	float: none;
+	height: 32px;
+	margin: 0;
+	position: relative;
+}
+.postbox .ttfmake-section-open .handlediv {
+    border-left-color: #999;
+}
+.postbox .wsuwp-column-toggle .handlediv {
+	width: 27px;
+	height: 29px;
+	border-left-color: #cbcbcb;
+}
+.ttfmake-section-open .ttfmake-banner-slide-toggle .handlediv {
+	border-left: 1px solid #d9d9d9;
+}
+.ttfmake-builder-section-footer-link:before,
+.ttfmake-section-toggle .handlediv:before,
+.spine-builder-column-configure:before,
+.wsuwp-column-toggle .handlediv:before,
+.ttfmake-banner-slide-toggle .handlediv:before {
+	font: 400 20px/32px dashicons;
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	speak: none;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.ttfmake-builder-section-footer-link span,
+.spine-builder-column-configure span {
 	display: none;
 	text-indent: -9999px;
 	white-space: nowrap;
 	overflow: hidden;
 }
-.spine-builder-column-configure:hover,
-.spine-builder-section-configure:hover.
-.ttfmake-section-remove:hover {
-	color: #222;
-}
-.ttfmake-section-open .spine-builder-section-configure:hover,
-.ttfmake-section-open .ttfmake-section-remove:hover {
-	color: #fff;
-}
-.spine-builder-column-configure:hover {
-	color: #222;
-}
-.spine-builder-column-configure:before,
 .spine-builder-section-configure:before,
-.ttfmake-section-remove:before {
-	font: 400 20px/40px dashicons;
-	speak: none;
-}
-.spine-builder-column-configure:before,
-.spine-builder-section-configure:before {
-	content: "\f111";
-}
-.spine-builder-section-configure:before {
-	position: absolute;
-	right: 10px;
-	top: 8px;
-}
 .spine-builder-column-configure:before {
-    font: 400 20px/30px dashicons;
-}
-.ttfmake-section-wsuwpheader .spine-builder-column-configure {
-	right: 0;
-	background: #eee;
-	border: 1px solid #ccc;
-	height: 94%;
-	padding-left: 10px;
-}
-
-.ttfmake-section-wsuwpheader .spine-builder-column-configure:before {
-	font: 400 20px/40px dashicons;
+	content: "\f111";
 }
 .ttfmake-section-remove:before {
 	content: "\f182";
-	position: absolute;
-	right: 5px;
-	top: 9px;
 }
+.ttfmake-section-toggle .handlediv:before,
+.wsuwp-column-toggle .handlediv:before,
+.ttfmake-banner-slide-toggle .handlediv:before {
+	text-indent: -1px;
+	width: 20px;
+}
+.ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
+.wsuwp-column-toggle .handlediv:before,
+.ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
+	content: '\f142';
+}
+.ttfmake-section-toggle .handlediv:before,
+.wsuwp-column-toggle .wsuwp-toggle-closed:before,
+.ttfmake-banner-slide-toggle .handlediv:before {
+	content: '\f140';
+}
+
 /*---------------------------------------------------------
  Columns (html-builder.css)
 -------------------------------------------------------- */
@@ -526,6 +491,11 @@
 /*---------------------------------------------------------
  Banner (html-builder.css)
 -------------------------------------------------------- */
+@media screen and ( min-width: 1160px ) {
+	.ttfmake-section-banner .ttfmake-section-body {
+		padding: 20px 30px;
+	}
+}
 .ttfmake-add-slide-wrapper {
 	margin-bottom: 20px;
 }
@@ -542,26 +512,31 @@
 	}
 }
 .ttfmake-banner-slide {
-	margin-bottom: 10px;
+	border: 1px solid #d9d9d9;
+	margin-bottom: 20px;
 }
-.ttfmake-banner-slide-body {
-	display: none;
-	padding: 12px;
-}
-.ttfmake-banner-slide-open .ttfmake-banner-slide-body {
-	display: block;
-}
-.ttfmake-banner-slides .ttfmake-banner-slide-header h3 {
-	background-color: #eee;
+.ttfmake-banner-slide-header {
+	cursor: move;
+	position: relative;
 }
 #poststuff .ttfmake-banner-slide-header h3 {
-	line-height: 40px;
-	padding: 0;
+	background-color: #eee;
+	line-height: 32px;
+	margin: 0;
+	padding: 0 0 0 12px;
 	padding-bottom: 0;
 }
 .ttfmake-banner-slide-header h3 em {
 	font-weight: normal;
 	color: #999;
+}
+.ttfmake-banner-slide-body {
+	border-top: 1px solid #d9d9d9;
+	display: none;
+	padding: 12px;
+}
+.ttfmake-banner-slide-open .ttfmake-banner-slide-body {
+	display: block;
 }
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-banner-slide-option-wrapper,
@@ -626,12 +601,13 @@
 	margin-top: 0;
 }
 #poststuff .ttfmake-large-title {
-	padding-top: 12px;
-	border-top: 1px solid #dfdfdf;
+	font-weight: bold;
+	padding: 12px 0;
 }
 .ttfmake-large-title:before {
     content: "\f108";
     font-family: Dashicons;
+    font-weight: normal;
     position: relative;
     top: 7px;
     font-size: 30px;
