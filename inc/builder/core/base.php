@@ -279,6 +279,7 @@ class TTFMAKE_Builder_Base {
 		// Add data needed for the JS
 		$data = array(
 			'pageID' => get_the_ID(),
+			'confirmString' => esc_html__( 'Delete the section?', 'make' ),
 		);
 
 		wp_localize_script(
