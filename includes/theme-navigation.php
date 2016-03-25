@@ -35,6 +35,9 @@ class Spine_Theme_Navigation {
 	 * navigation. Removes the default current-menu-item and current_page_parent classes
 	 * if they are found on this page view and replaces them with 'current'.
 	 *
+	 * Adds the `current` class to a current page's immediate parent if the page itself
+	 * is not in the Spine navigation menu.
+	 *
 	 * If this is not a menu in the Spine navigation, the `current` classes is appended to
 	 * the array, but other classes are left alone.
 	 *
@@ -45,13 +48,18 @@ class Spine_Theme_Navigation {
 	 * @return array Modified list of nav menu classes.
 	 */
 	public function abbridged_menu_classes( $classes, $item, $args ) {
+		$post = get_post();
+		$current_or_parent_page = array_intersect( array( 'current-menu-item', 'current_page_parent' ), $classes );
+		$current_page_parent = ( $item->object_id == $post->post_parent );
+		$current_page_not_in_menu = ! in_array( 'current-page-parent', $classes );
+
 		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
-			if ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
+			if ( $current_or_parent_page || ( $current_page_parent && $current_page_not_in_menu ) ) {
 				$classes = array( 'current' );
 			} else {
 				$classes = array();
 			}
-		} elseif ( in_array( 'current-menu-item', $classes ) || in_array( 'current_page_parent', $classes ) ) {
+		} elseif ( $current_or_parent_page ) {
 			$classes[] = 'current';
 		}
 
