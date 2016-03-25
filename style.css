@@ -406,7 +406,6 @@ article footer a:hover {
 	color: #fff;
 	display: flex;
 	flex-direction: column;
-	font-size: 0;
 	height: 100%;
 	line-height: 1.35;
 	left: 0;
@@ -432,10 +431,6 @@ article footer a:hover {
 	justify-content: center;
 	overflow: hidden;
 	font-size: 1rem;
-}
-/* Might help in cases where there is too much content in a slide. */
-.builder-banner-inner-content * {
-	display: flex;
 }
 
 .builder-section-banner .cycle-pager {
