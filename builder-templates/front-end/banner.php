@@ -129,12 +129,12 @@ if ( '' === $section_id ) {
 					<?php if ( ! empty( $slide['slide-url'] ) ) : ?></a><?php endif; ?>
 				</div>
 			<?php endforeach; endif; ?>
+			<?php if ( $is_slider && false === (bool) $ttfmake_section_data['hide-dots'] ) : ?>
+				<div class="cycle-pager"></div>
+			<?php endif; ?>
 			<?php if ( $is_slider && false === (bool) $ttfmake_section_data['hide-arrows'] ) : ?>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
-			<?php endif; ?>
-			<?php if ( $is_slider && false === (bool) $ttfmake_section_data['hide-dots'] ) : ?>
-				<div class="cycle-pager"></div>
 			<?php endif; ?>
 		</div>
 	</div>
