@@ -485,6 +485,11 @@ article footer a:hover {
 	top: 50%;
 	cursor: pointer;
 	height: 4rem;
+	margin-top: -2rem;
+}
+
+.builder-section-banner .cycle-pager ~ .cycle-prev,
+.builder-section-banner .cycle-pager ~ .cycle-next {
 	margin-top: -4rem;
 }
 
@@ -516,7 +521,8 @@ article footer a:hover {
 		background-color: rgba(0, 0, 0, .4);
 	}
 
-	.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
+	.builder-section-banner .cycle-prev,
+	.builder-section-banner .cycle-next {
 		opacity: .6;
 	}
 
