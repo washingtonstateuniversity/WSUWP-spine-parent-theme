@@ -396,6 +396,11 @@ article footer a:hover {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+	display: none;
+}
+
+.builder-banner-slide.first-slide {
+	display: block;
 }
 
 .builder-banner-content {
