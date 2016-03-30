@@ -8,6 +8,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 		template: '',
 		className: 'ttfmake-section ttfmake-section-open',
 		$headerTitle: '',
+		$sectionLabel: '',
 		$titleInput: '',
 		$titlePipe: '',
 		serverRendered: false,
@@ -21,6 +22,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			'click .spine-builder-overlay-close': 'toggleOverlay',
 			'click .spine-builder-column-configure': 'toggleColumnOverlay',
 			'click .spine-builder-column-overlay-close': 'toggleColumnOverlay',
+			'keyup .wsuwp-builder-section-label': 'constructHeader',
 			'keyup .ttfmake-section-header-title-input': 'constructHeader',
 			'click .ttfmake-media-uploader-add': 'initUploader',
 			'click .ttfmake-media-uploader-remove': 'removeImage',
@@ -127,6 +129,10 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				this.$headerTitle = $('.ttfmake-section-header-title', this.$el);
 			}
 
+			if ('' === this.$sectionLabel) {
+				this.$sectionLabel = $('.wsuwp-builder-section-label', this.$el);
+			}
+
 			if ('' === this.$titleInput) {
 				this.$titleInput = $('.ttfmake-section-header-title-input', this.$el);
 			}
@@ -135,7 +141,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				this.$titlePipe = $('.ttfmake-section-header-pipe', this.$el);
 			}
 
-			var input = this.$titleInput.val();
+			var input = this.$sectionLabel.val() ? this.$sectionLabel.val() : this.$titleInput.val();
 
 			// Set the input
 			this.$headerTitle.html(_.escape(input));
