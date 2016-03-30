@@ -408,7 +408,7 @@ function spine_wp_enqueue_scripts() {
 	$spineoptions = array(
 		'social' => array(
 			'share_text' => esc_js( spine_get_title() ),
-			'twitter_text' => esc_js( spine_get_title() ),
+			'twitter_text' => esc_js( trim( wp_title( '', false ) ) ),
 			'twitter_handle' => 'wsupullman',
 		),
 	);
