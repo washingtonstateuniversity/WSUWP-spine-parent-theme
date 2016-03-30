@@ -148,7 +148,7 @@ class Spine_Theme_Customizer {
 		) );
 
 		$spine_colors = array(
-			'white'    => 'Default (white)',
+			'white'    => 'White',
 			'lightest' => 'Lightest',
 			'lighter'  => 'Lighter',
 			'gray'     => 'Gray',
