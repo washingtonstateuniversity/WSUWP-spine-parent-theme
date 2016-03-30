@@ -7,8 +7,13 @@
 		var $bg_sections = $('.section-wrapper-has-background');
 
 		$bg_sections.each( function() {
-			var background_image = $(window).width() > 791 ? $(this).data('background') : $(this).data('background-mobile');
-			$(this).css('background-image', 'url(' + background_image + ')' );
+			var background_image = $(this).data('background'),
+				mobile_background_image = $(this).data('background-mobile');
+			if ( 792 > $(window).width() && mobile_background_image ) {
+				$(this).css('background-image', 'url(' + mobile_background_image + ')' );
+			} else if ( background_image ) {
+				$(this).css('background-image', 'url(' + background_image + ')' );
+			}
 		});
 	};
 
