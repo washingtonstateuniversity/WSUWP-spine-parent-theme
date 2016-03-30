@@ -149,12 +149,8 @@ class Spine_Theme_Customizer {
 
 		$spine_colors = array(
 			'white'    => 'White',
-			'lightest' => 'Lightest',
-			'lighter'  => 'Lighter',
-			'gray'     => 'Gray',
 			'dark'     => 'Dark',
 			'darker'   => 'Darker',
-			'darkest'  => 'Darkest (black)',
 			'crimson'  => 'Crimson',
 		);
 
@@ -163,9 +159,26 @@ class Spine_Theme_Customizer {
 		 * selected a deprecated option, we'll continue to offer it.
 		 */
 		$current_color = spine_get_option( 'spine_color' );
+		if ( 'lightest' === $current_color ) {
+			$spine_colors['lightest'] = 'Lightest';
+		}
+
+		if ( 'lighter' === $current_color ) {
+			$spine_colors['lighter'] = 'Lighter';
+		}
+
 		if ( 'light' === $current_color ) {
 			$spine_colors['light'] = 'Light';
 		}
+
+		if ( 'gray' === $current_color ) {
+			$spine_colors['gray'] = 'Gray';
+		}
+
+		if ( 'darkest' === $current_color ) {
+			$spine_colors['darkest'] = 'Darkest';
+		}
+
 		if ( 'velum' === $current_color ) {
 			$spine_colors['velum'] = 'Transparent';
 		}
