@@ -1,6 +1,6 @@
 <?php
 $post_share_url = esc_url( get_permalink() );
-$post_share_title = rawurlencode( spine_get_title() );
+$post_share_title = rawurlencode( trim( wp_title( '', false ) ) );
 $spine_social_options = spine_social_options();
 if ( ! empty( $spine_social_options['twitter'] ) ) {
 	$twitter_array = explode( '/', $spine_social_options['twitter'] );
