@@ -7,7 +7,7 @@
 		var $bg_sections = $('.section-wrapper-has-background');
 
 		$bg_sections.each( function() {
-			var background_image = $(this).data('background');
+			var background_image = $(window).width() > 791 ? $(this).data('background') : $(this).data('background-mobile');
 			$(this).css('background-image', 'url(' + background_image + ')' );
 		});
 	};
