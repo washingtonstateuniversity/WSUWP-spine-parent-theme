@@ -212,7 +212,7 @@ class Spine_Builder_Custom {
 	 * @return string
 	 */
 	public function clean_header_element( $header_element ) {
-		if ( in_array( $header_element, array( 'h2', 'h3', 'h4' ) ) ) {
+		if ( in_array( $header_element, array( 'h1', 'h2', 'h3', 'h4' ) ) ) {
 			return $header_element;
 		}
 
@@ -292,6 +292,14 @@ class Spine_Builder_Custom {
 
 		if ( isset( $data['column-classes'] ) ) {
 			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
+		}
+
+		if ( isset( $data['header-level'] ) ) {
+			$clean_data['header-level'] = $this->clean_header_element( $data['header-level'] );
+		}
+
+		if ( isset( $data['column-background-image'] ) ) {
+			$clean_data['column-background-image'] = esc_url_raw( $data['column-background-image'] );
 		}
 
 		if ( isset( $data['label'] ) ) {
