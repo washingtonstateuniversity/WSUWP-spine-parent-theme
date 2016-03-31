@@ -396,6 +396,11 @@ article footer a:hover {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+	display: none;
+}
+
+.builder-banner-slide.first-slide {
+	display: block;
 }
 
 .builder-banner-content {
@@ -404,9 +409,15 @@ article footer a:hover {
 	border-right-width: 8rem;
 	box-sizing: border-box;
 	color: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
 	flex-direction: column;
-	font-size: 0;
 	height: 100%;
 	line-height: 1.35;
 	left: 0;
@@ -426,16 +437,25 @@ article footer a:hover {
 }
 
 .builder-banner-inner-content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
 	flex: 1;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
 	flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
 	justify-content: center;
 	overflow: hidden;
 	font-size: 1rem;
-}
-/* Might help in cases where there is too much content in a slide. */
-.builder-banner-inner-content * {
-	display: flex;
 }
 
 .builder-section-banner .cycle-pager {
@@ -465,6 +485,11 @@ article footer a:hover {
 	top: 50%;
 	cursor: pointer;
 	height: 4rem;
+	margin-top: -2rem;
+}
+
+.builder-section-banner .cycle-pager ~ .cycle-prev,
+.builder-section-banner .cycle-pager ~ .cycle-next {
 	margin-top: -4rem;
 }
 
@@ -496,7 +521,8 @@ article footer a:hover {
 		background-color: rgba(0, 0, 0, .4);
 	}
 
-	.builder-section-banner .cycle-prev, .builder-section-banner .cycle-next {
+	.builder-section-banner .cycle-prev,
+	.builder-section-banner .cycle-next {
 		opacity: .6;
 	}
 
