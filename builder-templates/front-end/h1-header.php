@@ -13,6 +13,8 @@ $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) )
 $section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
 
 $column_classes = ( isset( $ttfmake_section_data['column-classes'] ) ) ? $ttfmake_section_data['column-classes'] : false;
+$header_level = ( isset( $ttfmake_section_data['header-level'] ) && in_array( $ttfmake_section_data['header-level'], array( 'h1', 'h2', 'h3', 'h4' ) ) ) ? $ttfmake_section_data['header-level'] : 'h1';
+$column_background = ( isset( $ttfmake_section_data['column-background-image'] ) && ! empty( $ttfmake_section_data['column-background-image'] ) ) ? "background-image:url('" . esc_url( $ttfmake_section_data['column-background-image'] ) ."');" : '';
 
 if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_section_data['background-img'] ) ) {
 	$section_background = $ttfmake_section_data['background-img'];
@@ -71,9 +73,9 @@ if ( '' === $section_id ) {
 }
 ?>
 <section id="<?php echo esc_attr( $section_id ); ?>" class="row single h1-header <?php echo esc_attr( $section_classes ); ?>">
-	<div class="column one <?php echo esc_attr( $column_classes ); ?>">
+	<div style="<?php echo $column_background; ?>" class="column one <?php echo esc_attr( $column_classes ); ?>">
 		<?php if ( ! empty( $ttfmake_section_data['title'] ) ) : ?>
-			<h1><?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?></h1>
+			<<?php echo $header_level; ?>><?php echo apply_filters( 'the_title', $ttfmake_section_data['title'] ); ?></<?php echo $header_level; ?>>
 		<?php endif; ?>
 	</div>
 </section>
