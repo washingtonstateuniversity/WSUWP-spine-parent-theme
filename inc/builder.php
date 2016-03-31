@@ -737,6 +737,7 @@ function spine_output_builder_section_background( $section_name, $ttfmake_sectio
 		       id="<?php echo $section_name; ?>[background-mobile-img]"
 		       name="<?php echo $section_name; ?>[background-mobile-img]"
 		       value="<?php echo $section_mobile_background; ?>"/>
+		<p class="description">Mobile background images are used for display widths narrower than 792px.</p>
 		<p class="description">Background images on sections are an in progress feature. :)</p>
 	</div>
 	<?php
