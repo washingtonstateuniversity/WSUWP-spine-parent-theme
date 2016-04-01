@@ -85,6 +85,39 @@ function spine_get_campus_home_url() {
 }
 
 /**
+ * Retrieve the home URL and link text for the campus signature selected by the theme.
+ *
+ * @return string
+ */
+function spine_get_campus_data( $part ) {
+	$campus_data = array(
+		'extension'              => array( 'extension.wsu.edu', 'Extension' ),
+		'foundation'             => array( 'foundation.wsu.edu', 'Foundation' ),
+		'globalcampus'           => array( 'globalcampus.wsu.edu', 'Global Campus' ),
+		'healthsciences-spokane' => array( 'spokane.wsu.edu', 'Health Sciences Spokane' ),
+		'spokane'                => array( 'spokane.wsu.edu', 'Spokane' ),
+		'tricities'              => array( 'tricities.wsu.edu', 'Tri-Cities' ),
+		'vancouver'              => array( 'vancouver.wsu.edu', 'Vancouver' ),
+	);
+	$campus_location = spine_get_option( 'campus_location' );
+
+	if ( isset( $campus_data[ $campus_location ] ) ) {
+		if ( 'url' === $part) {
+			return esc_url( $campus_data[ $campus_location ][0] );
+		} else if ( 'link-text' === $part ) {
+			return esc_html( 'Washington State University ' . $campus_data[ $campus_location ][1] );
+		}
+	}
+
+	if ( 'url' === $part) {
+		return apply_filters( 'spine_get_campus_home_url', 'https://wsu.edu/' );
+	} else if ( 'link-text' === $part ) {
+		return apply_filters( 'spine_get_campus_data', 'Washington State University' );
+	}
+}
+
+
+/**
  * A set of defaults for the options set in the customizer for the Spine theme.
  *
  * @return array List of default options.
