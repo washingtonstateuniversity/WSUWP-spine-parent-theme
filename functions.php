@@ -69,6 +69,7 @@ function spine_show_builder_page_template( $page_templates ) {
 function spine_get_campus_home_url() {
 	$campus_urls = array(
 		'extension'              => 'extension.wsu.edu',
+		'foundation'             => 'foundation.wsu.edu',
 		'globalcampus'           => 'globalcampus.wsu.edu',
 		'healthsciences-spokane' => 'spokane.wsu.edu',
 		'spokane'                => 'spokane.wsu.edu',
