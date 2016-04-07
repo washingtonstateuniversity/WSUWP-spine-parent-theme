@@ -165,9 +165,9 @@ class Spine_Builder_Custom {
 
 		ttfmake_add_section(
 			'wsuwpheader',
-			'H1 Header',
+			'Header',
 			get_template_directory_uri() . '/inc/builder-custom/images/h1.png',
-			'An H1 element to provide a page title or other top level header.',
+			'A header element to provide a page title or other top level header.',
 			array( $this, 'save_header' ),
 			'admin/h1-header',
 			'front-end/h1-header',
@@ -212,7 +212,7 @@ class Spine_Builder_Custom {
 	 * @return string
 	 */
 	public function clean_header_element( $header_element ) {
-		if ( in_array( $header_element, array( 'h2', 'h3', 'h4' ) ) ) {
+		if ( in_array( $header_element, array( 'h1', 'h2', 'h3', 'h4' ) ) ) {
 			return $header_element;
 		}
 
@@ -292,6 +292,14 @@ class Spine_Builder_Custom {
 
 		if ( isset( $data['column-classes'] ) ) {
 			$clean_data['column-classes'] = $this->clean_classes( $data['column-classes'] );
+		}
+
+		if ( isset( $data['header-level'] ) ) {
+			$clean_data['header-level'] = $this->clean_header_element( $data['header-level'] );
+		}
+
+		if ( isset( $data['column-background-image'] ) ) {
+			$clean_data['column-background-image'] = esc_url_raw( $data['column-background-image'] );
 		}
 
 		if ( isset( $data['label'] ) ) {
@@ -618,13 +626,14 @@ function spine_output_builder_section_label( $section_name, $ttfmake_section_dat
  * @param int $column
  */
 function spine_output_builder_column_classes( $column_name, $section_data, $column = false ) {
+	$header_level_default = ( 'wsuwpheader' === $section_data['section']['id'] ) ? 'h1' : 'h2';
 	if ( $column ) {
 		$column_classes = ( isset( $section_data['data']['columns'][ $column ]['column-classes'] ) ) ? $section_data['data']['columns'][ $column ]['column-classes'] : '';
-		$header_level   = ( isset( $section_data['data']['columns'][ $column ]['header-level'] ) ) ? $section_data['data']['columns'][ $column ]['header-level'] : 'h2';
+		$header_level   = ( isset( $section_data['data']['columns'][ $column ]['header-level'] ) ) ? $section_data['data']['columns'][ $column ]['header-level'] : $header_level_default;
 		$column_background = ( isset( $section_data['data']['columns'][ $column ]['column-background-image'] ) ) ? $section_data['data']['columns'][ $column ]['column-background-image'] : '';
 	} else {
 		$column_classes = ( isset( $section_data['data']['column-classes'] ) ) ? $section_data['data']['column-classes'] : '';
-		$header_level   = ( isset( $section_data['data']['header-level'] ) ) ? $section_data['data']['header-level'] : 'h2';
+		$header_level   = ( isset( $section_data['data']['header-level'] ) ) ? $section_data['data']['header-level'] : $header_level_default;
 		$column_background = ( isset( $section_data['data']['column-background-image'] ) ) ? $section_data['data']['column-background-image'] : '';
 	}
 
@@ -644,11 +653,14 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 		<select id="<?php echo $column_name; ?>[header-level]"
 		        name="<?php echo $column_name; ?>[header-level]"
 		        class="">
+		    <?php if ( 'wsuwpheader' === $section_data['section']['id'] ) : ?>
+		    <option value="h1" <?php selected( esc_attr( $header_level ), 'h1' ); ?>>H1</option>
+		    <?php endif; ?>
 			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
 			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>
 			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
 		</select>
-		<p class="description">This header will wrap the column title. H2 by default.</p>
+		<p class="description">This header will wrap the column title. <?php echo strtoupper( $header_level_default ); ?> by default.</p>
 	</div>
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[column-background-image]">Background Image</label>

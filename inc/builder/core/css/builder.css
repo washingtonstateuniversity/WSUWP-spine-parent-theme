@@ -269,6 +269,9 @@
 .spine-builder-column-configure {
 	right: 39px;
 }
+.ttfmake-section-wsuwpheader .spine-builder-column-configure {
+	right: 16px;
+}
 .ttfmake-builder-section-footer-link,
 .ttfmake-section-toggle .handlediv,
 .spine-builder-column-configure,
