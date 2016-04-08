@@ -516,7 +516,7 @@ function ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ) {
 
 	// Background image
 	if ( isset( $slide['image-id'] ) && 0 !== ttfmake_sanitize_image_id( $slide['image-id'] ) ) {
-		$image_src = ttfmake_get_image_src( $slide['image-id'], apply_filters( 'spine_banner_image_size', 'full' ) );
+		$image_src = ttfmake_get_image_src( $slide['image-id'], apply_filters( 'spine_banner_image_size', 'spine-xlarge_size' ) );
 		if ( isset( $image_src[0] ) ) {
 			$slide_style .= 'background-image: url(\'' . addcslashes( esc_url_raw( $image_src[0] ), '"' ) . '\');';
 		}
