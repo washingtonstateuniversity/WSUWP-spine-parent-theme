@@ -62,30 +62,6 @@ function spine_show_builder_page_template( $page_templates ) {
 }
 
 /**
- * Retrieve the home URL for the campus signature selected by the theme.
- *
- * @return string
- */
-function spine_get_campus_home_url() {
-	$campus_urls = array(
-		'extension'              => 'extension.wsu.edu',
-		'foundation'             => 'foundation.wsu.edu',
-		'globalcampus'           => 'globalcampus.wsu.edu',
-		'healthsciences-spokane' => 'spokane.wsu.edu',
-		'spokane'                => 'spokane.wsu.edu',
-		'tricities'              => 'tricities.wsu.edu',
-		'vancouver'              => 'vancouver.wsu.edu',
-	);
-	$campus_location = spine_get_option( 'campus_location' );
-
-	if ( isset( $campus_urls[ $campus_location ] ) ) {
-		return esc_url( $campus_urls[ $campus_location ] );
-	}
-
-	return apply_filters( 'spine_get_campus_home_url', 'https://wsu.edu/' );
-}
-
-/**
  * Retrieve the home URL and link text for the campus signature selected by the theme.
  *
  * @return string
