@@ -79,14 +79,14 @@ function spine_get_campus_data( $part ) {
 	$campus_location = spine_get_option( 'campus_location' );
 
 	if ( isset( $campus_data[ $campus_location ] ) ) {
-		if ( 'url' === $part) {
+		if ( 'url' === $part ) {
 			return esc_url( $campus_data[ $campus_location ][0] );
 		} else if ( 'link-text' === $part ) {
 			return esc_html( 'Washington State University ' . $campus_data[ $campus_location ][1] );
 		}
 	}
 
-	if ( 'url' === $part) {
+	if ( 'url' === $part ) {
 		return apply_filters( 'spine_get_campus_home_url', 'https://wsu.edu/' );
 	} else if ( 'link-text' === $part ) {
 		return apply_filters( 'spine_get_campus_data', 'Washington State University' );
