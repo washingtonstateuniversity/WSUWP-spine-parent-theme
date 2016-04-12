@@ -62,10 +62,20 @@ function spine_show_builder_page_template( $page_templates ) {
 }
 
 /**
+ * Retrieve the home URL for the campus signature selected by the theme.
+ *
+ *@return string
+ */
+function spine_get_campus_home_url() {
+	return spine_get_campus_data( 'url' );
+}
+
+/**
  * Retrieve the home URL and link text for the campus signature selected by the theme.
  *
  * @return string
  */
+
 function spine_get_campus_data( $part ) {
 	$campus_data = array(
 		'extension'              => array( 'extension.wsu.edu', 'Extension' ),
@@ -92,7 +102,6 @@ function spine_get_campus_data( $part ) {
 		return apply_filters( 'spine_get_campus_data', 'Washington State University' );
 	}
 }
-
 
 /**
  * A set of defaults for the options set in the customizer for the Spine theme.
