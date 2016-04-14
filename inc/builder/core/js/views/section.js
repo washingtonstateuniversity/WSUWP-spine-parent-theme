@@ -43,6 +43,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				escape     : /\{\{([^\}]+?)\}\}(?!\})/g
 			};
 			this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html());
+			this.constructHeader();
 		},
 
 		render: function () {
@@ -60,15 +61,24 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 			var $this = $(evt.target),
 				$section = $this.parents('.ttfmake-section'),
 				$sectionBody = $('.ttfmake-section-body', $section),
-				$input = $('.ttfmake-section-state', this.$el);
+				$input = $('.ttfmake-section-state', this.$el),
+				$curHeight = $('#first').height();
 
 			if ($section.hasClass('ttfmake-section-open')) {
-				$sectionBody.slideUp(oneApp.options.closeSpeed, function() {
+				$sectionBody.animate({
+					height: 0,
+					paddingBottom: 0,
+					paddingTop: 0
+				}, oneApp.options.closeSpeed, function() {
 					$section.removeClass('ttfmake-section-open');
 					$input.val('closed');
 				});
 			} else {
-				$sectionBody.slideDown(oneApp.options.openSpeed, function() {
+				$sectionBody.animate({
+					height: $sectionBody.get(0).scrollHeight + 40,
+					paddingBottom: '20px',
+					paddingTop: '20px'
+				}, oneApp.options.openSpeed, function() {
 					$section.addClass('ttfmake-section-open');
 					$input.val('open');
 				});

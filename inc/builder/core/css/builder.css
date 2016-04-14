@@ -210,14 +210,15 @@
 	color: #bbb;
 }
 .ttfmake-section-body {
-	display: none;
 	float: left;
+	height: 0;
 	width: 100%;
-	padding: 20px;
+	padding: 0 20px;
 	box-sizing: border-box;
 }
 .ttfmake-section-open .ttfmake-section-body {
-	display: block;
+	height: auto;
+	padding: 20px;
 }
 /*---------------------------------------------------------
  Forms (builder.css)
@@ -252,11 +253,8 @@
 	padding: 0 10px;
 }
 .spine-builder-section-configure {
-	display: none;
-	right: 81px;
-}
-.ttfmake-section-open .spine-builder-section-configure {
 	display: inline-block;
+	right: 81px;
 }
 .ttfmake-section-remove {
 	right: 49px;
@@ -279,18 +277,17 @@
 .ttfmake-banner-slide-toggle .handlediv {
 	color: #aaa;
 }
+.spine-builder-section-configure:hover,
+.spine-builder-section-configure:focus,
 .ttfmake-section-toggle .handlediv:hover,
 .spine-builder-column-configure:hover,
 .wsuwp-column-toggle .handlediv:hover,
 .ttfmake-banner-slide-toggle .handlediv:hover {
 	color: #222;
 }
-.spine-builder-section-configure:hover,
+.ttfmake-section-open .spine-builder-section-configure:hover,
 .ttfmake-section-open .ttfmake-section-toggle .handlediv:hover {
 	color: #fff;
-}
-.spine-builder-section-configure:focus {
-	color: #eff0f1;
 }
 .ttfmake-section-remove:hover {
 	color: #c60c30;
@@ -515,6 +512,9 @@
 -------------------------------------------------------- */
 @media screen and ( min-width: 1160px ) {
 	.ttfmake-section-banner .ttfmake-section-body {
+		padding: 0 30px;
+	}
+	.ttfmake-section-open.ttfmake-section-banner .ttfmake-section-body {
 		padding: 20px 30px;
 	}
 }
