@@ -43,6 +43,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				escape     : /\{\{([^\}]+?)\}\}(?!\})/g
 			};
 			this.template = _.template($('#tmpl-ttfmake-' + this.model.get('sectionType')).html());
+			this.constructHeader();
 		},
 
 		render: function () {
