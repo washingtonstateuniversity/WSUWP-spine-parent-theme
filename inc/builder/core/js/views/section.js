@@ -74,7 +74,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 				});
 			} else {
 				$sectionBody.animate({
-					height: $sectionBody.get(0).scrollHeight,
+					height: $sectionBody.get(0).scrollHeight + 40,
 					paddingBottom: '20px',
 					paddingTop: '20px'
 				}, oneApp.options.openSpeed, function() {
