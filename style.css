@@ -718,3 +718,19 @@ article.wsuwp_uc_person {
 		padding: 5px 0 15px 0;
 	}
 }
+
+/** Responsive YouTube wrapper */
+.embed-youtube {
+	height: 0;
+	margin-bottom: 1em;
+	padding-bottom: 56.25%;
+	position: relative;
+}
+
+.embed-youtube .youtube-player {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
