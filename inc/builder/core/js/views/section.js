@@ -79,6 +79,7 @@ var oneApp = oneApp || {}, $oneApp = $oneApp || jQuery(oneApp);
 					paddingBottom: '20px',
 					paddingTop: '20px'
 				}, oneApp.options.openSpeed, function() {
+					$sectionBody.css( "height", "auto" );
 					$section.addClass('ttfmake-section-open');
 					$input.val('open');
 				});
