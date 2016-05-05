@@ -15,7 +15,9 @@
 			'whitelist_top'   => null, // optional string or array of post names to whitelist for top level
 			'echo'            => 1, // whether to display immediately or return
 		);
+		remove_filter( 'bu_navigation_filter_pages', 'bu_navigation_filter_pages_ancestors' );
 		bu_navigation_display_primary( $bu_nav_args );
+		add_filter( 'bu_navigation_filter_pages', 'bu_navigation_filter_pages_ancestors' );
 	} else {
 		$spine_site_args = array(
 			'theme_location'  => 'site',
