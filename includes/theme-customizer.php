@@ -116,6 +116,35 @@ class Spine_Theme_Customizer {
 			),
 		) );
 
+		// Front Page
+		$wp_customize->add_setting( 'spine_options[front_page_title]', array(
+			'default' => false,
+			'capability' => 'edit_theme_options',
+			'type' => 'option',
+		) );
+
+		$wp_customize->add_control( 'spine_options[front_page_title]', array(
+			'label' => 'Show title on front page',
+			'section' => 'static_front_page',
+			'settings' => 'spine_options[front_page_title]',
+			'type' => 'checkbox',
+			'active_callback' => function() { return 'page' == get_option( 'show_on_front' ); },
+		) );
+
+		$wp_customize->add_setting( 'spine_options[page_for_posts_title]', array(
+			'default' => false,
+			'capability' => 'edit_theme_options',
+			'type' => 'option',
+		) );
+
+		$wp_customize->add_control( 'spine_options[page_for_posts_title]', array(
+			'label' => 'Show title on posts page',
+			'section' => 'static_front_page',
+			'settings' => 'spine_options[page_for_posts_title]',
+			'type' => 'checkbox',
+			'active_callback' => function() { return 'page' == get_option( 'show_on_front' ); },
+		) );
+
 		// Signature
 		$wp_customize->add_setting( 'spine_options[campus_location]', array(
 			'default'    => '',

@@ -31,3 +31,29 @@ if ( true === spine_get_option( 'main_header_show' ) ) :
 
 <?php
 endif;
+
+if ( is_front_page() && ! is_home() &&  true === spine_get_option( 'front_page_title' ) ) :
+?>
+<section class="row single gutter pad-ends">
+	<div class="column one">
+		<h1><?php the_title(); ?></h1>
+	</div>
+</section>
+<?php
+endif;
+
+if ( is_home() && ! is_front_page() && true === spine_get_option( 'page_for_posts_title' ) ) :
+	$page_for_posts_id = get_option( 'page_for_posts' );
+	if ( $page_for_posts_id ) {
+		$page_for_posts_title = get_the_title( $page_for_posts_id );
+	} else {
+		$page_for_posts_title = '';
+	}
+	?>
+<section class="row single gutter pad-ends">
+	<div class="column one">
+		<h1><?php echo esc_html( $page_for_posts_title ); ?></h1>
+	</div>
+</section>
+<?php
+endif;

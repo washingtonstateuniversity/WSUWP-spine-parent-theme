@@ -25,4 +25,20 @@
 		});
 
 	});
+
+	/**
+	 * Toggle the display of the options to show a front page title or posts page title. These
+	 * options should only appear when a static page is selected as the option for Front Page.
+	 */
+	wp.customize( 'show_on_front', function( setting ) {
+		setting.bind( function( value )  {
+			if ( 'page' === value ) {
+				$('#customize-control-spine_options-front_page_title').show();
+				$('#customize-control-spine_options-page_for_posts_title').show();
+			} else {
+				$('#customize-control-spine_options-page_for_posts_title').hide();
+				$('#customize-control-spine_options-front_page_title').hide();
+			}
+		});
+	} );
 }(jQuery));
