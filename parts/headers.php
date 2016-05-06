@@ -32,7 +32,7 @@ if ( true === spine_get_option( 'main_header_show' ) ) :
 <?php
 endif;
 
-if ( is_front_page() && ! is_home() &&  true === spine_get_option( 'front_page_title' ) ) :
+if ( is_front_page() && ! is_home() && true === spine_get_option( 'front_page_title' ) ) :
 ?>
 <section class="row single gutter pad-ends">
 	<div class="column one">
