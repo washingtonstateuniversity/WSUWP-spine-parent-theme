@@ -151,6 +151,8 @@ function spine_get_option_defaults() {
 		'social_spot_four'          => 'http://social.wsu.edu',
 		'post_social_placement'     => 'none',
 		'show_author_page'          => '1',
+		'front_page_title'          => false,
+		'page_for_posts_title'      => false,
 	);
 }
 
