@@ -734,3 +734,13 @@ article.wsuwp_uc_person {
 	top: 0;
 	width: 100%;
 }
+
+/** Default WP widget screen reader text */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
