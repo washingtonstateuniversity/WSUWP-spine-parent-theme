@@ -854,3 +854,24 @@ function spine_get_title() {
 
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
 }
+
+/**
+ * Run an individual content syndicate item through wpautop. This is attached through
+ * the page builder template, which normally removes the use of wpautop completely so
+ * that it can process its sections.
+ *
+ * @param $subset
+ * @param $post
+ * @param $atts
+ *
+ * @return mixed
+ */
+function spine_filter_local_content_syndicate_item( $subset, $post, $atts ) {
+	if ( ! isset( $atts['scheme'] ) || 'local' !== $atts['scheme'] ) {
+		return $subset;
+	}
+
+	$subset->content = wpautop( $subset->content );
+
+	return $subset;
+}
