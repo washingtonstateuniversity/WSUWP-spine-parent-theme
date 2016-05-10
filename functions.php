@@ -499,11 +499,11 @@ function spine_trim_excerpt( $text ) {
 		//Delete all shortcode tags from the content.
 		$text = strip_shortcodes( $text );
 
+		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>,<h2>,<h3>,<h4>,<h5>';
+		$text = strip_tags( $text, $allowed_tags );
+
 		$text = apply_filters( 'the_content', $text );
 		$text = str_replace( ']]>', ']]&gt;', $text );
-
-		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
-		$text = strip_tags( $text, $allowed_tags );
 
 		$excerpt_word_count = 105;
 		$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
