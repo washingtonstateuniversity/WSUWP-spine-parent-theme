@@ -501,11 +501,16 @@ function spine_trim_excerpt( $text ) {
 		//Delete all shortcode tags from the content.
 		$text = strip_shortcodes( $text );
 
-		$text = apply_filters( 'the_content', $text );
-		$text = str_replace( ']]>', ']]&gt;', $text );
-
-		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>';
+		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>,<h2>,<h3>,<h4>,<h5>,<blockquote>';
 		$text = strip_tags( $text, $allowed_tags );
+
+		$text = apply_filters( 'the_content', $text );
+
+		if ( ! has_filter( 'the_content', 'wpautop' ) ) {
+			$text = wpautop( $text );
+		}
+
+		$text = str_replace( ']]>', ']]&gt;', $text );
 
 		$excerpt_word_count = 105;
 		$excerpt_length = apply_filters( 'excerpt_length', $excerpt_word_count );
@@ -855,4 +860,25 @@ function spine_get_title() {
 	$title = $view_title . $site_part . $global_part;
 
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
+}
+
+/**
+ * Run an individual content syndicate item through wpautop. This is attached through
+ * the page builder template, which normally removes the use of wpautop completely so
+ * that it can process its sections.
+ *
+ * @param $subset
+ * @param $post
+ * @param $atts
+ *
+ * @return mixed
+ */
+function spine_filter_local_content_syndicate_item( $subset, $post, $atts ) {
+	if ( ! isset( $atts['scheme'] ) || 'local' !== $atts['scheme'] ) {
+		return $subset;
+	}
+
+	$subset->content = wpautop( $subset->content );
+
+	return $subset;
 }

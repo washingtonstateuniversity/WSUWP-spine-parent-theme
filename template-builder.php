@@ -21,7 +21,9 @@ get_header();
 				 * survive the process and to avoid autop issues.
 				 */
 				remove_filter( 'the_content', 'wpautop', 10 );
+				add_filter( 'wsu_content_syndicate_host_data', 'spine_filter_local_content_syndicate_item', 10, 3 );
 				the_content();
+				remove_filter( 'wsu_content_syndicate_host_data', 'spine_filter_local_content_syndicate_item', 10 );
 				add_filter( 'the_content', 'wpautop', 10 );
 
 				?>
