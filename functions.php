@@ -503,6 +503,11 @@ function spine_trim_excerpt( $text ) {
 		$text = strip_tags( $text, $allowed_tags );
 
 		$text = apply_filters( 'the_content', $text );
+
+		if ( ! has_filter( 'the_content', 'wpautop' ) ) {
+			$text = wpautop( $text );
+		}
+
 		$text = str_replace( ']]>', ']]&gt;', $text );
 
 		$excerpt_word_count = 105;
