@@ -499,7 +499,7 @@ function spine_trim_excerpt( $text ) {
 		//Delete all shortcode tags from the content.
 		$text = strip_shortcodes( $text );
 
-		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>,<h2>,<h3>,<h4>,<h5>';
+		$allowed_tags = '<p>,<a>,<em>,<strong>,<img>,<h2>,<h3>,<h4>,<h5>,<blockquote>';
 		$text = strip_tags( $text, $allowed_tags );
 
 		$text = apply_filters( 'the_content', $text );
