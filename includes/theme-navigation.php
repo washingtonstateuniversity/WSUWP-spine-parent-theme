@@ -6,6 +6,16 @@
  * includes adjustments based on other plugins in addition to WordPress core.
  */
 class Spine_Theme_Navigation {
+	/**
+	 * Parents of dogeared items that should be also be marked
+	 * as dogeared items.
+	 *
+	 * @since 0.26.8
+	 *
+	 * @var array
+	 */
+	var $parent_dogeared = array();
+
 	public function __construct() {
 		add_action( 'init', array( $this, 'theme_menus' ) );
 
@@ -131,6 +141,19 @@ class Spine_Theme_Navigation {
 
 		if ( is_singular() && get_the_ID() == $page->ID ) {
 			$item_classes[] = 'dogeared';
+		}
+
+		if ( is_singular( 'post' ) && $page->ID === get_option( 'page_for_posts' ) ) {
+			$item_classes[] = 'dogeared';
+
+			if ( 0 != $page->post_parent ) {
+				$this->parent_dogeared[] = $page->post_parent;
+			}
+		}
+
+		if ( 'page' === $page->post_type && in_array( $page->ID, $this->parent_dogeared ) ) {
+				$item_classes[] = 'current';
+				$item_classes[] = 'parent';
 		}
 
 		return $item_classes;
