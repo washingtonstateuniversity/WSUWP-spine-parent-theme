@@ -25,7 +25,7 @@ class Spine_Theme_Navigation {
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
 		add_filter( 'bu_navigation_filter_anchor_attrs', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
-		add_filter( 'bu_navigation_filter_item_attrs', array( $this, 'bu_navigation_filter_item_attrs' ), 10, 2 );
+		add_filter( 'bu_navigation_filter_item_attrs', array( $this, 'bu_navigation_filter_item_attrs' ), 10, 1 );
 	}
 
 	/**
@@ -127,33 +127,20 @@ class Spine_Theme_Navigation {
 	}
 
 	/**
-	 * Filter the list item classes to manually add current and dogeared when necessary.
+	 * Filter the list item classes to manually add active on the current page in nav.
 	 *
 	 * @param array   $item_classes List of classes assigned to the list item.
-	 * @param WP_Post $page         Post object for the current page.
 	 *
 	 * @return array
 	 */
-	public function bu_navigation_filter_item_attrs( $item_classes, $page ) {
-		if ( in_array( 'current_page_item', $item_classes ) || in_array( 'current_page_parent', $item_classes ) ) {
-			$item_classes[] = 'current';
+	public function bu_navigation_filter_item_attrs( $item_classes ) {
+		if ( in_array( 'current_page_item', $item_classes, true ) ) {
+			unset( $item_classes['current_page_item'] );
+			$item_classes[] = 'active';
 		}
 
-		if ( is_singular() && get_the_ID() == $page->ID ) {
-			$item_classes[] = 'dogeared';
-		}
-
-		if ( is_singular( 'post' ) && $page->ID === get_option( 'page_for_posts' ) ) {
-			$item_classes[] = 'dogeared';
-
-			if ( 0 != $page->post_parent ) {
-				$this->parent_dogeared[] = $page->post_parent;
-			}
-		}
-
-		if ( 'page' === $page->post_type && in_array( $page->ID, $this->parent_dogeared ) ) {
-				$item_classes[] = 'current';
-				$item_classes[] = 'parent';
+		if ( in_array( 'current_page_parent', $item_classes ) ) {
+			unset( $item_classes['current_page_parent'] );
 		}
 
 		return $item_classes;
