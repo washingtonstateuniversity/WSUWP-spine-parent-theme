@@ -65,12 +65,12 @@ class Spine_Theme_Navigation {
 
 		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
 			if ( $current_or_parent_page || ( $current_page_parent && $current_page_not_in_menu ) ) {
-				$classes = array( 'current' );
+				$classes = array( 'active' );
 			} else {
 				$classes = array();
 			}
 		} elseif ( $current_or_parent_page ) {
-			$classes[] = 'current';
+			$classes[] = 'active';
 		}
 
 		return $classes;
