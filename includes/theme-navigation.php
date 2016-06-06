@@ -122,6 +122,7 @@ class Spine_Theme_Navigation {
 	 */
 	public function bu_filter_anchor_attrs( $attrs ) {
 		$attrs['title'] = '';
+		$attrs['class'] = '';
 
 		return $attrs;
 	}
