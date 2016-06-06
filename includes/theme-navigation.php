@@ -43,12 +43,12 @@ class Spine_Theme_Navigation {
 	/**
 	 * Condense verbose menu classes provided by WordPress when processing the Spine
 	 * navigation. Removes the default current-menu-item and current_page_parent classes
-	 * if they are found on this page view and replaces them with 'current'.
+	 * if they are found on this page view and replaces them with 'active'.
 	 *
-	 * Adds the `current` class to a current page's immediate parent if the page itself
+	 * Adds the 'active' class to a current page's immediate parent if the page itself
 	 * is not in the Spine navigation menu.
 	 *
-	 * If this is not a menu in the Spine navigation, the `current` classes is appended to
+	 * If this is not a menu in the Spine navigation, the 'active' classes is appended to
 	 * the array, but other classes are left alone.
 	 *
 	 * @param array    $classes Current list of nav menu classes.
