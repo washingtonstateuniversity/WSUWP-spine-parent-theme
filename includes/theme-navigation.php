@@ -134,13 +134,13 @@ class Spine_Theme_Navigation {
 	 * @return array
 	 */
 	public function bu_navigation_filter_item_attrs( $item_classes ) {
-		if ( in_array( 'current_page_item', $item_classes, true ) ) {
-			unset( $item_classes['current_page_item'] );
+		if ( false !== ( $key = array_search( 'current_page_item', $item_classes ) ) ) {
+			unset( $item_classes[ $key ] );
 			$item_classes[] = 'active';
 		}
 
-		if ( in_array( 'current_page_parent', $item_classes ) ) {
-			unset( $item_classes['current_page_parent'] );
+		if ( false !== ( $key = array_search( 'current_page_parent', $item_classes ) ) ) {
+			unset( $item_classes[ $key ] );
 		}
 
 		return $item_classes;
