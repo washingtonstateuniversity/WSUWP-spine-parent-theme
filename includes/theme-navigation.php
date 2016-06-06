@@ -61,7 +61,7 @@ class Spine_Theme_Navigation {
 		$post = get_post();
 		$current_or_parent_page = array_intersect( array( 'current-menu-item', 'current_page_parent' ), $classes );
 		$current_page_parent = ( $item->object_id == $post->post_parent );
-		$current_page_not_in_menu = ! in_array( 'current_page_parent', $classes, true );
+		$current_page_not_in_menu = ! in_array( 'current-page-parent', $classes, true );
 
 		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
 			if ( $current_or_parent_page || ( $current_page_parent && $current_page_not_in_menu ) ) {
