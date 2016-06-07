@@ -25,7 +25,7 @@ class Spine_Theme_Navigation {
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
 		add_filter( 'bu_navigation_filter_anchor_attrs', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
-		add_filter( 'bu_navigation_filter_item_attrs', array( $this, 'bu_navigation_filter_item_attrs' ), 10, 2 );
+		add_filter( 'bu_navigation_filter_item_attrs', array( $this, 'bu_navigation_filter_item_attrs' ), 10, 1 );
 	}
 
 	/**
@@ -43,12 +43,12 @@ class Spine_Theme_Navigation {
 	/**
 	 * Condense verbose menu classes provided by WordPress when processing the Spine
 	 * navigation. Removes the default current-menu-item and current_page_parent classes
-	 * if they are found on this page view and replaces them with 'current'.
+	 * if they are found on this page view and replaces them with 'active'.
 	 *
-	 * Adds the `current` class to a current page's immediate parent if the page itself
+	 * Adds the 'active' class to a current page's immediate parent if the page itself
 	 * is not in the Spine navigation menu.
 	 *
-	 * If this is not a menu in the Spine navigation, the `current` classes is appended to
+	 * If this is not a menu in the Spine navigation, the 'active' classes is appended to
 	 * the array, but other classes are left alone.
 	 *
 	 * @param array    $classes Current list of nav menu classes.
@@ -59,18 +59,21 @@ class Spine_Theme_Navigation {
 	 */
 	public function abbridged_menu_classes( $classes, $item, $args ) {
 		$post = get_post();
-		$current_or_parent_page = array_intersect( array( 'current-menu-item', 'current_page_parent' ), $classes );
-		$current_page_parent = ( $item->object_id == $post->post_parent );
-		$current_page_not_in_menu = ! in_array( 'current_page_parent', $classes, true );
+		$current_or_parent_menu_item = array_intersect( array( 'current-menu-item', 'current_page_parent' ), $classes );
+		$parent_of_page_not_in_menu = ( $item->object_id == $post->post_parent ) && ! in_array( 'current-page-parent', $classes, true );
+		$event_post_or_archive = is_post_type_archive( 'tribe_events' ) || is_singular( 'tribe_events' );
+		$event_archive_menu_item = in_array( 'current-menu-item current_page_item', $classes, true );
 
 		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
-			if ( $current_or_parent_page || ( $current_page_parent && $current_page_not_in_menu ) ) {
-				$classes = array( 'current' );
+			if ( ( $current_or_parent_menu_item || $parent_of_page_not_in_menu ) && ! $event_post_or_archive ) {
+				$classes = array( 'active' );
+			} elseif ( $event_post_or_archive && $event_archive_menu_item ) {
+				$classes = array( 'active' );
 			} else {
 				$classes = array();
 			}
-		} elseif ( $current_or_parent_page ) {
-			$classes[] = 'current';
+		} elseif ( $current_or_parent_menu_item ) {
+			$classes[] = 'active';
 		}
 
 		return $classes;
@@ -122,41 +125,26 @@ class Spine_Theme_Navigation {
 	 */
 	public function bu_filter_anchor_attrs( $attrs ) {
 		$attrs['title'] = '';
+		$attrs['class'] = '';
 
 		return $attrs;
 	}
 
 	/**
-	 * Filter the list item classes to manually add current and dogeared when necessary.
+	 * Filter the list item classes to manually add active on the current page in nav.
 	 *
 	 * @param array   $item_classes List of classes assigned to the list item.
-	 * @param WP_Post $page         Post object for the current page.
 	 *
 	 * @return array
 	 */
-	public function bu_navigation_filter_item_attrs( $item_classes, $page ) {
-		if ( in_array( 'current_page_item', $item_classes ) || in_array( 'current_page_parent', $item_classes ) ) {
-			$item_classes[] = 'current';
+	public function bu_navigation_filter_item_attrs( $item_classes ) {
+		$remove_classes = array( 'page_item', 'current_page_item', 'current_page_parent' );
+
+		if ( in_array( 'current_page_item', $item_classes, true ) ) {
+			$item_classes[] = 'active';
 		}
 
-		if ( is_singular() && get_the_ID() == $page->ID ) {
-			$item_classes[] = 'dogeared';
-		}
-
-		if ( is_singular( 'post' ) && $page->ID === get_option( 'page_for_posts' ) ) {
-			$item_classes[] = 'dogeared';
-
-			if ( 0 != $page->post_parent ) {
-				$this->parent_dogeared[] = $page->post_parent;
-			}
-		}
-
-		if ( 'page' === $page->post_type && in_array( $page->ID, $this->parent_dogeared ) ) {
-				$item_classes[] = 'current';
-				$item_classes[] = 'parent';
-		}
-
-		return $item_classes;
+		return array_diff( $item_classes, $remove_classes );
 	}
 }
 new Spine_Theme_Navigation();
