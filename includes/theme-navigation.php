@@ -72,7 +72,7 @@ class Spine_Theme_Navigation {
 			} else {
 				$classes = array();
 			}
-		} elseif ( $current_or_parent_page ) {
+		} elseif ( $current_or_parent_menu_item ) {
 			$classes[] = 'active';
 		}
 
