@@ -59,12 +59,15 @@ class Spine_Theme_Navigation {
 	 */
 	public function abbridged_menu_classes( $classes, $item, $args ) {
 		$post = get_post();
-		$current_or_parent_page = array_intersect( array( 'current-menu-item', 'current_page_parent' ), $classes );
-		$current_page_parent = ( $item->object_id == $post->post_parent );
-		$current_page_not_in_menu = ! in_array( 'current-page-parent', $classes, true );
+		$current_or_parent_menu_item = array_intersect( array( 'current-menu-item', 'current_page_parent' ), $classes );
+		$parent_of_page_not_in_menu = ( $item->object_id == $post->post_parent ) && ! in_array( 'current-page-parent', $classes, true );
+		$event_post_or_archive = is_post_type_archive( 'tribe_events' ) || is_singular( 'tribe_events' );
+		$event_archive_menu_item = in_array( 'current-menu-item current_page_item', $classes, true );
 
 		if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
-			if ( $current_or_parent_page || ( $current_page_parent && $current_page_not_in_menu ) ) {
+			if ( ( $current_or_parent_menu_item || $parent_of_page_not_in_menu ) && ! $event_post_or_archive ) {
+				$classes = array( 'active' );
+			} elseif ( $event_post_or_archive && $event_archive_menu_item ) {
 				$classes = array( 'active' );
 			} else {
 				$classes = array();
