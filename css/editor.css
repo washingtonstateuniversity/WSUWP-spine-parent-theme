@@ -1,178 +1,139 @@
-/*---------------------------------------------------------
- Body (editor-style.css)
--------------------------------------------------------- */
-html {
-	font-size: 62.5%; /* 10px */
+blockquote,caption,cite,code,figcaption,figure,h1,h2,h3,h4,h5,h6,img,kbd,li,mark,ol,p,pre,samp,small,span,sub,sup,table,tbody,td,tfoot,th,thead,tr,u,ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
 }
 body {
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 22px;
-	color: #171717;
+	color: #717171;
+	font: 14px/22px "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	-webkit-font-smoothing: subpixel-antialiased !important;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.sans {
+	font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+}
+.serif {
+	font-family: "Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+}
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	line-height: 1.1em;
+	letter-spacing: 0;
+	font-weight: 700;
+	padding: .5em 0 .2em 0;
+}
+h1 {
+	font-size: 2rem;
+	padding-top: 0;
+}
+h2 {
+	font-size: 1.8rem;
+}
+h3 {
+	font-size: 1.6rem;
+}
+h4 {
+	font-size: 1.4rem;
+}
+h5 {
+	font-size: 1.2rem;
+}
+h6 {
+	font-size: 1rem;
+}
+ol,ul {
+	padding: 0 2em 1em 2em;
+}
+ol ol,ul ul {
+	padding-bottom: 0;
+}
+ol li,ul li {
+	padding: 0 0 .3em 0;
+	line-height: 1.4em;
+}
+ol li ol,ul li ul {
+	padding-top: .3em;
+}
+p {
+	margin: 0;
+	padding-bottom: 1em;
+}
+blockquote,ol,p~p,ul {
+	padding-bottom: 1em;
+}
+h1+ol,h1+ul,h2+ol,h2+ul,h3+ol,h3+ul,h4+ol,h4+ul,h5+ol,h5+ul,h6+ol,h6+ul {
+	padding-top: .3em;
+}
+blockquote {
+	padding-left: 1em;
+	padding-right: 1em;
+	font-family: "Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+}
+code,pre {
+	font-family: "Courier New",Courier,monospace;
+}
+big {
+	font-size: 1.5em;
+}
+small {
+	font-size: .8em;
+	line-height: .8em;
+}
+sub,sup {
+	font-size: .7em;
+	line-height: .7em;
+}
+sup {
+	vertical-align: super;
+	margin-top: -6px;
+}
+sub {
+	vertical-align: sub;
 }
 a {
-	color: #3070d1;
-	font-weight: bold;
 	text-decoration: none;
+	color: #981e32;
 }
-/*---------------------------------------------------------
- Images (editor-style.css)
--------------------------------------------------------- */
-img {
-	margin-bottom: 22px;
+a:hover {
+	color: #c60c30;
+}
+b,strong {
+	font-weight: 700;
+}
+em,i {
+	font-style: italic;
+}
+hr {
+	border-width: 0;
+	border-style: solid;
+	border-color: #000;
+	margin: 1em 0;
+	height: 1px;
+	background-color: rgba(93,105,112,.5);
+	display: block;
+	clear: both;
+}
+img,
+figure {
+	max-width: 100%;
 	height: auto;
 }
 .alignleft {
-	display: inline;
 	float: left;
-	margin-right: 32px;
+	margin: 0 1em 1em 0;
 }
 .alignright {
-	display: inline;
 	float: right;
-	margin-left: 32px;
+	margin: 0 0 1em 1em;
 }
 .aligncenter {
 	display: block;
-	clear: both;
-	margin: 0 auto;
+	margin: 1em auto;
 }
-/*---------------------------------------------------------
- Code (editor-style.css)
--------------------------------------------------------- */
-tt,
-kbd,
-pre,
-code,
-samp {
-	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
-}
-/*---------------------------------------------------------
- Elements (editor-style.css)
--------------------------------------------------------- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	clear: both;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-h1,
-h4,
-h6 {
-	font-weight: normal;
-}
-h5,
-h6 {
-	text-transform: uppercase;
-}
-blockquote {
-	margin-left: 0;
-	margin-right: 0;
-}
-blockquote p {
-	font-size: 135%; /* 20px */
-}
-blockquote p cite,
-blockquote cite {
-	font-size: 75%; /* 12px */
-}
-
-tt,
-kbd,
-pre,
-code,
-samp {
-	padding: 4px;
-	font-size: 93.75%; /* 15px */
-	background-color: #eaecee;
-}
-pre {
-	padding: 33px 32px;
-	font-size: 93.75%; /* 15px */
-}
-mark {
-	text-decoration: none;
-	background-color: #fff9c0;
-}
-ins {
-	color: inherit;
-}
-dt {
-	font-weight: bold;
-}
-del,
-strike {
-	color: inherit;
-}
-/*---------------------------------------------------------
- Table (editor-style.css)
--------------------------------------------------------- */
-table {
-	width: 100%;
-	text-align: left;
-}
-table caption {
-	font-weight: bold;
-}
-table th,
-table td {
-	padding: 5px 10px;
-}
-/*---------------------------------------------------------
- Media (editor-style.css)
--------------------------------------------------------- */
-* {
-	max-width: 100%;
-}
-.wp-caption,
-.wp-caption-text {
-	font-style: italic;
-	text-align: left;
-}
-.shortcode-wrapper{
-	display: block;
-	margin-bottom: 22px;
-	padding: 5px 10px;
-	font-size: 14px;
-	color: #aaa;
-	background-color: #fafafa;
-	border: 1px solid #dfdfdf;
-	text-align: center;
-	word-wrap: break-word;
-}
-
-/*---------------------------------------------------------
- Buttons (editor-style.css)
--------------------------------------------------------- */
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	padding: 10px 14px;
-	font-size: 13px;
-	color: #ffffff;
-	border: 0;
-	background: #171717;
-	cursor: pointer;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-/*---------------------------------------------------------
- Lists (editor-style.css)
--------------------------------------------------------- */
-ul {
-	list-style: disc;
-}
-ol {
-	list-style: decimal;
-}
-ul,
-ol {
-	margin: 0 0 22px 0;
-	padding-left: 20px;
+.wp-caption-dd {
+	padding: 5px 0;
 }
