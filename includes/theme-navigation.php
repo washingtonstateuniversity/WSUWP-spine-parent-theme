@@ -134,6 +134,7 @@ class Spine_Theme_Navigation {
 	 * Filter the list item classes to manually add active on the current page in nav.
 	 *
 	 * @param array   $item_classes List of classes assigned to the list item.
+	 * @param WP_Post $page         Post object for the current page.
 	 *
 	 * @return array
 	 */
