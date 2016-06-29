@@ -25,7 +25,7 @@ class Spine_Theme_Navigation {
 		// Filters for navigation handled by BU Navigation.
 		add_filter( 'bu_navigation_filter_pages', array( $this, 'bu_filter_page_urls' ), 11 );
 		add_filter( 'bu_navigation_filter_anchor_attrs', array( $this, 'bu_filter_anchor_attrs' ), 10, 1 );
-		add_filter( 'bu_navigation_filter_item_attrs', array( $this, 'bu_navigation_filter_item_attrs' ), 10, 1 );
+		add_filter( 'bu_navigation_filter_item_attrs', array( $this, 'bu_navigation_filter_item_attrs' ), 10, 2 );
 	}
 
 	/**
@@ -134,13 +134,31 @@ class Spine_Theme_Navigation {
 	 * Filter the list item classes to manually add active on the current page in nav.
 	 *
 	 * @param array   $item_classes List of classes assigned to the list item.
+	 * @param WP_Post $page         Post object for the current page.
 	 *
 	 * @return array
 	 */
-	public function bu_navigation_filter_item_attrs( $item_classes ) {
+	public function bu_navigation_filter_item_attrs( $item_classes, $page ) {
 		$remove_classes = array( 'page_item', 'current_page_item', 'current_page_parent' );
+		$event_post_or_archive = is_post_type_archive( 'tribe_events' ) || is_singular( 'tribe_events' );
+		$events_slug = array_key_exists( 'eventsSlug', get_option( 'tribe_events_calendar_options' ) ) ? get_option( 'tribe_events_calendar_options' )['eventsSlug'] : 'events';
+		$posts_page = '';
+
+		if ( get_option( 'show_on_front' ) === 'posts' ) {
+			$posts_page = home_url( '/' );
+		} else if ( get_option( 'page_for_posts' ) ) {
+			$posts_page = get_permalink( get_option( 'page_for_posts' ) );
+		}
 
 		if ( in_array( 'current_page_item', $item_classes, true ) ) {
+			$item_classes[] = 'active';
+		}
+
+		if ( $event_post_or_archive && isset( $page->url ) && home_url( $events_slug ) === rtrim( $page->url, '/' ) ) {
+			$item_classes[] = 'active';
+		}
+
+		if ( is_singular( 'post' ) && isset( $page->url ) && $posts_page === $page->url ) {
 			$item_classes[] = 'active';
 		}
 
