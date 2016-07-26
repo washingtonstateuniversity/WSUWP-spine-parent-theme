@@ -17,7 +17,14 @@ class Spine_Theme_Setup {
 	 * Add the stylesheet used inside the editor.
 	 */
 	public function add_editor_style() {
-		add_editor_style( 'css/editor.css' );
+		$editor_stylesheets = array( 'css/editor.css' );
+
+		if ( '1' == spine_get_option( 'open_sans' ) ) {
+			$editor_stylesheets[] = '//fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C300italic%2C400italic%2C600italic%2C700%2C700italic&subset=latin%2Clatin-ext';
+			$editor_stylesheets[] = 'css/editor-opensans.css';
+		}
+
+		add_editor_style( $editor_stylesheets );
 	}
 
 	/**
