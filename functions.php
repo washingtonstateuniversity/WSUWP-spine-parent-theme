@@ -882,3 +882,85 @@ function spine_filter_local_content_syndicate_item( $subset, $post, $atts ) {
 
 	return $subset;
 }
+
+add_action( 'add_meta_boxes_page', 'add_body_class_meta_box', 10 );
+/**
+ * Add a metabox to Pages for assigning an arbitrary body class.
+ */
+function add_body_class_meta_box() {
+	add_meta_box(
+		'wsuwp-body-class-meta',
+		'Body Classes',
+		'display_body_class_meta_box',
+		'page',
+		'side',
+		'default'
+	);
+}
+
+/**
+ * Display the metabox used for assigning a body class.
+ *
+ * @param WP_Post $post Object for the post currently being edited.
+ */
+function display_body_class_meta_box( $post ) {
+	$value = get_post_meta( $post->ID, '_wsuwp_body_class', true );
+
+	wp_nonce_field( 'save-wsuwp-body-class', '_wsuwp_body_class_nonce' );
+
+	?>
+	<input type="text" class="widefat" name="wsuwp_body_class" value="<?php echo esc_attr( $value ); ?>" />
+	<p class="howto">Separate classes with spaces</p>
+	<?php
+}
+
+add_action( 'save_post', 'save_body_classes', 10, 2 );
+/**
+ * Save the body class(es) assigned to a page.
+ *
+ * @param int     $post_id ID of the post being saved.
+ * @param WP_Post $post    Post object of the post being saved.
+ */
+function save_body_classes( $post_id, $post ) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	if ( 'page' !== $post->post_type ) {
+		return;
+	}
+
+	if ( 'auto-draft' === $post->post_status ) {
+		return;
+	}
+
+	if ( ! isset( $_POST['_wsuwp_body_class_nonce'] ) || false === wp_verify_nonce( $_POST['_wsuwp_body_class_nonce'], 'save-wsuwp-body-class' ) ) {
+		return;
+	}
+
+	if ( isset( $_POST['wsuwp_body_class'] ) && ! empty( trim( $_POST['wsuwp_body_class'] ) ) ) {
+		update_post_meta( $post_id, '_wsuwp_body_class', sanitize_text_field( $_POST['wsuwp_body_class'] ) );
+	} else {
+		delete_post_meta( $post_id, '_wsuwp_body_class' );
+	}
+}
+
+add_filter( 'body_class', 'page_body_class' );
+/**
+ * Add body classes added via the Body Classes metabox.
+ *
+ * @param array $classes Current list of body classes.
+ *
+ * @return array Modified list of body classes.
+ */
+function page_body_class( $classes ) {
+	$_post = get_post();
+
+	$body_classes = get_post_meta( $_post->ID, '_wsuwp_body_class', true );
+
+	if ( $body_classes ) {
+		$classes[] = esc_attr( $body_classes );
+	}
+
+	return $classes;
+}
