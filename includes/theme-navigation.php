@@ -141,7 +141,14 @@ class Spine_Theme_Navigation {
 	public function bu_navigation_filter_item_attrs( $item_classes, $page ) {
 		$remove_classes = array( 'page_item', 'current_page_item', 'current_page_parent' );
 		$event_post_or_archive = is_post_type_archive( 'tribe_events' ) || is_singular( 'tribe_events' );
-		$events_slug = array_key_exists( 'eventsSlug', get_option( 'tribe_events_calendar_options' ) ) ? get_option( 'tribe_events_calendar_options' )['eventsSlug'] : 'events';
+		$events_slug = 'events';
+		if ( $event_post_or_archive ) {
+			$events_calendar_options = get_option( 'tribe_events_calendar_options' );
+			if ( is_array( $events_calendar_options ) && array_key_exists( 'eventsSlug', $events_calendar_options ) ) {
+				$events_slug = $events_calendar_options['eventsSlug'];
+			}
+		}
+
 		$posts_page = '';
 
 		if ( get_option( 'show_on_front' ) === 'posts' ) {
