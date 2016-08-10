@@ -954,12 +954,14 @@ add_filter( 'body_class', 'page_body_class' );
  * @return array Modified list of body classes.
  */
 function page_body_class( $classes ) {
-	$_post = get_post();
+	if ( is_singular() ) {
+		$_post = get_post();
 
-	$body_classes = get_post_meta( $_post->ID, '_wsuwp_body_class', true );
+		$body_classes = get_post_meta( $_post->ID, '_wsuwp_body_class', true );
 
-	if ( $body_classes ) {
-		$classes[] = esc_attr( $body_classes );
+		if ( $body_classes ) {
+			$classes[] = esc_attr( $body_classes );
+		}
 	}
 
 	return $classes;
