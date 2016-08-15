@@ -208,16 +208,6 @@ function spine_get_open_sans_options() {
 	$spine_open_sans = get_option( 'spine_open_sans', array() );
 	$enabled = absint( spine_get_option( 'open_sans' ) );
 
-	// The WordPress admin bar expects these to exist when it is showing.
-	if ( is_admin_bar_showing() ) {
-		$spine_open_sans['300'] = true;
-		$spine_open_sans['400'] = true;
-		$spine_open_sans['600'] = true;
-		$spine_open_sans['300italic'] = true;
-		$spine_open_sans['400italic'] = true;
-		$spine_open_sans['600italic'] = true;
-	}
-
 	// When Open Sans is enabled, the Spine expects these to exist.
 	if ( 1 === $enabled ) {
 		$spine_open_sans['400'] = true;
