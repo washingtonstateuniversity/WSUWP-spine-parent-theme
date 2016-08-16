@@ -4,12 +4,14 @@
 
     <rule ref="WordPress-Extra">
         <exclude name="WordPress.NamingConventions.ValidFunctionName" />
+        <exclude name="WordPress.NamingConventions.ValidVariableName" />
         <exclude name="WordPress.Files.FileName" />
         <exclude name="WordPress.XSS.EscapeOutput" />
         <exclude name="WordPress.CSRF.NonceVerification" />
         <exclude name="Generic.Formatting.DisallowMultipleStatements" />
         <exclude name="Generic.WhiteSpace.ScopeIndent" />
         <exclude name="WordPress.PHP.StrictComparisons" />
+        <exclude name="WordPress.PHP.StrictInArray" />
         <exclude name="WordPress.WP.EnqueuedResources" />
         <exclude name="WordPress.WP.PreparedSQL" />
     </rule>
