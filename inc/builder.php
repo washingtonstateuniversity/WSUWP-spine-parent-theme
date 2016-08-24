@@ -776,7 +776,7 @@ function spine_output_builder_section_header( $section_name, $ttfmake_section_da
 	?>
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[title]">Section Title:</label>
-		<input type="text" id="<?php echo $section_name; ?>[title]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[title]" value="<?php echo esc_attr( $section_title); ?>" />
+		<input type="text" id="<?php echo $section_name; ?>[title]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[title]" value="<?php echo esc_attr( $section_title ); ?>" />
 		<p class="description">Enter a title to display above the section columns.</p>
 	</div>
 	<div class="wsuwp-builder-meta">
