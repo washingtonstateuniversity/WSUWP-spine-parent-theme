@@ -400,6 +400,14 @@ class Spine_Builder_Custom {
 			$clean_data['section-layout'] = $this->clean_classes( $data['section-layout'] );
 		}
 
+		if ( isset( $data['title'] ) ) {
+			$clean_data['title'] = sanitize_text_field( $data['title'] );
+		}
+
+		if ( isset( $data['header-level'] ) ) {
+			$clean_data['header-level'] = $this->clean_header_element( $data['header-level'] );
+		}
+
 		if ( isset( $data['label'] ) ) {
 			$clean_data['label'] = sanitize_text_field( $data['label'] );
 		}
@@ -751,6 +759,36 @@ function spine_output_builder_section_background( $section_name, $ttfmake_sectio
 		       value="<?php echo $section_mobile_background; ?>"/>
 		<p class="description">Mobile background images are used for display widths narrower than 792px.</p>
 		<p class="description">Background images on sections are an in progress feature. :)</p>
+	</div>
+	<?php
+}
+
+/**
+ * Output the input field for section header and header level shared amongst the columns templates.
+ * This outputs a header above the columns on the front-end.
+ *
+ * @param $section_name
+ * @param $ttfmake_section_data
+ */
+function spine_output_builder_section_header( $section_name, $ttfmake_section_data ) {
+	$section_title = ( isset( $ttfmake_section_data['data']['title'] ) ) ? $ttfmake_section_data['data']['title'] : '';
+	$header_level = ( isset( $ttfmake_section_data['data']['header-level'] ) ) ? $ttfmake_section_data['data']['header-level'] : 'h2';
+	?>
+	<div class="wsuwp-builder-meta">
+		<label for="<?php echo $section_name; ?>[title]">Section Title:</label>
+		<input type="text" id="<?php echo $section_name; ?>[title]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[title]" value="<?php echo esc_attr( $section_title); ?>" />
+		<p class="description">Enter a title to display above the section columns.</p>
+	</div>
+	<div class="wsuwp-builder-meta">
+		<label for="<?php echo $section_name; ?>[header-level]">Section Title Header Level:</label>
+		<select id="<?php echo $section_name; ?>[header-level]"
+		        name="<?php echo $section_name; ?>[header-level]">
+			<option value="h1" <?php selected( esc_attr( $header_level ), 'h1' ); ?>>H1</option>
+			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
+			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>
+			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
+		</select>
+		<p class="description">This header will wrap the section title. H2 by default.</p>
 	</div>
 	<?php
 }
