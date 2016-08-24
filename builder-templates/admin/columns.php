@@ -112,6 +112,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				spine_output_builder_section_classes( $section_name, $ttfmake_section_data );
 				spine_output_builder_section_wrapper( $section_name, $ttfmake_section_data );
 				spine_output_builder_section_label( $section_name, $ttfmake_section_data );
+				spine_output_builder_section_header( $section_name, $ttfmake_section_data );
 				spine_output_builder_section_background( $section_name, $ttfmake_section_data );
 
 				do_action( 'spine_output_builder_section', $section_name, $ttfmake_section_data, 'columns' );
