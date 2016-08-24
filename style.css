@@ -744,3 +744,32 @@ article.wsuwp_uc_person {
 	width: 1px;
 	word-wrap: normal !important;
 }
+
+/** Section header */
+section.gutter > header {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.spacing-tight section.gutter > header {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.spacing-loose section.gutter > header {
+	padding-left: 4rem;
+	padding-right: 4rem;
+}
+
+section.pad-top > header {
+	padding-top: 2rem;
+}
+
+section.pad-bottom > header {
+	padding-bottom: 2rem;
+}
+
+section.pad-ends > header {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
