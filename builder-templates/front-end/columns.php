@@ -34,6 +34,10 @@ $section_has_wrapper = false;
 $section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
 
+// Section header.
+$section_title = ( isset( $ttfmake_section_data['title'] ) ) ? $ttfmake_section_data['title'] : '';
+$section_header_level = ( isset( $ttfmake_section_data['header-level'] ) ) ? $ttfmake_section_data['header-level'] : '';
+
 // If a child theme or plugin has declared a section ID, we handle that.
 // This may be supported in the parent theme one day.
 $section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
@@ -98,6 +102,14 @@ if ( '' === $section_id ) {
 }
 ?>
 	<section id="<?php echo esc_attr( $section_id ); ?>" class="row <?php echo esc_attr( $section_layout ); ?> <?php echo esc_attr( $section_classes ); ?>">
+		<?php // Output the section title
+			if ( '' !== $section_title ) {
+				$section_header_level = in_array( $section_header_level, array( 'h1', 'h2', 'h3', 'h4' ), true ) ? $section_header_level : 'h2';
+				?>
+				<header>
+					<<?php echo $section_header_level; ?>><?php echo apply_filters( 'the_title', $section_title ); ?></<?php echo $section_header_level; ?>>
+				</header>
+		<?php } ?>
 		<?php
 		if ( ! empty( $data_columns ) ) {
 			// We output the column's number as part of a class and need to track count.
