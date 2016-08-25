@@ -419,7 +419,7 @@
 	bottom: 0;
 	text-align: center;
 	white-space: nowrap;
-	z-index: 99999;
+	z-index: 100200;
 	position: fixed;
 }
 .spine-builder-column-overlay:before,
