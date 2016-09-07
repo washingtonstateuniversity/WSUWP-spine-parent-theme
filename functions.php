@@ -547,11 +547,11 @@ add_filter( 'body_class', 'spine_site_body_class' );
  * @return array
  */
 function spine_site_body_class( $classes ) {
-	if ( ! function_exists( 'wsuwp_get_current_site' ) ) {
+	if ( ! is_multisite() ) {
 		return $classes;
 	}
 
-	$site = wsuwp_get_current_site();
+	$site = get_site();
 	$site_domain = 'domain-' . sanitize_title_with_dashes( $site->domain );
 	$site_path = 'path-' . sanitize_title_with_dashes( $site->path );
 
