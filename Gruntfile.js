@@ -34,34 +34,34 @@ module.exports = function(grunt) {
             main: {
                 src: [ "style.css" ],
                 options: {
-                    "fallback-colors": false,			  // unless we want to support IE8
-                    "box-sizing": false,				   // unless we want to support IE7
-                    "compatible-vendor-prefixes": false,   // The library on this is older than autoprefixer.
-                    "gradients": false,					// This also applies ^
-                    "overqualified-elements": false,	   // We have weird uses that will always generate warnings.
-                    "ids": false,
-                    "regex-selectors": false,			  // audit
                     "adjoining-classes": false,
-                    "box-model": false,					// audit
-                    "universal-selector": false,		   // audit
-                    "unique-headings": false,			  // audit
-                    "outline-none": false,				 // audit
-                    "floats": false,
-                    "font-sizes": false,				   // audit
-                    "important": false,					// This should be set to 2 one day.
-                    "unqualified-attributes": false,	   // Should probably be 2 one day.
+                    "box-sizing": false,                  // unless we want to support IE7
+                    "compatible-vendor-prefixes": false,  // The library on this is older than autoprefixer.
+                    "fallback-colors": false,             // unless we want to support IE8
+                    "font-sizes": false,                  // audit
+                    "gradients": false,                   // The library on this is older than autoprefixer.
+                    "ids": false,
+                    "important": false,                   // This should be set to 2 one day.
+                    "order-alphabetical": false,
+                    "overqualified-elements": false,      // We have weird uses that will always generate warnings.
                     "qualified-headings": false,
-                    "known-properties": 1,			  // Okay to ignore in the case of known unknowns.
+                    "known-properties": 1,                // Okay to ignore in the case of known unknowns.
+                    "box-model": 2,
+                    "display-property-grouping": 2,
                     "duplicate-background-images": 2,
                     "duplicate-properties": 2,
+                    "empty-rules": 2,
+                    "floats": 2,
+                    "outline-none": 2,
+                    "regex-selectors": 2,
+                    "shorthand": 2,
                     "star-property-hack": 2,
                     "text-indent": 2,
-                    "display-property-grouping": 2,
-                    "shorthand": 2,
-                    "empty-rules": 2,
+                    "unique-headings": 2,
+                    "universal-selector": 2,
+                    "unqualified-attributes": 2,
                     "vendor-prefix": 2,
-                    "zero-units": 2,
-                    "order-alphabetical": false
+                    "zero-units": 2
                 }
             }
         },
