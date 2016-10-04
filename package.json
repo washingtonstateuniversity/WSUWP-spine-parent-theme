@@ -6,7 +6,16 @@
     "url": "https://github.com/washingtonstateuniversity/wsuwp-spine-parent-theme"
   },
   "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "es6-promise": "^3.3.1",
     "grunt": "~1.0.1",
-    "grunt-phpcs": "^0.4.0"
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "~1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-cssmin": "~1.0.2",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-phpcs": "^0.4.0",
+    "grunt-postcss": "^0.8.0"
   }
 }
