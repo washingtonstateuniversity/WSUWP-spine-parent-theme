@@ -1,5 +1,9 @@
 language: php
 
+cache:
+  directories:
+    - node_modules
+
 notifications:
   email:
     on_success: never
@@ -18,25 +22,14 @@ branches:
 matrix:
   include:
     - php: 5.6
-      env: WP_TRAVISCI=phpcs
 
 before_script:
-    - |
-      if [[ ! -z "$WP_VERSION" ]] ; then
-        bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-      fi
-    - |
-      if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-        npm install
-        composer install
-      fi
+  - npm install
+  - composer install
+  - phpenv versions
+  - npm --version
+  - node --version
 
 script:
-    - |
-      if [[ ! -z "$WP_VERSION" ]] ; then
-        phpunit
-      fi
-    - |
-      if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-        grunt phpcs
-      fi
+  - grunt default
+  - grunt phpcs
