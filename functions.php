@@ -151,6 +151,7 @@ function spine_get_option_defaults() {
 		'social_spot_four'          => 'http://social.wsu.edu',
 		'post_social_placement'     => 'none',
 		'show_author_page'          => '1',
+		'show_breadcrumbs'          => 'top', // Only valid with Breadcrumb NavXT plugin installed.
 		'front_page_title'          => false,
 		'page_for_posts_title'      => false,
 	);
@@ -966,4 +967,30 @@ function page_body_class( $classes ) {
  */
 function spine_get_child_version() {
 	return apply_filters( 'spine_child_theme_version', spine_get_script_version() );
+}
+
+/**
+ * Determines whether breadcrumbs should be displayed in a given location.
+ *
+ * @since 0.27.0
+ *
+ * @param string $position
+ * @return bool True if breadcrumbs should display. False if not.
+ */
+function spine_display_breadcrumbs( $position ) {
+	if ( ! function_exists( 'bcn_display' ) ) {
+		return false;
+	}
+
+	$setting = spine_get_option( 'show_breadcrumbs' );
+
+	if ( 'top' === $position && in_array( $setting, array( 'top', 'both' ), true ) ) {
+		return true;
+	}
+
+	if ( 'bottom' === $position && in_array( $setting, array( 'bottom', 'both' ), true ) ) {
+		return true;
+	}
+
+	return false;
 }

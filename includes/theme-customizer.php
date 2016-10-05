@@ -683,6 +683,26 @@ class Spine_Theme_Customizer {
 			),
 		) );
 
+		// If the Breadcrumb NavXT plugin is enabled, show breadcrumb options.
+		if ( function_exists( 'bcn_display' ) ) {
+			$wp_customize->add_setting( 'spine_options[show_breadcrumbs]', array(
+				'default'    => 'top',
+				'capability' => 'edit_theme_options',
+				'type'       => 'option',
+			) );
+
+			$wp_customize->add_control( 'show_breadcrumbs', array(
+				'label'    => __( 'Show Breadcrumbs', 'spine' ),
+				'section'  => 'section_spine_advanced_options',
+				'settings' => 'spine_options[show_breadcrumbs]',
+				'type'     => 'select',
+				'choices'  => array(
+					'top'    => 'Top',
+					'bottom' => 'Bottom',
+					'both'   => 'Both',
+				),
+			) );
+		}
 		// Style Options
 		$wp_customize->add_section( 'section_spine_style', array(
 			'title'       => __( 'Style Options', 'spine' ),
