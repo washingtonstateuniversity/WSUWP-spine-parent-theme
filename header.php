@@ -38,6 +38,9 @@
 	}
 ?>
 
+<a href="#wsuwp-main" class="screen-reader-shortcut"><?php _e( 'Skip to main content' ); ?></a>
+<a href="#spine-sitenav" class="screen-reader-shortcut"><?php _e( 'Skip to navigation' ); ?></a>
+
 <?php get_template_part( 'parts/before-jacket' ); ?>
 <div id="jacket" class="style-<?php echo esc_attr( spine_get_option( 'theme_style' ) ); ?> colors-<?php echo esc_attr( spine_get_option( 'secondary_colors' ) ); ?> spacing-<?php echo esc_attr( spine_get_option( 'theme_spacing' ) ); ?>">
 <?php get_template_part( 'parts/before-binder' ); ?>
