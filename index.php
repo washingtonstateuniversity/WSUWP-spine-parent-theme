@@ -22,7 +22,7 @@ if ( is_home() ) {
 
 ?>
 
-<main class="<?php echo $main_class; ?>">
+<main id="wsuwp-main" class="<?php echo $main_class; ?>">
 
 <?php
 

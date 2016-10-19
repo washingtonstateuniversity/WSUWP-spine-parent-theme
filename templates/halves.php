@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 
-<main>
+<main id=""wsuwp-main">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

@@ -10,7 +10,7 @@ if ( spine_has_background_image() ) {
 }
 ?>
 
-<main>
+<main id="wsuwp-main">
 
 <?php
 

@@ -2,7 +2,7 @@
 get_header();
 
 ?>
-<main>
+<main id="wsuwp-main">
 
 	<?php get_template_part( 'parts/headers' ); ?>
 

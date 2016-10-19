@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<main class="spine-single-template">
+	<main id="wsuwp-main" class="spine-single-template">
 
 		<?php get_template_part( 'parts/headers' ); ?>
 

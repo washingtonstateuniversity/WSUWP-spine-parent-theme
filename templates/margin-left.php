@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 
-<main class="spine-margin-left-template">
+<main id="wsuwp-main" class="spine-margin-left-template">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
