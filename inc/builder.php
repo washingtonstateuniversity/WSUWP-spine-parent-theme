@@ -667,6 +667,7 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
 			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>
 			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
+			<option value="h5" <?php selected( esc_attr( $header_level ), 'h5' ); ?>>H5</option>
 		</select>
 		<p class="description">This header will wrap the column title. <?php echo strtoupper( $header_level_default ); ?> by default.</p>
 	</div>
