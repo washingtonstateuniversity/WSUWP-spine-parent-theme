@@ -212,7 +212,7 @@ class Spine_Builder_Custom {
 	 * @return string
 	 */
 	public function clean_header_element( $header_element ) {
-		if ( in_array( $header_element, array( 'h1', 'h2', 'h3', 'h4' ) ) ) {
+		if ( in_array( $header_element, array( 'h1', 'h2', 'h3', 'h4', 'h5' ), true ) ) {
 			return $header_element;
 		}
 
