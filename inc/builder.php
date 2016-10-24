@@ -400,8 +400,8 @@ class Spine_Builder_Custom {
 			$clean_data['section-layout'] = $this->clean_classes( $data['section-layout'] );
 		}
 
-		if ( isset( $data['title'] ) ) {
-			$clean_data['title'] = sanitize_text_field( $data['title'] );
+		if ( isset( $data['section-title'] ) ) {
+			$clean_data['section-title'] = sanitize_text_field( $data['section-title'] );
 		}
 
 		if ( isset( $data['header-level'] ) ) {
@@ -772,12 +772,13 @@ function spine_output_builder_section_background( $section_name, $ttfmake_sectio
  * @param $ttfmake_section_data
  */
 function spine_output_builder_section_header( $section_name, $ttfmake_section_data ) {
-	$section_title = ( isset( $ttfmake_section_data['data']['title'] ) ) ? $ttfmake_section_data['data']['title'] : '';
+	$section_title = ( isset( $ttfmake_section_data['data']['section-title'] ) ) ? $ttfmake_section_data['data']['section-title'] : '';
+	$section_title = ( isset( $ttfmake_section_data['data']['title'] ) ) ? $ttfmake_section_data['data']['title'] : $section_title;
 	$header_level = ( isset( $ttfmake_section_data['data']['header-level'] ) ) ? $ttfmake_section_data['data']['header-level'] : 'h2';
 	?>
 	<div class="wsuwp-builder-meta">
-		<label for="<?php echo $section_name; ?>[title]">Section Title:</label>
-		<input type="text" id="<?php echo $section_name; ?>[title]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[title]" value="<?php echo esc_attr( $section_title ); ?>" />
+		<label for="<?php echo $section_name; ?>[section-title]">Section Title:</label>
+		<input type="text" id="<?php echo $section_name; ?>[section-title]" class="wsuwp-builder-section-label widefat" name="<?php echo $section_name; ?>[section-title]" value="<?php echo esc_attr( $section_title ); ?>" />
 		<p class="description">Enter a title to display above the section columns.</p>
 	</div>
 	<div class="wsuwp-builder-meta">
