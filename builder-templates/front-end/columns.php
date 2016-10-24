@@ -35,7 +35,7 @@ $section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) )
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
 
 // Section header.
-$section_title = ( isset( $ttfmake_section_data['title'] ) ) ? $ttfmake_section_data['title'] : '';
+$section_title = ( isset( $ttfmake_section_data['section-title'] ) ) ? $ttfmake_section_data['section-title'] : '';
 $section_header_level = ( isset( $ttfmake_section_data['header-level'] ) ) ? $ttfmake_section_data['header-level'] : '';
 
 // If a child theme or plugin has declared a section ID, we handle that.
