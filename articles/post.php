@@ -15,7 +15,7 @@
 		</hgroup>
 		<hgroup class="source">
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
-			<cite class="article-author" role="author">
+			<cite class="article-author">
 				<?php
 				if ( '1' === spine_get_option( 'show_author_page' ) ) {
 					the_author_posts_link();
