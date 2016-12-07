@@ -786,3 +786,10 @@ section.pad-ends > header {
 	text-decoration: none;
 	outline: none;
 }
+
+#spine button.customize-partial-edit-shortcut-button {
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	text-indent: 0;
+}
