@@ -5,12 +5,30 @@
  * Class Spine_Theme_Images
  */
 class Spine_Theme_Images {
+	/**
+	 * @var Spine_Theme_Images
+	 */
+	private static $instance;
 
 	/**
-	 * Add hooks.
+	 * Maintain and return the one instance and initiate hooks when
+	 * called the first time.
+	 *
+	 * @return \Spine_Theme_Images
 	 */
-	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'setup_image_sizes' ), 10 );
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new Spine_Theme_Images();
+			self::$instance->setup_hooks();
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * Setup hooks to include and then activate the plugin's shortcodes.
+	 */
+	public function setup_hooks() {
+		add_action( 'after_setup_theme', array( $this, 'setup_image_sizes' ), 11 );
 
 		if ( class_exists( 'MultiPostThumbnails' ) ) {
 			add_action( 'after_setup_theme', array( $this, 'setup_additional_post_thumbnails' ), 11 );
@@ -194,7 +212,16 @@ class Spine_Theme_Images {
 		}
 	}
 }
-$spine_theme_image = new Spine_Theme_Images();
+
+add_action( 'after_setup_theme', 'Spine_Theme_Images', 10 );
+/**
+ * Start things up.
+ *
+ * @return \Spine_Theme_Images
+ */
+function Spine_Theme_Images() {
+	return Spine_Theme_Images::get_instance();
+}
 
 /**
  * Use the_post_thumbnail to display the default featured image provided
@@ -244,8 +271,7 @@ function spine_get_featured_image_src( $size = 'spine-xlarge_size' ) {
  * @param string $size Thumbnail size.
  */
 function spine_the_background_image( $size = 'spine-xlarge_size' ) {
-	global $spine_theme_image;
-	$spine_theme_image->the_post_thumbnail( 'background-image', $size );
+	return Spine_Theme_Images()->the_post_thumbnail( 'background-image', $size );
 }
 
 /**
@@ -254,8 +280,7 @@ function spine_the_background_image( $size = 'spine-xlarge_size' ) {
  * @return bool True if background exists. False if not.
  */
 function spine_has_background_image() {
-	global $spine_theme_image;
-	return $spine_theme_image->has_post_thumbnail( 'background-image' );
+	return Spine_Theme_Images()->has_post_thumbnail( 'background-image' );
 }
 
 /**
@@ -266,8 +291,7 @@ function spine_has_background_image() {
  * @return bool|string URL of the image if available. False if not.
  */
 function spine_get_background_image_src( $size = 'spine-xlarge_size' ) {
-	global $spine_theme_image;
-	return $spine_theme_image->get_thumbnail_image_src( 'background-image', $size );
+	return Spine_Theme_Images()->get_thumbnail_image_src( 'background-image', $size );
 }
 
 /**
@@ -277,8 +301,7 @@ function spine_get_background_image_src( $size = 'spine-xlarge_size' ) {
  * @param string $size Thumbnail size.
  */
 function spine_the_thumbnail_image( $size = 'spine-thumbnail_size' ) {
-	global $spine_theme_image;
-	$spine_theme_image->the_post_thumbnail( 'thumbnail-image', $size );
+	return Spine_Theme_Images()->the_post_thumbnail( 'thumbnail-image', $size );
 }
 
 /**
@@ -287,8 +310,7 @@ function spine_the_thumbnail_image( $size = 'spine-thumbnail_size' ) {
  * @return bool True if thumbnail exists. False if not.
  */
 function spine_has_thumbnail_image() {
-	global $spine_theme_image;
-	return $spine_theme_image->has_post_thumbnail( 'thumbnail-image' );
+	return Spine_Theme_Images()->has_post_thumbnail( 'thumbnail-image' );
 }
 
 /**
@@ -299,6 +321,5 @@ function spine_has_thumbnail_image() {
  * @return bool|string URL of the image if available. False if not.
  */
 function spine_get_thumbnail_image_src( $size = 'spine-thumbnail_size' ) {
-	global $spine_theme_image;
-	return $spine_theme_image->get_thumbnail_image_src( 'thumbnail-image', $size );
+	return Spine_Theme_Images()->get_thumbnail_image_src( 'thumbnail-image', $size );
 }
