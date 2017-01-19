@@ -83,7 +83,7 @@
 	}
 
 	// Display University categories attached to the post.
-	if ( has_term( '', 'wsuwp_university_category' ) ) {
+	if ( taxonomy_exists( 'wsuwp_university_category' ) && has_term( '', 'wsuwp_university_category' ) ) {
 		$university_category_terms = get_the_terms( get_the_ID(), 'wsuwp_university_category' );
 		if ( ! is_wp_error( $university_category_terms ) ) {
 			echo '<dl class="university-categorized">';
@@ -110,7 +110,7 @@
 	}
 
 	// Display University locations attached to the post.
-	if ( has_term( '', 'wsuwp_university_location' ) ) {
+	if ( taxonomy_exists( 'wsuwp_university_location' ) && has_term( '', 'wsuwp_university_location' ) ) {
 		$university_location_terms = get_the_terms( get_the_ID(), 'wsuwp_university_location' );
 		if ( ! is_wp_error( $university_location_terms ) ) {
 			echo '<dl class="university-location">';
