@@ -90,14 +90,14 @@ function spine_get_campus_data( $part ) {
 	if ( isset( $campus_data[ $campus_location ] ) ) {
 		if ( 'url' === $part ) {
 			return esc_url( $campus_data[ $campus_location ][0] );
-		} else if ( 'link-text' === $part ) {
+		} elseif ( 'link-text' === $part ) {
 			return esc_html( 'Washington State University ' . $campus_data[ $campus_location ][1] );
 		}
 	}
 
 	if ( 'url' === $part ) {
 		return apply_filters( 'spine_get_campus_home_url', 'https://wsu.edu/' );
-	} else if ( 'link-text' === $part ) {
+	} elseif ( 'link-text' === $part ) {
 		return apply_filters( 'spine_get_campus_data', 'Washington State University' );
 	}
 
@@ -327,9 +327,9 @@ function spine_wp_enqueue_scripts() {
 	 * If "Skeletal" styling is chosen in the Customizer, no `spine-theme-extra` stylesheet will be enqueued.
 	 */
 	if ( is_child_theme() ) {
-		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme', get_template_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
-			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 		}
 
 		if ( apply_filters( 'spine_child_min_css', false ) ) {
@@ -339,9 +339,9 @@ function spine_wp_enqueue_scripts() {
 		}
 		wp_enqueue_style( 'spine-theme-child', get_stylesheet_directory_uri() . '/' . $child_stylesheet, array( 'wsu-spine' ), spine_get_child_version() );
 	} else {
-		wp_enqueue_style( 'spine-theme',       get_template_directory_uri()   . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
+		wp_enqueue_style( 'spine-theme', get_template_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
 		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
-			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri()   . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
+			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 		}
 	}
 
@@ -599,7 +599,7 @@ add_filter( 'body_class', 'spine_campus_body_class' );
  */
 function spine_campus_body_class( $classes ) {
 	if ( spine_get_option( 'campus_location' ) != '' ) {
-		$classes[] = esc_attr( spine_get_option( 'campus_location' ) ).'-signature';
+		$classes[] = esc_attr( spine_get_option( 'campus_location' ) ) . '-signature';
 	}
 
 	return $classes;
@@ -709,8 +709,8 @@ function spine_sectioned_body_classes( $classes ) {
 			$classes[] = 'section-' . array_shift( $path );
 			$prefix = 'sub-';
 			foreach ( $path as $part ) {
-				$classes[] = $prefix.'section-' . $part;
-				$prefix = 'sub-'.$prefix;
+				$classes[] = $prefix . 'section-' . $part;
+				$prefix = 'sub-' . $prefix;
 			}
 			$classes[] = 'page-' . array_pop( $path );
 		}

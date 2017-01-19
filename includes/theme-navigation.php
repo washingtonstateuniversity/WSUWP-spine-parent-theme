@@ -97,7 +97,7 @@ class Spine_Theme_Navigation {
 		if ( is_array( $pages ) && count( $pages ) > 0 ) {
 
 			$ids = array_map( 'absint', array_keys( $pages ) );
-			$query = $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '%s' AND post_id IN (" .  implode( ',', $ids ) . ") and meta_value = '%s'", '_wp_page_template', 'templates/section-label.php' );
+			$query = $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '%s' AND post_id IN (" . implode( ',', $ids ) . ") and meta_value = '%s'", '_wp_page_template', 'templates/section-label.php' );
 			$labels = $wpdb->get_results( $query, OBJECT_K );
 
 			if ( is_array( $labels ) && count( $labels ) > 0 ) {
@@ -153,7 +153,7 @@ class Spine_Theme_Navigation {
 
 		if ( get_option( 'show_on_front' ) === 'posts' ) {
 			$posts_page = home_url( '/' );
-		} else if ( get_option( 'page_for_posts' ) ) {
+		} elseif ( get_option( 'page_for_posts' ) ) {
 			$posts_page = get_permalink( get_option( 'page_for_posts' ) );
 		}
 

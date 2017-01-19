@@ -97,13 +97,13 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
 		// Blog
 		if ( is_home() ) {
 			$view = 'blog';
-		} else if ( is_archive() ) {
+		} elseif ( is_archive() ) {
 			$view = 'archive';
-		} else if ( is_search() ) {
+		} elseif ( is_search() ) {
 			$view = 'search';
-		} else if ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
+		} elseif ( is_singular( $post_types ) || ( is_attachment() && in_array( $parent_post_type, $post_types ) ) ) {
 			$view = 'post';
-		} else if ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
+		} elseif ( is_page() || ( is_attachment() && 'page' === $parent_post_type ) ) {
 			$view = 'page';
 		}
 
@@ -181,7 +181,7 @@ if ( ! function_exists( 'ttfmake_sidebar_description' ) ) :
 			if ( $column > $column_count ) {
 				$description = __( 'This widget area is currently disabled. Enable it in the "Footer" panel of the Customizer.', 'make' );
 			}
-		} else if ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
+		} elseif ( false !== strpos( $sidebar_id, 'sidebar-' ) ) {
 			// Other sidebars
 			$location = str_replace( 'sidebar-', '', $sidebar_id );
 

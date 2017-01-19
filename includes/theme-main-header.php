@@ -148,17 +148,17 @@ function spine_get_main_header() {
 	if ( is_archive() ) {
 		if ( is_category() ) {
 			$sub_header_default = single_cat_title( '', false );
-		} else if ( is_tag() ) {
+		} elseif ( is_tag() ) {
 			$sub_header_default = single_tag_title( '', false );
-		} else if ( is_tax( 'wsuwp_university_category' ) ) {
+		} elseif ( is_tax( 'wsuwp_university_category' ) ) {
 			$sub_header_default = single_term_title( '', false );
-		} else if ( is_day() ) {
+		} elseif ( is_day() ) {
 			$sub_header_default = get_the_date();
-		} else if ( is_month() ) {
+		} elseif ( is_month() ) {
 			$sub_header_default = get_the_date( 'F Y' );
-		} else if ( is_year() ) {
+		} elseif ( is_year() ) {
 			$sub_header_default = get_the_date( 'Y' );
-		} else if ( is_author() ) {
+		} elseif ( is_author() ) {
 			$sub_header_default = get_the_author();
 		} else {
 			$sub_header_default = 'Archives';

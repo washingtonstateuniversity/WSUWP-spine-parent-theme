@@ -30,9 +30,9 @@ spine_load_section_header();
 		</div>
 	</div>
 <input type="hidden"
-       class="ttfmake-section-state"
-       name="<?php echo $section_name; ?>[state]"
-       value="<?php
+		class="ttfmake-section-state"
+		name="<?php echo $section_name; ?>[state]"
+		value="<?php
 if ( isset( $ttfmake_section_data['data']['state'] ) ) {
 	echo esc_attr( $ttfmake_section_data['data']['state'] );
 } else {

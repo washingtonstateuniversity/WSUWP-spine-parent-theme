@@ -117,7 +117,7 @@ if ( '' === $section_id ) {
 			$count = 0;
 			foreach ( $data_columns as $column ) {
 				if ( isset( $column['column-background-image'] ) && ! empty( $column['column-background-image'] ) ) {
-					$column_background = "background-image:url('" . esc_url( $column['column-background-image'] ) ."');";
+					$column_background = "background-image:url('" . esc_url( $column['column-background-image'] ) . "');";
 				} else {
 					$column_background = '';
 				}
