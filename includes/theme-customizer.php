@@ -180,7 +180,6 @@ class Spine_Theme_Customizer {
 			'white'    => 'White',
 			'dark'     => 'Dark',
 			'darker'   => 'Darker',
-			'crimson'  => 'Crimson',
 		);
 
 		/**
@@ -188,6 +187,11 @@ class Spine_Theme_Customizer {
 		 * selected a deprecated option, we'll continue to offer it.
 		 */
 		$current_color = spine_get_option( 'spine_color' );
+
+		if ( 'crimson' === $current_color ) {
+			$spine_colors['crimson'] = 'Crimson';
+		}
+
 		if ( 'lightest' === $current_color ) {
 			$spine_colors['lightest'] = 'Lightest';
 		}
