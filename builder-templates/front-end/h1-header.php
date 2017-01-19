@@ -14,7 +14,7 @@ $section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_secti
 
 $column_classes = ( isset( $ttfmake_section_data['column-classes'] ) ) ? $ttfmake_section_data['column-classes'] : false;
 $header_level = ( isset( $ttfmake_section_data['header-level'] ) && in_array( $ttfmake_section_data['header-level'], array( 'h1', 'h2', 'h3', 'h4' ) ) ) ? $ttfmake_section_data['header-level'] : 'h1';
-$column_background = ( isset( $ttfmake_section_data['column-background-image'] ) && ! empty( $ttfmake_section_data['column-background-image'] ) ) ? "background-image:url('" . esc_url( $ttfmake_section_data['column-background-image'] ) ."');" : '';
+$column_background = ( isset( $ttfmake_section_data['column-background-image'] ) && ! empty( $ttfmake_section_data['column-background-image'] ) ) ? "background-image:url('" . esc_url( $ttfmake_section_data['column-background-image'] ) . "');" : '';
 
 if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_section_data['background-img'] ) ) {
 	$section_background = $ttfmake_section_data['background-img'];

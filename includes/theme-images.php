@@ -167,23 +167,23 @@ class Spine_Theme_Images {
 						<label for="featured-image-position">Background Position</label>
 						<select name="featured_image_position" id="featured-image-position">
 							<option value="0">--- No Change ---</option>
-							<option value="background-position-center" '        . selected( $position, 'background-position-center', false )        . '>
+							<option value="background-position-center" ' . selected( $position, 'background-position-center', false ) . '>
 								Center Center</option>
-							<option value="background-position-center-top" '    . selected( $position, 'background-position-center-top', false )    . '>
+							<option value="background-position-center-top" ' . selected( $position, 'background-position-center-top', false ) . '>
 								Center Top</option>
-							<option value="background-position-right-top" '     . selected( $position, 'background-position-right-top', false )     . '>
+							<option value="background-position-right-top" ' . selected( $position, 'background-position-right-top', false ) . '>
 								Right Top</option>
-							<option value="background-position-right-center" '  . selected( $position, 'background-position-right-center', false )  . '>
+							<option value="background-position-right-center" ' . selected( $position, 'background-position-right-center', false ) . '>
 								Right Center</option>
-							<option value="background-position-right-bottom" '  . selected( $position, 'background-position-right-bottom', false )  . '>
+							<option value="background-position-right-bottom" ' . selected( $position, 'background-position-right-bottom', false ) . '>
 								Right Bottom</option>
 							<option value="background-position-center-bottom" ' . selected( $position, 'background-position-center-bottom', false ) . '>
 								Center Bottom</option>
-							<option value="background-position-left-bottom" '   . selected( $position, 'background-position-left-bottom', false )   . '>
+							<option value="background-position-left-bottom" ' . selected( $position, 'background-position-left-bottom', false ) . '>
 								Left Bottom</option>
-							<option value="background-position-left-center" '   . selected( $position, 'background-position-left-center', false )   . '>
+							<option value="background-position-left-center" ' . selected( $position, 'background-position-left-center', false ) . '>
 								Left Center</option>
-							<option value="background-position-left-top" '      . selected( $position, 'background-position-left-top', false )      . '>
+							<option value="background-position-left-top" ' . selected( $position, 'background-position-left-top', false ) . '>
 								Left Top</option>
 						</select>
 						<p class="description">When the featured image is displayed as a background, the above will adjust its position.</p>

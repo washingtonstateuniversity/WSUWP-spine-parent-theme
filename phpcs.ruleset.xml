@@ -14,5 +14,6 @@
         <exclude name="WordPress.PHP.StrictInArray" />
         <exclude name="WordPress.WP.EnqueuedResources" />
         <exclude name="WordPress.WP.PreparedSQL" />
+        <exclude name="WordPress.NamingConventions.ValidHookName" />
     </rule>
 </ruleset>
