@@ -426,9 +426,6 @@ article footer a:hover {
 	font-size: 40px;
 	font-size: 4rem;
 	line-height: 1;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 	text-align: center;
 	color: #eaecee;
@@ -621,10 +618,6 @@ article.wsuwp_uc_person {
 	color: #959a9e;
 	font-weight: 300;
 	-webkit-font-smoothing: antialiased;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 	width: 25px;
 	height: 25px;
@@ -756,14 +749,12 @@ section.pad-ends > header {
 	color: #0073aa;
 	z-index: 100000;
 	line-height: normal;
-	-webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
 	text-decoration: none;
 	outline: none;
 }
 
 #spine button.customize-partial-edit-shortcut-button {
-	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	border: 2px solid #fff;
 	text-indent: 0;

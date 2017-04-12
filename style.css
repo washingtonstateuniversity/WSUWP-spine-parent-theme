@@ -456,9 +456,9 @@ article footer a:hover {
 	font-size: 4rem;
 	line-height: 1;
 	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 	text-align: center;
 	color: #eaecee;
 }
