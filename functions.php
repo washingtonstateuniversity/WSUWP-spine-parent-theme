@@ -853,6 +853,20 @@ function spine_get_title() {
 	return apply_filters( 'spine_get_title', $title, $site_part, $global_part, $view_title );
 }
 
+add_filter( 'tribe_events_title_tag', 'spine_tribe_events_title_tag' );
+/**
+ * Adds a separator to titles filtered by The Events Calendar.
+ *
+ * @since 0.27.9
+ *
+ * @param string $title
+ *
+ * @return string
+ */
+function spine_tribe_events_title_tag( $title ) {
+	return $title . ' | ';
+}
+
 /**
  * Run an individual content syndicate item through wpautop. This is attached through
  * the page builder template, which normally removes the use of wpautop completely so
