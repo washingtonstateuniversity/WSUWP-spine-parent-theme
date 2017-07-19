@@ -730,7 +730,7 @@ add_filter( 'post_class', 'spine_excerpt_style_classes' );
 function spine_excerpt_style_classes( $classes ) {
 	global $post;
 
-	if ( ! is_singular() ) {
+	if ( ! is_admin() && ! is_singular() ) {
 		if ( $post->post_excerpt ) {
 			$classes[] = 'summary-excerpted';
 		} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
