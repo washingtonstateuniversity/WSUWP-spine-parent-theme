@@ -15,5 +15,14 @@
         <exclude name="WordPress.WP.EnqueuedResources" />
         <exclude name="WordPress.WP.PreparedSQL" />
         <exclude name="WordPress.NamingConventions.ValidHookName" />
+        <exclude name="Squiz.PHP.DisallowMultipleAssignments" />
+        <exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace" />
+        <exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
+        <exclude name="Squiz.PHP.EmbeddedPhp.MultipleStatements" />
+        <exclude name="Squiz.PHP.EmbeddedPhp.NoSemicolon" />
+        <exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd" />
+        <exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen" />
+        <exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen" />
+        <exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterEnd" />
     </rule>
 </ruleset>
