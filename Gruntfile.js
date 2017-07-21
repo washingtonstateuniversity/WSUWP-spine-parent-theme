@@ -91,5 +91,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( "grunt-phpcs" );
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean' ]);
+    grunt.registerTask('default', ['concat', 'postcss', 'csslint', 'clean', 'phpcs' ]);
 };

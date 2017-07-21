@@ -82,7 +82,10 @@ if ( ! function_exists( 'ttfmake_get_view' ) ) :
 	 */
 	function ttfmake_get_view() {
 		// Post types
-		$post_types = get_post_types( array( 'public' => true, '_builtin' => false ) );
+		$post_types = get_post_types( array(
+			'public' => true,
+			'_builtin' => false,
+		) );
 		$post_types[] = 'post';
 
 		// Post parent

@@ -128,7 +128,9 @@ class Spine_Theme_Customizer {
 			'section' => 'static_front_page',
 			'settings' => 'spine_options[front_page_title]',
 			'type' => 'checkbox',
-			'active_callback' => function() { return 'page' == get_option( 'show_on_front' ); },
+			'active_callback' => function() {
+				return 'page' == get_option( 'show_on_front' );
+			},
 		) );
 
 		$wp_customize->add_setting( 'spine_options[page_for_posts_title]', array(
@@ -142,7 +144,9 @@ class Spine_Theme_Customizer {
 			'section' => 'static_front_page',
 			'settings' => 'spine_options[page_for_posts_title]',
 			'type' => 'checkbox',
-			'active_callback' => function() { return 'page' == get_option( 'show_on_front' ); },
+			'active_callback' => function() {
+				return 'page' == get_option( 'show_on_front' );
+			},
 		) );
 
 		// Signature

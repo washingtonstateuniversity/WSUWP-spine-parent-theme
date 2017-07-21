@@ -11,7 +11,7 @@
 			<h2 class="article-title">
 				<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 			</h2>
-		<?php endif; // is_single() or in_a_relationship() ?>
+		<?php endif; ?>
 		</hgroup>
 		<hgroup class="source">
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
@@ -61,7 +61,12 @@
 	<?php else : ?>
 		<div class="article-body">
 			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'spine' ), 'after' => '</div>' ) ); ?>
+			<?php
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . __( 'Pages:', 'spine' ),
+				'after' => '</div>',
+			) );
+			?>
 		</div>
 	<?php endif; ?>
 

@@ -126,15 +126,15 @@ function spine_get_main_header() {
 	$site_tagline       = get_bloginfo( 'description', 'display' );
 	$page_title         = get_the_title();
 	$post_title         = get_the_title();
-	$global_sup_header 	= spine_get_option( 'global_main_header_sup' );
-	$global_sub_header 	= spine_get_option( 'global_main_header_sub' );
+	$global_sup_header  = spine_get_option( 'global_main_header_sup' );
+	$global_sub_header  = spine_get_option( 'global_main_header_sub' );
 
 	// Attempt to determine the section and subsection through page hierarchy.
 	$section_title      = spine_section_meta( 'title', 'section' );
 	$subsection_title   = spine_section_meta( 'title', 'subsection' );
 
 	// By default, the `sup-header` area is the site's configured Title
-	$sup_header_default	  = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
+	$sup_header_default = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
 
 	// The `sub-header` area is properly set in the conditional logic that follows.
 	$sub_header_default   = '';

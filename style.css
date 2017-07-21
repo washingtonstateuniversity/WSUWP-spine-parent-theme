@@ -650,7 +650,6 @@ article.wsuwp_uc_person {
 	color: #959a9e;
 	font-weight: 300;
 	-webkit-font-smoothing: antialiased;
-	-webkit-transition: all 200ms ease;
 	transition: all 200ms ease;
 	width: 25px;
 	height: 25px;

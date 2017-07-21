@@ -22,7 +22,7 @@ $section_order = ( ! empty( $ttfmake_section_data['data']['banner-slide-order'] 
 	<div class="ttfmake-banner-slides">
 		<div class="ttfmake-banner-slides-stage">
 			<?php
-			foreach ( $section_order as $key => $section_id  ) {
+			foreach ( $section_order as $key => $section_id ) {
 				if ( isset( $ttfmake_section_data['data']['banner-slides'][ $section_id ] ) ) {
 					global $ttfmake_slide_id;
 					$ttfmake_slide_id = $section_id;

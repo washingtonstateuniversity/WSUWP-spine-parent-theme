@@ -119,8 +119,8 @@ function spine_get_option_defaults() {
 		'theme_style'               => 'bookmark',
 		'secondary_colors'          => 'default',  // Crimson
 		'theme_spacing'             => 'default',
-		'global_main_header_sup'	=> '',
-		'global_main_header_sub'	=> '',
+		'global_main_header_sup'    => '',
+		'global_main_header_sub'    => '',
 		'main_header_show'          => true,
 		'articletitle_show'         => true,
 		'articletitle_header'       => false,
