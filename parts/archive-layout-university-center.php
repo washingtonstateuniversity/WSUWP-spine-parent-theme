@@ -6,7 +6,7 @@
 
 			<?php get_template_part( 'articles/post', get_post_type() ); ?>
 
-		<?php endwhile; // end of the loop. ?>
+		<?php endwhile; ?>
 
 	</div><!--/column-->
 

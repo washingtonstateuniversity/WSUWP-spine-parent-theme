@@ -36,7 +36,7 @@ class Spine_Builder_Custom {
 		global $pagenow;
 
 		// Only load resources if they are needed on the current page
-		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() )	) {
+		if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ) ) || ! ttfmake_post_type_supports_builder( get_post_type() ) ) {
 			return;
 		}
 
@@ -649,21 +649,21 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[column-classes]">Column Classes</label>
 		<input type="text"
-		       id="<?php echo $column_name; ?>[column-classes]"
-		       name="<?php echo $column_name; ?>[column-classes]"
-		       class="spine-builder-column-classes widefat"
-		       value="<?php echo esc_attr( $column_classes ); ?>"/>
+			   id="<?php echo $column_name; ?>[column-classes]"
+			   name="<?php echo $column_name; ?>[column-classes]"
+			   class="spine-builder-column-classes widefat"
+			   value="<?php echo esc_attr( $column_classes ); ?>"/>
 		<p class="description">Enter space delimited class names here to apply them to the <code>div.column</code>
 			element represented by this builder area.</p>
 	</div>
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[header-level]">Header Level</label>
 		<select id="<?php echo $column_name; ?>[header-level]"
-		        name="<?php echo $column_name; ?>[header-level]"
-		        class="">
-		    <?php if ( 'wsuwpheader' === $section_data['section']['id'] ) : ?>
-		    <option value="h1" <?php selected( esc_attr( $header_level ), 'h1' ); ?>>H1</option>
-		    <?php endif; ?>
+				name="<?php echo $column_name; ?>[header-level]"
+				class="">
+			<?php if ( 'wsuwpheader' === $section_data['section']['id'] ) : ?>
+			<option value="h1" <?php selected( esc_attr( $header_level ), 'h1' ); ?>>H1</option>
+			<?php endif; ?>
 			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
 			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>
 			<option value="h4" <?php selected( esc_attr( $header_level ), 'h4' ); ?>>H4</option>
@@ -674,10 +674,10 @@ function spine_output_builder_column_classes( $column_name, $section_data, $colu
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $column_name; ?>[column-background-image]">Background Image</label>
 		<input type="text"
-		       id="<?php echo $column_name; ?>[column-background-image]"
-		       name="<?php echo $column_name; ?>[column-background-image]"
-		       class="spine-builder-column-classes widefat"
-		       value="<?php echo esc_attr( $column_background ); ?>" />
+			   id="<?php echo $column_name; ?>[column-background-image]"
+			   name="<?php echo $column_name; ?>[column-background-image]"
+			   class="spine-builder-column-classes widefat"
+			   value="<?php echo esc_attr( $column_background ); ?>" />
 		<p class="description">Enter the URL of an image to apply it as this column's background.</p>
 	</div>
 	<?php
@@ -720,7 +720,7 @@ function spine_output_builder_section_layout( $section_name, $ttfmake_section_da
 	<div class="wsuwp-builder-meta">
 	<label for="<?php echo $section_name; ?>[section-layout]">Section Layout:</label>
 	<select id="<?php echo $section_name; ?>[section-layout]" name="<?php echo $section_name; ?>[section-layout]"
-	        value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) { echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); } ?>">
+			value="<?php if ( isset( $ttfmake_section_data['data']['section-layout'] ) ) { echo esc_attr( $ttfmake_section_data['data']['section-layout'] ); } ?>">
 	<?php
 	foreach ( $options as $option ) {
 		echo '<option value="' . $option . '" ' . selected( $option, $current, false ) . '">' . $option . '</option>';
@@ -747,17 +747,17 @@ function spine_output_builder_section_background( $section_name, $ttfmake_sectio
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[background-img]">Background Image</label>
 		<input type="text"
-		       class="wsuwp-builder-section-image widefat"
-		       id="<?php echo $section_name; ?>[background-img]"
-		       name="<?php echo $section_name; ?>[background-img]"
-		       value="<?php echo $section_background; ?>"/>
+			   class="wsuwp-builder-section-image widefat"
+			   id="<?php echo $section_name; ?>[background-img]"
+			   name="<?php echo $section_name; ?>[background-img]"
+			   value="<?php echo $section_background; ?>"/>
 		<br/>
 		<label for="<?php echo $section_name; ?>[background-mobile-img]">Mobile Background Image</label>
 		<input type="text"
-		       class="wsuwp-builder-section-image widefat"
-		       id="<?php echo $section_name; ?>[background-mobile-img]"
-		       name="<?php echo $section_name; ?>[background-mobile-img]"
-		       value="<?php echo $section_mobile_background; ?>"/>
+			   class="wsuwp-builder-section-image widefat"
+			   id="<?php echo $section_name; ?>[background-mobile-img]"
+			   name="<?php echo $section_name; ?>[background-mobile-img]"
+			   value="<?php echo $section_mobile_background; ?>"/>
 		<p class="description">Mobile background images are used for display widths narrower than 792px.</p>
 		<p class="description">Background images on sections are an in progress feature. :)</p>
 	</div>
@@ -784,7 +784,7 @@ function spine_output_builder_section_header( $section_name, $ttfmake_section_da
 	<div class="wsuwp-builder-meta">
 		<label for="<?php echo $section_name; ?>[header-level]">Section Title Header Level:</label>
 		<select id="<?php echo $section_name; ?>[header-level]"
-		        name="<?php echo $section_name; ?>[header-level]">
+				name="<?php echo $section_name; ?>[header-level]">
 			<option value="h1" <?php selected( esc_attr( $header_level ), 'h1' ); ?>>H1</option>
 			<option value="h2" <?php selected( esc_attr( $header_level ), 'h2' ); ?>>H2</option>
 			<option value="h3" <?php selected( esc_attr( $header_level ), 'h3' ); ?>>H3</option>

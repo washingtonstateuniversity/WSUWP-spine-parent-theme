@@ -367,9 +367,9 @@ class TTFMAKE_Builder_Base {
 
 		// Set default messages. Note that the theme textdomain is not used in some cases
 		// because the strings are core i18ns
-		$messages['add']    = ( empty( $messages['add'] ) )    ? __( 'Set featured image', 'make' )    : $messages['add'];
+		$messages['add']    = ( empty( $messages['add'] ) ) ? __( 'Set featured image', 'make' ) : $messages['add'];
 		$messages['remove'] = ( empty( $messages['remove'] ) ) ? __( 'Remove featured image', 'make' ) : $messages['remove'];
-		$messages['title']  = ( empty( $messages['title'] ) )  ? __( 'Featured Image', 'make' )        : $messages['title'];
+		$messages['title']  = ( empty( $messages['title'] ) ) ? __( 'Featured Image', 'make' ) : $messages['title'];
 		$messages['button'] = ( empty( $messages['button'] ) ) ? __( 'Use as Featured Image', 'make' ) : $messages['button'];
 		?>
 		<div class="ttfmake-uploader">
