@@ -518,7 +518,9 @@ class TTFMAKE_Builder_Base {
 			$post = $GLOBALS['post_ID'];
 		}
 
-		wp_enqueue_media( array( 'post' => $post ) );
+		wp_enqueue_media( array(
+			'post' => $post,
+		) );
 
 		$img = '<span class="wp-media-buttons-icon"></span>';
 

@@ -37,7 +37,12 @@ if ( post_password_required() ) {
 		</h2>
 
 		<ol class="commentlist">
-			<?php wp_list_comments( array( 'callback' => 'twentytwelve_comment', 'style' => 'ol' ) ); ?>
+			<?php
+			wp_list_comments( array(
+				'callback' => 'twentytwelve_comment',
+				'style' => 'ol',
+			) );
+			?>
 		</ol><!-- .commentlist -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
