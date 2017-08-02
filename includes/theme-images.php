@@ -54,17 +54,25 @@ class Spine_Theme_Images {
 			'id' => 'thumbnail-image',
 		);
 
-		$background_args['post_type'] = 'post';
-		new MultiPostThumbnails( $background_args );
+		if ( true === apply_filters( 'spine_post_supports_background_image', true ) ) {
+			$background_args['post_type'] = 'post';
+			new MultiPostThumbnails( $background_args );
+		}
 
-		$background_args['post_type'] = 'page';
-		new MultiPostThumbnails( $background_args );
+		if ( true === apply_filters( 'spine_page_supports_background_image', true ) ) {
+			$background_args['post_type'] = 'page';
+			new MultiPostThumbnails( $background_args );
+		}
 
-		$thumbnail_args['post_type'] = 'post';
-		new MultiPostThumbnails( $thumbnail_args );
+		if ( true === apply_filters( 'spine_post_supports_thumbnail_image', true ) ) {
+			$thumbnail_args['post_type'] = 'post';
+			new MultiPostThumbnails( $thumbnail_args );
+		}
 
-		$thumbnail_args['post_type'] = 'page';
-		new MultiPostThumbnails( $thumbnail_args );
+		if ( true === apply_filters( 'spine_page_supports_thumbnail_image', true ) ) {
+			$thumbnail_args['post_type'] = 'page';
+			new MultiPostThumbnails( $thumbnail_args );
+		}
 	}
 
 	/**
