@@ -461,7 +461,7 @@ class Spine_Theme_Customizer {
 		) );
 
 		$wp_customize->add_setting( 'spine_options[contact_streetAddress]', array(
-			'default'    => 'PO Box 99164',
+			'default'    => '',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );
@@ -471,10 +471,13 @@ class Spine_Theme_Customizer {
 			'settings' => 'spine_options[contact_streetAddress]',
 			'type'     => 'text',
 			'priority' => 410,
+			'input_attrs' => array(
+				'placeholder' => __( 'Street Address' ),
+			),
 		) );
 
 		$wp_customize->add_setting( 'spine_options[contact_addressLocality]', array(
-			'default'    => 'Pullman, WA',
+			'default'    => '',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );
@@ -483,10 +486,13 @@ class Spine_Theme_Customizer {
 			'settings' => 'spine_options[contact_addressLocality]',
 			'type'     => 'text',
 			'priority' => 411,
+			'input_attrs' => array(
+				'placeholder' => __( 'City, State' ),
+			),
 		) );
 
 		$wp_customize->add_setting( 'spine_options[contact_postalCode]', array(
-			'default'    => '99164',
+			'default'    => '',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );
@@ -495,10 +501,13 @@ class Spine_Theme_Customizer {
 			'settings' => 'spine_options[contact_postalCode]',
 			'type'     => 'text',
 			'priority' => 411,
+			'input_attrs' => array(
+				'placeholder' => __( 'Zip Code' ),
+			),
 		) );
 
 		$wp_customize->add_setting( 'spine_options[contact_telephone]', array(
-			'default'    => '509-335-3564',
+			'default'    => '',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );
