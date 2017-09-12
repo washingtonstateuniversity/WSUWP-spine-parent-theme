@@ -433,6 +433,13 @@ function spine_wp_enqueue_scripts() {
 		$twitter_handle = array_pop( $twitter_array );
 		$spineoptions['social']['twitter_handle'] = esc_js( $twitter_handle );
 	}
+
+	if ( is_admin_bar_showing() ) {
+		$spineoptions['framework'] = array(
+			'viewport_offset' => 32,
+		);
+	}
+
 	wp_localize_script( 'wsu-spine', 'spineoptions', $spineoptions );
 
 	// Enqueue jQuery Cycle2 and Genericons when a page builder template is used.
