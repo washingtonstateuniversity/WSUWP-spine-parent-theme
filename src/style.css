@@ -772,3 +772,7 @@ section.pad-ends > header {
 	border: 2px solid #fff;
 	text-indent: 0;
 }
+
+.not-single .type-document .article-header {
+	border-bottom: 1px rgba(127, 127, 127, .2) solid;
+}
