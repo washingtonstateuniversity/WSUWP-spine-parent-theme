@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js no-svg lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]><html class="no-js no-svg lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js no-svg lt-ie9" lang="en"> <![endif]-->
+<!--[if lt IE 7]> <html class="no-js no-svg lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7]><html class="no-js no-svg lt-ie9 <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]><html class="no-js no-svg lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
