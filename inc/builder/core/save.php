@@ -413,7 +413,7 @@ class TTFMAKE_Builder_Save {
 	 * @param  string    $content    The content to inspect.
 	 * @return string                The modified content.
 	 */
-	function embed_handling( $content ) {
+	public function embed_handling( $content ) {
 		global $wp_embed;
 		$content = $wp_embed->autoembed( $content );
 		return $content;
@@ -430,7 +430,7 @@ class TTFMAKE_Builder_Save {
 	 * @param  int       $post_ID    The current Post ID.
 	 * @return string                The modified embed code.
 	 */
-	function embed_oembed_html( $cache, $url, $attr, $post_ID ) {
+	public function embed_oembed_html( $cache, $url, $attr, $post_ID ) {
 		return $this->generate_embed_shortcode( $url, $attr );
 	}
 
@@ -444,7 +444,7 @@ class TTFMAKE_Builder_Save {
 	 * @param  array     $attr       The shortcode attrs.
 	 * @return string                The modified embed code.
 	 */
-	function embed_handler_html( $return, $url, $attr ) {
+	public function embed_handler_html( $return, $url, $attr ) {
 		return $this->generate_embed_shortcode( $url, $attr );
 	}
 
@@ -460,7 +460,7 @@ class TTFMAKE_Builder_Save {
 	 * @param  array     $attr       The shortcode attrs.
 	 * @return string                The modified embed code.
 	 */
-	function generate_embed_shortcode( $url, $attr ) {
+	public function generate_embed_shortcode( $url, $attr ) {
 		$attr_string = '';
 
 		if ( isset( $attr['height'] ) ) {

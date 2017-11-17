@@ -43,7 +43,7 @@ class Spine_Main_Header {
 	 * @param int     $post_id The current post ID.
 	 * @param WP_Post $post    Object representing the current post.
 	 */
-	function save_main_header( $post_id, $post ) {
+	public function save_main_header( $post_id, $post ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}

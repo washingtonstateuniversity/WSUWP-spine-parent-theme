@@ -14,7 +14,7 @@ class Spine_Theme_Navigation {
 	 *
 	 * @var array
 	 */
-	var $parent_dogeared = array();
+	public $parent_dogeared = array();
 
 	public function __construct() {
 		add_action( 'init', array( $this, 'theme_menus' ) );
