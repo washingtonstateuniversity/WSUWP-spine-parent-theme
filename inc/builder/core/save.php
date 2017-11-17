@@ -342,8 +342,8 @@ class TTFMAKE_Builder_Save {
 
 		// Handle oEmbeds correctly
 		add_filter( 'make_the_builder_content', array( $this, 'embed_handling' ), 8 );
-		add_filter( 'embed_handler_html', array( $this, 'embed_handler_html' ) , 10, 3 );
-		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ) , 10, 4 );
+		add_filter( 'embed_handler_html', array( $this, 'embed_handler_html' ), 10, 3 );
+		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ), 10, 4 );
 
 		// Remove editor image constraints while rendering section data.
 		add_filter( 'editor_max_image_size', array( &$this, 'remove_image_constraints' ) );

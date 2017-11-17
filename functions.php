@@ -630,7 +630,7 @@ function spine_singularity_body_class( $classes ) {
 	return $classes;
 }
 
-add_filter( 'body_class','spine_speckled_body_classes' );
+add_filter( 'body_class', 'spine_speckled_body_classes' );
 /**
  * Add randomized body classes.
  *
@@ -646,7 +646,7 @@ function spine_speckled_body_classes( $classes ) {
 	return $classes;
 }
 
-add_filter( 'body_class','spine_theme_images_classes' );
+add_filter( 'body_class', 'spine_theme_images_classes' );
 /**
  * Add classes indicated which theme images are available.
  *

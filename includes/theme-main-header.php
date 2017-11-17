@@ -137,7 +137,7 @@ function spine_get_main_header() {
 	$sup_header_default = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
 
 	// The `sub-header` area is properly set in the conditional logic that follows.
-	$sub_header_default   = '';
+	$sub_header_default = '';
 
 	// Alternate `sup-header` and `sub-header` areas are available for targeting as data attributes via CSS.
 	$sup_header_alternate = '';
