@@ -548,7 +548,9 @@ class TTFMAKE_Builder_Base {
 
 		// Editor styles
 		$editor_styles = array();
-		if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
+		$google_request = ttfmake_get_google_font_uri();
+
+		if ( '' !== $google_request ) {
 			$editor_styles[] = $google_request;
 		}
 
@@ -804,8 +806,9 @@ function ttfmake_load_section_template( $slug, $path ) {
 	 * @param string   $path         The path to the template.
 	 */
 	$templates = apply_filters( 'make_load_section_template', $templates, $slug, $path );
+	$located = locate_template( $templates, true, false );
 
-	if ( '' === $located = locate_template( $templates, true, false ) ) {
+	if ( '' === $located ) {
 		if ( isset( $templates[1] ) && file_exists( $templates[1] ) ) {
 			require $templates[1];
 			$located = $templates[1];
