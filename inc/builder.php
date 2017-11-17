@@ -14,7 +14,7 @@ class Spine_Builder_Custom {
 		define( 'TTFMAKE_VERSION', '1.3.2' );
 
 		// Include extra functions from Make that are not part of the builder, but are required.
-		include_once( 'builder-custom/extras.php' );
+		include_once 'builder-custom/extras.php';
 
 		// Include the actual core builder files from the Make theme.
 		if ( is_admin() ) {

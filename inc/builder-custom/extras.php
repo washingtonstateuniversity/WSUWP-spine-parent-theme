@@ -62,7 +62,9 @@ if ( ! function_exists( 'maybe_hash_hex_color' ) ) :
 	 * @return string|null              The sanitized color.
 	 */
 	function maybe_hash_hex_color( $color ) {
-		if ( $unhashed = sanitize_hex_color_no_hash( $color ) ) {
+		$unhashed = sanitize_hex_color_no_hash( $color );
+
+		if ( $unhashed ) {
 			return '#' . $unhashed;
 		}
 

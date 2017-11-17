@@ -31,7 +31,7 @@ $data_columns = spine_get_column_data( $ttfmake_section_data, $section_type_colu
 $section_has_wrapper = false;
 
 // Sections can have ids (provided by outside forces other than this theme), classes, and wrappers with classes.
-$section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+$section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
 
 // Section header.
@@ -40,7 +40,7 @@ $section_header_level = ( isset( $ttfmake_section_data['header-level'] ) ) ? $tt
 
 // If a child theme or plugin has declared a section ID, we handle that.
 // This may be supported in the parent theme one day.
-$section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
+$section_id = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
 
 // If a background image has been assigned to the section, capture it for use.
 if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_section_data['background-img'] ) ) {

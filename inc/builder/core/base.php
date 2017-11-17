@@ -335,7 +335,7 @@ class TTFMAKE_Builder_Base {
 	 * @param  array    $classes    The current classes.
 	 * @return array                The modified classes.
 	 */
-	function admin_body_class( $classes ) {
+	public function admin_body_class( $classes ) {
 		global $pagenow;
 
 		// Do not complete the function if the product template is in use (i.e., the builder needs to be shown)
@@ -540,7 +540,7 @@ class TTFMAKE_Builder_Base {
 	 * @param  string    $editor_id    The ID for the current editor.
 	 * @return array                   The modified settings.
 	 */
-	function tiny_mce_before_init( $mce_init, $editor_id ) {
+	public function tiny_mce_before_init( $mce_init, $editor_id ) {
 		// Only add stylesheet to a section editor
 		if ( false === strpos( $editor_id, 'make' ) ) {
 			return $mce_init;
@@ -548,7 +548,9 @@ class TTFMAKE_Builder_Base {
 
 		// Editor styles
 		$editor_styles = array();
-		if ( '' !== $google_request = ttfmake_get_google_font_uri() ) {
+		$google_request = ttfmake_get_google_font_uri();
+
+		if ( '' !== $google_request ) {
 			$editor_styles[] = $google_request;
 		}
 
@@ -621,7 +623,7 @@ class TTFMAKE_Builder_Base {
 	 * @param  array    $arr    The array to convert.
 	 * @return array            The converted array.
 	 */
-	function create_array_from_meta_keys( $arr ) {
+	public function create_array_from_meta_keys( $arr ) {
 		return ttfmake_create_array_from_meta_keys( $arr );
 	}
 
@@ -804,10 +806,11 @@ function ttfmake_load_section_template( $slug, $path ) {
 	 * @param string   $path         The path to the template.
 	 */
 	$templates = apply_filters( 'make_load_section_template', $templates, $slug, $path );
+	$located = locate_template( $templates, true, false );
 
-	if ( '' === $located = locate_template( $templates, true, false ) ) {
+	if ( '' === $located ) {
 		if ( isset( $templates[1] ) && file_exists( $templates[1] ) ) {
-			require( $templates[1] );
+			require $templates[1];
 			$located = $templates[1];
 		}
 	}

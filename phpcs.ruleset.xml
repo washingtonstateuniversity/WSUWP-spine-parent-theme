@@ -18,12 +18,14 @@
         <!-- Rules from WSUWP Theme Skeleton repository -->
         <exclude name="WordPress.NamingConventions.ValidFunctionName" />
         <exclude name="WordPress.Files.FileName" />
+        <exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
         <exclude name="Squiz.PHP.EmbeddedPhp.NoSemicolon" />
         <exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd" />
         <exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen" />
         <exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen" />
         <exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterEnd" />
         <exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace" />
+        <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
 
         <!-- Rules custom to the Spine Parent Theme -->
         <exclude name="WordPress.NamingConventions.ValidVariableName" />
@@ -39,5 +41,6 @@
         <exclude name="Squiz.PHP.DisallowMultipleAssignments" />
         <exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
         <exclude name="Squiz.PHP.EmbeddedPhp.MultipleStatements" />
+        <exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found" />
     </rule>
 </ruleset>

@@ -43,7 +43,7 @@ class Spine_Main_Header {
 	 * @param int     $post_id The current post ID.
 	 * @param WP_Post $post    Object representing the current post.
 	 */
-	function save_main_header( $post_id, $post ) {
+	public function save_main_header( $post_id, $post ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
@@ -137,7 +137,7 @@ function spine_get_main_header() {
 	$sup_header_default = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . $site_name . '</a>';
 
 	// The `sub-header` area is properly set in the conditional logic that follows.
-	$sub_header_default   = '';
+	$sub_header_default = '';
 
 	// Alternate `sup-header` and `sub-header` areas are available for targeting as data attributes via CSS.
 	$sup_header_alternate = '';

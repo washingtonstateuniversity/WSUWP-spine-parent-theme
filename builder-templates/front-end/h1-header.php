@@ -5,12 +5,12 @@ global $ttfmake_section_data;
 $section_has_wrapper = false;
 
 // Sections can have ids (provided by outside forces other than this theme), classes, and wrappers with classes.
-$section_classes         = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
+$section_classes = ( isset( $ttfmake_section_data['section-classes'] ) ) ? $ttfmake_section_data['section-classes'] : '';
 $section_wrapper_classes = ( isset( $ttfmake_section_data['section-wrapper'] ) ) ? $ttfmake_section_data['section-wrapper'] : '';
 
 // If a child theme or plugin has declared a section ID, we handle that.
 // This may be supported in the parent theme one day.
-$section_id  = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
+$section_id = ( isset( $ttfmake_section_data['section-id'] ) ) ? $ttfmake_section_data['section-id'] : '';
 
 $column_classes = ( isset( $ttfmake_section_data['column-classes'] ) ) ? $ttfmake_section_data['column-classes'] : false;
 $header_level = ( isset( $ttfmake_section_data['header-level'] ) && in_array( $ttfmake_section_data['header-level'], array( 'h1', 'h2', 'h3', 'h4' ) ) ) ? $ttfmake_section_data['header-level'] : 'h1';
