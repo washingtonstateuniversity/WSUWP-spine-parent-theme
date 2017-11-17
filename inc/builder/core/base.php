@@ -807,7 +807,7 @@ function ttfmake_load_section_template( $slug, $path ) {
 
 	if ( '' === $located = locate_template( $templates, true, false ) ) {
 		if ( isset( $templates[1] ) && file_exists( $templates[1] ) ) {
-			require( $templates[1] );
+			require $templates[1];
 			$located = $templates[1];
 		}
 	}

@@ -3,11 +3,11 @@
 // Global version tracker.
 $wsuwp_spine_theme_version = '0.27.15';
 
-include_once( 'includes/theme-setup.php' ); // Setup basic portions of the theme.
-include_once( 'includes/theme-navigation.php' ); // Include functionality for navigation.
-include_once( 'includes/theme-main-header.php' ); // Include main header functionality.
-include_once( 'includes/theme-customizer.php' ); // Include customizer functionality.
-include_once( 'includes/theme-images.php' ); // Manipulating images
+require_once 'includes/theme-setup.php'; // Setup basic portions of the theme.
+require_once 'includes/theme-navigation.php'; // Include functionality for navigation.
+require_once 'includes/theme-main-header.php'; // Include main header functionality.
+require_once 'includes/theme-customizer.php'; // Include customizer functionality.
+require_once 'includes/theme-images.php'; // Manipulating images
 
 /**
  * Creates a script version based on this theme, the WSUWP Platform, and
@@ -41,7 +41,7 @@ add_action( 'init', 'spine_load_builder_module', 10 );
  */
 function spine_load_builder_module() {
 	if ( true === apply_filters( 'spine_enable_builder_module', true ) ) {
-		include_once( 'inc/builder.php' );
+		include_once 'inc/builder.php';
 	}
 }
 
