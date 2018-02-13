@@ -578,7 +578,7 @@ class Spine_Theme_Customizer {
 			'type'     => 'select',
 			'choices'  => array(
 				'1'       => '1',
-				'develop' => 'develop',
+				'2'       => '2',
 			),
 		) );
 

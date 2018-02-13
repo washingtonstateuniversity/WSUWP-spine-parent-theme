@@ -303,9 +303,11 @@ add_action( 'wp_enqueue_scripts', 'spine_wp_enqueue_scripts', 20 );
 function spine_wp_enqueue_scripts() {
 
 	$spine_version = spine_get_option( 'spine_version' );
-	// This may be an unnecessary check, but we don't want to screw this up.
-	if ( 'develop' !== $spine_version && 0 === absint( $spine_version ) ) {
-		$spine_version = 1;
+
+	if ( 2 === absint( $spine_version ) ) {
+		$spine_version = 'develop'; // Use the develop branch temporarily for version 2.
+	} else {
+		$spine_version = 1; // Force the WSU Spine version to version 1 if any previously used (or invalid) option is set
 	}
 
 	// Much relies on the main stylesheet provided by the WSU Spine.
