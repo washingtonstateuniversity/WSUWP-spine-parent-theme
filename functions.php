@@ -147,8 +147,8 @@ function spine_get_option_defaults() {
 		'social_spot_two'           => 'https://twitter.com/wsupullman',
 		'social_spot_three_type'    => 'youtube',
 		'social_spot_three'         => 'https://www.youtube.com/washingtonstateuniv',
-		'social_spot_four_type'     => 'directory',
-		'social_spot_four'          => 'http://social.wsu.edu',
+		'social_spot_four_type'     => 'Social media at WSU',
+		'social_spot_four'          => 'https://socialmedia.wsu.edu/',
 		'post_social_placement'     => 'none',
 		'show_author_page'          => '1',
 		'show_breadcrumbs'          => 'top', // Only valid with Breadcrumb NavXT plugin installed.
