@@ -613,6 +613,10 @@ article.wsuwp_uc_person {
 	width: 33%;
 }
 
+#spine .spine-actions .spine-share > ul li {
+	width: 100%;
+}
+
 /** In content social sharing styles. */
 .social-share-bar {
 	position: absolute;
