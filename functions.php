@@ -148,7 +148,7 @@ function spine_get_option_defaults() {
 		'social_spot_three_type'    => 'youtube',
 		'social_spot_three'         => 'https://www.youtube.com/washingtonstateuniv',
 		'social_spot_four_type'     => 'directory',
-		'social_spot_four'          => 'http://social.wsu.edu',
+		'social_spot_four'          => 'https://socialmedia.wsu.edu/',
 		'post_social_placement'     => 'none',
 		'show_author_page'          => '1',
 		'show_breadcrumbs'          => 'top', // Only valid with Breadcrumb NavXT plugin installed.
@@ -305,7 +305,9 @@ function spine_wp_enqueue_scripts() {
 	$spine_version = spine_get_option( 'spine_version' );
 
 	if ( 2 === absint( $spine_version ) ) {
-		$spine_version = 'develop'; // Use the develop branch temporarily for version 2.
+		$spine_version = 2;
+	} elseif ( '2.x.x' === $spine_version ) {
+		$spine_version = 'develop'; // Use the develop branch if the 2.x.x beta release is selected.
 	} else {
 		$spine_version = 1; // Force the WSU Spine version to version 1 if any previously used (or invalid) option is set
 	}

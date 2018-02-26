@@ -579,6 +579,7 @@ class Spine_Theme_Customizer {
 			'choices'  => array(
 				'1'       => '1',
 				'2'       => '2',
+				'2.x.x'   => '2.x.x Beta',
 			),
 		) );
 
