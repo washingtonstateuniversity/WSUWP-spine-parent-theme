@@ -1,7 +1,7 @@
 <?php
 
 // Global version tracker.
-$wsuwp_spine_theme_version = '0.28.0';
+$wsuwp_spine_theme_version = '0.28.1';
 
 require_once 'includes/theme-setup.php'; // Setup basic portions of the theme.
 require_once 'includes/theme-navigation.php'; // Include functionality for navigation.
@@ -423,10 +423,12 @@ function spine_wp_enqueue_scripts() {
 
 	// Override default options in the WSU Spine.
 	$twitter_text = ( is_front_page() ) ? get_option( 'blogname' ) : trim( wp_title( '', false ) );
+	$twitter_text = html_entity_decode( $twitter_text, ENT_COMPAT, 'UTF-8' );
+
 	$spineoptions = array(
 		'social' => array(
 			'share_text' => esc_js( spine_get_title() ),
-			'twitter_text' => esc_js( $twitter_text ),
+			'twitter_text' => $twitter_text,
 			'twitter_handle' => 'wsupullman',
 		),
 	);
