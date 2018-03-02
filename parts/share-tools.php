@@ -12,19 +12,19 @@ if ( ! empty( $spine_social_options['twitter'] ) ) {
 <div class="social-share-bar">
 	<ul>
 		<li class="by-facebook">
-			<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>" target="_blank"><span class="channel-title">Share on Facebook</span></a>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_share_url; ?>" target="_blank"><span class="screen-reader-text channel-title">Share this page on Facebook</span></a>
 		</li>
 		<li class="by-twitter">
-			<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=<?php echo $twitter_handle; ?>" target="_blank"><span class="channel-title">Share on Twitter</span></a>
+			<a href="https://twitter.com/intent/tweet?text=<?php echo $post_share_title; ?>&amp;url=<?php echo $post_share_url; ?>&amp;via=<?php echo $twitter_handle; ?>" target="_blank"><span class="screen-reader-text channel-title">Share this page on Twitter</span></a>
 		</li>
 		<li class="by-googleplus">
-			<a href="https://plus.google.com/share?url=<?php echo $post_share_url; ?>" target="_blank"><span class="channel-title">Share on Google+</span></a>
+			<a href="https://plus.google.com/share?url=<?php echo $post_share_url; ?>" target="_blank"><span class="screen-reader-text channel-title">Share this page on Google Plus</span></a>
 		</li>
 		<li class="by-linkedin">
-			<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $post_share_url; ?>&amp;summary=<?php echo $post_share_title; ?>&amp;source=undefined" target="_blank"><span class="channel-title">Share on Linkedin</span></a>
+			<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $post_share_url; ?>&amp;summary=<?php echo $post_share_title; ?>&amp;source=undefined" target="_blank"><span class="screen-reader-text channel-title">Share this page on Linked In</span></a>
 		</li>
 		<li class="by-email">
-			<a href="mailto:?subject=<?php echo $post_share_title; ?>&amp;body=<?php echo $post_share_url; ?>"><span class="channel-title">Email this post</span></a>
+			<a href="mailto:?subject=<?php echo $post_share_title; ?>&amp;body=<?php echo $post_share_url; ?>"><span class="screen-reader-text channel-title">Email this page</span></a>
 		</li>
 	</ul>
 </div>

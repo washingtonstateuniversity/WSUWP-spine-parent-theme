@@ -623,11 +623,6 @@ article.wsuwp_uc_person {
 	bottom: initial;
 }
 
-.social-share-bar .channel-title {
-	font-size: 0;
-	display: none;
-}
-
 .social-share-bar ul {
 	height: 25px;
 	padding: 0;
