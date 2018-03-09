@@ -1021,3 +1021,47 @@ function spine_display_breadcrumbs( $position ) {
 
 	return false;
 }
+
+add_filter( 'gutenberg_can_edit_post_type', 'spine_gutenberg_page_templates', 10, 2 );
+/**
+ * Selectively add support for Gutenberg to posts and pages assigned to a specific page template.
+ *
+ * @param bool   $can_gutenberg Whether Gutenberg thinks it can provide an editor for this post.
+ * @param string $post_type     The post type being edited.
+ *
+ * @return bool Whether the theme thinks Gutenberg should provide the editor for this post.
+ */
+function spine_gutenberg_page_templates( $can_gutenberg, $post_type ) {
+	if ( 'post' === $post_type ) {
+		return true;
+	}
+
+	if ( 'page' === $post_type ) {
+		$post = get_post();
+
+		if ( ! $post ) {
+			return false;
+		}
+
+		$template = get_post_meta( $post->ID, '_wp_page_template', true );
+
+		if ( 'templates/gutenberg-beta.php' === $template ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	return $can_gutenberg;
+}
+
+add_action( 'init', 'remove_classic_editor_redirect' );
+/**
+ * Remove the "classic-editor" query arg appended to pages when a post is saved
+ * if the previous view did not support Gutenberg.
+ *
+ * This allows us to change Gutenberg support when the page template is changed for a page.
+ */
+function remove_classic_editor_redirect() {
+	remove_filter( 'redirect_post_location', 'gutenberg_redirect_to_classic_editor_when_saving_posts', 10 );
+}
