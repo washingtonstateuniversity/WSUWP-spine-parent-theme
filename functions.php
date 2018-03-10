@@ -1065,3 +1065,13 @@ add_action( 'init', 'remove_classic_editor_redirect' );
 function remove_classic_editor_redirect() {
 	remove_filter( 'redirect_post_location', 'gutenberg_redirect_to_classic_editor_when_saving_posts', 10 );
 }
+
+add_action( 'after_setup_theme', 'spine_gutenberg_support' );
+/**
+ * Add theme support for Gutenberg.
+ */
+function spine_gutenberg_support() {
+	add_theme_support( 'gutenberg', array(
+		'wide-images' => true,
+	) );
+}
