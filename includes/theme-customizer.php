@@ -564,7 +564,6 @@ class Spine_Theme_Customizer {
 			'priority' => 2000,
 		) );
 
-
 		$spine_version_args = array(
 			'default'    => '1',
 			'capability' => 'edit_theme_options',
