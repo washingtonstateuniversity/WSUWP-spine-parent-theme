@@ -564,23 +564,35 @@ class Spine_Theme_Customizer {
 			'priority' => 2000,
 		) );
 
-		// Spine Version
-		$wp_customize->add_setting( 'spine_options[spine_version]', array(
+
+		$spine_version_args = array(
 			'default'    => '1',
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
-		) );
+		);
+
+		$spine_version_choices = array(
+			'1' => '1',
+			'2' => '2',
+		);
+
+		// Spine version 1.0 as a choice is removed with Spine schema 2.x.
+		if ( '2.x' === get_spine_schema() ) {
+			$spine_version_args['default'] = '2';
+			$spine_version_choices = array(
+				'2' => '2',
+			);
+		}
+
+		// Spine Version
+		$wp_customize->add_setting( 'spine_options[spine_version]', $spine_version_args );
 
 		$wp_customize->add_control( 'spine_version', array(
 			'label'    => __( 'Spine Version', 'spine' ),
 			'section'  => 'section_spine_advanced_options',
 			'settings' => 'spine_options[spine_version]',
 			'type'     => 'select',
-			'choices'  => array(
-				'1'       => '1',
-				'2'       => '2',
-				'2.x.x'   => '2.x.x Beta',
-			),
+			'choices'  => $spine_version_choices,
 		) );
 
 		// Large Format

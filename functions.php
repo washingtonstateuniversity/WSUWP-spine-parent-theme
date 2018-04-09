@@ -32,6 +32,45 @@ function spine_get_script_version() {
 	return $script_version;
 }
 
+add_action( 'after_setup_theme', 'get_spine_schema', 10 );
+/**
+ * Retrieve the Spine schema for this site, used to provide the most current set
+ * of default options for the Spine configuration.
+ *
+ * @since 0.29.0
+ *
+ * @return string
+ */
+function get_spine_schema() {
+	$spine_schema = get_option( 'spine_schema', '' );
+
+	if ( '' === $spine_schema ) {
+		$spine_schema = set_spine_schema();
+	}
+
+	return $spine_schema;
+}
+
+/**
+ * Set the Spine schema for this site.
+ *
+ * @since 0.29.0
+ *
+ * @return string
+ */
+function set_spine_schema() {
+	$spine_2_date = strtotime( '2018-04-09 11:00:00' ); // Force Spine 2.0 as of April 9, 2018.
+	$site_creation = strtotime( get_site()->registered );
+
+	if ( $site_creation > $spine_2_date ) {
+		$spine_schema = '2.x';
+	} else {
+		$spine_schema = '1.x';
+	}
+
+	return $spine_schema;
+}
+
 add_action( 'init', 'spine_load_builder_module', 10 );
 /**
  * Allow our version of Make's builder tool to be disabled at the
@@ -110,7 +149,7 @@ function spine_get_campus_data( $part ) {
  * @return array List of default options.
  */
 function spine_get_option_defaults() {
-	return array(
+	$defaults = array(
 		'spine_version'             => '1',
 		'grid_style'                => 'fluid',
 		'campus_location'           => '',
@@ -155,6 +194,13 @@ function spine_get_option_defaults() {
 		'front_page_title'          => false,
 		'page_for_posts_title'      => false,
 	);
+
+	if ( '2.x' === get_spine_schema() ) {
+		$defaults['spine_version'] = '2';
+		$defaults['theme_style'] = 'skeletal';
+	}
+
+	return $defaults;
 }
 
 /**
