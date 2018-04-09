@@ -59,6 +59,11 @@ function get_spine_schema() {
  * @return string
  */
 function set_spine_schema() {
+	// We have less visibility into single site configurations.
+	if ( ! is_multisite() ) {
+		return '1.x';
+	}
+
 	$spine_2_date = strtotime( '2018-04-09 11:00:00' ); // Force Spine 2.0 as of April 9, 2018.
 	$site_creation = strtotime( get_site()->registered );
 
