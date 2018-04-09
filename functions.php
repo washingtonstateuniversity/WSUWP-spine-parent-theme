@@ -350,10 +350,8 @@ function spine_wp_enqueue_scripts() {
 
 	$spine_version = spine_get_option( 'spine_version' );
 
-	if ( 2 === absint( $spine_version ) ) {
+	if ( 2 === absint( $spine_version ) || '2.x.x' === $spine_version ) {
 		$spine_version = 2;
-	} elseif ( '2.x.x' === $spine_version ) {
-		$spine_version = 'develop'; // Use the develop branch if the 2.x.x beta release is selected.
 	} else {
 		$spine_version = 1; // Force the WSU Spine version to version 1 if any previously used (or invalid) option is set
 	}
