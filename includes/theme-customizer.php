@@ -745,15 +745,19 @@ class Spine_Theme_Customizer {
 			'type'       => 'option',
 		) );
 
+		$theme_styles = array(
+			'skeletal' => 'Skeletal (none)',
+			'bookmark' => 'Bookmark',
+		);
+
+		$theme_styles = apply_filters( 'spine_theme_styles', $theme_styles );
+
 		$wp_customize->add_control( 'spine_theme_style', array(
 			'settings' => 'spine_options[theme_style]',
 			'label'    => __( 'Additional Styling', 'spine' ),
 			'section'  => 'section_spine_style',
 			'type'     => 'select',
-			'choices'  => array(
-				'skeletal' => 'Skeletal (none)',
-				'bookmark' => 'Bookmark',
-			),
+			'choices'  => $theme_styles,
 		) );
 
 		$wp_customize->add_setting( 'spine_options[secondary_colors]', array(
