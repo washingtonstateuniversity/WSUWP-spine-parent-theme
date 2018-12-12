@@ -1,9 +1,32 @@
-<?php get_header(); ?>
+<?php
+
+get_header();
+
+add_action( 'spine_theme_template_before_main', 'page.php' );
+
+?>
 
 <main id="wsuwp-main" class="spine-page-default">
 
-<?php get_template_part( 'parts/headers' ); ?>
-<?php get_template_part( 'parts/featured-images' ); ?>
+<?php
+
+if ( apply_filters( 'spine_theme_part_display_headers', true, 'page.php' ) ) {
+
+	get_template_part( 'parts/headers' );
+
+}; // End if
+
+add_action( 'spine_theme_template_after_main', 'page.php' );
+
+if ( apply_filters( 'spine_theme_part_display_featured_image', true, 'page.php' ) ) {
+
+	get_template_part( 'parts/featured-images' );
+
+};
+
+add_action( 'spine_theme_template_before_content', 'page.php' );
+
+?>
 
 <section class="row side-right gutter pad-ends">
 
@@ -25,7 +48,16 @@
 
 </section>
 
-	<?php get_template_part( 'parts/footers' ); ?>
+	<?php
+
+	if ( apply_filters( 'spine_theme_part_display_footer', true, 'page.php' ) ) {
+
+		get_template_part( 'parts/footers' );
+
+	};
+
+	add_action( 'spine_theme_template_after_content', 'page.php' );
+	?>
 
 </main>
 
