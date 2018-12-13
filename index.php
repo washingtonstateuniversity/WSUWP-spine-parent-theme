@@ -22,17 +22,17 @@ if ( is_home() ) {
 
 ?>
 
-<?php add_action( 'spine_theme_template_before_main', 'index.php' ); ?>
+<?php do_action( 'spine_theme_template_before_main', 'index.php' ); ?>
 
 <main id="wsuwp-main" class="<?php echo $main_class; ?>">
 
-<?php add_action( 'spine_theme_template_before_headers', 'index.php' ); ?>
+<?php do_action( 'spine_theme_template_before_headers', 'index.php' ); ?>
 
 <?php wsuwp_spine_get_template_part( 'index.php', 'parts/headers' ); ?>
 
-<?php add_action( 'spine_theme_template_after_headers', 'index.php' ); ?>
+<?php do_action( 'spine_theme_template_after_headers', 'index.php' ); ?>
 
-<?php add_action( 'spine_theme_template_before_content', 'index.php' ); ?>
+<?php do_action( 'spine_theme_template_before_content', 'index.php' ); ?>
 
 <?php
 
@@ -42,7 +42,7 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 	wsuwp_spine_get_template_part( 'index.php', 'parts/archive-layout', get_post_type() );
 }; ?>
 
-<?php add_action( 'spine_theme_template_after_content', 'index.php' ); ?>
+<?php do_action( 'spine_theme_template_after_content', 'index.php' ); ?>
 
 <?php
 /* @type WP_Query $wp_query */
@@ -67,12 +67,12 @@ $args = array(
 		</section><!--pager-->
 	</footer>
 
-	<?php add_action( 'spine_theme_template_before_footer', 'index.php' ); ?>
+	<?php do_action( 'spine_theme_template_before_footer', 'index.php' ); ?>
 	<?php wsuwp_spine_get_template_part( 'index.php', 'parts/footers' ); ?>
-	<?php add_action( 'spine_theme_template_after_footer', 'index.php' ); ?>
+	<?php do_action( 'spine_theme_template_after_footer', 'index.php' ); ?>
 
 </main>
-<?php add_action( 'spine_theme_template_after_main', 'index.php' ); ?>
+<?php do_action( 'spine_theme_template_after_main', 'index.php' ); ?>
 <?php
 
 get_footer();
