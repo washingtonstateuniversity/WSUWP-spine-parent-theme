@@ -10,17 +10,17 @@ if ( spine_has_background_image() ) {
 }
 ?>
 
-<?php add_action( 'spine_theme_template_before_main', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_before_main', 'single.php' ); ?>
 
 <main id="wsuwp-main">
 
-<?php add_action( 'spine_theme_template_before_headers', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_before_headers', 'single.php' ); ?>
 
 <?php wsuwp_spine_get_template_part( 'single.php', 'parts/headers' ); ?>
 
-<?php add_action( 'spine_theme_template_after_headers', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_after_headers', 'single.php' ); ?>
 
-<?php add_action( 'spine_theme_template_before_content', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_before_content', 'single.php' ); ?>
 
 <?php
 
@@ -54,16 +54,16 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 		</div>
 	</section><!--pager-->
 </footer>
-<?php add_action( 'spine_theme_template_after_content', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_after_content', 'single.php' ); ?>
 
-<?php add_action( 'spine_theme_template_before_footer', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_before_footer', 'single.php' ); ?>
 
 	<?php wsuwp_spine_get_template_part( 'single.php', 'parts/footers' ); ?>
 
-	<?php add_action( 'spine_theme_template_after_footer', 'single.php' ); ?>
+	<?php do_action( 'spine_theme_template_after_footer', 'single.php' ); ?>
 
 </main><!--/#page-->
 
-<?php add_action( 'spine_theme_template_after_main', 'single.php' ); ?>
+<?php do_action( 'spine_theme_template_after_main', 'single.php' ); ?>
 
 <?php get_footer();
