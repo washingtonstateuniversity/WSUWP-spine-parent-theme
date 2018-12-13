@@ -1127,7 +1127,7 @@ function spine_gutenberg_support() {
 
 /**
  * Get template part to include with appropriate actions and filters
- * 
+ *
  * @since 0.31.0
  */
 function wsuwp_spine_get_template_part( $context, $slug, $name = null ) {
