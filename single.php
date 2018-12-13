@@ -10,17 +10,25 @@ if ( spine_has_background_image() ) {
 }
 ?>
 
+<?php add_action( 'spine_theme_template_before_main', 'single.php' ); ?>
+
 <main id="wsuwp-main">
+
+<?php add_action( 'spine_theme_template_before_headers', 'single.php' ); ?>
+
+<?php wsuwp_spine_get_template_part( 'single.php', 'parts/headers' ); ?>
+
+<?php add_action( 'spine_theme_template_after_headers', 'single.php' ); ?>
+
+<?php add_action( 'spine_theme_template_before_content', 'single.php' ); ?>
 
 <?php
 
-get_template_part( 'parts/headers' );
-
 if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_type(), wsuwp_uc_get_object_type_slugs() ) ) {
 	if ( 'wsuwp_uc_person' === get_post_type() ) {
-		get_template_part( 'parts/single-layout', 'wsuwp_uc_person' );
+		wsuwp_spine_get_template_part( 'single.php', 'parts/single-layout', 'wsuwp_uc_person' );
 	} else {
-		get_template_part( 'parts/single-layout', 'university-center' );
+		wsuwp_spine_get_template_part( 'single.php', 'parts/single-layout', 'university-center' );
 	}
 } else {
 	if ( spine_has_featured_image() ) {
@@ -32,7 +40,7 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 		}
 		?><figure class="featured-image <?php echo sanitize_html_class( $featured_image_position ); ?>" style="background-image: url('<?php echo esc_url( $featured_image_src ); ?>');"><?php spine_the_featured_image(); ?></figure><?php
 	}
-	get_template_part( 'parts/single-layout', get_post_type() );
+	wsuwp_spine_get_template_part( 'single.php', 'parts/single-layout', get_post_type() );
 }
 ?>
 
@@ -46,9 +54,16 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 		</div>
 	</section><!--pager-->
 </footer>
+<?php add_action( 'spine_theme_template_after_content', 'single.php' ); ?>
 
-	<?php get_template_part( 'parts/footers' ); ?>
+<?php add_action( 'spine_theme_template_before_footer', 'single.php' ); ?>
+
+	<?php wsuwp_spine_get_template_part( 'single.php', 'parts/footers' ); ?>
+
+	<?php add_action( 'spine_theme_template_after_footer', 'single.php' ); ?>
 
 </main><!--/#page-->
+
+<?php add_action( 'spine_theme_template_after_main', 'single.php' ); ?>
 
 <?php get_footer();
