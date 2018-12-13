@@ -1124,3 +1124,20 @@ function spine_gutenberg_support() {
 		'wide-images' => true,
 	) );
 }
+
+/**
+ * Get template part to include with appropriate actions and filters
+ * 
+ * @since 0.31.0
+ */
+function wsuwp_spine_get_template_part( $context, $slug, $name = null ) {
+
+	$slug = apply_filters( 'wsuwp_spine_get_template_part', $slug, $context, $name );
+
+	if ( $slug ) {
+
+		get_template_part( $slug, $name );
+
+	} // End if
+
+} // End wsuwp_spine_get_template_part
