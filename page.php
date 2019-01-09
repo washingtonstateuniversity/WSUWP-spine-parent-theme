@@ -46,9 +46,9 @@
 
 <?php do_action( 'spine_theme_template_before_footer', 'page.php' ); ?>
 
-	<?php wsuwp_spine_get_template_part( 'page.php', 'parts/footers' ); ?>
+<?php wsuwp_spine_get_template_part( 'page.php', 'parts/footers' ); ?>
 
-	<?php do_action( 'spine_theme_template_after_footer', 'page.php' ); ?>
+<?php do_action( 'spine_theme_template_after_footer', 'page.php' ); ?>
 
 </main>
 

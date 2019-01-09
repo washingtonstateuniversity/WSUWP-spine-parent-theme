@@ -31,7 +31,7 @@ if ( function_exists( 'wsuwp_uc_get_object_type_slugs' ) && in_array( get_post_t
 		wsuwp_spine_get_template_part( 'single.php', 'parts/single-layout', 'university-center' );
 	}
 } else {
-	if ( spine_has_featured_image() ) {
+	if ( spine_has_featured_image() && 'page' !== get_post_type() ) {
 		$featured_image_src = spine_get_featured_image_src();
 		$featured_image_position = get_post_meta( get_the_ID(), '_featured_image_position', true );
 
