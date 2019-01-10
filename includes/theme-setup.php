@@ -11,7 +11,24 @@ class Spine_Theme_Setup {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
 		add_action( 'template_redirect', array( $this, 'check_author_page' ) );
 		add_filter( 'author_link', array( $this, 'filter_author_link' ) );
+		add_filter( 'upload_mimes', array( $this, 'add_mime_types' ) );
 	}
+
+	/**
+	 * Add additional upload mime types
+	 */
+	public function add_mime_types( $mimes ) {
+
+		// Allow administrators to upload svg type
+		if ( current_user_can('administrator') ) {
+
+			$mimes['svg'] = 'image/svg+xml';
+
+		} // End if
+
+  		return $mimes;
+
+	} // End add_mime_types
 
 	/**
 	 * Add the stylesheet used inside the editor.
