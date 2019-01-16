@@ -739,8 +739,12 @@ class Spine_Theme_Customizer {
 			'description' => 'These options may or may not be supported by your theme.',
 		) );
 
+		$blog_id = get_current_blog_id();
+
+		$default_style = ( 2371 < $blog_id ) ? 'rainier' : 'bookmark';
+
 		$wp_customize->add_setting( 'spine_options[theme_style]', array(
-			'default'    => 'bookmark',
+			'default'    => $default_style,
 			'capability' => 'edit_theme_options',
 			'type'       => 'option',
 		) );

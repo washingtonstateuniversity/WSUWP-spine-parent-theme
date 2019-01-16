@@ -205,6 +205,14 @@ function spine_get_option_defaults() {
 		$defaults['theme_style'] = 'skeletal';
 	}
 
+	$blog_id = get_current_blog_id();
+
+	if ( 2371 < $blog_id ) {
+
+		$defaults['theme_style'] = 'rainier';
+
+	}
+
 	return $defaults;
 }
 
@@ -381,7 +389,8 @@ function spine_wp_enqueue_scripts() {
 	 */
 	if ( is_child_theme() ) {
 		wp_enqueue_style( 'spine-theme', get_template_directory_uri() . '/style.css', array( 'wsu-spine' ), spine_get_script_version() );
-		if ( 'skeletal' !== spine_get_option( 'theme_style' ) ) {
+		$exclude_style = array( 'skeletal', 'rainier' );
+		if ( ! in_array( spine_get_option( 'theme_style' ), $exclude_style, true ) ) {
 			wp_enqueue_style( 'spine-theme-extra', get_template_directory_uri() . '/styles/' . spine_get_option( 'theme_style' ) . '.css', array(), spine_get_script_version() );
 		}
 
