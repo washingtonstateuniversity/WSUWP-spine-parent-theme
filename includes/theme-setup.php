@@ -90,4 +90,4 @@ class Spine_Theme_Setup {
 		return '';
 	}
 }
-new Spine_Theme_Setup();
+$spine_theme_setup = new Spine_Theme_Setup();
