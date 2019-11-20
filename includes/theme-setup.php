@@ -20,13 +20,13 @@ class Spine_Theme_Setup {
 	public function add_mime_types( $mimes ) {
 
 		// Allow administrators to upload svg type
-		if ( current_user_can('administrator') ) {
+		if ( current_user_can( 'administrator' ) ) {
 
 			$mimes['svg'] = 'image/svg+xml';
 
 		} // End if
 
-  		return $mimes;
+		return $mimes;
 
 	} // End add_mime_types
 
