@@ -10,7 +10,9 @@
 			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
 		</hgroup>
 	</header>
+	<?php if ( is_singular() ) : ?>
 	<div class="article-password">
-		<?php echo get_the_password_form(); ?>
+			<?php echo get_the_password_form(); ?>
 	</div>
+	<?php endif; ?>
 </article>
