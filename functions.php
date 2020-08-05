@@ -409,6 +409,11 @@ function spine_wp_enqueue_scripts() {
 
 	wp_enqueue_style( 'spine-theme-print', get_template_directory_uri() . '/css/print.css', array(), spine_get_script_version(), 'print' );
 
+	// Check if WSU Icons should be enabled
+	if ( get_theme_mod( 'spine_enable_wsu_icons' ) ) {
+		wp_enqueue_style( 'spine-theme-wsu-icons', 'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/1.x/wsu-icons/dist/wsu-icons.bundle.css', array(), '1.x' );
+	}
+
 	// All theme styles have been output at this time. Plugins and other themes should print styles here, before blocking
 	// Javascript resources are output.
 	do_action( 'spine_enqueue_styles' );
