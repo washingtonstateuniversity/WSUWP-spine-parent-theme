@@ -43,6 +43,16 @@ $slider_ratio = ( $slider_height / 960 ) * 100;
 		}
 	}
 	<?php endif; ?>
+
+.wsu-cycle-pause {
+	position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    z-index: 1000;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+}
 </style>
 <?php
 if ( isset( $ttfmake_section_data['background-img'] ) && ! empty( $ttfmake_section_data['background-img'] ) ) {
@@ -109,7 +119,7 @@ if ( '' === $section_id ) {
 			</header>
 		<?php endif; ?>
 
-		<div class="builder-section-content<?php echo ( $is_slider ) ? ' cycle-slideshow' : ''; ?>"<?php echo ( $is_slider ) ? ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) : ''; ?>>
+		<div class="builder-section-content<?php echo ( $is_slider ) ? ' cycle-slideshow' : ''; ?>"<?php echo ( $is_slider ) ? ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) : ''; ?> >
 			<?php if ( ! empty( $banner_slides ) ) : $i = 0; foreach ( $banner_slides as $slide ) : ?>
 				<div class="builder-banner-slide<?php echo ttfmake_builder_banner_slide_class( $slide ); echo ( 0 == $i++ ) ? ' first-slide' : ''; ?>" style="<?php echo ttfmake_builder_banner_slide_style( $slide, $ttfmake_section_data ); ?>">
 					<?php if ( ! empty( $slide['slide-url'] ) ) : ?><a href="<?php echo esc_url( $slide['slide-url'] ); ?>"><?php endif; ?>
@@ -129,12 +139,12 @@ if ( '' === $section_id ) {
 					<?php if ( ! empty( $slide['slide-url'] ) ) : ?></a><?php endif; ?>
 				</div>
 			<?php endforeach; endif; ?>
-			<?php if ( $is_slider && false === (bool) $ttfmake_section_data['hide-dots'] ) : ?>
-				<div class="cycle-pager"></div>
-			<?php endif; ?>
 			<?php if ( $is_slider && false === (bool) $ttfmake_section_data['hide-arrows'] ) : ?>
-				<div class="cycle-prev"></div>
-				<div class="cycle-next"></div>
+				<div class="cycle-prev" tabindex="0" aria-label="Previous Slide" ></div>
+				<div class="cycle-next" tabindex="0" aria-label="Previous Slide"></div>
+			<?php endif; ?>
+			<?php if ( $is_slider && ! empty( $ttfmake_section_data['autoplay'] ) ) : ?>
+				<button class="wsu-cycle-pause" data-cycle-cmd="pause">Pause</button>
 			<?php endif; ?>
 		</div>
 	</div>

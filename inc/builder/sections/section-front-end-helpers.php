@@ -432,6 +432,7 @@ function ttfmake_builder_get_banner_slider_atts( $ttfmake_section_data ) {
 		$data_attributes  = ' data-cycle-log="false"';
 		$data_attributes .= ' data-cycle-slides="div.builder-banner-slide"';
 		$data_attributes .= ' data-cycle-swipe="true"';
+		
 
 		// Autoplay
 		$autoplay = (bool) $atts['autoplay'];
