@@ -19,5 +19,18 @@
 
 	$(document).ready( function() {
 		process_section_backgrounds();
+
+		$('#spine').keydown(function (e) {
+			var key = e.which;
+			if( key == 27 || key == 13)  // the enter key code
+			 {
+			   $('#shelve').trigger( 'click' );
+			   return false;  
+			 }
+		   }); 
 	});
+
+
 }(jQuery,window));
+
+
