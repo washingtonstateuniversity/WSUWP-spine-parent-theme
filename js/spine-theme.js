@@ -27,12 +27,12 @@
 			   $('#shelve').trigger( 'click' );  
 			 }
 		});
-		$('#shelve').keydown(function (e) {
+		/*$('#shelve').keydown(function (e) {
 			if( e.keyCode == 13)  // the enter key code
 			 {
 			   $('#shelve').trigger( 'click' ); 
 			 }
-		}); 
+		});*/
 	});
 
 
