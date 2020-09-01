@@ -21,13 +21,18 @@
 		process_section_backgrounds();
 
 		$('#spine').keydown(function (e) {
-			var key = e.which;
-			if( key == 27 || key == 13)  // the enter key code
+
+			if( e.keyCode == 27 )  // the enter key code
 			 {
-			   $('#shelve').trigger( 'click' );
-			   return false;  
+			   $('#shelve').trigger( 'click' );  
 			 }
-		   }); 
+		});
+		$('#shelve').keydown(function (e) {
+			if( e.keyCode == 13)  // the enter key code
+			 {
+			   $('#shelve').trigger( 'click' ); 
+			 }
+		}); 
 	});
 
 
