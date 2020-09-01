@@ -1,5 +1,3 @@
-<?php get_template_part( 'spine' ); ?>
-
 <?php get_template_part( 'parts/after-main' ); ?>
 </div><!--/binder-->
 <?php get_template_part( 'parts/after-binder' ); ?>
