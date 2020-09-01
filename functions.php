@@ -1,7 +1,7 @@
 <?php
 
 // Global version tracker.
-$wsuwp_spine_theme_version = '2.0.0';
+$wsuwp_spine_theme_version = '2.0.1';
 
 require_once 'includes/theme-setup.php'; // Setup basic portions of the theme.
 require_once 'includes/theme-navigation.php'; // Include functionality for navigation.
