@@ -482,7 +482,8 @@ function spine_wp_enqueue_scripts() {
 	wp_enqueue_script( 'wsu-jquery-ui-full', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js', array( 'jquery' ) );
 
 	// Much relies on the main Javascript provided by the WSU Spine.
-	wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
+	//wp_enqueue_script( 'wsu-spine', 'https://repo.wsu.edu/spine/' . $spine_version . '/spine.min.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), false );
+	wp_enqueue_script( 'wsu-spine', get_template_directory_uri() . '/js/spine.js', array( 'wsu-jquery-ui-full' ), spine_get_script_version(), true );
 
 	// Override default options in the WSU Spine.
 	$twitter_text = ( is_front_page() ) ? get_option( 'blogname' ) : trim( wp_title( '', false ) );
