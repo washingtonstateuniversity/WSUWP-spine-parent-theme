@@ -57,7 +57,7 @@ if ( isset( $ttfmake_section_data['data']['state'] ) && 'open' === $ttfmake_sect
 		<?php $i++; endforeach; ?>
 
 		<a href="#" class="ttfmake-section-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
-			<div class="handlediv"></div>
+			<div class="wsu-handlediv"></div>
 		</a>
 	</div>
 	<div class="clear"></div>
