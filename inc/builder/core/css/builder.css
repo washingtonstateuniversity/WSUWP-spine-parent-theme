@@ -271,22 +271,22 @@
 	right: 16px;
 }
 .ttfmake-builder-section-footer-link,
-.ttfmake-section-toggle .handlediv,
+.ttfmake-section-toggle .wsu-handlediv,
 .spine-builder-column-configure,
-.wsuwp-column-toggle .handlediv,
-.ttfmake-banner-slide-toggle .handlediv {
+.wsuwp-column-toggle .wsu-handlediv,
+.ttfmake-banner-slide-toggle .wsu-handlediv {
 	color: #aaa;
 }
 .spine-builder-section-configure:hover,
 .spine-builder-section-configure:focus,
-.ttfmake-section-toggle .handlediv:hover,
+.ttfmake-section-toggle .wsu-handlediv:hover,
 .spine-builder-column-configure:hover,
-.wsuwp-column-toggle .handlediv:hover,
-.ttfmake-banner-slide-toggle .handlediv:hover {
+.wsuwp-column-toggle .wsu-handlediv:hover,
+.ttfmake-banner-slide-toggle .wsu-handlediv:hover {
 	color: #222;
 }
 .ttfmake-section-open .spine-builder-section-configure:hover,
-.ttfmake-section-open .ttfmake-section-toggle .handlediv:hover {
+.ttfmake-section-open .ttfmake-section-toggle .wsu-handlediv:hover {
 	color: #fff;
 }
 .ttfmake-section-remove:hover {
@@ -298,29 +298,30 @@
 .ttfmake-section-toggle:focus {
 	border: none !important;
 }
-.postbox .ttfmake-section .handlediv {
+.postbox .ttfmake-section .wsu-handlediv {
 	border-left: 1px solid #d9d9d9;
 	float: none;
 	height: 32px;
 	margin: 0;
 	position: relative;
+	width: 36px;
 }
-.postbox .ttfmake-section-open .handlediv {
+.postbox .ttfmake-section-open .wsu-handlediv {
 	border-left-color: #999;
 }
-.postbox .wsuwp-column-toggle .handlediv {
+.postbox .wsuwp-column-toggle .wsu-handlediv {
 	width: 27px;
 	height: 29px;
 	border-left-color: #cbcbcb;
 }
-.ttfmake-section-open .ttfmake-banner-slide-toggle .handlediv {
+.ttfmake-section-open .ttfmake-banner-slide-toggle .wsu-handlediv {
 	border-left: 1px solid #d9d9d9;
 }
 .ttfmake-builder-section-footer-link:before,
-.ttfmake-section-toggle .handlediv:before,
+.ttfmake-section-toggle .wsu-handlediv:before,
 .spine-builder-column-configure:before,
-.wsuwp-column-toggle .handlediv:before,
-.ttfmake-banner-slide-toggle .handlediv:before {
+.wsuwp-column-toggle .wsu-handlediv:before,
+.ttfmake-banner-slide-toggle .wsu-handlediv:before {
 	font: 400 20px/32px dashicons;
 	left: 0;
 	margin: 0 auto;
@@ -344,20 +345,20 @@
 .ttfmake-section-remove:before {
 	content: "\f182";
 }
-.ttfmake-section-toggle .handlediv:before,
-.wsuwp-column-toggle .handlediv:before,
-.ttfmake-banner-slide-toggle .handlediv:before {
+.ttfmake-section-toggle .wsu-handlediv:before,
+.wsuwp-column-toggle .wsu-handlediv:before,
+.ttfmake-banner-slide-toggle .wsu-handlediv:before {
 	text-indent: -1px;
 	width: 20px;
 }
-.ttfmake-section.ttfmake-section-open .ttfmake-section-header .handlediv:before,
-.wsuwp-column-toggle .handlediv:before,
-.ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .handlediv:before {
+.ttfmake-section.ttfmake-section-open .ttfmake-section-header .wsu-handlediv:before,
+.wsuwp-column-toggle .wsu-handlediv:before,
+.ttfmake-section .ttfmake-banner-slide-open .ttfmake-banner-slide-header .wsu-handlediv:before {
 	content: '\f142';
 }
-.ttfmake-section-toggle .handlediv:before,
+.ttfmake-section-toggle .wsu-handlediv:before,
 .wsuwp-column-toggle .wsuwp-toggle-closed:before,
-.ttfmake-banner-slide-toggle .handlediv:before {
+.ttfmake-banner-slide-toggle .wsu-handlediv:before {
 	content: '\f140';
 }
 

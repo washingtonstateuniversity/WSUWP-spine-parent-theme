@@ -53,7 +53,7 @@ $section_order  = ( ! empty( $ttfmake_section_data['data']['columns-order'] ) ) 
 				<div title="<?php esc_attr_e( 'Drag-and-drop this column into place', 'ttfmake' ); ?>" class="ttfmake-sortable-handle">
 					<div class="sortable-background">
 						<a href="#" class="spine-builder-column-configure"><span>Configure this column</span></a>
-						<a href="#" class="wsuwp-column-toggle" title="Click to toggle"><div class="handlediv <?php echo $toggle_class; ?>"></div></a>
+						<a href="#" class="wsuwp-column-toggle" title="Click to toggle"><div class="wsu-handlediv <?php echo $toggle_class; ?>"></div></a>
 						<div class="wsuwp-builder-column-title">Column <?php echo $j; ?> of <?php echo $wsuwp_range; ?></div>
 					</div>
 				</div>

@@ -28,7 +28,7 @@ $slide_url        = ( isset( $ttfmake_section_data['data']['banner-slides'][ $tt
 			<em><?php _e( 'Slide', 'make' ); ?></em>
 		</h3>
 		<a href="#" class="ttfmake-banner-slide-toggle" title="<?php esc_attr_e( 'Click to toggle', 'make' ); ?>">
-			<div class="handlediv"></div>
+			<div class="wsu-handlediv"></div>
 		</a>
 	</div>
 
