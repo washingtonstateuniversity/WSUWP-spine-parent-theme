@@ -82,17 +82,28 @@
 	 *
 	 * @returns {*}
 	 */
-	$.fn.refresh = function() {
+	$.fn.refresh = function( selector ) {
 		var elems;
-		elems = $( this.selector );
+
+		/**
+		 * {@link https://api.jquery.com/selector/|.selector} was removed in jQuery 3.0
+		 * 
+		 * Selector strings should be added as parameter of the method
+		 * @example
+		 * self._get_globals( "spine" ).refresh("#spine");
+		 * 
+		 * @see https://api.jquery.com/selector/
+		 */ 
+		elems = selector
+		
 		this.splice( 0, this.length );
 
 		try {
 			this.push.apply( this, elems );
 		}
 		catch ( err ) {
-			if ( $( this.selector ).html() !== "" ) {
-				return $( this.selector );
+			if ( $( selector ).html() !== "" ) {
+				return $( selector );
 			}else {
 				return $( "<div>" );
 			}
@@ -301,7 +312,6 @@
 				if ( !instance ) {
 					instance = $.data( this, name, new $[ namespace ][ name ]( context, this ) );
 				}
-
 				if ( instance[ context + "_init" ] !== undefined ) {
 					if ( instance[ context + "_init" ] ) {
 						instance[ context + "_init" ]( context_options );
@@ -370,6 +380,7 @@
 		 * @param {string} context e.g. 'search', 'social', 'framework'
 		 */
 		_set_globals: function( obj, context ) {
+
 			context = null; // Avoiding jshint error temporarily.
 
 			if ( typeof( obj ) !== "object" ) {
@@ -561,6 +572,7 @@
 		 *
 		 * @param {object} options
 		 */
+		
 		framework_init: function( options ) {
 			$.extend( this.framework_options, options );
 			this._set_globals( this.framework_globals );
@@ -684,9 +696,9 @@
 			self = this;
 
 			// Refresh data for global elements.
-			spine = self._get_globals( "spine" ).refresh();
-			glue = self._get_globals( "glue" ).refresh();
-			main = self._get_globals( "main" ).refresh();
+			spine = self._get_globals( "spine" ).refresh("#spine");
+			glue = self._get_globals( "glue" ).refresh("#glue");
+			main = self._get_globals( "main" ).refresh("main");
 
 			if ( self.is_mobile_view() && !self.has_mobile_state() ) {
 				self.set_spine_state( "mobile" );
@@ -870,7 +882,7 @@
 		mainheight: function() {
 			var main, window_height, main_height;
 
-			main = this._get_globals( "main" ).refresh();
+			main = this._get_globals( "main" ).refresh("main");
 
 			if ( main.offset() ) {
 				window_height = $( window ).height();
@@ -903,6 +915,7 @@
 		 * @param e
 		 */
 		toggle_mobile_nav: function( e ) {
+			
 			var html, body, shelve, spine, glue, transitionEnd;
 
 			if ( typeof e !== "undefined" ) {
@@ -912,25 +925,26 @@
 			html = $( "html" );
 			body = $( "body" );
 			shelve = $( "#shelve" );
-			spine = $.ui.spine.prototype._get_globals( "spine" ).refresh();
-			glue = $.ui.spine.prototype._get_globals( "glue" ).refresh();
+			spine = $.ui.spine.prototype._get_globals( "spine" ).refresh("#spine");
+			glue = $.ui.spine.prototype._get_globals( "glue" ).refresh("#glue");
 
 			/* Cross browser support for CSS "transition end" event */
 			transitionEnd = "transitionend webkitTransitionEnd otransitionend MSTransitionEnd";
 
 			// Whether opening or closing, the Spine will be animating from this point forward.
-			body.addClass( "spine-animating" );
+			body.addClass( "spine-animating" )
 
-			// Tell the browser and stylesheet what direction the Spine is animating.
-			if ( html.hasClass( "spine-mobile-open" ) ) {
-				body.addClass( "spine-move-left" );
-				shelve.attr( "aria-expanded", "false" );
-			} else {
-				body.addClass( "spine-move-right" );
-				shelve.attr( "aria-expanded", "true" );
-			}
-
-			glue.on( transitionEnd, function() {
+			setTimeout(function(){
+				// Tell the browser and stylesheet what direction the Spine is animating.
+				if ( html.hasClass( "spine-mobile-open" ) ) {
+					body.addClass( "spine-move-left" );
+					shelve.attr( "aria-expanded", "false" );
+				} else {
+					body.addClass( "spine-move-right" );
+					shelve.attr( "aria-expanded", "true" );
+				}
+			});
+			$('#glue.spine-glue').on( transitionEnd, function() {
 				body.removeClass( "spine-animating spine-move-left spine-move-right" );
 
 				if ( html.hasClass( "spine-mobile-open" ) ) {
@@ -977,9 +991,9 @@
 
 			self = this;
 
-			spine = self._get_globals( "spine" ).refresh();
-			glue = self._get_globals( "glue" ).refresh();
-			main = self._get_globals( "main" ).refresh();
+			spine = self._get_globals( "spine" ).refresh("#spine");
+			glue = self._get_globals( "glue" ).refresh("#glue");
+			main = self._get_globals( "main" ).refresh("main");
 
 			self.nav_state.scroll_top = 0;
 			self.nav_state.scroll_dif = 0;
@@ -1061,9 +1075,9 @@
 		apply_nav_func: function( self ) {
 			var spine, glue, main, top, scroll_top, positionLock, scroll_dif, glue_ht;
 
-			spine = self._get_globals( "spine" ).refresh();
-			glue = self._get_globals( "glue" ).refresh();
-			main = self._get_globals( "main" ).refresh();
+			spine = self._get_globals( "spine" ).refresh("#spine");
+			glue = self._get_globals( "glue" ).refresh("#glue");
+			main = self._get_globals( "main" ).refresh("main");
 
 			scroll_top   = self.nav_state.scroll_top;
 			positionLock = self.nav_state.positionLock;
@@ -1154,7 +1168,7 @@
 			html = html || "";
 			self = this;
 
-			wsu_actions = self._get_globals( "wsu_actions" ).refresh();
+			wsu_actions = self._get_globals( "wsu_actions" ).refresh("#wsu-actions");
 
 			$( "#wsu-" + tab + "-tab" ).append( html );
 
@@ -1305,8 +1319,8 @@
 			var self, spine, wsu_actions, print_controls;
 
 			self = this;
-			spine = self._get_globals( "spine" ).refresh();
-			wsu_actions = self._get_globals( "wsu_actions" ).refresh();
+			spine = self._get_globals( "spine" ).refresh("#spine");
+			wsu_actions = self._get_globals( "wsu_actions" ).refresh("#wsu-actions");
 
 			// Print & Print View
 			print_controls = "<span class='print-controls'><button id='print-invoke'>Print</button><button id='print-cancel'>Cancel</button></span>";
@@ -1633,7 +1647,7 @@
 				twitter_text = encodeURIComponent( this.social_options.twitter_text );
 				twitter_handle = encodeURIComponent( this.social_options.twitter_handle );
 				current_url = self._get_globals( "current_url" );
-				wsu_actions = self._get_globals( "wsu_actions" ).refresh();
+				wsu_actions = self._get_globals( "wsu_actions" ).refresh("#wsu-actions");
 
 				sharehtml  = "<section id='wsu-share' class='spine-share spine-action closed'>";
 				sharehtml += "<ul>";
