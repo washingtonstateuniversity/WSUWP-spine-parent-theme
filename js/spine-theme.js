@@ -17,7 +17,7 @@
 		});
 	};
 
-	$(document).ready( function() {
+	$(function() {
 		process_section_backgrounds();
 
 		$('#spine').keydown(function (e) {
