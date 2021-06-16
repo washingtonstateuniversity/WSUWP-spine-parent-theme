@@ -84,19 +84,20 @@
 	 */
 	$.fn.refresh = function() {
 		var elems;
-		elems = $( this.selector );
+		elems = $( this );
 		this.splice( 0, this.length );
 
 		try {
 			this.push.apply( this, elems );
 		}
 		catch ( err ) {
-			if ( $( this.selector ).html() !== "" ) {
-				return $( this.selector );
-			}else {
+			if ( $( this ).html() !== "" ) {
+				return $( this );
+			} else {
 				return $( "<div>" );
 			}
-		}
+    	}
+
 		return this;
 	};
 
