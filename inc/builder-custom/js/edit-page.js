@@ -47,7 +47,7 @@
 			}
 
 			// Make sure screen is correctly toggled on load
-			self.cache.$document.on('ready', function() {
+			self.cache.$document.on('load', function() {
 				self.cache.$pageTemplate.trigger('change');
 			});
 		},
