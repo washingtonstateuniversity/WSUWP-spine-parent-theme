@@ -20,7 +20,7 @@
 	$(function() {
 		process_section_backgrounds();
 
-		$('#spine').keydown(function (e) {
+		$('#spine').on( "keydown", function (e) {
 
 			if( e.keyCode == 27 )  // the enter key code
 			 {

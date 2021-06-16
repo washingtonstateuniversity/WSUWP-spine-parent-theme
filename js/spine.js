@@ -1008,7 +1008,7 @@
 					self.apply_nav_func( self );
 				} );
 
-				$( document ).keydown( function( e ) {
+				$( document ).on( "keydown", function( e ) {
 					if ( e.which === 35 || e.which === 36 ) {
 						viewport_ht	= $( window ).height();
 						spine_ht	= spine[ 0 ].scrollHeight;
@@ -1026,7 +1026,7 @@
 				} );
 
 				// Apply the `.skimmed` class to the Spine on non mobile views after 148px.
-				$( document ).scroll( function() {
+				$( document ).on( "scroll", function() {
 					var top;
 					top = $( document ).scrollTop();
 					if ( top > 148 ) {
@@ -1333,7 +1333,7 @@
 				$( "#print-cancel" ).on( "click", print_cancel );
 				window.setTimeout( function() { printPage(); }, 400 );
 			}
-			$( "#wsu-print-tab button" ).click( print );
+			$( "#wsu-print-tab button" ).on( "click", print );
 
 			// Shut a tool section
 			$( "button.shut" ).on( "click touchend", function( e ) {
@@ -1427,7 +1427,7 @@
 			}
 
 			$( "#wsu-search-tab button" ).on( "click touchend", function() {
-				self._get_globals( "search_input" ).refresh().focus();
+				self._get_globals( "search_input" ).refresh().trigger( "focus" );
 			} );
 			this.setup_search();
 		},
@@ -1574,7 +1574,7 @@
 				}
 			} ).data( "autosearch" );
 
-			$( "#wsu-search form" ).submit( function() {
+			$( "#wsu-search form" ).on( "submit", function() {
 				var scope, site, cx, cof, search_term, search_url;
 				scope = wsu_search.attr( "data-default" );
 				site = " site:" + window.location.hostname;
