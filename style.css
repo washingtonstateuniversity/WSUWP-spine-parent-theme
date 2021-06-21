@@ -608,6 +608,38 @@ article.wsuwp_uc_person {
 	width: 100%;
 }
 
+#spine .spine-actions-tabs > li > a {
+    position: relative;
+    width: 100%;
+    height: 2.2em;
+    font-weight: 400;
+    font-size: 1.2em;
+    line-height: 1;
+    text-shadow: none;
+    padding: .8em 0 .8em 0;
+    display: block;
+    text-indent: 120%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#spine .spine-actions-tabs > li > a:focus {
+    color: #981e32;
+}
+
+#spine .spine-actions-tabs > li > a::before {
+    content: "$";
+    text-align: center;
+    top: .9em;
+    font-family: Spine-Icons;
+    text-indent: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-weight: 400;
+}
+
 /** In content social sharing styles. */
 .social-share-bar {
 	position: absolute;
