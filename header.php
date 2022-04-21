@@ -29,7 +29,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-
+<?php wp_body_open();?>
 <?php
 	if ( ( spine_get_option( 'spineless' ) == 'true' ) && is_front_page() ) {
 		$spineless = ' spineless';
