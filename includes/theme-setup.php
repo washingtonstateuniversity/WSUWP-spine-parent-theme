@@ -12,6 +12,26 @@ class Spine_Theme_Setup {
 		add_action( 'template_redirect', array( $this, 'check_author_page' ) );
 		add_filter( 'author_link', array( $this, 'filter_author_link' ) );
 		add_filter( 'upload_mimes', array( $this, 'add_mime_types' ) );
+		add_filter( 'wp_robots', array( $this, 'filter_robots' ), 9999 );
+	}
+
+
+	public static function filter_robots( $robots ) {
+
+		if ( is_search() ) {
+
+			if ( array_key_exists( 'follow', $robots ) ) {
+
+				$robots['follow'] = false;
+
+			}
+
+			$robots['nofollow'] = true;
+
+		}
+
+		return $robots;
+
 	}
 
 	/**
