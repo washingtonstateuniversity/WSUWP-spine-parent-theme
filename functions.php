@@ -923,7 +923,7 @@ function spine_install_default_content() {
 function spine_get_title() {
 	$site_part = get_option( 'blogname' );
 	$global_part = ' | Washington State University';
-	$view_title = ( is_search() ) ? 'Search' : wp_title( '|', false, 'right' );
+	$view_title = ( is_search() ) ? 'Search | ' : wp_title( '|', false, 'right' );
 
 	$title = $view_title . $site_part . $global_part;
 
