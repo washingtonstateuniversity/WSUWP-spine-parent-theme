@@ -12,7 +12,43 @@ class Spine_Theme_Setup {
 		add_action( 'template_redirect', array( $this, 'check_author_page' ) );
 		add_filter( 'author_link', array( $this, 'filter_author_link' ) );
 		add_filter( 'upload_mimes', array( $this, 'add_mime_types' ) );
+
+		if ( version_compare( get_bloginfo( 'version' ), '5.7', '>=' ) ) {
+
+			add_filter( 'wp_robots', array( $this, 'filter_robots' ), 9999 );
+
+		 } else {
+			
+			add_action( 'wp_head', array( $this, 'legacy_robots' ), 1 );
+
+		 }
 	}
+
+	public function filter_robots( $robots ) {
+
+		if ( is_search() ) {
+
+			if ( array_key_exists( 'follow', $robots ) ) {
+
+				$robots['follow'] = false;
+
+			}
+
+			$robots['nofollow'] = true;
+
+		}
+
+		return $robots;
+
+	}
+
+
+	public function legacy_robots( $robots ) {
+
+		echo "<meta name='robots' content='noindex, max-image-preview:large, nofollow' />";
+
+	}
+
 
 	/**
 	 * Add additional upload mime types
